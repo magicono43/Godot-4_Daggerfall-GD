@@ -1,0 +1,10 @@
+param([switch]$Test, [switch]$Visual)
+$ErrorActionPreference = 'Stop'
+$godotPath = 'C:\Godot\Godot_v4.7.2-stable_win64\Godot_v4.7.2-stable_win64_console.exe'
+$godotArguments = @('--path', $PSScriptRoot)
+if ($Test) {
+    if (-not $Visual) { $godotArguments += '--headless' }
+    $godotArguments += @('--fixed-fps', '60', '--script', 'res://tests/smoke.gd')
+}
+& $godotPath @godotArguments
+exit $LASTEXITCODE

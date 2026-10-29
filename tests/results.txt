@@ -1,0 +1,19 @@
+PASS Original source loads
+PASS MAPS resolves original starting block
+PASS Privateer's Hold location ID
+PASS RDB placements and ARCH3D triangles
+PASS All 19 original slice materials decoded
+PASS Player rests on original floor
+PASS Walk from original start to door
+PASS Closed original door blocks capsule
+PASS Look ray acquires nearby door
+PASS Closed door occludes enemy sight
+PASS E interaction opens animated collidable door
+PASS Walk through open door onto original corridor
+PASS Corridor floor supports player
+PASS Enemy detects player through open passage
+PASS Greybox passage cap blocks boundary ray
+PASS Door refuses unsafe close beside player
+PASS Door closes again when clear
+PASS Missing original data produces explicit failure
+PASS Original room wall blocks player
