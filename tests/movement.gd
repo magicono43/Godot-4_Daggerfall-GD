@@ -96,6 +96,7 @@ func reset_player() -> void:
 	player.rotation = Vector3.ZERO
 	player.camera.rotation = Vector3.ZERO
 	player.velocity = Vector3.ZERO
+	player.flight_horizontal = Vector3.ZERO
 	player.input_axes = Vector2.ZERO
 	player.grounded_time = 0.0
 	player.controls_active = true

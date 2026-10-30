@@ -10,6 +10,7 @@
     "Assets/Scripts/Game/Player/FrictionMotor.cs": "273ac2b19a335dd117e26b408a3766e69308434c8a8530e2b51de3b9dd4afe12",
     "Assets/Scripts/Game/Player/PlayerGroundMotor.cs": "639ef5a4d6edce925d4ea6480bb0179b982ea0e75dd291c4a1964cef1930103d",
     "Assets/Scripts/Game/Player/ClimbingMotor.cs": "4190841d6193b4af9330f6290eb6720b23668ce7ee35a64a00b80ad70f438627",
-    "Assets/Scripts/Game/LevitateMotor.cs": "fcd623d2dd7c9b265828cb4a93e2b033239db281f414e31b49cc847f372e305d"
+    "Assets/Scripts/Game/LevitateMotor.cs": "fcd623d2dd7c9b265828cb4a93e2b033239db281f414e31b49cc847f372e305d",
+    "Assets/Scripts/Game/Player/PlayerMoveScanner.cs": "68bc79118038b92be367b6de6266c9a8407f62abb6555b7473db952427835fa7"
   }
 }

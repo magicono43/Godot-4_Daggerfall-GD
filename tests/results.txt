@@ -1,8 +1,8 @@
 PASS Original source loads
 PASS MAPS resolves original starting block
 PASS Privateer's Hold location ID
-PASS Nine original RDB placements and 354 ARCH3D triangles
-PASS All 21 original slice materials decoded
+PASS Eleven original RDB placements and 492 ARCH3D triangles
+PASS All 26 original slice materials decoded
 PASS Section JSON schema accepts current definition
 PASS Alternate section selects fewer original objects without code edits
 PASS Duplicate section IDs rejected
@@ -52,10 +52,15 @@ PASS Classic material 124 matches expected archive, record, dimensions and decod
 PASS Classic material 5889 matches expected archive, record, dimensions and decoded pixels
 PASS Classic material 5890 matches expected archive, record, dimensions and decoded pixels
 PASS Classic material 8590 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 15488 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 15491 matches expected archive, record, dimensions and decoded pixels
 PASS Classic material 15616 matches expected archive, record, dimensions and decoded pixels
 PASS Classic material 15618 matches expected archive, record, dimensions and decoded pixels
 PASS Classic material 15619 matches expected archive, record, dimensions and decoded pixels
 PASS Classic material 15620 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 15872 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 15874 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 15876 matches expected archive, record, dimensions and decoded pixels
 PASS Classic material 18688 matches expected archive, record, dimensions and decoded pixels
 PASS Classic material 18689 matches expected archive, record, dimensions and decoded pixels
 PASS Classic material 18817 matches expected archive, record, dimensions and decoded pixels
@@ -63,11 +68,13 @@ PASS Classic material 18818 matches expected archive, record, dimensions and dec
 PASS Classic material 41088 matches expected archive, record, dimensions and decoded pixels
 PASS Classic material 41089 matches expected archive, record, dimensions and decoded pixels
 PASS Classic material 41090 matches expected archive, record, dimensions and decoded pixels
+PASS Model 61219 retains vertex and UV buffers after texture swaps
 PASS Model 55012 retains vertex and UV buffers after texture swaps
 PASS Model 63047 retains vertex and UV buffers after texture swaps
 PASS Model 63033 retains vertex and UV buffers after texture swaps
 PASS Model 63007 retains vertex and UV buffers after texture swaps
 PASS Model 71002 retains vertex and UV buffers after texture swaps
+PASS Model 58008 retains vertex and UV buffers after texture swaps
 PASS Model 41311 retains vertex and UV buffers after texture swaps
 PASS Model 41311 retains vertex and UV buffers after texture swaps
 PASS Model 41735 retains vertex and UV buffers after texture swaps
@@ -79,11 +86,13 @@ PASS 75-degree vertical camera convention matches evidence
 PASS DFU reference renders 16:10 before presentation
 PASS Camera projection retains DFU 16:10 aspect
 PASS Retro image presents at corrected 4:3 aspect
+PASS Model 61219 dimensions agree with independent raw-point audit
 PASS Model 55012 dimensions agree with independent raw-point audit
 PASS Model 63047 dimensions agree with independent raw-point audit
 PASS Model 63033 dimensions agree with independent raw-point audit
 PASS Model 63007 dimensions agree with independent raw-point audit
 PASS Model 71002 dimensions agree with independent raw-point audit
+PASS Model 58008 dimensions agree with independent raw-point audit
 PASS Model 41311 dimensions agree with independent raw-point audit
 PASS Model 41311 dimensions agree with independent raw-point audit
 PASS Model 41735 dimensions agree with independent raw-point audit
@@ -100,6 +109,7 @@ PASS E interaction opens animated collidable door
 PASS Walk through open door onto original corridor
 PASS Corridor floor supports player
 PASS Enemy detects player through open passage
+PASS Stair-testing enemy notices player but stays at its original position
 PASS Greybox passage cap blocks boundary ray
 PASS Door refuses unsafe close beside player
 PASS Door closes again when clear

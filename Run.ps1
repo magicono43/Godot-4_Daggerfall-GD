@@ -4,7 +4,7 @@ $godotPath = 'C:\Godot\Godot_v4.7.2-stable_win64\Godot_v4.7.2-stable_win64_conso
 $godotArguments = @('--path', $PSScriptRoot)
 if ($Test) {
     if (-not $Visual) { $godotArguments += '--headless' }
-    foreach ($suite in @('smoke', 'movement')) {
+    foreach ($suite in @('smoke', 'movement', 'stairs')) {
         & $godotPath @godotArguments --fixed-fps 60 --script "res://tests/$suite.gd"
         if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
     }

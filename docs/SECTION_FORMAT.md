@@ -49,13 +49,13 @@ These arrays can be empty. Entries also require unique IDs.
 
 ```json
 {
-  "enemies":[{"id":"placeholder_enemy","position_native":[1120,-4,768]}],
-  "boundaries":[{"id":"chamber_limit","position_native":[1027,-63,640],"yaw_degrees":90,"size_metres":[4.2,3.5,0.35]}],
+  "enemies":[{"id":"placeholder_enemy","position_native":[1120,-4,768],"approach_enabled":false}],
+  "boundaries":[{"id":"landing_limit","position_native":[640,-319,512],"yaw_degrees":0,"size_metres":[3.5,3.5,0.35]}],
   "lights":[{"id":"chamber_fill","position_native":[910,-80,768],"energy":1.0,"range_metres":12}]
 }
 ```
 
-The enemies are the existing placeholder type. Boundaries are grey collidable boxes. Fill lights retain the prototype's existing warm colour; this pass did not add light-colour authoring or original light-resource imports.
+The enemies are the existing placeholder type. Optional approach_enabled must be a boolean and defaults to true. False keeps detection, facing and gravity but disables approach movement; the active section uses false for stair testing. Boundaries are grey collidable boxes. Fill lights retain the prototype's existing warm colour; this pass did not add light-colour authoring or original light-resource imports.
 
 ## Review and validation
 

@@ -1,0 +1,35 @@
+PASS Extended original section loads
+PASS Real staircase uses independently audited original model and placement
+PASS Sixteen original vertical risers fit configured step limit
+PASS Walk up original staircase to 6.4 m landing without jumping
+PASS Original stair ascent stays grounded and respects maximum rise
+PASS Rendered ascent height has substantially less stair vibration than capsule movement
+PASS Landing boundary physically stops further dungeon expansion
+PASS Walk down original staircase into chamber
+PASS Original stair descent maintains floor contact
+PASS Rendered descent height has substantially less stair vibration than capsule movement
+PASS Run up original staircase without jumping
+PASS Run down original staircase safely
+PASS Running stair descent maintains verified support
+PASS Backward diagonal stair descent maintains support
+PASS Moving stair jump resumes forward progress after riser contact without a long halt
+PASS Jump takes off normally from a stair tread without step assistance
+PASS Turn around midway on original stairs and return safely
+PASS Slow stair approach factor 1.0, strafe false, offset -0.18 avoids riser snags
+PASS Slow stair approach factor 1.0, strafe false, offset 0.13 avoids riser snags
+PASS Slow stair approach factor 1.0, strafe true, offset -0.18 avoids riser snags
+PASS Slow stair approach factor 1.0, strafe true, offset 0.13 avoids riser snags
+PASS Slow stair approach factor 0.5, strafe false, offset -0.18 avoids riser snags
+PASS Slow stair approach factor 0.5, strafe false, offset 0.13 avoids riser snags
+PASS Slow stair approach factor 0.5, strafe true, offset -0.18 avoids riser snags
+PASS Slow stair approach factor 0.5, strafe true, offset 0.13 avoids riser snags
+PASS Synthetic 0.3 m risers ascend with continuous support
+PASS Step-only camera smoothing settles to calibrated eye height
+PASS Synthetic staircase descends without airborne bouncing
+PASS Diagonal running ascent stays on treads
+PASS Disabling assisted stepping blocks the same stair riser
+PASS 0.65 m ledge is not climbed through repeated partial lifts
+PASS Low overhead clearance rejects a step without head penetration
+PASS Lower configured step limit rejects a 0.4 m riser
+PASS A drop beyond step height causes a real fall
+PASS Small raised floor seam does not snag or launch the player

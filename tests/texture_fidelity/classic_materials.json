@@ -130,6 +130,32 @@
     "rgb_sha256": "f93fdd6f9a228a47c93c18f701a1150684d873bc33d083f0cf9ae695a9e5f400"
   },
   {
+    "source": 15488,
+    "resolved": 15488,
+    "source_size": [
+      64,
+      96
+    ],
+    "target_size": [
+      64,
+      96
+    ],
+    "rgb_sha256": "7ba33663ef1e4f03755dfef136ea76fe877dbffbea0dc92aac1027db7e6b118a"
+  },
+  {
+    "source": 15491,
+    "resolved": 15491,
+    "source_size": [
+      64,
+      64
+    ],
+    "target_size": [
+      64,
+      64
+    ],
+    "rgb_sha256": "99908ff88ee6d9cc2e5b2d958d0ab74b93c3647d252c9630f4c8f4151e269ca4"
+  },
+  {
     "source": 15616,
     "resolved": 2432,
     "source_size": [
@@ -180,6 +206,45 @@
       32
     ],
     "rgb_sha256": "901363212a4cd48341c364b99fb9821147032f724ef3b8c192c5ef9067b9e83a"
+  },
+  {
+    "source": 15872,
+    "resolved": 2560,
+    "source_size": [
+      64,
+      32
+    ],
+    "target_size": [
+      64,
+      32
+    ],
+    "rgb_sha256": "c37ec659911ce904409605913542c8cf3d1b7ff7b8564b85812fafc338e70289"
+  },
+  {
+    "source": 15874,
+    "resolved": 2562,
+    "source_size": [
+      64,
+      64
+    ],
+    "target_size": [
+      64,
+      64
+    ],
+    "rgb_sha256": "2ca0f86238b89bded47e59d7833e14264705d1f0889f6bf4015e5499e4e65a92"
+  },
+  {
+    "source": 15876,
+    "resolved": 2564,
+    "source_size": [
+      64,
+      32
+    ],
+    "target_size": [
+      64,
+      32
+    ],
+    "rgb_sha256": "eb9e1cffaab224f2a2a98d19fd50351525f67cc35ef69f7a6aa9330b11e6c4a2"
   },
   {
     "source": 18688,

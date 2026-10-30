@@ -5,6 +5,7 @@ const DEFAULTS := {
 	"locomotion": {"response": "instant", "axis_response_per_second": 9.8, "walk_multiplier": 1.0, "run_multiplier": 1.0, "strafe_multiplier": 1.0, "backward_multiplier": 1.0, "limit_diagonal_speed": true, "ground_acceleration": 24.0, "ground_braking": 32.0, "air_control": false, "air_acceleration": 8.0, "air_braking": 8.0},
 	"jump": {"base_velocity": 4.5, "skill_bonus": 0.5, "athleticism_bonus": 0.1, "improved_athleticism_bonus": 0.1, "spell_bonus": 0.6, "forward_boost_fraction": 0.05, "minimum_grounded_time": 0.1, "repeat_while_held": true},
 	"physics": {"gravity": 20.0, "ground_stick_speed": 0.2, "floor_snap_metres": 0.35, "floor_max_angle_degrees": 70.0, "floor_constant_speed": false},
+	"stepping": {"enabled": true, "max_height_metres": 0.5, "camera_smoothing_speed": 12.0, "camera_smoothing_rate": 18.0},
 	"look": {"radians_per_pixel": 0.0023, "max_pitch_degrees": 83.0, "invert_y": false},
 	"effects": {"athleticism": false, "improved_athleticism": false, "enhanced_jumping": false, "enhanced_climbing": false}
 }
@@ -55,6 +56,10 @@ func valid_value(section: String, key: String, value: Variant) -> bool:
 			return value > 0 and value <= 0.05
 		"floor_snap_metres":
 			return value >= 0 and value <= 1
+		"max_height_metres":
+			return value >= 0 and value <= 0.75
+		"camera_smoothing_speed", "camera_smoothing_rate":
+			return value > 0 and value <= 100
 		"minimum_grounded_time":
 			return value >= 0 and value <= 2
 		"gravity":

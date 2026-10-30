@@ -52,7 +52,7 @@ func section_checks() -> void:
 	changed.billboards.pop_back()
 	changed.prototype.enemies.clear()
 	var alternate := try_section(changed)
-	check(alternate.error.is_empty() and alternate.objects.size() == 8 and alternate.billboards.size() == 2, "Alternate section selects fewer original objects without code edits")
+	check(alternate.error.is_empty() and alternate.objects.size() == original.models.size() - 1 and alternate.billboards.size() == 2, "Alternate section selects fewer original objects without code edits")
 	changed = original.duplicate(true)
 	changed.models[1].id = changed.models[0].id
 	check(not validator.validate(changed) and "duplicate" in validator.error, "Duplicate section IDs rejected")
@@ -131,8 +131,8 @@ func run() -> void:
 		return
 	check(level.classic.provenance.block == "S0000999.RDB", "MAPS resolves original starting block")
 	check(level.classic.provenance.location_id == 50049, "Privateer's Hold location ID")
-	check(level.classic.objects.size() == 9 and level.classic.triangle_count == 354, "Nine original RDB placements and 354 ARCH3D triangles")
-	check(level.classic.texture_count == 21, "All 21 original slice materials decoded")
+	check(level.classic.objects.size() == 11 and level.classic.triangle_count == 492, "Eleven original RDB placements and 492 ARCH3D triangles")
+	check(level.classic.texture_count == 26, "All 26 original slice materials decoded")
 	section_checks()
 	await decoration_checks()
 	check(level.classic.provenance.dungeon_id == 50050, "Texture seed uses dungeon ID, not exterior ID")
@@ -268,11 +268,14 @@ func run() -> void:
 	check(level.player.is_on_floor(), "Corridor floor supports player")
 	await frames(90)
 	check(level.encounter and level.enemy.noticed, "Enemy detects player through open passage")
+	check(not level.enemy.approach_enabled and Vector2(level.enemy.position.x - level.enemy.home.x, level.enemy.position.z - level.enemy.home.z).length() < 0.001, "Stair-testing enemy notices player but stays at its original position")
 	level.player.camera.look_at(level.enemy.global_position + Vector3.UP * 0.5)
 	await screenshot("res://tests/enemy_encounter.png")
 	# Test caps at the original openings, using physics rays across each boundary.
-	for pair in [[Vector3(1080, 60, -640), Vector3(980, 60, -640)]]:
-		var query := PhysicsRayQueryParameters3D.create(pair[0] * 0.025 - level.classic.origin, pair[1] * 0.025 - level.classic.origin, 1)
+	for entry in level.classic.section.definition.prototype.boundaries:
+		var center_point: Vector3 = level.classic.to_world(entry.position_native)
+		var direction := Basis(Vector3.UP, deg_to_rad(entry.yaw_degrees)) * Vector3.FORWARD
+		var query := PhysicsRayQueryParameters3D.create(center_point - direction, center_point + direction, 1)
 		var hit: Dictionary = level.world_root.get_world_3d().direct_space_state.intersect_ray(query)
 		check(not hit.is_empty() and hit.collider.is_in_group("slice_boundaries"), "Greybox passage cap blocks boundary ray")
 	level.player.position = center + normal * 0.5

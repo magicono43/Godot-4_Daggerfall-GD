@@ -3,6 +3,7 @@ extends CharacterBody3D
 var player: CharacterBody3D
 var home := Vector3.ZERO
 var noticed := false
+var approach_enabled := true
 signal encountered
 
 func _ready() -> void:
@@ -55,7 +56,7 @@ func _physics_process(delta: float) -> void:
 			noticed = true
 			encountered.emit()
 		offset.y = 0
-		if offset.length() > 1.8 and position.distance_to(home) < 4:
+		if approach_enabled and offset.length() > 1.8 and position.distance_to(home) < 4:
 			velocity.x = offset.normalized().x * 0.8
 			velocity.z = offset.normalized().z * 0.8
 		else:

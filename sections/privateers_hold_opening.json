@@ -24,7 +24,9 @@
     {"id": "adjoining_chamber", "record_offset": 12095, "expected_model": "71002", "role": "geometry", "collision": true},
     {"id": "rear_rock_pile", "record_offset": 32707, "expected_model": "41735", "role": "prop", "collision": true},
     {"id": "chamber_prop_north", "record_offset": 32552, "expected_model": "41311", "role": "prop", "collision": true},
-    {"id": "chamber_prop_south", "record_offset": 32623, "expected_model": "41311", "role": "prop", "collision": true}
+    {"id": "chamber_prop_south", "record_offset": 32623, "expected_model": "41311", "role": "prop", "collision": true},
+    {"id": "first_staircase", "record_offset": 12767, "expected_model": "58008", "role": "geometry", "collision": true},
+    {"id": "stair_landing", "record_offset": 23239, "expected_model": "61219", "role": "geometry", "collision": true}
   ],
   "billboards": [
     {"id": "cave_decoration_small", "record_offset": 16459, "expected_archive": 206, "expected_record": 5, "fps": 5},
@@ -32,8 +34,8 @@
     {"id": "cave_fire", "record_offset": 17044, "expected_archive": 210, "expected_record": 1, "fps": 12}
   ],
   "prototype": {
-    "enemies": [{"id": "placeholder_enemy", "position_native": [1120, -4, 768]}],
-    "boundaries": [{"id": "chamber_limit", "position_native": [1027, -63, 640], "yaw_degrees": 90, "size_metres": [4.2, 3.5, 0.35]}],
+    "enemies": [{"id": "placeholder_enemy", "position_native": [1120, -4, 768], "approach_enabled": false}],
+    "boundaries": [{"id": "landing_limit", "position_native": [640, -319, 512], "yaw_degrees": 0, "size_metres": [3.5, 3.5, 0.35]}],
     "lights": [
       {"id": "cave_fill", "position_native": [510, -140, 1552], "energy": 1.8, "range_metres": 18},
       {"id": "passage_fill", "position_native": [470, -84, 1032], "energy": 1.2, "range_metres": 12},

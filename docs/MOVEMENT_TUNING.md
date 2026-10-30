@@ -24,7 +24,7 @@ These are formulas from the inspected DFU source, not a claim of identical overa
 
 Compare short, repeatable actions in the same area: walking between two landmarks, starting/stopping, running, reversing direction, standing and moving jumps, and turning while airborne. A sentence such as “stops too abruptly,” “jump hangs longer,” or “running reaches the door sooner” is useful feedback. Match DFU's live attributes, skills, advantages and spell effects to the configuration before adjusting multipliers.
 
-DFU has a separate **Movement Acceleration** option. Its state in the user's setup is currently unknown. In `[locomotion]`, choose:
+DFU has a separate **Movement Acceleration** option. The user confirmed it is **false**, matching our default instant response. In `[locomotion]`, choose:
 
 | `response` | Behavior |
 | --- | --- |
@@ -36,7 +36,7 @@ DFU has a separate **Movement Acceleration** option. Its state in the user's set
 
 Use `walk_multiplier` and `run_multiplier` for global pace adjustments; they are independently applied after the character formulas. `strafe_multiplier` and `backward_multiplier` affect direction after diagonal limiting, so adding a strafe key cannot defeat a backward penalty. Their defaults are 1.0; there is no invented backward penalty in the baseline.
 
-The `[jump]` section controls base launch velocity, skill/advantage/effect bonuses, the small forward boost on a moving jump, minimum grounded time and repeat while held. `[physics]` controls gravity, ground-stick velocity, floor snap and slope limit. Floor snap is Godot's contact aid, not automatic stair stepping. The 70-degree slope limit comes from the DFU player prefab; it does not reproduce Unity's complete slope behavior. Unity's skin width has not been copied into Godot's differently defined collision margin.
+The `[jump]` section controls base launch velocity, skill/advantage/effect bonuses, the small forward boost on a moving jump, minimum grounded time and repeat while held. `[physics]` controls gravity, ground-stick velocity, floor snap and slope limit. Floor snap is Godot's contact aid. Separate `[stepping]` settings enable full-capsule step assistance with a 0.5 m maximum rise and render-frame grounded-height smoothing; see STAIR_TRAVERSAL.md. camera_smoothing_rate controls the vertical follow rate and camera_smoothing_speed caps visual catch-up speed. The 70-degree slope limit comes from the DFU player prefab; it does not reproduce Unity's complete slope behavior. Unity's skin width has not been copied into Godot's differently defined collision margin.
 
 `[look]` controls radians per mouse pixel, pitch limit and Y inversion. Sensitivity retains the previous Godot value; DFU's mouse setting is not in interchangeable units. Camera FOV/aspect are still controlled by `presentation.cfg`.
 
@@ -52,6 +52,7 @@ The read-only reference snapshot is pinned in `reference/movement_sources.json`,
 | `Game/Player/FrictionMotor.cs` | Ground input directions, diagonal limit and slope behavior |
 | `Game/InputManager.cs` | Optional movement-axis acceleration/friction, separate from PlayerMotor |
 | `Game/Player/PlayerGroundMotor.cs` | Applies controller motion and moving-platform translation/rotation |
+| `Game/Player/PlayerMoveScanner.cs` | Downward step-distance probe used by anti-bump gravity |
 | `Game/Player/ClimbingMotor.cs` | Wall attachment, skill checks and slipping |
 | `Game/LevitateMotor.cs` | Water/levitation movement, buoyancy/sinking and water transitions |
 
@@ -89,10 +90,10 @@ player.movement.remove_modifier("example_speed_effect")
 
 The stat/effect setters replace their respective override maps. Omitted fields fall back to the configuration; an empty map clears overrides. Inputs are validated transactionally. Named modifiers multiply by channel (`walk`, `run`, `jump`, `gravity`, `swim`, `climb`); replacing an ID replaces its whole map. Removal reverses that modifier without accumulating permanent changes. Reloading the file retains live overrides and named effects. Attribute-altering magic should update the effective live attribute upstream; direct pace effects can use the multiplier channels. Do not apply the same effect twice through both routes.
 
-This establishes an integration boundary, not skill advancement, effect durations or a complete character model. Swimming and climbing currently have calculated speed hooks only. Water volumes, breathing, encumbrance/sinking, wall attachment, skill checks, levitation, crouching, DFU's step scanner, moving platforms, head dip/bob, specialized slope assistance and fall damage are not implemented. Existing capsule collision handles ceiling contact; DFU's vertical-velocity reversal on head impact is not reproduced. Those behaviors need their own movement states or focused follow-up work.
+This establishes an integration boundary, not skill advancement, effect durations or a complete character model. Swimming and climbing currently have calculated speed hooks only. Water volumes, breathing, encumbrance/sinking, wall attachment, skill checks, levitation, crouching, moving platforms, head dip/bob, specialized slope assistance and fall damage are not implemented. Godot step assistance is documented separately in STAIR_TRAVERSAL.md. Existing capsule collision handles ceiling contact; DFU's vertical-velocity reversal on head impact is not reproduced. Those behaviors need their own movement states or focused follow-up work.
 
 ## Verification
 
-`Run.ps1 -Test` runs the dungeon smoke suite followed by `tests/movement.gd` at fixed 60 Hz. `-Test -Visual` runs both with rendering. The movement suite uses built-in baseline settings in an independent flat physics arena, so tuning the user profile does not change the formula expectations. Tests cover live inputs, named modifier replacement/removal, transactional reloads, axis response, diagonal speed, stop/reverse, jump/landing, air momentum/steering, wall sliding, ceilings, held jump and mouse controls. The dungeon suite also checks F3/F4 through the separate gameplay viewport.
+`Run.ps1 -Test` runs the dungeon smoke suite, `tests/movement.gd` and `tests/stairs.gd` at fixed 60 Hz. `-Test -Visual` runs all three with rendering. The movement suite uses built-in baseline settings in an independent flat physics arena, so tuning the user profile does not change the formula expectations. Tests cover live inputs, named modifier replacement/removal, transactional reloads, axis response, diagonal speed, stop/reverse, jump/landing, air momentum/steering, wall sliding, ceilings, held jump and mouse controls. The dungeon suite also checks F3/F4 through the separate gameplay viewport. The stair suite covers the real staircase and isolated step constraints.
 
 Reports: `tests/results.txt` and `tests/movement_results.txt`. Rendered diagnostics capture: `tests/movement_debug.png`. Automated checks and visual inspection cannot establish subjective equivalence with DFU; that comparison remains the next playtesting step.

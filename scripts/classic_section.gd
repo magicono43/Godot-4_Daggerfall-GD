@@ -88,6 +88,8 @@ func validate(value: Variant) -> bool:
 				return fail("Invalid id or position in prototype." + group)
 			if group == "boundaries" and (not vector(entry.get("size_metres"), true) or not number(entry.get("yaw_degrees"))):
 				return fail(entry.id + " requires size_metres and yaw_degrees")
+			if group == "enemies" and not entry.get("approach_enabled", true) is bool:
+				return fail(entry.id + " approach_enabled must be a boolean")
 			if group == "lights" and (not number(entry.get("energy")) or entry.energy < 0 or not number(entry.get("range_metres")) or entry.range_metres <= 0):
 				return fail(entry.id + " requires non-negative energy and positive range_metres")
 	definition = value.duplicate(true)

@@ -14,6 +14,7 @@ paths = [
     'Assets/Scripts/Game/Player/AcrobatMotor.cs',
     'Assets/Scripts/Game/Player/FrictionMotor.cs',
     'Assets/Scripts/Game/Player/PlayerGroundMotor.cs',
+    'Assets/Scripts/Game/Player/PlayerMoveScanner.cs',
     'Assets/Scripts/Game/Player/ClimbingMotor.cs',
     'Assets/Scripts/Game/LevitateMotor.cs',
 ]

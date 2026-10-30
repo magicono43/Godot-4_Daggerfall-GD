@@ -91,6 +91,7 @@ func _ready() -> void:
 	for entry in definition.prototype.enemies:
 		var placeholder := CharacterBody3D.new()
 		placeholder.set_script(Enemy)
+		placeholder.approach_enabled = entry.get("approach_enabled", true)
 		placeholder.name = entry.id
 		placeholder.player = player
 		placeholder.position = classic.to_world(entry.position_native)

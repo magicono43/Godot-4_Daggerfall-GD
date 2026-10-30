@@ -1,10 +1,15 @@
 extends CharacterBody3D
 const Movement = preload("res://scripts/movement_model.gd")
+const Steps = preload("res://scripts/step_solver.gd")
 var movement := Movement.new()
 var grounded_time := 0.0
 var is_running := false
 var show_movement_debug := false
 var input_axes := Vector2.ZERO
+var step_camera_offset := 0.0
+var last_step := 0.0
+var stair_supported := false
+var flight_horizontal := Vector3.ZERO
 # DFU PlayerHeightChanger + PlayerAdvanced prefab, measured above the feet.
 const STANDING_HEIGHT := 1.8
 const CAPSULE_RADIUS := 0.35
@@ -86,7 +91,8 @@ func _physics_process(delta: float) -> void:
 		var collider := ray.get_collider() as Node
 		if collider and collider.has_method("interact"):
 			interact_target = collider
-	var grounded := is_on_floor()
+	var grounded := is_grounded()
+	stair_supported = false
 	grounded_time = grounded_time + delta if grounded else 0.0
 	var tuning: Dictionary = movement.profile.values.locomotion
 	var jump: Dictionary = movement.profile.values.jump
@@ -110,7 +116,9 @@ func _physics_process(delta: float) -> void:
 		is_running = controls_active and Input.is_action_pressed("sprint")
 	var speed := float(resolved.run_speed if is_running else resolved.walk_speed)
 	var desired := global_basis * Vector3(input.x, 0, input.y) * speed
-	var horizontal := Vector3(velocity.x, 0, velocity.z)
+	# Unity's controller.Move does not overwrite DFU's moveDirection. Godot's
+	# move_and_slide does, so retain free-flight momentum apart from wall slides.
+	var horizontal := flight_horizontal if not grounded else Vector3(velocity.x, 0, velocity.z)
 	if grounded or resolved.air_control:
 		if tuning.response in ["instant", "dfu_axes"]:
 			horizontal = desired
@@ -133,15 +141,56 @@ func _physics_process(delta: float) -> void:
 		velocity.y = -float(movement.profile.values.physics.ground_stick_speed)
 	else:
 		velocity.y -= float(resolved.gravity) * delta
+	flight_horizontal = Vector3(velocity.x, 0, velocity.z)
+	var before := global_transform
+	var requested := velocity
 	move_and_slide()
+	last_step = 0.0
+	var stepping: Dictionary = movement.profile.values.stepping
+	if grounded and requested.y <= 0 and stepping.enabled and stepping.max_height_metres > 0:
+		var motion := Vector3(requested.x, 0, requested.z) * delta
+		var traveled := global_position - before.origin
+		var result: Dictionary = {}
+		if motion.length() > 0.0001 and traveled.dot(motion.normalized()) < motion.length() - 0.001:
+			result = Steps.up(self, before, motion, float(stepping.max_height_metres))
+		if result.is_empty() and not is_on_floor():
+			result = Steps.down(self, float(stepping.max_height_metres))
+		if not result.is_empty():
+			stair_supported = true
+			last_step = result.transform.origin.y - global_position.y
+			global_transform = result.transform
+			# Refresh floor contact without applying horizontal movement twice.
+			velocity = Vector3(0, -float(movement.profile.values.physics.ground_stick_speed), 0)
+			move_and_slide()
+			velocity.x = requested.x
+			velocity.z = requested.z
+	if stepping.enabled and grounded and is_grounded() and requested.y <= 0:
+		# Cancel the whole grounded height change, including native capsule
+		# sliding and floor snap. Render updates then follow it continuously.
+		step_camera_offset -= global_position.y - before.origin.y
 	if position.y < -10:
 		position = spawn
 		velocity = Vector3.ZERO
 		grounded_time = 0.0
+		step_camera_offset = 0.0
+		camera.position.y = EYE_HEIGHT
+		stair_supported = false
+		flight_horizontal = Vector3.ZERO
+
+func _process(delta: float) -> void:
+	var stepping: Dictionary = movement.profile.values.stepping
+	var filtered := step_camera_offset * exp(-float(stepping.camera_smoothing_rate) * delta)
+	step_camera_offset = move_toward(step_camera_offset, filtered, float(stepping.camera_smoothing_speed) * delta)
+	camera.position.y = EYE_HEIGHT + step_camera_offset
+
+func is_grounded() -> bool:
+	# Godot can classify the rounded capsule/tread-edge contact as a wall.
+	# The step solver additionally verifies a nearby walkable tread below it.
+	return is_on_floor() or stair_supported
 
 func movement_debug_text() -> String:
 	var resolved := movement.resolve()
-	var result := "Movement | Speed %.0f  Running %.0f  Jumping %.0f\nWalk %.3f  Run %.3f m/s  |  Jump %.3f m/s  Gravity %.2f m/s²\nActual horizontal %.3f m/s  |  %s  |  %s response\nF3 reload movement.cfg  |  F4 hide diagnostics" % [movement.stat("speed_attribute"), movement.stat("running_skill"), movement.stat("jumping_skill"), resolved.walk_speed, resolved.run_speed, resolved.jump_velocity, resolved.gravity, Vector2(velocity.x, velocity.z).length(), "grounded" if is_on_floor() else "airborne", movement.profile.values.locomotion.response]
+	var result := "Movement | Speed %.0f  Running %.0f  Jumping %.0f\nWalk %.3f  Run %.3f m/s  |  Jump %.3f m/s  Gravity %.2f m/s²\nActual horizontal %.3f m/s  |  %s  |  %s response\nF3 reload movement.cfg  |  F4 hide diagnostics" % [movement.stat("speed_attribute"), movement.stat("running_skill"), movement.stat("jumping_skill"), resolved.walk_speed, resolved.run_speed, resolved.jump_velocity, resolved.gravity, Vector2(velocity.x, velocity.z).length(), "grounded" if is_grounded() else "airborne", movement.profile.values.locomotion.response]
 	if not movement.profile.error.is_empty():
 		result += "\n" + movement.profile.error
 	return result
