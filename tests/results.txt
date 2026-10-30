@@ -90,6 +90,8 @@ PASS Model 41735 dimensions agree with independent raw-point audit
 PASS Model 60200 dimensions agree with independent raw-point audit
 PASS F2 switches to full-window widescreen
 PASS Changing presentation preserves player/world position
+PASS F4 reaches separate world viewport and displays movement diagnostics
+PASS F3 reloads tuning without resetting character overrides or world position
 PASS Walk from original start to door
 PASS Closed original door blocks capsule
 PASS Look ray acquires nearby door

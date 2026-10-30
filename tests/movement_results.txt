@@ -1,0 +1,40 @@
+PASS Speed 50 walk uses DFU drag formula
+PASS Running 25 uses independent DFU run formula
+PASS Jumping 25 launch and gravity baseline
+PASS Future swim/climb speed hooks resolve without enabling modes
+PASS Live stats handle low-Speed drag floor and running skill
+PASS Live Jumping skill changes launch velocity
+PASS Athleticism and Jump effect add bonuses; Jump effect enables air control
+PASS Enhanced climbing doubles future speed hook
+PASS Improved Athleticism requires Athleticism
+PASS Named effect factors combine across separate channels
+PASS Replacing an effect ID updates rather than stacks stale factors
+PASS Removing a named effect restores other channels
+PASS Invalid live stat update is transactional
+PASS Unknown effects/channels and nonfinite modifiers rejected
+PASS Shipped movement configuration is valid
+PASS Invalid reload preserves entire previous configuration
+PASS Misspelled configuration key produces actionable error
+PASS Config reload retains live character override; omitted fields use defaults
+PASS Clearing live overrides returns to configured baseline
+PASS Capsule settles on arena floor
+PASS Ground motor reaches source-baseline walking speed
+PASS Diagonal movement does not exceed walking speed
+PASS Shift applies resolved running speed
+PASS Instant response stops without residual drift
+PASS Instant response reverses immediately
+PASS DFU acceleration mode ramps input axes rather than imposing fixed metre acceleration
+PASS DFU axis ramp reaches full input in about a tenth of a second
+PASS DFU axis friction stops after input release
+PASS Optional smooth mode respects configured acceleration
+PASS Optional smooth mode respects independent braking
+PASS Baseline physical jump reaches about 0.60 m and lands
+PASS Airborne turn/input/Shift preserve world momentum and takeoff run state
+PASS Jump magic enables air steering in motor
+PASS Capsule collides with wall and continues sliding along it
+PASS Low ceiling blocks jump without capsule penetration
+PASS Held jump repeats after grounded delay
+PASS Mouse sensitivity and pitch limit read from configuration
+PASS Mouse Y inversion is configurable
+PASS Released controls ignore mouse look
+39/39 movement checks passed

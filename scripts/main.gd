@@ -18,6 +18,7 @@ var door: AnimatableBody3D
 var enemy: CharacterBody3D
 var prompt: Label
 var status: Label
+var movement_status: Label
 var encounter := false
 var door_used := false
 var ready_to_play := false
@@ -105,7 +106,7 @@ func _ready() -> void:
 		capture_preview()
 
 func configure_input() -> void:
-	var keys := {"forward": KEY_W, "back": KEY_S, "left": KEY_A, "right": KEY_D, "sprint": KEY_SHIFT, "jump": KEY_SPACE, "interact": KEY_E, "release_mouse": KEY_ESCAPE, "reset": KEY_R, "toggle_view": KEY_F2}
+	var keys := {"forward": KEY_W, "back": KEY_S, "left": KEY_A, "right": KEY_D, "sprint": KEY_SHIFT, "jump": KEY_SPACE, "interact": KEY_E, "release_mouse": KEY_ESCAPE, "reset": KEY_R, "toggle_view": KEY_F2, "reload_movement": KEY_F3, "movement_debug": KEY_F4}
 	for action in keys:
 		if not InputMap.has_action(action):
 			InputMap.add_action(action)
@@ -178,6 +179,11 @@ func create_hud() -> void:
 	status.position = Vector2(29, 85)
 	status.add_theme_font_size_override("font_size", 15)
 	root.add_child(status)
+	movement_status = Label.new()
+	movement_status.position = Vector2(29, 180)
+	movement_status.add_theme_font_size_override("font_size", 14)
+	movement_status.visible = false
+	root.add_child(movement_status)
 	prompt = Label.new()
 	prompt.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
 	prompt.position += Vector2(-200, 25)
@@ -190,9 +196,9 @@ func create_hud() -> void:
 	crosshair.position -= Vector2(5, 13)
 	root.add_child(crosshair)
 	var controls := Label.new()
-	controls.text = "WASD Move  |  Shift Run  |  Space Jump  |  E Door  |  Esc Mouse  |  R Restart  |  F2 View"
+	controls.text = "WASD Move  |  Shift Run  |  Space Jump  |  E Door  |  Esc Mouse  |  R Restart\nF2 View  |  F3 Reload movement  |  F4 Movement diagnostics"
 	controls.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
-	controls.position = Vector2(29, -42)
+	controls.position = Vector2(29, -60)
 	controls.add_theme_font_size_override("font_size", 14)
 	root.add_child(controls)
 
@@ -206,6 +212,9 @@ func _process(_delta: float) -> void:
 	status.text += "\nView: %s  |  %.0f vertical FOV  |  Eye height %.2f m" % [presentation.profile, player.camera.fov, player.camera.position.y]
 	if encounter:
 		status.text += "\nPlaceholder enemy has noticed you. Combat is outside this experiment."
+	movement_status.visible = player.show_movement_debug or not player.movement.profile.error.is_empty()
+	if movement_status.visible:
+		movement_status.text = player.movement_debug_text()
 
 func capture_preview() -> void:
 	for i in 45:

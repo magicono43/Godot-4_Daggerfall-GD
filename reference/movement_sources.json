@@ -1,0 +1,15 @@
+{
+  "repository": "https://github.com/Interkarma/daggerfall-unity",
+  "commit": "4e78e1412b17b60f4d5d6073825775aa5ae95139",
+  "commit_date": "2026-10-21T09:20:55Z",
+  "files": {
+    "Assets/Scripts/Game/PlayerMotor.cs": "60ba5df2a7dc3b0f3eac604be012076e0b0f2c0d808fd5c1f675c6c42c59d391",
+    "Assets/Scripts/Game/InputManager.cs": "d7733dc44a4aefdd3fd287f7f5fae421576d1160d7e0bf06f0acd2d6fec990dd",
+    "Assets/Scripts/Game/Player/PlayerSpeedChanger.cs": "6ff29b85f86a028c032107817e7cd23dca99ec8c655ff488547afc5e0f40bffd",
+    "Assets/Scripts/Game/Player/AcrobatMotor.cs": "0d136504868b75228debe31ff3e70d7eed48b966c4e84cd9b5995da65f493e75",
+    "Assets/Scripts/Game/Player/FrictionMotor.cs": "273ac2b19a335dd117e26b408a3766e69308434c8a8530e2b51de3b9dd4afe12",
+    "Assets/Scripts/Game/Player/PlayerGroundMotor.cs": "639ef5a4d6edce925d4ea6480bb0179b982ea0e75dd291c4a1964cef1930103d",
+    "Assets/Scripts/Game/Player/ClimbingMotor.cs": "4190841d6193b4af9330f6290eb6720b23668ce7ee35a64a00b80ad70f438627",
+    "Assets/Scripts/Game/LevitateMotor.cs": "fcd623d2dd7c9b265828cb4a93e2b033239db281f414e31b49cc847f372e305d"
+  }
+}

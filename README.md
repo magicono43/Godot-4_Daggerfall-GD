@@ -6,6 +6,8 @@ Open project.godot in Godot 4.7.2 and press F5. The playable GDScript experiment
 
 WASD moves; mouse looks; Shift runs; Space jumps; E opens/closes a nearby door while looking at it. Escape releases/captures the mouse; click resumes; R restarts.
 
+Movement tuning is in movement.cfg. F3 reloads it without restarting; F4 toggles movement diagnostics. The initial DFU-source baseline uses Speed 50 and movement skills 25, with advantages/spells off. See docs/MOVEMENT_TUNING.md for comparison workflow, response modes and future skill/effect integration.
+
 Follow the cave opening into the stone passage, then turn right. Open the wooden door and enter the adjoining chamber to meet the red placeholder enemy. It approaches on sight and stops nearby. There is no combat or damage. A grey barrier closes the other door opening at the milestone boundary.
 
 ## Data and scope
@@ -25,6 +27,8 @@ The supplied YouTube reference could not be fetched. Layout comes from original 
 - scripts/classic_dungeon_textures.gd: Classic seeded dungeon archive table and CLIMATE.PAK lookup.
 - scripts/main.gd: scene assembly, collision, lighting, HUD and boundary.
 - scripts/player.gd: capsule movement, gravity/jump, mouse look and interaction ray.
+- scripts/movement_profile.gd: validated, reloadable movement.cfg with transactional fallback.
+- scripts/movement_model.gd: DFU-derived parameter resolution, live character overrides and named effect modifiers.
 - scripts/classic_presentation.gd: separate world viewport and aspect-correct presentation; forwards gameplay input through main.gd.
 - scripts/door.gd: physics-tick hinge animation with attached collision and safe closing guard.
 - scripts/enemy.gd: collidable placeholder with line-of-sight detection and a short approach leash.
@@ -37,7 +41,7 @@ The active JSON section file in data_source.cfg selects RDB records with expecte
 
 Run Run.ps1 -Test for headless checks, or Run.ps1 -Test -Visual for rendering and captures. Direct invocation: Godot console executable with --headless --path PROJECT_DIRECTORY --fixed-fps 60 --script res://tests/smoke.gd.
 
-105 checks cover source resolution, schema errors and alternative section selection, exact source expectations, all nine original mesh placements, 21 mesh material identities/pixel hashes, all selected transparent billboard frames, fire animation, prop collision, calibration, and the existing outward traversal/door/enemy regressions. Invalid JSON, missing records, wrong models/textures, duplicate entries and attempts to draw editor markers produce explicit errors. Last results are in tests/results.txt. These exercise actual Godot/Jolt physics.
+107 dungeon checks cover source resolution, schema errors and alternative section selection, exact source expectations, all nine original mesh placements, 21 mesh material identities/pixel hashes, all selected transparent billboard frames, fire animation, prop collision, calibration, F3/F4 input and the existing outward traversal/door/enemy regressions. Another 39 movement checks cover formulas, live character/effect integration, reload validation and isolated motor behavior. Invalid JSON, missing records, wrong models/textures, duplicate entries and attempts to draw editor markers produce explicit errors. Last results are in tests/results.txt and tests/movement_results.txt. These exercise actual Godot/Jolt physics. Direct invocation above runs only the dungeon suite; use res://tests/movement.gd for the second suite.
 
 Rendered captures: tests/start_room.png and tests/enemy_encounter.png. Visual inspection is separate from automated assertions, not exhaustive manual playtesting.
 

@@ -204,6 +204,29 @@ func run() -> void:
 	check(level.presentation.profile == "widescreen" and level.presentation.viewport.size == Vector2i(root.get_visible_rect().size), "F2 switches to full-window widescreen")
 	check(level.player.position.distance_to(original_position) < 0.01, "Changing presentation preserves player/world position")
 	level.presentation.set_profile(initial_profile)
+	var movement_event := InputEventKey.new()
+	movement_event.physical_keycode = KEY_F4
+	movement_event.pressed = true
+	Input.parse_input_event(movement_event)
+	await frames(3)
+	check(level.player.show_movement_debug and level.movement_status.visible and "Walk" in level.movement_status.text, "F4 reaches separate world viewport and displays movement diagnostics")
+	await screenshot("res://tests/movement_debug.png")
+	movement_event.pressed = false
+	Input.parse_input_event(movement_event)
+	level.player.show_movement_debug = false
+	level.player.movement.set_live_stats({"speed_attribute": 70.0})
+	level.player.movement.profile.values.physics.gravity = 7.0
+	movement_event = InputEventKey.new()
+	movement_event.physical_keycode = KEY_F3
+	movement_event.pressed = true
+	Input.parse_input_event(movement_event)
+	await frames(3)
+	var movement_file := ConfigFile.new()
+	movement_file.load("res://movement.cfg")
+	check(level.player.movement.profile.values.physics.gravity == movement_file.get_value("physics", "gravity", 20.0) and level.player.movement.stat("speed_attribute") == 70.0 and level.player.position.distance_to(original_position) < 0.01, "F3 reloads tuning without resetting character overrides or world position")
+	movement_event.pressed = false
+	Input.parse_input_event(movement_event)
+	level.player.movement.set_live_stats({})
 	await screenshot("res://tests/start_room.png")
 	var center: Vector3
 	# Use actual imported mesh bounds to locate the opening rather than guessed coordinates.
