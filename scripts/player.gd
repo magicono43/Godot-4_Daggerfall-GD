@@ -1,5 +1,10 @@
 extends CharacterBody3D
 const SPEED := 4.0
+# DFU PlayerHeightChanger + PlayerAdvanced prefab, measured above the feet.
+const STANDING_HEIGHT := 1.8
+const CAPSULE_RADIUS := 0.35
+const EYE_HEIGHT := STANDING_HEIGHT - 0.09
+var vertical_fov := 75.0
 var camera: Camera3D
 var ray: RayCast3D
 var spawn := Vector3.ZERO
@@ -14,14 +19,16 @@ func _ready() -> void:
 	floor_max_angle = deg_to_rad(48)
 	var shape := CollisionShape3D.new()
 	var capsule := CapsuleShape3D.new()
-	capsule.radius = 0.28
-	capsule.height = 1.7
+	capsule.radius = CAPSULE_RADIUS
+	capsule.height = STANDING_HEIGHT
 	shape.shape = capsule
-	shape.position.y = 0.85
+	shape.position.y = STANDING_HEIGHT / 2.0
 	add_child(shape)
 	camera = Camera3D.new()
-	camera.position.y = 1.55
-	camera.fov = 78
+	camera.position.y = EYE_HEIGHT
+	# Unity Camera.fieldOfView and Godot KEEP_HEIGHT both specify vertical FOV.
+	camera.keep_aspect = Camera3D.KEEP_HEIGHT
+	camera.fov = vertical_fov
 	camera.near = 0.06
 	add_child(camera)
 	camera.current = true

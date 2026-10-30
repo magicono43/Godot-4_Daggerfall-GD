@@ -1,0 +1,77 @@
+{
+  "cave_decoration_small": {
+    "native_position": [
+      320,
+      -14,
+      1601
+    ],
+    "archive": 206,
+    "record": 5,
+    "pixel_size": [
+      17,
+      27
+    ],
+    "size_metres": [
+      0.42500000000000004,
+      0.675
+    ],
+    "rgba_sha256": [
+      "e0afac4a6c61c7e7c6cd3a6a31cb75b2ddde0a8cd7d461166d729c08d7069986"
+    ],
+    "transparent_pixels": [
+      107
+    ]
+  },
+  "cave_decoration_pile": {
+    "native_position": [
+      354,
+      -7,
+      1546
+    ],
+    "archive": 206,
+    "record": 8,
+    "pixel_size": [
+      62,
+      32
+    ],
+    "size_metres": [
+      1.55,
+      0.8
+    ],
+    "rgba_sha256": [
+      "2d3eee5437051f7d872d755aed0cd373f7cca87c585fe56a6cab1c7119994f35"
+    ],
+    "transparent_pixels": [
+      1073
+    ]
+  },
+  "cave_fire": {
+    "native_position": [
+      646,
+      -27,
+      1686
+    ],
+    "archive": 210,
+    "record": 1,
+    "pixel_size": [
+      48,
+      49
+    ],
+    "size_metres": [
+      1.2000000000000002,
+      1.225
+    ],
+    "rgba_sha256": [
+      "f4a13c856ea39e7d0d3286ff1b00c1170f357201d42a27f9f580ea742ade9977",
+      "37158c1321afb12b963a9baf1220caf582e09da4419cceb5a19d38ed4850796d",
+      "cdd48c41aa36e198a51760628bd96d5c5846211473998ef6fafed0074d2c553c",
+      "5f8a660f6ec9dbdce5926b1742a763c6e0338385a4939773f63205bd86c09ecc"
+    ],
+    "transparent_pixels": [
+      1432,
+      1404,
+      1379,
+      1382
+    ]
+  }
+}

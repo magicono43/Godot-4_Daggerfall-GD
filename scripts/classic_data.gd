@@ -2,20 +2,41 @@ class_name ClassicData
 extends RefCounted
 ## Minimal original-data vertical slice, intentionally independent of gameplay.
 const Archive = preload("res://scripts/classic_archive.gd")
+const DungeonTextures = preload("res://scripts/classic_dungeon_textures.gd")
+const Section = preload("res://scripts/classic_section.gd")
 const SCALE := 0.025
-const ORIGIN := Vector3(510, 0, -1672) * SCALE
-const SELECTED := [17224, 11951, 11999, 12047, 11579, 12095, 32707]
+const DEFAULT_SECTION := "res://sections/privateers_hold_opening.json"
+var origin := Vector3.ZERO
+var section := Section.new()
 var arena_path := "C:/Games/Daggerfall/arena2"
 var error := ""
 var provenance: Dictionary = {}
 var objects: Array[Dictionary] = []
+var billboards: Array[Dictionary] = []
 var meshes := Archive.new()
 var material_cache: Dictionary = {}
+var dungeon_textures := DungeonTextures.new()
+var texture_archives: Dictionary = {}
+var source_size_cache: Dictionary = {}
 var palette: PackedByteArray
 var texture_count := 0
 var triangle_count := 0
 
-func load_slice() -> bool:
+func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
+	error = ""
+	objects.clear()
+	billboards.clear()
+	provenance.clear()
+	material_cache.clear()
+	texture_archives.clear()
+	source_size_cache.clear()
+	triangle_count = 0
+	texture_count = 0
+	if not section.load_file(section_path):
+		error = section.error
+		return false
+	var definition: Dictionary = section.definition
+	origin = native_vector(definition.origin_native) * SCALE
 	var maps := Archive.new()
 	var blocks := Archive.new()
 	if not maps.open(arena_path.path_join("MAPS.BSA")):
@@ -27,9 +48,9 @@ func load_slice() -> bool:
 	if not meshes.open(arena_path.path_join("ARCH3D.BSA")):
 		error = meshes.error
 		return false
-	var map := maps.record("MAPDITEM.017")
+	var map := maps.record("MAPDITEM.%03d" % int(definition.source.region))
 	if map.size() < 4:
-		error = "Daggerfall region dungeon map missing"
+		error = "Section region dungeon map missing"
 		return false
 	var count := map.decode_u32(0)
 	var block_name := ""
@@ -41,20 +62,41 @@ func load_slice() -> bool:
 		if h + 129 >= map.size():
 			continue
 		var location_name := cstring(map, h + 71, 32)
-		if location_name != "Privateer's Hold":
+		if location_name != definition.source.location:
 			continue
 		var total := map.decode_u16(h + 122)
 		for j in total:
 			var bits := map.decode_u16(h + 131 + j * 4)
 			if bits & 1024:
 				block_name = "%s%07d.RDB" % ["NWLSBM"[bits >> 11], bits & 1023]
-		provenance = {"location": location_name, "region": 17, "location_id": map.decode_u16(4 + i * 8 + 6), "block": block_name}
+		provenance = {"location": location_name, "region": int(definition.source.region), "location_id": map.decode_u16(4 + i * 8 + 6), "block": block_name, "section": definition.name}
+		# Texture RNG is seeded by the dungeon header ID (50050), not the
+		# exterior/location lookup ID (50049). They are different in this dungeon.
+		var dungeon_id := map.decode_u16(h + 33)
+		if provenance.location_id != definition.source.expected_exterior_id or dungeon_id != definition.source.expected_dungeon_id or block_name != definition.source.block:
+			error = "Section source IDs/block differ from original location data"
+			return false
+		var map_x := floori(map.decode_s32(h + 7) / 32768.0)
+		var map_y := 499 - floori(map.decode_s32(h + 15) / 32768.0)
+		var climate := dungeon_textures.read_climate(arena_path.path_join("CLIMATE.PAK"), Vector2i(map_x, map_y))
+		if climate < 223 or climate > 232:
+			error = "Cannot resolve dungeon climate from CLIMATE.PAK"
+			return false
+		dungeon_textures.configure(dungeon_id, climate)
+		provenance.merge({"dungeon_id": dungeon_id, "climate": climate, "map_pixel": Vector2i(map_x, map_y), "texture_mode": "classic", "texture_table": dungeon_textures.table.duplicate()})
 		break
 	var rdb := blocks.record(block_name)
 	if rdb.size() < 9532:
 		error = "Starting RDB not found or truncated"
 		return false
 	var roots := rdb.decode_u32(12)
+	var selected: Dictionary = {}
+	for entry in definition.models:
+		selected[int(entry.record_offset)] = entry
+	for entry in definition.billboards:
+		selected[int(entry.record_offset)] = entry
+	var matched: Dictionary = {}
+	var spawn: Dictionary = definition.spawn
 	for i in rdb.decode_u32(4) * rdb.decode_u32(8):
 		var q := rdb.decode_s32(roots + i * 4)
 		var visited: Dictionary = {}
@@ -64,22 +106,64 @@ func load_slice() -> bool:
 				return false
 			visited[q] = true
 			var resource := rdb.decode_u32(q + 21)
-			var pos := Vector3(rdb.decode_s32(q + 8), -rdb.decode_s32(q + 12), -rdb.decode_s32(q + 16)) * SCALE - ORIGIN
-			if rdb[q + 20] == 1 and SELECTED.has(q):
+			var pos := Vector3(rdb.decode_s32(q + 8), -rdb.decode_s32(q + 12), -rdb.decode_s32(q + 16)) * SCALE - origin
+			if selected.has(q):
+				var entry: Dictionary = selected[q]
+				var expected_type := 1 if entry.has("expected_model") else 3
+				if rdb[q + 20] != expected_type or resource + (23 if expected_type == 1 else 11) > rdb.size():
+					error = "Section %s: record %d has wrong type or invalid resource" % [entry.id, q]
+					return false
+				matched[q] = true
+			if rdb[q + 20] == 1 and selected.has(q):
+				var entry: Dictionary = selected[q]
 				var index := rdb.decode_u16(resource + 12)
+				var model := cstring(rdb, 20 + index * 8, 5) if index < 750 else ""
+				if model != entry.expected_model or not meshes.entries.has(model):
+					error = "Section %s: record %d expected model %s, found %s" % [entry.id, q, entry.expected_model, model]
+					return false
 				var angles := Vector3(rdb.decode_s32(resource), rdb.decode_s32(resource + 4), -rdb.decode_s32(resource + 8)) * TAU / 2048.0
 				var basis := Basis(Vector3.FORWARD, -angles.z) * Basis(Vector3.RIGHT, angles.x) * Basis(Vector3.UP, angles.y)
-				objects.append({"offset": q, "model": cstring(rdb, 20 + index * 8, 5), "transform": Transform3D(basis, pos)})
+				objects.append({"offset": q, "model": model, "transform": Transform3D(basis, pos), "id": entry.id, "role": entry.role, "collision": entry.collision})
 			if rdb[q + 20] == 3:
+				if resource + 2 > rdb.size():
+					error = "Invalid flat resource"
+					return false
 				var tex := rdb.decode_u16(resource)
-				if tex >> 7 == 199 and tex & 127 == 8:
+				if q == int(spawn.record_offset):
+					if tex >> 7 != int(spawn.expected_archive) or tex & 127 != int(spawn.expected_record):
+						error = "Section spawn record does not match expected editor marker"
+						return false
 					provenance["start"] = pos
+				if selected.has(q):
+					var entry: Dictionary = selected[q]
+					if tex >> 7 != int(entry.expected_archive) or tex & 127 != int(entry.expected_record):
+						error = "Section %s: record %d expected texture %d:%d, found %d:%d" % [entry.id, q, entry.expected_archive, entry.expected_record, tex >> 7, tex & 127]
+						return false
+					billboards.append({"id": entry.id, "offset": q, "archive": tex >> 7, "record": tex & 127, "position": pos, "fps": float(entry.fps)})
 			q = rdb.decode_s32(q)
 	palette = FileAccess.get_file_as_bytes(arena_path.path_join("ART_PAL.COL"))
-	if objects.size() != SELECTED.size() or not provenance.has("start"):
-		error = "Expected slice records or start marker missing"
+	if matched.size() != selected.size() or not provenance.has("start"):
+		error = "Section exact spawn marker missing from source block"
+		for offset in selected:
+			if not matched.has(offset):
+				error = "Section %s: record %d missing from source block" % [selected[offset].id, offset]
+				break
 		return false
+	if palette.size() < 776:
+		error = "Original ART_PAL.COL palette missing or truncated"
+		return false
+	for i in billboards.size():
+		var payload := billboard_payload(billboards[i])
+		if payload.is_empty():
+			return false
+		billboards[i] = payload
 	return true
+
+func native_vector(value: Array) -> Vector3:
+	return Vector3(value[0], -value[1], -value[2])
+
+func to_world(value: Array) -> Vector3:
+	return native_vector(value) * SCALE - origin
 
 func cstring(bytes: PackedByteArray, start: int, length: int) -> String:
 	var end := start
@@ -126,10 +210,9 @@ func build_mesh(model: String) -> ArrayMesh:
 		if not groups.has(texture):
 			groups[texture] = {"v": PackedVector3Array(), "uv": PackedVector2Array(), "n": PackedVector3Array()}
 		var group: Dictionary = groups[texture]
-		var mat := material(texture)
-		var size := Vector2(64, 64)
-		if mat.albedo_texture:
-			size = mat.albedo_texture.get_size()
+		# DFU normalises native UVs using the ORIGINAL material dimensions,
+		# then replaces materials. A swap must not change tiling or geometry.
+		var size := source_texture_size(texture)
 		for j in range(1, n - 1):
 			# Godot clockwise front faces; two axis flips preserve native winding.
 			var normal := (vertices[j + 1] - vertices[0]).cross(vertices[j] - vertices[0]).normalized()
@@ -156,7 +239,11 @@ func material(bitfield: int) -> StandardMaterial3D:
 	mat.cull_mode = BaseMaterial3D.CULL_DISABLED
 	mat.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
 	mat.albedo_color = Color(0.55, 0.53, 0.48)
-	var image := read_texture(bitfield >> 7, bitfield & 127)
+	var archive := dungeon_textures.resolve(bitfield >> 7)
+	var record := bitfield & 127
+	mat.set_meta("source_texture", bitfield)
+	mat.set_meta("resolved_texture", (archive << 7) | record)
+	var image := read_texture(archive, record)
 	if image:
 		mat.albedo_texture = ImageTexture.create_from_image(image)
 		mat.albedo_color = Color.WHITE
@@ -164,58 +251,155 @@ func material(bitfield: int) -> StandardMaterial3D:
 	material_cache[bitfield] = mat
 	return mat
 
-func read_texture(archive: int, record: int) -> Image:
+func texture_bytes(archive: int) -> PackedByteArray:
+	if not texture_archives.has(archive):
+		var path := arena_path.path_join("TEXTURE.%03d" % archive)
+		texture_archives[archive] = FileAccess.get_file_as_bytes(path) if FileAccess.file_exists(path) else PackedByteArray()
+	return texture_archives[archive]
+
+func source_texture_size(bitfield: int) -> Vector2:
+	if source_size_cache.has(bitfield):
+		return source_size_cache[bitfield]
+	var archive := bitfield >> 7
+	var record := bitfield & 127
+	var size := Vector2(32, 32) if archive in [0, 1] else Vector2(64, 64)
+	if archive > 1:
+		var bytes := texture_bytes(archive)
+		if bytes.size() >= 26 and record < bytes.decode_u16(0) and 32 + record * 20 <= bytes.size():
+			var p := bytes.decode_u32(28 + record * 20)
+			if p + 8 <= bytes.size():
+				size = Vector2(maxi(1, bytes.decode_u16(p + 4)), maxi(1, bytes.decode_u16(p + 6)))
+	source_size_cache[bitfield] = size
+	return size
+
+func texture_info(archive: int, record: int) -> Dictionary:
+	var bytes := texture_bytes(archive)
+	if bytes.size() < 26 or record < 0 or record >= bytes.decode_u16(0) or 32 + record * 20 > bytes.size():
+		return {}
+	var p := bytes.decode_u32(28 + record * 20)
+	if p + 28 > bytes.size():
+		return {}
+	var w := bytes.decode_u16(p + 4)
+	var h := bytes.decode_u16(p + 6)
+	var count := bytes.decode_u16(p + 20)
+	if w == 0 or h == 0 or w > 256 or h > 256 or count == 0 or count > 256:
+		return {}
+	# DFU truncates the native pixel-scale adjustment before converting to metres.
+	var width := w + int(w * bytes.decode_s16(p + 24) / 256.0)
+	var height := h + int(h * bytes.decode_s16(p + 26) / 256.0)
+	if width <= 0 or height <= 0:
+		return {}
+	return {"offset": p, "width": w, "height": h, "frames": count, "size_metres": Vector2(width, height) * SCALE}
+
+func billboard_payload(entry: Dictionary) -> Dictionary:
+	# Billboards use their own archive directly, never dungeon mesh texture swaps.
+	var info := texture_info(entry.archive, entry.record)
+	if info.is_empty():
+		error = "Section %s: invalid billboard texture header" % entry.id
+		return {}
+	var frames: Array[Texture2D] = []
+	for frame in int(info.frames):
+		var image := read_texture(entry.archive, entry.record, frame, true)
+		if not image:
+			error = "Section %s: cannot decode billboard frame %d" % [entry.id, frame]
+			return {}
+		frames.append(ImageTexture.create_from_image(image))
+	var payload := entry.duplicate()
+	payload.merge({"frames": frames, "size_metres": info.size_metres})
+	return payload
+
+func read_texture(archive: int, record: int, frame: int = 0, transparent: bool = false) -> Image:
 	if archive == 0 or archive == 1:
 		var solid := Image.create(32, 32, false, Image.FORMAT_RGB8)
 		var index := record + (128 if archive == 1 else 0)
 		solid.fill(Color8(palette[8 + index * 3], palette[9 + index * 3], palette[10 + index * 3]))
 		return solid
-	var bytes := FileAccess.get_file_as_bytes(arena_path.path_join("TEXTURE.%03d" % archive))
-	if bytes.size() < 26 or palette.size() < 776 or record >= bytes.decode_u16(0):
+	var info := texture_info(archive, record)
+	if info.is_empty() or palette.size() < 776 or frame < 0 or frame >= int(info.frames):
 		return null
-	var p := bytes.decode_u32(28 + record * 20)
-	if p + 28 > bytes.size():
-		return null
-	var w := bytes.decode_u16(p + 4)
-	var h := bytes.decode_u16(p + 6)
+	var bytes := texture_bytes(archive)
+	var p := int(info.offset)
+	var w := int(info.width)
+	var h := int(info.height)
 	var compression := bytes.decode_u16(p + 8)
 	var data := p + bytes.decode_u32(p + 14)
-	if w == 0 or h == 0 or w > 256 or h > 256:
+	if data > bytes.size():
 		return null
 	var indices := PackedByteArray()
 	indices.resize(w * h)
-	if (compression == 0 or compression == 0x0900) and bytes.decode_u16(p + 20) == 1:
+	if (compression == 0 or compression == 0x0900) and int(info.frames) == 1:
 		for y in h:
 			if data + y * 256 + w > bytes.size():
 				return null
 			for x in w:
 				indices[y * w + x] = bytes[data + y * 256 + x]
+	elif compression == 0 or compression == 0x0900:
+		if data + int(info.frames) * 4 > bytes.size():
+			return null
+		var cursor := data + bytes.decode_u32(data + frame * 4)
+		if cursor + 4 > bytes.size():
+			return null
+		var fw := bytes.decode_u16(cursor)
+		var fh := bytes.decode_u16(cursor + 2)
+		cursor += 4
+		if fw == 0 or fh == 0 or fw > w or fh > h:
+			return null
+		# Animated records alternate transparent and literal runs per row.
+		for y in fh:
+			var x := 0
+			while x < fw:
+				if cursor + 2 > bytes.size():
+					return null
+				var skip := int(bytes[cursor])
+				var count := int(bytes[cursor + 1])
+				cursor += 2
+				if skip + count == 0 or x + skip + count > fw or cursor + count > bytes.size():
+					return null
+				x += skip
+				for j in count:
+					indices[y * w + x] = bytes[cursor + j]
+					x += 1
+				cursor += count
 	elif compression == 0x1108 or compression == 0x0108:
+		data += h * frame * 4
+		if data + h * 4 > bytes.size():
+			return null
 		for y in h:
 			var row := p + bytes.decode_s16(data + y * 4)
 			var encoding := bytes.decode_u16(data + y * 4 + 2)
 			var x := 0
+			if row < 0 or row + 2 > bytes.size():
+				return null
 			if encoding == 0x8000:
+				if bytes.decode_u16(row) != w:
+					return null
 				row += 2
 				while x < w:
+					if row + 2 > bytes.size():
+						return null
 					var run := bytes.decode_s16(row)
 					row += 2
-					if run == 0 or x + absi(run) > w:
+					if run == 0 or x + absi(run) > w or row + (1 if run < 0 else run) > bytes.size():
 						return null
 					for j in absi(run):
 						indices[y * w + x] = bytes[row] if run < 0 else bytes[row + j]
 						x += 1
 					row += 1 if run < 0 else run
 			else:
+				if row + w > bytes.size():
+					return null
 				for j in w:
 					indices[y * w + j] = bytes[row + j]
 	else:
 		return null
+	var channels := 4 if transparent else 3
 	var rgb := PackedByteArray()
-	rgb.resize(w * h * 3)
+	rgb.resize(w * h * channels)
 	for i in indices.size():
 		for c in 3:
-			rgb[i * 3 + c] = palette[8 + indices[i] * 3 + c]
-	return Image.create_from_data(w, h, false, Image.FORMAT_RGB8, rgb)
+			rgb[i * channels + c] = palette[8 + indices[i] * 3 + c]
+		if transparent:
+			rgb[i * 4 + 3] = 0 if indices[i] == 0 else 255
+	return Image.create_from_data(w, h, false, Image.FORMAT_RGBA8 if transparent else Image.FORMAT_RGB8, rgb)
 
 

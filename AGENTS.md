@@ -52,3 +52,13 @@
 - New-game spawn uses editor flat 199:8, not the exterior-entry marker 199:10.
 - Native positions convert at 0.025 metres/unit; ARCH3D points divide by 256 first; axes are (x, -y, -z).
 - Run Run.ps1 -Test after importer, movement, collision or interaction changes; use -Visual for rendered verification.
+- presentation.cfg defaults to DFU evidence: 75-degree vertical FOV, 640x400 render stretched into 4:3; F2 toggles widescreen. Do not confuse render aspect with final display aspect.
+- Standing capsule: 1.8 m height, 0.35 m radius, 1.71 m eye height above feet, checked against DFU source. Diagnose projection/player proportions before changing native mesh scale.
+- tools/audit_scale.py generates the independent raw-model bounds fixture consumed by the smoke checks. tests/capture_scale.gd captures controlled camera comparisons without modifying user evidence.
+- Dungeon texture mode is Classic. Seed the six-slot table from the dungeon header ID (50050 for Privateer's Hold), not the exterior ID (50049). Resolve climate from original CLIMATE.PAK with X+1 alignment.
+- Apply dungeon archive swaps after reading the original face archive/record; preserve record numbers and normalise UVs using original texture dimensions. Do not apply swaps twice.
+- tools/audit_textures.py pins material identities/dimensions/RGB hashes. tests/capture_textures.gd creates raw-versus-Classic comparisons. Keep source evidence and ARENA2 read-only.
+- Active selection is a versioned JSON section under sections/, configured in data_source.cfg. Keep record expectations, spawn/origin and prototype placements there; do not reintroduce hardcoded RDB record selections or door offsets in importer/gameplay scripts.
+- Validate section schema and expected model/flat identities before building the scene. Original placements stay in RDB data; authored additions stay under prototype. See docs/SECTION_FORMAT.md.
+- Decorative billboards use original RGBA frames (palette zero transparent), native scale/centre and fixed-Y facing. Never draw archive-199 editor markers. Billboard animation is separate from opaque mesh materials.
+- tools/audit_billboards.py pins original sprite dimensions/positions/RGBA hashes; tests/capture_decorations.gd covers cave decorations and the two original container props. Keep the existing lighting calibration while adding assets.

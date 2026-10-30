@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Privateer's Hold opening",
+  "source": {
+    "region": 17,
+    "location": "Privateer's Hold",
+    "expected_exterior_id": 50049,
+    "expected_dungeon_id": 50050,
+    "block": "S0000999.RDB"
+  },
+  "origin_native": [510, 0, 1672],
+  "spawn": {
+    "record_offset": 32814,
+    "expected_archive": 199,
+    "expected_record": 8,
+    "look_at_native": [512, 0, 1152]
+  },
+  "models": [
+    {"id": "opening_cave", "record_offset": 17224, "expected_model": "60200", "role": "geometry", "collision": true},
+    {"id": "cave_passage", "record_offset": 11951, "expected_model": "63047", "role": "geometry", "collision": true},
+    {"id": "passage_corner", "record_offset": 11999, "expected_model": "63033", "role": "geometry", "collision": true},
+    {"id": "door_passage", "record_offset": 12047, "expected_model": "63007", "role": "geometry", "collision": true},
+    {"id": "first_door", "record_offset": 11579, "expected_model": "55012", "role": "door", "collision": true},
+    {"id": "adjoining_chamber", "record_offset": 12095, "expected_model": "71002", "role": "geometry", "collision": true},
+    {"id": "rear_rock_pile", "record_offset": 32707, "expected_model": "41735", "role": "prop", "collision": true},
+    {"id": "chamber_prop_north", "record_offset": 32552, "expected_model": "41311", "role": "prop", "collision": true},
+    {"id": "chamber_prop_south", "record_offset": 32623, "expected_model": "41311", "role": "prop", "collision": true}
+  ],
+  "billboards": [
+    {"id": "cave_decoration_small", "record_offset": 16459, "expected_archive": 206, "expected_record": 5, "fps": 5},
+    {"id": "cave_decoration_pile", "record_offset": 16495, "expected_archive": 206, "expected_record": 8, "fps": 5},
+    {"id": "cave_fire", "record_offset": 17044, "expected_archive": 210, "expected_record": 1, "fps": 12}
+  ],
+  "prototype": {
+    "enemies": [{"id": "placeholder_enemy", "position_native": [1120, -4, 768]}],
+    "boundaries": [{"id": "chamber_limit", "position_native": [1027, -63, 640], "yaw_degrees": 90, "size_metres": [4.2, 3.5, 0.35]}],
+    "lights": [
+      {"id": "cave_fill", "position_native": [510, -140, 1552], "energy": 1.8, "range_metres": 18},
+      {"id": "passage_fill", "position_native": [470, -84, 1032], "energy": 1.2, "range_metres": 12},
+      {"id": "chamber_fill", "position_native": [910, -80, 768], "energy": 1.0, "range_metres": 12}
+    ]
+  }
+}

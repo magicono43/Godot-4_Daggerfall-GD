@@ -3,6 +3,15 @@ const Data = preload("res://scripts/classic_data.gd")
 const Player = preload("res://scripts/player.gd")
 const Door = preload("res://scripts/door.gd")
 const Enemy = preload("res://scripts/enemy.gd")
+const Presentation = preload("res://scripts/classic_presentation.gd")
+const Billboard = preload("res://scripts/classic_billboard.gd")
+var section_path := Data.DEFAULT_SECTION
+var model_nodes: Dictionary = {}
+var billboard_nodes: Dictionary = {}
+var doors: Array[AnimatableBody3D] = []
+var enemies: Array[CharacterBody3D] = []
+var presentation: Node
+var world_root: Node3D
 var classic := Data.new()
 var player: CharacterBody3D
 var door: AnimatableBody3D
@@ -15,65 +24,88 @@ var ready_to_play := false
 
 func _ready() -> void:
 	configure_input()
+	presentation = Presentation.new()
+	add_child(presentation)
+	world_root = presentation.world_root
 	var config := ConfigFile.new()
 	if config.load("res://data_source.cfg") == OK:
 		classic.arena_path = config.get_value("classic", "arena2", classic.arena_path)
+		section_path = config.get_value("classic", "section", section_path)
 	create_environment()
 	create_hud()
-	if not classic.load_slice():
-		status.text = "ORIGINAL DATA UNAVAILABLE\n" + classic.error + "\nSet arena2 in data_source.cfg, then press R to retry."
+	if not classic.load_slice(section_path):
+		status.text = "SECTION COULD NOT LOAD\n" + classic.error + "\nCheck section/data_source.cfg, then press R to retry."
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		return
 	for item in classic.objects:
 		var mesh := classic.build_mesh(item.model)
 		var body: PhysicsBody3D
-		if item.offset == 11579:
+		if item.role == "door":
 			body = AnimatableBody3D.new()
 			body.set_script(Door)
 			body.sync_to_physics = false
-			door = body
+			doors.append(body)
 		else:
 			body = StaticBody3D.new()
 		body.name = "Classic_%s_%d" % [item.model, item.offset]
-		add_child(body)
+		body.set_meta("section_id", item.id)
+		body.set_meta("section_role", item.role)
+		world_root.add_child(body)
 		body.transform = item.transform
 		var instance := MeshInstance3D.new()
 		instance.mesh = mesh
 		body.add_child(instance)
-		var collision := CollisionShape3D.new()
-		var trimesh := mesh.create_trimesh_shape()
-		trimesh.backface_collision = true
-		collision.shape = trimesh
-		body.add_child(collision)
-		if body == door:
-			door.closed_basis = door.basis
-	add_boundary(Vector3(1027, 63, -640) * Data.SCALE - Data.ORIGIN, PI / 2)
+		model_nodes[item.id] = body
+		if item.collision:
+			var collision := CollisionShape3D.new()
+			var trimesh := mesh.create_trimesh_shape()
+			trimesh.backface_collision = true
+			collision.shape = trimesh
+			body.add_child(collision)
+		if item.role == "door":
+			body.closed_basis = body.basis
+	door = doors[0] if not doors.is_empty() else null
+	for payload in classic.billboards:
+		var sprite := AnimatedSprite3D.new()
+		sprite.set_script(Billboard)
+		sprite.configure(payload)
+		world_root.add_child(sprite)
+		billboard_nodes[payload.id] = sprite
+	var definition: Dictionary = classic.section.definition
+	for entry in definition.prototype.boundaries:
+		add_boundary(classic.to_world(entry.position_native), deg_to_rad(entry.yaw_degrees), Vector3(entry.size_metres[0], entry.size_metres[1], entry.size_metres[2]), entry.id)
 	player = CharacterBody3D.new()
 	player.set_script(Player)
+	player.vertical_fov = presentation.vertical_fov
 	player.name = "Player"
-	add_child(player)
+	world_root.add_child(player)
 	player.spawn = classic.provenance.start + Vector3.UP * 0.1
 	player.position = player.spawn
-	player.look_at(Vector3(-1, player.position.y, 20))
-	door.player = player
-	door.used.connect(func(): door_used = true)
-	enemy = CharacterBody3D.new()
-	enemy.set_script(Enemy)
-	enemy.name = "PlaceholderEnemy"
-	enemy.player = player
-	enemy.position = Vector3(1120, 4, -768) * Data.SCALE - Data.ORIGIN
-	add_child(enemy)
-	enemy.encountered.connect(func(): encounter = true)
-	add_light(Vector3(0, 3.5, 3), 1.8, 18)
-	add_light(Vector3(-1, 2.1, 16), 1.2, 12)
-	add_light(Vector3(10, 2, 22.6), 1.0, 12)
+	# Face the centre of the original cave opening from the original enter marker.
+	var opening := classic.to_world(definition.spawn.look_at_native)
+	player.look_at(Vector3(opening.x, player.position.y, opening.z))
+	for interactive_door in doors:
+		interactive_door.player = player
+		interactive_door.used.connect(func(): door_used = true)
+	for entry in definition.prototype.enemies:
+		var placeholder := CharacterBody3D.new()
+		placeholder.set_script(Enemy)
+		placeholder.name = entry.id
+		placeholder.player = player
+		placeholder.position = classic.to_world(entry.position_native)
+		world_root.add_child(placeholder)
+		placeholder.encountered.connect(func(): encounter = true)
+		enemies.append(placeholder)
+	enemy = enemies[0] if not enemies.is_empty() else null
+	for entry in definition.prototype.lights:
+		add_light(classic.to_world(entry.position_native), entry.energy, entry.range_metres)
 	ready_to_play = true
 	print("CLASSIC_SLICE ", classic.provenance, " triangles=", classic.triangle_count, " textures=", classic.texture_count)
 	if "--capture" in OS.get_cmdline_user_args():
 		capture_preview()
 
 func configure_input() -> void:
-	var keys := {"forward": KEY_W, "back": KEY_S, "left": KEY_A, "right": KEY_D, "sprint": KEY_SHIFT, "jump": KEY_SPACE, "interact": KEY_E, "release_mouse": KEY_ESCAPE, "reset": KEY_R}
+	var keys := {"forward": KEY_W, "back": KEY_S, "left": KEY_A, "right": KEY_D, "sprint": KEY_SHIFT, "jump": KEY_SPACE, "interact": KEY_E, "release_mouse": KEY_ESCAPE, "reset": KEY_R, "toggle_view": KEY_F2}
 	for action in keys:
 		if not InputMap.has_action(action):
 			InputMap.add_action(action)
@@ -91,7 +123,7 @@ func create_environment() -> void:
 	environment.ambient_light_energy = 0.52
 	environment.tonemap_mode = Environment.TONE_MAPPER_FILMIC
 	world.environment = environment
-	add_child(world)
+	world_root.add_child(world)
 
 func add_light(pos: Vector3, energy: float, radius: float) -> void:
 	var light := OmniLight3D.new()
@@ -99,17 +131,18 @@ func add_light(pos: Vector3, energy: float, radius: float) -> void:
 	light.light_energy = energy
 	light.omni_range = radius
 	light.light_color = Color(1, 0.75, 0.46)
-	add_child(light)
+	world_root.add_child(light)
 
-func add_boundary(pos: Vector3, yaw: float) -> void:
+func add_boundary(pos: Vector3, yaw: float, dimensions: Vector3, section_id: String) -> void:
 	var body := StaticBody3D.new()
 	body.name = "GreyboxSliceBoundary"
 	body.add_to_group("slice_boundaries")
+	body.set_meta("section_id", section_id)
 	body.position = pos
 	body.rotation.y = yaw
-	add_child(body)
+	world_root.add_child(body)
 	var mesh := BoxMesh.new()
-	mesh.size = Vector3(4.2, 3.5, 0.35)
+	mesh.size = dimensions
 	var instance := MeshInstance3D.new()
 	instance.mesh = mesh
 	var mat := StandardMaterial3D.new()
@@ -126,9 +159,10 @@ func create_hud() -> void:
 	var canvas := CanvasLayer.new()
 	add_child(canvas)
 	var root := Control.new()
-	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	root.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	canvas.add_child(root)
+	presentation.hud = root
+	presentation.update_layout()
 	var title := Label.new()
 	title.text = "PRIVATEER'S HOLD"
 	title.position = Vector2(28, 22)
@@ -156,19 +190,20 @@ func create_hud() -> void:
 	crosshair.position -= Vector2(5, 13)
 	root.add_child(crosshair)
 	var controls := Label.new()
-	controls.text = "WASD  Move    Mouse  Look    Shift  Run    Space  Jump    E  Door    Esc  Mouse    R  Restart"
+	controls.text = "WASD Move  |  Shift Run  |  Space Jump  |  E Door  |  Esc Mouse  |  R Restart  |  F2 View"
 	controls.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
 	controls.position = Vector2(29, -42)
-	controls.add_theme_font_size_override("font_size", 15)
+	controls.add_theme_font_size_override("font_size", 14)
 	root.add_child(controls)
 
 func _process(_delta: float) -> void:
 	if not ready_to_play:
 		return
-	prompt.text = "E  |  " + ("Close door" if door.opened else "Open door") if player.interact_target else ""
+	prompt.text = "E  |  " + ("Close door" if player.interact_target.opened else "Open door") if player.interact_target else ""
 	if not player.controls_active:
 		prompt.text = "Mouse released | Click to resume"
-	status.text = "Starting room > Door %s > Enemy %s\nS0000999.RDB  |  %d original triangles  |  %d textures" % ["opened" if door_used else "waiting", "encountered" if encounter else "unseen", classic.triangle_count, classic.texture_count]
+	status.text = "Starting room > Door %s > Enemy %s\n%s  |  %d triangles  |  %d materials  |  %d billboards" % ["opened" if door_used else "waiting", "encountered" if encounter else "unseen", classic.provenance.block, classic.triangle_count, classic.texture_count, billboard_nodes.size()]
+	status.text += "\nView: %s  |  %.0f vertical FOV  |  Eye height %.2f m" % [presentation.profile, player.camera.fov, player.camera.position.y]
 	if encounter:
 		status.text += "\nPlaceholder enemy has noticed you. Combat is outside this experiment."
 
@@ -179,6 +214,14 @@ func capture_preview() -> void:
 	get_viewport().get_texture().get_image().save_png("res://tests/playable_preview.png")
 
 
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("toggle_view"):
+		presentation.set_profile("widescreen" if presentation.profile == "dfu_reference" else "dfu_reference")
+		get_viewport().set_input_as_handled()
+	elif ready_to_play:
+		# World rendering uses a separate viewport; keyboard/mouse events must follow it.
+		presentation.viewport.push_input(event, true)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not ready_to_play and event.is_action_pressed("reset"):
