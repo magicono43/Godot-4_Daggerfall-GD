@@ -1,0 +1,40 @@
+PASS Wall contact requires sustained attachment delay
+PASS Intentional wall push attaches and ascends
+PASS Idle holds wall without gravity
+PASS Strafe follows wall despite free mouse yaw
+PASS Ascent uses resolved baseline speed
+PASS Live enhanced climbing doubles ascent speed
+PASS Space ejects with outward airborne momentum
+PASS Ejection prevents immediate reattachment
+PASS Descent returns to verified ground
+PASS Clear ledge mounts onto walkable wall top
+PASS Low ceiling blocks ascent and unsafe ledge mounting
+PASS Explicitly excluded surfaces cannot attach
+PASS Authored boundary caps cannot attach
+PASS Decorative section props cannot attach
+PASS Glancing approaches do not attach
+PASS Moving along wall with forward-strafe does not attach
+PASS Lost wall returns to ordinary falling
+PASS Teleport invalidates wall attachment
+PASS Backing off ledge enters climbing with continuous checked motion
+PASS Ledge entry preserves facing and clears walking momentum
+PASS Release S holds normal climbing position after ledge entry
+PASS Ledge descent immediately supports regular sideways climbing
+PASS W climbs back onto the same ledge after descent
+PASS Releasing S during entry holds without slipping off
+PASS W reverses an unfinished entry safely onto the ledge
+PASS Forward walk-off remains an ordinary fall
+PASS Backward jumps do not trigger ledge capture
+PASS Excluded wall below ledge does not capture backward walk-off
+PASS Overhanging lip without clear wall path refuses capture
+PASS Space ejects during the entry transition
+PASS Entry stops if its wall becomes unavailable while holding
+PASS Small backward steps retain ordinary grounded traversal
+PASS Actual west hall wall supports grounded attachment and ascent
+PASS Actual west wall maintains continuous climb across original triangles
+PASS Actual west wall supports lateral movement
+PASS Actual full-height west wall stops capsule below hall ceiling
+PASS Actual hall wall descent reaches original floor
+PASS Original upper landing allows backward ledge capture
+PASS Holding S continues regular descent below original landing
+PASS Original landing descent can reverse and mount back onto its top

@@ -1,0 +1,57 @@
+ERROR: Failed to open 'user://logs/godot2026-10-31T10.06.53.log'.
+   at: copy (core/io/dir_access.cpp:429)
+ERROR: Failed to open log file for writing: user://logs/godot.log
+   at: rotate_file (core/io/logger.cpp:169)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 - Build 31.0.101.2140 - Compatibility - Using Device: Intel - Intel(R) UHD Graphics 630
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+ERROR: Condition "f.is_null()" is true.
+   at: _save_to_cache (drivers/gles3/shader_gles3.cpp:648)
+ERROR: Condition "f.is_null()" is true.
+   at: _save_to_cache (drivers/gles3/shader_gles3.cpp:648)
+ERROR: Condition "f.is_null()" is true.
+   at: _save_to_cache (drivers/gles3/shader_gles3.cpp:648)
+PASS Wall contact requires sustained attachment delay position=(0.0, -0.001791, -0.646382) mode=reset
+PASS Intentional wall push attaches and ascends position=(0.0, 0.615765, -0.649116) mode=climbing
+PASS Idle holds wall without gravity position=(0.0, 0.615765, -0.649898) mode=climbing
+PASS Strafe follows wall despite free mouse yaw position=(0.492265, 0.615765, -0.649116) mode=climbing
+PASS Ascent uses resolved baseline speed position=(0.492265, 1.354161, -0.649116) mode=climbing
+PASS Live enhanced climbing doubles ascent speed position=(0.492265, 2.338689, -0.649116) mode=climbing
+PASS Space ejects with outward airborne momentum position=(0.492265, 2.338689, -0.649796) mode=ejected
+PASS Ejection prevents immediate reattachment position=(0.492265, 2.40565, -0.249267) mode=ejected
+PASS Descent returns to verified ground position=(0.0, 0.000875, 4.888854) mode=ground
+PASS Clear ledge mounts onto walkable wall top position=(0.0, 4.000165, -1.469116) mode=ledge
+PASS Low ceiling blocks ascent and unsafe ledge mounting position=(0.0, 2.749444, -0.649) mode=climbing
+PASS Explicitly excluded surfaces cannot attach position=(0.0, 0.000048, -0.646382) mode=reset
+PASS Authored boundary caps cannot attach position=(0.0, 0.000048, -0.646382) mode=reset
+PASS Decorative section props cannot attach position=(0.0, 0.000048, -0.646382) mode=reset
+PASS Glancing approaches do not attach position=(-4.048061, 0.000876, -0.657248) mode=reset
+PASS Moving along wall with forward-strafe does not attach position=(4.463219, 0.000875, -0.990105) mode=reset
+PASS Lost wall returns to ordinary falling position=(0.0, 0.623711, -0.649116) mode=lost wall
+PASS Teleport invalidates wall attachment position=(10.0, 0.140506, 0.0) mode=reset
+PASS Backing off ledge enters climbing with continuous checked motion position=(0.0, 2.985428, -0.649116) mode=climbing
+PASS Ledge entry preserves facing and clears walking momentum position=(0.0, 2.985428, -0.649116) mode=climbing
+PASS Release S holds normal climbing position after ledge entry position=(0.0, 2.985428, -0.649898) mode=climbing
+PASS Ledge descent immediately supports regular sideways climbing position=(0.369198, 2.985428, -0.649116) mode=climbing
+PASS W climbs back onto the same ledge after descent position=(0.369198, 4.000241, -1.469116) mode=ledge
+PASS Releasing S during entry holds without slipping off position=(0.0, 4.000875, -1.089311) mode=ledge descent
+PASS W reverses an unfinished entry safely onto the ledge position=(0.0, 4.000875, -1.113924) mode=returned to ledge
+PASS Forward walk-off remains an ordinary fall position=(0.0, 0.000893, 2.061985) mode=reset
+PASS Backward jumps do not trigger ledge capture position=(0.0, 2.820416, 0.803612) mode=reset
+PASS Excluded wall below ledge does not capture backward walk-off position=(0.0, 0.000893, 2.061985) mode=reset
+PASS Overhanging lip without clear wall path refuses capture position=(0.0, 1.825859, 2.062651) mode=reset
+PASS Space ejects during the entry transition position=(0.0, 4.000875, -1.064698) mode=ejected
+PASS Entry stops if its wall becomes unavailable while holding position=(0.0, 4.000875, -1.089311) mode=lost ledge wall
+PASS Small backward steps retain ordinary grounded traversal position=(12.0, 0.000875, 0.585449) mode=reset
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Actual west hall wall supports grounded attachment and ascent position=(-5.999115, 13.66088, 19.3) mode=climbing
+PASS Actual west wall maintains continuous climb across original triangles position=(-5.999115, 18.0912, 19.3) mode=climbing
+PASS Actual west wall supports lateral movement position=(-5.999115, 18.0912, 18.3155) mode=climbing
+PASS Actual full-height west wall stops capsule below hall ceiling position=(-5.999997, 33.39922, 18.3155) mode=climbing
+PASS Actual hall wall descent reaches original floor position=(-5.999115, 12.80007, 18.3155) mode=ground
+PASS Original upper landing allows backward ledge capture position=(17.25, 31.69921, 28.46) mode=climbing
+PASS Holding S continues regular descent below original landing position=(17.25, 30.22246, 28.49911) mode=climbing
+PASS Original landing descent can reverse and mount back onto its top position=(17.25, 32.00024, 29.31911) mode=ledge
+40/40 climbing checks passed

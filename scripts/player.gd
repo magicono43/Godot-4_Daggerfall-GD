@@ -2,6 +2,8 @@ extends CharacterBody3D
 const Movement = preload("res://scripts/movement_model.gd")
 const Steps = preload("res://scripts/step_solver.gd")
 var movement := Movement.new()
+const Climbing = preload("res://scripts/climbing_motor.gd")
+var climbing := Climbing.new()
 var grounded_time := 0.0
 var is_running := false
 var show_movement_debug := false
@@ -92,12 +94,14 @@ func _physics_process(delta: float) -> void:
 		if collider and collider.has_method("interact"):
 			interact_target = collider
 	var grounded := is_grounded()
-	stair_supported = false
 	grounded_time = grounded_time + delta if grounded else 0.0
 	var tuning: Dictionary = movement.profile.values.locomotion
 	var jump: Dictionary = movement.profile.values.jump
 	var resolved := movement.resolve()
 	var input := Vector2(Input.get_axis("left", "right"), Input.get_axis("forward", "back")) if controls_active else Vector2.ZERO
+	if climbing.tick(self, delta, input, resolved):
+		return
+	stair_supported = false
 	if tuning.response == "dfu_axes":
 		var rate := float(tuning.axis_response_per_second) * delta
 		input_axes.x = move_toward(input_axes.x, input.x, rate)
@@ -169,6 +173,7 @@ func _physics_process(delta: float) -> void:
 		# sliding and floor snap. Render updates then follow it continuously.
 		step_camera_offset -= global_position.y - before.origin.y
 	if position.y < -10:
+		climbing.reset()
 		position = spawn
 		velocity = Vector3.ZERO
 		grounded_time = 0.0
@@ -186,11 +191,12 @@ func _process(delta: float) -> void:
 func is_grounded() -> bool:
 	# Godot can classify the rounded capsule/tread-edge contact as a wall.
 	# The step solver additionally verifies a nearby walkable tread below it.
-	return is_on_floor() or stair_supported
+	return not climbing.active and (is_on_floor() or stair_supported)
 
 func movement_debug_text() -> String:
 	var resolved := movement.resolve()
 	var result := "Movement | Speed %.0f  Running %.0f  Jumping %.0f\nWalk %.3f  Run %.3f m/s  |  Jump %.3f m/s  Gravity %.2f m/s²\nActual horizontal %.3f m/s  |  %s  |  %s response\nF3 reload movement.cfg  |  F4 hide diagnostics" % [movement.stat("speed_attribute"), movement.stat("running_skill"), movement.stat("jumping_skill"), resolved.walk_speed, resolved.run_speed, resolved.jump_velocity, resolved.gravity, Vector2(velocity.x, velocity.z).length(), "grounded" if is_grounded() else "airborne", movement.profile.values.locomotion.response]
+	result += "\nClimb: %s | attach %.2f s | %.3f m/s" % ["attached" if climbing.active else climbing.transition, climbing.attach_time, resolved.climb_walk_speed]
 	if not movement.profile.error.is_empty():
 		result += "\n" + movement.profile.error
 	return result

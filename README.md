@@ -1,3 +1,7 @@
+## Current climbing playtest (October 31, 2026)
+
+Climbing is now available from the existing great-hall spawn. Hold W against a near-vertical stone wall for about 0.77 seconds. W/S climbs up/down, A/D moves along the wall, releasing movement holds position, and Space ejects. Clear ledges mount automatically while ascending. Hold S while backing over a suitable ledge to enter the same climbing state from above; keep S held to descend, release to hold, or press W to return. Mouse look stays free; Shift does not increase climb speed. Doors, props and grey boundary caps are excluded. This first motor has deterministic success without random slips. See docs/CLIMBING.md for architecture, limitations and checks. Run.ps1 -Test now includes the climbing suite; add -Visual for rendered captures.
+
 # Privateer's Hold experiment
 
 Open project.godot in Godot 4.7.2 and press F5. The playable GDScript experiment reads the original external ARENA2 installation without modifying it. Configure the path in data_source.cfg.

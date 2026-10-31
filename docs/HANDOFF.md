@@ -1,12 +1,14 @@
-# Conversation handoff — October 30, 2026
+# Conversation handoff — updated October 31, 2026
 
 Read `AGENTS.md` first. This document records the current state and decisions from the development conversation; inspect the relevant code before changing it. The detailed documents linked below are the implementation references. Older chronological sections in README can describe earlier milestones; the current scope and spawn are recorded here and in GREAT_HALL_EXPANSION.md.
 
-## Next intended milestone
+## Current milestone — October 31, 2026
 
-The user wants to develop a climbing motor after expanding the playable dungeon to provide suitable testing geometry. That expansion is complete, and the user said it looked good. Their latest gameplay request was to start directly in the large open hall to shorten testing; that is also complete. **Climbing itself has not been implemented or authorized in this documentation-only request.** In a new chat, propose a focused climbing milestone and confirm its scope with the user before implementation if they have only asked to review the handoff.
+Backward ledge entry is now implemented. Face into a platform and hold S toward a genuine drop: a clear capsule path and reachable eligible wall below transition into the same climbing state. Entry is gradual, holds on release, reverses with W, and allows Space ejection. Forward walk-offs, jumps, small steps and blocked/unsupported edges remain ordinary movement. Isolated cases and the original 32 m upper landing cover descent and return; see CLIMBING.md. Corner traversal and random skill/slip mechanics remain deferred.
 
-First inspect the locally cached DFU `ClimbingMotor.cs`, its integration with `PlayerMotor.cs`, and the speed/effect hooks already present. Explain the proposed attachment, ascent/descent, detachment and ledge behavior, and distinguish prototype behavior from DFU skill/slip mechanics. Do not assume climbing skill is a simple speed multiplier. Build on existing live-stat/effect boundaries so future skills, attributes and magic can affect movement without rewriting the motor.
+The climbing prototype has been implemented with the user's approval. See CLIMBING.md for controls, motor ownership, geometry checks, parameter resolution and limitations. Hold W into a wall to attach; W/S ascends/descends, A/D traverses, idle holds, Space ejects. Clear ledges mount using capsule sweeps. Random success/slip mechanics, falling wall grabs and corner wrapping remain deferred. The original great-hall playtest spawn is preserved.
+
+The prior chat encountered a transient sandbox permission failure after partial edits; access recovered in the following turn and implementation/testing continued in the same chat. Do not treat those earlier partial-work warnings as the final project state.
 
 ## Locations and constraints
 
@@ -74,7 +76,7 @@ The user tests DFU at approximately Speed 50 and movement skills 25, without mov
 
 Baseline walk 4.43038 m/s, run 7.46835 m/s, jump launch 5.0625 m/s, gravity 20 m/s². No default air steering; preserve world-space jump momentum. Running changes only while grounded. Detailed formulas and integration APIs are in MOVEMENT_TUNING.md.
 
-Swimming/climbing speed values are hooks only, not implemented movement states. Climb speed currently resolves to walk/3, doubled by enhanced climbing; DFU skill checks/slipping still need their own behavior. Future skills, Speed, swimming, climbing and spell effects must fit the existing parameter resolution rather than becoming hardcoded progression in player.gd.
+Swimming remains a speed hook; climbing now has a separate physical motor. Climb speed currently resolves to walk/3, doubled by enhanced climbing; DFU skill checks/slipping still need their own behavior. Future skills, Speed, swimming, climbing and spell effects must fit the existing parameter resolution rather than becoming hardcoded progression in player.gd.
 
 ### Stair fixes that must not regress
 
@@ -96,7 +98,11 @@ Relevant files include PlayerMotor.cs, PlayerSpeedChanger.cs, AcrobatMotor.cs, F
 
 ## Verification state
 
-`Run.ps1 -Test` runs four suites at fixed 60 Hz; `-Test -Visual` enables rendering/captures. Run appropriate checks after movement, collision, interaction or importer changes, as AGENTS.md requires.
+Current ledge-entry validation: **437/437 checks pass headless** (219 dungeon, 39 movement, 35 stairs, 103 expansion, 41 climbing). The climbing suite covers backward entry, hold/reverse/strafe, small steps, excluded/overhanging edges, lost surfaces, ejection momentum, and the original upper landing descent and return. Rendered climbing validation passed 40/40 checks before the final stale-floor ejection regression was added and passed headless. The landing capture and updated startup HUD were visually inspected. Rendered validation is recorded in tests/ledge_descent_visual.log; tests/ledge_descent_hall.png shows descent below the original landing. Known restricted-host log/certificate warnings remain nonblocking.
+
+The following 396-check account records the earlier pre-climbing handoff:
+
+`Run.ps1 -Test` runs five suites at fixed 60 Hz; `-Test -Visual` enables rendering/captures. Run appropriate checks after movement, collision, interaction or importer changes, as AGENTS.md requires.
 
 At handoff all **396 existing checks passed**:
 
@@ -113,7 +119,7 @@ Automated physics assertions and visual inspection are distinct from subjective 
 
 ## Remaining scope and navigation
 
-There is no wall climbing, swimming, crouching, fall damage, full combat, inventory, quests, original enemy population, complete dungeon, enemy navigation or full character progression. Avoid expanding these systems incidentally while adding climbing. Original texture support is selective, and full model-version/winding/UV fidelity is not certified.
+There is no swimming, crouching, fall damage, full combat, inventory, quests, original enemy population, complete dungeon, enemy navigation or full character progression. Avoid expanding these systems incidentally while adding climbing. Original texture support is selective, and full model-version/winding/UV fidelity is not certified.
 
 Read these next as relevant:
 

@@ -1,6 +1,7 @@
 extends RefCounted
 ## Transactional tuning: invalid reloads preserve the last usable configuration.
 const DEFAULTS := {
+	"climbing": {"attach_delay_seconds": 0.7689556},
 	"baseline": {"speed_attribute": 50.0, "running_skill": 25.0, "jumping_skill": 25.0, "swimming_skill": 25.0, "climbing_skill": 25.0},
 	"locomotion": {"response": "instant", "axis_response_per_second": 9.8, "walk_multiplier": 1.0, "run_multiplier": 1.0, "strafe_multiplier": 1.0, "backward_multiplier": 1.0, "limit_diagonal_speed": true, "ground_acceleration": 24.0, "ground_braking": 32.0, "air_control": false, "air_acceleration": 8.0, "air_braking": 8.0},
 	"jump": {"base_velocity": 4.5, "skill_bonus": 0.5, "athleticism_bonus": 0.1, "improved_athleticism_bonus": 0.1, "spell_bonus": 0.6, "forward_boost_fraction": 0.05, "minimum_grounded_time": 0.1, "repeat_while_held": true},

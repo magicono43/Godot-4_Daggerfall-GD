@@ -208,9 +208,9 @@ func create_hud() -> void:
 	crosshair.position -= Vector2(5, 13)
 	root.add_child(crosshair)
 	var controls := Label.new()
-	controls.text = "WASD Move  |  Shift Run  |  Space Jump  |  E Door  |  Esc Mouse  |  R Restart\nF2 View  |  F3 Reload movement  |  F4 Movement diagnostics"
+	controls.text = "WASD Move  |  Shift Run  |  Space Jump  |  E Door  |  Esc Mouse  |  R Restart\nClimb: W into wall or S over ledge  |  W/S Up/Down  |  A/D Along wall  |  Space Eject\nF2 View  |  F3 Reload movement  |  F4 Movement diagnostics"
 	controls.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
-	controls.position = Vector2(29, -60)
+	controls.position = Vector2(29, -82)
 	controls.add_theme_font_size_override("font_size", 14)
 	root.add_child(controls)
 
