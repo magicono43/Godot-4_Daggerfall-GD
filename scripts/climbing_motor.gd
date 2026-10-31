@@ -1,6 +1,8 @@
 extends RefCounted
 ## Deterministic collision motor; skill and slip policy can be added separately.
 const Steps = preload("res://scripts/step_solver.gd")
+const Corners = preload("res://scripts/climbing_corners.gd")
+var corners := Corners.new()
 var active := false
 var attach_time := 0.0
 var cooldown := 0.0
@@ -21,9 +23,10 @@ func reset() -> void:
 	transition = "reset"
 	entry_path.clear()
 	entry_index = 0
+	corners.reset()
 
-func climbable_wall(hit: Dictionary) -> bool:
-	if hit.is_empty() or not hit.collider is StaticBody3D or absf(hit.normal.y) > 0.15:
+func climbable_wall(hit: Dictionary, vertical_limit: float = 0.15) -> bool:
+	if hit.is_empty() or not hit.collider is StaticBody3D or absf(hit.normal.y) > vertical_limit:
 		return false
 	return not (hit.collider.has_method("interact") or hit.collider.is_in_group("slice_boundaries") or hit.collider.get_meta("section_role", "") == "prop" or not hit.collider.get_meta("climbable", true))
 
@@ -33,9 +36,9 @@ func ray_between(body: CharacterBody3D, start: Vector3, end: Vector3) -> Diction
 
 func probe(body: CharacterBody3D, direction: Vector3, height: float) -> Dictionary:
 	var start := body.global_position + Vector3.UP * height
-	var query := PhysicsRayQueryParameters3D.create(start, start + direction * (body.CAPSULE_RADIUS + 0.12), body.collision_mask, [body.get_rid()])
+	var query := PhysicsRayQueryParameters3D.create(start, start + direction * (body.CAPSULE_RADIUS + (0.6 if active else 0.12)), body.collision_mask, [body.get_rid()])
 	var hit := body.get_world_3d().direct_space_state.intersect_ray(query)
-	if not climbable_wall(hit):
+	if not climbable_wall(hit, 0.5 if active or height < 0.2 else 0.15):
 		return {}
 	return hit
 
@@ -44,6 +47,7 @@ func detach(body: CharacterBody3D, reason: String, eject: bool = false) -> void:
 	attach_time = 0.0
 	cooldown = 0.4
 	transition = reason
+	corners.clear()
 	entry_path.clear()
 	body.velocity = wall_normal * 3.0 + Vector3.UP * 2.0 if eject else Vector3.ZERO
 	body.flight_horizontal = Vector3(body.velocity.x, 0, body.velocity.z)
@@ -185,6 +189,10 @@ func tick(body: CharacterBody3D, delta: float, input: Vector2, resolved: Diction
 	direction = direction.normalized()
 	var chest := probe(body, direction, 1.0)
 	var feet := probe(body, direction, 0.15)
+	# A tall pedestal can block the capsule below a recessed/tapered shaft.
+	# Require contact above the maximum normal step, not a low stair riser.
+	if not active and chest.is_empty():
+		chest = probe(body, direction, maxf(0.65, float(body.movement.profile.values.stepping.max_height_metres) + 0.1))
 	var displacement := body.global_position - last_position
 	var blocked := tracked and Vector2(displacement.x, displacement.z).length() < 0.01
 	if active:
@@ -192,6 +200,8 @@ func tick(body: CharacterBody3D, delta: float, input: Vector2, resolved: Diction
 			detach(body, "ejected", true)
 		elif not entry_path.is_empty():
 			move_ledge_entry(body, delta, input, float(resolved.climb_walk_speed))
+		elif corners.active:
+			corners.move(body, self, delta, input, resolved)
 		elif input.y > 0 and body.is_on_floor():
 			detach(body, "ground")
 		elif input.y < 0 and mantle(body, direction):
@@ -200,15 +210,16 @@ func tick(body: CharacterBody3D, delta: float, input: Vector2, resolved: Diction
 			detach(body, "lost wall")
 		else:
 			var contact: Dictionary = chest if not chest.is_empty() else feet
-			wall_normal = contact.normal
-			var tangent := Vector3.UP.cross(wall_normal).normalized()
-			var motion := Vector2(input.x, -input.y).limit_length()
-			body.velocity = (tangent * motion.x + Vector3.UP * motion.y) * float(resolved.climb_walk_speed) - wall_normal * 0.3
-			body.stair_supported = false
-			body.move_and_slide()
-			body.flight_horizontal = Vector3.ZERO
-			if input.y > 0 and body.is_on_floor():
-				detach(body, "ground")
+			wall_normal = Vector3(contact.normal.x, 0, contact.normal.z).normalized()
+			if not corners.follow(body, self, contact, delta, input, resolved):
+				var tangent := Vector3.UP.cross(wall_normal).normalized()
+				var motion := Vector2(input.x, -input.y).limit_length()
+				body.velocity = (tangent * motion.x + Vector3.UP * motion.y) * float(resolved.climb_walk_speed) - wall_normal * float(resolved.walk_speed)
+				body.stair_supported = false
+				body.move_and_slide()
+				body.flight_horizontal = Vector3.ZERO
+				if input.y > 0 and body.is_on_floor():
+					detach(body, "ground")
 		last_position = body.global_position
 		tracked = true
 		return true

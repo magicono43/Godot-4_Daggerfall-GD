@@ -4,9 +4,11 @@ Read `AGENTS.md` first. This document records the current state and decisions fr
 
 ## Current milestone — October 31, 2026
 
-Backward ledge entry is now implemented. Face into a platform and hold S toward a genuine drop: a clear capsule path and reachable eligible wall below transition into the same climbing state. Entry is gradual, holds on release, reverses with W, and allows Space ejection. Forward walk-offs, jumps, small steps and blocked/unsupported edges remain ordinary movement. Isolated cases and the original 32 m upper landing cover descent and return; see CLIMBING.md. Corner traversal and random skill/slip mechanics remain deferred.
+Inside/outside corner traversal and original pillar climbing are implemented. A/D follows connected faces, idle holds mid-turn, opposite strafe reverses, W/S retains vertical movement and Space ejects; camera yaw never auto-rotates. Capsule sweeps protect arcs and finite-face probes reject disconnected/invalid walls. Pillar models were already structural geometry; the old chest/foot and slope limits rejected the 0.8 m pedestal/tapered shaft transition. Bounded contact probes and normal pressure now follow those surfaces without changing source collision. See CLIMBING.md and tests/corners.gd.
 
-The climbing prototype has been implemented with the user's approval. See CLIMBING.md for controls, motor ownership, geometry checks, parameter resolution and limitations. Hold W into a wall to attach; W/S ascends/descends, A/D traverses, idle holds, Space ejects. Clear ledges mount using capsule sweeps. Random success/slip mechanics, falling wall grabs and corner wrapping remain deferred. The original great-hall playtest spawn is preserved.
+Backward ledge entry is now implemented. Face into a platform and hold S toward a genuine drop: a clear capsule path and reachable eligible wall below transition into the same climbing state. Entry is gradual, holds on release, reverses with W, and allows Space ejection. Forward walk-offs, jumps, small steps and blocked/unsupported edges remain ordinary movement. Isolated cases and the original 32 m upper landing cover descent and return; see CLIMBING.md. Inside/outside corner traversal is now implemented; random skill/slip mechanics remain deferred.
+
+The climbing prototype has been implemented with the user's approval. See CLIMBING.md for controls, motor ownership, geometry checks, parameter resolution and limitations. Hold W into a wall to attach; W/S ascends/descends, A/D traverses, idle holds, Space ejects. Clear ledges mount using capsule sweeps. Random success/slip mechanics and falling wall grabs remain deferred. The original great-hall playtest spawn is preserved.
 
 The prior chat encountered a transient sandbox permission failure after partial edits; access recovered in the following turn and implementation/testing continued in the same chat. Do not treat those earlier partial-work warnings as the final project state.
 
@@ -98,11 +100,11 @@ Relevant files include PlayerMotor.cs, PlayerSpeedChanger.cs, AcrobatMotor.cs, F
 
 ## Verification state
 
-Current ledge-entry validation: **437/437 checks pass headless** (219 dungeon, 39 movement, 35 stairs, 103 expansion, 41 climbing). The climbing suite covers backward entry, hold/reverse/strafe, small steps, excluded/overhanging edges, lost surfaces, ejection momentum, and the original upper landing descent and return. Rendered climbing validation passed 40/40 checks before the final stale-floor ejection regression was added and passed headless. The landing capture and updated startup HUD were visually inspected. Rendered validation is recorded in tests/ledge_descent_visual.log; tests/ledge_descent_hall.png shows descent below the original landing. Known restricted-host log/certificate warnings remain nonblocking.
+Current corner/pillar validation: **462/462 checks passed headless** across six suites (219 dungeon, 39 movement, 35 stairs, 103 expansion, 41 climbing, 25 corner/pillar). Headless results are recorded in tests/corner_full_regression.log; the rendered corner suite passed 25/25 in tests/corner_visual.log, and the original-pillar capture tests/pillar_corner.png was visually inspected. Both original pillars are approached from the original floor, climbed through their pedestal/taper transitions and traversed around shaft corners. An original hall inside corner is also covered. Known restricted-host log/certificate warnings remain nonblocking.
 
 The following 396-check account records the earlier pre-climbing handoff:
 
-`Run.ps1 -Test` runs five suites at fixed 60 Hz; `-Test -Visual` enables rendering/captures. Run appropriate checks after movement, collision, interaction or importer changes, as AGENTS.md requires.
+`Run.ps1 -Test` runs six suites at fixed 60 Hz; `-Test -Visual` enables rendering/captures. Run appropriate checks after movement, collision, interaction or importer changes, as AGENTS.md requires.
 
 At handoff all **396 existing checks passed**:
 

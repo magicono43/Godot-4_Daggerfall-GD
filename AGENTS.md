@@ -76,3 +76,5 @@
 - Climbing owns movement exclusively while attached. Keep stairs/gravity out of that tick, preserve wall-relative motion under free look, and clear climbing on resets. Boundary caps, doors, enemies and section props are excluded. Run.ps1 -Test includes the climbing suite; skill/slip chance mechanics remain deferred.
 
 - Backward ledge entry is an internal transition in the regular climbing state. Sweep the full capsule outward before lowering, recheck the wall/path each tick, preserve facing and live climb speed, and refresh stale engine floor flags without snap at handover/ejection. Do not catch forward walk-offs, jumps, small steps or distant/blocked walls. See docs/CLIMBING.md.
+
+- climbing_corners.gd follows connected near-vertical faces with full-capsule swept arcs; keep view yaw independent, support idle/reversal/vertical movement, and verify finite surfaces meet before transferring. Pillar attachment allows above-step pedestal contact and bounded tapered-surface following; preserve the low stair-riser exclusion. Run.ps1 -Test includes corners.gd with both original pillar assemblies.

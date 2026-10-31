@@ -28,6 +28,7 @@ PASS Backward jumps do not trigger ledge capture
 PASS Excluded wall below ledge does not capture backward walk-off
 PASS Overhanging lip without clear wall path refuses capture
 PASS Space ejects during the entry transition
+PASS Entry ejection retains outward momentum after stale platform contact
 PASS Entry stops if its wall becomes unavailable while holding
 PASS Small backward steps retain ordinary grounded traversal
 PASS Actual west hall wall supports grounded attachment and ascent

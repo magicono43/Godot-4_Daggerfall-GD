@@ -1,0 +1,42 @@
+ERROR: Failed to open 'user://logs/godot2026-10-31T15.55.44.log'.
+   at: copy (core/io/dir_access.cpp:429)
+ERROR: Failed to open log file for writing: user://logs/godot.log
+   at: rotate_file (core/io/logger.cpp:169)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 - Build 31.0.101.2140 - Compatibility - Using Device: Intel - Intel(R) UHD Graphics 630
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+ERROR: Condition "f.is_null()" is true.
+   at: _save_to_cache (drivers/gles3/shader_gles3.cpp:648)
+ERROR: Condition "f.is_null()" is true.
+   at: _save_to_cache (drivers/gles3/shader_gles3.cpp:648)
+ERROR: Condition "f.is_null()" is true.
+   at: _save_to_cache (drivers/gles3/shader_gles3.cpp:648)
+PASS Square pillar attachment starts corner tests position=(0.0, 2.092559, -0.649096) mode=climbing
+PASS D wraps an outside corner onto adjacent pillar face position=(1.350904, 2.092559, -2.09837) mode=climbing
+PASS Outside turn preserves capsule clearance without position jumps position=(1.350904, 2.092559, -2.09837) mode=climbing
+PASS Outside turn preserves height and free-look yaw position=(1.350904, 2.092559, -2.09837) mode=climbing
+PASS Continuous D traverses all four outside pillar corners position=(0.640028, 2.092559, -3.350904) mode=climbing
+PASS Continuous A wraps all four corners while free-look yaw stays unchanged position=(-0.88616, 2.092559, -3.350904) mode=climbing
+PASS Releasing strafe holds midway around outside corner position=(1.120748, 2.092559, -0.655551) mode=climbing
+PASS Climbing upward remains available during outside turn position=(1.120748, 2.584822, -0.655551) mode=climbing
+PASS A reverses a partial outside turn onto the original face position=(0.27083, 2.584822, -0.649096) mode=climbing
+PASS Descending during a corner turn returns to grounded motion position=(1.120748, 0.000434, -0.655551) mode=ground
+PASS Ceiling stops ascent while lateral corner traversal stays clear position=(1.350988, 2.249039, -1.231445) mode=climbing
+PASS Space ejects from midway around an outside turn position=(1.137288, 2.125892, -0.608366) mode=ejected
+PASS Removing corner support ends a held turn position=(1.120748, 2.075892, -0.655551) mode=lost corner wall
+PASS D follows an inside corner along its adjoining wall position=(1.649096, 1.746786, 1.459905) mode=climbing
+PASS A traverses the same inside corner in reverse position=(1.230663, 1.746786, -1.149096) mode=climbing
+PASS Excluded inside wall blocks traversal without allowing a corner transfer position=(1.649465, 1.993173, -1.14908) mode=climbing
+PASS Corner following stays on connected faces rather than jumping the gap position=(1.251878, 1.994578, -1.764164) mode=climbing
+PASS A wall ending without an adjacent face causes ordinary falling position=(3.298168, 0.000875, -0.649096) mode=lost wall
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS hall_structure_25347 climbs from original pedestal through tapered shaft position=(10.92782, 19.61729, 25.4509) mode=climbing
+PASS hall_structure_25347 supports outside-corner traversal on original triangles position=(9.892891, 19.61729, 23.57392) mode=climbing
+PASS hall_structure_25347 corner traversal retains climbing height position=(9.892891, 19.61729, 23.57392) mode=climbing
+PASS hall_structure_25587 climbs from original pedestal through tapered shaft position=(11.52782, 19.6173, 9.425901) mode=climbing
+PASS hall_structure_25587 supports outside-corner traversal on original triangles position=(10.49289, 19.6173, 7.548925) mode=climbing
+PASS hall_structure_25587 corner traversal retains climbing height position=(10.49289, 19.6173, 7.548925) mode=climbing
+PASS Original hall walls support inside-corner traversal position=(0.81877, 18.33819, 3.900903) mode=climbing
+CORNERS 25/25

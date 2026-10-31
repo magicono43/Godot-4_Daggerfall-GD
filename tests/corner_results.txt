@@ -1,0 +1,25 @@
+PASS Square pillar attachment starts corner tests
+PASS D wraps an outside corner onto adjacent pillar face
+PASS Outside turn preserves capsule clearance without position jumps
+PASS Outside turn preserves height and free-look yaw
+PASS Continuous D traverses all four outside pillar corners
+PASS Continuous A wraps all four corners while free-look yaw stays unchanged
+PASS Releasing strafe holds midway around outside corner
+PASS Climbing upward remains available during outside turn
+PASS A reverses a partial outside turn onto the original face
+PASS Descending during a corner turn returns to grounded motion
+PASS Ceiling stops ascent while lateral corner traversal stays clear
+PASS Space ejects from midway around an outside turn
+PASS Removing corner support ends a held turn
+PASS D follows an inside corner along its adjoining wall
+PASS A traverses the same inside corner in reverse
+PASS Excluded inside wall blocks traversal without allowing a corner transfer
+PASS Corner following stays on connected faces rather than jumping the gap
+PASS A wall ending without an adjacent face causes ordinary falling
+PASS hall_structure_25347 climbs from original pedestal through tapered shaft
+PASS hall_structure_25347 supports outside-corner traversal on original triangles
+PASS hall_structure_25347 corner traversal retains climbing height
+PASS hall_structure_25587 climbs from original pedestal through tapered shaft
+PASS hall_structure_25587 supports outside-corner traversal on original triangles
+PASS hall_structure_25587 corner traversal retains climbing height
+PASS Original hall walls support inside-corner traversal
