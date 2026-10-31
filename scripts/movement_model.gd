@@ -4,7 +4,7 @@ extends RefCounted
 const Profile = preload("res://scripts/movement_profile.gd")
 const SPEED_UNITS := 39.5
 const WALK_BASE := 150.0
-const CHANNELS := ["walk", "run", "jump", "gravity", "swim", "climb"]
+const CHANNELS := ["walk", "run", "jump", "gravity", "swim", "climb", "crouch"]
 var profile := Profile.new()
 var live_stats: Dictionary = {}
 var live_effects: Dictionary = {}
@@ -68,6 +68,9 @@ func resolve() -> Dictionary:
 	return {
 		"walk_speed": walk,
 		"run_speed": run,
+		# DFU crouch base has no walk drag; Running still affects crouched run.
+		"crouch_walk_speed": (speed + 50.0) / SPEED_UNITS * float(profile.values.locomotion.walk_multiplier) * factor("walk") * factor("crouch"),
+		"crouch_run_speed": (speed + 50.0) / SPEED_UNITS * (1.35 + stat("running_skill") / 200.0) * float(profile.values.locomotion.run_multiplier) * factor("run") * factor("crouch"),
 		"jump_velocity": float(profile.values.jump.base_velocity) * bonus * factor("jump"),
 		"gravity": float(profile.values.physics.gravity) * factor("gravity"),
 		"air_control": bool(profile.values.locomotion.air_control) or effect("enhanced_jumping"),

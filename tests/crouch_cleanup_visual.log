@@ -1,0 +1,49 @@
+ERROR: Failed to open 'user://logs/godot2026-10-31T18.21.38.log'.
+   at: copy (core/io/dir_access.cpp:429)
+ERROR: Failed to open log file for writing: user://logs/godot.log
+   at: rotate_file (core/io/logger.cpp:169)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 - Build 31.0.101.2140 - Compatibility - Using Device: Intel - Intel(R) UHD Graphics 630
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+ERROR: Condition "f.is_null()" is true.
+   at: _save_to_cache (drivers/gles3/shader_gles3.cpp:648)
+ERROR: Condition "f.is_null()" is true.
+   at: _save_to_cache (drivers/gles3/shader_gles3.cpp:648)
+ERROR: Condition "f.is_null()" is true.
+   at: _save_to_cache (drivers/gles3/shader_gles3.cpp:648)
+PASS DFU crouch walk uses independent base without walking drag position=(0.0, 0.000729, 0.0) mode=reset
+PASS Live Speed, Running and crouch modifiers resolve outside physical motor position=(0.0, 0.000729, 0.0) mode=reset
+PASS Crouch camera lowers gradually position=(0.0, 0.000729, 0.0) mode=reset
+PASS Standing capsule protects camera during initial lowering position=(0.0, 0.000729, 0.0) mode=reset
+PASS Ctrl reaches DFU 0.9 m capsule and 0.81 m eye position=(0.0, 0.000729, 0.0) mode=reset
+PASS Crouching preserves foot position position=(0.0, 0.000729, 0.0) mode=reset
+PASS Releasing Ctrl retains crouch toggle position=(0.0, 0.000729, 0.0) mode=reset
+PASS Holding Ctrl triggers only one toggle position=(0.0, 0.000729, 0.0) mode=reset
+PASS Physical crouch walking uses resolved speed position=(0.0, 0.000885, -0.506329) mode=reset
+PASS Crouched Shift uses DFU crouched running formula position=(0.0, 0.000875, -1.253164) mode=reset
+PASS Second Ctrl press restores standing smoothly in open space position=(0.0, 0.000875, -1.253164) mode=reset
+PASS Standing capsule cannot walk through 1.1 m opening position=(0.0, -0.002122, -2.14135) mode=reset
+PASS Crouched capsule enters low opening position=(0.0, 0.000885, -3.618136) mode=reset
+PASS Toggling off under roof stays crouched and reports blocked standing position=(0.0, 0.000885, -3.618136) mode=reset
+PASS Positive stair camera offset cannot clip through low roof position=(0.0, 0.000885, -3.618136) mode=reset
+PASS Crouched jump beneath low ceiling stays within available clearance position=(0.0, 0.000816, -3.618136) mode=reset
+PASS Leaving low opening completes the pending stand toggle position=(0.0, 0.000875, -8.396632) mode=reset
+PASS Full capsule stand check detects off-centre shoulder obstruction position=(0.0, 0.000944, -4.0) mode=reset
+PASS Removing overhead obstruction permits standing position=(0.0, 0.000944, -4.0) mode=reset
+PASS Opening below crouched height still blocks capsule without floor clipping position=(0.0, 0.000562, -2.261149) mode=reset
+PASS Jump launches with crouched capsule and preserves toggle position=(0.0, 0.153076, 0.0) mode=reset
+PASS Crouch capsule and eye stay low throughout jump position=(0.0, 0.539187, 0.0) mode=reset
+PASS Landing remains crouched without another Ctrl press position=(0.0, 0.000342, 0.0) mode=reset
+PASS Quick jump during crouch transition finishes crouching in flight position=(0.0, 0.598909, 0.0) mode=reset
+PASS New midair crouch toggle is remembered without immediate capsule shrink position=(0.0, 0.51034, 0.0) mode=reset
+PASS Queued midair crouch toggle applies on landing without holding Ctrl position=(0.0, 0.000314, 0.0) mode=reset
+PASS Short capsule retains grounded step traversal position=(0.0, 0.300885, -3.372853) mode=reset
+PASS Crouched wall push does not start standing climbing motor position=(0.0, -0.001221, -1.146085) mode=reset
+PASS Toggling crouch off allows standing wall attachment position=(0.0, 1.402397, -1.149096) mode=climbing
+PASS Ctrl while climbing keeps standing capsule and climbing ownership position=(-0.000029, 1.943889, -1.149096) mode=climbing
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Playable hall contains no custom crouch passage or sign position=(7.25, 12.8, 16.2) mode=walking
+PASS Former test passage area exposes the untouched original hall floor position=(7.25, 12.8, 16.2) mode=walking
+CROUCH 32/32

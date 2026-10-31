@@ -421,8 +421,16 @@
   ],
   "prototype": {
     "player_start": {
-      "position_native": [800, -512, 1024],
-      "look_at_native": [1300, -512, 1024]
+      "position_native": [
+        800,
+        -512,
+        1024
+      ],
+      "look_at_native": [
+        1300,
+        -512,
+        1024
+      ]
     },
     "enemies": [
       {

@@ -4,6 +4,9 @@ const Steps = preload("res://scripts/step_solver.gd")
 var movement := Movement.new()
 const Climbing = preload("res://scripts/climbing_motor.gd")
 var climbing := Climbing.new()
+const Crouching = preload("res://scripts/crouch_motor.gd")
+var crouch := Crouching.new()
+var capsule_collision: CollisionShape3D
 var grounded_time := 0.0
 var is_running := false
 var show_movement_debug := false
@@ -28,6 +31,7 @@ func _ready() -> void:
 	collision_mask = 1
 	reload_movement()
 	var shape := CollisionShape3D.new()
+	capsule_collision = shape
 	var capsule := CapsuleShape3D.new()
 	capsule.radius = CAPSULE_RADIUS
 	capsule.height = STANDING_HEIGHT
@@ -99,7 +103,14 @@ func _physics_process(delta: float) -> void:
 	var jump: Dictionary = movement.profile.values.jump
 	var resolved := movement.resolve()
 	var input := Vector2(Input.get_axis("left", "right"), Input.get_axis("forward", "back")) if controls_active else Vector2.ZERO
-	if climbing.tick(self, delta, input, resolved):
+	var jump_pressed := Input.is_action_pressed("jump") if jump.repeat_while_held else Input.is_action_just_pressed("jump")
+	if controls_active and not climbing.active and InputMap.has_action("crouch") and Input.is_action_just_pressed("crouch"):
+		crouch.toggled = not crouch.toggled
+	crouch.tick(self, crouch.toggled)
+	if crouch.active and not climbing.active:
+		climbing.attach_time = 0.0
+		climbing.tracked = false
+	if (climbing.active or not crouch.active) and climbing.tick(self, delta, input, resolved):
 		return
 	stair_supported = false
 	if tuning.response == "dfu_axes":
@@ -119,6 +130,8 @@ func _physics_process(delta: float) -> void:
 	if grounded:
 		is_running = controls_active and Input.is_action_pressed("sprint")
 	var speed := float(resolved.run_speed if is_running else resolved.walk_speed)
+	if crouch.active:
+		speed = float(resolved.crouch_run_speed if is_running else resolved.crouch_walk_speed)
 	var desired := global_basis * Vector3(input.x, 0, input.y) * speed
 	# Unity's controller.Move does not overwrite DFU's moveDirection. Godot's
 	# move_and_slide does, so retain free-flight momentum apart from wall slides.
@@ -134,7 +147,6 @@ func _physics_process(delta: float) -> void:
 			horizontal = horizontal.move_toward(desired, rate * delta)
 	velocity.x = horizontal.x
 	velocity.z = horizontal.z
-	var jump_pressed := Input.is_action_pressed("jump") if jump.repeat_while_held else Input.is_action_just_pressed("jump")
 	if grounded and controls_active and jump_pressed and grounded_time >= float(jump.minimum_grounded_time):
 		velocity.y = resolved.jump_velocity
 		if horizontal.length_squared() > 0.0001:
@@ -175,6 +187,7 @@ func _physics_process(delta: float) -> void:
 	if position.y < -10:
 		climbing.reset()
 		position = spawn
+		crouch.reset(self)
 		velocity = Vector3.ZERO
 		grounded_time = 0.0
 		step_camera_offset = 0.0
@@ -186,7 +199,7 @@ func _process(delta: float) -> void:
 	var stepping: Dictionary = movement.profile.values.stepping
 	var filtered := step_camera_offset * exp(-float(stepping.camera_smoothing_rate) * delta)
 	step_camera_offset = move_toward(step_camera_offset, filtered, float(stepping.camera_smoothing_speed) * delta)
-	camera.position.y = EYE_HEIGHT + step_camera_offset
+	camera.position.y = crouch.update_camera(self, delta)
 
 func is_grounded() -> bool:
 	# Godot can classify the rounded capsule/tread-edge contact as a wall.
@@ -197,6 +210,7 @@ func movement_debug_text() -> String:
 	var resolved := movement.resolve()
 	var result := "Movement | Speed %.0f  Running %.0f  Jumping %.0f\nWalk %.3f  Run %.3f m/s  |  Jump %.3f m/s  Gravity %.2f m/s²\nActual horizontal %.3f m/s  |  %s  |  %s response\nF3 reload movement.cfg  |  F4 hide diagnostics" % [movement.stat("speed_attribute"), movement.stat("running_skill"), movement.stat("jumping_skill"), resolved.walk_speed, resolved.run_speed, resolved.jump_velocity, resolved.gravity, Vector2(velocity.x, velocity.z).length(), "grounded" if is_grounded() else "airborne", movement.profile.values.locomotion.response]
 	result += "\nClimb: %s | attach %.2f s | %.3f m/s" % ["attached" if climbing.active else climbing.transition, climbing.attach_time, resolved.climb_walk_speed]
+	result += "\nPosture: %s | capsule %.2f m | crouch %.3f / %.3f m/s" % ["stand blocked" if crouch.blocked else ("crouching" if crouch.active else "standing"), capsule_collision.shape.height, resolved.crouch_walk_speed, resolved.crouch_run_speed]
 	if not movement.profile.error.is_empty():
 		result += "\n" + movement.profile.error
 	return result

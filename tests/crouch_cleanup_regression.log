@@ -1,0 +1,707 @@
+ERROR: Failed to open 'user://logs/godot2026-10-31T18.21.38.log'.
+   at: copy (core/io/dir_access.cpp:429)
+ERROR: Failed to open log file for writing: user://logs/godot.log
+   at: rotate_file (core/io/logger.cpp:169)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Original source loads
+PASS MAPS resolves original starting block
+PASS Privateer's Hold location ID
+PASS 53 original RDB placements and 1746 ARCH3D triangles
+PASS All 34 original slice materials decoded
+PASS Section JSON schema accepts current definition
+PASS Alternate section selects fewer original objects without code edits
+PASS Duplicate section IDs rejected
+PASS Duplicate original record offsets rejected
+PASS Malformed native coordinate vector rejected
+PASS Editor markers cannot be selected as visible decoration
+PASS Unsupported section schema rejected
+PASS Original model mismatch reports expected and actual IDs
+PASS Missing source record identifies section entry
+PASS Billboard identity mismatch reports archive and record
+PASS Wrong original spawn record rejected
+PASS Missing section file reports failure
+PASS Malformed section JSON reports parse error
+PASS Three original decorative flats selected
+PASS cave_decoration_small preserves original RDB centre
+PASS cave_decoration_small uses original dimensions and yaw-facing billboard
+PASS cave_decoration_small has all original frames
+PASS cave_decoration_small frame 0 matches independent transparent RGBA decode
+PASS cave_decoration_small has no blocking collision children
+PASS cave_decoration_pile preserves original RDB centre
+PASS cave_decoration_pile uses original dimensions and yaw-facing billboard
+PASS cave_decoration_pile has all original frames
+PASS cave_decoration_pile frame 0 matches independent transparent RGBA decode
+PASS cave_decoration_pile has no blocking collision children
+PASS cave_fire preserves original RDB centre
+PASS cave_fire uses original dimensions and yaw-facing billboard
+PASS cave_fire has all original frames
+PASS cave_fire frame 0 matches independent transparent RGBA decode
+PASS cave_fire frame 1 matches independent transparent RGBA decode
+PASS cave_fire frame 2 matches independent transparent RGBA decode
+PASS cave_fire frame 3 matches independent transparent RGBA decode
+PASS cave_fire has no blocking collision children
+PASS Original fire animation advances
+PASS chamber_prop_north original 3D prop has working mesh collision
+PASS chamber_prop_south original 3D prop has working mesh collision
+PASS Texture seed uses dungeon ID, not exterior ID
+PASS Original climate PAK resolves Privateer's Hold woodlands
+PASS Classic texture table matches Privateer's Hold reference
+PASS Door climate bases follow DFU, including subtropical desert
+PASS Classic material 45 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 74 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 75 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 76 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 77 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 78 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 79 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 124 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 5889 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 5890 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 8590 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 9472 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 9474 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 15488 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 15489 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 15491 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 15616 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 15617 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 15618 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 15619 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 15620 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 15872 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 15873 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 15874 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 15876 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 18049 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 18050 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 18688 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 18689 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 18817 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 18818 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 41088 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 41089 matches expected archive, record, dimensions and decoded pixels
+PASS Classic material 41090 matches expected archive, record, dimensions and decoded pixels
+PASS Model 72019 retains vertex and UV buffers after texture swaps
+PASS Model 72019 retains vertex and UV buffers after texture swaps
+PASS Model 72019 retains vertex and UV buffers after texture swaps
+PASS Model 74009 retains vertex and UV buffers after texture swaps
+PASS Model 72019 retains vertex and UV buffers after texture swaps
+PASS Model 55003 retains vertex and UV buffers after texture swaps
+PASS Model 61220 retains vertex and UV buffers after texture swaps
+PASS Model 61203 retains vertex and UV buffers after texture swaps
+PASS Model 61218 retains vertex and UV buffers after texture swaps
+PASS Model 61204 retains vertex and UV buffers after texture swaps
+PASS Model 61203 retains vertex and UV buffers after texture swaps
+PASS Model 61203 retains vertex and UV buffers after texture swaps
+PASS Model 61204 retains vertex and UV buffers after texture swaps
+PASS Model 61219 retains vertex and UV buffers after texture swaps
+PASS Model 61204 retains vertex and UV buffers after texture swaps
+PASS Model 61203 retains vertex and UV buffers after texture swaps
+PASS Model 72006 retains vertex and UV buffers after texture swaps
+PASS Model 58048 retains vertex and UV buffers after texture swaps
+PASS Model 55012 retains vertex and UV buffers after texture swaps
+PASS Model 55004 retains vertex and UV buffers after texture swaps
+PASS Model 63047 retains vertex and UV buffers after texture swaps
+PASS Model 63033 retains vertex and UV buffers after texture swaps
+PASS Model 63007 retains vertex and UV buffers after texture swaps
+PASS Model 71002 retains vertex and UV buffers after texture swaps
+PASS Model 58008 retains vertex and UV buffers after texture swaps
+PASS Model 41311 retains vertex and UV buffers after texture swaps
+PASS Model 41311 retains vertex and UV buffers after texture swaps
+PASS Model 61203 retains vertex and UV buffers after texture swaps
+PASS Model 61203 retains vertex and UV buffers after texture swaps
+PASS Model 61203 retains vertex and UV buffers after texture swaps
+PASS Model 61202 retains vertex and UV buffers after texture swaps
+PASS Model 61211 retains vertex and UV buffers after texture swaps
+PASS Model 61203 retains vertex and UV buffers after texture swaps
+PASS Model 58009 retains vertex and UV buffers after texture swaps
+PASS Model 41735 retains vertex and UV buffers after texture swaps
+PASS Model 72019 retains vertex and UV buffers after texture swaps
+PASS Model 72019 retains vertex and UV buffers after texture swaps
+PASS Model 72019 retains vertex and UV buffers after texture swaps
+PASS Model 74009 retains vertex and UV buffers after texture swaps
+PASS Model 72019 retains vertex and UV buffers after texture swaps
+PASS Model 61203 retains vertex and UV buffers after texture swaps
+PASS Model 61211 retains vertex and UV buffers after texture swaps
+PASS Model 61204 retains vertex and UV buffers after texture swaps
+PASS Model 58049 retains vertex and UV buffers after texture swaps
+PASS Model 60200 retains vertex and UV buffers after texture swaps
+PASS Model 61203 retains vertex and UV buffers after texture swaps
+PASS Model 61203 retains vertex and UV buffers after texture swaps
+PASS Model 61211 retains vertex and UV buffers after texture swaps
+PASS Model 61203 retains vertex and UV buffers after texture swaps
+PASS Model 61203 retains vertex and UV buffers after texture swaps
+PASS Model 61202 retains vertex and UV buffers after texture swaps
+PASS Model 58050 retains vertex and UV buffers after texture swaps
+PASS Model 59007 retains vertex and UV buffers after texture swaps
+PASS Player rests on original floor
+PASS Player capsule matches DFU dimensions
+PASS Standing eye height matches DFU
+PASS 75-degree vertical camera convention matches evidence
+PASS DFU reference renders 16:10 before presentation
+PASS Camera projection retains DFU 16:10 aspect
+PASS Retro image presents at corrected 4:3 aspect
+PASS Model 72019 dimensions agree with independent raw-point audit
+PASS Model 72019 dimensions agree with independent raw-point audit
+PASS Model 72019 dimensions agree with independent raw-point audit
+PASS Model 74009 dimensions agree with independent raw-point audit
+PASS Model 72019 dimensions agree with independent raw-point audit
+PASS Model 55003 dimensions agree with independent raw-point audit
+PASS Model 61220 dimensions agree with independent raw-point audit
+PASS Model 61203 dimensions agree with independent raw-point audit
+PASS Model 61218 dimensions agree with independent raw-point audit
+PASS Model 61204 dimensions agree with independent raw-point audit
+PASS Model 61203 dimensions agree with independent raw-point audit
+PASS Model 61203 dimensions agree with independent raw-point audit
+PASS Model 61204 dimensions agree with independent raw-point audit
+PASS Model 61219 dimensions agree with independent raw-point audit
+PASS Model 61204 dimensions agree with independent raw-point audit
+PASS Model 61203 dimensions agree with independent raw-point audit
+PASS Model 72006 dimensions agree with independent raw-point audit
+PASS Model 58048 dimensions agree with independent raw-point audit
+PASS Model 55012 dimensions agree with independent raw-point audit
+PASS Model 55004 dimensions agree with independent raw-point audit
+PASS Model 63047 dimensions agree with independent raw-point audit
+PASS Model 63033 dimensions agree with independent raw-point audit
+PASS Model 63007 dimensions agree with independent raw-point audit
+PASS Model 71002 dimensions agree with independent raw-point audit
+PASS Model 58008 dimensions agree with independent raw-point audit
+PASS Model 41311 dimensions agree with independent raw-point audit
+PASS Model 41311 dimensions agree with independent raw-point audit
+PASS Model 61203 dimensions agree with independent raw-point audit
+PASS Model 61203 dimensions agree with independent raw-point audit
+PASS Model 61203 dimensions agree with independent raw-point audit
+PASS Model 61202 dimensions agree with independent raw-point audit
+PASS Model 61211 dimensions agree with independent raw-point audit
+PASS Model 61203 dimensions agree with independent raw-point audit
+PASS Model 58009 dimensions agree with independent raw-point audit
+PASS Model 41735 dimensions agree with independent raw-point audit
+PASS Model 72019 dimensions agree with independent raw-point audit
+PASS Model 72019 dimensions agree with independent raw-point audit
+PASS Model 72019 dimensions agree with independent raw-point audit
+PASS Model 74009 dimensions agree with independent raw-point audit
+PASS Model 72019 dimensions agree with independent raw-point audit
+PASS Model 61203 dimensions agree with independent raw-point audit
+PASS Model 61211 dimensions agree with independent raw-point audit
+PASS Model 61204 dimensions agree with independent raw-point audit
+PASS Model 58049 dimensions agree with independent raw-point audit
+PASS Model 60200 dimensions agree with independent raw-point audit
+PASS Model 61203 dimensions agree with independent raw-point audit
+PASS Model 61203 dimensions agree with independent raw-point audit
+PASS Model 61211 dimensions agree with independent raw-point audit
+PASS Model 61203 dimensions agree with independent raw-point audit
+PASS Model 61203 dimensions agree with independent raw-point audit
+PASS Model 61202 dimensions agree with independent raw-point audit
+PASS Model 58050 dimensions agree with independent raw-point audit
+PASS Model 59007 dimensions agree with independent raw-point audit
+PASS F2 switches to full-window widescreen
+PASS Changing presentation preserves player/world position
+PASS F4 reaches separate world viewport and displays movement diagnostics
+PASS F3 reloads tuning without resetting character overrides or world position
+DOOR center=(9.725, 1.125, 22.6) player=(0.0, 0.000139, 0.0)
+WAYPOINT (0.049435, 0.000875, 11.66659)
+WAYPOINT (0.049988, 0.000875, 16.68772)
+WAYPOINT (0.05, 0.000875, 21.63506)
+WAYPOINT (5.880999, 0.000875, 22.58064)
+PASS Walk from original start to door
+PASS Closed original door blocks capsule
+PASS Look ray acquires nearby door
+PASS Closed door occludes enemy sight
+PASS E interaction opens animated collidable door
+AFTER DOOR player=(12.10424, 0.000875, 22.59997) target=(12.225, 0.02, 22.6) enemy=(15.25, 0.000139, 22.6)
+PASS Walk through open door onto original corridor
+PASS Corridor floor supports player
+PASS Enemy detects player through open passage
+PASS Stair-testing enemy notices player but stays at its original position
+PASS Greybox passage cap blocks boundary ray
+PASS Greybox passage cap blocks boundary ray
+PASS Greybox passage cap blocks boundary ray
+PASS Greybox passage cap blocks boundary ray
+PASS Greybox passage cap blocks boundary ray
+PASS Greybox passage cap blocks boundary ray
+PASS Greybox passage cap blocks boundary ray
+PASS Greybox passage cap blocks boundary ray
+PASS Greybox passage cap blocks boundary ray
+PASS Greybox passage cap blocks boundary ray
+PASS Greybox passage cap blocks boundary ray
+PASS Door refuses unsafe close beside player
+PASS Door closes again when clear
+PASS Missing original data produces explicit failure
+PASS Original room wall blocks player
+TESTS 219/219
+ERROR: Failed to open 'user://logs/godot2026-10-31T18.21.39.log'.
+   at: copy (core/io/dir_access.cpp:429)
+ERROR: Failed to open log file for writing: user://logs/godot.log
+   at: rotate_file (core/io/logger.cpp:169)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+PASS Speed 50 walk uses DFU drag formula
+PASS Running 25 uses independent DFU run formula
+PASS Jumping 25 launch and gravity baseline
+PASS Future swim/climb speed hooks resolve without enabling modes
+PASS Live stats handle low-Speed drag floor and running skill
+PASS Live Jumping skill changes launch velocity
+PASS Athleticism and Jump effect add bonuses; Jump effect enables air control
+PASS Enhanced climbing doubles future speed hook
+PASS Improved Athleticism requires Athleticism
+PASS Named effect factors combine across separate channels
+PASS Replacing an effect ID updates rather than stacks stale factors
+PASS Removing a named effect restores other channels
+PASS Invalid live stat update is transactional
+PASS Unknown effects/channels and nonfinite modifiers rejected
+PASS Shipped movement configuration is valid
+PASS Invalid reload preserves entire previous configuration
+PASS Misspelled configuration key produces actionable error
+PASS Config reload retains live character override; omitted fields use defaults
+PASS Clearing live overrides returns to configured baseline
+PASS Capsule settles on arena floor
+PASS Ground motor reaches source-baseline walking speed
+PASS Diagonal movement does not exceed walking speed
+PASS Shift applies resolved running speed
+PASS Instant response stops without residual drift
+PASS Instant response reverses immediately
+PASS DFU acceleration mode ramps input axes rather than imposing fixed metre acceleration
+PASS DFU axis ramp reaches full input in about a tenth of a second
+PASS DFU axis friction stops after input release
+PASS Optional smooth mode respects configured acceleration
+PASS Optional smooth mode respects independent braking
+PASS Baseline physical jump reaches about 0.60 m and lands
+PASS Airborne turn/input/Shift preserve world momentum and takeoff run state
+PASS Jump magic enables air steering in motor
+PASS Capsule collides with wall and continues sliding along it
+PASS Low ceiling blocks jump without capsule penetration
+PASS Held jump repeats after grounded delay
+PASS Mouse sensitivity and pitch limit read from configuration
+PASS Mouse Y inversion is configurable
+PASS Released controls ignore mouse look
+39/39 movement checks passed
+ERROR: Failed to open 'user://logs/godot2026-10-31T18.21.40.log'.
+   at: copy (core/io/dir_access.cpp:429)
+ERROR: Failed to open log file for writing: user://logs/godot.log
+   at: rotate_file (core/io/logger.cpp:169)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Extended original section loads
+PASS Real staircase uses independently audited original model and placement
+PASS Sixteen original vertical risers fit configured step limit
+STAIR_ROUTE position=(5.337846, 6.400876, 25.8) target=(5.25, 6.4, 25.8) airborne=0 largest_assist=0.2587856054306
+VERTICAL_ROUGHNESS body=0.09897210810307 camera=0.01969449197686
+PASS Walk up original staircase to 6.4 m landing without jumping
+PASS Original stair ascent stays grounded and respects maximum rise
+PASS Rendered ascent height has substantially less stair vibration than capsule movement
+STAIR_ROUTE position=(3.344177, 6.400876, 25.8) target=(3.25, 6.4, 25.8) airborne=0 largest_assist=0.0
+STAIR_ROUTE position=(3.251967, 6.400876, 30.4509) target=(3.25, 6.4, 30.55) airborne=0 largest_assist=0.0
+PASS Previous landing barrier is removed and connecting corridor is walkable
+STAIR_ROUTE position=(3.250031, 6.400876, 25.87276) target=(3.25, 6.4, 25.8) airborne=0 largest_assist=0.0
+STAIR_ROUTE position=(5.16859, 6.400876, 25.80294) target=(5.25, 6.4, 25.8) airborne=0 largest_assist=0.0
+STAIR_ROUTE position=(14.19551, 0.000875, 25.79992) target=(14.25, 0.05, 25.8) airborne=0 largest_assist=0.16664063930511
+VERTICAL_ROUGHNESS body=0.07665514240818 camera=0.01607411259056
+PASS Walk down original staircase into chamber
+PASS Original stair descent maintains floor contact
+PASS Rendered descent height has substantially less stair vibration than capsule movement
+STAIR_ROUTE position=(5.342072, 6.400871, 25.80001) target=(5.25, 6.4, 25.8) airborne=0 largest_assist=0.31407356262207
+VERTICAL_ROUGHNESS body=0.13480439570477 camera=0.02458475400108
+PASS Run up original staircase without jumping
+STAIR_ROUTE position=(14.18899, 0.00087, 25.80001) target=(14.25, 0.05, 25.8) airborne=0 largest_assist=0.16271877288818
+VERTICAL_ROUGHNESS body=0.13262831808704 camera=0.02419349282765
+PASS Run down original staircase safely
+PASS Running stair descent maintains verified support
+STAIR_ROUTE position=(5.337097, 6.400876, 25.94853) target=(5.25, 6.4, 25.95) airborne=0 largest_assist=0.25748586654663
+VERTICAL_ROUGHNESS body=0.09943806107378 camera=0.0197885635537
+STAIR_ROUTE position=(14.14158, 0.000875, 25.80194) target=(14.25, 0.05, 25.8) airborne=0 largest_assist=0.18428897857666
+VERTICAL_ROUGHNESS body=0.08271461412063 camera=0.01705316280487
+PASS Backward diagonal stair descent maintains support
+STAIR_ROUTE position=(9.706963, 3.240361, 25.8) target=(9.65, 3.2, 25.8) airborne=0 largest_assist=0.25477015972137
+VERTICAL_ROUGHNESS body=0.10443697809207 camera=0.02060655895671
+MOVING_STAIR_JUMP distance=4.40458536148071 longest_stall=0
+PASS Moving stair jump resumes forward progress after riser contact without a long halt
+STAIR_ROUTE position=(9.593191, 3.500191, 25.8) target=(9.65, 3.2, 25.8) airborne=0 largest_assist=0.14899206161499
+VERTICAL_ROUGHNESS body=0.07481402603451 camera=0.01587900907081
+PASS Jump takes off normally from a stair tread without step assistance
+STAIR_ROUTE position=(14.18183, 0.000875, 25.8) target=(14.25, 0.05, 25.8) airborne=0 largest_assist=0.15291404724121
+VERTICAL_ROUGHNESS body=0.0769939650129 camera=0.01586772659532
+PASS Turn around midway on original stairs and return safely
+SLOW_STAIR factor=1.0 lateral=false offset=-0.18 final=(7.159198, 5.960173, 25.62) stall=0
+PASS Slow stair approach factor 1.0, strafe false, offset -0.18 avoids riser snags
+SLOW_STAIR factor=1.0 lateral=false offset=0.13 final=(7.159196, 5.960174, 25.93) stall=0
+PASS Slow stair approach factor 1.0, strafe false, offset 0.13 avoids riser snags
+SLOW_STAIR factor=1.0 lateral=true offset=-0.18 final=(7.171506, 5.949085, 25.51672) stall=0
+PASS Slow stair approach factor 1.0, strafe true, offset -0.18 avoids riser snags
+SLOW_STAIR factor=1.0 lateral=true offset=0.13 final=(7.171506, 5.949085, 25.62539) stall=0
+PASS Slow stair approach factor 1.0, strafe true, offset 0.13 avoids riser snags
+SLOW_STAIR factor=0.5 lateral=false offset=-0.18 final=(7.164952, 5.954947, 25.62) stall=1
+PASS Slow stair approach factor 0.5, strafe false, offset -0.18 avoids riser snags
+SLOW_STAIR factor=0.5 lateral=false offset=0.13 final=(7.164888, 5.954862, 25.93) stall=1
+PASS Slow stair approach factor 0.5, strafe false, offset 0.13 avoids riser snags
+SLOW_STAIR factor=0.5 lateral=true offset=-0.18 final=(7.197572, 5.919594, 25.93018) stall=1
+PASS Slow stair approach factor 0.5, strafe true, offset -0.18 avoids riser snags
+SLOW_STAIR factor=0.5 lateral=true offset=0.13 final=(7.197573, 5.919594, 25.61709) stall=1
+PASS Slow stair approach factor 0.5, strafe true, offset 0.13 avoids riser snags
+STAIR_ROUTE position=(100.0, 1.500875, 93.10345) target=(100.0, 1.5, 93.0) airborne=0 largest_assist=0.16425234079361
+VERTICAL_ROUGHNESS body=0.04916567369651 camera=0.01121976545039
+PASS Synthetic 0.3 m risers ascend with continuous support
+PASS Step-only camera smoothing settles to calibrated eye height
+STAIR_ROUTE position=(100.0, 0.000875, 97.90657) target=(100.0, 0.05, 98.0) airborne=0 largest_assist=0.0
+VERTICAL_ROUGHNESS body=0.04311006799118 camera=0.01030183814423
+PASS Synthetic staircase descends without airborne bouncing
+STAIR_ROUTE position=(99.32507, 1.50087, 93.09888) target=(99.3, 1.5, 93.0) airborne=0 largest_assist=0.21076929569244
+VERTICAL_ROUGHNESS body=0.07018429437334 camera=0.01503694719231
+PASS Diagonal running ascent stays on treads
+STAIR_ROUTE position=(100.0, 0.000164, 97.10087) target=(100.0, 1.5, 93.0) airborne=0 largest_assist=0.0
+VERTICAL_ROUGHNESS body=0.00117460190903 camera=0.00117458062722
+PASS Disabling assisted stepping blocks the same stair riser
+STAIR_ROUTE position=(100.0, 0.000207, 96.85355) target=(100.0, 0.65, 95.0) airborne=0 largest_assist=0.0
+PASS 0.65 m ledge is not climbed through repeated partial lifts
+STAIR_ROUTE position=(100.0, 0.000121, 96.85355) target=(100.0, 0.3, 95.0) airborne=0 largest_assist=0.0
+VERTICAL_ROUGHNESS body=0.00149190200877 camera=0.00029147619267
+PASS Low overhead clearance rejects a step without head penetration
+STAIR_ROUTE position=(100.0, 0.000207, 96.85355) target=(100.0, 0.4, 95.0) airborne=0 largest_assist=0.0
+PASS Lower configured step limit rejects a 0.4 m riser
+STAIR_ROUTE position=(100.0, 0.000875, 95.08618) target=(100.0, 0.05, 95.0) airborne=19 largest_assist=0.0
+VERTICAL_ROUGHNESS body=0.01622264975995 camera=0.01171147772305
+PASS A drop beyond step height causes a real fall
+STAIR_ROUTE position=(100.0, 0.000875, 94.08729) target=(100.0, 0.05, 94.0) airborne=0 largest_assist=0.00323145464063
+VERTICAL_ROUGHNESS body=0.00289372576152 camera=0.00065511618029
+PASS Small raised floor seam does not snag or launch the player
+STAIRS 35/35
+ERROR: Failed to open 'user://logs/godot2026-10-31T18.21.42.log'.
+   at: copy (core/io/dir_access.cpp:429)
+ERROR: Failed to open log file for writing: user://logs/godot.log
+   at: rotate_file (core/io/logger.cpp:169)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+EXPANSION_COUNTS 53 triangles=1746 materials=34
+PASS Walk native route [512, 0, 1200]
+ROUTE_POSITION (0.049748, 0.000875, 11.74043) target=(0.05, 0.0, 11.8) unsupported=0
+PASS Walk native route [512, 0, 1000]
+ROUTE_POSITION (0.049994, 0.000875, 16.68772) target=(0.05, 0.0, 16.8) unsupported=0
+PASS Walk native route [512, 0, 800]
+ROUTE_POSITION (0.049999, 0.000875, 21.7089) target=(0.05, 0.0, 21.8) unsupported=0
+PASS Walk native route [750, 0, 768]
+ROUTE_POSITION (5.89201, 0.000875, 22.58384) target=(6.0, 0.0, 22.6) unsupported=0
+PASS Walk native route [850, 0, 768]
+ROUTE_POSITION (8.402501, 0.000875, 22.59934) target=(8.5, 0.0, 22.6) unsupported=0
+PASS first_door acquired by original interaction ray
+PASS first_door opens with attached collision
+PASS first_door opens away without displacing the player
+PASS Walk native route [960, 0, 768]
+ROUTE_POSITION (11.13459, 0.000875, 22.59997) target=(11.25, 0.0, 22.6) unsupported=0
+PASS Walk native route [1080, 0, 768]
+ROUTE_POSITION (14.16203, 0.000875, 22.59997) target=(14.25, 0.0, 22.6) unsupported=0
+PASS Walk native route [1080, 0, 640]
+ROUTE_POSITION (14.24727, 0.000875, 25.70002) target=(14.25, 0.0, 25.8) unsupported=0
+PASS Walk native route [720, -256, 640]
+ROUTE_POSITION (5.338032, 6.400876, 25.79905) target=(5.25, 6.4, 25.8) unsupported=0
+PASS Walk native route [640, -256, 640]
+ROUTE_POSITION (3.344363, 6.400876, 25.79992) target=(3.25, 6.4, 25.8) unsupported=0
+PASS Walk native route [640, -256, 512]
+ROUTE_POSITION (3.252949, 6.400876, 28.89989) target=(3.25, 6.4, 29.0) unsupported=0
+PASS Walk native route [704, -256, 448]
+ROUTE_POSITION (4.769628, 6.400876, 30.51441) target=(4.85, 6.4, 30.6) unsupported=0
+PASS Walk native route [768, -256, 384]
+ROUTE_POSITION (6.385694, 6.400876, 32.13547) target=(6.450001, 6.4, 32.2) unsupported=0
+PASS Walk native route [1792, -256, 384]
+ROUTE_POSITION (31.93446, 6.400876, 32.20014) target=(32.05, 6.4, 32.2) unsupported=0
+PASS Walk native route [1920, -256, 384]
+ROUTE_POSITION (35.18345, 6.400876, 32.20014) target=(35.25, 6.4, 32.2) unsupported=0
+PASS Walk native route [1920, -256, 512]
+ROUTE_POSITION (35.24786, 6.400876, 29.09953) target=(35.25, 6.4, 29.0) unsupported=0
+PASS Walk native route [1920, -256, 1536]
+ROUTE_POSITION (35.24918, 6.400876, 3.476859) target=(35.25, 6.4, 3.399998) unsupported=0
+PASS Walk native route [1920, -256, 1664]
+ROUTE_POSITION (35.24984, 6.400876, 0.301744) target=(35.25, 6.4, 0.199997) unsupported=0
+PASS Walk native route [1792, -256, 1664]
+ROUTE_POSITION (32.15027, 6.400876, 0.203181) target=(32.05, 6.4, 0.199997) unsupported=0
+PASS Walk native route [1024, -256, 1664]
+ROUTE_POSITION (12.95162, 6.400876, 0.200012) target=(12.85, 6.4, 0.199997) unsupported=0
+PASS Walk native route [960, -256, 1600]
+ROUTE_POSITION (11.28398, 6.400876, 1.76803) target=(11.25, 6.4, 1.799999) unsupported=0
+PASS Walk native route [896, -256, 1536]
+ROUTE_POSITION (9.71665, 6.400876, 3.333445) target=(9.65, 6.4, 3.399998) unsupported=0
+PASS Walk native route [896, -256, 1024]
+ROUTE_POSITION (9.650491, 6.400876, 16.1075) target=(9.65, 6.4, 16.2) unsupported=0
+PASS Walk native route [832, -256, 960]
+ROUTE_POSITION (8.128481, 6.400876, 17.71698) target=(8.050001, 6.4, 17.8) unsupported=0
+PASS Walk native route [768, -256, 896]
+ROUTE_POSITION (6.512074, 6.400876, 19.33779) target=(6.450001, 6.4, 19.4) unsupported=0
+PASS Walk native route [256, -256, 896]
+ROUTE_POSITION (-6.262056, 6.400876, 19.3995) target=(-6.35, 6.4, 19.4) unsupported=0
+PASS Walk native route [192, -256, 832]
+ROUTE_POSITION (-7.869501, 6.400876, 20.92368) target=(-7.95, 6.4, 21.0) unsupported=0
+PASS Walk native route [128, -256, 768]
+ROUTE_POSITION (-9.490105, 6.400876, 22.54029) target=(-9.55, 6.4, 22.6) unsupported=0
+PASS Walk native route [128, -512, 512]
+ROUTE_POSITION (-9.549515, 12.79558, 28.94398) target=(-9.55, 12.8, 29.0) unsupported=0
+PASS Walk native route [128, -512, 256]
+ROUTE_POSITION (-9.550006, 12.80088, 35.29243) target=(-9.55, 12.8, 35.4) unsupported=0
+PASS Walk native route [128, -512, 128]
+ROUTE_POSITION (-9.550006, 12.80088, 38.54144) target=(-9.55, 12.8, 38.6) unsupported=0
+PASS Walk native route [220, -512, 128]
+ROUTE_POSITION (-7.335541, 12.80088, 38.59786) target=(-7.25, 12.8, 38.6) unsupported=0
+PASS hall_approach_door acquired by original interaction ray
+PASS hall_approach_door opens with attached collision
+PASS hall_approach_door opens away without displacing the player
+PASS Walk native route [300, -512, 128]
+ROUTE_POSITION (-5.341875, 12.80088, 38.59992) target=(-5.25, 12.8, 38.6) unsupported=0
+PASS Walk native route [384, -512, 384]
+ROUTE_POSITION (-3.188649, 12.80088, 32.313) target=(-3.15, 12.8, 32.2) unsupported=0
+PASS Walk native route [384, -512, 480]
+ROUTE_POSITION (-3.151174, 12.80088, 29.87656) target=(-3.15, 12.8, 29.8) unsupported=0
+PASS great_hall_door acquired by original interaction ray
+PASS great_hall_door opens with attached collision
+PASS great_hall_door opens away without displacing the player
+PASS Walk native route [384, -512, 570]
+ROUTE_POSITION (-3.150051, 12.80088, 27.66133) target=(-3.15, 12.8, 27.55) unsupported=0
+PASS Walk native route [640, -512, 768]
+ROUTE_POSITION (3.162939, 12.80088, 22.6688) target=(3.25, 12.8, 22.6) unsupported=0
+PASS Walk native route [960, -512, 1024]
+ROUTE_POSITION (11.17796, 12.80088, 16.25763) target=(11.25, 12.8, 16.2) unsupported=0
+PASS Walk native route [1560, -1024, 1024]
+ROUTE_POSITION (26.17515, 25.60098, 16.20028) target=(26.25, 25.6, 16.2) unsupported=0
+PASS Walk native route [1664, -1024, 768]
+ROUTE_POSITION (28.82331, 25.60087, 22.53624) target=(28.85, 25.6, 22.6) unsupported=0
+PASS Walk native route [1664, -1024, 384]
+ROUTE_POSITION (28.84959, 25.60087, 32.13534) target=(28.85, 25.6, 32.2) unsupported=0
+PASS Walk native route [1550, -1024, 384]
+ROUTE_POSITION (26.11825, 25.60087, 32.19716) target=(26.0, 25.6, 32.2) unsupported=0
+PASS Walk native route [1200, -1280, 384]
+ROUTE_POSITION (17.31605, 32.00088, 32.19998) target=(17.25, 32.0, 32.2) unsupported=0
+PASS Walk native route [1550, -1024, 384]
+ROUTE_POSITION (25.89713, 25.60087, 32.19998) target=(26.0, 25.6, 32.2) unsupported=0
+PASS Walk native route [1664, -1024, 384]
+ROUTE_POSITION (28.77693, 25.60087, 32.19998) target=(28.85, 25.6, 32.2) unsupported=0
+PASS Walk native route [1664, -1024, 768]
+ROUTE_POSITION (28.84951, 25.60087, 22.67496) target=(28.85, 25.6, 22.6) unsupported=0
+PASS Walk native route [1560, -1024, 1024]
+ROUTE_POSITION (26.29093, 25.60087, 16.30229) target=(26.25, 25.6, 16.2) unsupported=0
+PASS Walk native route [960, -512, 1024]
+ROUTE_POSITION (11.34443, 12.80098, 16.20087) target=(11.25, 12.8, 16.2) unsupported=0
+PASS Walk native route [1560, -1024, 1024]
+ROUTE_POSITION (26.14083, 25.60098, 16.19999) target=(26.25, 25.6, 16.2) unsupported=0
+PASS Walk native route [960, -512, 1024]
+ROUTE_POSITION (11.31181, 12.80099, 16.19999) target=(11.25, 12.8, 16.2) unsupported=0
+PASS Moving jump on great staircase maintains forward progress
+PASS Walk native route [1560, -1024, 1024]
+ROUTE_POSITION (26.17628, 25.60098, 16.19999) target=(26.25, 25.6, 16.2) unsupported=0
+PASS Walk native route [960, -512, 1024]
+ROUTE_POSITION (11.30125, 12.80099, 16.19999) target=(11.25, 12.8, 16.2) unsupported=0
+PASS Walk native route [640, -512, 768]
+ROUTE_POSITION (3.324542, 12.80088, 22.54082) target=(3.25, 12.8, 22.6) unsupported=0
+PASS Walk native route [384, -512, 570]
+ROUTE_POSITION (-3.099616, 12.80088, 27.51097) target=(-3.15, 12.8, 27.55) unsupported=0
+PASS Walk native route [384, -512, 480]
+ROUTE_POSITION (-3.148921, 12.80087, 29.75092) target=(-3.15, 12.8, 29.8) unsupported=0
+PASS Walk native route [384, -512, 384]
+ROUTE_POSITION (-3.149963, 12.80087, 32.11592) target=(-3.15, 12.8, 32.2) unsupported=0
+PASS Walk native route [300, -512, 128]
+ROUTE_POSITION (-5.220977, 12.80087, 38.51038) target=(-5.25, 12.8, 38.6) unsupported=0
+PASS Walk native route [220, -512, 128]
+ROUTE_POSITION (-7.210606, 12.80087, 38.59827) target=(-7.25, 12.8, 38.6) unsupported=0
+PASS Walk native route [128, -512, 128]
+ROUTE_POSITION (-9.451102, 12.80087, 38.59991) target=(-9.55, 12.8, 38.6) unsupported=0
+PASS Walk native route [128, -512, 256]
+ROUTE_POSITION (-9.547233, 12.80087, 35.48951) target=(-9.55, 12.8, 35.4) unsupported=0
+PASS Walk native route [128, -512, 512]
+ROUTE_POSITION (-9.55001, 12.80087, 29.01689) target=(-9.55, 12.8, 29.0) unsupported=0
+PASS Walk native route [128, -256, 768]
+ROUTE_POSITION (-9.55001, 6.400043, 22.64994) target=(-9.55, 6.4, 22.6) unsupported=0
+PASS Walk native route [192, -256, 832]
+ROUTE_POSITION (-7.990245, 6.40087, 21.04154) target=(-7.95, 6.4, 21.0) unsupported=0
+PASS Walk native route [256, -256, 896]
+ROUTE_POSITION (-6.406591, 6.40087, 19.45663) target=(-6.35, 6.4, 19.4) unsupported=0
+PASS Walk native route [768, -256, 896]
+ROUTE_POSITION (6.413964, 6.40087, 19.40025) target=(6.450001, 6.4, 19.4) unsupported=0
+PASS Walk native route [832, -256, 960]
+ROUTE_POSITION (8.015657, 6.40087, 17.83359) target=(8.050001, 6.4, 17.8) unsupported=0
+PASS Walk native route [896, -256, 1024]
+ROUTE_POSITION (9.600281, 6.40087, 16.24971) target=(9.65, 6.4, 16.2) unsupported=0
+PASS Walk native route [896, -256, 1536]
+ROUTE_POSITION (9.649886, 6.40087, 3.429123) target=(9.65, 6.4, 3.399998) unsupported=0
+PASS Walk native route [960, -256, 1600]
+ROUTE_POSITION (11.21985, 6.400871, 1.830673) target=(11.25, 6.4, 1.799999) unsupported=0
+PASS Walk native route [1024, -256, 1664]
+ROUTE_POSITION (12.80387, 6.40087, 0.246141) target=(12.85, 6.4, 0.199997) unsupported=0
+PASS Walk native route [1792, -256, 1664]
+ROUTE_POSITION (31.97275, 6.40087, 0.200184) target=(32.05, 6.4, 0.199997) unsupported=0
+PASS Walk native route [1920, -256, 1664]
+ROUTE_POSITION (35.20905, 6.400871, 0.2) target=(35.25, 6.4, 0.199997) unsupported=0
+PASS Walk native route [1920, -256, 1536]
+ROUTE_POSITION (35.24881, 6.40087, 3.311557) target=(35.25, 6.4, 3.399998) unsupported=0
+PASS Walk native route [1920, -256, 512]
+ROUTE_POSITION (35.2496, 6.400871, 28.95296) target=(35.25, 6.4, 29.0) unsupported=0
+PASS Walk native route [1920, -256, 384]
+ROUTE_POSITION (35.25, 6.400871, 32.18927) target=(35.25, 6.4, 32.2) unsupported=0
+PASS Walk native route [1792, -256, 384]
+ROUTE_POSITION (32.13816, 6.400871, 32.19967) target=(32.05, 6.4, 32.2) unsupported=0
+PASS Walk native route [768, -256, 384]
+ROUTE_POSITION (6.496723, 6.40087, 32.19967) target=(6.450001, 6.4, 32.2) unsupported=0
+PASS Walk native route [704, -256, 448]
+ROUTE_POSITION (4.889664, 6.40087, 30.63851) target=(4.85, 6.4, 30.6) unsupported=0
+PASS Walk native route [640, -256, 512]
+ROUTE_POSITION (3.304832, 6.40087, 29.05476) target=(3.25, 6.4, 29.0) unsupported=0
+PASS Walk native route [640, -256, 640]
+ROUTE_POSITION (3.25032, 6.40087, 25.81893) target=(3.25, 6.4, 25.8) unsupported=0
+PASS Walk native route [720, -256, 640]
+ROUTE_POSITION (5.241786, 6.40087, 25.80004) target=(5.25, 6.4, 25.8) unsupported=0
+PASS Walk native route [1080, 0, 640]
+ROUTE_POSITION (14.21287, 0.00087, 25.80004) target=(14.25, 0.0, 25.8) unsupported=0
+PASS Walk native route [1080, 0, 768]
+ROUTE_POSITION (14.24897, 0.00087, 22.68844) target=(14.25, 0.0, 22.6) unsupported=0
+PASS Walk native route [960, 0, 768]
+ROUTE_POSITION (11.26293, 0.00087, 22.60037) target=(11.25, 0.0, 22.6) unsupported=0
+PASS Walk native route [850, 0, 768]
+ROUTE_POSITION (8.524555, 0.00087, 22.60003) target=(8.5, 0.0, 22.6) unsupported=0
+PASS Walk native route [750, 0, 768]
+ROUTE_POSITION (6.035099, 0.00087, 22.60003) target=(6.0, 0.0, 22.6) unsupported=0
+PASS Walk native route [512, 0, 800]
+ROUTE_POSITION (0.1131, 0.00087, 21.80846) target=(0.05, 0.0, 21.8) unsupported=0
+PASS Walk native route [512, 0, 1000]
+ROUTE_POSITION (0.050378, 0.00087, 16.82998) target=(0.05, 0.0, 16.8) unsupported=0
+PASS Walk native route [512, 0, 1200]
+ROUTE_POSITION (0.050004, 0.00087, 11.8511) target=(0.05, 0.0, 11.8) unsupported=0
+PASS Walk native route [510, 0, 1672]
+ROUTE_POSITION (0.000467, 0.000875, 0.110691) target=(0.0, 0.0, 0.0) unsupported=0
+PASS Great hall original ceiling closes the 22.4 m high chamber
+PASS Tall original west wall provides continuous collision for future climbing
+PASS Great hall original floor supports the wall-test area
+EXPANSION 103/103
+ERROR: Failed to open 'user://logs/godot2026-10-31T18.21.47.log'.
+   at: copy (core/io/dir_access.cpp:429)
+ERROR: Failed to open log file for writing: user://logs/godot.log
+   at: rotate_file (core/io/logger.cpp:169)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+PASS Wall contact requires sustained attachment delay position=(0.0, -0.001791, -0.646382) mode=reset
+PASS Intentional wall push attaches and ascends position=(0.0, 0.615764, -0.649096) mode=climbing
+PASS Idle holds wall without gravity position=(0.0, 0.615764, -0.649828) mode=climbing
+PASS Strafe follows wall despite free mouse yaw position=(0.492264, 0.615764, -0.649096) mode=climbing
+PASS Ascent uses resolved baseline speed position=(0.492264, 1.354162, -0.649096) mode=climbing
+PASS Live enhanced climbing doubles ascent speed position=(0.492264, 2.33869, -0.649099) mode=climbing
+PASS Space ejects with outward airborne momentum position=(0.492264, 2.372318, -0.599292) mode=ejected
+PASS Ejection prevents immediate reattachment position=(0.492264, 2.438985, -0.199292) mode=ejected
+PASS Descent returns to verified ground position=(0.0, 0.000875, 4.888875) mode=ground
+PASS Clear ledge mounts onto walkable wall top position=(0.0, 4.000168, -1.469096) mode=ledge
+PASS Low ceiling blocks ascent and unsafe ledge mounting position=(0.0, 2.749465, -0.64908) mode=climbing
+PASS Explicitly excluded surfaces cannot attach position=(0.0, 0.000048, -0.646382) mode=reset
+PASS Authored boundary caps cannot attach position=(0.0, 0.000048, -0.646382) mode=reset
+PASS Decorative section props cannot attach position=(0.0, 0.000048, -0.646382) mode=reset
+PASS Glancing approaches do not attach position=(-4.048061, 0.000876, -0.657248) mode=reset
+PASS Moving along wall with forward-strafe does not attach position=(4.463219, 0.000875, -0.990105) mode=reset
+PASS Lost wall returns to ordinary falling position=(0.0, 0.623711, -0.649096) mode=lost wall
+PASS Teleport invalidates wall attachment position=(10.0, 0.140506, 0.0) mode=reset
+PASS Backing off ledge enters climbing with continuous checked motion position=(0.0, 2.986908, -0.649096) mode=climbing
+PASS Ledge entry preserves facing and clears walking momentum position=(0.0, 2.986908, -0.649096) mode=climbing
+PASS Release S holds normal climbing position after ledge entry position=(0.0, 2.986908, -0.649828) mode=climbing
+PASS Ledge descent immediately supports regular sideways climbing position=(0.369198, 2.986908, -0.649096) mode=climbing
+PASS W climbs back onto the same ledge after descent position=(0.369198, 4.000172, -1.469096) mode=ledge
+PASS Releasing S during entry holds without slipping off position=(0.0, 4.000875, -1.089311) mode=ledge descent
+PASS W reverses an unfinished entry safely onto the ledge position=(0.0, 4.000875, -1.113924) mode=returned to ledge
+PASS Forward walk-off remains an ordinary fall position=(0.0, 0.000893, 2.061985) mode=reset
+PASS Backward jumps do not trigger ledge capture position=(0.0, 2.820416, 0.803612) mode=reset
+PASS Excluded wall below ledge does not capture backward walk-off position=(0.0, 0.000893, 2.061985) mode=reset
+PASS Overhanging lip without clear wall path refuses capture position=(0.0, 1.825859, 2.062651) mode=reset
+PASS Space ejects during the entry transition position=(0.0, 4.034242, -1.014647) mode=ejected
+PASS Entry ejection retains outward momentum after stale platform contact position=(0.0, 4.117576, -0.714647) mode=ejected
+PASS Entry stops if its wall becomes unavailable while holding position=(0.0, 4.000875, -1.089311) mode=lost ledge wall
+PASS Small backward steps retain ordinary grounded traversal position=(12.0, 0.000875, 0.585449) mode=reset
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Actual west hall wall supports grounded attachment and ascent position=(-5.999095, 13.66156, 19.3) mode=climbing
+PASS Actual west wall maintains continuous climb across original triangles position=(-5.999095, 18.09205, 19.3) mode=climbing
+PASS Actual west wall supports lateral movement position=(-5.999095, 18.09205, 18.31543) mode=climbing
+PASS Actual full-height west wall stops capsule below hall ceiling position=(-5.999261, 33.39968, 18.31543) mode=climbing
+PASS Actual hall wall descent reaches original floor position=(-5.999095, 12.80011, 18.31543) mode=ground
+PASS Original upper landing allows backward ledge capture position=(17.25, 31.69921, 28.46) mode=climbing
+PASS Holding S continues regular descent below original landing position=(17.25, 30.22269, 28.4991) mode=climbing
+PASS Original landing descent can reverse and mount back onto its top position=(17.25, 32.00026, 29.3191) mode=ledge
+41/41 climbing checks passed
+ERROR: Failed to open 'user://logs/godot2026-10-31T18.21.49.log'.
+   at: copy (core/io/dir_access.cpp:429)
+ERROR: Failed to open log file for writing: user://logs/godot.log
+   at: rotate_file (core/io/logger.cpp:169)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+PASS Square pillar attachment starts corner tests position=(0.0, 2.092559, -0.649096) mode=climbing
+PASS D wraps an outside corner onto adjacent pillar face position=(1.350904, 2.092559, -2.09837) mode=climbing
+PASS Outside turn preserves capsule clearance without position jumps position=(1.350904, 2.092559, -2.09837) mode=climbing
+PASS Outside turn preserves height and free-look yaw position=(1.350904, 2.092559, -2.09837) mode=climbing
+PASS Continuous D traverses all four outside pillar corners position=(0.640028, 2.092559, -3.350904) mode=climbing
+PASS Continuous A wraps all four corners while free-look yaw stays unchanged position=(-0.88616, 2.092559, -3.350904) mode=climbing
+PASS Releasing strafe holds midway around outside corner position=(1.120748, 2.092559, -0.655551) mode=climbing
+PASS Climbing upward remains available during outside turn position=(1.120748, 2.584822, -0.655551) mode=climbing
+PASS A reverses a partial outside turn onto the original face position=(0.27083, 2.584822, -0.649096) mode=climbing
+PASS Descending during a corner turn returns to grounded motion position=(1.120748, 0.000434, -0.655551) mode=ground
+PASS Ceiling stops ascent while lateral corner traversal stays clear position=(1.350988, 2.249039, -1.231445) mode=climbing
+PASS Space ejects from midway around an outside turn position=(1.137288, 2.125892, -0.608366) mode=ejected
+PASS Removing corner support ends a held turn position=(1.120748, 2.075892, -0.655551) mode=lost corner wall
+PASS D follows an inside corner along its adjoining wall position=(1.649096, 1.746786, 1.459905) mode=climbing
+PASS A traverses the same inside corner in reverse position=(1.230663, 1.746786, -1.149096) mode=climbing
+PASS Excluded inside wall blocks traversal without allowing a corner transfer position=(1.649465, 1.993173, -1.14908) mode=climbing
+PASS Corner following stays on connected faces rather than jumping the gap position=(1.251878, 1.994578, -1.764164) mode=climbing
+PASS A wall ending without an adjacent face causes ordinary falling position=(3.298168, 0.000875, -0.649096) mode=lost wall
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS hall_structure_25347 climbs from original pedestal through tapered shaft position=(10.92782, 19.61729, 25.4509) mode=climbing
+PASS hall_structure_25347 supports outside-corner traversal on original triangles position=(9.892891, 19.61729, 23.57392) mode=climbing
+PASS hall_structure_25347 corner traversal retains climbing height position=(9.892891, 19.61729, 23.57392) mode=climbing
+PASS hall_structure_25587 climbs from original pedestal through tapered shaft position=(11.52782, 19.6173, 9.425901) mode=climbing
+PASS hall_structure_25587 supports outside-corner traversal on original triangles position=(10.49289, 19.6173, 7.548925) mode=climbing
+PASS hall_structure_25587 corner traversal retains climbing height position=(10.49289, 19.6173, 7.548925) mode=climbing
+PASS Original hall walls support inside-corner traversal position=(0.81877, 18.33819, 3.900903) mode=climbing
+CORNERS 25/25
+ERROR: Failed to open 'user://logs/godot2026-10-31T18.21.52.log'.
+   at: copy (core/io/dir_access.cpp:429)
+ERROR: Failed to open log file for writing: user://logs/godot.log
+   at: rotate_file (core/io/logger.cpp:169)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+PASS DFU crouch walk uses independent base without walking drag position=(0.0, 0.000729, 0.0) mode=reset
+PASS Live Speed, Running and crouch modifiers resolve outside physical motor position=(0.0, 0.000729, 0.0) mode=reset
+PASS Crouch camera lowers gradually position=(0.0, 0.000729, 0.0) mode=reset
+PASS Standing capsule protects camera during initial lowering position=(0.0, 0.000729, 0.0) mode=reset
+PASS Ctrl reaches DFU 0.9 m capsule and 0.81 m eye position=(0.0, 0.000729, 0.0) mode=reset
+PASS Crouching preserves foot position position=(0.0, 0.000729, 0.0) mode=reset
+PASS Releasing Ctrl retains crouch toggle position=(0.0, 0.000729, 0.0) mode=reset
+PASS Holding Ctrl triggers only one toggle position=(0.0, 0.000729, 0.0) mode=reset
+PASS Physical crouch walking uses resolved speed position=(0.0, 0.000885, -0.506329) mode=reset
+PASS Crouched Shift uses DFU crouched running formula position=(0.0, 0.000875, -1.253164) mode=reset
+PASS Second Ctrl press restores standing smoothly in open space position=(0.0, 0.000875, -1.253164) mode=reset
+PASS Standing capsule cannot walk through 1.1 m opening position=(0.0, -0.002122, -2.14135) mode=reset
+PASS Crouched capsule enters low opening position=(0.0, 0.000885, -3.618136) mode=reset
+PASS Toggling off under roof stays crouched and reports blocked standing position=(0.0, 0.000885, -3.618136) mode=reset
+PASS Positive stair camera offset cannot clip through low roof position=(0.0, 0.000885, -3.618136) mode=reset
+PASS Crouched jump beneath low ceiling stays within available clearance position=(0.0, 0.000816, -3.618136) mode=reset
+PASS Leaving low opening completes the pending stand toggle position=(0.0, 0.000875, -8.396632) mode=reset
+PASS Full capsule stand check detects off-centre shoulder obstruction position=(0.0, 0.000944, -4.0) mode=reset
+PASS Removing overhead obstruction permits standing position=(0.0, 0.000944, -4.0) mode=reset
+PASS Opening below crouched height still blocks capsule without floor clipping position=(0.0, 0.000562, -2.261149) mode=reset
+PASS Jump launches with crouched capsule and preserves toggle position=(0.0, 0.153076, 0.0) mode=reset
+PASS Crouch capsule and eye stay low throughout jump position=(0.0, 0.539187, 0.0) mode=reset
+PASS Landing remains crouched without another Ctrl press position=(0.0, 0.000342, 0.0) mode=reset
+PASS Quick jump during crouch transition finishes crouching in flight position=(0.0, 0.598909, 0.0) mode=reset
+PASS New midair crouch toggle is remembered without immediate capsule shrink position=(0.0, 0.51034, 0.0) mode=reset
+PASS Queued midair crouch toggle applies on landing without holding Ctrl position=(0.0, 0.000314, 0.0) mode=reset
+PASS Short capsule retains grounded step traversal position=(0.0, 0.300885, -3.372853) mode=reset
+PASS Crouched wall push does not start standing climbing motor position=(0.0, -0.001221, -1.146085) mode=reset
+PASS Toggling crouch off allows standing wall attachment position=(0.0, 1.402397, -1.149096) mode=climbing
+PASS Ctrl while climbing keeps standing capsule and climbing ownership position=(-0.000029, 1.943889, -1.149096) mode=climbing
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Playable hall contains no custom crouch passage or sign position=(7.25, 12.8, 16.2) mode=walking
+PASS Former test passage area exposes the untouched original hall floor position=(7.25, 12.8, 16.2) mode=walking
+CROUCH 32/32

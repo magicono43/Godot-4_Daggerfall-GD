@@ -1,0 +1,32 @@
+PASS DFU crouch walk uses independent base without walking drag
+PASS Live Speed, Running and crouch modifiers resolve outside physical motor
+PASS Crouch camera lowers gradually
+PASS Standing capsule protects camera during initial lowering
+PASS Ctrl reaches DFU 0.9 m capsule and 0.81 m eye
+PASS Crouching preserves foot position
+PASS Releasing Ctrl retains crouch toggle
+PASS Holding Ctrl triggers only one toggle
+PASS Physical crouch walking uses resolved speed
+PASS Crouched Shift uses DFU crouched running formula
+PASS Second Ctrl press restores standing smoothly in open space
+PASS Standing capsule cannot walk through 1.1 m opening
+PASS Crouched capsule enters low opening
+PASS Toggling off under roof stays crouched and reports blocked standing
+PASS Positive stair camera offset cannot clip through low roof
+PASS Crouched jump beneath low ceiling stays within available clearance
+PASS Leaving low opening completes the pending stand toggle
+PASS Full capsule stand check detects off-centre shoulder obstruction
+PASS Removing overhead obstruction permits standing
+PASS Opening below crouched height still blocks capsule without floor clipping
+PASS Jump launches with crouched capsule and preserves toggle
+PASS Crouch capsule and eye stay low throughout jump
+PASS Landing remains crouched without another Ctrl press
+PASS Quick jump during crouch transition finishes crouching in flight
+PASS New midair crouch toggle is remembered without immediate capsule shrink
+PASS Queued midair crouch toggle applies on landing without holding Ctrl
+PASS Short capsule retains grounded step traversal
+PASS Crouched wall push does not start standing climbing motor
+PASS Toggling crouch off allows standing wall attachment
+PASS Ctrl while climbing keeps standing capsule and climbing ownership
+PASS Playable hall contains no custom crouch passage or sign
+PASS Former test passage area exposes the untouched original hall floor

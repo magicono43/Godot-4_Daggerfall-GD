@@ -4,6 +4,10 @@ Read `AGENTS.md` first. This document records the current state and decisions fr
 
 ## Current milestone — October 31, 2026
 
+The user is happy with crouching and plans to continue in a new chat, probably with combat. Climbing and crouching are accepted playable movement milestones; skill/slip/stealth progression remains deferred. The next chat should inspect current code and propose a focused combat scope before broadening it. Combat has not been started. Preserve the hall spawn, original-data boundaries and approach_enabled=false enemy baseline unless the next task deliberately changes those behaviors.
+
+Crouching is implemented. Ctrl toggles crouching; press again to stand when the full standing volume is clear. Space preserves crouch during jumping and landing. Heights are 0.9 m capsule / 0.81 m eye, with smooth camera transitions and fixed feet. New crouch toggles during standing flight are remembered until landing, while an already-started crouch transition can finish during a jump, and attached climbing retains its standing capsule. Live crouch walk/run speeds resolve through movement_model.gd. The temporary crouch passage/sign and their scene/schema support have been removed at the user's request; the hall is back to its original geometry. See CROUCHING.md.
+
 Inside/outside corner traversal and original pillar climbing are implemented. A/D follows connected faces, idle holds mid-turn, opposite strafe reverses, W/S retains vertical movement and Space ejects; camera yaw never auto-rotates. Capsule sweeps protect arcs and finite-face probes reject disconnected/invalid walls. Pillar models were already structural geometry; the old chest/foot and slope limits rejected the 0.8 m pedestal/tapered shaft transition. Bounded contact probes and normal pressure now follow those surfaces without changing source collision. See CLIMBING.md and tests/corners.gd.
 
 Backward ledge entry is now implemented. Face into a platform and hold S toward a genuine drop: a clear capsule path and reachable eligible wall below transition into the same climbing state. Entry is gradual, holds on release, reverses with W, and allows Space ejection. Forward walk-offs, jumps, small steps and blocked/unsupported edges remain ordinary movement. Isolated cases and the original 32 m upper landing cover descent and return; see CLIMBING.md. Inside/outside corner traversal is now implemented; random skill/slip mechanics remain deferred.
@@ -100,11 +104,11 @@ Relevant files include PlayerMotor.cs, PlayerSpeedChanger.cs, AcrobatMotor.cs, F
 
 ## Verification state
 
-Current corner/pillar validation: **462/462 checks passed headless** across six suites (219 dungeon, 39 movement, 35 stairs, 103 expansion, 41 climbing, 25 corner/pillar). Headless results are recorded in tests/corner_full_regression.log; the rendered corner suite passed 25/25 in tests/corner_visual.log, and the original-pillar capture tests/pillar_corner.png was visually inspected. Both original pillars are approached from the original floor, climbed through their pedestal/taper transitions and traversed around shaft corners. An original hall inside corner is also covered. Known restricted-host log/certificate warnings remain nonblocking.
+Current cleanup validation: **494/494 checks passed headless** across seven suites (219 dungeon, 39 movement, 35 stairs, 103 expansion, 41 climbing, 25 corner/pillar, 32 crouching). The crouch suite keeps its isolated motor checks and now verifies that no custom crouch structure loads in the hall and the original floor is clear. Reports: tests/crouch_cleanup_regression.log and tests/crouch_cleanup_visual.log. The rendered crouch suite also passed 32/32. Old custom-passage captures have been removed. Known restricted-host log/shader-cache/certificate warnings remain nonblocking.
 
 The following 396-check account records the earlier pre-climbing handoff:
 
-`Run.ps1 -Test` runs six suites at fixed 60 Hz; `-Test -Visual` enables rendering/captures. Run appropriate checks after movement, collision, interaction or importer changes, as AGENTS.md requires.
+`Run.ps1 -Test` runs seven suites at fixed 60 Hz; `-Test -Visual` enables rendering/captures. Run appropriate checks after movement, collision, interaction or importer changes, as AGENTS.md requires.
 
 At handoff all **396 existing checks passed**:
 
@@ -121,7 +125,7 @@ Automated physics assertions and visual inspection are distinct from subjective 
 
 ## Remaining scope and navigation
 
-There is no swimming, crouching, fall damage, full combat, inventory, quests, original enemy population, complete dungeon, enemy navigation or full character progression. Avoid expanding these systems incidentally while adding climbing. Original texture support is selective, and full model-version/winding/UV fidelity is not certified.
+There is no swimming, fall damage, full combat, inventory, quests, original enemy population, complete dungeon, enemy navigation or full character progression. Avoid expanding these systems incidentally while adding climbing. Original texture support is selective, and full model-version/winding/UV fidelity is not certified.
 
 Read these next as relevant:
 

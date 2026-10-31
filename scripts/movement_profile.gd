@@ -1,6 +1,7 @@
 extends RefCounted
 ## Transactional tuning: invalid reloads preserve the last usable configuration.
 const DEFAULTS := {
+	"crouching": {"transition_seconds": 0.1},
 	"climbing": {"attach_delay_seconds": 0.7689556},
 	"baseline": {"speed_attribute": 50.0, "running_skill": 25.0, "jumping_skill": 25.0, "swimming_skill": 25.0, "climbing_skill": 25.0},
 	"locomotion": {"response": "instant", "axis_response_per_second": 9.8, "walk_multiplier": 1.0, "run_multiplier": 1.0, "strafe_multiplier": 1.0, "backward_multiplier": 1.0, "limit_diagonal_speed": true, "ground_acceleration": 24.0, "ground_braking": 32.0, "air_control": false, "air_acceleration": 8.0, "air_braking": 8.0},
@@ -49,6 +50,8 @@ func valid_value(section: String, key: String, value: Variant) -> bool:
 	if section == "baseline":
 		return value >= 0 and value <= 200
 	match key:
+		"transition_seconds":
+			return value >= 0.05 and value <= 1.0
 		"floor_max_angle_degrees":
 			return value >= 1 and value < 89
 		"max_pitch_degrees":
