@@ -4,7 +4,7 @@ PASS Sixteen original vertical risers fit configured step limit
 PASS Walk up original staircase to 6.4 m landing without jumping
 PASS Original stair ascent stays grounded and respects maximum rise
 PASS Rendered ascent height has substantially less stair vibration than capsule movement
-PASS Landing boundary physically stops further dungeon expansion
+PASS Previous landing barrier is removed and connecting corridor is walkable
 PASS Walk down original staircase into chamber
 PASS Original stair descent maintains floor contact
 PASS Rendered descent height has substantially less stair vibration than capsule movement

@@ -22,6 +22,7 @@ var movement_status: Label
 var encounter := false
 var door_used := false
 var ready_to_play := false
+var use_original_start := false
 
 func _ready() -> void:
 	configure_input()
@@ -65,7 +66,12 @@ func _ready() -> void:
 			body.add_child(collision)
 		if item.role == "door":
 			body.closed_basis = body.basis
-	door = doors[0] if not doors.is_empty() else null
+	# The primary milestone door follows authored section order, not RDB
+	# linked-list traversal order, which changes as more doors are selected.
+	for entry in classic.section.definition.models:
+		if entry.role == "door":
+			door = model_nodes[entry.id]
+			break
 	for payload in classic.billboards:
 		var sprite := AnimatedSprite3D.new()
 		sprite.set_script(Billboard)
@@ -84,6 +90,11 @@ func _ready() -> void:
 	player.position = player.spawn
 	# Face the centre of the original cave opening from the original enter marker.
 	var opening := classic.to_world(definition.spawn.look_at_native)
+	if definition.prototype.has("player_start") and not use_original_start:
+		var start: Dictionary = definition.prototype.player_start
+		player.spawn = classic.to_world(start.position_native) + Vector3.UP * 0.1
+		player.position = player.spawn
+		opening = classic.to_world(start.look_at_native)
 	player.look_at(Vector3(opening.x, player.position.y, opening.z))
 	for interactive_door in doors:
 		interactive_door.player = player

@@ -47,6 +47,8 @@ Archive 199 editor markers cannot be selected as visible billboards. The spawn m
 
 These arrays can be empty. Entries also require unique IDs.
 
+Optional prototype.player_start contains position_native and look_at_native vectors for an authored playtest start. The vectors must have different horizontal positions. The current section uses the great hall. Remove the entry to use the original source marker again; full-route tests set main.use_original_start=true before scene assembly.
+
 ```json
 {
   "enemies":[{"id":"placeholder_enemy","position_native":[1120,-4,768],"approach_enabled":false}],

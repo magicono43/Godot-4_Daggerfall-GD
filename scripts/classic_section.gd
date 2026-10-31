@@ -80,6 +80,12 @@ func validate(value: Variant) -> bool:
 	var prototype: Variant = value.get("prototype")
 	if not prototype is Dictionary:
 		return fail("prototype must separate authored additions from original objects")
+	if prototype.has("player_start"):
+		var start: Variant = prototype.player_start
+		if not start is Dictionary or not vector(start.get("position_native")) or not vector(start.get("look_at_native")):
+			return fail("prototype.player_start requires position_native and look_at_native")
+		if start.position_native[0] == start.look_at_native[0] and start.position_native[2] == start.look_at_native[2]:
+			return fail("prototype.player_start look direction must have horizontal separation")
 	for group in ["enemies", "boundaries", "lights"]:
 		if not prototype.get(group) is Array or prototype[group].size() > 64:
 			return fail("prototype." + group + " must be an array with at most 64 entries")

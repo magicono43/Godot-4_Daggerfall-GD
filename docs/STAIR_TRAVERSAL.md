@@ -1,6 +1,6 @@
 # First staircase extension
 
-Go through the original wooden door into the chamber, then use the opening that previously held the grey barrier. Walk up the stone staircase without jumping. It rises 6.4 metres to a small landing. A new grey barrier closes the next passage at the landing; the rest of the dungeon is still excluded.
+Go through the original wooden door into the chamber, then use the opening that previously held the grey barrier. Walk up the stone staircase without jumping. It rises 6.4 metres to a small landing. The later great-hall expansion removes the landing barrier and continues through the corridor loop; see GREAT_HALL_EXPANSION.md for the current route and boundaries.
 
 The section adds two original placements from S0000999.RDB:
 
@@ -9,7 +9,7 @@ The section adds two original placements from S0000999.RDB:
 | first_staircase | 12767 | 58008 | First stair flight, native position (896, 0, 640) |
 | stair_landing | 23239 | 61219 | Connecting landing, native position (640, -256, 640) |
 
-These are selected in `sections/privateers_hold_opening.json`. Meshes, transforms, textures and collision triangles remain original. No invisible ramp replaces the stair collision. There are now 11 original mesh placements, 492 triangles and 26 decoded mesh material slots. The existing billboards, placeholder enemy, lighting and Classic texture selection are retained.
+These are selected in `sections/privateers_hold_opening.json`. Meshes, transforms, textures and collision triangles remain original. No invisible ramp replaces the stair collision. The full selection now extends through the great staircase hall; its current counts and scope are documented in GREAT_HALL_EXPANSION.md.
 
 The original staircase has 16 vertical risers, at most 0.325 m high, with sloped treads between them. It is not a regular stack of horizontal boxes. The independent read-only audit `tools/audit_stairs.py` produces `tests/stair_geometry.json`; the existing scale/material audit tools also include both added models.
 
@@ -41,7 +41,7 @@ DFU's `PlayerMoveScanner.FindStep` and `AcrobatMotor.ApplyGravity` provide a dow
 
 ## Checks and remaining scope
 
-`Run.ps1 -Test` runs the dungeon, movement and stair suites. Add `-Visual` for rendering and captures. `tests/stairs.gd` tests the real stairs walking/running up/down, backward diagonal descent, turning/jumping midway, moving jumps into risers, rendered vertical-motion roughness and the landing boundary. It also uses isolated geometry for diagonal running, camera settling, disabled stepping, excessive rise, insufficient headroom, a genuine drop and a small floor seam. The moving-jump regression reproduced a 28-frame halt before the momentum fix; that case now has no stalled frames. Motion roughness compares successive rendered eye-height changes with capsule-height changes; it does not measure subjective comfort or equivalence to DFU.
+`Run.ps1 -Test` runs the dungeon, movement, stair and expansion suites. Add `-Visual` for rendering and captures. `tests/stairs.gd` tests the real stairs walking/running up/down, backward diagonal descent, turning/jumping midway, moving jumps into risers, rendered vertical-motion roughness and the now-open continuation passage. It also uses isolated geometry for diagonal running, camera settling, disabled stepping, excessive rise, insufficient headroom, a genuine drop and a small floor seam. The moving-jump regression reproduced a 28-frame halt before the momentum fix; that case now has no stalled frames. Motion roughness compares successive rendered eye-height changes with capsule-height changes; it does not measure subjective comfort or equivalence to DFU.
 
 The active section sets the placeholder's optional approach_enabled flag to false for stair testing. It stays at its original chamber position and still notices the player; it does not chase or move into the stair route. Set the flag back to true in the section definition to restore approach behavior, then restart the scene. The stair suite additionally freezes enemy physics to isolate measurements.
 

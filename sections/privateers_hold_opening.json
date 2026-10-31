@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Privateer's Hold opening",
+  "name": "Privateer's Hold opening through great staircase hall",
   "source": {
     "region": 17,
     "location": "Privateer's Hold",
@@ -8,38 +8,640 @@
     "expected_dungeon_id": 50050,
     "block": "S0000999.RDB"
   },
-  "origin_native": [510, 0, 1672],
+  "origin_native": [
+    510,
+    0,
+    1672
+  ],
   "spawn": {
     "record_offset": 32814,
     "expected_archive": 199,
     "expected_record": 8,
-    "look_at_native": [512, 0, 1152]
+    "look_at_native": [
+      512,
+      0,
+      1152
+    ]
   },
   "models": [
-    {"id": "opening_cave", "record_offset": 17224, "expected_model": "60200", "role": "geometry", "collision": true},
-    {"id": "cave_passage", "record_offset": 11951, "expected_model": "63047", "role": "geometry", "collision": true},
-    {"id": "passage_corner", "record_offset": 11999, "expected_model": "63033", "role": "geometry", "collision": true},
-    {"id": "door_passage", "record_offset": 12047, "expected_model": "63007", "role": "geometry", "collision": true},
-    {"id": "first_door", "record_offset": 11579, "expected_model": "55012", "role": "door", "collision": true},
-    {"id": "adjoining_chamber", "record_offset": 12095, "expected_model": "71002", "role": "geometry", "collision": true},
-    {"id": "rear_rock_pile", "record_offset": 32707, "expected_model": "41735", "role": "prop", "collision": true},
-    {"id": "chamber_prop_north", "record_offset": 32552, "expected_model": "41311", "role": "prop", "collision": true},
-    {"id": "chamber_prop_south", "record_offset": 32623, "expected_model": "41311", "role": "prop", "collision": true},
-    {"id": "first_staircase", "record_offset": 12767, "expected_model": "58008", "role": "geometry", "collision": true},
-    {"id": "stair_landing", "record_offset": 23239, "expected_model": "61219", "role": "geometry", "collision": true}
+    {
+      "id": "opening_cave",
+      "record_offset": 17224,
+      "expected_model": "60200",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "cave_passage",
+      "record_offset": 11951,
+      "expected_model": "63047",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "passage_corner",
+      "record_offset": 11999,
+      "expected_model": "63033",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "door_passage",
+      "record_offset": 12047,
+      "expected_model": "63007",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "first_door",
+      "record_offset": 11579,
+      "expected_model": "55012",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "adjoining_chamber",
+      "record_offset": 12095,
+      "expected_model": "71002",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "rear_rock_pile",
+      "record_offset": 32707,
+      "expected_model": "41735",
+      "role": "prop",
+      "collision": true
+    },
+    {
+      "id": "chamber_prop_north",
+      "record_offset": 32552,
+      "expected_model": "41311",
+      "role": "prop",
+      "collision": true
+    },
+    {
+      "id": "chamber_prop_south",
+      "record_offset": 32623,
+      "expected_model": "41311",
+      "role": "prop",
+      "collision": true
+    },
+    {
+      "id": "first_staircase",
+      "record_offset": 12767,
+      "expected_model": "58008",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "stair_landing",
+      "record_offset": 23239,
+      "expected_model": "61219",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "route_23191",
+      "record_offset": 23191,
+      "expected_model": "61204",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "route_23143",
+      "record_offset": 23143,
+      "expected_model": "61203",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "route_23095",
+      "record_offset": 23095,
+      "expected_model": "61203",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "route_23047",
+      "record_offset": 23047,
+      "expected_model": "61203",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "route_22999",
+      "record_offset": 22999,
+      "expected_model": "61203",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "route_22951",
+      "record_offset": 22951,
+      "expected_model": "61202",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "route_22903",
+      "record_offset": 22903,
+      "expected_model": "61211",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "route_22855",
+      "record_offset": 22855,
+      "expected_model": "61203",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "route_22807",
+      "record_offset": 22807,
+      "expected_model": "61203",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "route_22759",
+      "record_offset": 22759,
+      "expected_model": "61203",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "route_22711",
+      "record_offset": 22711,
+      "expected_model": "61202",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "route_23287",
+      "record_offset": 23287,
+      "expected_model": "61211",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "route_23335",
+      "record_offset": 23335,
+      "expected_model": "61203",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "route_23383",
+      "record_offset": 23383,
+      "expected_model": "61203",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "route_23431",
+      "record_offset": 23431,
+      "expected_model": "61204",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "route_23479",
+      "record_offset": 23479,
+      "expected_model": "61211",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "route_23527",
+      "record_offset": 23527,
+      "expected_model": "61203",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "route_23575",
+      "record_offset": 23575,
+      "expected_model": "61204",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "route_23623",
+      "record_offset": 23623,
+      "expected_model": "61203",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "route_23671",
+      "record_offset": 23671,
+      "expected_model": "61203",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "route_23719",
+      "record_offset": 23719,
+      "expected_model": "61204",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "route_23767",
+      "record_offset": 23767,
+      "expected_model": "61218",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "route_23815",
+      "record_offset": 23815,
+      "expected_model": "61203",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "route_23863",
+      "record_offset": 23863,
+      "expected_model": "61220",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "hall_approach_door",
+      "record_offset": 23911,
+      "expected_model": "55003",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "hall_anteroom",
+      "record_offset": 22472,
+      "expected_model": "72006",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "great_hall_door",
+      "record_offset": 11903,
+      "expected_model": "55004",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "great_hall_northwest",
+      "record_offset": 21948,
+      "expected_model": "58048",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "great_hall_southwest",
+      "record_offset": 21996,
+      "expected_model": "58049",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "great_hall_northeast",
+      "record_offset": 18528,
+      "expected_model": "58009",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "great_hall_southeast",
+      "record_offset": 22067,
+      "expected_model": "58050",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "great_staircase",
+      "record_offset": 20084,
+      "expected_model": "59007",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "hall_structure_25299",
+      "record_offset": 25299,
+      "expected_model": "72019",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "hall_structure_25347",
+      "record_offset": 25347,
+      "expected_model": "74009",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "hall_structure_25395",
+      "record_offset": 25395,
+      "expected_model": "72019",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "hall_structure_25443",
+      "record_offset": 25443,
+      "expected_model": "72019",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "hall_structure_25491",
+      "record_offset": 25491,
+      "expected_model": "72019",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "hall_structure_25539",
+      "record_offset": 25539,
+      "expected_model": "72019",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "hall_structure_25587",
+      "record_offset": 25587,
+      "expected_model": "74009",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "hall_structure_25635",
+      "record_offset": 25635,
+      "expected_model": "72019",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "hall_structure_25683",
+      "record_offset": 25683,
+      "expected_model": "72019",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "hall_structure_25731",
+      "record_offset": 25731,
+      "expected_model": "72019",
+      "role": "geometry",
+      "collision": true
+    }
   ],
   "billboards": [
-    {"id": "cave_decoration_small", "record_offset": 16459, "expected_archive": 206, "expected_record": 5, "fps": 5},
-    {"id": "cave_decoration_pile", "record_offset": 16495, "expected_archive": 206, "expected_record": 8, "fps": 5},
-    {"id": "cave_fire", "record_offset": 17044, "expected_archive": 210, "expected_record": 1, "fps": 12}
+    {
+      "id": "cave_decoration_small",
+      "record_offset": 16459,
+      "expected_archive": 206,
+      "expected_record": 5,
+      "fps": 5
+    },
+    {
+      "id": "cave_decoration_pile",
+      "record_offset": 16495,
+      "expected_archive": 206,
+      "expected_record": 8,
+      "fps": 5
+    },
+    {
+      "id": "cave_fire",
+      "record_offset": 17044,
+      "expected_archive": 210,
+      "expected_record": 1,
+      "fps": 12
+    }
   ],
   "prototype": {
-    "enemies": [{"id": "placeholder_enemy", "position_native": [1120, -4, 768], "approach_enabled": false}],
-    "boundaries": [{"id": "landing_limit", "position_native": [640, -319, 512], "yaw_degrees": 0, "size_metres": [3.5, 3.5, 0.35]}],
+    "player_start": {
+      "position_native": [800, -512, 1024],
+      "look_at_native": [1300, -512, 1024]
+    },
+    "enemies": [
+      {
+        "id": "placeholder_enemy",
+        "position_native": [
+          1120,
+          -4,
+          768
+        ],
+        "approach_enabled": false
+      }
+    ],
+    "boundaries": [
+      {
+        "id": "side_chamber_limit",
+        "position_native": [
+          1790,
+          -301,
+          640
+        ],
+        "yaw_degrees": 90,
+        "size_metres": [
+          1.5,
+          2.6,
+          0.25
+        ]
+      },
+      {
+        "id": "south_chamber_limit",
+        "position_native": [
+          1664,
+          -301,
+          1534
+        ],
+        "yaw_degrees": 0,
+        "size_metres": [
+          1.5,
+          2.6,
+          0.25
+        ]
+      },
+      {
+        "id": "alternate_stair_limit",
+        "position_native": [
+          1026,
+          -301,
+          1408
+        ],
+        "yaw_degrees": 90,
+        "size_metres": [
+          1.5,
+          2.6,
+          0.25
+        ]
+      },
+      {
+        "id": "anteroom_east_limit",
+        "position_native": [
+          1026,
+          -557,
+          384
+        ],
+        "yaw_degrees": 90,
+        "size_metres": [
+          1.5,
+          2.6,
+          0.25
+        ]
+      },
+      {
+        "id": "hall_west_limit",
+        "position_native": [
+          248,
+          -557,
+          1152
+        ],
+        "yaw_degrees": 90,
+        "size_metres": [
+          1.5,
+          2.6,
+          0.25
+        ]
+      },
+      {
+        "id": "hall_east_limit",
+        "position_native": [
+          1538,
+          -557,
+          1408
+        ],
+        "yaw_degrees": 90,
+        "size_metres": [
+          1.5,
+          2.6,
+          0.25
+        ]
+      },
+      {
+        "id": "upper_north_limit",
+        "position_native": [
+          1152,
+          -1343,
+          254
+        ],
+        "yaw_degrees": 0,
+        "size_metres": [
+          4.5,
+          3.5,
+          0.25
+        ]
+      },
+      {
+        "id": "upper_east_limit",
+        "position_native": [
+          1920,
+          -1343,
+          770
+        ],
+        "yaw_degrees": 0,
+        "size_metres": [
+          4.5,
+          3.5,
+          0.25
+        ]
+      },
+      {
+        "id": "mid_north_limit",
+        "position_native": [
+          1664,
+          -1087,
+          254
+        ],
+        "yaw_degrees": 0,
+        "size_metres": [
+          4.5,
+          3.5,
+          0.25
+        ]
+      },
+      {
+        "id": "mid_south_limit",
+        "position_native": [
+          1664,
+          -1087,
+          1794
+        ],
+        "yaw_degrees": 0,
+        "size_metres": [
+          4.5,
+          3.5,
+          0.25
+        ]
+      },
+      {
+        "id": "upper_west_limit",
+        "position_native": [
+          1016,
+          -1325,
+          1664
+        ],
+        "yaw_degrees": 90,
+        "size_metres": [
+          1.5,
+          2.6,
+          0.25
+        ]
+      }
+    ],
     "lights": [
-      {"id": "cave_fill", "position_native": [510, -140, 1552], "energy": 1.8, "range_metres": 18},
-      {"id": "passage_fill", "position_native": [470, -84, 1032], "energy": 1.2, "range_metres": 12},
-      {"id": "chamber_fill", "position_native": [910, -80, 768], "energy": 1.0, "range_metres": 12}
+      {
+        "id": "cave_fill",
+        "position_native": [
+          510,
+          -140,
+          1552
+        ],
+        "energy": 1.8,
+        "range_metres": 18
+      },
+      {
+        "id": "passage_fill",
+        "position_native": [
+          470,
+          -84,
+          1032
+        ],
+        "energy": 1.2,
+        "range_metres": 12
+      },
+      {
+        "id": "chamber_fill",
+        "position_native": [
+          910,
+          -80,
+          768
+        ],
+        "energy": 1.0,
+        "range_metres": 12
+      },
+      {
+        "id": "hall_fill_west",
+        "position_native": [
+          640,
+          -900,
+          1024
+        ],
+        "energy": 1.2,
+        "range_metres": 30
+      },
+      {
+        "id": "hall_fill_east",
+        "position_native": [
+          1536,
+          -900,
+          1024
+        ],
+        "energy": 1.2,
+        "range_metres": 30
+      }
     ]
   }
 }

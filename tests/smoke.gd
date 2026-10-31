@@ -121,6 +121,7 @@ func decoration_checks() -> void:
 
 func run() -> void:
 	level = load("res://main.tscn").instantiate()
+	level.use_original_start = true
 	root.add_child(level)
 	current_scene = level
 	await frames(90)
@@ -131,8 +132,8 @@ func run() -> void:
 		return
 	check(level.classic.provenance.block == "S0000999.RDB", "MAPS resolves original starting block")
 	check(level.classic.provenance.location_id == 50049, "Privateer's Hold location ID")
-	check(level.classic.objects.size() == 11 and level.classic.triangle_count == 492, "Eleven original RDB placements and 492 ARCH3D triangles")
-	check(level.classic.texture_count == 26, "All 26 original slice materials decoded")
+	check(level.classic.objects.size() == 53 and level.classic.triangle_count == 1746, "53 original RDB placements and 1746 ARCH3D triangles")
+	check(level.classic.texture_count == 34, "All 34 original slice materials decoded")
 	section_checks()
 	await decoration_checks()
 	check(level.classic.provenance.dungeon_id == 50050, "Texture seed uses dungeon ID, not exterior ID")
