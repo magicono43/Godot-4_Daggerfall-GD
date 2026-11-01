@@ -1,0 +1,37 @@
+PASS Dagger CIF record 0 native dimensions and all RGBA hashes match independent audit
+PASS Dagger CIF record 1 native dimensions and all RGBA hashes match independent audit
+PASS Dagger CIF record 2 native dimensions and all RGBA hashes match independent audit
+PASS Dagger CIF record 3 native dimensions and all RGBA hashes match independent audit
+PASS Dagger CIF record 4 native dimensions and all RGBA hashes match independent audit
+PASS Dagger CIF record 5 native dimensions and all RGBA hashes match independent audit
+PASS Dagger CIF record 6 native dimensions and all RGBA hashes match independent audit
+PASS One ready pose and thirty directional attack frames load
+PASS Truncated weapon archive is rejected
+PASS Oversized CIF image is rejected
+PASS Invalid animation data offset is rejected
+PASS Truncated RLE run is rejected
+PASS Readied dagger uses native dimensions at 640x400
+PASS Ready pose uses DFU bottom-right alignment and four-percent inset
+PASS Dagger swing 1 uses source alignment
+PASS Dagger swing 2 uses source alignment
+PASS Dagger swing 3 uses source alignment
+PASS Dagger swing 4 uses source alignment
+PASS Dagger swing 5 uses source alignment
+PASS Dagger swing 6 uses source alignment
+PASS Random attacks exercise all six supported swing directions
+PASS Left-click no longer attacks
+PASS Right-click starts one random original attack
+PASS Weapon timing resolves DFU Speed-50 frame interval
+PASS First attack frames apply no early damage
+PASS Entering dagger frame two applies damage once
+PASS Completed swing restores ready pose without repeated damage
+PASS Z sheath cancels pending attack and hides dagger
+PASS Sheathed weapon cannot attack
+PASS Z draws dagger in ready pose
+PASS Right-click recapture resumes without attacking
+PASS Attached climbing hides dagger and prevents attacks
+PASS Crouching and camera pitch keep overlay anchored to the display
+PASS New attack reads live Speed independently of movement motor
+PASS Widescreen resizes overlay within active display
+PASS Player death hides dagger and blocks further attacks
+PASS Restart restores readied dagger and clears attack state

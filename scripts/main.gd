@@ -87,6 +87,7 @@ func _ready() -> void:
 	player = CharacterBody3D.new()
 	player.set_script(Player)
 	player.vertical_fov = presentation.vertical_fov
+	player.weapon_payload = classic.dagger_frames
 	player.name = "Player"
 	world_root.add_child(player)
 	player.spawn = classic.provenance.start + Vector3.UP * 0.1
@@ -127,9 +128,9 @@ func configure_input() -> void:
 	if not InputMap.has_action("attack"):
 		InputMap.add_action("attack")
 		var click := InputEventMouseButton.new()
-		click.button_index = MOUSE_BUTTON_LEFT
+		click.button_index = MOUSE_BUTTON_RIGHT
 		InputMap.action_add_event("attack", click)
-	var keys := {"crouch": KEY_CTRL, "forward": KEY_W, "back": KEY_S, "left": KEY_A, "right": KEY_D, "sprint": KEY_SHIFT, "jump": KEY_SPACE, "interact": KEY_E, "release_mouse": KEY_ESCAPE, "reset": KEY_R, "toggle_view": KEY_F2, "reload_movement": KEY_F3, "movement_debug": KEY_F4}
+	var keys := {"ready_weapon": KEY_Z, "crouch": KEY_CTRL, "forward": KEY_W, "back": KEY_S, "left": KEY_A, "right": KEY_D, "sprint": KEY_SHIFT, "jump": KEY_SPACE, "interact": KEY_E, "release_mouse": KEY_ESCAPE, "reset": KEY_R, "toggle_view": KEY_F2, "reload_movement": KEY_F3, "movement_debug": KEY_F4}
 	for action in keys:
 		if not InputMap.has_action(action):
 			InputMap.add_action(action)
@@ -231,7 +232,7 @@ func create_hud() -> void:
 	crosshair.position -= Vector2(5, 13)
 	root.add_child(crosshair)
 	var controls := Label.new()
-	controls.text = "WASD Move  |  Ctrl Toggle crouch  |  Shift Run  |  Space Jump  |  E Door  |  LMB Attack  |  Esc Mouse  |  R Restart\nClimb: W into wall or S over ledge  |  W/S Up/Down  |  A/D Along wall  |  Space Eject\nF2 View  |  F3 Reload movement  |  F4 Movement diagnostics"
+	controls.text = "WASD Move  |  Ctrl Toggle crouch  |  Shift Run  |  Space Jump  |  E Door  |  RMB Attack  |  Z Draw/Sheath  |  Esc Mouse  |  R Restart\nClimb: W into wall or S over ledge  |  W/S Up/Down  |  A/D Along wall  |  Space Eject\nF2 View  |  F3 Reload movement  |  F4 Movement diagnostics"
 	controls.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
 	controls.position = Vector2(29, -82)
 	controls.add_theme_font_size_override("font_size", 14)

@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/Interkarma/daggerfall-unity",
+  "commit": "4e78e1412b17b60f4d5d6073825775aa5ae95139",
+  "files": {
+    "Assets/Scripts/API/CifRciFile.cs": "48c7865ef44d29510584c2defcd6218024daac8866f33f7bec0fc30281fc4984",
+    "Assets/Scripts/Game/FPSWeapon.cs": "9033325c4825648254f5046d01fec4ccd7dadc39d8600841181dc03e5dc9b42b",
+    "Assets/Scripts/Utility/WeaponBasics.cs": "086a75d850dc0404f1b35993bcddfa97607af5f85909477b0a8171efdfd3a6a4"
+  }
+}

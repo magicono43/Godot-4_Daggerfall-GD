@@ -3,7 +3,7 @@ var target: CharacterBody3D
 
 func swing() -> void:
 	player.combat.request_attack(player)
-	await frames(35)
+	await frames(ceili((player.combat.windup + player.combat.recovery) * 60.0) + 3)
 
 func run() -> void:
 	for action in ["forward", "back", "left", "right", "jump", "sprint", "reload_movement", "movement_debug", "release_mouse", "interact", "reset"]:
@@ -26,10 +26,10 @@ func run() -> void:
 	check(not player.combat.request_attack(player), "Windup rejects another attack")
 	await frames(5)
 	check(target.health.current == 30, "Windup applies no early damage")
-	await frames(10)
+	await frames(25)
 	check(target.health.current == 20, "Strike applies exactly ten damage")
 	check(not player.combat.request_attack(player), "Recovery rejects another attack")
-	await frames(25)
+	await frames(40)
 	check(target.health.current == 20, "One swing never repeats damage")
 	var wall := box(Vector3(3, 3, 0.12), Vector3(0, 1.5, -0.8))
 	await frames(3)
@@ -46,7 +46,7 @@ func run() -> void:
 	player.controls_active = false
 	check(not player.combat.request_attack(player), "Released mouse prevents attack")
 	var click := InputEventMouseButton.new()
-	click.button_index = MOUSE_BUTTON_LEFT
+	click.button_index = MOUSE_BUTTON_RIGHT
 	click.pressed = true
 	player._unhandled_input(click)
 	check(player.controls_active and player.combat.elapsed < 0, "Mouse recapture does not attack")
@@ -85,7 +85,7 @@ func run() -> void:
 	player.position = hall.position + Vector3(-1.5, 0.05, 0)
 	await frames(3)
 	player.camera.look_at(hall.global_position + Vector3.UP * 0.4)
-	# Exercise the real LMB binding after main configures gameplay input.
+	# Exercise the real RMB binding after main configures gameplay input.
 	player._unhandled_input(click)
 	await frames(35)
 	check(hall.health.current == 20, "Original hall target receives melee damage")

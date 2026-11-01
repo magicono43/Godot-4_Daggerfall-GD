@@ -14,6 +14,7 @@ var provenance: Dictionary = {}
 var objects: Array[Dictionary] = []
 var billboards: Array[Dictionary] = []
 var enemy_visuals: Dictionary = {}
+var dagger_frames: Array[Dictionary] = []
 var meshes := Archive.new()
 var material_cache: Dictionary = {}
 var dungeon_textures := DungeonTextures.new()
@@ -28,6 +29,7 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 	objects.clear()
 	billboards.clear()
 	enemy_visuals.clear()
+	dagger_frames.clear()
 	provenance.clear()
 	material_cache.clear()
 	texture_archives.clear()
@@ -165,6 +167,10 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 			if payload.is_empty():
 				return false
 			enemy_visuals.skeleton = payload
+	dagger_frames = decode_dagger_cif(FileAccess.get_file_as_bytes(arena_path.path_join("WEAPON02.CIF")))
+	if dagger_frames.is_empty():
+		error = "Missing, truncated or unsupported original WEAPON02.CIF dagger data"
+		return false
 	return true
 
 func native_vector(value: Array) -> Vector3:
@@ -428,3 +434,75 @@ func skeleton_payload() -> Dictionary:
 	if corpse.is_empty():
 		return {}
 	return {"archive": 270, "records": records, "corpse": corpse}
+
+func cif_rgba(indices: PackedByteArray, width: int, height: int) -> Texture2D:
+	var rgba := PackedByteArray()
+	rgba.resize(indices.size() * 4)
+	for i in indices.size():
+		var index := int(indices[i])
+		for channel in 3:
+			rgba[i * 4 + channel] = palette[8 + index * 3 + channel]
+		rgba[i * 4 + 3] = 0 if index == 0 else 255
+	return ImageTexture.create_from_image(Image.create_from_data(width, height, false, Image.FORMAT_RGBA8, rgba))
+
+func cif_rle(bytes: PackedByteArray, start: int, end: int, length: int) -> PackedByteArray:
+	var pixels := PackedByteArray()
+	var cursor := start
+	while pixels.size() < length:
+		if cursor >= end:
+			return PackedByteArray()
+		var code := int(bytes[cursor])
+		cursor += 1
+		var count := code - 127 if code > 127 else code + 1
+		if pixels.size() + count > length or cursor + (1 if code > 127 else count) > end:
+			return PackedByteArray()
+		if code > 127:
+			for i in count:
+				pixels.append(bytes[cursor])
+			cursor += 1
+		else:
+			pixels.append_array(bytes.slice(cursor, cursor + count))
+			cursor += count
+	return pixels
+
+func decode_dagger_cif(bytes: PackedByteArray) -> Array[Dictionary]:
+	# Specialized, checked CIF weapon records; not a general CIF/RCI importer.
+	var result: Array[Dictionary] = []
+	if bytes.size() < 12 or palette.size() < 776:
+		return result
+	var width := bytes.decode_u16(4)
+	var height := bytes.decode_u16(6)
+	var length := bytes.decode_u16(10)
+	if width < 1 or width > 320 or height < 1 or height > 200 or bytes.decode_u16(8) != 0 or length != width * height or 12 + length > bytes.size():
+		return result
+	result.append({"width": width, "height": height, "frames": [cif_rgba(bytes.slice(12, 12 + length), width, height)]})
+	var offset := 12 + length
+	for record in range(1, 7):
+		if offset + 76 > bytes.size():
+			return []
+		width = bytes.decode_u16(offset)
+		height = bytes.decode_u16(offset + 2)
+		var total := bytes.decode_u16(offset + 74)
+		if width < 1 or width > 320 or height < 1 or height > 200 or total <= 76 or offset + total > bytes.size():
+			return []
+		var starts: Array[int] = []
+		for i in 31:
+			var frame_offset := bytes.decode_u16(offset + 12 + i * 2)
+			if i < 5:
+				if frame_offset < 76 or frame_offset >= total or (i > 0 and frame_offset <= starts[-1]):
+					return []
+				starts.append(frame_offset)
+			elif frame_offset != 0:
+				return []
+		var frames: Array[Texture2D] = []
+		for frame in 5:
+			var end := offset + (starts[frame + 1] if frame < 4 else total)
+			var pixels := cif_rle(bytes, offset + starts[frame], end, width * height)
+			if pixels.is_empty():
+				return []
+			frames.append(cif_rgba(pixels, width, height))
+		result.append({"width": width, "height": height, "frames": frames})
+		offset += total
+	if offset != bytes.size():
+		return []
+	return result

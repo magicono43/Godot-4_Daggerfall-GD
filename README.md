@@ -1,3 +1,7 @@
+## Original dagger — October 31, 2026
+
+Right-click attacks with the original WEAPON02.CIF dagger, randomly choosing one of six source swing directions. Z draws/sheathes it. Damage follows its strike frame, with attack timing derived from live Speed; the ready/attack sprites use the original screen layout in both presentation modes. The greybox blade is removed. WEAPON02.CIF remains external in the configured ARENA2 folder and is now required for this slice. See [docs/DAGGER.md](docs/DAGGER.md). Run.ps1 -Test now runs twelve suites. Older left-click and fixed-timing notes below are historical.
+
 ## DFU-style local pursuit — October 31, 2026
 
 The Skeleton now navigates with tested local detours based on DFU's enemy motor. It tries directions in 45-degree increments and follows short detours around nearby obstacles. The navmesh planner and runtime bake have been removed; it no longer knows complete routes through the dungeon and can struggle with complex layouts. Physical stairs, doors, sprites and combat are retained. Advanced combat tactics are deferred. See [docs/ENEMY_NAVIGATION.md](docs/ENEMY_NAVIGATION.md). Older navmesh descriptions below are historical.

@@ -4,6 +4,7 @@ var health := Health.new()
 var damage_flash := 0.0
 const Combat = preload("res://scripts/melee_combat.gd")
 var combat := Combat.new()
+var weapon_payload: Array[Dictionary] = []
 const Movement = preload("res://scripts/movement_model.gd")
 const Steps = preload("res://scripts/step_solver.gd")
 var movement := Movement.new()
@@ -102,6 +103,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		controls_active = true
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		return
+	if InputMap.has_action("ready_weapon") and event.is_action_pressed("ready_weapon") and controls_active and not climbing.active:
+		combat.toggle_sheath()
 	if InputMap.has_action("attack") and event.is_action_pressed("attack"):
 		combat.request_attack(self)
 	if event.is_action_pressed("interact") and interact_target and controls_active:

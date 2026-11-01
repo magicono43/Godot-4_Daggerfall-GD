@@ -1,3 +1,7 @@
+# Current player weapon
+
+RMB now attacks with the original dagger in a random source direction; Z draws/sheathes. Damage occurs at frame 2 with live-Speed attack timing. Older LMB/greybox/fixed-timer notes below are historical. See [DAGGER.md](DAGGER.md).
+
 # Current Skeleton presentation
 
 The hall enemy now uses original Skeleton sprites and an animation-driven strike at 0.4 seconds, plus hurt interruption and a visible corpse. The following capsule/timer description records the earlier prototype; see [SKELETON.md](SKELETON.md) for current hall behavior. Health, player controls, live strike checks and stationary policy remain as described below.

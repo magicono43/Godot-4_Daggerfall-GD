@@ -1,0 +1,31 @@
+ERROR: Failed to open 'user://logs/godot2026-10-31T23.54.25.log'.
+   at: copy (core/io/dir_access.cpp:429)
+ERROR: Failed to open log file for writing: user://logs/godot.log
+   at: rotate_file (core/io/logger.cpp:169)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+PASS Idle accepts attack position=(0.0, 0.000729, 0.0) mode=reset
+PASS Windup rejects another attack position=(0.0, 0.000729, 0.0) mode=reset
+PASS Windup applies no early damage position=(0.0, 0.000729, 0.0) mode=reset
+PASS Strike applies exactly ten damage position=(0.0, 0.000729, 0.0) mode=reset
+PASS Recovery rejects another attack position=(0.0, 0.000729, 0.0) mode=reset
+PASS One swing never repeats damage position=(0.0, 0.000729, 0.0) mode=reset
+PASS Solid obstruction blocks melee position=(0.0, 0.000965, 0.357734) mode=reset
+PASS Out of reach target takes no damage position=(0.0, 0.000965, 0.357734) mode=reset
+PASS Released mouse prevents attack position=(0.0, 0.000965, 0.357734) mode=reset
+PASS Mouse recapture does not attack position=(0.0, 0.000965, 0.357734) mode=reset
+PASS Attached climbing prevents attacks position=(0.0, 0.000965, 0.357734) mode=reset
+PASS Releasing controls cancels pending strike position=(0.0, 0.000965, 0.357734) mode=reset
+PASS Third hit kills and removes blocking collision position=(0.0, 0.000965, 0.357734) mode=reset
+PASS Dead target rejects further damage position=(0.0, 0.000965, 0.357734) mode=reset
+PASS Negative damage cannot heal position=(0.0, 0.000965, 0.357734) mode=reset
+PASS Overkill clamps health to zero position=(0.0, 0.000965, 0.357734) mode=reset
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Hall addition preserves chamber enemy alias position=(7.25, 12.8, 16.2) mode=walking
+PASS Hall target rests on spawn floor nearby position=(7.25, 12.8, 16.2) mode=walking
+PASS Original hall target receives melee damage position=(8.75, 12.80034, 17.8) mode=reset
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Fresh scene restores targets and attack state position=(7.25, 12.81667, 16.2) mode=walking
+COMBAT RESULTS: 20/20

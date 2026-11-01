@@ -1,0 +1,49 @@
+ERROR: Failed to open 'user://logs/godot2026-10-31T23.55.07.log'.
+   at: copy (core/io/dir_access.cpp:429)
+ERROR: Failed to open log file for writing: user://logs/godot.log
+   at: rotate_file (core/io/logger.cpp:169)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Dagger CIF record 0 native dimensions and all RGBA hashes match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Dagger CIF record 1 native dimensions and all RGBA hashes match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Dagger CIF record 2 native dimensions and all RGBA hashes match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Dagger CIF record 3 native dimensions and all RGBA hashes match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Dagger CIF record 4 native dimensions and all RGBA hashes match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Dagger CIF record 5 native dimensions and all RGBA hashes match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Dagger CIF record 6 native dimensions and all RGBA hashes match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS One ready pose and thirty directional attack frames load position=(7.25, 12.8, 16.2) mode=walking
+PASS Truncated weapon archive is rejected position=(7.25, 12.8, 16.2) mode=walking
+PASS Oversized CIF image is rejected position=(7.25, 12.8, 16.2) mode=walking
+PASS Invalid animation data offset is rejected position=(7.25, 12.8, 16.2) mode=walking
+PASS Truncated RLE run is rejected position=(7.25, 12.8, 16.2) mode=walking
+VIEW DEBUG true record=0 frame=0 size=(130.0, 286.0) position=(484.4, 114.0)
+FAIL Readied dagger uses native dimensions at 640x400 position=(7.25, 12.8, 16.2) mode=walking
+PASS Ready pose uses DFU bottom-right alignment and four-percent inset position=(7.25, 12.8, 16.2) mode=walking
+PASS Dagger swing 1 uses source alignment position=(7.25, 12.8, 16.2) mode=walking
+PASS Dagger swing 2 uses source alignment position=(7.25, 12.8, 16.2) mode=walking
+PASS Dagger swing 3 uses source alignment position=(7.25, 12.8, 16.2) mode=walking
+PASS Dagger swing 4 uses source alignment position=(7.25, 12.8, 16.2) mode=walking
+PASS Dagger swing 5 uses source alignment position=(7.25, 12.8, 16.2) mode=walking
+PASS Dagger swing 6 uses source alignment position=(7.25, 12.8, 16.2) mode=walking
+PASS Random attacks exercise all six supported swing directions position=(7.25, 12.8, 16.2) mode=walking
+PASS Left-click no longer attacks position=(8.75, 12.80095, 17.8) mode=reset
+PASS Right-click starts one random original attack position=(8.75, 12.80095, 17.8) mode=reset
+PASS Weapon timing resolves DFU Speed-50 frame interval position=(8.75, 12.80095, 17.8) mode=reset
+PASS First attack frames apply no early damage position=(8.75, 12.80095, 17.8) mode=reset
+PASS Entering dagger frame two applies damage once position=(8.75, 12.80095, 17.8) mode=reset
+PASS Completed swing restores ready pose without repeated damage position=(8.75, 12.80095, 17.8) mode=reset
+PASS Z sheath cancels pending attack and hides dagger position=(8.75, 12.80095, 17.8) mode=reset
+PASS Sheathed weapon cannot attack position=(8.75, 12.80095, 17.8) mode=reset
+PASS Z draws dagger in ready pose position=(8.75, 12.80095, 17.8) mode=reset
+PASS Right-click recapture resumes without attacking position=(8.75, 12.80095, 17.8) mode=reset
+PASS Attached climbing hides dagger and prevents attacks position=(8.75, 12.80095, 17.8) mode=reset
+PASS Crouching and camera pitch keep overlay anchored to the display position=(8.75, 12.80095, 17.8) mode=reset
+PASS New attack reads live Speed independently of movement motor position=(8.75, 12.80095, 17.8) mode=reset
+PASS Widescreen resizes overlay within active display position=(8.75, 12.80095, 17.8) mode=reset
+PASS Player death hides dagger and blocks further attacks position=(8.75, 12.80095, 17.8) mode=reset
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Restart restores readied dagger and clears attack state position=(7.25, 12.8, 16.2) mode=walking
+DAGGER RESULTS: 36/37
