@@ -38,7 +38,7 @@ func setup(camera: Camera3D) -> void:
 	pose()
 
 func request_attack(body: CharacterBody3D) -> bool:
-	if sheathed or elapsed >= 0 or body.is_dead() or not body.controls_active or body.climbing.active:
+	if not body.inventory.has_dagger() or body.modal_open or sheathed or elapsed >= 0 or body.is_dead() or not body.controls_active or body.climbing.active:
 		return false
 	# Snapshot live Speed for this attack; movement resolution remains separate.
 	frame_seconds = 3.0 * (115.0 - clampf(body.movement.stat("speed_attribute"), 1.0, 100.0)) / 980.0
@@ -57,7 +57,7 @@ func cancel() -> void:
 
 func tick(body: CharacterBody3D, delta: float) -> void:
 	feedback_time = maxf(0.0, feedback_time - delta)
-	if not body.controls_active or body.climbing.active:
+	if not body.inventory.has_dagger() or body.modal_open or not body.controls_active or body.climbing.active:
 		cancel()
 		return
 	if elapsed < 0:
@@ -100,8 +100,10 @@ func strike() -> void:
 	feedback_time = 0.8
 
 func toggle_sheath() -> void:
-	sheathed = not sheathed
 	var body: CharacterBody3D = cast.get_parent().get_parent()
+	if not body.inventory.has_dagger() or body.modal_open:
+		return
+	sheathed = not sheathed
 	if not sheathed and is_instance_valid(body.combat_audio):
 		body.combat_audio.play("draw")
 	cancel()

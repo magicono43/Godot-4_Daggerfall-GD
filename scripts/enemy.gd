@@ -17,6 +17,8 @@ var combat_audio: Node
 var sound_wait := 3.0
 var sound_rng := RandomNumberGenerator.new()
 var approach_enabled := true
+var loot := preload("res://scripts/inventory.gd").new()
+var loot_enabled := false
 signal encountered
 
 func play_sound(event: String, gain: float = 1.0) -> void:
@@ -26,6 +28,7 @@ func play_sound(event: String, gain: float = 1.0) -> void:
 		combat_audio.play(event, self, gain)
 
 func _ready() -> void:
+	add_to_group("prototype_enemies")
 	sound_rng.randomize()
 	sound_wait = float(sound_rng.randi_range(3, 9))
 	collision_layer = 1
@@ -81,6 +84,8 @@ func _ready() -> void:
 	home = position
 
 func _physics_process(delta: float) -> void:
+	if is_instance_valid(player) and player.modal_open:
+		return
 	if mobile and is_instance_valid(combat_audio) and health.current > 0 and is_instance_valid(player) and player.controls_active and not player.is_dead():
 		sound_wait -= delta
 		if sound_wait <= 0 and global_position.distance_to(player.global_position) < combat_audio.enemy_range:
@@ -147,9 +152,18 @@ func receive_damage(amount: int) -> bool:
 		collision_mask = 0
 		if mobile:
 			mobile.set_state("corpse")
+			if loot_enabled:
+				var target := preload("res://scripts/corpse_target.gd").new()
+				target.actor = self
+				add_child(target)
 		else:
 			visible = false
 	elif mobile:
 		melee.cancel()
 		mobile.set_state("hurt")
 	return true
+
+func suspend_for_modal() -> void:
+	melee.cancel()
+	if mobile and mobile.state == "attack":
+		mobile.set_state("idle")

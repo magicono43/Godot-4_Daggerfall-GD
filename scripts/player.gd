@@ -32,8 +32,12 @@ var ray: RayCast3D
 var spawn := Vector3.ZERO
 var interact_target: Node
 var controls_active := true
+var modal_open := false
+var inventory := preload("res://scripts/inventory.gd").new()
+signal loot_requested(corpse: CharacterBody3D)
 
 func _ready() -> void:
+	inventory.equip(inventory.add_item("dagger"))
 	health.maximum = 100
 	health.current = health.maximum
 	health.died.connect(die)
@@ -59,7 +63,8 @@ func _ready() -> void:
 	combat.setup(camera)
 	ray = RayCast3D.new()
 	ray.target_position = Vector3(0, 0, -2.6)
-	ray.collision_mask = 1
+	ray.collision_mask = 5
+	ray.collide_with_areas = true
 	camera.add_child(ray)
 	var lantern := OmniLight3D.new()
 	lantern.light_color = Color(1.0, 0.79, 0.53)
@@ -81,6 +86,8 @@ func reload_movement() -> bool:
 	return loaded
 
 func _unhandled_input(event: InputEvent) -> void:
+	if modal_open:
+		return
 	if is_dead():
 		if event.is_action_pressed("reset"):
 			get_tree().reload_current_scene()
@@ -108,21 +115,21 @@ func _unhandled_input(event: InputEvent) -> void:
 		combat.toggle_sheath()
 	if InputMap.has_action("attack") and event.is_action_pressed("attack"):
 		combat.request_attack(self)
-	if event.is_action_pressed("interact") and interact_target and controls_active:
-		interact_target.interact()
+	if event.is_action_pressed("interact") and controls_active:
+		update_interaction()
+		if interact_target:
+			interact_target.interact()
 	if event.is_action_pressed("reset"):
 		get_tree().reload_current_scene()
 
 func _physics_process(delta: float) -> void:
+	if modal_open:
+		return
 	damage_flash = maxf(0.0, damage_flash - delta)
 	if is_dead():
 		return
 	combat.tick(self, delta)
-	interact_target = null
-	if ray.is_colliding():
-		var collider := ray.get_collider() as Node
-		if collider and collider.has_method("interact"):
-			interact_target = collider
+	update_interaction()
 	var grounded := is_grounded()
 	grounded_time = grounded_time + delta if grounded else 0.0
 	var tuning: Dictionary = movement.profile.values.locomotion
@@ -223,6 +230,8 @@ func _physics_process(delta: float) -> void:
 		flight_horizontal = Vector3.ZERO
 
 func _process(delta: float) -> void:
+	if modal_open:
+		return
 	var stepping: Dictionary = movement.profile.values.stepping
 	var filtered := step_camera_offset * exp(-float(stepping.camera_smoothing_rate) * delta)
 	step_camera_offset = move_toward(step_camera_offset, filtered, float(stepping.camera_smoothing_speed) * delta)
@@ -265,3 +274,11 @@ func die() -> void:
 	input_axes = Vector2.ZERO
 	stair_supported = false
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+func update_interaction() -> void:
+	interact_target = null
+	ray.force_raycast_update()
+	if ray.is_colliding():
+		var collider := ray.get_collider() as Node
+		if collider and collider.has_method("interact"):
+			interact_target = collider

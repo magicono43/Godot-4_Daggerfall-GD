@@ -78,3 +78,16 @@ prototype.enemies[].visual accepts "greybox" (default) or "skeleton". The hall t
 ### Optional enemy navigation policy
 
 prototype.enemies[].navigation_enabled is a boolean, default false. The hall Skeleton sets it true independently of approach_enabled and attack_enabled. main.enemy_navigation_enabled=false is an explicit stationary test override; normal play defaults true. Navigation uses local collision/floor probes and short tested detours, not authored waypoints or a navmesh. See ENEMY_NAVIGATION.md.
+
+## Prototype corpse test loot
+
+An optional `prototype.enemies[].test_loot` array marks an authored skeleton corpse
+as lootable. Only `visual="skeleton"` accepts it. An empty array gives an inspectable
+empty corpse; omitting the field leaves the enemy without loot interaction.
+Each of at most 32 entries requires a known `definition` from `item_catalog.gd`
+and an integer `quantity` from 1 to 10000. Nonstackable definitions require 1.
+Example: `"test_loot": [{"definition": "gold", "quantity": 12}]`.
+
+This is test data, not an original loot table. Runtime contents are constructed
+once per scene, retained after transfer/reopening and reset on R. Mesh props and
+original archive records do not acquire loot behavior from their appearance.

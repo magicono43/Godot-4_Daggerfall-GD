@@ -1,9 +1,14 @@
-## Current status and next milestone — November 1, 2026
+## Current status � November 1, 2026
 
-Corrected combat audio has been playtested and accepted. The next agreed work is
-basic corpse looting, a simple player inventory and an equipped starting dagger;
-these features are not implemented yet. See [docs/HANDOFF.md](docs/HANDOFF.md) and
-[docs/NEXT_MILESTONE.md](docs/NEXT_MILESTONE.md) to continue in a new chat.
+Basic corpse looting and inventory are implemented. Defeat the hall skeleton,
+approach its remains, look down and press E. Select an item and click Take selected,
+or Take all. Close/Escape resumes gameplay; R resets inventory and loot. The
+window shows the equipped starting dagger and explicitly authored test loot
+(12 gold pieces, 2 bones). Movement and enemy combat/pursuit suspend while open.
+Inventory is currently viewed through the loot window; saving and equipment UI
+remain deferred. See [docs/INVENTORY.md](docs/INVENTORY.md),
+[docs/HANDOFF.md](docs/HANDOFF.md) and [docs/NEXT_MILESTONE.md](docs/NEXT_MILESTONE.md).
+Run.ps1 -Test now runs fourteen suites. Corrected combat audio remains accepted.
 
 ## Combat audio corrections — November 1, 2026
 

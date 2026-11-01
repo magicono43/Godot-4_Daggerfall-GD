@@ -1,0 +1,38 @@
+PASS Fresh player owns exactly one equipped dagger
+PASS Equipped item cannot leave its owner
+PASS Equipment cannot reference another inventory
+PASS Invalid definitions and quantities rejected
+PASS No equipped weapon prevents attack
+PASS No equipped weapon prevents draw toggle
+PASS Owned dagger can be equipped again
+PASS Equipped dagger permits existing attack
+PASS Only hall skeleton has authored test loot
+PASS Living target cannot open loot
+PASS Loot corpse stays visible and physically nonblocking
+PASS Nearby corpse can be targeted by interaction ray
+PASS Distant corpse cannot be targeted
+PASS Solid wall blocks corpse selection
+PASS Closed door in front of corpse retains interaction priority
+PASS E opens modal loot window and releases gameplay controls
+PASS Opening cancels pending player and enemy strikes immediately
+PASS Modal freezes player movement and enemy simulation
+PASS Modal rejects combat requests
+PASS Modal freezes enabled pursuit memory and steering
+PASS Actual pointer click selects a corpse row
+PASS Presentation can toggle while modal remains open
+PASS Actual Take selected button transfers item into player ownership
+PASS Repeated stale transfer cannot duplicate item
+PASS Escape closes and restores captured controls
+PASS Closing leaves attack cancelled
+PASS Reopening preserves remaining loot
+PASS Take All is repeat-safe and empties corpse
+PASS Actual Close click restores controls without starting an attack
+PASS Empty corpse remains inspectable
+PASS Outside RMB click cannot recapture controls or attack through modal
+PASS Close preserves pre-existing released controls
+PASS Death closes modal without recapturing controls
+PASS Scene restart restores clean inventory, equipment, living skeleton and loot
+PASS Actual R while looting restores a clean playable scene
+PASS Schema rejects unknown loot definitions
+PASS Schema rejects invalid loot quantities
+PASS Schema rejects stacked nonstackable items

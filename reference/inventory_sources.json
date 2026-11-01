@@ -1,0 +1,11 @@
+{
+  "repository": "https://github.com/Interkarma/daggerfall-unity",
+  "commit": "4e78e1412b17b60f4d5d6073825775aa5ae95139",
+  "files": {
+    "Assets/Scripts/Game/Items/DaggerfallUnityItem.cs": "94ee4fc8b00847ae626d3c64c42736407f7e860f2a8ed64bd689e3c50dfff027"
+  },
+  "notes": [
+    "Existing pinned local snapshot, not updated.",
+    "UID, template identity, stackCount and equipment distinction inform the prototype model; complete DFU collections, UI and loot tables are not implemented."
+  ]
+}

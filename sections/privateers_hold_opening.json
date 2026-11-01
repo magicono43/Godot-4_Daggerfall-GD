@@ -448,7 +448,8 @@
         "approach_enabled": false,
         "attack_enabled": true,
         "visual": "skeleton",
-        "navigation_enabled": true
+        "navigation_enabled": true,
+        "test_loot": [{"definition": "gold", "quantity": 12}, {"definition": "bone", "quantity": 2}]
       }
     ],
     "boundaries": [

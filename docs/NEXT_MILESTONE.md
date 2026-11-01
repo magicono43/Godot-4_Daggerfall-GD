@@ -1,7 +1,13 @@
+# Status — November 1, 2026
+
+The basic corpse looting/inventory increment below is now implemented.
+See [INVENTORY.md](INVENTORY.md) for shipped behavior and [HANDOFF.md](HANDOFF.md)
+for verification. User in-game playtesting is next; no further milestone has been
+agreed. The original agreed scope below is retained as its acceptance record.
+
 # Next milestone: basic corpse looting and inventory
 
-Agreed with the user November 1, 2026, for a new chat. This is a plan, not an
-implemented feature. Read AGENTS.md and HANDOFF.md, inspect the current scripts
+Agreed with the user November 1, 2026, for a new chat. This was the preimplementation plan. Read AGENTS.md and HANDOFF.md, inspect the current scripts
 and relevant pinned DFU references, then proceed in a small playable increment.
 
 ## Agreed playable scope

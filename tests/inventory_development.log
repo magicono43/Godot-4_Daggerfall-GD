@@ -1,0 +1,57 @@
+ERROR: Failed to open 'user://logs/godot2026-11-01T14.41.39.log'.
+   at: copy (core/io/dir_access.cpp:429)
+ERROR: Failed to open log file for writing: user://logs/godot.log
+   at: rotate_file (core/io/logger.cpp:169)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Fresh player owns exactly one equipped dagger position=(7.25, 12.8, 16.2) mode=walking
+PASS Equipped item cannot leave its owner position=(7.25, 12.8, 16.2) mode=walking
+PASS Equipment cannot reference another inventory position=(7.25, 12.8, 16.2) mode=walking
+PASS Invalid definitions and quantities rejected position=(7.25, 12.8, 16.2) mode=walking
+PASS No equipped weapon prevents attack position=(7.25, 12.8, 16.2) mode=walking
+PASS No equipped weapon prevents draw toggle position=(7.25, 12.8, 16.2) mode=walking
+PASS Owned dagger can be equipped again position=(7.25, 12.8, 16.2) mode=walking
+PASS Equipped dagger permits existing attack position=(7.25, 12.8, 16.2) mode=walking
+PASS Only hall skeleton has authored test loot position=(7.25, 12.8, 16.2) mode=walking
+PASS Living target cannot open loot position=(7.25, 12.8, 16.2) mode=walking
+PASS Loot corpse stays visible and physically nonblocking position=(7.25, 12.8, 16.2) mode=walking
+PASS Nearby corpse can be targeted by interaction ray position=(10.25, 12.8, 19.3) mode=reset
+PASS Distant corpse cannot be targeted position=(10.25, 12.8, 21.8) mode=reset
+PASS Solid wall blocks corpse selection position=(10.25, 12.8, 19.3) mode=reset
+PASS Closed door in front of corpse retains interaction priority position=(10.25, 12.8, 19.3) mode=reset
+PASS E opens modal loot window and releases gameplay controls position=(10.25, 12.8, 19.3) mode=reset
+PASS Opening cancels pending player and enemy strikes immediately position=(10.25, 12.8, 19.3) mode=reset
+PASS Modal freezes player movement and enemy simulation position=(10.25, 12.8, 19.3) mode=reset
+PASS Modal rejects combat requests position=(10.25, 12.8, 19.3) mode=reset
+PASS Modal freezes enabled pursuit memory and steering position=(10.25, 12.8, 19.3) mode=reset
+PASS Actual pointer click selects a corpse row position=(10.25, 12.8, 19.3) mode=reset
+PASS Presentation can toggle while modal remains open position=(10.25, 12.8, 19.3) mode=reset
+PASS Actual Take selected button transfers item into player ownership position=(10.25, 12.8, 19.3) mode=reset
+PASS Repeated stale transfer cannot duplicate item position=(10.25, 12.8, 19.3) mode=reset
+PASS Escape closes and restores captured controls position=(10.25, 12.8, 19.3) mode=reset
+PASS Closing leaves attack cancelled position=(10.25, 12.8, 19.3) mode=reset
+PASS Reopening preserves remaining loot position=(10.25, 12.8, 19.3) mode=reset
+PASS Take All is repeat-safe and empties corpse position=(10.25, 12.8, 19.3) mode=reset
+PASS Actual Close click restores controls without starting an attack position=(10.25, 12.8, 19.3) mode=reset
+PASS Empty corpse remains inspectable position=(10.25, 12.8, 19.3) mode=reset
+PASS Outside RMB click cannot recapture controls or attack through modal position=(10.25, 12.8, 19.3) mode=reset
+PASS Close preserves pre-existing released controls position=(10.25, 12.8, 19.3) mode=reset
+PASS Death closes modal without recapturing controls position=(10.25, 12.8, 19.3) mode=reset
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Scene restart restores clean inventory, equipment, living skeleton and loot position=(7.25, 12.84445, 16.2) mode=walking
+SCRIPT ERROR: Cannot call method 'set_input_as_handled' on a null value.
+   at: _input (res://scripts/main.gd:307)
+   GDScript backtrace (most recent call first):
+       [0] _input (res://scripts/main.gd:307)
+       [1] key (res://tests/inventory.gd:10)
+       [2] run (res://tests/inventory.gd:161)
+       [3] frames (res://tests/climbing.gd:12)
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Actual R while looting restores a clean playable scene position=(7.25, 12.84445, 16.2) mode=walking
+PASS Schema rejects unknown loot definitions position=(7.25, 12.84445, 16.2) mode=walking
+PASS Schema rejects invalid loot quantities position=(7.25, 12.84445, 16.2) mode=walking
+PASS Schema rejects stacked nonstackable items position=(7.25, 12.84445, 16.2) mode=walking
+INVENTORY RESULTS: 38/38

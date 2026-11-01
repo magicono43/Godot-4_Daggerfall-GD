@@ -27,6 +27,7 @@ var ready_to_play := false
 var use_original_start := false
 var enemy_navigation_enabled := true
 var combat_audio: Node
+var loot_window: Control
 
 func _ready() -> void:
 	configure_input()
@@ -96,6 +97,11 @@ func _ready() -> void:
 	player.combat_audio = combat_audio
 	player.name = "Player"
 	world_root.add_child(player)
+	loot_window = preload("res://scripts/loot_window.gd").new()
+	loot_window.actor = player
+	presentation.hud.add_child(loot_window)
+	player.loot_requested.connect(loot_window.open)
+	player.health.died.connect(loot_window.close)
 	player.spawn = classic.provenance.start + Vector3.UP * 0.1
 	player.position = player.spawn
 	# Face the centre of the original cave opening from the original enter marker.
@@ -118,6 +124,9 @@ func _ready() -> void:
 		placeholder.sprite_payload = classic.enemy_visuals.get(entry.get("visual", "greybox"), {})
 		placeholder.combat_audio = combat_audio
 		placeholder.name = entry.id
+		placeholder.loot_enabled = entry.has("test_loot")
+		for item in entry.get("test_loot", []):
+			placeholder.loot.add_item(item.definition, int(item.quantity))
 		placeholder.player = player
 		placeholder.position = classic.to_world(entry.position_native)
 		world_root.add_child(placeholder)
@@ -239,7 +248,7 @@ func create_hud() -> void:
 	crosshair.position -= Vector2(5, 13)
 	root.add_child(crosshair)
 	var controls := Label.new()
-	controls.text = "WASD Move  |  Ctrl Toggle crouch  |  Shift Run  |  Space Jump  |  E Door  |  RMB Attack  |  Z Draw/Sheath  |  Esc Mouse  |  R Restart\nClimb: W into wall or S over ledge  |  W/S Up/Down  |  A/D Along wall  |  Space Eject\nF2 View  |  F3 Reload movement  |  F4 Movement diagnostics"
+	controls.text = "WASD Move  |  Ctrl Toggle crouch  |  Shift Run  |  Space Jump  |  E Interact  |  RMB Attack  |  Z Draw/Sheath  |  Esc Mouse  |  R Restart\nClimb: W into wall or S over ledge  |  W/S Up/Down  |  A/D Along wall  |  Space Eject\nF2 View  |  F3 Reload movement  |  F4 Movement diagnostics"
 	controls.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
 	controls.position = Vector2(29, -82)
 	controls.add_theme_font_size_override("font_size", 14)
@@ -248,8 +257,12 @@ func create_hud() -> void:
 func _process(_delta: float) -> void:
 	if not ready_to_play:
 		return
-	prompt.text = "E  |  " + ("Close door" if player.interact_target.opened else "Open door") if player.interact_target else ""
-	if not player.controls_active:
+	prompt.text = ""
+	if player.interact_target:
+		prompt.text = "E  |  Loot remains" if player.interact_target is Area3D else "E  |  " + ("Close door" if player.interact_target.opened else "Open door")
+	if player.modal_open:
+		prompt.text = ""
+	elif not player.controls_active:
 		prompt.text = "Mouse released | Click to resume"
 	status.text = "Starting room > Door %s > Enemy %s\n%s  |  %d triangles  |  %d materials  |  %d billboards" % ["opened" if door_used else "waiting", "encountered" if encounter else "unseen", classic.provenance.block, classic.triangle_count, classic.texture_count, billboard_nodes.size()]
 	status.text += "\nView: %s  |  %.0f vertical FOV  |  Eye height %.2f m" % [presentation.profile, player.camera.fov, player.camera.position.y]
@@ -285,6 +298,18 @@ func capture_preview() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if ready_to_play and player.modal_open:
+		if event.is_action_pressed("release_mouse"):
+			loot_window.close()
+			get_viewport().set_input_as_handled()
+		elif event.is_action_pressed("reset"):
+			# Reload removes this node from its viewport immediately.
+			get_viewport().set_input_as_handled()
+			get_tree().reload_current_scene()
+		elif event.is_action_pressed("toggle_view"):
+			presentation.set_profile("widescreen" if presentation.profile == "dfu_reference" else "dfu_reference")
+			get_viewport().set_input_as_handled()
+		return
 	if event.is_action_pressed("toggle_view"):
 		presentation.set_profile("widescreen" if presentation.profile == "dfu_reference" else "dfu_reference")
 		get_viewport().set_input_as_handled()

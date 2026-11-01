@@ -1,3 +1,44 @@
+# Resume here — November 1, 2026: corpse looting and inventory
+
+Basic corpse looting/inventory is implemented and reviewed. The next step is the
+user's in-game playtest; no further milestone is agreed. See INVENTORY.md for
+controls, ownership, modal integration and deferred scope. NEXT_MILESTONE.md now
+marks the previous plan as implemented. The audio state below remains accepted.
+
+Defeat the hall skeleton, approach its original nonblocking corpse, look down and
+press E. Take selected/Take all moves authored test loot (12 gold pieces, 2 bones)
+into player inventory. Close/Escape resumes prior controls; R resets all contents.
+Inventory is viewed through this window only. The starting dagger is an owned,
+equipped instance and gates draw/attack/display without changing swing timing.
+No saving, random loot, original item templates or equipment management UI yet.
+
+Implementation: item_catalog.gd and inventory.gd separate definitions, instance
+identity/ownership and equipment. corpse_target.gd adds a nonsolid layer-4 Area3D;
+the player's 2.6 m interaction ray includes layers 1+4 and refreshes on E. Doors
+and walls retain first-obstruction priority. Only skeleton entries with validated
+prototype.test_loot get corpse targeting; furniture and passive chamber behavior
+are unchanged. See SECTION_FORMAT.md and reference/inventory_sources.json.
+
+loot_window.gd lives on the presentation HUD. player.modal_open freezes player
+and enemy simulation; opening immediately cancels pending strikes. main stops
+world event forwarding while the root UI receives clicks. Close/death restore
+appropriate capture state without a world attack. R while modal marks input
+handled before reload, since reload immediately detaches the old scene.
+
+Final validation: **734/734 headless checks across fourteen suites**, including
+38 inventory checks; **38/38 rendered inventory checks**. Reports:
+tests/inventory_full_regression.log and tests/inventory_rendered.log. Actual GUI
+pointer selection, Take selected/Take all/Close, outside RMB isolation, Escape,
+actual R after death and during looting, geometry targeting, transfers, equipment
+and modal suspension are covered. loot_4_3.png, loot_widescreen.png and
+loot_empty.png were visually inspected. Review found and fixed the modal restart
+ordering error; no unresolved gameplay failures were found. Existing restricted
+host logging/certificate and accelerated-exit diagnostics remain nonblocking.
+User gameplay verification remains pending.
+
+The historical handoff entries below describe preceding milestones and their
+then-current scope/counts; use the current entry above for inventory status.
+
 # Resume here â€” November 1, 2026
 
 Read AGENTS.md first. The user has playtested the corrected combat audio and says

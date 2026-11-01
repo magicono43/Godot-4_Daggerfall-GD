@@ -102,6 +102,16 @@ func validate(value: Variant) -> bool:
 				return fail(entry.id + " attack_enabled must be a boolean")
 			if group == "enemies" and entry.get("visual", "greybox") not in ["greybox", "skeleton"]:
 				return fail(entry.id + " visual must be greybox or skeleton")
+			if group == "enemies" and entry.has("test_loot"):
+				if entry.get("visual", "greybox") != "skeleton" or not entry.test_loot is Array or entry.test_loot.size() > 32:
+					return fail(entry.id + " test_loot requires skeleton and at most 32 entries")
+				for item in entry.test_loot:
+					if not item is Dictionary or not item.get("definition") is String or not preload("res://scripts/item_catalog.gd").valid(item.definition):
+						return fail(entry.id + " test_loot has unknown item definition")
+					if not integer(item.get("quantity"), 10000) or item.quantity < 1:
+						return fail(entry.id + " test_loot requires quantity 1..10000")
+					if item.quantity != 1 and not preload("res://scripts/item_catalog.gd").DEFINITIONS[item.definition].stackable:
+						return fail(entry.id + " test_loot cannot stack this item")
 			if group == "lights" and (not number(entry.get("energy")) or entry.energy < 0 or not number(entry.get("range_metres")) or entry.range_metres <= 0):
 				return fail(entry.id + " requires non-negative energy and positive range_metres")
 	definition = value.duplicate(true)
