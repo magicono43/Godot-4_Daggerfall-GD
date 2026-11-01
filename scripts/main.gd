@@ -18,6 +18,8 @@ var door: AnimatableBody3D
 var enemy: CharacterBody3D
 var prompt: Label
 var status: Label
+var player_status: Label
+var damage_overlay: ColorRect
 var movement_status: Label
 var encounter := false
 var door_used := false
@@ -103,6 +105,7 @@ func _ready() -> void:
 		var placeholder := CharacterBody3D.new()
 		placeholder.set_script(Enemy)
 		placeholder.approach_enabled = entry.get("approach_enabled", true)
+		placeholder.melee.enabled = entry.get("attack_enabled", false)
 		placeholder.name = entry.id
 		placeholder.player = player
 		placeholder.position = classic.to_world(entry.position_native)
@@ -118,6 +121,11 @@ func _ready() -> void:
 		capture_preview()
 
 func configure_input() -> void:
+	if not InputMap.has_action("attack"):
+		InputMap.add_action("attack")
+		var click := InputEventMouseButton.new()
+		click.button_index = MOUSE_BUTTON_LEFT
+		InputMap.action_add_event("attack", click)
 	var keys := {"crouch": KEY_CTRL, "forward": KEY_W, "back": KEY_S, "left": KEY_A, "right": KEY_D, "sprint": KEY_SHIFT, "jump": KEY_SPACE, "interact": KEY_E, "release_mouse": KEY_ESCAPE, "reset": KEY_R, "toggle_view": KEY_F2, "reload_movement": KEY_F3, "movement_debug": KEY_F4}
 	for action in keys:
 		if not InputMap.has_action(action):
@@ -176,6 +184,18 @@ func create_hud() -> void:
 	canvas.add_child(root)
 	presentation.hud = root
 	presentation.update_layout()
+	damage_overlay = ColorRect.new()
+	damage_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	root.add_child(damage_overlay)
+	damage_overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	damage_overlay.color = Color(0.7, 0.02, 0.02, 0)
+	player_status = Label.new()
+	root.add_child(player_status)
+	player_status.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)
+	player_status.position += Vector2(-260, 24)
+	player_status.size = Vector2(230, 60)
+	player_status.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	player_status.add_theme_font_size_override("font_size", 20)
 	var title := Label.new()
 	title.text = "PRIVATEER'S HOLD"
 	title.position = Vector2(28, 22)
@@ -208,7 +228,7 @@ func create_hud() -> void:
 	crosshair.position -= Vector2(5, 13)
 	root.add_child(crosshair)
 	var controls := Label.new()
-	controls.text = "WASD Move  |  Ctrl Toggle crouch  |  Shift Run  |  Space Jump  |  E Door  |  Esc Mouse  |  R Restart\nClimb: W into wall or S over ledge  |  W/S Up/Down  |  A/D Along wall  |  Space Eject\nF2 View  |  F3 Reload movement  |  F4 Movement diagnostics"
+	controls.text = "WASD Move  |  Ctrl Toggle crouch  |  Shift Run  |  Space Jump  |  E Door  |  LMB Attack  |  Esc Mouse  |  R Restart\nClimb: W into wall or S over ledge  |  W/S Up/Down  |  A/D Along wall  |  Space Eject\nF2 View  |  F3 Reload movement  |  F4 Movement diagnostics"
 	controls.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
 	controls.position = Vector2(29, -82)
 	controls.add_theme_font_size_override("font_size", 14)
@@ -223,7 +243,21 @@ func _process(_delta: float) -> void:
 	status.text = "Starting room > Door %s > Enemy %s\n%s  |  %d triangles  |  %d materials  |  %d billboards" % ["opened" if door_used else "waiting", "encountered" if encounter else "unseen", classic.provenance.block, classic.triangle_count, classic.texture_count, billboard_nodes.size()]
 	status.text += "\nView: %s  |  %.0f vertical FOV  |  Eye height %.2f m" % [presentation.profile, player.camera.fov, player.camera.position.y]
 	if encounter:
-		status.text += "\nPlaceholder enemy has noticed you. Combat is outside this experiment."
+		status.text += "\nEnemy has noticed you."
+	if player.combat.feedback_time > 0 and player.controls_active:
+		prompt.text = player.combat.feedback
+	for target in enemies:
+		if target.name == "hall_combat_target":
+			status.text += "\nHall target: %d / %d HP%s" % [target.health.current, target.health.maximum, " - defeated (R to restart)" if target.health.current == 0 else ""]
+	player_status.text = "Health: %d / %d" % [player.health.current, player.health.maximum]
+	player_status.modulate = Color(1, 0.45, 0.35) if player.damage_flash > 0 else Color.WHITE
+	damage_overlay.color.a = 0.28 * player.damage_flash / 0.3
+	if player.is_dead():
+		prompt.text = "You have died | R to restart"
+		player_status.text += "\nDEAD"
+		damage_overlay.color.a = 0.16
+	# Status grows when targets/encounters are shown; diagnostics follow its height.
+	movement_status.position.y = status.position.y + status.get_minimum_size().y + 12.0
 	movement_status.visible = player.show_movement_debug or not player.movement.profile.error.is_empty()
 	if movement_status.visible:
 		movement_status.text = player.movement_debug_text()

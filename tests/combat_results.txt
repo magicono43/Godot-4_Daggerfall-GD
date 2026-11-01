@@ -1,0 +1,20 @@
+PASS Idle accepts attack
+PASS Windup rejects another attack
+PASS Windup applies no early damage
+PASS Strike applies exactly ten damage
+PASS Recovery rejects another attack
+PASS One swing never repeats damage
+PASS Solid obstruction blocks melee
+PASS Out of reach target takes no damage
+PASS Released mouse prevents attack
+PASS Mouse recapture does not attack
+PASS Attached climbing prevents attacks
+PASS Releasing controls cancels pending strike
+PASS Third hit kills and removes blocking collision
+PASS Dead target rejects further damage
+PASS Negative damage cannot heal
+PASS Overkill clamps health to zero
+PASS Hall addition preserves chamber enemy alias
+PASS Hall target rests on spawn floor nearby
+PASS Original hall target receives melee damage
+PASS Fresh scene restores targets and attack state

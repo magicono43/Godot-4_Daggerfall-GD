@@ -1,5 +1,12 @@
 extends CharacterBody3D
-## Deliberately non-combat enemy: notices, approaches, and stops at a safe distance.
+## Greybox enemy; authored attack and approach policies are independent.
+const Melee = preload("res://scripts/enemy_melee.gd")
+var melee := Melee.new()
+var body_mesh: MeshInstance3D
+const Health = preload("res://scripts/health.gd")
+var health := Health.new()
+var body_material: StandardMaterial3D
+var hit_flash := 0.0
 var player: CharacterBody3D
 var home := Vector3.ZERO
 var noticed := false
@@ -22,11 +29,13 @@ func _ready() -> void:
 	mesh.radius = 0.32
 	mesh.height = 0.8
 	body.mesh = mesh
+	body_mesh = body
 	body.position.y = 0.4
 	var material := StandardMaterial3D.new()
 	material.albedo_color = Color(0.55, 0.16, 0.12)
 	material.roughness = 0.9
 	body.material_override = material
+	body_material = material
 	add_child(body)
 	for x in [-0.12, 0.12]:
 		var eye := MeshInstance3D.new()
@@ -44,7 +53,13 @@ func _ready() -> void:
 	home = position
 
 func _physics_process(delta: float) -> void:
-	if not player:
+	hit_flash = maxf(0.0, hit_flash - delta)
+	melee.tick(self, delta)
+	var charging: bool = melee.phase == "windup"
+	body_material.albedo_color = Color(1, 0.8, 0.6) if hit_flash > 0 else (Color(1, 0.55, 0.08) if charging else Color(0.55, 0.16, 0.12))
+	# Lean toward the committed strike direction; collision stays feet-anchored.
+	body_mesh.rotation.x = -0.3 * (1.0 - melee.remaining / melee.windup) if charging else 0.0
+	if health.current <= 0 or not player:
 		return
 	var offset := player.global_position - global_position
 	var distance := offset.length()
@@ -56,13 +71,13 @@ func _physics_process(delta: float) -> void:
 			noticed = true
 			encountered.emit()
 		offset.y = 0
-		if approach_enabled and offset.length() > 1.8 and position.distance_to(home) < 4:
+		if approach_enabled and melee.phase == "idle" and not player.is_dead() and offset.length() > 1.8 and position.distance_to(home) < 4:
 			velocity.x = offset.normalized().x * 0.8
 			velocity.z = offset.normalized().z * 0.8
 		else:
 			velocity.x = 0
 			velocity.z = 0
-		if offset.length() > 0.1:
+		if offset.length() > 0.1 and melee.phase != "windup":
 			look_at(global_position + offset, Vector3.UP)
 	else:
 		velocity.x = 0
@@ -72,3 +87,15 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.y = -0.2
 	move_and_slide()
+
+func receive_damage(amount: int) -> bool:
+	if not health.apply_damage(amount):
+		return false
+	hit_flash = 0.15
+	if health.current == 0:
+		melee.cancel()
+		velocity = Vector3.ZERO
+		collision_layer = 0
+		collision_mask = 0
+		visible = false
+	return true

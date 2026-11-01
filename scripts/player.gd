@@ -1,4 +1,9 @@
 extends CharacterBody3D
+const Health = preload("res://scripts/health.gd")
+var health := Health.new()
+var damage_flash := 0.0
+const Combat = preload("res://scripts/melee_combat.gd")
+var combat := Combat.new()
 const Movement = preload("res://scripts/movement_model.gd")
 const Steps = preload("res://scripts/step_solver.gd")
 var movement := Movement.new()
@@ -27,6 +32,9 @@ var interact_target: Node
 var controls_active := true
 
 func _ready() -> void:
+	health.maximum = 100
+	health.current = health.maximum
+	health.died.connect(die)
 	collision_layer = 2
 	collision_mask = 1
 	reload_movement()
@@ -46,6 +54,7 @@ func _ready() -> void:
 	camera.near = 0.06
 	add_child(camera)
 	camera.current = true
+	combat.setup(camera)
 	ray = RayCast3D.new()
 	ray.target_position = Vector3(0, 0, -2.6)
 	ray.collision_mask = 1
@@ -70,6 +79,10 @@ func reload_movement() -> bool:
 	return loaded
 
 func _unhandled_input(event: InputEvent) -> void:
+	if is_dead():
+		if event.is_action_pressed("reset"):
+			get_tree().reload_current_scene()
+		return
 	if event is InputEventMouseMotion and controls_active:
 		var look: Dictionary = movement.profile.values.look
 		var limit := deg_to_rad(float(look.max_pitch_degrees))
@@ -83,15 +96,24 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("release_mouse"):
 		controls_active = not controls_active
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if controls_active else Input.MOUSE_MODE_VISIBLE
+		if not controls_active:
+			combat.cancel()
 	if event is InputEventMouseButton and event.pressed and not controls_active:
 		controls_active = true
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		return
+	if InputMap.has_action("attack") and event.is_action_pressed("attack"):
+		combat.request_attack(self)
 	if event.is_action_pressed("interact") and interact_target and controls_active:
 		interact_target.interact()
 	if event.is_action_pressed("reset"):
 		get_tree().reload_current_scene()
 
 func _physics_process(delta: float) -> void:
+	damage_flash = maxf(0.0, damage_flash - delta)
+	if is_dead():
+		return
+	combat.tick(self, delta)
 	interact_target = null
 	if ray.is_colliding():
 		var collider := ray.get_collider() as Node
@@ -186,6 +208,7 @@ func _physics_process(delta: float) -> void:
 		step_camera_offset -= global_position.y - before.origin.y
 	if position.y < -10:
 		climbing.reset()
+		combat.cancel()
 		position = spawn
 		crouch.reset(self)
 		velocity = Vector3.ZERO
@@ -215,3 +238,24 @@ func movement_debug_text() -> String:
 		result += "\n" + movement.profile.error
 	return result
 
+
+func is_dead() -> bool:
+	return health.current <= 0
+
+func receive_damage(amount: int) -> bool:
+	if not health.apply_damage(amount):
+		return false
+	damage_flash = 0.3
+	return true
+
+func die() -> void:
+	controls_active = false
+	interact_target = null
+	combat.cancel()
+	combat.weapon.visible = false
+	climbing.reset()
+	velocity = Vector3.ZERO
+	flight_horizontal = Vector3.ZERO
+	input_axes = Vector2.ZERO
+	stair_supported = false
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

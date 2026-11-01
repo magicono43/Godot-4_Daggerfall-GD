@@ -1,3 +1,11 @@
+## Stationary enemy combat — October 31, 2026
+
+The red hall enemy now fights back when you enter melee range. It flashes orange and leans forward for 0.65 seconds before striking; back away or use cover to avoid damage. It stays in place. Player health starts at 100, enemy strikes deal 10 damage, and a red screen flash marks damage. Death stops gameplay actions; R restarts with full health and restores enemies. Escape suspends enemy attacks while the mouse is released. The chamber enemy remains passive. F4 diagnostics now sit below the status text without overlap. See [docs/COMBAT.md](docs/COMBAT.md). Run.ps1 -Test runs nine suites, including retaliation.
+
+## Current combat milestone — October 31, 2026
+
+Left-click attacks with a greybox melee blade. A stationary red combat target now stands near the great-hall spawn; aim down at the short target and approach within reach. Each target has 30 HP and takes three hits to defeat. R restarts and restores targets. The chamber enemy remains stationary. Hit feedback and hall-target health appear in the HUD. Enemy retaliation and RPG damage formulas are deferred. See [docs/COMBAT.md](docs/COMBAT.md) for scope, source evidence and architecture. Run.ps1 -Test now includes the combat suite alongside the seven existing suites; older milestone counts below are historical.
+
 ## Current crouching playtest (October 31, 2026)
 
 Press **Ctrl** to toggle crouching; press it again to request standing when clear. Jumping retains crouch through flight and landing. The custom crouch test passage and sign have been removed; crouching remains available throughout the dungeon. The original dungeon geometry remains unchanged. Crouching uses DFU-derived capsule/eye proportions and live speed formulas; stealth and skills remain deferred. See docs/CROUCHING.md. Run.ps1 -Test now runs seven suites including crouching.

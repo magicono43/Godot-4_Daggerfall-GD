@@ -1,0 +1,24 @@
+PASS In-range enemy visibly telegraphs attack
+PASS Windup does not damage player early
+PASS Strike applies ten damage with player feedback
+PASS Recovery prevents repeated damage
+PASS Attacking enemy remains stationary
+PASS Backing out during windup avoids strike
+PASS Moving behind committed attack avoids strike
+PASS Different floor height is outside enemy melee
+PASS Cover inserted during windup blocks strike
+PASS Released mouse cancels and suspends attacks
+PASS Enemy targets actual crouched capsule centre
+PASS Closing hinged door during windup prevents damage
+PASS Opening hinged door permits subsequent strike
+PASS Killing windup enemy cancels its pending damage
+PASS Lethal player damage is accepted
+PASS Death clears attacks, climbing, controls and cached motion
+PASS Dead player cannot move, jump or attack
+PASS Dead player cannot recapture controls or take repeated damage
+PASS Section enables only stationary hall retaliation
+PASS Section rejects non-boolean attack_enabled
+PASS Diagnostics follow expanded status without overlap
+PASS Authored hall enemy damages player in original geometry
+PASS Death HUD shows restart instruction and zero health
+PASS R through gameplay viewport reloads healthy player and enemy after death

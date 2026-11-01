@@ -2,7 +2,15 @@
 
 Read `AGENTS.md` first. This document records the current state and decisions from the development conversation; inspect the relevant code before changing it. The detailed documents linked below are the implementation references. Older chronological sections in README can describe earlier milestones; the current scope and spawn are recorded here and in GREAT_HALL_EXPANSION.md.
 
-## Current milestone — October 31, 2026
+## Latest milestone: enemy attacks and player health — October 31, 2026
+
+The hall target now has attack_enabled=true while retaining approach_enabled=false. The chamber target stays passive (attack_enabled defaults false); both positions and hall spawn are preserved. enemy_melee.gd owns the opt-in attack state: 1.8 m horizontal range, 0.65 s orange wind-up/forward lean, committed direction, strike-time range/height/yaw/line-of-sight checks, 10 damage, 1 s recovery. No chasing. Player health starts at 100; red damage feedback and upper-right health display are present. Death freezes gameplay actions, clears climbing/combat/cached motion and releases the mouse; R reloads via the normal gameplay viewport. Escape cancels/suspends attacks for testing. F4 diagnostics now follow status height, fixing the review finding. Verification: 538/538 headless across nine suites; rendered retaliation 24/24. Wind-up, player damage/death and F4 layout captures were visually inspected. Reports: tests/retaliation_full_regression.log and tests/retaliation_visual.log. See COMBAT.md for scope and tests. The following player-only combat notes are historical where they defer retaliation/player health.
+
+## Previous combat milestone — October 31, 2026
+
+Basic deterministic player-to-enemy melee is implemented; see COMBAT.md. LMB triggers wind-up, one 10-damage strike, then recovery. Greybox targets have 30 HP; death hides/disables them and R restores the scene. A second stationary target is authored near the hall spawn at [920,-512,960]. The chamber enemy remains first with approach_enabled=false. Hall spawn and original geometry are preserved. Combat sources are pinned separately in reference/combat_sources.json at the unchanged movement commit. No enemy retaliation, player damage or RPG formulas yet. Verification: 514/514 headless checks across eight suites, rendered combat 20/20, and combat_preview.png visually inspected. Reports: tests/combat_full_regression.log and tests/combat_visual.log. The following pre-combat notes are historical where they describe combat as unimplemented.
+
+## Previous milestone — October 31, 2026
 
 The user is happy with crouching and plans to continue in a new chat, probably with combat. Climbing and crouching are accepted playable movement milestones; skill/slip/stealth progression remains deferred. The next chat should inspect current code and propose a focused combat scope before broadening it. Combat has not been started. Preserve the hall spawn, original-data boundaries and approach_enabled=false enemy baseline unless the next task deliberately changes those behaviors.
 

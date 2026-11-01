@@ -82,3 +82,7 @@
 - crouch_motor.gd owns the 0.9 m posture, feet-anchored capsule and camera transition. Lower the eye before shrinking; verify full standing-volume clearance before expanding. Keep airborne jump momentum, grounded stair handling and standing climbing ownership intact. The custom hall crouch fixture has been removed; keep test geometry isolated from normal gameplay; Run.ps1 -Test includes crouching.gd. See docs/CROUCHING.md.
 
 - Ctrl is a crouch toggle, not a held stance. Space preserves crouched height, eye level and toggle through jumping/landing. A stand toggle still requires full-volume clearance; new airborne toggles queue until landing, while an in-progress ground crouch may complete during a jump.
+
+- Basic melee uses melee_combat.gd and reusable health.gd; prototype timing/damage are separate from DFU-derived targeting dimensions. Keep the hall combat target and chamber enemy stationary, preserve the first-enemy alias, and include tests/combat.gd in Run.ps1 -Test. See docs/COMBAT.md and reference/combat_sources.json.
+
+- Stationary retaliation is opt-in via prototype.enemies[].attack_enabled (default false); only the hall target enables it. enemy_melee.gd rechecks range/height/facing/obstruction at strike time; keep player health/death separate from movement. Mouse release suspends enemy attacks. Death clears climbing, attacks and cached motion; R restores the scene. Run.ps1 -Test includes retaliation.gd.

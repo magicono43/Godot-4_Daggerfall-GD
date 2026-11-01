@@ -1,0 +1,10 @@
+{
+  "repository": "https://github.com/Interkarma/daggerfall-unity",
+  "commit": "4e78e1412b17b60f4d5d6073825775aa5ae95139",
+  "files": {
+    "Assets/Scripts/Game/WeaponManager.cs": "00f905b0f1656d17933207c28004178465116c924687389de4e4d76a3d3b4018",
+    "Assets/Scripts/Game/Formulas/FormulaHelper.cs": "8f2d5286add95aab0ca279543debc0ff7d1a25bbc6d1e6aa1aba7a83a3773bc6",
+    "Assets/Scripts/Game/EnemyAttack.cs": "4ce3fe4ca93909f017a32aa6e600083f045e39192b8587f1a2b90dd5fae45b46",
+    "Assets/Scripts/Game/Entities/DaggerfallEntity.cs": "8da1b9e6be534321d0c8f4fdc793b3a9189928490f82b22390b63c67ea7301b5"
+  }
+}
