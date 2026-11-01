@@ -1,3 +1,7 @@
+## Skeleton enemy — October 31, 2026
+
+The hall combat target now uses the original Skeletal Warrior from ARENA2 TEXTURE.270, with eight directional views, idle/attack/hurt poses, native dimensions and an original corpse on death. Watch its axe animation: the strike now lands at frame 4, 0.4 seconds into the attack, replacing the orange prototype cue. Nonlethal hits interrupt it briefly. It remains stationary, takes three hits to defeat, and R restores it. The chamber enemy remains a passive greybox. Source archives stay external and read-only. See [docs/SKELETON.md](docs/SKELETON.md). Run.ps1 -Test runs ten suites.
+
 ## Stationary enemy combat — October 31, 2026
 
 The red hall enemy now fights back when you enter melee range. It flashes orange and leans forward for 0.65 seconds before striking; back away or use cover to avoid damage. It stays in place. Player health starts at 100, enemy strikes deal 10 damage, and a red screen flash marks damage. Death stops gameplay actions; R restarts with full health and restores enemies. Escape suspends enemy attacks while the mouse is released. The chamber enemy remains passive. F4 diagnostics now sit below the status text without overlap. See [docs/COMBAT.md](docs/COMBAT.md). Run.ps1 -Test runs nine suites, including retaliation.

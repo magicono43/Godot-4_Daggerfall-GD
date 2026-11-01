@@ -33,6 +33,10 @@ func can_reach(body: CharacterBody3D) -> bool:
 func tick(body: CharacterBody3D, delta: float) -> void:
 	if not enabled or body.health.current <= 0 or not is_instance_valid(body.player) or body.player.is_dead() or not body.player.controls_active:
 		cancel()
+		if body.mobile and body.mobile.state == "attack":
+			body.mobile.set_state("idle")
+		return
+	if body.mobile and body.mobile.state == "hurt":
 		return
 	if phase == "idle":
 		if can_reach(body):
@@ -43,9 +47,14 @@ func tick(body: CharacterBody3D, delta: float) -> void:
 				body.look_at(body.global_position + direction, Vector3.UP)
 			phase = "windup"
 			remaining = windup
+			if body.mobile:
+				body.mobile.set_state("attack")
 		return
 	remaining -= delta
-	if remaining > 0:
+	if phase == "windup" and body.mobile:
+		if not body.mobile.consume_strike():
+			return
+	elif remaining > 0:
 		return
 	if phase == "windup":
 		last_result = "miss"

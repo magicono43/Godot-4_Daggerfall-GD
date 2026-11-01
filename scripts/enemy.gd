@@ -2,6 +2,8 @@ extends CharacterBody3D
 ## Greybox enemy; authored attack and approach policies are independent.
 const Melee = preload("res://scripts/enemy_melee.gd")
 var melee := Melee.new()
+var sprite_payload: Dictionary = {}
+var mobile: Sprite3D
 var body_mesh: MeshInstance3D
 const Health = preload("res://scripts/health.gd")
 var health := Health.new()
@@ -24,6 +26,15 @@ func _ready() -> void:
 	shape.shape = capsule
 	shape.position.y = 0.4
 	add_child(shape)
+	if not sprite_payload.is_empty():
+		var height: float = sprite_payload.records[15].size_metres.y
+		capsule.height = height
+		shape.position.y = height * 0.5
+		mobile = preload("res://scripts/enemy_sprite.gd").new()
+		mobile.configure(sprite_payload)
+		add_child(mobile)
+		home = position
+		return
 	var body := MeshInstance3D.new()
 	var mesh := CapsuleMesh.new()
 	mesh.radius = 0.32
@@ -54,11 +65,13 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	hit_flash = maxf(0.0, hit_flash - delta)
+	if mobile:
+		mobile.tick(delta)
+	else:
+		var charging: bool = melee.phase == "windup"
+		body_material.albedo_color = Color(1, 0.8, 0.6) if hit_flash > 0 else (Color(1, 0.55, 0.08) if charging else Color(0.55, 0.16, 0.12))
+		body_mesh.rotation.x = -0.3 * (1.0 - melee.remaining / melee.windup) if charging else 0.0
 	melee.tick(self, delta)
-	var charging: bool = melee.phase == "windup"
-	body_material.albedo_color = Color(1, 0.8, 0.6) if hit_flash > 0 else (Color(1, 0.55, 0.08) if charging else Color(0.55, 0.16, 0.12))
-	# Lean toward the committed strike direction; collision stays feet-anchored.
-	body_mesh.rotation.x = -0.3 * (1.0 - melee.remaining / melee.windup) if charging else 0.0
 	if health.current <= 0 or not player:
 		return
 	var offset := player.global_position - global_position
@@ -97,5 +110,11 @@ func receive_damage(amount: int) -> bool:
 		velocity = Vector3.ZERO
 		collision_layer = 0
 		collision_mask = 0
-		visible = false
+		if mobile:
+			mobile.set_state("corpse")
+		else:
+			visible = false
+	elif mobile:
+		melee.cancel()
+		mobile.set_state("hurt")
 	return true

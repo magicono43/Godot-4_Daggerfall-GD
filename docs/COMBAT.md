@@ -1,3 +1,7 @@
+# Current Skeleton presentation
+
+The hall enemy now uses original Skeleton sprites and an animation-driven strike at 0.4 seconds, plus hurt interruption and a visible corpse. The following capsule/timer description records the earlier prototype; see [SKELETON.md](SKELETON.md) for current hall behavior. Health, player controls, live strike checks and stationary policy remain as described below.
+
 # Basic melee combat
 
 Left-click swings the greybox blade. Aim at the red target, including downward for the short placeholder. Move within reach; each click starts one attack, without hold-to-repeat or queued attacks. Escape releases controls and cancels a pending strike; the click that recaptures the mouse does not attack. Attached climbing disables attacks. Walking, jumping and crouching retain their existing behavior.

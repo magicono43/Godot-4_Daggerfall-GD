@@ -446,7 +446,8 @@
         "id": "hall_combat_target",
         "position_native": [920, -512, 960],
         "approach_enabled": false,
-        "attack_enabled": true
+        "attack_enabled": true,
+        "visual": "skeleton"
       }
     ],
     "boundaries": [

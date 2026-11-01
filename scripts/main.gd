@@ -106,6 +106,7 @@ func _ready() -> void:
 		placeholder.set_script(Enemy)
 		placeholder.approach_enabled = entry.get("approach_enabled", true)
 		placeholder.melee.enabled = entry.get("attack_enabled", false)
+		placeholder.sprite_payload = classic.enemy_visuals.get(entry.get("visual", "greybox"), {})
 		placeholder.name = entry.id
 		placeholder.player = player
 		placeholder.position = classic.to_world(entry.position_native)

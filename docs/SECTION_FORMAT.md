@@ -70,3 +70,7 @@ Run Run.ps1 -Test and Run.ps1 -Test -Visual. For focused visual QA run Godot wit
 ### Optional enemy attack policy
 
 Each prototype.enemies entry may set attack_enabled to a boolean (default false). It enables stationary melee retaliation independently of approach_enabled. The current hall target sets attack_enabled=true and approach_enabled=false; the chamber target remains passive. See COMBAT.md for prototype attack timing and player health.
+
+### Optional enemy visual
+
+prototype.enemies[].visual accepts "greybox" (default) or "skeleton". The hall target selects "skeleton", which requires original TEXTURE.270 and TEXTURE.306:1 to decode successfully before scene assembly. It uses native dimensions and an animation strike event; the placement remains an authored prototype, not an imported original enemy population. See SKELETON.md.

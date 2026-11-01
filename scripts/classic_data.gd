@@ -13,6 +13,7 @@ var error := ""
 var provenance: Dictionary = {}
 var objects: Array[Dictionary] = []
 var billboards: Array[Dictionary] = []
+var enemy_visuals: Dictionary = {}
 var meshes := Archive.new()
 var material_cache: Dictionary = {}
 var dungeon_textures := DungeonTextures.new()
@@ -26,6 +27,7 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 	error = ""
 	objects.clear()
 	billboards.clear()
+	enemy_visuals.clear()
 	provenance.clear()
 	material_cache.clear()
 	texture_archives.clear()
@@ -157,6 +159,12 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 		if payload.is_empty():
 			return false
 		billboards[i] = payload
+	for entry in definition.prototype.enemies:
+		if entry.get("visual", "greybox") == "skeleton" and not enemy_visuals.has("skeleton"):
+			var payload := skeleton_payload()
+			if payload.is_empty():
+				return false
+			enemy_visuals.skeleton = payload
 	return true
 
 func native_vector(value: Array) -> Vector3:
@@ -403,3 +411,20 @@ func read_texture(archive: int, record: int, frame: int = 0, transparent: bool =
 	return Image.create_from_data(w, h, false, Image.FORMAT_RGBA8 if transparent else Image.FORMAT_RGB8, rgb)
 
 
+
+func skeleton_payload() -> Dictionary:
+	# DFU EnemyBasics: Skeletal Warrior ID 15, live archive 270, corpse 306:1.
+	var records: Dictionary = {}
+	for record in 20:
+		var payload := billboard_payload({"id": "skeleton_%d" % record, "archive": 270, "record": record})
+		if payload.is_empty():
+			return {}
+		var expected := 4 if record < 5 else (6 if record < 10 else 1)
+		if payload.frames.size() != expected:
+			error = "Skeleton 270:%d expected %d frames" % [record, expected]
+			return {}
+		records[record] = payload
+	var corpse := billboard_payload({"id": "skeleton_corpse", "archive": 306, "record": 1})
+	if corpse.is_empty():
+		return {}
+	return {"archive": 270, "records": records, "corpse": corpse}

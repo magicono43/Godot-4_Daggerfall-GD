@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/Interkarma/daggerfall-unity",
+  "commit": "4e78e1412b17b60f4d5d6073825775aa5ae95139",
+  "files": {
+    "Assets/Scripts/Internal/Base/MobileUnit.cs": "b6077968bbfb85832eafd137abe4a6155966694e43720339132a8514cfc97525",
+    "Assets/Scripts/Internal/DaggerfallMobileUnit.cs": "4455e19cfecc756cfaf25bda77a44e615c67c940d2683161ff9f5d69614d9d67",
+    "Assets/Scripts/Utility/EnemyBasics.cs": "7cd0159054d053fff0bc32d437e2cf0c58c120cd3348edc457d3c011d4234b8f"
+  }
+}

@@ -98,6 +98,8 @@ func validate(value: Variant) -> bool:
 				return fail(entry.id + " approach_enabled must be a boolean")
 			if group == "enemies" and not entry.get("attack_enabled", false) is bool:
 				return fail(entry.id + " attack_enabled must be a boolean")
+			if group == "enemies" and entry.get("visual", "greybox") not in ["greybox", "skeleton"]:
+				return fail(entry.id + " visual must be greybox or skeleton")
 			if group == "lights" and (not number(entry.get("energy")) or entry.energy < 0 or not number(entry.get("range_metres")) or entry.range_metres <= 0):
 				return fail(entry.id + " requires non-negative energy and positive range_metres")
 	definition = value.duplicate(true)

@@ -1,0 +1,57 @@
+ERROR: Failed to open 'user://logs/godot2026-10-31T21.45.24.log'.
+   at: copy (core/io/dir_access.cpp:429)
+ERROR: Failed to open log file for writing: user://logs/godot.log
+   at: rotate_file (core/io/logger.cpp:169)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Only hall target selects authored Skeleton visual position=(7.25, 12.8, 16.2) mode=walking
+PASS Original Skeleton 270:0 dimensions and RGBA hashes match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original Skeleton 270:1 dimensions and RGBA hashes match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original Skeleton 270:2 dimensions and RGBA hashes match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original Skeleton 270:3 dimensions and RGBA hashes match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original Skeleton 270:4 dimensions and RGBA hashes match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original Skeleton 270:5 dimensions and RGBA hashes match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original Skeleton 270:6 dimensions and RGBA hashes match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original Skeleton 270:7 dimensions and RGBA hashes match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original Skeleton 270:8 dimensions and RGBA hashes match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original Skeleton 270:9 dimensions and RGBA hashes match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original Skeleton 270:10 dimensions and RGBA hashes match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original Skeleton 270:11 dimensions and RGBA hashes match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original Skeleton 270:12 dimensions and RGBA hashes match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original Skeleton 270:13 dimensions and RGBA hashes match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original Skeleton 270:14 dimensions and RGBA hashes match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original Skeleton 270:15 dimensions and RGBA hashes match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original Skeleton 270:16 dimensions and RGBA hashes match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original Skeleton 270:17 dimensions and RGBA hashes match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original Skeleton 270:18 dimensions and RGBA hashes match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original Skeleton 270:19 dimensions and RGBA hashes match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original Skeleton 306:1 dimensions and RGBA hashes match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS All sixty-one live/corpse frames decode position=(7.25, 12.8, 16.2) mode=walking
+PASS Skeleton collision follows original two-metre idle height position=(7.25, 12.8, 16.2) mode=walking
+PASS Unknown enemy visual is rejected before scene build position=(7.25, 12.8, 16.2) mode=walking
+PASS Eight-way orientation 0 selects expected record/mirror position=(7.25, 12.8, 16.2) mode=walking
+PASS Eight-way orientation 1 selects expected record/mirror position=(7.25, 12.8, 16.2) mode=walking
+PASS Eight-way orientation 2 selects expected record/mirror position=(7.25, 12.8, 16.2) mode=walking
+PASS Eight-way orientation 3 selects expected record/mirror position=(7.25, 12.8, 16.2) mode=walking
+PASS Eight-way orientation 4 selects expected record/mirror position=(7.25, 12.8, 16.2) mode=walking
+PASS Eight-way orientation 5 selects expected record/mirror position=(7.25, 12.8, 16.2) mode=walking
+PASS Eight-way orientation 6 selects expected record/mirror position=(7.25, 12.8, 16.2) mode=walking
+PASS Eight-way orientation 7 selects expected record/mirror position=(7.25, 12.8, 16.2) mode=walking
+PASS Melee starts original attack animation position=(10.25, 12.80069, 16.4) mode=reset
+PASS No damage during original pre-strike frames position=(10.25, 12.80069, 16.4) mode=reset
+PASS Entering animation frame four applies damage exactly once position=(10.25, 12.80069, 16.4) mode=reset
+PASS Attack tail finishes without repeated damage position=(10.25, 12.80069, 16.4) mode=reset
+PASS Enemy can start next attack cycle position=(10.25, 12.80069, 16.4) mode=reset
+PASS Nonlethal hit interrupts attack with original hurt pose position=(10.25, 12.80069, 16.4) mode=reset
+PASS Hurt pose suppresses pending strike position=(10.25, 12.80069, 16.4) mode=reset
+PASS Completed hurt pose permits a fresh windup position=(10.25, 12.80069, 16.4) mode=reset
+PASS Animation event still checks live range position=(10.25, 12.80069, 13.4) mode=reset
+PASS Skeleton death leaves visible nonblocking original corpse position=(10.25, 12.80069, 16.4) mode=reset
+PASS Corpse uses archive 306 record one and keeps feet on floor position=(10.25, 12.80069, 16.4) mode=reset
+PASS Corpse stays inert and cancels death-time attack position=(10.25, 12.80069, 16.4) mode=reset
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Restart restores living Skeleton and player position=(7.25, 12.8, 16.2) mode=walking
+SKELETON RESULTS: 46/46
