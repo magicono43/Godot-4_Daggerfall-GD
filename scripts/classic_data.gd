@@ -24,6 +24,20 @@ var palette: PackedByteArray
 var texture_count := 0
 var triangle_count := 0
 
+static func decode_sound(bytes: PackedByteArray) -> AudioStreamWAV:
+	if bytes.is_empty():
+		return null
+	# DAGGER.SND is unsigned 8-bit mono PCM; Godot expects signed PCM.
+	var pcm := bytes.duplicate()
+	for i in pcm.size():
+		pcm[i] = pcm[i] ^ 128
+	var stream := AudioStreamWAV.new()
+	stream.format = AudioStreamWAV.FORMAT_8_BITS
+	stream.mix_rate = 11025
+	stream.stereo = false
+	stream.data = pcm
+	return stream
+
 func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 	error = ""
 	objects.clear()

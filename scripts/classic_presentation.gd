@@ -22,6 +22,7 @@ func _ready() -> void:
 	viewport = SubViewport.new()
 	viewport.name = "DungeonViewport"
 	viewport.own_world_3d = true
+	viewport.audio_listener_enable_3d = true
 	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 	add_child(viewport)
 	world_root = Node3D.new()

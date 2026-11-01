@@ -1,4 +1,5 @@
 extends RefCounted
+const Door = preload("res://scripts/door.gd")
 ## DFU targeting dimensions; deterministic prototype timing/damage, not RPG formulas.
 var reach := 2.25
 var radius := 0.25
@@ -76,19 +77,33 @@ func strike() -> void:
 	# owns the strike, so a wall/closed door cannot be bypassed by a target.
 	var closest := INF
 	var target: Object = null
+	var impact := Vector3.ZERO
 	for i in cast.get_collision_count():
 		var distance := cast.global_position.distance_squared_to(cast.get_collision_point(i))
 		if distance < closest:
 			closest = distance
 			target = cast.get_collider(i)
+			impact = cast.get_collision_point(i)
 	if is_instance_valid(target):
 		feedback = "Blocked"
 		if target.has_method("receive_damage") and target.receive_damage(damage):
 			feedback = "Hit: %d" % damage
+	var body: CharacterBody3D = cast.get_parent().get_parent()
+	if is_instance_valid(body.combat_audio):
+		if feedback.begins_with("Hit"):
+			body.combat_audio.play("impact", target as Node3D, 1.0, impact)
+		elif feedback == "Blocked":
+			var event := "door" if target is Door else "wall"
+			body.combat_audio.play(event, target as Node3D, 1.0, impact)
+		else:
+			body.combat_audio.play("miss")
 	feedback_time = 0.8
 
 func toggle_sheath() -> void:
 	sheathed = not sheathed
+	var body: CharacterBody3D = cast.get_parent().get_parent()
+	if not sheathed and is_instance_valid(body.combat_audio):
+		body.combat_audio.play("draw")
 	cancel()
 
 func pose() -> void:

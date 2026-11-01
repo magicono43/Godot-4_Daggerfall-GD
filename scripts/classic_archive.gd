@@ -3,9 +3,13 @@ extends RefCounted
 ## Read-only, bounds-checked classic BSA archive. No original assets are copied.
 var data: PackedByteArray
 var entries: Dictionary = {}
+var ordered_entries: Array[Vector2i] = []
 var error: String = ""
 
 func open(path: String) -> bool:
+	entries.clear()
+	ordered_entries.clear()
+	error = ""
 	if not FileAccess.file_exists(path):
 		error = "Cannot find archive: " + path
 		return false
@@ -34,8 +38,11 @@ func open(path: String) -> bool:
 		if offset + length > directory:
 			error = "Invalid BSA record bounds"
 			entries.clear()
+			ordered_entries.clear()
 			return false
 		entries[key] = Vector2i(offset, length)
+		# Numeric IDs need not be unique. Indexed sound lookup must retain both.
+		ordered_entries.append(Vector2i(offset, length))
 		offset += length
 	return true
 
@@ -43,6 +50,12 @@ func record(key: String) -> PackedByteArray:
 	if not entries.has(key):
 		return PackedByteArray()
 	var span: Vector2i = entries[key]
+	return data.slice(span.x, span.x + span.y)
+
+func record_at(index: int) -> PackedByteArray:
+	if index < 0 or index >= ordered_entries.size():
+		return PackedByteArray()
+	var span := ordered_entries[index]
 	return data.slice(span.x, span.x + span.y)
 
 

@@ -46,6 +46,7 @@ func tick(body: CharacterBody3D, delta: float) -> void:
 			if not direction.is_zero_approx():
 				body.look_at(body.global_position + direction, Vector3.UP)
 			phase = "windup"
+			body.play_sound("skeleton_attack")
 			remaining = windup
 			if body.mobile:
 				body.mobile.set_state("attack")

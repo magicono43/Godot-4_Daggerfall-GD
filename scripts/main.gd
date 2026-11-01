@@ -26,6 +26,7 @@ var door_used := false
 var ready_to_play := false
 var use_original_start := false
 var enemy_navigation_enabled := true
+var combat_audio: Node
 
 func _ready() -> void:
 	configure_input()
@@ -42,6 +43,10 @@ func _ready() -> void:
 		status.text = "SECTION COULD NOT LOAD\n" + classic.error + "\nCheck section/data_source.cfg, then press R to retry."
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		return
+	combat_audio = preload("res://scripts/combat_audio.gd").new()
+	world_root.add_child(combat_audio)
+	if not combat_audio.load_bank(classic.arena_path):
+		push_warning("Combat audio unavailable: " + combat_audio.error)
 	for item in classic.objects:
 		var mesh := classic.build_mesh(item.model)
 		var body: PhysicsBody3D
@@ -88,6 +93,7 @@ func _ready() -> void:
 	player.set_script(Player)
 	player.vertical_fov = presentation.vertical_fov
 	player.weapon_payload = classic.dagger_frames
+	player.combat_audio = combat_audio
 	player.name = "Player"
 	world_root.add_child(player)
 	player.spawn = classic.provenance.start + Vector3.UP * 0.1
@@ -110,6 +116,7 @@ func _ready() -> void:
 		placeholder.navigation.enabled = enemy_navigation_enabled and entry.get("navigation_enabled", false)
 		placeholder.melee.enabled = entry.get("attack_enabled", false)
 		placeholder.sprite_payload = classic.enemy_visuals.get(entry.get("visual", "greybox"), {})
+		placeholder.combat_audio = combat_audio
 		placeholder.name = entry.id
 		placeholder.player = player
 		placeholder.position = classic.to_world(entry.position_native)

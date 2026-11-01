@@ -5,6 +5,7 @@ var damage_flash := 0.0
 const Combat = preload("res://scripts/melee_combat.gd")
 var combat := Combat.new()
 var weapon_payload: Array[Dictionary] = []
+var combat_audio: Node
 const Movement = preload("res://scripts/movement_model.gd")
 const Steps = preload("res://scripts/step_solver.gd")
 var movement := Movement.new()
@@ -249,6 +250,8 @@ func receive_damage(amount: int) -> bool:
 	if not health.apply_damage(amount):
 		return false
 	damage_flash = 0.3
+	if is_instance_valid(combat_audio):
+		combat_audio.play("player_hit")
 	return true
 
 func die() -> void:

@@ -1,0 +1,56 @@
+ERROR: Failed to open 'user://logs/godot2026-11-01T14.01.14.log'.
+   at: copy (core/io/dir_access.cpp:429)
+ERROR: Failed to open log file for writing: user://logs/godot.log
+   at: rotate_file (core/io/logger.cpp:169)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 - Build 31.0.101.2140 - Compatibility - Using Device: Intel - Intel(R) UHD Graphics 630
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS All thirteen selected original samples load
+PASS World viewport enables spatial audio listener
+PASS Unsigned source PCM converts to signed Godot PCM
+PASS Original mono sample rate and bit depth retained
+PASS Empty sound rejects decode
+PASS Original sound archive opens read-only
+PASS Complete draw sample preserves every original PCM sample
+PASS Ordinal directory preserves duplicate sound IDs
+PASS Independent raw-directory hashes pin duplicate records, dagger draw and terrain clip
+PASS Invalid ordinal lookup returns no sound
+PASS Sheathing does not invent a draw sound
+PASS Drawing emits one original draw sound
+PASS Dagger draw is listener-relative with dedicated gain
+PASS Cancelled windup emits no strike sound
+PASS Actual strike emits one impact with damage
+PASS Impact voice uses contact position
+PASS Continued attack frame never repeats impact
+PASS Nearby live skeleton emits periodic attract sound
+PASS Ambient cue schedules integer three-to-nine-second delay
+PASS Creature voice uses extended configured range
+PASS Ambient cue cannot repeat before minimum delay
+PASS Mouse release suspends skeleton attract audio
+PASS Air swing produces listener-relative miss sound
+ERROR: Condition "f.is_null()" is true.
+   at: _save_to_cache (drivers/gles3/shader_gles3.cpp:648)
+ERROR: Condition "f.is_null()" is true.
+   at: _save_to_cache (drivers/gles3/shader_gles3.cpp:648)
+ERROR: Condition "f.is_null()" is true.
+   at: _save_to_cache (drivers/gles3/shader_gles3.cpp:648)
+PASS Wall blocks damage and produces positional impact
+PASS Door obstruction uses distinct original bash sound without damage
+PASS Skeleton attack still commits independently of growl probability
+PASS Attack growls follow seeded fifty-percent chance rather than every attack
+PASS Accepted player damage emits nonvoice feedback
+PASS Rejected damage emits no sound
+PASS Skeleton death emits body fall
+PASS Death immediately stops own creature voices, preserving other enemies and impacts
+PASS Corpse cannot repeat death audio
+PASS Corpse emits no periodic attract audio
+PASS Creature sample reaches mixer twenty metres away beyond old cutoff
+PASS Missing archive leaves audio safely disabled
+PASS Unavailable bank cannot create broken playback voices
+PASS Zero master volume fully mutes new voices
+PASS One-shot voice count stays bounded
+PASS Scene teardown frees bank and all voices
+AUDIO RESULTS: 39/39

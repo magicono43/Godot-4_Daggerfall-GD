@@ -1,3 +1,18 @@
+## Current status and next milestone — November 1, 2026
+
+Corrected combat audio has been playtested and accepted. The next agreed work is
+basic corpse looting, a simple player inventory and an equipped starting dagger;
+these features are not implemented yet. See [docs/HANDOFF.md](docs/HANDOFF.md) and
+[docs/NEXT_MILESTONE.md](docs/NEXT_MILESTONE.md) to continue in a new chat.
+
+## Combat audio corrections — November 1, 2026
+
+Sound lookup now preserves duplicate archive IDs, fixing the incorrect terrain clang. Dagger draw uses the original short-blade equip clip at the player; doors have their own bash sound. Enemy voices stop immediately on death, attack growls occur on a 50% chance, and ambient delays use random whole seconds from 3–9. Enemy sound range defaults to 24 m; audio.cfg also exposes draw_gain. See [docs/AUDIO.md](docs/AUDIO.md).
+
+## Combat audio — November 1, 2026
+
+Original combat effects now load from external ARENA2/DAGGER.SND: dagger draw, misses, enemy and wall impacts, player damage, plus positional skeleton cues and body-fall feedback. Set master/effects gains (0–1) in audio.cfg and restart to apply. No original samples are bundled. See [docs/AUDIO.md](docs/AUDIO.md). Run.ps1 -Test now runs thirteen suites.
+
 ## Original dagger — October 31, 2026
 
 Right-click attacks with the original WEAPON02.CIF dagger, randomly choosing one of six source swing directions. Z draws/sheathes it. Damage follows its strike frame, with attack timing derived from live Speed; the ready/attack sprites use the original screen layout in both presentation modes. The greybox blade is removed. WEAPON02.CIF remains external in the configured ARENA2 folder and is now required for this slice. See [docs/DAGGER.md](docs/DAGGER.md). Run.ps1 -Test now runs twelve suites. Older left-click and fixed-timing notes below are historical.
@@ -131,3 +146,5 @@ Two model 41311 containers at original RDB offsets 32552 and 32623 are now visib
 tools/audit_billboards.py independently checks original positions, dimensions and transparent RGBA hashes for all six selected sprite frames. tests/capture_decorations.gd produces rear-cave, skull/fire and container views under tests/decorations. These views were visually inspected separately from the automated checks. The renderer still reports the restricted-host log/certificate/shader-cache warnings documented above.
 
 Billboard facing and light animation timing reference: https://github.com/Interkarma/daggerfall-unity/blob/master/Assets/Scripts/Internal/DaggerfallBillboard.cs. The native scale calculation is in reference/MeshReader.cs. This validates a small original-decoration path, not support for all billboard archive types, actors, sounds or interactions.
+
+

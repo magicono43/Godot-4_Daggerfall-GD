@@ -13,10 +13,21 @@ var hit_flash := 0.0
 var player: CharacterBody3D
 var home := Vector3.ZERO
 var noticed := false
+var combat_audio: Node
+var sound_wait := 3.0
+var sound_rng := RandomNumberGenerator.new()
 var approach_enabled := true
 signal encountered
 
+func play_sound(event: String, gain: float = 1.0) -> void:
+	if mobile and is_instance_valid(combat_audio):
+		if event == "skeleton_attack" and sound_rng.randf() <= 0.5:
+			return
+		combat_audio.play(event, self, gain)
+
 func _ready() -> void:
+	sound_rng.randomize()
+	sound_wait = float(sound_rng.randi_range(3, 9))
 	collision_layer = 1
 	collision_mask = 3
 	floor_snap_length = 0.3
@@ -70,6 +81,14 @@ func _ready() -> void:
 	home = position
 
 func _physics_process(delta: float) -> void:
+	if mobile and is_instance_valid(combat_audio) and health.current > 0 and is_instance_valid(player) and player.controls_active and not player.is_dead():
+		sound_wait -= delta
+		if sound_wait <= 0 and global_position.distance_to(player.global_position) < combat_audio.enemy_range:
+			sound_wait = float(sound_rng.randi_range(3, 9))
+			var query := PhysicsRayQueryParameters3D.create(global_position + Vector3.UP * 0.8, player.global_position + Vector3.UP * 0.8, 3, [get_rid()])
+			var obstruction := get_world_3d().direct_space_state.intersect_ray(query)
+			var gain := 1.0 if obstruction.is_empty() or obstruction.collider == player else 0.25
+			play_sound("skeleton_move" if sound_rng.randf() > 0.8 else "skeleton_bark", gain)
 	hit_flash = maxf(0.0, hit_flash - delta)
 	if mobile:
 		mobile.tick(delta)
@@ -118,6 +137,9 @@ func receive_damage(amount: int) -> bool:
 		return false
 	hit_flash = 0.15
 	if health.current == 0:
+		if is_instance_valid(combat_audio):
+			combat_audio.stop_creature(self)
+		play_sound("death")
 		melee.cancel()
 		navigation.clear()
 		velocity = Vector3.ZERO

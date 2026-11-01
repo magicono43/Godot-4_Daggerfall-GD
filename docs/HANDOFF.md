@@ -1,3 +1,29 @@
+# Resume here — November 1, 2026
+
+Read AGENTS.md first. The user has playtested the corrected combat audio and says
+it is a lot better. This is the accepted stopping point for this chat. The next
+agreed milestone is **basic corpse looting and inventory**, to begin in a new chat.
+No inventory/loot/equipment implementation has started. See
+[NEXT_MILESTONE.md](NEXT_MILESTONE.md) for the agreed scope, starting code paths,
+boundaries and suggested validation. Inspect current code and pinned local DFU
+references before implementation; do not restart audio work from the historical
+notes below.
+
+Current automated baseline: 696/696 headless checks across thirteen suites and
+39/39 rendered audio checks. Reports: tests/audio_corrections_full.log and
+tests/audio_corrections_rendered.log. The corrections were reviewed with no
+findings; the user's subsequent listening test was positive. Existing host
+logging/certificate/shader-cache diagnostics and accelerated mixer-exit warnings
+are documented in AUDIO.md. No known gameplay test failures remain.
+
+## Accepted audio state — November 1, 2026: DFU audio corrections
+
+This supersedes the first audio implementation below. classic_archive.gd now retains ordinal spans and record_at(), preserving DAGGER.SND's duplicate ID 220 at indices 300/376. The old dictionary-key indexing shifted later clips, including terrain clang 433. audit_audio.py independently pins raw-directory hashes (no audio exports). Draw is original EquipShortBlade 377, listener-relative with draw_gain=1.5; door impacts use PlayerDoorBash 7, terrain uses actual Parry6 433. Creature-owner metadata allows death to stop active growls/barks/move sounds immediately without stopping other enemies, impacts or body fall. Attack growls independently use 50% chance. Ambient initial/repeat delays are random integer 3–9 seconds, confirmed against DFU script and prefab. Enemy range deliberately extends from DFU 16 m to configurable 24 m; mixer test covers 20 m. No new bash gameplay. See AUDIO.md and expanded audio_sources.json. Focused rendered checks pass 39/39; listening remains for user verification.
+
+# Latest update — November 1, 2026: combat audio
+
+Read AGENTS.md first. Combat audio now loads external DAGGER.SND read-only. classic_data.gd converts unsigned mono 8-bit/11025 Hz PCM; combat_audio.gd caches twelve selected original samples with bounded one-shot ownership. audio.cfg provides master/effects gains. RMB strike outcomes produce miss/hit/wall cues; Z draw, player damage, positional skeleton attract/attack and body fall on death are connected. The world SubViewport enables 3D audio. No samples bundled. Attract audio suspends with mouse release/death; existing sound tails can finish. BodyFall on skeleton death and nonvoice player-hit effects are documented prototype choices. See AUDIO.md and reference/audio_sources.json. Run.ps1 -Test adds audio.gd. Listening quality remains for user playtesting.
+
 # Conversation handoff — updated October 31, 2026
 
 Read `AGENTS.md` first. This document records the current state and decisions from the development conversation; inspect the relevant code before changing it. The detailed documents linked below are the implementation references. Older chronological sections in README can describe earlier milestones; the current scope and spawn are recorded here and in GREAT_HALL_EXPANSION.md.
@@ -164,3 +190,11 @@ Read these next as relevant:
 - `README.md`: launch/setup, importer architecture, historical calibration and asset support.
 
 The user prefers practical, incremental playable work with brief explanations of consequential decisions. They can compare repeatable actions in DFU and describe movement differences verbally; screenshots cannot capture movement feel. Do not require screenshots for every tuning decision or repeatedly request approval for work already authorized.
+
+
+Combat audio validation: 686/686 full headless checks and 29/29 rendered audio checks passed; tests/audio_full_regression.log and tests/audio_rendered.log. Actual listening remains user verification. See AUDIO.md for host diagnostics and scope.
+
+
+
+Audio correction validation: 696/696 full headless checks; 39/39 rendered audio checks, including mixer output at 20 m. See tests/audio_corrections_full.log and tests/audio_corrections_rendered.log. All automated checks passed; user listening test pending.
+

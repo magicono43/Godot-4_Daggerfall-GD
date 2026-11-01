@@ -1,0 +1,13 @@
+{
+  "commit": "4e78e1412b17b60f4d5d6073825775aa5ae95139",
+  "files": {
+    "Assets/Scripts/API/SndFile.cs": "c4f719cec736317e391e1697f7253ab1d65e66efe5a02dbf8ce3ecb58ffaa93f",
+    "Assets/Scripts/SoundClips.cs": "fba0cc8cc19b9186d3f455f1660be81051d8a4c48f6b8b7edb46bfe81b4ce5bf",
+    "Assets/Scripts/Game/EnemySounds.cs": "e2b65f7b25dcf3615d03ba95add916779bce2da584f22470091f3545f0d4ad52",
+    "Assets/Prefabs/Scene/DaggerfallEnemy [Game Serializable].prefab": "1a2710f31255cb47bf8b20a49fc9c240e53f6207111ece0c35df50eecd8df182",
+    "Assets/Scripts/Game/Items/DaggerfallUnityItem.cs": "94ee4fc8b00847ae626d3c64c42736407f7e860f2a8ed64bd689e3c50dfff027",
+    "Assets/Scripts/Internal/DaggerfallAudioSource.cs": "0a96e2ece7f63e173ed187c3a7f39fe7d1502e7b0201c4429b717c5b14d382bd",
+    "Assets/Scripts/Internal/DaggerfallActionDoor.cs": "6b457e6cca60ef075139bac56a11c8aecd10a0a056422811b0043da61c049680"
+  },
+  "repository": "https://github.com/Interkarma/daggerfall-unity"
+}
