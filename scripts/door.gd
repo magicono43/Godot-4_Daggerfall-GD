@@ -12,12 +12,19 @@ func interact() -> void:
 	# Refuse closing while the player occupies the doorway's swing area.
 	if opened and player.global_position.distance_to(global_position) < 1.9:
 		return
+	animate_leaf(not opened, player)
+
+func request_open(actor: CharacterBody3D) -> void:
+	if not opened and not busy:
+		animate_leaf(true, actor)
+
+func animate_leaf(open: bool, actor: CharacterBody3D) -> void:
 	busy = true
-	opened = not opened
+	opened = open
 	if opened:
 		# All selected classic door leaves extend along local +X. Swing away
 		# from the player's side instead of sweeping the capsule out of line.
-		var local_player := global_basis.inverse() * (player.global_position - global_position)
+		var local_player := global_basis.inverse() * (actor.global_position - global_position)
 		swing_angle = PI / 2 if local_player.z >= 0 else -PI / 2
 	var target := closed_basis * Basis(Vector3.UP, swing_angle if opened else 0.0)
 	var initial := basis.get_rotation_quaternion()

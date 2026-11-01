@@ -69,6 +69,7 @@ func run() -> void:
 	arena.queue_free()
 	await frames(3)
 	var level = load("res://main.tscn").instantiate()
+	level.enemy_navigation_enabled = false
 	root.add_child(level)
 	await frames(30)
 	player = level.player
@@ -91,6 +92,7 @@ func run() -> void:
 	level.queue_free()
 	await frames(3)
 	level = load("res://main.tscn").instantiate()
+	level.enemy_navigation_enabled = false
 	root.add_child(level)
 	await frames(5)
 	player = level.player

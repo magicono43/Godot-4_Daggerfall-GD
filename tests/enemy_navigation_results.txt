@@ -1,0 +1,34 @@
+PASS Enemy steering creates no navmesh or route region
+PASS Only hall Skeleton opts into navigation
+PASS Skeleton detects and physically approaches hall spawn
+PASS Pursuit uses original idle/movement sprites
+PASS Mouse release stops pursuit and clears path
+PASS Enemy continuously climbs original giant staircase
+PASS Enemy follows upper landing
+PASS Enemy turns toward gallery staircase
+PASS Enemy climbs to original 32 m upper gallery
+PASS Enemy descends gallery stairs
+PASS Enemy returns along upper landing
+PASS Enemy descends original giant staircase
+PASS Enemy follows original hall floor toward exit
+PASS Enemy opens and passes original great hall door
+PASS Pursuit opens unlocked original door
+PASS Enemy turns through original anteroom
+PASS Enemy opens second door and enters corridor
+PASS Second original door opens for enemy
+PASS Enemy reaches original second stair top
+PASS Enemy descends original second staircase
+PASS Unseen player behind obstacle does not alert enemy
+PASS Seeing player records a pursuit goal
+PASS Occlusion retains last seen goal instead of tracking hidden player
+PASS Local tested detours move around solid obstacle without penetration
+PASS Expired trail stops pursuit
+PASS Local probes cannot climb or fly to disconnected elevated target
+PASS Enemy stops moving and uses animation-timed melee in range
+PASS Death clears pursuit and retains inert corpse
+PASS NPC tread-edge assistance cannot climb a one-metre ledge
+PASS Local capsule detects obstruction without any navigation map
+PASS Detour selects a tested 45-degree direction and short local destination
+PASS Detour retains side preference and does not prolong an active detour timer
+PASS Local floor look-ahead rejects a genuine drop
+PASS Lost-target search extends last observed direction without reading hidden position

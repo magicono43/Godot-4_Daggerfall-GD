@@ -1,3 +1,7 @@
+# Current navigation extension
+
+The hall Skeleton now pursues the player and plays its original movement frames. Stationary statements below describe the earlier sprite milestone; see [ENEMY_NAVIGATION.md](ENEMY_NAVIGATION.md) for current play behavior and testing.
+
 # Skeleton sprite milestone
 
 The stationary great-hall enemy now uses original Skeletal Warrior sprites from external read-only ARENA2 data. Its section entry selects visual="skeleton"; the chamber enemy remains the passive greybox and the existing first-enemy alias is unchanged. Positions, player spawn, lights, dungeon geometry, controls, 30 enemy HP and 10-damage prototype combat are preserved.

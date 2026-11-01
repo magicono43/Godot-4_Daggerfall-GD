@@ -1,0 +1,79 @@
+ERROR: Failed to open 'user://logs/godot2026-10-31T22.26.27.log'.
+   at: copy (core/io/dir_access.cpp:429)
+ERROR: Failed to open log file for writing: user://logs/godot.log
+   at: rotate_file (core/io/logger.cpp:169)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Runtime bake produces original dungeon walkability position=(7.25, 12.84445, 16.2) mode=walking
+PASS Only hall Skeleton opts into navigation position=(7.25, 12.84445, 16.2) mode=walking
+PASS Skeleton detects and physically approaches hall spawn position=(7.25, 12.8, 16.2) mode=walking
+PASS Pursuit uses original idle/movement sprites position=(7.25, 12.8, 16.2) mode=walking
+PASS Mouse release stops pursuit and clears path position=(7.25, 12.8, 16.2) mode=walking
+MOTOR DEBUG (12.8775, 12.80092, 16.20127) floor=true supported=false desired=(2.49978, 0.0, 0.033147) velocity=(0.0, 0.0, 0.0) slides=2
+TREAD 0.1 { "position": (12.9775, 12.8, 16.20127), "normal": (0.0, 1.0, 0.0), "face_index": -1, "collider_id": 50415536194, "collider": Classic_59007_20084:<StaticBody3D#50415536194>, "shape": 0, "rid": RID(1846835937332) }
+TREAD 0.3 { "position": (13.1775, 12.8, 16.20127), "normal": (0.0, 1.0, 0.0), "face_index": -1, "collider_id": 50415536194, "collider": Classic_59007_20084:<StaticBody3D#50415536194>, "shape": 0, "rid": RID(1846835937332) }
+TREAD 0.5 { "position": (13.3775, 13.2, 16.20127), "normal": (0.0, 1.0, 0.0), "face_index": -1, "collider_id": 50415536194, "collider": Classic_59007_20084:<StaticBody3D#50415536194>, "shape": 0, "rid": RID(1846835937332) }
+TREAD 0.7 { "position": (13.5775, 13.2, 16.20127), "normal": (0.0, 1.0, 0.0), "face_index": -1, "collider_id": 50415536194, "collider": Classic_59007_20084:<StaticBody3D#50415536194>, "shape": 0, "rid": RID(1846835937332) }
+STEP {  }
+NAV STUCK [1560, -1024, 1024] position=(12.8775, 12.80092, 16.20127) state=last seen path=[(12.85, 13.14637, 16.21053), (13.53458, 13.69618, 16.20999), (14.03954, 14.2, 16.20959), (15.26953, 15.37518, 16.20862), (16.49275, 16.65398, 16.20766), (19.65, 19.8, 16.20518), (21.23021, 21.3757, 16.20394), (23.00672, 23.16168, 16.20254), (24.49949, 24.66072, 16.20137), (25.65, 25.8, 16.20047), (26.25, 25.8, 16.2)] index=1
+FAIL Enemy continuously climbs original giant staircase position=(100.0, 100.0, 100.0) mode=walking
+MOTOR DEBUG (12.87859, 12.80093, 12.7267) floor=true supported=false desired=(2.138563, 0.0, 1.294816) velocity=(0.0, 0.0, 1.294817) slides=2
+TREAD 0.1 { "position": (12.97859, 12.8, 12.7267), "normal": (0.0, 1.0, 0.0), "face_index": -1, "collider_id": 50415536194, "collider": Classic_59007_20084:<StaticBody3D#50415536194>, "shape": 0, "rid": RID(1846835937332) }
+TREAD 0.3 { "position": (13.17859, 12.8, 12.7267), "normal": (0.0, 1.0, 0.0), "face_index": -1, "collider_id": 50415536194, "collider": Classic_59007_20084:<StaticBody3D#50415536194>, "shape": 0, "rid": RID(1846835937332) }
+TREAD 0.5 { "position": (13.37859, 13.2, 12.7267), "normal": (0.0, 1.0, 0.0), "face_index": -1, "collider_id": 50415536194, "collider": Classic_59007_20084:<StaticBody3D#50415536194>, "shape": 0, "rid": RID(1846835937332) }
+TREAD 0.7 { "position": (13.57859, 13.2, 12.7267), "normal": (0.0, 1.0, 0.0), "face_index": -1, "collider_id": 50415536194, "collider": Classic_59007_20084:<StaticBody3D#50415536194>, "shape": 0, "rid": RID(1846835937332) }
+STEP {  }
+NAV STUCK [1664, -1024, 768] position=(12.87859, 12.80093, 13.0857) state=last seen path=[(12.85, 13.23595, 12.86613), (13.87531, 14.04269, 13.48989), (14.03321, 14.2, 13.58595), (14.54487, 14.68814, 13.89723), (15.36351, 15.52877, 14.39526), (19.65, 19.8, 17.00302), (20.76906, 20.91587, 17.68382), (23.43939, 23.60459, 19.30836), (23.84805, 24.01564, 19.55698), (25.65, 25.8, 20.65322), (26.01294, 25.8, 20.87403), (26.8796, 25.8, 21.40127), (28.85, 25.8, 22.6)] index=1
+FAIL Enemy follows upper landing position=(100.0, 100.0, 100.0) mode=walking
+MOTOR DEBUG (12.87859, 12.80093, 12.89715) floor=true supported=false desired=(2.189019, 0.0, 1.207558) velocity=(0.0, 0.0, 1.207559) slides=2
+TREAD 0.1 { "position": (12.97859, 12.8, 12.89715), "normal": (0.0, 1.0, 0.0), "face_index": -1, "collider_id": 50415536194, "collider": Classic_59007_20084:<StaticBody3D#50415536194>, "shape": 0, "rid": RID(1846835937332) }
+TREAD 0.3 { "position": (13.17859, 12.8, 12.89715), "normal": (0.0, 1.0, 0.0), "face_index": -1, "collider_id": 50415536194, "collider": Classic_59007_20084:<StaticBody3D#50415536194>, "shape": 0, "rid": RID(1846835937332) }
+TREAD 0.5 { "position": (13.37859, 13.2, 12.89715), "normal": (0.0, 1.0, 0.0), "face_index": -1, "collider_id": 50415536194, "collider": Classic_59007_20084:<StaticBody3D#50415536194>, "shape": 0, "rid": RID(1846835937332) }
+TREAD 0.7 { "position": (13.57859, 13.2, 12.89715), "normal": (0.0, 1.0, 0.0), "face_index": -1, "collider_id": 50415536194, "collider": Classic_59007_20084:<StaticBody3D#50415536194>, "shape": 0, "rid": RID(1846835937332) }
+STEP {  }
+NAV STUCK [1664, -1024, 384] position=(12.87859, 12.80093, 13.05124) state=last seen path=[(12.85, 13.24026, 12.70537), (13.88291, 14.05042, 13.42919), (14.03309, 14.2, 13.53442), (14.54319, 14.68655, 13.89188), (15.44254, 15.60751, 14.5221), (19.65, 19.8, 17.47049), (20.62306, 20.77028, 18.15236), (23.56561, 23.73379, 20.21436), (23.70189, 23.8709, 20.30986), (25.65, 25.8, 21.675), (26.1635, 25.8, 23.36393), (26.25576, 25.8, 23.66738), (26.3266, 25.8, 23.90037), (27.55195, 25.8, 27.93063), (27.90389, 25.8, 29.08817), (28.85, 25.8, 32.2)] index=1
+FAIL Enemy turns toward gallery staircase position=(100.0, 100.0, 100.0) mode=walking
+MOTOR DEBUG (12.87859, 12.80093, 13.06591) floor=true supported=false desired=(0.0, 0.0, 0.0) velocity=(0.0, 0.0, 0.0) slides=1
+TREAD 0.1 { "position": (12.97859, 12.8, 13.06591), "normal": (0.0, 1.0, 0.0), "face_index": -1, "collider_id": 50415536194, "collider": Classic_59007_20084:<StaticBody3D#50415536194>, "shape": 0, "rid": RID(1846835937332) }
+TREAD 0.3 { "position": (13.17859, 12.8, 13.06591), "normal": (0.0, 1.0, 0.0), "face_index": -1, "collider_id": 50415536194, "collider": Classic_59007_20084:<StaticBody3D#50415536194>, "shape": 0, "rid": RID(1846835937332) }
+TREAD 0.5 { "position": (13.37859, 13.2, 13.06591), "normal": (0.0, 1.0, 0.0), "face_index": -1, "collider_id": 50415536194, "collider": Classic_59007_20084:<StaticBody3D#50415536194>, "shape": 0, "rid": RID(1846835937332) }
+TREAD 0.7 { "position": (13.57859, 13.2, 13.06591), "normal": (0.0, 1.0, 0.0), "face_index": -1, "collider_id": 50415536194, "collider": Classic_59007_20084:<StaticBody3D#50415536194>, "shape": 0, "rid": RID(1846835937332) }
+STEP {  }
+NAV STUCK [1200, -1280, 384] position=(12.87859, 12.80093, 13.06591) state=unreachable path=[] index=0
+FAIL Enemy climbs to original 32 m upper gallery position=(100.0, 100.0, 100.0) mode=walking
+MOTOR DEBUG (12.87859, 12.80093, 12.7423) floor=true supported=false desired=(2.040474, 0.0, 1.44446) velocity=(0.0, 0.0, 1.44446) slides=2
+TREAD 0.1 { "position": (12.97859, 12.8, 12.7423), "normal": (0.0, 1.0, 0.0), "face_index": -1, "collider_id": 50415536194, "collider": Classic_59007_20084:<StaticBody3D#50415536194>, "shape": 0, "rid": RID(1846835937332) }
+TREAD 0.3 { "position": (13.17859, 12.8, 12.7423), "normal": (0.0, 1.0, 0.0), "face_index": -1, "collider_id": 50415536194, "collider": Classic_59007_20084:<StaticBody3D#50415536194>, "shape": 0, "rid": RID(1846835937332) }
+TREAD 0.5 { "position": (13.37859, 13.2, 12.7423), "normal": (0.0, 1.0, 0.0), "face_index": -1, "collider_id": 50415536194, "collider": Classic_59007_20084:<StaticBody3D#50415536194>, "shape": 0, "rid": RID(1846835937332) }
+TREAD 0.7 { "position": (13.57859, 13.2, 12.7423), "normal": (0.0, 1.0, 0.0), "face_index": -1, "collider_id": 50415536194, "collider": Classic_59007_20084:<StaticBody3D#50415536194>, "shape": 0, "rid": RID(1846835937332) }
+STEP {  }
+NAV STUCK [1664, -1024, 384] position=(12.87859, 12.80093, 12.93368) state=last seen path=[(12.85, 13.24026, 12.70537), (13.88291, 14.05042, 13.42919), (14.03309, 14.2, 13.53442), (14.54319, 14.68655, 13.89188), (15.44254, 15.60751, 14.5221), (19.65, 19.8, 17.47049), (20.62306, 20.77028, 18.15236), (23.56561, 23.73379, 20.21436), (23.70189, 23.8709, 20.30986), (25.65, 25.8, 21.675), (26.1635, 25.8, 23.36393), (26.25576, 25.8, 23.66738), (26.3266, 25.8, 23.90037), (27.55195, 25.8, 27.93063), (27.90389, 25.8, 29.08817), (28.85, 25.8, 32.2)] index=1
+FAIL Enemy descends gallery stairs position=(100.0, 100.0, 100.0) mode=walking
+MOTOR DEBUG (12.87859, 12.80093, 12.84715) floor=true supported=false desired=(2.415167, 0.0, 0.645731) velocity=(0.0, 0.0, 0.0) slides=2
+TREAD 0.1 { "position": (12.97859, 12.8, 12.84715), "normal": (0.0, 1.0, 0.0), "face_index": -1, "collider_id": 50415536194, "collider": Classic_59007_20084:<StaticBody3D#50415536194>, "shape": 0, "rid": RID(1846835937332) }
+TREAD 0.3 { "position": (13.17859, 12.8, 12.84715), "normal": (0.0, 1.0, 0.0), "face_index": -1, "collider_id": 50415536194, "collider": Classic_59007_20084:<StaticBody3D#50415536194>, "shape": 0, "rid": RID(1846835937332) }
+TREAD 0.5 { "position": (13.37859, 13.2, 12.84715), "normal": (0.0, 1.0, 0.0), "face_index": -1, "collider_id": 50415536194, "collider": Classic_59007_20084:<StaticBody3D#50415536194>, "shape": 0, "rid": RID(1846835937332) }
+TREAD 0.7 { "position": (13.57859, 13.2, 12.84715), "normal": (0.0, 1.0, 0.0), "face_index": -1, "collider_id": 50415536194, "collider": Classic_59007_20084:<StaticBody3D#50415536194>, "shape": 0, "rid": RID(1846835937332) }
+STEP {  }
+NAV STUCK [1560, -1024, 1024] position=(12.87859, 12.80093, 12.84715) state=last seen path=[(12.85, 13.23615, 12.8588), (13.92091, 14.08907, 13.12583), (14.03217, 14.2, 13.15357), (14.33542, 14.48957, 13.22919), (14.69244, 14.86008, 13.3182), (19.65, 19.8, 14.55434), (21.59326, 21.73771, 15.03887), (22.88964, 23.04184, 15.36212), (24.58057, 24.741, 15.78374), (25.65, 25.8, 16.05039), (26.25, 25.8, 16.2)] index=1
+FAIL Enemy returns along upper landing position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [960, -512, 1024] position=(11.4127, 12.80092, 15.84063) max_step=0.0
+PASS Enemy descends original giant staircase position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [384, -512, 570] position=(-2.847407, 12.80092, 27.31597) max_step=0.0
+PASS Enemy follows original hall floor toward exit position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [384, -512, 400] position=(-3.134996, 12.80092, 31.41494) max_step=0.0
+PASS Enemy opens and passes original great hall door position=(100.0, 100.0, 100.0) mode=walking
+PASS Pursuit opens unlocked original door position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [300, -512, 128] position=(-5.14346, 12.80092, 38.24535) max_step=0.0
+PASS Enemy turns through original anteroom position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [128, -512, 128] position=(-9.173267, 12.80092, 38.58257) max_step=0.0
+PASS Enemy opens second door and enters corridor position=(100.0, 100.0, 100.0) mode=walking
+PASS Second original door opens for enemy position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [128, -512, 512] position=(-9.543092, 12.80092, 29.38419) max_step=0.0
+PASS Enemy reaches original second stair top position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [128, -256, 768] position=(-9.550164, 6.738298, 22.75485) max_step=0.20389842987061
+PASS Enemy descends original second staircase position=(100.0, 100.0, 100.0) mode=walking
+NAVIGATION RESULTS: 14/20

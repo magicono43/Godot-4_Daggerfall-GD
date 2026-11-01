@@ -206,6 +206,7 @@ func slow_diagonal_checks() -> void:
 
 func run() -> void:
 	level = load("res://main.tscn").instantiate()
+	level.enemy_navigation_enabled = false
 	root.add_child(level)
 	current_scene = level
 	await frames(60)

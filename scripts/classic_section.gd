@@ -96,6 +96,8 @@ func validate(value: Variant) -> bool:
 				return fail(entry.id + " requires size_metres and yaw_degrees")
 			if group == "enemies" and not entry.get("approach_enabled", true) is bool:
 				return fail(entry.id + " approach_enabled must be a boolean")
+			if group == "enemies" and not entry.get("navigation_enabled", false) is bool:
+				return fail(entry.id + " navigation_enabled must be a boolean")
 			if group == "enemies" and not entry.get("attack_enabled", false) is bool:
 				return fail(entry.id + " attack_enabled must be a boolean")
 			if group == "enemies" and entry.get("visual", "greybox") not in ["greybox", "skeleton"]:

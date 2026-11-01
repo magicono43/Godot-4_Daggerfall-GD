@@ -17,6 +17,7 @@ func run() -> void:
 		return
 	DirAccess.make_dir_recursive_absolute(OUTPUT)
 	level = load("res://main.tscn").instantiate()
+	level.enemy_navigation_enabled = false
 	root.add_child(level)
 	current_scene = level
 	for i in 60:

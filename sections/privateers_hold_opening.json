@@ -447,7 +447,8 @@
         "position_native": [920, -512, 960],
         "approach_enabled": false,
         "attack_enabled": true,
-        "visual": "skeleton"
+        "visual": "skeleton",
+        "navigation_enabled": true
       }
     ],
     "boundaries": [

@@ -23,7 +23,7 @@ static func tread_at_contact(body: CharacterBody3D, point: Vector3, normal: Vect
 		return {}
 	return hit
 
-static func up(body: CharacterBody3D, start: Transform3D, motion: Vector3, height: float) -> Dictionary:
+static func up(body: CharacterBody3D, start: Transform3D, motion: Vector3, height: float, verify_tread_edge: bool = false) -> Dictionary:
 	var hit := PhysicsTestMotionResult3D.new()
 	# Caller has verified grounded capsule support. Its contact is at/above
 	# the capsule's feet (apart from collision margin). A centre ray can hit
@@ -48,8 +48,14 @@ static func up(body: CharacterBody3D, start: Transform3D, motion: Vector3, heigh
 	if sweep(body, raised, motion, hit):
 		return {}
 	raised.origin += motion
-	if not sweep(body, raised, Vector3.DOWN * (lift + CLEARANCE), hit) or not walkable(body, hit):
+	if not sweep(body, raised, Vector3.DOWN * (lift + CLEARANCE), hit):
 		return {}
+	if not walkable(body, hit):
+		# Optional slow NPC assistance: rounded feet may land on a tread edge.
+		# Require a real walkable face there, just as down() does. Player callers
+		# keep their accepted behavior unless they explicitly opt in.
+		if not verify_tread_edge or hit.get_collision_normal().y <= 0.001 or tread_at_contact(body, hit.get_collision_point(), hit.get_collision_normal(), hit.get_collider()).is_empty():
+			return {}
 	var landing := raised.origin + hit.get_travel()
 	var rise := landing.y - start.origin.y
 	# Check the actual tread height, not just the capsule's rounded-foot rise;

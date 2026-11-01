@@ -25,6 +25,7 @@ var encounter := false
 var door_used := false
 var ready_to_play := false
 var use_original_start := false
+var enemy_navigation_enabled := true
 
 func _ready() -> void:
 	configure_input()
@@ -105,6 +106,7 @@ func _ready() -> void:
 		var placeholder := CharacterBody3D.new()
 		placeholder.set_script(Enemy)
 		placeholder.approach_enabled = entry.get("approach_enabled", true)
+		placeholder.navigation.enabled = enemy_navigation_enabled and entry.get("navigation_enabled", false)
 		placeholder.melee.enabled = entry.get("attack_enabled", false)
 		placeholder.sprite_payload = classic.enemy_visuals.get(entry.get("visual", "greybox"), {})
 		placeholder.name = entry.id
@@ -262,6 +264,9 @@ func _process(_delta: float) -> void:
 	movement_status.visible = player.show_movement_debug or not player.movement.profile.error.is_empty()
 	if movement_status.visible:
 		movement_status.text = player.movement_debug_text()
+		for target in enemies:
+			if target.navigation.enabled:
+				movement_status.text += "\nSkeleton: %s | detour %.2f s" % [target.navigation.state, target.navigation.detour_left]
 
 func capture_preview() -> void:
 	for i in 45:

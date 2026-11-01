@@ -74,3 +74,7 @@ Each prototype.enemies entry may set attack_enabled to a boolean (default false)
 ### Optional enemy visual
 
 prototype.enemies[].visual accepts "greybox" (default) or "skeleton". The hall target selects "skeleton", which requires original TEXTURE.270 and TEXTURE.306:1 to decode successfully before scene assembly. It uses native dimensions and an animation strike event; the placement remains an authored prototype, not an imported original enemy population. See SKELETON.md.
+
+### Optional enemy navigation policy
+
+prototype.enemies[].navigation_enabled is a boolean, default false. The hall Skeleton sets it true independently of approach_enabled and attack_enabled. main.enemy_navigation_enabled=false is an explicit stationary test override; normal play defaults true. Navigation uses local collision/floor probes and short tested detours, not authored waypoints or a navmesh. See ENEMY_NAVIGATION.md.

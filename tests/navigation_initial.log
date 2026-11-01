@@ -1,0 +1,65 @@
+ERROR: Failed to open 'user://logs/godot2026-10-31T22.32.01.log'.
+   at: copy (core/io/dir_access.cpp:429)
+ERROR: Failed to open log file for writing: user://logs/godot.log
+   at: rotate_file (core/io/logger.cpp:169)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+WARNING: Property agent_radius is ceiled to cell_size voxel units and loses precision.
+   at: generator_bake_from_source_geometry_data (modules/navigation_3d/3d/nav_mesh_generator_3d.cpp:373)
+   GDScript backtrace (most recent call first):
+       [0] build (res://scripts/dungeon_navigation.gd:26)
+       [1] _ready (res://scripts/main.gd:92)
+       [2] run (res://tests/enemy_navigation.gd:26)
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Runtime bake produces original dungeon walkability position=(7.25, 12.84445, 16.2) mode=walking
+PASS Only hall Skeleton opts into navigation position=(7.25, 12.84445, 16.2) mode=walking
+PASS Skeleton detects and physically approaches hall spawn position=(7.25, 12.8, 16.2) mode=walking
+PASS Pursuit uses original idle/movement sprites position=(7.25, 12.8, 16.2) mode=walking
+PASS Mouse release stops pursuit and clears path position=(7.25, 12.8, 16.2) mode=walking
+NAV ARRIVED [1560, -1024, 1024] position=(25.86256, 25.60092, 16.24701) max_step=0.26184463500977
+PASS Enemy continuously climbs original giant staircase position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [1664, -1024, 768] position=(28.70355, 25.60092, 22.27128) max_step=0.0
+PASS Enemy follows upper landing position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [1664, -1024, 384] position=(28.84612, 25.60092, 31.80198) max_step=0.0
+PASS Enemy turns toward gallery staircase position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [1200, -1280, 384] position=(17.56914, 32.00092, 32.36501) max_step=0.2375545501709
+PASS Enemy climbs to original 32 m upper gallery position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [1664, -1024, 384] position=(28.4826, 25.60092, 32.1776) max_step=0.11467552185059
+PASS Enemy descends gallery stairs position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [1560, -1024, 1024] position=(26.27521, 25.60092, 16.56656) max_step=0.0
+PASS Enemy returns along upper landing position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [960, -512, 1024] position=(11.6312, 12.80092, 16.17365) max_step=0.12546157836914
+PASS Enemy descends original giant staircase position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [384, -512, 570] position=(-2.847407, 12.80092, 27.31597) max_step=0.0
+PASS Enemy follows original hall floor toward exit position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [384, -512, 400] position=(-3.136534, 12.80092, 31.41475) max_step=0.0
+PASS Enemy opens and passes original great hall door position=(100.0, 100.0, 100.0) mode=walking
+PASS Pursuit opens unlocked original door position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [300, -512, 128] position=(-5.14357, 12.80092, 38.24556) max_step=0.0
+PASS Enemy turns through original anteroom position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [128, -512, 128] position=(-9.16997, 12.80092, 38.58985) max_step=0.0
+PASS Enemy opens second door and enters corridor position=(100.0, 100.0, 100.0) mode=walking
+PASS Second original door opens for enemy position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [128, -512, 512] position=(-9.542776, 12.80092, 29.38833) max_step=0.0
+PASS Enemy reaches original second stair top position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [128, -256, 768] position=(-9.5733, 6.751777, 22.76881) max_step=0.12349987030029
+PASS Enemy descends original second staircase position=(100.0, 100.0, 100.0) mode=walking
+WARNING: Property agent_radius is ceiled to cell_size voxel units and loses precision.
+   at: generator_bake_from_source_geometry_data (modules/navigation_3d/3d/nav_mesh_generator_3d.cpp:373)
+   GDScript backtrace (most recent call first):
+       [0] build (res://scripts/dungeon_navigation.gd:26)
+       [1] isolated_checks (res://tests/enemy_navigation.gd:81)
+       [2] run (res://tests/enemy_navigation.gd:66)
+       [3] travel (res://tests/enemy_navigation.gd:20)
+       [4] frames (res://tests/climbing.gd:12)
+PASS Unseen player behind obstacle does not alert enemy position=(100.0, 0.02, 97.0) mode=walking
+PASS Seeing player records a pursuit goal position=(103.0, 0.02, 103.0) mode=walking
+PASS Occlusion retains last seen goal instead of tracking hidden player position=(100.0, 0.02, 97.0) mode=walking
+PASS Enemy follows a bent path around solid obstacle without penetration position=(200.0, 100.0, 200.0) mode=walking
+PASS Expired trail stops pursuit position=(200.0, 100.0, 200.0) mode=walking
+PASS Disconnected elevated target does not produce a partial-path chase or flying position=(200.0, 100.0, 200.0) mode=walking
+PASS Enemy stops moving and uses animation-timed melee in range position=(100.1631, 0.020924, 95.82121) mode=walking
+PASS Death clears pursuit and retains inert corpse position=(100.1631, 0.020924, 95.82121) mode=walking
+NAVIGATION RESULTS: 28/28

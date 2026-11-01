@@ -71,10 +71,12 @@ func refresh() -> void:
 		source_frame = 0
 		flip_h = false
 	else:
-		var base := 5 if state == "attack" else (10 if state == "hurt" else 15)
+		var base := 5 if state == "attack" else (10 if state == "hurt" else (0 if state == "move" else 15))
 		source_record = base + int(ORIENTATION_RECORDS[orientation])
 		record = payload.records[source_record]
 		source_frame = mini(int((elapsed + 0.000001) * ATTACK_FPS), ATTACK_FRAMES - 1) if state == "attack" else 0
+		if state == "move":
+			source_frame = int(elapsed * 6.0) % 4
 		flip_h = orientation > 4
 	texture = record.frames[source_frame]
 	var dimensions: Vector2 = texture.get_size()

@@ -24,6 +24,7 @@ func capture(path: String) -> void:
 
 func run() -> void:
 	level = load("res://main.tscn").instantiate()
+	level.enemy_navigation_enabled = false
 	root.add_child(level)
 	current_scene = level
 	await frames(20)
@@ -133,7 +134,7 @@ func run() -> void:
 	level = current_scene
 	player = level.player
 	hall = level.world_root.get_node("hall_combat_target")
-	check(hall.health.current == 30 and hall.mobile.state == "idle" and hall.collision_layer == 1 and player.health.current == 100, "Restart restores living Skeleton and player")
+	check(hall.health.current == 30 and hall.mobile.state in ["idle", "move"] and hall.collision_layer == 1 and player.health.current == 100, "Restart restores living Skeleton and player")
 	var file := FileAccess.open("res://tests/skeleton_results.txt", FileAccess.WRITE)
 	file.store_string("\n".join(results))
 	print("SKELETON RESULTS: ", results.size() - failures.size(), "/", results.size())

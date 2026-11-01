@@ -1,0 +1,8 @@
+{
+  "repository": "https://github.com/Interkarma/daggerfall-unity",
+  "commit": "4e78e1412b17b60f4d5d6073825775aa5ae95139",
+  "files": {
+    "Assets/Scripts/Game/EnemyMotor.cs": "7017a98e18cee8478cfd491cfe2b153c64b4d06c2f9384646e34773c69bafb51",
+    "Assets/Scripts/Game/EnemySenses.cs": "c9166a5aa4c1527698cb15992b18e4ba8c7a9ca8df5f8b3a8809623c96238d7c"
+  }
+}

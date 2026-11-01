@@ -1,3 +1,11 @@
+## DFU-style local pursuit — October 31, 2026
+
+The Skeleton now navigates with tested local detours based on DFU's enemy motor. It tries directions in 45-degree increments and follows short detours around nearby obstacles. The navmesh planner and runtime bake have been removed; it no longer knows complete routes through the dungeon and can struggle with complex layouts. Physical stairs, doors, sprites and combat are retained. Advanced combat tactics are deferred. See [docs/ENEMY_NAVIGATION.md](docs/ENEMY_NAVIGATION.md). Older navmesh descriptions below are historical.
+
+## Skeleton pursuit — October 31, 2026
+
+The hall Skeleton now follows you around obstacles and across the original stairs, opens the current unlocked doors, and stops to attack. It remembers your last seen position briefly after you leave sight, then stops if it loses the trail or cannot reach you. Escape suspends pursuit; R restores the authored start. The chamber enemy remains passive. F4 shows navigation state. See [docs/ENEMY_NAVIGATION.md](docs/ENEMY_NAVIGATION.md). Run.ps1 -Test now runs eleven suites; earlier stationary notes below are historical.
+
 ## Skeleton enemy — October 31, 2026
 
 The hall combat target now uses the original Skeletal Warrior from ARENA2 TEXTURE.270, with eight directional views, idle/attack/hurt poses, native dimensions and an original corpse on death. Watch its axe animation: the strike now lands at frame 4, 0.4 seconds into the attack, replacing the orange prototype cue. Nonlethal hits interrupt it briefly. It remains stationary, takes three hits to defeat, and R restores it. The chamber enemy remains a passive greybox. Source archives stay external and read-only. See [docs/SKELETON.md](docs/SKELETON.md). Run.ps1 -Test runs ten suites.

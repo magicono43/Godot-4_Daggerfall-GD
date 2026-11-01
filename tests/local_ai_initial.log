@@ -1,0 +1,57 @@
+ERROR: Failed to open 'user://logs/godot2026-10-31T23.33.06.log'.
+   at: copy (core/io/dir_access.cpp:429)
+ERROR: Failed to open log file for writing: user://logs/godot.log
+   at: rotate_file (core/io/logger.cpp:169)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Enemy steering creates no navmesh or route region position=(7.25, 12.84445, 16.2) mode=walking
+PASS Only hall Skeleton opts into navigation position=(7.25, 12.84445, 16.2) mode=walking
+PASS Skeleton detects and physically approaches hall spawn position=(7.25, 12.8, 16.2) mode=walking
+PASS Pursuit uses original idle/movement sprites position=(7.25, 12.8, 16.2) mode=walking
+PASS Mouse release stops pursuit and clears path position=(7.25, 12.8, 16.2) mode=walking
+NAV ARRIVED [1560, -1024, 1024] position=(26.06122, 25.60092, 15.85247) max_step=0.24018859863281
+PASS Enemy continuously climbs original giant staircase position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [1664, -1024, 768] position=(28.70314, 25.60092, 22.24471) max_step=0.0
+PASS Enemy follows upper landing position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [1664, -1024, 384] position=(28.8445, 25.60092, 31.82702) max_step=0.0
+PASS Enemy turns toward gallery staircase position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [1200, -1280, 384] position=(17.63182, 32.00092, 32.1879) max_step=0.23917961120605
+PASS Enemy climbs to original 32 m upper gallery position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [1664, -1024, 384] position=(28.48473, 25.60092, 32.3611) max_step=0.12055778503418
+PASS Enemy descends gallery stairs position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [1560, -1024, 1024] position=(26.3046, 25.60092, 16.59475) max_step=0.0
+PASS Enemy returns along upper landing position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [960, -512, 1024] position=(11.60617, 12.80092, 16.02623) max_step=0.13134384155273
+PASS Enemy descends original giant staircase position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [384, -512, 570] position=(-2.847407, 12.80092, 27.31597) max_step=0.0
+PASS Enemy follows original hall floor toward exit position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [384, -512, 400] position=(-3.125153, 12.80092, 31.43184) max_step=0.0
+PASS Enemy opens and passes original great hall door position=(100.0, 100.0, 100.0) mode=walking
+PASS Pursuit opens unlocked original door position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [300, -512, 128] position=(-5.138229, 12.80092, 38.22291) max_step=0.0
+PASS Enemy turns through original anteroom position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [128, -512, 128] position=(-9.165188, 12.80092, 38.56709) max_step=0.0
+PASS Enemy opens second door and enters corridor position=(100.0, 100.0, 100.0) mode=walking
+PASS Second original door opens for enemy position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [128, -512, 512] position=(-9.535278, 12.80092, 29.36607) max_step=0.0
+PASS Enemy reaches original second stair top position=(100.0, 100.0, 100.0) mode=walking
+NAV ARRIVED [128, -256, 768] position=(-9.183105, 6.400924, 22.62701) max_step=0.17326164245605
+PASS Enemy descends original second staircase position=(100.0, 100.0, 100.0) mode=walking
+PASS Unseen player behind obstacle does not alert enemy position=(100.0, 0.02, 97.0) mode=walking
+PASS Seeing player records a pursuit goal position=(103.0, 0.02, 103.0) mode=walking
+PASS Occlusion retains last seen goal instead of tracking hidden player position=(100.0, 0.02, 97.0) mode=walking
+PASS Local tested detours move around solid obstacle without penetration position=(200.0, 100.0, 200.0) mode=walking
+PASS Expired trail stops pursuit position=(200.0, 100.0, 200.0) mode=walking
+PASS Local probes cannot climb or fly to disconnected elevated target position=(200.0, 100.0, 200.0) mode=walking
+PASS Enemy stops moving and uses animation-timed melee in range position=(100.752, 0.020924, 96.1049) mode=walking
+PASS Death clears pursuit and retains inert corpse position=(100.752, 0.020924, 96.1049) mode=walking
+PASS NPC tread-edge assistance cannot climb a one-metre ledge position=(100.752, 0.020924, 96.1049) mode=walking
+PASS Local capsule detects obstruction without any navigation map position=(100.752, 0.020924, 96.1049) mode=walking
+PASS Detour selects a tested 45-degree direction and short local destination position=(100.752, 0.020924, 96.1049) mode=walking
+PASS Detour retains side preference and does not prolong an active detour timer position=(100.752, 0.020924, 96.1049) mode=walking
+PASS Local floor look-ahead rejects a genuine drop position=(100.752, 0.020924, 96.1049) mode=walking
+PASS Lost-target search extends last observed direction without reading hidden position position=(100.752, 0.020924, 96.1049) mode=walking
+NAVIGATION RESULTS: 34/34

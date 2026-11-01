@@ -2,6 +2,7 @@ extends CharacterBody3D
 ## Greybox enemy; authored attack and approach policies are independent.
 const Melee = preload("res://scripts/enemy_melee.gd")
 var melee := Melee.new()
+var navigation := preload("res://scripts/enemy_navigation.gd").new()
 var sprite_payload: Dictionary = {}
 var mobile: Sprite3D
 var body_mesh: MeshInstance3D
@@ -19,6 +20,11 @@ func _ready() -> void:
 	collision_layer = 1
 	collision_mask = 3
 	floor_snap_length = 0.3
+	if navigation.enabled:
+		# Match the accepted capsule-contact classification used by the player.
+		# Local obstacle/floor probes and capsule sweeps govern traversability.
+		floor_max_angle = deg_to_rad(70.0)
+		floor_constant_speed = true
 	var shape := CollisionShape3D.new()
 	var capsule := CapsuleShape3D.new()
 	capsule.radius = 0.32
@@ -76,13 +82,16 @@ func _physics_process(delta: float) -> void:
 		return
 	var offset := player.global_position - global_position
 	var distance := offset.length()
-	var query := PhysicsRayQueryParameters3D.create(global_position + Vector3.UP * 0.5, player.global_position + Vector3.UP, 3, [get_rid()])
+	var query := PhysicsRayQueryParameters3D.create(global_position + Vector3.UP * 0.5, player.global_position + Vector3.UP * float(player.capsule_collision.shape.height) * 0.5, 3, [get_rid()])
 	var hit := get_world_3d().direct_space_state.intersect_ray(query)
 	var visible_player: bool = not hit.is_empty() and hit.collider == player
-	if distance < 9 and visible_player:
+	if distance < (20.0 if navigation.enabled else 9.0) and visible_player:
 		if not noticed:
 			noticed = true
 			encountered.emit()
+		if navigation.enabled:
+			navigation.tick(self, delta, visible_player)
+			return
 		offset.y = 0
 		if approach_enabled and melee.phase == "idle" and not player.is_dead() and offset.length() > 1.8 and position.distance_to(home) < 4:
 			velocity.x = offset.normalized().x * 0.8
@@ -93,6 +102,9 @@ func _physics_process(delta: float) -> void:
 		if offset.length() > 0.1 and melee.phase != "windup":
 			look_at(global_position + offset, Vector3.UP)
 	else:
+		if navigation.enabled:
+			navigation.tick(self, delta, false)
+			return
 		velocity.x = 0
 		velocity.z = 0
 	if not is_on_floor():
@@ -107,6 +119,7 @@ func receive_damage(amount: int) -> bool:
 	hit_flash = 0.15
 	if health.current == 0:
 		melee.cancel()
+		navigation.clear()
 		velocity = Vector3.ZERO
 		collision_layer = 0
 		collision_mask = 0

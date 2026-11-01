@@ -78,6 +78,7 @@ func capture(name: String, at: Vector3, target: Vector3) -> void:
 
 func run() -> void:
 	level = load("res://main.tscn").instantiate()
+	level.enemy_navigation_enabled = false
 	level.use_original_start = true
 	root.add_child(level)
 	current_scene = level

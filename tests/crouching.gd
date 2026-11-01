@@ -166,6 +166,7 @@ func run() -> void:
 
 func hall_cleanup_checks() -> void:
 	var level: Node3D = load("res://main.tscn").instantiate()
+	level.enemy_navigation_enabled = false
 	root.add_child(level)
 	current_scene = level
 	await frames(30)

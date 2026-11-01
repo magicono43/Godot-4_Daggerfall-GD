@@ -18,6 +18,7 @@ func run() -> void:
 		quit(1)
 		return
 	level = load("res://main.tscn").instantiate()
+	level.enemy_navigation_enabled = false
 	root.add_child(level)
 	current_scene = level
 	for i in 60:
