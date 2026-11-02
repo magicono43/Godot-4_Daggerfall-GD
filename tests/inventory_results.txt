@@ -26,6 +26,10 @@ PASS Escape closes and restores captured controls
 PASS Closing leaves attack cancelled
 PASS Reopening preserves remaining loot
 PASS Take All is repeat-safe and empties corpse
+PASS Looted dagger has its own owned identity
+PASS Actual pointer selects the distinct looted dagger
+PASS Equip looted dagger replaces equipment reference without duplicating items
+PASS Nonweapon selection shows description and disables equipment action
 PASS Actual Close click restores controls without starting an attack
 PASS Empty corpse remains inspectable
 PASS Outside RMB click cannot recapture controls or attack through modal
@@ -33,6 +37,14 @@ PASS Close preserves pre-existing released controls
 PASS Death closes modal without recapturing controls
 PASS Scene restart restores clean inventory, equipment, living skeleton and loot
 PASS Actual R while looting restores a clean playable scene
+PASS Standalone inventory cancels a pending strike
+PASS I opens standalone inventory without a corpse
+PASS Selected equipped dagger shows description and Unequip action
+PASS Actual Unequip button clears equipped state
+PASS I closes inventory and unequipped weapon stays hidden and cannot attack
+PASS Re-equipping through standalone inventory restores attack availability
+PASS Inventory I toggle preserves previously released controls
 PASS Schema rejects unknown loot definitions
 PASS Schema rejects invalid loot quantities
 PASS Schema rejects stacked nonstackable items
+PASS Dead player cannot open standalone inventory

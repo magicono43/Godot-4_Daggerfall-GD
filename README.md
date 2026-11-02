@@ -1,11 +1,21 @@
+## Standalone inventory and dagger equipment — November 1, 2026
+
+Press **I** to open inventory anywhere. Select an item to read its description;
+select a dagger and click **Equip/Unequip**. The hall skeleton now carries a second
+test dagger, allowing you to loot and switch between distinct owned weapons.
+Only one can be equipped. Unequipping hides the weapon and blocks attacks.
+**I**, **Escape** or **Close** resumes prior controls; movement and enemy simulation
+pause in either window. R resets everything. See [docs/INVENTORY.md](docs/INVENTORY.md).
+Original item icons, saving and broader equipment remain deferred.
+
 ## Current status — November 1, 2026
 
 Basic corpse looting and inventory are implemented. Defeat the hall skeleton,
 approach its remains, look down and press E. Select an item and click Take selected,
 or Take all. Close/Escape resumes gameplay; R resets inventory and loot. The
 window shows the equipped starting dagger and explicitly authored test loot
-(12 gold pieces, 2 bones). Movement and enemy combat/pursuit suspend while open.
-Inventory is currently viewed through the loot window; saving and equipment UI
+(12 gold pieces, 2 bones, 1 dagger). Movement and enemy combat/pursuit suspend while open.
+Inventory is also available with I; saving and full equipment UI
 remain deferred. See [docs/INVENTORY.md](docs/INVENTORY.md),
 [docs/HANDOFF.md](docs/HANDOFF.md) and [docs/NEXT_MILESTONE.md](docs/NEXT_MILESTONE.md).
 Run.ps1 -Test now runs fourteen suites. Corrected combat audio remains accepted.

@@ -146,7 +146,7 @@ func configure_input() -> void:
 		var click := InputEventMouseButton.new()
 		click.button_index = MOUSE_BUTTON_RIGHT
 		InputMap.action_add_event("attack", click)
-	var keys := {"ready_weapon": KEY_Z, "crouch": KEY_CTRL, "forward": KEY_W, "back": KEY_S, "left": KEY_A, "right": KEY_D, "sprint": KEY_SHIFT, "jump": KEY_SPACE, "interact": KEY_E, "release_mouse": KEY_ESCAPE, "reset": KEY_R, "toggle_view": KEY_F2, "reload_movement": KEY_F3, "movement_debug": KEY_F4}
+	var keys := {"inventory": KEY_I, "ready_weapon": KEY_Z, "crouch": KEY_CTRL, "forward": KEY_W, "back": KEY_S, "left": KEY_A, "right": KEY_D, "sprint": KEY_SHIFT, "jump": KEY_SPACE, "interact": KEY_E, "release_mouse": KEY_ESCAPE, "reset": KEY_R, "toggle_view": KEY_F2, "reload_movement": KEY_F3, "movement_debug": KEY_F4}
 	for action in keys:
 		if not InputMap.has_action(action):
 			InputMap.add_action(action)
@@ -248,9 +248,9 @@ func create_hud() -> void:
 	crosshair.position -= Vector2(5, 13)
 	root.add_child(crosshair)
 	var controls := Label.new()
-	controls.text = "WASD Move  |  Ctrl Toggle crouch  |  Shift Run  |  Space Jump  |  E Interact  |  RMB Attack  |  Z Draw/Sheath  |  Esc Mouse  |  R Restart\nClimb: W into wall or S over ledge  |  W/S Up/Down  |  A/D Along wall  |  Space Eject\nF2 View  |  F3 Reload movement  |  F4 Movement diagnostics"
+	controls.text = "WASD Move  |  Ctrl Toggle crouch  |  Shift Run  |  Space Jump  |  E Interact  |  I Inventory\nRMB Attack  |  Z Draw/Sheath  |  Esc Mouse  |  R Restart\nClimb: W into wall or S over ledge  |  W/S Up/Down  |  A/D Along wall  |  Space Eject\nF2 View  |  F3 Reload movement  |  F4 Movement diagnostics"
 	controls.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
-	controls.position = Vector2(29, -82)
+	controls.position = Vector2(29, -104)
 	controls.add_theme_font_size_override("font_size", 14)
 	root.add_child(controls)
 
@@ -299,7 +299,7 @@ func capture_preview() -> void:
 
 func _input(event: InputEvent) -> void:
 	if ready_to_play and player.modal_open:
-		if event.is_action_pressed("release_mouse"):
+		if event.is_action_pressed("release_mouse") or event.is_action_pressed("inventory"):
 			loot_window.close()
 			get_viewport().set_input_as_handled()
 		elif event.is_action_pressed("reset"):
@@ -309,6 +309,10 @@ func _input(event: InputEvent) -> void:
 		elif event.is_action_pressed("toggle_view"):
 			presentation.set_profile("widescreen" if presentation.profile == "dfu_reference" else "dfu_reference")
 			get_viewport().set_input_as_handled()
+		return
+	if ready_to_play and event.is_action_pressed("inventory"):
+		loot_window.open_inventory()
+		get_viewport().set_input_as_handled()
 		return
 	if event.is_action_pressed("toggle_view"):
 		presentation.set_profile("widescreen" if presentation.profile == "dfu_reference" else "dfu_reference")

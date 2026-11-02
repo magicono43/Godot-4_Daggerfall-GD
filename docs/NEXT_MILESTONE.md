@@ -2,7 +2,8 @@
 
 The basic corpse looting/inventory increment below is now implemented.
 See [INVENTORY.md](INVENTORY.md) for shipped behavior and [HANDOFF.md](HANDOFF.md)
-for verification. User in-game playtesting is next; no further milestone has been
+for verification. Standalone inventory (I), descriptions and dagger equip/unequip are also implemented.
+User in-game playtesting of that follow-up is next; no further milestone has been
 agreed. The original agreed scope below is retained as its acceptance record.
 
 # Next milestone: basic corpse looting and inventory

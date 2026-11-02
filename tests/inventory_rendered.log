@@ -30,6 +30,10 @@ PASS Escape closes and restores captured controls position=(10.25, 12.8, 19.3) m
 PASS Closing leaves attack cancelled position=(10.25, 12.8, 19.3) mode=reset
 PASS Reopening preserves remaining loot position=(10.25, 12.8, 19.3) mode=reset
 PASS Take All is repeat-safe and empties corpse position=(10.25, 12.8, 19.3) mode=reset
+PASS Looted dagger has its own owned identity position=(10.25, 12.8, 19.3) mode=reset
+PASS Actual pointer selects the distinct looted dagger position=(10.25, 12.8, 19.3) mode=reset
+PASS Equip looted dagger replaces equipment reference without duplicating items position=(10.25, 12.8, 19.3) mode=reset
+PASS Nonweapon selection shows description and disables equipment action position=(10.25, 12.8, 19.3) mode=reset
 PASS Actual Close click restores controls without starting an attack position=(10.25, 12.8, 19.3) mode=reset
 PASS Empty corpse remains inspectable position=(10.25, 12.8, 19.3) mode=reset
 PASS Outside RMB click cannot recapture controls or attack through modal position=(10.25, 12.8, 19.3) mode=reset
@@ -39,7 +43,15 @@ CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50
 PASS Scene restart restores clean inventory, equipment, living skeleton and loot position=(7.25, 12.84445, 16.2) mode=walking
 CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
 PASS Actual R while looting restores a clean playable scene position=(7.25, 12.84445, 16.2) mode=walking
-PASS Schema rejects unknown loot definitions position=(7.25, 12.84445, 16.2) mode=walking
-PASS Schema rejects invalid loot quantities position=(7.25, 12.84445, 16.2) mode=walking
-PASS Schema rejects stacked nonstackable items position=(7.25, 12.84445, 16.2) mode=walking
-INVENTORY RESULTS: 38/38
+PASS Standalone inventory cancels a pending strike position=(7.25, 12.84445, 16.2) mode=walking
+PASS I opens standalone inventory without a corpse position=(7.25, 12.84445, 16.2) mode=walking
+PASS Selected equipped dagger shows description and Unequip action position=(7.25, 12.84445, 16.2) mode=walking
+PASS Actual Unequip button clears equipped state position=(7.25, 12.84445, 16.2) mode=walking
+PASS I closes inventory and unequipped weapon stays hidden and cannot attack position=(7.25, 12.8, 16.2) mode=walking
+PASS Re-equipping through standalone inventory restores attack availability position=(7.25, 12.8, 16.2) mode=walking
+PASS Inventory I toggle preserves previously released controls position=(7.25, 12.8, 16.2) mode=walking
+PASS Schema rejects unknown loot definitions position=(7.25, 12.8, 16.2) mode=walking
+PASS Schema rejects invalid loot quantities position=(7.25, 12.8, 16.2) mode=walking
+PASS Schema rejects stacked nonstackable items position=(7.25, 12.8, 16.2) mode=walking
+PASS Dead player cannot open standalone inventory position=(7.25, 12.8, 16.2) mode=reset
+INVENTORY RESULTS: 50/50

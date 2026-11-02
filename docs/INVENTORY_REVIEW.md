@@ -1,3 +1,23 @@
+# Standalone inventory/equipment review — November 1, 2026
+
+Reviewed shared modal entry/exit, I routing and dead-player rejection, owned-item
+selection by UID metadata, equip/unequip reference changes, description/button
+refresh, corpse take behavior and existing combat gating. Both weapon instances
+remain owned; switching does not clone or remove them. Sheath preference remains
+separate from equipped identity. No unresolved findings within this increment.
+
+Expanded the integration suite to 50 checks, using actual pointer input to select
+the looted dagger and click Equip/Unequip. Tests cover single equipped reference,
+nonweapon rejection, pending-strike cancellation, unequipped display/attack gating,
+standalone I close/reopen and preserving previously released controls. Tests await
+container layout before pointer hit testing after opening/rebuilding lists.
+
+746/746 full headless checks; 50/50 rendered inventory checks. Inspected standalone
+and loot layouts in calibrated 4:3 and widescreen. In-game user playtest pending.
+Reports: tests/equipment_full_regression.log and tests/inventory_rendered.log.
+
+The earlier corpse-looting review below is historical.
+
 # Inventory implementation review — November 1, 2026
 
 Reviewed definitions and ownership, section validation/construction, corpse

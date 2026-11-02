@@ -1,3 +1,29 @@
+# Resume here — November 1, 2026: standalone inventory and equipment
+
+The user playtested basic corpse looting successfully. The follow-up is now
+implemented: I opens standalone inventory anywhere; I/Escape/Close closes either
+window and restores prior controls. Select a player item for its description;
+select a dagger for Equip/Unequip. Only one instance can be equipped, selection
+uses item UID metadata, and Dagger 1/2 display labels distinguish owned copies.
+The hall skeleton now carries one additional test dagger alongside 12 gold and
+2 bones. Both daggers intentionally use the existing weapon sprites/stats.
+Unequipping hides the weapon and blocks attacks/draw; equip restores availability
+while preserving Z sheath preference. No unarmed combat or additional weapon types.
+
+Both windows share begin_modal() in loot_window.gd, preserving cancellation,
+simulation freeze, death/reset handling and mouse restoration. The existing
+inventory suite now exercises 50 checks, including actual pointer selection,
+equip/unequip, nonweapon descriptions/disabled equipment, I toggling, pending
+strike cancellation and dead-player rejection. Source references are unchanged.
+
+Validation: 746/746 full headless checks across fourteen suites; rendered inventory
+50/50. Reports: tests/equipment_full_regression.log and tests/inventory_rendered.log.
+Standalone 4:3/widescreen and loot layouts were visually inspected; control hints
+now use four lines to fit the calibrated display. Reviewed equipment ownership,
+modal routing, selection refresh and combat availability; no unresolved findings.
+Existing restricted-host diagnostics remain nonblocking. README, INVENTORY.md,
+NEXT_MILESTONE.md and AGENTS.md are updated. User in-game testing is next.
+
 # Resume here — November 1, 2026: corpse looting and inventory
 
 Basic corpse looting/inventory is implemented and reviewed. The next step is the

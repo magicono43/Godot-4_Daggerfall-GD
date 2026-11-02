@@ -3,17 +3,24 @@
 Implemented November 1, 2026. Defeat the hall skeleton, approach its original
 306:1 corpse, look down at it and press E. The window shows corpse contents and
 player inventory. Select a row and click Take selected, or click Take all.
-Close or Escape returns to the previous mouse/control state. R restarts the
+Close, Escape or I returns to the previous mouse/control state. R restarts the
 scene, including inventory, equipment and corpse contents. Empty corpses can
-still be inspected. There is no separate inventory shortcut in this increment.
+still be inspected. Press I anywhere to open standalone player inventory.
 
-The hall skeleton carries explicitly authored **test loot**: 12 gold pieces and
-2 bones. This is not an original skeleton loot table. Gold is currently an item
+The hall skeleton carries explicitly authored **test loot**: 12 gold pieces,
+2 bones and one additional dagger. This is not an original skeleton loot table. Gold is currently an item
 quantity, not a separate currency balance; bones have no use action. The starting
 dagger is one owned, equipped item. Its equipment reference gates drawing,
 weapon display and attacks; Z still draws/sheathes and RMB retains the existing
-six swings, live Speed timing and once-only frame-2 strike. There is no equipment
-management screen yet.
+six swings, live Speed timing and once-only frame-2 strike.
+
+Select a player item to read its description. Select a dagger and click Equip or
+Unequip, in either standalone inventory or the corpse window. Only one weapon is
+equipped; changing equipment replaces the reference without copying either item.
+Dagger 1 / Dagger 2 labels distinguish the otherwise identical owned blades.
+Unequipping hides the weapon and blocks draw/attack; re-equipping restores that
+availability. Draw/sheath preference is preserved. Other items cannot be equipped.
+This is basic weapon selection, not a full equipment/paper-doll system.
 
 ## Ownership and integration
 
@@ -28,7 +35,7 @@ management screen yet.
 - `player.gd`: the existing 2.6 m ray now includes interaction areas and solid
   world bodies. The first obstruction owns selection; walls and doors block corpse
   targets. E refreshes the ray before interacting, avoiding stale selection.
-- `loot_window.gd`: two-column modal attached to the calibrated presentation HUD.
+- `loot_window.gd`: shared standalone/loot modal attached to the calibrated presentation HUD.
   All normal world event forwarding stops while open, including the click-to-recapture
   path. UI clicks remain in the root viewport. Close clicks and Escape cannot also
   become world attacks.
@@ -51,7 +58,7 @@ stack count and equipped state (including exclusions from stacking). Those conce
 inform this prototype; its catalog, transfers and UI are not full DFU parity.
 
 Random loot, original item templates/icons, encumbrance, consumable effects,
-paper dolls, other weapon sprites, persistence, dropping and full RPG formulas
+paper dolls, armor equipment, other weapon sprites, persistence, dropping and full RPG formulas
 remain deferred. Decorative furniture stays nonlootable. Passive chamber behavior,
 hall navigation, original geometry and external read-only ARENA2 are preserved.
 
@@ -65,3 +72,8 @@ attack cancellation, mouse restoration, death, restart and schema validation.
 The rendered suite captures `tests/loot_4_3.png`, `loot_widescreen.png` and
 `loot_empty.png`. Automated checks and visual layout inspection are separate from
 the user's in-game playtest. See HANDOFF.md for the final run counts and reports.
+
+Equipment follow-up validation adds real pointer dagger selection/equip/unequip,
+nonweapon descriptions and disabled actions, I toggling, standalone pending-strike
+cancellation, released-control preservation and dead-player rejection. Updated
+captures include inventory_4_3.png and inventory_widescreen.png.

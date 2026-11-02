@@ -44,3 +44,7 @@ func equip(uid: int) -> bool:
 func has_dagger() -> bool:
 	var item := find(equipped_uid)
 	return not item.is_empty() and item.definition == "dagger"
+
+func unequip() -> void:
+	equipped_uid = 0
+	changed.emit()
