@@ -1,0 +1,138 @@
+{
+  "file": "WEAPON05.CIF",
+  "file_sha256": "a847de0783ee083ea81c5977f805683ebf58b903208b4cd847a4dfeadf357a4c",
+  "records": [
+    {
+      "pixels": [
+        81,
+        79
+      ],
+      "rgba_sha256": [
+        "83e36cb9be9f07bf5aeed196fd1bc3f2074b2289fde124d87f42165c1c3a9b20"
+      ],
+      "transparent_pixels": [
+        3397
+      ]
+    },
+    {
+      "pixels": [
+        122,
+        200
+      ],
+      "rgba_sha256": [
+        "70fa4da6607e5c904f8674281ba8e68eacc029d0501f1dc70660c159564e0ebd",
+        "5276a1dca83257b17319e3483aae4d52e484d686f0ecb2c84c57cfd0d9785a39",
+        "dce7f2d3acfa510667a99bf38eb978335dd7a3dd4a36651c4bf6529e4f9c7eb3",
+        "eaed55c3ec2a4053c7759957b094fcf1774f5acd3d968b9b06251ba8114e513b",
+        "24ca4a50373eb59f81601d059d602c20d808d449039f58a95bb9dcc6c2311f2f"
+      ],
+      "transparent_pixels": [
+        18480,
+        18780,
+        20181,
+        21643,
+        22532
+      ]
+    },
+    {
+      "pixels": [
+        292,
+        200
+      ],
+      "rgba_sha256": [
+        "2b5108d82874b64a7537dcbba5fa3256015a975eaeb08eb02a55b9760981f4ba",
+        "76c3a0a31813ac28b65ac572ed0b3e204ee686a6fbe4b8dd78341deca9481dcc",
+        "78fef0857f58efc086288a964a110b05e4c9d5ee66efd0b41d234ee3cb166d1d",
+        "d74728132332da3ce225fc9dff757c0f94db7d8c63336aa96e2455287ec8c047",
+        "c0acf1c82e51c8f0fc0b7efd4349a82a5f1fe893715765982a42fbe105c90e9e"
+      ],
+      "transparent_pixels": [
+        53639,
+        52767,
+        54396,
+        55258,
+        56706
+      ]
+    },
+    {
+      "pixels": [
+        320,
+        137
+      ],
+      "rgba_sha256": [
+        "25ce0d2f2073f0b6ceeb71cab8cb094d67dab1ffa2727d3ae0e42bf8332cf6b1",
+        "e67fe9098e0f99b900e1eece780a5b20fbc4ffe03aa047d17c3d96ff9f32c24e",
+        "c73b12151c19ff6dbac66faf076a9b86bc2dbe0f37c0cbde13307ff3f10a85e6",
+        "633e88126d023c22ac7e3a6acd5e6cc2cdc8ced5c5679023785e969d72d93776",
+        "2ace5d937796914101bff75667713537c167db4e9d6595c959fe3d54294f806e"
+      ],
+      "transparent_pixels": [
+        40312,
+        40292,
+        40875,
+        41089,
+        41189
+      ]
+    },
+    {
+      "pixels": [
+        320,
+        137
+      ],
+      "rgba_sha256": [
+        "312d346dc20d374d582378ef3a72cde88944bb315f21a745f1c48491094a889c",
+        "5bcb73ff8af3ddd3cc9c074f8d5626fdc30108bf48ab8cfe422538d110704259",
+        "87501b418e2e0b4ade54a90b1513aacbfa6b3973831c92cdcaf2676ba93050fd",
+        "5cf5ccbe1b44d8af35ba334414a4d7f3cdc465ff2723975ac0ef1bf2fc29f6bc",
+        "88f909f3e3c8dddbe1dbc60233c56f7a780bbba5d9c24fd47e003e0f24590a7f"
+      ],
+      "transparent_pixels": [
+        40312,
+        40291,
+        40880,
+        41090,
+        41189
+      ]
+    },
+    {
+      "pixels": [
+        292,
+        197
+      ],
+      "rgba_sha256": [
+        "616f66a5d988023f7a443d0b7622f2f11a98aaa3455860474889beab28333b5e",
+        "8d8d38209e84a205e1a8b959ee190b70f971588595eb6f75ad17cd194acc110f",
+        "594eaffb7bffb26eb4271b777a285a0843fa9765dede998ae0590bbf39bd4fe3",
+        "3813ae93e96b5d4d7f070358ef901a13b161e632ba4b72e77bdd5ba0722887ae",
+        "3870c3ae3f774b23cdb7b6a159df8aedd9062a1950113077f05cc7a0688be97e"
+      ],
+      "transparent_pixels": [
+        52841,
+        51948,
+        53565,
+        54433,
+        55996
+      ]
+    },
+    {
+      "pixels": [
+        122,
+        134
+      ],
+      "rgba_sha256": [
+        "62a873ad17df251df2e5d3f12e15ccfab5e51bf70e56aa657a12947a2abedde9",
+        "61ecaf6fe91bff7c035fee8df5ea31122981ffb70041cbbe86f00c698be8d2aa",
+        "8278017b5fc1265ce2b7ed5ba7e4c58610aa2ae54423d3aeda349987f086cee1",
+        "526073709c05eaa0bcee876d4ffa585a223ccff92a3ad175d9b2b56b36a61e0b",
+        "5d11a8a39685f21f08e96ee92e9ca45219044637bb675022f3da4d15cc016517"
+      ],
+      "transparent_pixels": [
+        10457,
+        10727,
+        12014,
+        12778,
+        13192
+      ]
+    }
+  ]
+}

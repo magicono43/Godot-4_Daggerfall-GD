@@ -1,3 +1,8 @@
+Current follow-up: dagger and mace now share supported equipped-weapon handling.
+See MACE.md for the second weapon and current source-backed behavior. Dagger
+presentation/timing remain covered by the existing 37-check suite. Older deferred
+inventory/audio statements below describe the original dagger milestone.
+
 # Original dagger weapon presentation
 
 Right-click attacks with the original dagger sprites from the external read-only ARENA2/WEAPON02.CIF. Z draws/sheathes the weapon. It starts readied; sheath cancels a pending swing and disallows attacks until drawn again. Each accepted click chooses uniformly among six source directions: down, down-left, left, right, down-right and up/thrust. Consecutive directions may repeat. Holding the button does not repeat or queue attacks. Classic mouse gestures, weapon sounds, inventory and equipment selection remain deferred.

@@ -62,7 +62,7 @@ func transfer_to(destination: RefCounted, uid: int) -> bool:
 
 func equip(uid: int) -> bool:
 	var item := find(uid)
-	if item.is_empty() or Catalog.DEFINITIONS[item.definition].get("weapon", "") != "dagger":
+	if item.is_empty() or not Catalog.WEAPONS.has(Catalog.DEFINITIONS[item.definition].get("weapon", "")):
 		return false
 	equipped_uid = uid
 	changed.emit()
@@ -85,3 +85,13 @@ func consume_one(uid: int) -> bool:
 		items.erase(item)
 	changed.emit()
 	return true
+
+func equipped_weapon() -> String:
+	var item := find(equipped_uid)
+	if item.is_empty():
+		return ""
+	var key: String = Catalog.DEFINITIONS[item.definition].get("weapon", "")
+	return key if Catalog.WEAPONS.has(key) else ""
+
+func has_weapon() -> bool:
+	return not equipped_weapon().is_empty()

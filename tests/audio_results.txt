@@ -1,4 +1,4 @@
-PASS All thirteen selected original samples load
+PASS All fifteen selected original samples load
 PASS World viewport enables spatial audio listener
 PASS Unsigned source PCM converts to signed Godot PCM
 PASS Original mono sample rate and bit depth retained

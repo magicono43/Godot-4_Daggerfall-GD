@@ -102,7 +102,7 @@ func run() -> void:
 	check(player.inventory.equip(dagger), "Owned dagger can be equipped again")
 	check(player.combat.request_attack(player), "Equipped dagger permits existing attack")
 	player.combat.cancel()
-	check(hall.loot.items.size() == 4 and not level.enemy.loot_enabled, "Only hall skeleton has authored test loot")
+	check(hall.loot.items.size() == 5 and not level.enemy.loot_enabled, "Only hall skeleton has authored test loot")
 	window.open(hall)
 	check(not window.visible, "Living target cannot open loot")
 	hall.receive_damage(1000)
@@ -177,18 +177,18 @@ func run() -> void:
 	check(combat.elapsed < 0, "Closing leaves attack cancelled")
 	aim()
 	key(KEY_E)
-	check(window.visible and hall.loot.items.size() == 3, "Reopening preserves remaining loot")
+	check(window.visible and hall.loot.items.size() == 4, "Reopening preserves remaining loot")
 	await mouse_click(window.take_all_button.get_global_rect().get_center())
 	window.take_all()
 	await frames(2)
-	check(hall.loot.items.is_empty() and player.inventory.items.size() == 5, "Take All is repeat-safe and empties corpse")
-	var second_dagger: int = player.inventory.items[-1].uid
-	check(second_dagger != dagger and player.inventory.items[-1].definition == "dagger", "Looted dagger has its own owned identity")
+	check(hall.loot.items.is_empty() and player.inventory.items.size() == 6, "Take All is repeat-safe and empties corpse")
+	var second_dagger: int = player.inventory.items[4].uid
+	check(second_dagger != dagger and player.inventory.items[4].definition == "dagger", "Looted dagger has its own owned identity")
 	await mouse_click(window.player_list.global_position + window.player_list.get_item_rect(4).get_center())
 	check(window.player_list.get_item_icon(4) == level.classic.item_icons.dagger and window.preview.texture == level.classic.item_icons.dagger and window.equipment_status.text == "In your inventory", "Looted dagger row and preview use cached original icon before equip")
 	check(window.selected_uid == second_dagger, "Actual pointer selects the distinct looted dagger")
 	await mouse_click(window.equip_button.get_global_rect().get_center())
-	check(player.inventory.equipped_uid == second_dagger and player.inventory.items.size() == 5, "Equip looted dagger replaces equipment reference without duplicating items")
+	check(player.inventory.equipped_uid == second_dagger and player.inventory.items.size() == 6, "Equip looted dagger replaces equipment reference without duplicating items")
 	await mouse_click(window.player_list.global_position + window.player_list.get_item_rect(1).get_center())
 	check(window.equip_button.disabled and window.description.text.contains("currency"), "Nonweapon selection shows description and disables equipment action")
 	check(window.preview.texture == level.classic.item_icons.gold and window.equipment_status.text == "In your inventory", "Player gold preview retains correct icon and ownership after transfer")
@@ -218,7 +218,7 @@ func run() -> void:
 	check(player.health.current == 100 and player.inventory.find(potion_uid).is_empty() and window.use_feedback.text == "Restored 5 health.", "Standalone Use clamps partial healing and removes last potion")
 	check(window.use_button.disabled and window.preview.texture == null, "Exhausted potion clears preview and disables Use")
 	window.use_selected()
-	check(player.health.current == 100 and player.inventory.items.size() == 4, "Repeated stale Use cannot consume another item or heal twice")
+	check(player.health.current == 100 and player.inventory.items.size() == 5, "Repeated stale Use cannot consume another item or heal twice")
 	key(KEY_I)
 	await frames(2)
 	aim()
@@ -241,7 +241,7 @@ func run() -> void:
 	level = current_scene
 	player = level.player
 	hall = level.world_root.get_node("hall_combat_target")
-	check(player.inventory.items.size() == 1 and player.inventory.has_dagger() and hall.loot.items.size() == 4 and hall.health.current > 0, "Scene restart restores clean inventory, equipment, living skeleton and loot")
+	check(player.inventory.items.size() == 1 and player.inventory.has_dagger() and hall.loot.items.size() == 5 and hall.health.current > 0, "Scene restart restores clean inventory, equipment, living skeleton and loot")
 	hall.receive_damage(1000)
 	await frames(2)
 	level.loot_window.open(hall)
@@ -251,7 +251,7 @@ func run() -> void:
 	level = current_scene
 	player = level.player
 	hall = level.world_root.get_node("hall_combat_target")
-	check(not player.modal_open and player.inventory.items.size() == 1 and hall.loot.items.size() == 4 and hall.health.current > 0, "Actual R while looting restores a clean playable scene")
+	check(not player.modal_open and player.inventory.items.size() == 1 and hall.loot.items.size() == 5 and hall.health.current > 0, "Actual R while looting restores a clean playable scene")
 	window = level.loot_window
 	player.combat.request_attack(player)
 	key(KEY_I)

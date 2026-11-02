@@ -56,6 +56,20 @@
       "rgba_sha256": "af39e6e87c7501c95a01f935db996e1cda5600e2ea0a210b16fedcf8d3d24aae",
       "transparent_pixels": 46,
       "removed_mask_pixels": 0
+    },
+    "mace": {
+      "template": 124,
+      "archive": 234,
+      "record": 14,
+      "pixels": [
+        82,
+        27
+      ],
+      "compression": 4360,
+      "file_sha256": "1a09989588c486b7b5348832a331520421c7d3ab47b6765aa3f1bf921a9812d3",
+      "rgba_sha256": "165c30f1586562414a21bd47c02c439fd6293bd005ef5359ada2335c19b156f5",
+      "transparent_pixels": 1677,
+      "removed_mask_pixels": 0
     }
   }
 }

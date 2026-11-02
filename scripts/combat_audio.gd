@@ -2,7 +2,7 @@ extends Node
 ## Cached external samples and bounded one-shot voices, owned by this scene.
 signal played(event: String, sound_id: int, spatial: bool)
 const EVENTS := {
-	"draw": [377], "miss": [106], "impact": [108, 109, 110, 111, 112],
+	"draw_mace": [413], "miss_mace": [347], "draw": [377], "miss": [106], "impact": [108, 109, 110, 111, 112],
 	"wall": [433], "door": [7], "player_hit": [110, 111], "death": [15],
 	"skeleton_move": [160], "skeleton_bark": [161], "skeleton_attack": [162],
 }
@@ -88,7 +88,7 @@ func play(event: String, emitter: Node3D = null, gain: float = 1.0, at: Vector3 
 		voice = AudioStreamPlayer.new()
 		add_child(voice)
 	voice.stream = cache[id]
-	voice.volume_linear = master_volume * effects_volume * clampf(gain, 0.0, 1.0) * (draw_gain if event == "draw" else 1.0)
+	voice.volume_linear = master_volume * effects_volume * clampf(gain, 0.0, 1.0) * (draw_gain if event.begins_with("draw") else 1.0)
 	if event.begins_with("skeleton_") and is_instance_valid(emitter):
 		voice.set_meta("creature_owner", emitter.get_instance_id())
 	voices.append(voice)

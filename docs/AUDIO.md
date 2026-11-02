@@ -76,3 +76,9 @@ Validation (November 1, 2026): all 686 checks across thirteen headless suites pa
 
 Correction validation (November 1, 2026): 696/696 full headless checks and 39/39 rendered audio checks passed. Independent audio audit pins fifteen records, including duplicate IDs and the corrected terrain/draw clips. No script/test failures remain. Reports: tests/audio_corrections_full.log and tests/audio_corrections_rendered.log. Listening comparison remains user verification.
 
+
+Mace follow-up (November 2): equipped mace draw requests EquipMaceOrHammer 413;
+a missed mace strike requests SwingMediumPitch 347. The bank now holds 15 samples,
+with the existing draw gain applied to both draw events. Dagger cues retain their
+original IDs. audit_audio.py and tests/audio_samples.json pin the two added ordinal
+samples; see MACE.md and reference/mace_sources.json.

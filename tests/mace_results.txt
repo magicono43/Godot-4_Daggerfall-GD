@@ -1,0 +1,31 @@
+PASS Mace is in nearby hall skeleton loot, starting inventory remains dagger only
+PASS Mace source record 0 native dimensions and RGBA match independent audit
+PASS Mace source record 1 native dimensions and RGBA match independent audit
+PASS Mace source record 2 native dimensions and RGBA match independent audit
+PASS Mace source record 3 native dimensions and RGBA match independent audit
+PASS Mace source record 4 native dimensions and RGBA match independent audit
+PASS Mace source record 5 native dimensions and RGBA match independent audit
+PASS Mace source record 6 native dimensions and RGBA match independent audit
+PASS Mace decodes one ready and thirty swing images
+PASS Mace original inventory image 234:14 matches independent audit
+PASS Truncated mace CIF is rejected
+PASS Invalid mace CIF dimensions are rejected
+PASS Unowned mace previews original icon and cannot equip
+PASS Actual loot/equip click selects owned mace rather than duplicating dagger state
+PASS Equipped mace displays original ready sprite
+PASS Mace ready sprite uses general right alignment without dagger inset
+PASS Mace accepts random six-direction swings with distinct prototype damage
+PASS Mace does not damage before frame two
+PASS Mace frame two applies exactly 15 damage
+PASS Mace attack tail cannot repeat damage and returns to ready
+PASS New mace attack reads live Speed using pinned melee formula
+PASS Mace strike preserves nearest-obstruction targeting
+PASS Changing equipment during windup cancels pending mace damage and restores dagger visuals
+PASS Z sheath state hides equipped mace
+PASS Drawing mace uses original EquipMaceOrHammer 413
+PASS Missed mace strike uses original medium swing 347
+PASS Opening inventory cancels pending mace attack
+PASS Unequipping mace hides it and disables attacks
+PASS Unequipped mace drops as its own nonstackable instance
+PASS Dropped mace recovers without auto-equipping
+PASS R restores starting dagger and skeleton's test mace

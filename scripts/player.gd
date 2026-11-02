@@ -5,6 +5,7 @@ var damage_flash := 0.0
 const Combat = preload("res://scripts/melee_combat.gd")
 var combat := Combat.new()
 var weapon_payload: Array[Dictionary] = []
+var weapon_payloads: Dictionary = {}
 var combat_audio: Node
 const Movement = preload("res://scripts/movement_model.gd")
 const Steps = preload("res://scripts/step_solver.gd")

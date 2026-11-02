@@ -8,6 +8,8 @@ var frame_seconds := 3.0 * (115.0 - 50.0) / 980.0
 var windup := frame_seconds * 2.0
 var recovery := frame_seconds * 3.0
 var attack_record := 1
+var attack_weapon := "dagger"
+var attack_uid := 0
 var sheathed := false
 var rng := RandomNumberGenerator.new()
 var elapsed := -1.0
@@ -38,8 +40,11 @@ func setup(camera: Camera3D) -> void:
 	pose()
 
 func request_attack(body: CharacterBody3D) -> bool:
-	if not body.inventory.has_dagger() or body.modal_open or sheathed or elapsed >= 0 or body.is_dead() or not body.controls_active or body.climbing.active:
+	if not body.inventory.has_weapon() or body.modal_open or sheathed or elapsed >= 0 or body.is_dead() or not body.controls_active or body.climbing.active:
 		return false
+	attack_weapon = body.inventory.equipped_weapon()
+	attack_uid = body.inventory.equipped_uid
+	damage = int(preload("res://scripts/item_catalog.gd").WEAPONS[attack_weapon].damage)
 	# Snapshot live Speed for this attack; movement resolution remains separate.
 	frame_seconds = 3.0 * (115.0 - clampf(body.movement.stat("speed_attribute"), 1.0, 100.0)) / 980.0
 	windup = frame_seconds * 2.0
@@ -57,10 +62,13 @@ func cancel() -> void:
 
 func tick(body: CharacterBody3D, delta: float) -> void:
 	feedback_time = maxf(0.0, feedback_time - delta)
-	if not body.inventory.has_dagger() or body.modal_open or not body.controls_active or body.climbing.active:
+	if not body.inventory.has_weapon() or body.modal_open or not body.controls_active or body.climbing.active:
 		cancel()
 		return
 	if elapsed < 0:
+		return
+	if body.inventory.equipped_uid != attack_uid:
+		cancel()
 		return
 	elapsed += delta
 	if not struck and elapsed + 0.000001 >= windup:
@@ -96,16 +104,16 @@ func strike() -> void:
 			var event := "door" if target is Door else "wall"
 			body.combat_audio.play(event, target as Node3D, 1.0, impact)
 		else:
-			body.combat_audio.play("miss")
+			body.combat_audio.play(preload("res://scripts/item_catalog.gd").WEAPONS[attack_weapon].miss)
 	feedback_time = 0.8
 
 func toggle_sheath() -> void:
 	var body: CharacterBody3D = cast.get_parent().get_parent()
-	if not body.inventory.has_dagger() or body.modal_open:
+	if not body.inventory.has_weapon() or body.modal_open:
 		return
 	sheathed = not sheathed
 	if not sheathed and is_instance_valid(body.combat_audio):
-		body.combat_audio.play("draw")
+		body.combat_audio.play(preload("res://scripts/item_catalog.gd").WEAPONS[body.inventory.equipped_weapon()].draw)
 	cancel()
 
 func pose() -> void:

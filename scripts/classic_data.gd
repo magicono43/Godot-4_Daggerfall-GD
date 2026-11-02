@@ -15,6 +15,7 @@ var objects: Array[Dictionary] = []
 var billboards: Array[Dictionary] = []
 var enemy_visuals: Dictionary = {}
 var dagger_frames: Array[Dictionary] = []
+var weapon_frames: Dictionary = {}
 var item_icons: Dictionary = {}
 var treasure_markers: Dictionary = {}
 var loot_pile_payload: Dictionary = {}
@@ -47,6 +48,7 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 	billboards.clear()
 	enemy_visuals.clear()
 	dagger_frames.clear()
+	weapon_frames.clear()
 	item_icons.clear()
 	treasure_markers.clear()
 	loot_pile_payload.clear()
@@ -204,9 +206,14 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 			error = "Missing, truncated or unsupported original inventory image: " + id
 			return false
 		item_icons[id] = ImageTexture.create_from_image(image)
-	dagger_frames = decode_dagger_cif(FileAccess.get_file_as_bytes(arena_path.path_join("WEAPON02.CIF")))
+	dagger_frames = decode_weapon_cif(FileAccess.get_file_as_bytes(arena_path.path_join("WEAPON02.CIF")))
 	if dagger_frames.is_empty():
 		error = "Missing, truncated or unsupported original WEAPON02.CIF dagger data"
+		return false
+	weapon_frames.dagger = dagger_frames
+	weapon_frames.mace = decode_weapon_cif(FileAccess.get_file_as_bytes(arena_path.path_join("WEAPON05.CIF")))
+	if weapon_frames.mace.is_empty():
+		error = "Missing, truncated or unsupported original WEAPON05.CIF mace data"
 		return false
 	return true
 
@@ -507,7 +514,10 @@ func cif_rle(bytes: PackedByteArray, start: int, end: int, length: int) -> Packe
 	return pixels
 
 func decode_dagger_cif(bytes: PackedByteArray) -> Array[Dictionary]:
-	# Specialized, checked CIF weapon records; not a general CIF/RCI importer.
+	return decode_weapon_cif(bytes)
+
+func decode_weapon_cif(bytes: PackedByteArray) -> Array[Dictionary]:
+	# Checked common dagger/mace CIF layout; not a general CIF/RCI importer.
 	var result: Array[Dictionary] = []
 	if bytes.size() < 12 or palette.size() < 776:
 		return result

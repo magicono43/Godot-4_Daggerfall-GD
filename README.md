@@ -1,3 +1,22 @@
+## Current handoff - November 2, 2026
+
+The mace milestone has been playtested and accepted. The proposed next milestone
+is one manual save/load slot for the current section; persistence is not yet
+implemented. A fresh chat should read [AGENTS.md](AGENTS.md),
+[docs/HANDOFF.md](docs/HANDOFF.md) and [docs/NEXT_MILESTONE.md](docs/NEXT_MILESTONE.md),
+inspect current code, and propose the save format/restoration order before changes.
+Accepted automated baseline: 858/858 headless checks; rendered mace 31/31.
+
+## Original mace - November 2, 2026
+
+The skeleton beside the starting hall now carries a **Mace**. Loot it and Equip
+it to switch from the starting dagger. RMB swings the original WEAPON05.CIF mace;
+Z draws/sheathes it with its original sound. Prototype damage is 15 versus the
+dagger's 10, with the same source-based Speed timing and frame-2 strike.
+Inventory/drop/deposit behavior is preserved. Original WEAPON05.CIF is now required
+in the external ARENA2 folder; source images/audio remain read-only and unbundled.
+See [docs/MACE.md](docs/MACE.md). Run.ps1 -Test now runs sixteen suites.
+
 ## Stack merging and open-container deposits - November 2, 2026
 
 Compatible coins, ingredients and identical healing potions now stack when looted

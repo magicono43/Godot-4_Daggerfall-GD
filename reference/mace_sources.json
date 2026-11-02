@@ -1,0 +1,19 @@
+{
+  "repository": "https://github.com/Interkarma/daggerfall-unity",
+  "commit": "4e78e1412b17b60f4d5d6073825775aa5ae95139",
+  "files": {
+    "Assets/Scripts/Utility/WeaponBasics.cs": "086a75d850dc0404f1b35993bcddfa97607af5f85909477b0a8171efdfd3a6a4",
+    "Assets/Scripts/Game/FPSWeapon.cs": "9033325c4825648254f5046d01fec4ccd7dadc39d8600841181dc03e5dc9b42b",
+    "Assets/Scripts/Game/Formulas/FormulaHelper.cs": "8f2d5286add95aab0ca279543debc0ff7d1a25bbc6d1e6aa1aba7a83a3773bc6",
+    "Assets/Scripts/API/CifRciFile.cs": "48c7865ef44d29510584c2defcd6218024daac8866f33f7bec0fc30281fc4984",
+    "Assets/Resources/ItemTemplates.txt": "7f748b0ade7da426fe9f001b7f806c02c19b1b1d835cc48b08a0cad1f6be7077",
+    "Assets/Scripts/Game/Items/DaggerfallUnityItem.cs": "94ee4fc8b00847ae626d3c64c42736407f7e860f2a8ed64bd689e3c50dfff027",
+    "Assets/Scripts/SoundClips.cs": "fba0cc8cc19b9186d3f455f1660be81051d8a4c48f6b8b7edb46bfe81b4ce5bf"
+  },
+  "notes": [
+    "Mace template 124 uses inventory 234:14, first-person WEAPON05.CIF and GeneralWeaponAnims (zero ready inset).",
+    "FPSWeapon.GetHitFrame=2; FormulaHelper.GetMeleeWeaponAnimTime uses live Speed independently of melee weapon type.",
+    "EquipMaceOrHammer 413 and SwingMediumPitch 347 are ordered DAGGER.SND indices.",
+    "15 damage for mace versus 10 for dagger is prototype tuning, not full item/stat/RPG formulas."
+  ]
+}

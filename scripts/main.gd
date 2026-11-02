@@ -95,6 +95,7 @@ func _ready() -> void:
 	player.set_script(Player)
 	player.vertical_fov = presentation.vertical_fov
 	player.weapon_payload = classic.dagger_frames
+	player.weapon_payloads = classic.weapon_frames
 	player.combat_audio = combat_audio
 	player.name = "Player"
 	world_root.add_child(player)

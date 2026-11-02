@@ -223,7 +223,7 @@ func update_details() -> void:
 	drop_button.disabled = selected_from_corpse or item.is_empty() or selected_uid == actor.inventory.equipped_uid
 	drop_button.tooltip_text = "Unequip this weapon before dropping." if selected_uid != 0 and selected_uid == actor.inventory.equipped_uid else "Drop the whole selected stack."
 	use_button.disabled = selected_from_corpse or item.is_empty() or not Catalog.DEFINITIONS.get(item.get("definition", ""), {}).has("heal_amount")
-	equip_button.disabled = selected_from_corpse or item.is_empty() or item.get("definition") != "dagger"
+	equip_button.disabled = selected_from_corpse or item.is_empty() or not Catalog.WEAPONS.has(Catalog.DEFINITIONS.get(item.get("definition", ""), {}).get("weapon", ""))
 	var equipped: bool = not selected_from_corpse and selected_uid != 0 and selected_uid == actor.inventory.equipped_uid
 	equip_button.text = "Unequip" if equipped else "Equip"
 	preview.texture = null

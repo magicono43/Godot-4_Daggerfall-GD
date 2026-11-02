@@ -8,18 +8,18 @@ scene, including inventory, equipment and corpse contents. Empty corpses can
 still be inspected. Press I anywhere to open standalone player inventory.
 
 The hall skeleton carries explicitly authored **test loot**: 12 gold pieces,
-2 Twigs, two healing potion doses and one additional dagger. This is not an original skeleton loot table. Gold is currently an item
+2 Twigs, two healing potion doses, one additional dagger and a Mace. This is not an original skeleton loot table. Gold is currently an item
 quantity, not a separate currency balance; Twigs have no brewing/use action. The starting
 dagger is one owned, equipped item. Its equipment reference gates drawing,
 weapon display and attacks; Z still draws/sheathes and RMB retains the existing
 six swings, live Speed timing and once-only frame-2 strike.
 
-Select an item in either column to read its description and view its original icon. Select a dagger and click Equip or
+Select an item in either column to read its description and view its original icon. Select a supported weapon and click Equip or
 Unequip, in either standalone inventory or the corpse window. Only one weapon is
 equipped; changing equipment replaces the reference without copying either item.
 Dagger 1 / Dagger 2 labels distinguish the otherwise identical owned blades.
 Unequipping hides the weapon and blocks draw/attack; re-equipping restores that
-availability. Draw/sheath preference is preserved. Other items cannot be equipped. Healing potions have a separate Use action.
+availability. Draw/sheath preference is preserved. Only supported weapons (dagger and mace) can be equipped. Healing potions have a separate Use action.
 This is basic weapon selection, not a full equipment/paper-doll system.
 
 ## Ownership and integration
@@ -167,3 +167,8 @@ on add/Take/Drop. Preview selection follows the surviving stack UID after Take.
 When a container is open, Drop deposits into it, including corpses, without a second
 reach/LOS/posture check. Ground placement checks apply only to standalone inventory
 drops. Initial E interaction checks and per-session ground pile separation remain.
+
+Mace follow-up: the skeleton also carries one test Mace (nonstackable), using
+original icon 234:14 and first-person WEAPON05.CIF. Equip/Unequip switches weapon
+identity, visuals, draw/miss cues and prototype damage. See MACE.md. Stack merging,
+open corpse/pile deposits and per-session ground drops retain their accepted rules.

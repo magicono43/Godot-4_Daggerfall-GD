@@ -469,6 +469,10 @@
           {
             "definition": "dagger",
             "quantity": 1
+          },
+          {
+            "definition": "mace",
+            "quantity": 1
           }
         ]
       }

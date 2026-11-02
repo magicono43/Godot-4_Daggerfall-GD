@@ -1,3 +1,95 @@
+# Resume here - November 2, 2026: accepted mace, save/load handoff
+
+Read AGENTS.md first, then this entry and NEXT_MILESTONE.md. The user has now
+playtested the mace and says it works as expected. The inventory/combat/loot work
+in this chat is accepted. This is a deliberate handoff to a fresh chat because
+save/load crosses more systems. Do not restart mace or inventory work based on
+older "playtest pending" notes below.
+
+The proposed next milestone is **one manual save/load slot for the current
+section**. No save/load code has been started. The user agreed to prepare this
+handoff; exact save format, controls, allowed snapshot conditions and restoration
+order still need the next agent's inspection and proposal. Explain the proposed
+implementation before changing gameplay code. See NEXT_MILESTONE.md for scope,
+starting code paths, boundaries and suggested acceptance checks.
+
+Accepted baseline: **858/858 headless checks across sixteen suites**, plus
+**31/31 rendered mace checks**. Reports: tests/mace_full_regression.log and
+ tests/mace_rendered.log. Mace inventory/ready poses in both display modes and all
+six swings were visually inspected; subsequent user playtest was positive.
+No known gameplay failures remain. Existing host log/certificate/cache/accelerated
+exit diagnostics are documented and nonblocking. This handoff update changes
+only documentation; no new automated or rendered checks were run for it.
+
+Preserve the current playable state and authored data: hall start; original
+199:8 provenance; passive chamber enemy; navigating/attacking hall skeleton;
+original geometry, stair/climb/crouch motors and calibrated presentation. The
+skeleton now has test gold, Twigs, two healing doses, spare dagger and mace.
+The chamber's separate original-marker treasure pile has 18 gold and one potion.
+Dagger/mace damage remains prototype 10/15; original sprites and audio remain
+external/read-only. See MACE.md, INVENTORY.md and WORLD_LOOT.md.
+
+Persistence must preserve the accepted loot rules: compatible stacks merge within
+a collection, daggers/maces stay individual, open-container Drop deposits into
+that container including corpses without another reach/posture check. Standalone
+ground drops share one pile only within that inventory-open session; later
+sessions create separate piles even at identical positions. Empty noncorpse piles
+are removed; empty corpses remain. Do not merge separate world piles on load or
+regenerate emptied authored loot. R must remain a fresh scene restart, distinct
+from loading a save. Reopening inventory after load starts a new drop session.
+
+All project additions/removals remain inside C:/Godot/Projects/Daggerfall_GD_1.
+Plan a project-local save location under that boundary; Godot's default user://
+would be outside it. Never write to or bundle ARENA2. Save IDs/section identity
+must be logical data, not scene node paths or transient Godot instance IDs.
+
+Earlier milestone notes follow as implementation history. The current entry
+supersedes their pending-test and proposed-next-step statements.
+
+# Resume here - November 2, 2026: original mace equipment
+
+The user accepted stacking/container deposit fixes and requested a Mace instead
+of the proposed shortsword, specifically in the nearby hall skeleton's loot.
+Implemented and reviewed. Defeat that skeleton, E its corpse, take Mace, select it
+and Equip. Starting dagger, hall spawn and dungeon treasure contents are unchanged.
+RMB attacks and Z draws/sheathes; prototype damage is mace 15 / dagger 10. Both
+use the source-based live-Speed timing and once-only frame-2 damage. No added
+material/skill/durability formulas. User playtest is next.
+
+Pinned sources confirm Mace template 124 inventory 234:14; WEAPON05.CIF uses general
+weapon alignment (records 4/5 left, others right, zero ready inset). It contains
+31 RGBA images across ready + six five-frame swings. Dagger preserves 4% ready
+inset, its original sprites and timing. Draw sound is ordinal 413, mace miss 347.
+Audio bank now loads 15 samples; both draw cues use existing gain. Audio listening
+and manual feel remain user verification. See MACE.md and mace_sources.json.
+
+Architecture: Catalog.WEAPONS holds supported profiles; inventory.equipped_weapon/
+has_weapon resolve dagger/mace. has_dagger remains dagger-only for compatibility.
+classic_data.weapon_frames banks both decoded files, with shared checked
+ decode_weapon_cif and retained dagger_frames/decode_dagger_cif aliases.
+player.weapon_payloads supplies view selection. weapon_view syncs equipped key
+and copies the typed record list on switch/empty state without modifying caches.
+melee_combat snapshots UID/key/damage at accepted attack start and cancels pending
+strikes if equipment UID changes. UI Equip handles either supported weapon.
+Existing stacking, open-source deposits and per-session drops are preserved.
+
+Independent audits: audit_mace.py pins 31 native RGBA frames in
+ tests/weapons/mace_frames.json; item audit pins fifth inventory icon; audio audit
+pins 413/347. External WEAPON05.CIF is now required. ARENA2 stays read-only and no
+original sprites or samples are bundled. No movement/geometry/AI changes.
+
+Final validation: **858/858 headless checks across sixteen suites**;
+**31/31 rendered mace checks**. Reports: tests/mace_full_regression.log and
+ tests/mace_rendered.log. New checks cover source hashes/dimensions, invalid CIF,
+actual loot/equip clicks, alignment, random directions, frame-two damage and no
+repeats, live Speed, obstruction, switching cancellation, sound event IDs,
+modal/unequip gating, drop/recovery and R reset. All previous suites pass.
+Inspected mace_inventory.png, mace_ready_4_3.png, mace_ready_widescreen.png and
+mace_swing_1.png through mace_swing_6.png. Review caught/fixed an empty-array typing
+issue during unequip; final logs contain no script errors or failed assertions.
+No unresolved findings. Existing host diagnostics remain nonblocking.
+README, MACE, INVENTORY, AUDIO, DAGGER, NEXT_MILESTONE and AGENTS are updated.
+
 # Resume here - November 2, 2026: stacking and container deposit fixes
 
 User reported three issues: compatible stacks did not combine, deposits repeated
