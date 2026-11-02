@@ -34,7 +34,7 @@ var interact_target: Node
 var controls_active := true
 var modal_open := false
 var inventory := preload("res://scripts/inventory.gd").new()
-signal loot_requested(corpse: CharacterBody3D)
+signal loot_requested(container: Node3D)
 
 func _ready() -> void:
 	inventory.equip(inventory.add_item("dagger"))

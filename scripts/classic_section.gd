@@ -75,6 +75,16 @@ func validate(value: Variant) -> bool:
 					return fail(entry.id + " requires a decorative texture; editor markers cannot be drawn")
 				if not number(entry.get("fps")) or entry.fps <= 0 or entry.fps > 60:
 					return fail(entry.id + " requires fps in (0,60]")
+	var markers: Dictionary = {}
+	if not value.get("treasure_markers", []) is Array or value.get("treasure_markers", []).size() > 64:
+		return fail("treasure_markers must be an array of at most 64 entries")
+	for entry in value.get("treasure_markers", []):
+		if not entry is Dictionary or not valid_id(entry.get("id"), ids):
+			return fail("Invalid treasure marker id")
+		if not integer(entry.get("record_offset")) or offsets.has(int(entry.record_offset)) or entry.get("expected_archive") != 199 or entry.get("expected_record") != 19:
+			return fail("Treasure marker requires unique record_offset and editor marker 199:19")
+		offsets[int(entry.record_offset)] = entry.id
+		markers[entry.id] = true
 	if value.models.is_empty():
 		return fail("models cannot be empty")
 	var prototype: Variant = value.get("prototype")
@@ -114,6 +124,24 @@ func validate(value: Variant) -> bool:
 						return fail(entry.id + " test_loot cannot stack this item")
 			if group == "lights" and (not number(entry.get("energy")) or entry.energy < 0 or not number(entry.get("range_metres")) or entry.range_metres <= 0):
 				return fail(entry.id + " requires non-negative energy and positive range_metres")
+	if not prototype.get("treasure_piles", []) is Array or prototype.get("treasure_piles", []).size() > 64:
+		return fail("prototype.treasure_piles must be an array of at most 64 entries")
+	var assigned_markers: Dictionary = {}
+	for entry in prototype.get("treasure_piles", []):
+		if not entry is Dictionary or not valid_id(entry.get("id"), ids) or not entry.get("marker_id") is String:
+			return fail("Treasure pile requires unique id and marker_id")
+		if not markers.has(entry.marker_id) or assigned_markers.has(entry.marker_id):
+			return fail("Treasure pile requires an unassigned selected marker")
+		assigned_markers[entry.marker_id] = true
+		if not entry.get("test_loot") is Array or entry.test_loot.is_empty() or entry.test_loot.size() > 32:
+			return fail("Treasure pile test_loot requires 1..32 items")
+		for item in entry.test_loot:
+			if not item is Dictionary or not item.get("definition") is String or not preload("res://scripts/item_catalog.gd").valid(item.definition):
+				return fail("Treasure pile has unknown item")
+			if not integer(item.get("quantity"), 10000) or item.quantity < 1:
+				return fail("Treasure pile requires quantity 1..10000")
+			if item.quantity != 1 and not preload("res://scripts/item_catalog.gd").DEFINITIONS[item.definition].stackable:
+				return fail("Treasure pile cannot stack this item")
 	definition = value.duplicate(true)
 	return true
 

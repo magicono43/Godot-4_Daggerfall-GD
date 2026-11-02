@@ -1,0 +1,22 @@
+{
+  "block_sha256": "761f5118289b237842045f110bca2d0b9384af55339e3a89950b3c1cae75818d",
+  "markers": {
+    "chamber_treasure_marker": {
+      "offset": 32671,
+      "native": [
+        1285,
+        -63,
+        528
+      ]
+    }
+  },
+  "sprite": {
+    "archive": 216,
+    "record": 0,
+    "pixels": [
+      39,
+      26
+    ],
+    "rgba_sha256": "2bd4f662ce4447e64dafe576ee66cf7586e0d0d919f6b277bd6da162001d2905"
+  }
+}

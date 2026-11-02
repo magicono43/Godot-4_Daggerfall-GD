@@ -1,0 +1,50 @@
+PASS 18 plus 12 coins merge into one 30-coin stack on transfer
+PASS Merged source UID is retired and cannot be transferred twice
+PASS Identical healing potions merge and return surviving destination identity
+PASS Using one dose decrements the merged potion stack
+PASS Adding compatible items directly also stacks
+PASS Nonstackable daggers keep distinct owned instances
+PASS Stacking preserves equipped item transfer protection
+PASS Different item metadata prevents incompatible potion stacking
+PASS Self transfer never doubles stack quantity
+PASS Treasure location matches independent original 199:19 marker
+PASS Original pile XZ preserved and billboard feet align to selected support
+PASS Pile uses audited original TEXTURE.216:0 RGBA image
+PASS Authored pile has test collection and nonsolid interaction only
+PASS Nearby original pile is E-targetable independently of supporting prop
+PASS Distant world pile cannot be selected
+PASS World geometry blocks pile targeting
+PASS E opens shared loot window for original pile
+PASS Partly looted pile stays visible
+PASS Original pile remaining contents persist across reopening
+PASS Drop adds owned stack back into open nearby noncorpse pile
+PASS Taking final pile item immediately hides billboard, disables interaction and closes UI
+PASS Empty noncorpse pile object is removed
+PASS Equipped weapon drop rejected without losing equipment
+PASS Actual Drop creates a world pile and moves whole owned stack
+PASS Dropped pile preserves instance UID and full quantity
+PASS All drops in one inventory-open session share its new pile
+PASS Repeated stale drop cannot duplicate ownership
+PASS Reopening inventory at the same spot creates a separate pile without proximity merging
+PASS Each session's pile stays where the player stood, even beside an older pile
+PASS Emptying one session pile leaves the other pile intact
+PASS Explicitly reopening an older pile allows adding more items to that pile
+PASS Dropped pile can be opened using E
+PASS Dropped items can be recovered once and empty dropped object disappears
+PASS Unequipped dagger can be dropped without leaving a stale equipped reference
+PASS Recovered dagger remains owned and unequipped
+PASS Any transfer that empties a pile removes it and closes its active UI
+PASS Already-open pile accepts deposit without a second reach, wall or ground check
+PASS Unsupported airborne drop fails without item loss
+PASS Climbing drop fails without item loss
+PASS Empty corpse remains visible and inspectable unlike noncorpse piles
+PASS Actual Drop deposits merged potions into open corpse without creating a ground pile
+PASS Deposited corpse potion stack can be recovered and empty corpse persists
+PASS Actual Take merges original 18-coin pile into skeleton's 12-coin stack
+PASS Selection and preview follow surviving merged player stack
+PASS Actual corpse deposit merges compatible stacks in destination container
+PASS Merged corpse contents round-trip without loss and corpse remains
+PASS R removes dropped piles and restores authored treasure and player inventory
+PASS Schema rejects non-treasure editor marker
+PASS Schema rejects unselected pile marker
+PASS Schema rejects invalid pile loot quantities

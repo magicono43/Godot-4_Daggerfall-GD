@@ -1,7 +1,7 @@
 extends Control
 const Catalog = preload("res://scripts/item_catalog.gd")
 var actor: CharacterBody3D
-var source: CharacterBody3D
+var source: Node3D
 var corpse_list: ItemList
 var player_list: ItemList
 var previous_capture := true
@@ -10,9 +10,12 @@ var close_button: Button
 var take_all_button: Button
 var equip_button: Button
 var use_button: Button
+var drop_button: Button
+var world_loot: Node
 var use_feedback: Label
 var title: Label
 var corpse_column: VBoxContainer
+var container_heading: Label
 var description: Label
 var selected_uid := 0
 var selected_from_corpse := false
@@ -64,6 +67,7 @@ func _ready() -> void:
 		if heading == "Corpse contents":
 			corpse_list = list
 			corpse_column = column
+			container_heading = label
 			list.item_selected.connect(select_corpse_item)
 		else:
 			player_list = list
@@ -99,7 +103,7 @@ func _ready() -> void:
 	var buttons := HBoxContainer.new()
 	buttons.add_theme_constant_override("separation", 8)
 	layout.add_child(buttons)
-	for caption in ["Take selected", "Take all", "Equip", "Use", "Close (Esc / I)"]:
+	for caption in ["Take selected", "Take all", "Equip", "Use", "Drop", "Close (Esc / I)"]:
 		var button := Button.new()
 		button.text = caption
 		buttons.add_child(button)
@@ -115,15 +119,20 @@ func _ready() -> void:
 		elif caption == "Use":
 			use_button = button
 			button.pressed.connect(use_selected)
+		elif caption == "Drop":
+			drop_button = button
+			button.pressed.connect(drop_selected)
 		else:
 			close_button = button
 			button.pressed.connect(close)
 	hide()
 
-func open(corpse: CharacterBody3D) -> void:
-	if visible or actor.is_dead() or corpse.health.current > 0 or not corpse.loot_enabled:
+func open(container: Node3D) -> void:
+	if visible or actor.is_dead() or not container.loot_available():
 		return
-	source = corpse
+	source = container
+	if container.has_signal("depleted") and not container.depleted.is_connected(on_source_depleted):
+		container.depleted.connect(on_source_depleted)
 	begin_modal()
 
 func open_inventory() -> void:
@@ -133,6 +142,7 @@ func open_inventory() -> void:
 	begin_modal()
 
 func begin_modal() -> void:
+	world_loot.begin_drop_session()
 	use_feedback.text = ""
 	selected_uid = 0
 	selected_from_corpse = false
@@ -154,6 +164,7 @@ func begin_modal() -> void:
 func close() -> void:
 	if not visible:
 		return
+	world_loot.end_drop_session()
 	hide()
 	actor.modal_open = false
 	actor.controls_active = previous_capture and not actor.is_dead()
@@ -162,7 +173,8 @@ func close() -> void:
 
 func refresh() -> void:
 	var looting := is_instance_valid(source)
-	title.text = "SKELETON REMAINS  |  Prototype test loot" if looting else "PLAYER INVENTORY"
+	title.text = source.loot_title() if looting else "PLAYER INVENTORY"
+	container_heading.text = source.loot_label() if looting else "Pile contents"
 	corpse_column.visible = looting
 	take_button.visible = looting
 	take_all_button.visible = looting
@@ -208,6 +220,8 @@ func select_corpse_item(index: int) -> void:
 
 func update_details() -> void:
 	var item: Dictionary = source.loot.find(selected_uid) if selected_from_corpse and is_instance_valid(source) else actor.inventory.find(selected_uid)
+	drop_button.disabled = selected_from_corpse or item.is_empty() or selected_uid == actor.inventory.equipped_uid
+	drop_button.tooltip_text = "Unequip this weapon before dropping." if selected_uid != 0 and selected_uid == actor.inventory.equipped_uid else "Drop the whole selected stack."
 	use_button.disabled = selected_from_corpse or item.is_empty() or not Catalog.DEFINITIONS.get(item.get("definition", ""), {}).has("heal_amount")
 	equip_button.disabled = selected_from_corpse or item.is_empty() or item.get("definition") != "dagger"
 	var equipped: bool = not selected_from_corpse and selected_uid != 0 and selected_uid == actor.inventory.equipped_uid
@@ -219,7 +233,7 @@ func update_details() -> void:
 	if not item.is_empty():
 		preview.texture = icons.get(item.definition)
 		item_heading.text = "%s  x%d" % [Catalog.label(item.definition), item.quantity]
-		equipment_status.text = "Corpse contents" if selected_from_corpse else ("Equipped weapon" if equipped else "In your inventory")
+		equipment_status.text = source.loot_label() if selected_from_corpse else ("Equipped weapon" if equipped else "In your inventory")
 		description.text = Catalog.DEFINITIONS[item.definition].get("description", "")
 
 func toggle_equipment() -> void:
@@ -240,10 +254,12 @@ func take_selected() -> void:
 func take(uid: int) -> bool:
 	if not visible or not is_instance_valid(source) or actor.is_dead():
 		return false
-	var moved: bool = source.loot.transfer_to(actor.inventory, uid)
+	var target_uid: int = source.loot.move_to(actor.inventory, uid)
+	var moved := target_uid != 0
 	if moved and selected_uid == uid:
+		selected_uid = target_uid
 		selected_from_corpse = false
-	refresh()
+	finish_transfer()
 	return moved
 
 func take_all() -> void:
@@ -251,8 +267,10 @@ func take_all() -> void:
 		return
 	selected_from_corpse = false
 	for item in source.loot.items.duplicate():
-		source.loot.transfer_to(actor.inventory, item.uid)
-	refresh()
+		var target_uid: int = source.loot.move_to(actor.inventory, item.uid)
+		if target_uid != 0 and selected_uid == item.uid:
+			selected_uid = target_uid
+	finish_transfer()
 
 func use_selected() -> void:
 	if not visible or not actor.modal_open or actor.is_dead() or selected_from_corpse:
@@ -260,3 +278,24 @@ func use_selected() -> void:
 	var result := preload("res://scripts/consumables.gd").use_item(actor.inventory, actor.health, selected_uid)
 	refresh()
 	use_feedback.text = result.message
+
+func finish_transfer() -> void:
+	# Corpses deliberately have no retire_empty method and remain inspectable.
+	if is_instance_valid(source) and source.has_method("retire_empty") and source.retire_empty():
+		close()
+	else:
+		refresh()
+
+func drop_selected() -> void:
+	if not visible or not actor.modal_open or actor.is_dead() or selected_from_corpse:
+		return
+	if world_loot.drop(selected_uid, source):
+		selected_uid = 0
+		refresh()
+		use_feedback.text = "Added to the open container." if is_instance_valid(source) else "Dropped the selected item stack."
+	else:
+		use_feedback.text = world_loot.error
+
+func on_source_depleted(container: Node3D) -> void:
+	if source == container:
+		close()

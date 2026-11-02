@@ -28,6 +28,7 @@ var use_original_start := false
 var enemy_navigation_enabled := true
 var combat_audio: Node
 var loot_window: Control
+var world_loot: Node
 
 func _ready() -> void:
 	configure_input()
@@ -103,6 +104,14 @@ func _ready() -> void:
 	presentation.hud.add_child(loot_window)
 	player.loot_requested.connect(loot_window.open)
 	player.health.died.connect(loot_window.close)
+	world_loot = preload("res://scripts/world_loot.gd").new()
+	world_loot.player = player
+	world_loot.world_root = world_root
+	world_loot.classic = classic
+	world_loot.payload = classic.loot_pile_payload
+	add_child(world_loot)
+	loot_window.world_loot = world_loot
+	world_loot.spawn_authored()
 	player.spawn = classic.provenance.start + Vector3.UP * 0.1
 	player.position = player.spawn
 	# Face the centre of the original cave opening from the original enter marker.
@@ -260,7 +269,7 @@ func _process(_delta: float) -> void:
 		return
 	prompt.text = ""
 	if player.interact_target:
-		prompt.text = "E  |  Loot remains" if player.interact_target is Area3D else "E  |  " + ("Close door" if player.interact_target.opened else "Open door")
+		prompt.text = ("E  |  Loot pile" if player.interact_target.is_in_group("world_loot_piles") else "E  |  Loot remains") if player.interact_target is Area3D else "E  |  " + ("Close door" if player.interact_target.opened else "Open door")
 	if player.modal_open:
 		prompt.text = ""
 	elif not player.controls_active:

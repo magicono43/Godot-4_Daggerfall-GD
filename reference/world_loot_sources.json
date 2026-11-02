@@ -1,0 +1,17 @@
+{
+  "repository": "https://github.com/Interkarma/daggerfall-unity",
+  "commit": "4e78e1412b17b60f4d5d6073825775aa5ae95139",
+  "files": {
+    "Assets/Scripts/Internal/DaggerfallLoot.cs": "ed0169f5a119b314de5b73f12638916335eb319d5ae61096928a11907668c3f7",
+    "Assets/Scripts/Internal/DaggerfallLootDataTables.cs": "fda2b442d2c001cb5baca3e4e884bfbee86ac9e73fb98a1589d4c33bffd07817",
+    "Assets/Scripts/Utility/GameObjectHelper.cs": "9d360e14bd5b297eb49ccae31a3f020e27a12e8e847e48ffec898a958df2a57d",
+    "Assets/Scripts/Utility/RDBLayout.cs": "9d89736d27b55a946b542cb352a3b80e7e9843e41fb49692ba977e6f2e007987",
+    "Assets/Scripts/Game/UserInterfaceWindows/DaggerfallInventoryWindow.cs": "1b805ed4588762b303c7a2a0f63b4add55e4fb4f7befe190cd05da8ac8399746"
+  },
+  "notes": [
+    "RDBLayout identifies editor marker 199:19 as random treasure and aligns its billboard to support below.",
+    "DaggerfallLootDataTables allows TEXTURE.216:0 for random treasure and dropped items.",
+    "GameObjectHelper removes RandomTreasure/DroppedLoot but retains corpses; dropped loot is placed below the player.",
+    "Authored test contents, deterministic sprites and immediate empty removal. Ground drops are grouped per inventory-open session, without proximity merging. Drop into any currently open container, including corpses, does not recheck reach/LOS/ground. Compatible stackable item contents merge on transfer."
+  ]
+}

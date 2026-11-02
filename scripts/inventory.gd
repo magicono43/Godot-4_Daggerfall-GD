@@ -1,5 +1,5 @@
 extends RefCounted
-## Scene-local identity. Transfers move instances rather than cloning them.
+## Scene-local identity; compatible stack merges retain the destination UID.
 const Catalog = preload("res://scripts/item_catalog.gd")
 static var next_uid := 1
 var items: Array[Dictionary] = []
@@ -13,9 +13,7 @@ func add_item(definition: String, quantity: int = 1) -> int:
 		return 0
 	var uid := next_uid
 	next_uid += 1
-	items.append({"uid": uid, "definition": definition, "quantity": quantity})
-	changed.emit()
-	return uid
+	return accept({"uid": uid, "definition": definition, "quantity": quantity})
 
 func find(uid: int) -> Dictionary:
 	for item in items:
@@ -23,15 +21,44 @@ func find(uid: int) -> Dictionary:
 			return item
 	return {}
 
-func transfer_to(destination: RefCounted, uid: int) -> bool:
+func compatible_stack(item: Dictionary) -> Dictionary:
+	if not Catalog.DEFINITIONS[item.definition].stackable:
+		return {}
+	var identity := item.duplicate(true)
+	identity.erase("uid")
+	identity.erase("quantity")
+	for candidate in items:
+		if candidate.uid == equipped_uid:
+			continue
+		var other := candidate.duplicate(true)
+		other.erase("uid")
+		other.erase("quantity")
+		if identity == other:
+			return candidate
+	return {}
+
+func accept(item: Dictionary) -> int:
+	var target := compatible_stack(item)
+	if target.is_empty():
+		items.append(item)
+		target = item
+	else:
+		target.quantity += int(item.quantity)
+	changed.emit()
+	return int(target.uid)
+
+func move_to(destination: RefCounted, uid: int) -> int:
+	# Return the surviving destination UID so the UI can follow merged selection.
 	var item := find(uid)
 	if destination == self or item.is_empty() or uid == equipped_uid or not destination.find(uid).is_empty():
-		return false
+		return 0
 	items.erase(item)
-	destination.items.append(item)
+	var target_uid: int = destination.accept(item)
 	changed.emit()
-	destination.changed.emit()
-	return true
+	return target_uid
+
+func transfer_to(destination: RefCounted, uid: int) -> bool:
+	return move_to(destination, uid) != 0
 
 func equip(uid: int) -> bool:
 	var item := find(uid)

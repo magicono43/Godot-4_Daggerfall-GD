@@ -91,3 +91,19 @@ Example: `"test_loot": [{"definition": "gold", "quantity": 12}]`.
 This is test data, not an original loot table. Runtime contents are constructed
 once per scene, retained after transfer/reopening and reset on R. Mesh props and
 original archive records do not acquire loot behavior from their appearance.
+
+## Selected treasure markers and authored pile contents
+
+Optional top-level `treasure_markers` selects original editor flats, e.g.
+`{"id":"chamber_treasure_marker","record_offset":32671,"expected_archive":199,"expected_record":19}`.
+Entries require unique IDs/offsets across the section and exactly editor 199:19;
+there may be at most 64. The loader verifies type/identity in the actual RDB and
+retains its converted position. These markers are not decorative billboards.
+
+Optional `prototype.treasure_piles` references selected marker IDs, e.g.
+`{"id":"chamber_treasure","marker_id":"chamber_treasure_marker","test_loot":[{"definition":"gold","quantity":18}]}`.
+At most 64 entries; each uses a unique pile ID and unassigned existing marker ID.
+`test_loot` must contain 1..32 catalog items, quantity 1..10000, with quantity 1
+for nonstackable items. Original position stays in the RDB; test contents stay in
+prototype. Runtime depletion/drop changes never write back to this JSON.
+See WORLD_LOOT.md for support alignment and empty-pile lifecycle.

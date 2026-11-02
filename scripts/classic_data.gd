@@ -16,6 +16,8 @@ var billboards: Array[Dictionary] = []
 var enemy_visuals: Dictionary = {}
 var dagger_frames: Array[Dictionary] = []
 var item_icons: Dictionary = {}
+var treasure_markers: Dictionary = {}
+var loot_pile_payload: Dictionary = {}
 var meshes := Archive.new()
 var material_cache: Dictionary = {}
 var dungeon_textures := DungeonTextures.new()
@@ -46,6 +48,8 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 	enemy_visuals.clear()
 	dagger_frames.clear()
 	item_icons.clear()
+	treasure_markers.clear()
+	loot_pile_payload.clear()
 	provenance.clear()
 	material_cache.clear()
 	texture_archives.clear()
@@ -115,6 +119,8 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 		selected[int(entry.record_offset)] = entry
 	for entry in definition.billboards:
 		selected[int(entry.record_offset)] = entry
+	for entry in definition.get("treasure_markers", []):
+		selected[int(entry.record_offset)] = entry
 	var matched: Dictionary = {}
 	var spawn: Dictionary = definition.spawn
 	for i in rdb.decode_u32(4) * rdb.decode_u32(8):
@@ -159,7 +165,10 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 					if tex >> 7 != int(entry.expected_archive) or tex & 127 != int(entry.expected_record):
 						error = "Section %s: record %d expected texture %d:%d, found %d:%d" % [entry.id, q, entry.expected_archive, entry.expected_record, tex >> 7, tex & 127]
 						return false
-					billboards.append({"id": entry.id, "offset": q, "archive": tex >> 7, "record": tex & 127, "position": pos, "fps": float(entry.fps)})
+					if entry.expected_archive == 199:
+						treasure_markers[entry.id] = pos
+					else:
+						billboards.append({"id": entry.id, "offset": q, "archive": tex >> 7, "record": tex & 127, "position": pos, "fps": float(entry.fps)})
 			q = rdb.decode_s32(q)
 	palette = FileAccess.get_file_as_bytes(arena_path.path_join("ART_PAL.COL"))
 	if matched.size() != selected.size() or not provenance.has("start"):
@@ -183,6 +192,10 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 			if payload.is_empty():
 				return false
 			enemy_visuals.skeleton = payload
+	# A deterministic member of DFU's original random-treasure billboard set.
+	loot_pile_payload = billboard_payload({"id": "loot_pile", "archive": 216, "record": 0})
+	if loot_pile_payload.is_empty():
+		return false
 	# Inventory images use raw item archive mappings, never dungeon/climate swaps.
 	for id in preload("res://scripts/item_catalog.gd").DEFINITIONS:
 		var mapping: Array = preload("res://scripts/item_catalog.gd").DEFINITIONS[id].icon

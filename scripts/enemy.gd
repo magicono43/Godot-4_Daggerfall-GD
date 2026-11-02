@@ -167,3 +167,12 @@ func suspend_for_modal() -> void:
 	melee.cancel()
 	if mobile and mobile.state == "attack":
 		mobile.set_state("idle")
+
+func loot_available() -> bool:
+	return health.current == 0 and loot_enabled
+
+func loot_title() -> String:
+	return "SKELETON REMAINS  |  Prototype test loot"
+
+func loot_label() -> String:
+	return "Corpse contents"
