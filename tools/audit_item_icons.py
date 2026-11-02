@@ -12,7 +12,7 @@ root = Path(cfg["classic"]["arena2"].strip('"'))
 palette_file = (root / "ART_PAL.COL").read_bytes()
 palette = palette_file[8:776]
 # Pinned ItemTemplates and ItemHelper inventory rules; independent of GDScript catalog.
-selection = {"dagger": (113, 234, 5), "gold": (276, 216, 1), "twigs": (8, 254, 9)}
+selection = {"dagger": (113, 234, 5), "gold": (276, 216, 1), "twigs": (8, 254, 9), "healing_potion": (83, 205, 15)}
 result = {"palette_sha256": hashlib.sha256(palette_file).hexdigest(), "icons": {}}
 for name, (template, archive, record) in selection.items():
     data = (root / f"TEXTURE.{archive:03}").read_bytes()

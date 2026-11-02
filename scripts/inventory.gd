@@ -48,3 +48,13 @@ func has_dagger() -> bool:
 func unequip() -> void:
 	equipped_uid = 0
 	changed.emit()
+
+func consume_one(uid: int) -> bool:
+	var item := find(uid)
+	if item.is_empty() or uid == equipped_uid or int(item.quantity) < 1:
+		return false
+	item.quantity -= 1
+	if item.quantity == 0:
+		items.erase(item)
+	changed.emit()
+	return true

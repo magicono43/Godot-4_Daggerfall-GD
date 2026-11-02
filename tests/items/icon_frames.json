@@ -42,6 +42,20 @@
       "rgba_sha256": "bb0b8200e6ea5a37b9a2b247af0e01caac6a626d1e0ea9cbfb3acb2d1438eab1",
       "transparent_pixels": 200,
       "removed_mask_pixels": 0
+    },
+    "healing_potion": {
+      "template": 83,
+      "archive": 205,
+      "record": 15,
+      "pixels": [
+        10,
+        25
+      ],
+      "compression": 2304,
+      "file_sha256": "38561ac6ffbc33d4402087ed70f0007a96e91d0128b0a0c8fe757e6bcc286ea9",
+      "rgba_sha256": "af39e6e87c7501c95a01f935db996e1cda5600e2ea0a210b16fedcf8d3d24aae",
+      "transparent_pixels": 46,
+      "removed_mask_pixels": 0
     }
   }
 }

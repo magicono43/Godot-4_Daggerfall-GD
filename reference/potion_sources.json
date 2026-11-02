@@ -1,0 +1,17 @@
+{
+  "repository": "https://github.com/Interkarma/daggerfall-unity",
+  "commit": "4e78e1412b17b60f4d5d6073825775aa5ae95139",
+  "files": {
+    "Assets/Scripts/Game/Items/DaggerfallUnityItem.cs": "94ee4fc8b00847ae626d3c64c42736407f7e860f2a8ed64bd689e3c50dfff027",
+    "Assets/Resources/ItemTemplates.txt": "7f748b0ade7da426fe9f001b7f806c02c19b1b1d835cc48b08a0cad1f6be7077",
+    "Assets/Resources/PotionRecipes.txt": "b99051faf4926dd1e898a257cbb8ce14368c72fbd719f9a35ec13baa2aad75e2",
+    "Assets/Scripts/Game/MagicAndEffects/PotionRecipe.cs": "b489e4275805691692fb10536f44cb3fea102afc9a46ea9844e508490e673de9",
+    "Assets/Scripts/Game/MagicAndEffects/EntityEffectBroker.cs": "4428a80493be9cb6a0089b1ad089d02651e49e9c6483dcac88b702cde41428b4",
+    "Assets/Scripts/Game/MagicAndEffects/Effects/Restoration/HealHealth.cs": "0cb5fd08c84586319c97949a40cbe31ad709e51ab7cbf52351dbae00b7e83de0",
+    "Assets/Scripts/Game/UserInterfaceWindows/DaggerfallInventoryWindow.cs": "1b805ed4588762b303c7a2a0f63b4add55e4fb4f7befe190cd05da8ac8399746"
+  },
+  "notes": [
+    "Healing potion is template 83 Glass Bottle with Healing recipe classic key 4975678; HealHealth.SetPotionProperties assigns record 15 in archive 205.",
+    "DFU inventory drinks a potion and removes one dose. This prototype restores fixed 25 HP and preserves the potion at full health; full RPG effects are deferred."
+  ]
+}

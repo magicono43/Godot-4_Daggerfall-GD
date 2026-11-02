@@ -14,3 +14,11 @@ func apply_damage(amount: int) -> bool:
 	if current == 0:
 		died.emit()
 	return true
+
+func restore(amount: int) -> int:
+	# Healing never revives a dead actor or exceeds the current maximum.
+	if amount <= 0 or current <= 0 or current >= maximum:
+		return 0
+	var restored := mini(amount, maximum - current)
+	current += restored
+	return restored

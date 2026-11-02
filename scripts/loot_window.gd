@@ -9,6 +9,8 @@ var take_button: Button
 var close_button: Button
 var take_all_button: Button
 var equip_button: Button
+var use_button: Button
+var use_feedback: Label
 var title: Label
 var corpse_column: VBoxContainer
 var description: Label
@@ -89,10 +91,15 @@ func _ready() -> void:
 	description.custom_minimum_size = Vector2(0, 44)
 	description.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	text.add_child(description)
+	use_feedback = Label.new()
+	use_feedback.custom_minimum_size = Vector2(0, 24)
+	use_feedback.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	use_feedback.modulate = Color(0.92, 0.81, 0.6)
+	layout.add_child(use_feedback)
 	var buttons := HBoxContainer.new()
 	buttons.add_theme_constant_override("separation", 8)
 	layout.add_child(buttons)
-	for caption in ["Take selected", "Take all", "Equip", "Close (Esc / I)"]:
+	for caption in ["Take selected", "Take all", "Equip", "Use", "Close (Esc / I)"]:
 		var button := Button.new()
 		button.text = caption
 		buttons.add_child(button)
@@ -105,6 +112,9 @@ func _ready() -> void:
 		elif caption == "Equip":
 			equip_button = button
 			button.pressed.connect(toggle_equipment)
+		elif caption == "Use":
+			use_button = button
+			button.pressed.connect(use_selected)
 		else:
 			close_button = button
 			button.pressed.connect(close)
@@ -123,6 +133,7 @@ func open_inventory() -> void:
 	begin_modal()
 
 func begin_modal() -> void:
+	use_feedback.text = ""
 	selected_uid = 0
 	selected_from_corpse = false
 	previous_capture = actor.controls_active
@@ -180,12 +191,14 @@ func refresh() -> void:
 	update_details()
 
 func select_player_item(index: int) -> void:
+	use_feedback.text = ""
 	selected_from_corpse = false
 	corpse_list.deselect_all()
 	selected_uid = int(player_list.get_item_metadata(index))
 	update_details()
 
 func select_corpse_item(index: int) -> void:
+	use_feedback.text = ""
 	if corpse_list.is_item_disabled(index):
 		return
 	selected_from_corpse = true
@@ -195,6 +208,7 @@ func select_corpse_item(index: int) -> void:
 
 func update_details() -> void:
 	var item: Dictionary = source.loot.find(selected_uid) if selected_from_corpse and is_instance_valid(source) else actor.inventory.find(selected_uid)
+	use_button.disabled = selected_from_corpse or item.is_empty() or not Catalog.DEFINITIONS.get(item.get("definition", ""), {}).has("heal_amount")
 	equip_button.disabled = selected_from_corpse or item.is_empty() or item.get("definition") != "dagger"
 	var equipped: bool = not selected_from_corpse and selected_uid != 0 and selected_uid == actor.inventory.equipped_uid
 	equip_button.text = "Unequip" if equipped else "Equip"
@@ -239,3 +253,10 @@ func take_all() -> void:
 	for item in source.loot.items.duplicate():
 		source.loot.transfer_to(actor.inventory, item.uid)
 	refresh()
+
+func use_selected() -> void:
+	if not visible or not actor.modal_open or actor.is_dead() or selected_from_corpse:
+		return
+	var result := preload("res://scripts/consumables.gd").use_item(actor.inventory, actor.health, selected_uid)
+	refresh()
+	use_feedback.text = result.message
