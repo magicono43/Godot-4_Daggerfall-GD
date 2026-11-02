@@ -1,12 +1,13 @@
 ## Current handoff - November 2, 2026
 
-The mace milestone has been playtested and accepted. The proposed next milestone
-is one manual save/load slot for the current section; persistence is not yet
-implemented. A fresh chat should read [AGENTS.md](AGENTS.md),
-[docs/HANDOFF.md](docs/HANDOFF.md) and [docs/NEXT_MILESTONE.md](docs/NEXT_MILESTONE.md),
-inspect current code, and propose the save format/restoration order before changes.
-Accepted automated baseline: 858/858 headless checks; rendered mace 31/31.
-
+Manual save/load is implemented for the current section: **K Save**, **L Load**.
+Save while alive, stopped on supported ground, inventory closed, posture settled,
+attacks finished and doors stopped. Loading restores player/equipment, enemies and
+corpses, loot piles and doors; active mouse capture and controls resume immediately. **R starts fresh** without
+changing the slot. Saves stay inside the project at `saves/manual.json`.
+See [docs/SAVE_LOAD.md](docs/SAVE_LOAD.md) for restrictions and a playtest checklist.
+The accepted mace/inventory baseline is preserved. User save/load playtest pending.
+Validation: 940/940 headless checks; rendered focus/input 19/19. The earlier rendered persistence run passed 61/61 with both display modes visually inspected. Run.ps1 -Test includes persistence and a separate-process reload check.
 ## Original mace - November 2, 2026
 
 The skeleton beside the starting hall now carries a **Mace**. Loot it and Equip
@@ -224,5 +225,10 @@ Two model 41311 containers at original RDB offsets 32552 and 32623 are now visib
 tools/audit_billboards.py independently checks original positions, dimensions and transparent RGBA hashes for all six selected sprite frames. tests/capture_decorations.gd produces rear-cave, skull/fire and container views under tests/decorations. These views were visually inspected separately from the automated checks. The renderer still reports the restricted-host log/certificate/shader-cache warnings documented above.
 
 Billboard facing and light animation timing reference: https://github.com/Interkarma/daggerfall-unity/blob/master/Assets/Scripts/Internal/DaggerfallBillboard.cs. The native scale calculation is in reference/MeshReader.cs. This validates a small original-decoration path, not support for all billboard archive types, actors, sounds or interactions.
+
+
+
+
+
 
 

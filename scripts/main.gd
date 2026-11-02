@@ -29,6 +29,8 @@ var enemy_navigation_enabled := true
 var combat_audio: Node
 var loot_window: Control
 var world_loot: Node
+var restoring := false
+var persistence: Node
 
 func _ready() -> void:
 	configure_input()
@@ -98,7 +100,11 @@ func _ready() -> void:
 	player.weapon_payloads = classic.weapon_frames
 	player.combat_audio = combat_audio
 	player.name = "Player"
+	# A hidden load candidate must not change the live window's mouse capture.
+	player.capture_on_ready = not restoring
 	world_root.add_child(player)
+	player.modal_open = restoring
+	player.controls_active = not restoring
 	loot_window = preload("res://scripts/loot_window.gd").new()
 	loot_window.icons = classic.item_icons
 	loot_window.actor = player
@@ -112,7 +118,8 @@ func _ready() -> void:
 	world_loot.payload = classic.loot_pile_payload
 	add_child(world_loot)
 	loot_window.world_loot = world_loot
-	world_loot.spawn_authored()
+	if not restoring:
+		world_loot.spawn_authored()
 	player.spawn = classic.provenance.start + Vector3.UP * 0.1
 	player.position = player.spawn
 	# Face the centre of the original cave opening from the original enter marker.
@@ -147,6 +154,9 @@ func _ready() -> void:
 	for entry in definition.prototype.lights:
 		add_light(classic.to_world(entry.position_native), entry.energy, entry.range_metres)
 	ready_to_play = true
+	persistence = preload("res://scripts/save_game.gd").new()
+	persistence.level = self
+	add_child(persistence)
 	print("CLASSIC_SLICE ", classic.provenance, " triangles=", classic.triangle_count, " textures=", classic.texture_count)
 	if "--capture" in OS.get_cmdline_user_args():
 		capture_preview()
@@ -259,7 +269,7 @@ func create_hud() -> void:
 	crosshair.position -= Vector2(5, 13)
 	root.add_child(crosshair)
 	var controls := Label.new()
-	controls.text = "WASD Move  |  Ctrl Toggle crouch  |  Shift Run  |  Space Jump  |  E Interact  |  I Inventory\nRMB Attack  |  Z Draw/Sheath  |  Esc Mouse  |  R Restart\nClimb: W into wall or S over ledge  |  W/S Up/Down  |  A/D Along wall  |  Space Eject\nF2 View  |  F3 Reload movement  |  F4 Movement diagnostics"
+	controls.text = "WASD Move  |  Ctrl Toggle crouch  |  Shift Run  |  Space Jump  |  E Interact  |  I Inventory\nRMB Attack  |  Z Draw/Sheath  |  Esc Mouse  |  R Restart\nClimb: W into wall or S over ledge  |  W/S Up/Down  |  A/D Along wall  |  Space Eject\nF2 View  |  F3 Reload movement  |  F4 Diagnostics  |  K Save  |  L Load"
 	controls.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
 	controls.position = Vector2(29, -104)
 	controls.add_theme_font_size_override("font_size", 14)
@@ -309,6 +319,16 @@ func capture_preview() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if restoring:
+		get_viewport().set_input_as_handled()
+		return
+	if ready_to_play and event is InputEventKey and event.pressed and not event.echo and (event.keycode in [KEY_K, KEY_L] or event.physical_keycode in [KEY_K, KEY_L]):
+		get_viewport().set_input_as_handled()
+		if event.keycode == KEY_K or event.physical_keycode == KEY_K:
+			persistence.save_slot()
+		else:
+			persistence.load_slot()
+		return
 	if ready_to_play and player.modal_open:
 		if event.is_action_pressed("release_mouse") or event.is_action_pressed("inventory"):
 			loot_window.close()

@@ -1,0 +1,3 @@
+PASS Separate process loads the saved slot
+PASS Cross-process player equipment and health restore
+PASS Cross-process drops and corpse restore

@@ -1,3 +1,13 @@
+# Current status — manual save/load implemented
+
+Implemented and reviewed November 2, 2026. Save/load works in user playtesting; editor shortcut conflict corrected. K saves,
+L loads, R starts fresh; see [SAVE_LOAD.md](SAVE_LOAD.md) for shipped behavior,
+restrictions and the playtest checklist. Latest validation: 940/940 full headless checks,
+including separate-process load and routed input; rendered focus 19/19. Earlier rendered persistence 61/61, with both display
+modes visually inspected. Read the latest HANDOFF entry first.
+
+The original proposal below is preserved as design history. It no longer denotes
+unfinished implementation, and no subsequent milestone has been selected.
 # Proposed next milestone: one manual save/load slot
 
 Prepared November 2, 2026 for a new chat. The user accepted the mace playtest and
@@ -103,3 +113,6 @@ prototype.
 
 Update README, HANDOFF and feature documentation after implementation; keep this
 proposal clearly distinguished from what actually ships.
+
+
+

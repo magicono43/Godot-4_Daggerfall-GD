@@ -168,6 +168,28 @@ func suspend_for_modal() -> void:
 	if mobile and mobile.state == "attack":
 		mobile.set_state("idle")
 
+func restore_state(data: Dictionary) -> void:
+	# Loading a corpse must not emit damage, death audio or loot creation events.
+	position = Vector3(data.position[0], data.position[1], data.position[2])
+	rotation.y = data.yaw
+	health.current = int(data.health)
+	velocity = Vector3.ZERO
+	melee.cancel()
+	navigation.clear()
+	noticed = false
+	hit_flash = 0.0
+	if health.current == 0:
+		collision_layer = 0
+		collision_mask = 0
+		if mobile:
+			mobile.set_state("corpse")
+			if loot_enabled:
+				var target := preload("res://scripts/corpse_target.gd").new()
+				target.actor = self
+				add_child(target)
+		else:
+			visible = false
+
 func loot_available() -> bool:
 	return health.current == 0 and loot_enabled
 

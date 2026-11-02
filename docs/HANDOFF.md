@@ -1,3 +1,69 @@
+# Resume here - Embedded-editor save/load shortcuts
+
+The user identified the actual freeze: Godot's embedded-play F9 Suspend/Resume
+shortcut paused the project while the game's F9 also loaded the slot. The user
+runs through the editor with F5 and requested compatible gameplay shortcuts.
+Manual save is now **K**, manual load **L**. No F5/F9 game aliases remain; F5 stays
+the editor launch key and F9 stays an editor command. Current HUD, feedback,
+README, AGENTS, SAVE_LOAD and persistence/input checks use K/L. Existing save
+files are unchanged and compatible. The earlier control-handoff improvement is
+retained, so active capture resumes immediately after L.
+
+Earlier F5/F9 entries below are historical. The actual embedded-editor shortcut
+conflict was confirmed by the user, not reproduced by standalone event injection.
+The latest tests exercise K/L through the game root viewport. User embedded-play
+retry remains the final verification of their editor environment.
+# Resume here - F9 control handoff correction
+
+User playtest found F9 restored position but released/froze mouse controls until a
+second F9. Corrected the handoff: player.capture_on_ready prevents a hidden load
+candidate from touching native mouse capture. save_game.gd preserves live controls
+on success (pre-modal preference if loading from inventory), and restores active
+controls from death. Intentionally released controls still allow one nonattacking
+recapture click. No save format change; existing manual slots remain compatible.
+
+The exact second-F9-only symptom did not reproduce with injected events, but the
+previous implementation unconditionally disabled controls and released capture.
+New tests/load_focus.gd exercises actual root-viewport dispatch, immediate look and
+movement after one F9, continuous rendered mouse capture, modal/released/dead
+loading and click-to-recapture without an attack. Included in Run.ps1 -Test.
+User should retry their original F9 case. Earlier unconditional-release notes below
+are historical and superseded by this correction.
+# Resume here - November 2, 2026: manual save/load implemented, playtest pending
+
+The user approved the one-slot proposal and requested implementation plus review.
+Implemented F5 save / F9 load for the current section. R remains a fresh restart;
+it never changes the slot. No manual slot was created by automated tests (they use
+saves/test_manual.json). See SAVE_LOAD.md for controls, restrictions, architecture
+and the suggested manual playtest. The next action is the user's playtest, not an
+unrequested new feature. Earlier save/load proposal notes below are historical.
+
+Project-local saves/manual.json uses bounded version-1 JSON and an exact section
+fingerprint. Player health/position/look, settled crouch and sheath, item metadata,
+quantities/UIDs/equipment, enemy health/positions/corpses/loot, door swing sides,
+authored treasure depletion and distinct dropped piles restore. No archive/media
+bundling or external writes. F5 requires alive/stationary/grounded, settled posture,
+closed UI, no pending strikes or moving doors. F9 also works from death/open UI.
+Load validates before replacement, builds a modal-frozen fresh candidate, skips
+authored loot generation and checks capsule clearance/support before swapping.
+Failure restores the old scene/audio/mouse/UID allocator. Success releases the
+mouse and clears attacks, pursuit, climbing, drop sessions and motion caches.
+
+Implementation review caught and corrected the Godot collision-removal effect of
+PROCESS_MODE_DISABLED on the candidate: candidate actors freeze through modal_open
+instead. Support verification uses full-capsule sweeps rather than a centre ray.
+No unresolved review findings. Source references remain at the pinned DFU revision;
+DFU's serialized item UID restoration informed the direct identity restore path.
+
+Validation: **922/922 headless checks** (858 existing + 61 persistence integration
++ 3 separate-process checks) passed via Run.ps1 -Test. Report:
+tests/persistence_full_regression.log. **61/61 rendered persistence checks** passed
+in tests/persistence_rendered.log. Visually inspected persistence_crouched_4_3.png
+and persistence_crouched_widescreen.png: original visible corpse, crouched camera,
+HUD and save/load feedback are clear. User playtest remains pending. Existing
+restricted-host user-log/certificate diagnostics are nonblocking; no script errors
+or failed assertions remain in final reports. No new claim of subjective gameplay
+or audio parity is made.
 # Resume here - November 2, 2026: accepted mace, save/load handoff
 
 Read AGENTS.md first, then this entry and NEXT_MILESTONE.md. The user has now
@@ -542,3 +608,10 @@ Combat audio validation: 686/686 full headless checks and 29/29 rendered audio c
 
 Audio correction validation: 696/696 full headless checks; 39/39 rendered audio checks, including mixer output at 20 m. See tests/audio_corrections_full.log and tests/audio_corrections_rendered.log. All automated checks passed; user listening test pending.
 
+
+
+
+F9 correction validation: 940/940 full headless checks passed (tests/load_focus_full_regression.log). Rendered input/capture regression passed 19/19 (tests/load_focus_rendered.log), including uninterrupted mouse capture and immediate mouse look/movement after one routed F9. No script errors or failed assertions in final logs. User retry pending.
+
+
+K/L remap validation: 940/940 full headless checks passed (tests/hotkeys_full_regression.log); rendered routed-input/capture checks 19/19 passed (tests/load_focus_rendered.log). No script errors or failed assertions in final reports. Standalone rendering validates game input; embedded-editor retry remains user verification.

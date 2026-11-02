@@ -7,6 +7,8 @@ var classic: RefCounted
 var authored_piles: Dictionary = {}
 var error := ""
 var session_pile: Node3D
+var initialized := false
+var next_drop_id := 1
 
 func spawn_authored() -> void:
 	# Static bodies must reach the physics server before ground queries run.
@@ -24,6 +26,8 @@ func spawn_authored() -> void:
 		for item in entry.test_loot:
 			pile.loot.add_item(item.definition, int(item.quantity))
 		authored_piles[entry.id] = pile
+		pile.set_meta("save_id", entry.id)
+	initialized = true
 
 func ground(at: Vector3, distance: float) -> Dictionary:
 	var query := PhysicsRayQueryParameters3D.create(at, at + Vector3.DOWN * distance, 1)
@@ -38,6 +42,9 @@ func create_pile(at: Vector3, dropped: bool) -> Area3D:
 	pile.player = player
 	pile.position = at
 	pile.dropped = dropped
+	if dropped:
+		pile.set_meta("save_id", "drop_%d" % next_drop_id)
+		next_drop_id += 1
 	world_root.add_child(pile)
 	return pile
 

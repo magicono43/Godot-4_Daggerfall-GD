@@ -33,6 +33,7 @@ var ray: RayCast3D
 var spawn := Vector3.ZERO
 var interact_target: Node
 var controls_active := true
+var capture_on_ready := true
 var modal_open := false
 var inventory := preload("res://scripts/inventory.gd").new()
 signal loot_requested(container: Node3D)
@@ -72,7 +73,8 @@ func _ready() -> void:
 	lantern.light_energy = 1.15
 	lantern.omni_range = 10.0
 	camera.add_child(lantern)
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	if capture_on_ready:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func reload_movement() -> bool:
 	var loaded := movement.profile.load_file()

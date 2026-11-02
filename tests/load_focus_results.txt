@@ -1,0 +1,18 @@
+PASS Routed K creates isolated test slot
+PASS One routed L completes scene replacement
+PASS Captured load never releases mouse during candidate initialization
+PASS One L immediately resumes captured gameplay without another click/load
+PASS First L restores player position
+PASS Mouse look reaches restored player after first L
+PASS Movement works after first L
+PASS Load does not start a weapon attack
+PASS One routed L completes scene replacement
+PASS Loading from captured inventory restores gameplay controls
+PASS Escape deliberately releases controls
+PASS One routed L completes scene replacement
+PASS Load preserves deliberately released controls
+PASS Single recapture click restores controls without attack
+PASS One routed L completes scene replacement
+PASS Loading from released inventory keeps prior released preference
+PASS One routed L completes scene replacement
+PASS Loading from death resumes living gameplay immediately

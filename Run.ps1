@@ -4,11 +4,15 @@ $godotPath = 'C:\Godot\Godot_v4.7.2-stable_win64\Godot_v4.7.2-stable_win64_conso
 $godotArguments = @('--path', $PSScriptRoot)
 if ($Test) {
     if (-not $Visual) { $godotArguments += '--headless' }
-    foreach ($suite in @('smoke', 'movement', 'stairs', 'expansion', 'climbing', 'corners', 'crouching', 'combat', 'retaliation', 'skeleton', 'enemy_navigation', 'dagger', 'audio', 'inventory', 'world_loot', 'mace')) {
+    foreach ($suite in @('smoke', 'movement', 'stairs', 'expansion', 'climbing', 'corners', 'crouching', 'combat', 'retaliation', 'skeleton', 'enemy_navigation', 'dagger', 'audio', 'inventory', 'world_loot', 'mace', 'persistence', 'load_focus')) {
         & $godotPath @godotArguments --fixed-fps 60 --script "res://tests/$suite.gd"
         if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
     }
+    # Separate Godot process: prove the slot survives process-local UID state.
+    & $godotPath @godotArguments --fixed-fps 60 --script res://tests/persistence.gd -- --persistence-read
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
     exit 0
 }
 & $godotPath @godotArguments
 exit $LASTEXITCODE
+
