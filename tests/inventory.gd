@@ -49,6 +49,25 @@ func run() -> void:
 	hall.melee.enabled = false
 	window = level.loot_window
 	arena = level.world_root
+	var fixture: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://tests/items/icon_frames.json"))
+	for id in ["dagger", "gold", "twigs"]:
+		var icon: Texture2D = level.classic.item_icons[id]
+		var expected: Dictionary = fixture.icons[id]
+		var rgba := icon.get_image().get_data()
+		var context := HashingContext.new()
+		context.start(HashingContext.HASH_SHA256)
+		context.update(rgba)
+		check(icon.get_size() == Vector2(expected.pixels[0], expected.pixels[1]) and context.finish().hex_encode() == expected.rgba_sha256, "%s original icon dimensions and RGBA match independent source audit" % id)
+		var transparent := 0
+		for pixel in range(3, rgba.size(), 4):
+			if rgba[pixel] == 0:
+				transparent += 1
+		check(transparent == expected.transparent_pixels, "%s original icon transparent background matches source audit" % id)
+	var decoder := preload("res://scripts/classic_data.gd").new()
+	decoder.palette = level.classic.palette
+	decoder.texture_archives[254] = PackedByteArray([0, 0])
+	check(decoder.read_texture(254, 9, 0, true, true) == null, "Truncated inventory archive fails safely")
+	check(not preload("res://scripts/item_catalog.gd").valid("bone") and hall.loot.items[1].definition == "twigs", "Authored test loot uses real Twigs ingredient instead of invented bone item")
 	check(player.inventory.items.size() == 1 and player.inventory.has_dagger(), "Fresh player owns exactly one equipped dagger")
 	var dagger: int = player.inventory.equipped_uid
 	var other := preload("res://scripts/inventory.gd").new()
@@ -113,6 +132,12 @@ func run() -> void:
 	check(passive.navigation.memory_left == memory, "Modal freezes enabled pursuit memory and steering")
 	await mouse_click(window.corpse_list.get_global_rect().position + Vector2(30, 17))
 	check(not window.corpse_list.get_selected_items().is_empty(), "Actual pointer click selects a corpse row")
+	check(window.preview.texture == level.classic.item_icons.gold and window.equipment_status.text == "Corpse contents", "Corpse selection previews original gold icon and ownership")
+	check(window.equip_button.disabled, "Corpse preview cannot equip an unowned item")
+	await mouse_click(window.corpse_list.global_position + window.corpse_list.get_item_rect(1).get_center())
+	check(window.preview.texture == level.classic.item_icons.twigs and window.item_heading.text.contains("Twigs"), "Twigs corpse row shows matching ingredient preview")
+	await capture("loot_twigs")
+	await mouse_click(window.corpse_list.global_position + window.corpse_list.get_item_rect(0).get_center())
 	await capture("loot_4_3")
 	key(KEY_F2)
 	await capture("loot_widescreen")
@@ -134,11 +159,13 @@ func run() -> void:
 	var second_dagger: int = player.inventory.items[-1].uid
 	check(second_dagger != dagger and player.inventory.items[-1].definition == "dagger", "Looted dagger has its own owned identity")
 	await mouse_click(window.player_list.global_position + window.player_list.get_item_rect(3).get_center())
+	check(window.player_list.get_item_icon(3) == level.classic.item_icons.dagger and window.preview.texture == level.classic.item_icons.dagger and window.equipment_status.text == "In your inventory", "Looted dagger row and preview use cached original icon before equip")
 	check(window.selected_uid == second_dagger, "Actual pointer selects the distinct looted dagger")
 	await mouse_click(window.equip_button.get_global_rect().get_center())
 	check(player.inventory.equipped_uid == second_dagger and player.inventory.items.size() == 4, "Equip looted dagger replaces equipment reference without duplicating items")
 	await mouse_click(window.player_list.global_position + window.player_list.get_item_rect(1).get_center())
 	check(window.equip_button.disabled and window.description.text.contains("currency"), "Nonweapon selection shows description and disables equipment action")
+	check(window.preview.texture == level.classic.item_icons.gold and window.equipment_status.text == "In your inventory", "Player gold preview retains correct icon and ownership after transfer")
 	await capture("loot_empty")
 	await mouse_click(window.close_button.get_global_rect().get_center())
 	check(not window.visible and player.controls_active and combat.elapsed < 0, "Actual Close click restores controls without starting an attack")
@@ -180,6 +207,7 @@ func run() -> void:
 	check(player.combat.elapsed < 0, "Standalone inventory cancels a pending strike")
 	check(window.visible and not window.corpse_column.visible and player.modal_open, "I opens standalone inventory without a corpse")
 	await mouse_click(window.player_list.global_position + window.player_list.get_item_rect(0).get_center())
+	check(window.preview.texture == level.classic.item_icons.dagger and window.equipment_status.text == "Equipped weapon", "Standalone preview clearly marks equipped original dagger")
 	check(not window.equip_button.disabled and window.equip_button.text == "Unequip" and not window.description.text.is_empty(), "Selected equipped dagger shows description and Unequip action")
 	await mouse_click(window.equip_button.get_global_rect().get_center())
 	check(not player.inventory.has_dagger(), "Actual Unequip button clears equipped state")

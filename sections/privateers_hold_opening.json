@@ -449,7 +449,7 @@
         "attack_enabled": true,
         "visual": "skeleton",
         "navigation_enabled": true,
-        "test_loot": [{"definition": "gold", "quantity": 12}, {"definition": "bone", "quantity": 2}, {"definition": "dagger", "quantity": 1}]
+        "test_loot": [{"definition": "gold", "quantity": 12}, {"definition": "twigs", "quantity": 2}, {"definition": "dagger", "quantity": 1}]
       }
     ],
     "boundaries": [

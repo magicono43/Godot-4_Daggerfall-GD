@@ -98,6 +98,7 @@ func _ready() -> void:
 	player.name = "Player"
 	world_root.add_child(player)
 	loot_window = preload("res://scripts/loot_window.gd").new()
+	loot_window.icons = classic.item_icons
 	loot_window.actor = player
 	presentation.hud.add_child(loot_window)
 	player.loot_requested.connect(loot_window.open)

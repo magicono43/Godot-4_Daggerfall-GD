@@ -1,3 +1,11 @@
+PASS dagger original icon dimensions and RGBA match independent source audit
+PASS dagger original icon transparent background matches source audit
+PASS gold original icon dimensions and RGBA match independent source audit
+PASS gold original icon transparent background matches source audit
+PASS twigs original icon dimensions and RGBA match independent source audit
+PASS twigs original icon transparent background matches source audit
+PASS Truncated inventory archive fails safely
+PASS Authored test loot uses real Twigs ingredient instead of invented bone item
 PASS Fresh player owns exactly one equipped dagger
 PASS Equipped item cannot leave its owner
 PASS Equipment cannot reference another inventory
@@ -19,6 +27,9 @@ PASS Modal freezes player movement and enemy simulation
 PASS Modal rejects combat requests
 PASS Modal freezes enabled pursuit memory and steering
 PASS Actual pointer click selects a corpse row
+PASS Corpse selection previews original gold icon and ownership
+PASS Corpse preview cannot equip an unowned item
+PASS Twigs corpse row shows matching ingredient preview
 PASS Presentation can toggle while modal remains open
 PASS Actual Take selected button transfers item into player ownership
 PASS Repeated stale transfer cannot duplicate item
@@ -27,9 +38,11 @@ PASS Closing leaves attack cancelled
 PASS Reopening preserves remaining loot
 PASS Take All is repeat-safe and empties corpse
 PASS Looted dagger has its own owned identity
+PASS Looted dagger row and preview use cached original icon before equip
 PASS Actual pointer selects the distinct looted dagger
 PASS Equip looted dagger replaces equipment reference without duplicating items
 PASS Nonweapon selection shows description and disables equipment action
+PASS Player gold preview retains correct icon and ownership after transfer
 PASS Actual Close click restores controls without starting an attack
 PASS Empty corpse remains inspectable
 PASS Outside RMB click cannot recapture controls or attack through modal
@@ -39,6 +52,7 @@ PASS Scene restart restores clean inventory, equipment, living skeleton and loot
 PASS Actual R while looting restores a clean playable scene
 PASS Standalone inventory cancels a pending strike
 PASS I opens standalone inventory without a corpse
+PASS Standalone preview clearly marks equipped original dagger
 PASS Selected equipped dagger shows description and Unequip action
 PASS Actual Unequip button clears equipped state
 PASS I closes inventory and unequipped weapon stays hidden and cannot attack

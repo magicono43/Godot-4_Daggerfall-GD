@@ -2,10 +2,18 @@
   "repository": "https://github.com/Interkarma/daggerfall-unity",
   "commit": "4e78e1412b17b60f4d5d6073825775aa5ae95139",
   "files": {
-    "Assets/Scripts/Game/Items/DaggerfallUnityItem.cs": "94ee4fc8b00847ae626d3c64c42736407f7e860f2a8ed64bd689e3c50dfff027"
+    "Assets/Scripts/Game/Items/DaggerfallUnityItem.cs": "94ee4fc8b00847ae626d3c64c42736407f7e860f2a8ed64bd689e3c50dfff027",
+    "Assets/Resources/ItemTemplates.txt": "7f748b0ade7da426fe9f001b7f806c02c19b1b1d835cc48b08a0cad1f6be7077",
+    "Assets/Scripts/Game/Items/ItemHelper.cs": "48fcfe19262d2c9a07ec22971dd23238ad509b2ee9e150b45e121c147a42a0dd",
+    "Assets/Scripts/Game/Items/ItemEnums.cs": "312b1c1d9f34e5e3dc9c6666597fc57360c1eaf93ad29ece1b9b878453daefd8",
+    "Assets/Scripts/API/TextureFile.cs": "1e211987fd9b3e3f93274333f313d8db96a451a8ae4cb4570564d53a5d73fb71",
+    "Assets/Scripts/API/BaseImageFile.cs": "119cc251b5461faf9ccf2516a3431e06aff801fc5b8b90ee0a3cb534ef642841",
+    "Assets/Scripts/API/ImgFile.cs": "46e267b6bbce8850a503311d6afc73ccfddb9f4b39d55cb467be6d104349e984",
+    "Assets/Scripts/Utility/ImageProcessing.cs": "6e7e431efa284a32de103204f2a7ae14b3ade9b4323bc948cbd39110096f2e20"
   },
   "notes": [
-    "Existing pinned local snapshot, not updated.",
-    "UID, template identity, stackCount and equipment distinction inform the prototype model; complete DFU collections, UI and loot tables are not implemented."
+    "Unchanged pinned commit; added item template, image selection and mask evidence.",
+    "Dagger template 113 uses player 234:5; gold 276 falls back to world 216:1; ingredient Twigs 8 uses world 254:9.",
+    "Icons use frame zero, ART_PAL.COL and inventory mask removal; no material recoloring, random loot, full templates or original inventory skin implemented."
   ]
 }

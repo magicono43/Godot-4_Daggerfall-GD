@@ -15,6 +15,7 @@ var objects: Array[Dictionary] = []
 var billboards: Array[Dictionary] = []
 var enemy_visuals: Dictionary = {}
 var dagger_frames: Array[Dictionary] = []
+var item_icons: Dictionary = {}
 var meshes := Archive.new()
 var material_cache: Dictionary = {}
 var dungeon_textures := DungeonTextures.new()
@@ -44,6 +45,7 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 	billboards.clear()
 	enemy_visuals.clear()
 	dagger_frames.clear()
+	item_icons.clear()
 	provenance.clear()
 	material_cache.clear()
 	texture_archives.clear()
@@ -181,6 +183,14 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 			if payload.is_empty():
 				return false
 			enemy_visuals.skeleton = payload
+	# Inventory images use raw item archive mappings, never dungeon/climate swaps.
+	for id in preload("res://scripts/item_catalog.gd").DEFINITIONS:
+		var mapping: Array = preload("res://scripts/item_catalog.gd").DEFINITIONS[id].icon
+		var image := read_texture(int(mapping[0]), int(mapping[1]), 0, true, true)
+		if image == null:
+			error = "Missing, truncated or unsupported original inventory image: " + id
+			return false
+		item_icons[id] = ImageTexture.create_from_image(image)
 	dagger_frames = decode_dagger_cif(FileAccess.get_file_as_bytes(arena_path.path_join("WEAPON02.CIF")))
 	if dagger_frames.is_empty():
 		error = "Missing, truncated or unsupported original WEAPON02.CIF dagger data"
@@ -336,7 +346,7 @@ func billboard_payload(entry: Dictionary) -> Dictionary:
 	payload.merge({"frames": frames, "size_metres": info.size_metres})
 	return payload
 
-func read_texture(archive: int, record: int, frame: int = 0, transparent: bool = false) -> Image:
+func read_texture(archive: int, record: int, frame: int = 0, transparent: bool = false, remove_inventory_mask: bool = false) -> Image:
 	if archive == 0 or archive == 1:
 		var solid := Image.create(32, 32, false, Image.FORMAT_RGB8)
 		var index := record + (128 if archive == 1 else 0)
@@ -355,7 +365,8 @@ func read_texture(archive: int, record: int, frame: int = 0, transparent: bool =
 		return null
 	var indices := PackedByteArray()
 	indices.resize(w * h)
-	if (compression == 0 or compression == 0x0900) and int(info.frames) == 1:
+	# DFU TextureFile.ReadImage treats the Twigs 0x0101 flag as raw rows.
+	if (compression == 0 or compression == 0x0900 or compression == 0x0101) and int(info.frames) == 1:
 		for y in h:
 			if data + y * 256 + w > bytes.size():
 				return null
@@ -424,6 +435,9 @@ func read_texture(archive: int, record: int, frame: int = 0, transparent: bool =
 	var rgb := PackedByteArray()
 	rgb.resize(w * h * channels)
 	for i in indices.size():
+		# ItemHelper.GetInventoryImage removes 0xff masks before palette lookup.
+		if remove_inventory_mask and indices[i] == 255:
+			indices[i] = 0
 		for c in 3:
 			rgb[i * channels + c] = palette[8 + indices[i] * 3 + c]
 		if transparent:

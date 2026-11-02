@@ -1,0 +1,47 @@
+{
+  "palette_sha256": "8744e48e64017a94ee72ec27045a07384b82f45b7dec2041123c0697730a499a",
+  "icons": {
+    "dagger": {
+      "template": 113,
+      "archive": 234,
+      "record": 5,
+      "pixels": [
+        56,
+        17
+      ],
+      "compression": 4360,
+      "file_sha256": "1a09989588c486b7b5348832a331520421c7d3ab47b6765aa3f1bf921a9812d3",
+      "rgba_sha256": "7c4faa4a478e9bce31b9ac89e8e370f2c72abbd70e2e1a4562502e23dbf5ccf8",
+      "transparent_pixels": 719,
+      "removed_mask_pixels": 0
+    },
+    "gold": {
+      "template": 276,
+      "archive": 216,
+      "record": 1,
+      "pixels": [
+        39,
+        14
+      ],
+      "compression": 2304,
+      "file_sha256": "f79ff477e8f7332ad67962debf2dc3d8330554c6f159d89f2a439a295cbe420b",
+      "rgba_sha256": "3b6fb1096115935319d31fc86f9d9234b9fe94e9b6e3413a9f27ab92488c8aa8",
+      "transparent_pixels": 231,
+      "removed_mask_pixels": 0
+    },
+    "twigs": {
+      "template": 8,
+      "archive": 254,
+      "record": 9,
+      "pixels": [
+        23,
+        12
+      ],
+      "compression": 257,
+      "file_sha256": "8856385f8fb6c69673898b8769c655aa9a3c3b5d5f0e4c278438e5cfb6798b58",
+      "rgba_sha256": "bb0b8200e6ea5a37b9a2b247af0e01caac6a626d1e0ea9cbfb3acb2d1438eab1",
+      "transparent_pixels": 200,
+      "removed_mask_pixels": 0
+    }
+  }
+}
