@@ -57,7 +57,7 @@ func refresh() -> void:
 		var unused: bool = key in ["willpower", "personality"]
 		lines.append("%s: %.1f%s" % [key.capitalize(), actor.character.stat(key), " (no gameplay consumer yet)" if unused else ""])
 	lines.append("\n[b]Skills[/b]")
-	for key in ["short_blade", "blunt_weapon", "hand_to_hand", "dodging", "critical_strike", "medical", "restoration", "illusion", "running", "jumping", "swimming", "climbing"]:
+	for key in ["short_blade", "blunt_weapon", "hand_to_hand", "dodging", "critical_strike", "medical", "restoration", "illusion", "destruction", "running", "jumping", "swimming", "climbing"]:
 		var note := ""
 		if key == "hand_to_hand": note = " (input hook; unarmed attacks unavailable)"
 		if key == "swimming": note = " (speed hook only)"

@@ -759,7 +759,10 @@
       ],
       "known_spells": [
         "heal",
-        "light"
+        "light",
+        "fire_bolt",
+        "shock_bolt",
+        "burning_touch"
       ]
     }
   },

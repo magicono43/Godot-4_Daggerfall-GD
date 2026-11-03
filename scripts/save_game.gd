@@ -57,7 +57,7 @@ func refusal() -> String:
 	var eye: float = p.crouch.EYE if low else p.EYE_HEIGHT
 	if p.crouch.toggled != low or absf(p.crouch.eye_height - eye) > 0.002:
 		return "Wait for your posture to settle before saving."
-	if p.casting.active():
+	if p.casting.owns_weapon() or (is_instance_valid(p.casting.projectiles) and p.casting.projectiles.busy()):
 		return "Wait for casting to finish before saving."
 	if p.combat.elapsed >= 0:
 		return "Wait for the attack to finish before saving."
@@ -71,7 +71,7 @@ func refusal() -> String:
 
 func snapshot() -> Dictionary:
 	var p = level.player
-	var data := {"version": 6, "section": level.section_path, "section_hash": fingerprint(),
+	var data := {"version": 7, "section": level.section_path, "section_hash": fingerprint(),
 		"player": {"position": vector(p.position), "yaw": p.rotation.y, "pitch": p.camera.rotation.x,
 		"health": p.health.current, "crouched": p.crouch.is_low(p), "sheathed": p.combat.sheathed,
 		"inventory": collection(p.inventory), "character": p.character.base.duplicate(), "fatigue": p.fatigue.snapshot(), "magic":p.magic.snapshot(), "light_seconds":p.spell_effects.remaining}, "enemies": {}, "doors": {}, "authored": {}, "drops": []}
@@ -170,7 +170,7 @@ func validate(data: Variant) -> bool:
 	seen_uids = {}
 	max_uid = 0
 	error = "Save data is invalid or incompatible with this section."
-	if data is Dictionary and data.get("version") != 6:
+	if data is Dictionary and data.get("version") != 7:
 		error = "Unsupported save version. Start fresh with R and create a new save with K."
 		return false
 	if not data is Dictionary or data.get("section") != level.section_path or data.get("section_hash") != fingerprint():

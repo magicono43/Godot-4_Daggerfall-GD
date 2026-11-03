@@ -1,8 +1,11 @@
 extends RefCounted
-## Fixed authored self spells using pinned DFU effect coefficients; no spellmaker/level scaling.
+## Fixed authored spells using pinned DFU effect coefficients; no spellmaker/level scaling.
 const SPELLS := {
 	"heal": {"name":"Heal", "school":"restoration", "amount":25, "coefficient":20, "description":"Restore 25 health, including when already healthy."},
-	"light": {"name":"Light", "school":"illusion", "rounds":10, "coefficient":8, "description":"Magical light for 10 game minutes. Recasts add duration."}
+	"light": {"name":"Light", "school":"illusion", "rounds":10, "coefficient":8, "description":"Magical light for 10 game minutes. Recasts add duration."},
+	"fire_bolt": {"name":"Fire Bolt", "school":"destruction", "amount":10, "coefficient":20, "element":"fire", "target":"ranged", "description":"10 fire damage to one enemy struck. LMB releases; Esc cancels. No saving throw in this test."},
+	"shock_bolt": {"name":"Shock Bolt", "school":"destruction", "amount":10, "coefficient":20, "element":"shock", "target":"ranged", "description":"10 shock damage to one enemy struck. LMB releases; Esc cancels. No saving throw in this test."},
+	"burning_touch": {"name":"Burning Touch", "school":"destruction", "amount":10, "coefficient":20, "element":"fire", "target":"touch", "description":"10 fire damage to a nearby enemy. LMB releases on a valid target; Esc cancels."}
 }
 
 static func valid_known(value: Variant) -> bool:
@@ -20,4 +23,7 @@ static func cost(id: String, character: RefCounted) -> int:
 		return 0
 	var spell: Dictionary = SPELLS[id]
 	var component := int(spell.coefficient) * int(spell.get("amount", spell.get("rounds", 0)))
-	return maxi(5, int(component * (110 - int(character.stat(spell.school))) / 400))
+	var points := int(component * (110 - int(character.stat(spell.school))) / 400)
+	if spell.get("target", "self") == "ranged":
+		points = int(points * 1.5)
+	return maxi(5, points)

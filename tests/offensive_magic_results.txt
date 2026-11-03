@@ -1,0 +1,102 @@
+PASS Normal authored grants include two bolts/touch and explicit Destruction50
+PASS Source damage costs include1.5 ranged multiplier and unchanged touch cost
+PASS fire hands frame0 matches independent source audit
+PASS fire hands frame1 matches independent source audit
+PASS fire hands frame2 matches independent source audit
+PASS fire hands frame3 matches independent source audit
+PASS fire hands frame4 matches independent source audit
+PASS fire hands frame5 matches independent source audit
+PASS fire record0 preserves native sprite size
+PASS fire record0 frame0 RGBA matches source
+PASS fire record0 frame1 RGBA matches source
+PASS fire record0 frame2 RGBA matches source
+PASS fire record0 frame3 RGBA matches source
+PASS fire record0 frame4 RGBA matches source
+PASS fire record0 frame5 RGBA matches source
+PASS fire record0 frame6 RGBA matches source
+PASS fire record0 frame7 RGBA matches source
+PASS fire record0 frame8 RGBA matches source
+PASS fire record0 frame9 RGBA matches source
+PASS fire record1 preserves native sprite size
+PASS fire record1 frame0 RGBA matches source
+PASS fire record1 frame1 RGBA matches source
+PASS fire record1 frame2 RGBA matches source
+PASS fire record1 frame3 RGBA matches source
+PASS fire record1 frame4 RGBA matches source
+PASS fire record1 frame5 RGBA matches source
+PASS fire record1 frame6 RGBA matches source
+PASS fire record1 frame7 RGBA matches source
+PASS fire record1 frame8 RGBA matches source
+PASS shock hands frame0 matches independent source audit
+PASS shock hands frame1 matches independent source audit
+PASS shock hands frame2 matches independent source audit
+PASS shock hands frame3 matches independent source audit
+PASS shock hands frame4 matches independent source audit
+PASS shock hands frame5 matches independent source audit
+PASS shock record0 preserves native sprite size
+PASS shock record0 frame0 RGBA matches source
+PASS shock record0 frame1 RGBA matches source
+PASS shock record0 frame2 RGBA matches source
+PASS shock record0 frame3 RGBA matches source
+PASS shock record0 frame4 RGBA matches source
+PASS shock record0 frame5 RGBA matches source
+PASS shock record0 frame6 RGBA matches source
+PASS shock record1 preserves native sprite size
+PASS shock record1 frame0 RGBA matches source
+PASS shock record1 frame1 RGBA matches source
+PASS shock record1 frame2 RGBA matches source
+PASS shock record1 frame3 RGBA matches source
+PASS shock record1 frame4 RGBA matches source
+PASS shock record1 frame5 RGBA matches source
+PASS shock record1 frame6 RGBA matches source
+PASS shock record1 frame7 RGBA matches source
+PASS Q readies without charging/casting/history change
+PASS Readied state hides weapon and hands and prevents melee
+PASS Readying emits no cast sound or projectile
+PASS Routed RMB cannot melee while offensive spell is readied
+PASS Readying prevents weapon sheath toggle
+PASS Esc cancels unspent readied spell while keeping controls captured
+PASS Opening modal cancels readied spell without minting/refunding resource
+PASS K refuses readied spell
+PASS Root-routed LMB spends snapshotted cost and starts fire hands
+PASS Fire release uses ordinal84 (source ID352), not magic/thunder
+PASS Fire hands precede once-only release-frame missile event
+PASS No missile before source frame5 release
+PASS Exactly one projectile appears on release frame5
+PASS Animation event cannot duplicate projectile or cost
+PASS Projectile moves source25m/s without teleporting to target
+PASS Swept landed fire hit always applies10 damage without save/armor RNG
+PASS Fire impact emits its own original impact cue once
+PASS Impact has scoped fire-colored light
+PASS Impact animation never repeats damage
+PASS Impact sprite and light retire together at animation end
+PASS Shock selects separate hands and source ID351/ordinal83 cast sound
+PASS Shock hits with distinct original impact sound and deterministic10 damage
+PASS Shock impact art and colored light are element-specific
+PASS Large-tick sweep stops at thin wall rather than tunnelling to enemy
+PASS Wall contact plays elemental impact instead of melee/terrain sound
+PASS Missed projectile retires at bounded100m range without an invented impact
+PASS Out-of-range touch remains ready without cost or sounds
+PASS Touch cannot hit enemy through nearby wall
+PASS Touch releases on valid nearby enemy and spends30
+PASS Touch damages with cast plus impact sounds but no projectile/impact sprite/light
+PASS Touch event is once-only
+PASS Touch rechecks target at release frame; moved-away enemy is not hit
+PASS Capacity loss while readied cannot release unaffordable spell
+PASS Cancelling after capacity change never mints magicka
+PASS Book activation keeps targeted spell ready under previously released capture preference
+PASS First recapture click does not accidentally release readied spell
+PASS Next explicit click releases after recapture
+PASS Modal freezes in-flight missile and damage
+PASS Released controls pause in-flight missile
+PASS K refuses transient flying projectile
+PASS Player death clears all missiles/impact lights and cast state
+PASS Schema7 validates shared Destruction and five known IDs
+PASS Schema6 explicitly rejects before candidate swap
+PASS Readied HUD stays within calibrated display bounds
+PASS Isolated schema7 save preserves expanded magic state
+PASS L discards readied/in-flight state while restoring owned spells
+PASS Load restores persisted shared Destruction rather than config baseline
+PASS Book double-click readies ranged spell without auto-firing or spending
+PASS Three once-only spell impacts kill original bear and retain nonblocking lootable corpse
+PASS R clears ready/projectile state and restores full authored magicka

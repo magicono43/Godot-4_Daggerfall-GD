@@ -21,10 +21,11 @@ func _process(_delta: float) -> void:
 	if not visible or actor.spell_payload.is_empty():
 		return
 	var index: int = actor.casting.SEQUENCE[mini(6, int(actor.casting.elapsed / actor.casting.FRAME_SECONDS))]
-	var frame: Dictionary = actor.spell_payload[index]
+	var bank: Array = actor.spell_payloads.get(actor.casting.element, actor.spell_payload)
+	var frame: Dictionary = bank[index]
 	var screen := get_viewport().get_visible_rect().size
 	var dimensions := Vector2(frame.width, frame.height) * screen / Vector2(300, 200)
-	var inset := screen.x * 0.134 if index in [0, 5] else 0.0
+	var inset := screen.x * 0.134 if index in [0, 5] or (actor.casting.element == "fire" and index == 4) else 0.0
 	for hand in [left, right]:
 		hand.texture = frame.texture
 		hand.size = dimensions

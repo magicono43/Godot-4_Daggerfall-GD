@@ -17,5 +17,19 @@
     "policy": "One player-local one-shot per committed cast; allow overlap, no throttle.",
     "sound_id": 349,
     "correction": "Ordinal349 is StormLightningThunder; do not interpret source uint IDs as archive ordinals."
+  },
+  "offensive_casts": {
+    "fire": {
+      "sound_id": 352,
+      "ordinal": 84,
+      "impact_ordinal": 89
+    },
+    "shock": {
+      "sound_id": 351,
+      "ordinal": 83,
+      "impact_ordinal": 88
+    },
+    "source": "EntityEffectManager uint cast IDs; DaggerfallMissile prefab SoundClips impact ordinals",
+    "policy": "Independent overlapping one-shots; cast at committed release, impact at contact/touch event."
   }
 }

@@ -19,6 +19,7 @@ var magic_profile_path := "res://magic.cfg"
 var spell_effects := preload("res://scripts/spell_effects.gd").new()
 var casting := preload("res://scripts/spell_casting.gd").new()
 var spell_payload: Array[Dictionary] = []
+var spell_payloads: Dictionary = {}
 var fatigue := preload("res://scripts/fatigue_model.gd").new()
 var falling := preload("res://scripts/fall_damage.gd").new()
 var fall_feedback := ""
@@ -148,6 +149,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		reload_movement()
 	if event.is_action_pressed("movement_debug"):
 		show_movement_debug = not show_movement_debug
+	if event.is_action_pressed("release_mouse") and not casting.ready_id.is_empty():
+		casting.cancel()
+		return
 	if event.is_action_pressed("release_mouse"):
 		controls_active = not controls_active
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if controls_active else Input.MOUSE_MODE_VISIBLE
@@ -158,11 +162,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		controls_active = true
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		return
+	if event.is_action_pressed("release_spell") and controls_active and not casting.ready_id.is_empty():
+		casting.release(self)
+		return
 	if event.is_action_pressed("cast_spell") and not event.is_echo():
 		casting.request(self)
 	if event.is_action_pressed("recast_spell") and not event.is_echo():
 		casting.request(self, true)
-	if InputMap.has_action("ready_weapon") and event.is_action_pressed("ready_weapon") and controls_active and not climbing.active and not casting.active():
+	if InputMap.has_action("ready_weapon") and event.is_action_pressed("ready_weapon") and controls_active and not climbing.active and not casting.owns_weapon():
 		combat.toggle_sheath()
 	if InputMap.has_action("attack") and event.is_action_pressed("attack"):
 		combat.request_attack(self)
@@ -180,7 +187,7 @@ func _physics_process(delta: float) -> void:
 	fall_feedback_time = maxf(0.0, fall_feedback_time - delta)
 	if is_dead():
 		return
-	var casting_owned := casting.active()
+	var casting_owned := casting.owns_weapon()
 	casting.tick(self, delta)
 	if not casting_owned:
 		combat.tick(self, delta)
@@ -355,6 +362,8 @@ func receive_damage(amount: int, sound_event: String = "player_hit") -> bool:
 func die() -> void:
 	casting.cancel()
 	spell_effects.clear()
+	if is_instance_valid(casting.projectiles):
+		casting.projectiles.clear()
 	falling.reset()
 	fall_feedback_time = 0.0
 	controls_active = false

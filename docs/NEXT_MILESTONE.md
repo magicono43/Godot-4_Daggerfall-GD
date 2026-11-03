@@ -1,3 +1,11 @@
+# Latest status - offensive spells implemented
+
+User accepted Heal/Light, spellbook activation and corrected magic casting audio.
+Offensive spells are now implemented with Fire/Shock Bolt and Burning Touch; user
+playtest is next. No further milestone selected. Read newest HANDOFF.md and
+OFFENSIVE_MAGIC.md for controls, explicit no-saving-throw test policy and schema7.
+Earlier plans/status entries below are history.
+
 # Latest playtest follow-up
 
 Basic magic animation speed is accepted. Spellbook double-click immediate casting

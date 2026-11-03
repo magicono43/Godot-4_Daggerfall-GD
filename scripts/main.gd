@@ -105,6 +105,7 @@ func _ready() -> void:
 	player.set_script(Player)
 	player.vertical_fov = presentation.vertical_fov
 	player.spell_payload = classic.spell_frames
+	player.spell_payloads = classic.spell_hands
 	player.weapon_payload = classic.dagger_frames
 	player.weapon_payloads = classic.weapon_frames
 	player.combat_audio = combat_audio
@@ -116,6 +117,11 @@ func _ready() -> void:
 	world_root.add_child(player)
 	player.modal_open = restoring
 	player.controls_active = not restoring
+	var projectiles := preload("res://scripts/spell_projectiles.gd").new()
+	projectiles.actor = player
+	projectiles.payloads = classic.spell_missiles
+	world_root.add_child(projectiles)
+	player.casting.projectiles = projectiles
 	modal.actor = player
 	loot_window = preload("res://scripts/loot_window.gd").new()
 	loot_window.icons = classic.item_icons
@@ -202,6 +208,11 @@ func configure_input() -> void:
 		var click := InputEventMouseButton.new()
 		click.button_index = MOUSE_BUTTON_RIGHT
 		InputMap.action_add_event("attack", click)
+	if not InputMap.has_action("release_spell"):
+		InputMap.add_action("release_spell")
+		var release_click := InputEventMouseButton.new()
+		release_click.button_index = MOUSE_BUTTON_LEFT
+		InputMap.action_add_event("release_spell", release_click)
 	var keys := {"spellbook": KEY_B, "cast_spell": KEY_Q, "recast_spell": KEY_F, "rest": KEY_T, "character_sheet": KEY_C, "inventory": KEY_I, "ready_weapon": KEY_Z, "crouch": KEY_CTRL, "forward": KEY_W, "back": KEY_S, "left": KEY_A, "right": KEY_D, "sprint": KEY_SHIFT, "jump": KEY_SPACE, "interact": KEY_E, "release_mouse": KEY_ESCAPE, "reset": KEY_R, "toggle_view": KEY_F2, "reload_movement": KEY_F3, "movement_debug": KEY_F4}
 	for action in keys:
 		if not InputMap.has_action(action):
@@ -268,8 +279,9 @@ func create_hud() -> void:
 	player_status = Label.new()
 	root.add_child(player_status)
 	player_status.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)
-	player_status.position += Vector2(-260, 24)
-	player_status.size = Vector2(230, 60)
+	player_status.position += Vector2(-430, 24)
+	player_status.size = Vector2(400, 60)
+	player_status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	player_status.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	player_status.add_theme_font_size_override("font_size", 20)
 	var title := Label.new()
@@ -304,7 +316,7 @@ func create_hud() -> void:
 	crosshair.position -= Vector2(5, 13)
 	root.add_child(crosshair)
 	var controls := Label.new()
-	controls.text = "WASD Move  |  Ctrl Toggle crouch  |  Shift Run  |  Space Jump  |  E Interact  |  I Inventory  |  C Character  |  T Rest\nRMB Attack  |  Z Draw/Sheath  |  B Spells  |  Q Cast  |  F Recast  |  Esc Mouse  |  R Restart\nClimb: W into wall or S over ledge  |  W/S Up/Down  |  A/D Along wall  |  Space Eject\nF2 View  |  F3 Reload movement  |  F4 Diagnostics  |  K Save  |  L Load"
+	controls.text = "WASD Move  |  Ctrl Toggle crouch  |  Shift Run  |  Space Jump  |  E Interact  |  I Inventory  |  C Character  |  T Rest\nRMB Attack  |  Z Draw/Sheath  |  B Spells  |  Q Cast/Ready  |  F Recast  |  LMB Release  |  Esc Cancel/Mouse  |  R Restart\nClimb: W into wall or S over ledge  |  W/S Up/Down  |  A/D Along wall  |  Space Eject\nF2 View  |  F3 Reload movement  |  F4 Diagnostics  |  K Save  |  L Load"
 	controls.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
 	controls.position = Vector2(29, -104)
 	controls.add_theme_font_size_override("font_size", 14)
@@ -335,7 +347,10 @@ func _process(_delta: float) -> void:
 	player.magic.sync_capacity()
 	player_status.text = "Health: %d / %d\nFatigue: %.1f / %.1f" % [player.health.current, player.health.maximum, player.fatigue.current / 64.0, player.fatigue.maximum() / 64.0]
 	player_status.text += "\nMagicka: %d / %d" % [player.magic.current, player.magic.maximum()]
-	if player.casting.feedback_time > 0:
+	if not player.casting.ready_id.is_empty():
+		player_status.text += "\nReadied: %s (cost %d)" % [preload("res://scripts/spell_catalog.gd").SPELLS[player.casting.ready_id].name, player.casting.ready_cost]
+		prompt.text = "Spell ready | LMB release | Esc cancel"
+	if player.casting.feedback_time > 0 and player.casting.ready_id.is_empty():
 		player_status.text += "\n" + player.casting.feedback
 	if player.fatigue.exhausted() and not player.is_dead():
 		player_status.text += "\nExhausted | T Rest"

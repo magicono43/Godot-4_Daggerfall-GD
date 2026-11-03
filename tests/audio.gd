@@ -19,7 +19,7 @@ func run() -> void:
 	player.set_physics_process(false)
 	var audio = level.combat_audio
 	audio.played.connect(func(event, _id, _spatial): events.append(event))
-	check(audio.error.is_empty() and audio.cache.size() == 29, "All twenty-nine selected original samples load")
+	check(audio.error.is_empty() and audio.cache.size() == 33, "All thirty-three selected original samples load")
 	check(level.presentation.viewport.audio_listener_enable_3d, "World viewport enables spatial audio listener")
 	var pcm := ClassicData.decode_sound(PackedByteArray([0, 127, 128, 255]))
 	check(pcm.data == PackedByteArray([128, 255, 0, 127]), "Unsigned source PCM converts to signed Godot PCM")
@@ -172,6 +172,23 @@ func run() -> void:
 	for sample in mixed:
 		peak = maxf(peak, maxf(absf(sample.x), absf(sample.y)))
 	check(peak > 0.001, "Creature sample reaches mixer twenty metres away beyond old cutoff")
+	for voice in audio.voices:
+		voice.stop()
+	capture.clear_buffer()
+	for event in ["impact_fire", "impact_shock"]:
+		audio.play(event, player, 1.0, player.camera.global_position + Vector3(0, 0, -32))
+		check(audio.voices.back().max_distance == 48.0, event + " uses dedicated48m reach")
+	await process_frame
+	await process_frame
+	OS.delay_msec(350)
+	await process_frame
+	mixed = capture.get_buffer(capture.get_frames_available())
+	peak = 0.0
+	for sample in mixed:
+		peak = maxf(peak, maxf(absf(sample.x), absf(sample.y)))
+	check(peak > 0.001, "Elemental impacts reach mixer32 metres away beyond old16m cutoff")
+	audio.play("impact", player)
+	check(audio.voices.back().max_distance == 16.0 and audio.enemy_range == 24.0, "Longer spell impact reach preserves melee and creature distances")
 	AudioServer.remove_bus_effect(0, AudioServer.get_bus_effect_count(0) - 1)
 	var broken = preload("res://scripts/combat_audio.gd").new()
 	root.add_child(broken)

@@ -17,7 +17,7 @@ PASS K refuses any modal
 PASS Escape restores captured controls
 PASS Released controls survive sheet toggle
 PASS Sheet reflects live health and independently equipped armor/weapon
-PASS Schema6 validates persistent character base
+PASS Schema7 validates persistent character base
 PASS Malformed saved character rejects before apply
 PASS Old schema rejects explicitly
 PASS Restore applies base and clears transient overrides

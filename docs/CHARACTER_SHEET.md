@@ -1,3 +1,9 @@
+# Offensive extension
+
+Shared Destruction now joins Restoration/Illusion, appears on C, and drives
+offensive spell costs. Schema7 persists its base value. See OFFENSIVE_MAGIC.md;
+earlier school/schema descriptions below are historical.
+
 # Magic extension
 
 C now includes magicka plus shared Restoration/Illusion skills. Intelligence has

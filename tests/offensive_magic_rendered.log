@@ -1,0 +1,109 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 - Build 31.0.101.2140 - Compatibility - Using Device: Intel - Intel(R) UHD Graphics 630
+
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Normal authored grants include two bolts/touch and explicit Destruction50 position=(7.25, 12.8, 16.2) mode=walking
+PASS Source damage costs include1.5 ranged multiplier and unchanged touch cost position=(7.25, 12.8, 16.2) mode=walking
+PASS fire hands frame0 matches independent source audit position=(7.25, 12.8, 16.2) mode=walking
+PASS fire hands frame1 matches independent source audit position=(7.25, 12.8, 16.2) mode=walking
+PASS fire hands frame2 matches independent source audit position=(7.25, 12.8, 16.2) mode=walking
+PASS fire hands frame3 matches independent source audit position=(7.25, 12.8, 16.2) mode=walking
+PASS fire hands frame4 matches independent source audit position=(7.25, 12.8, 16.2) mode=walking
+PASS fire hands frame5 matches independent source audit position=(7.25, 12.8, 16.2) mode=walking
+PASS fire record0 preserves native sprite size position=(7.25, 12.8, 16.2) mode=walking
+PASS fire record0 frame0 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS fire record0 frame1 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS fire record0 frame2 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS fire record0 frame3 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS fire record0 frame4 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS fire record0 frame5 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS fire record0 frame6 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS fire record0 frame7 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS fire record0 frame8 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS fire record0 frame9 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS fire record1 preserves native sprite size position=(7.25, 12.8, 16.2) mode=walking
+PASS fire record1 frame0 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS fire record1 frame1 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS fire record1 frame2 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS fire record1 frame3 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS fire record1 frame4 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS fire record1 frame5 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS fire record1 frame6 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS fire record1 frame7 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS fire record1 frame8 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS shock hands frame0 matches independent source audit position=(7.25, 12.8, 16.2) mode=walking
+PASS shock hands frame1 matches independent source audit position=(7.25, 12.8, 16.2) mode=walking
+PASS shock hands frame2 matches independent source audit position=(7.25, 12.8, 16.2) mode=walking
+PASS shock hands frame3 matches independent source audit position=(7.25, 12.8, 16.2) mode=walking
+PASS shock hands frame4 matches independent source audit position=(7.25, 12.8, 16.2) mode=walking
+PASS shock hands frame5 matches independent source audit position=(7.25, 12.8, 16.2) mode=walking
+PASS shock record0 preserves native sprite size position=(7.25, 12.8, 16.2) mode=walking
+PASS shock record0 frame0 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS shock record0 frame1 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS shock record0 frame2 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS shock record0 frame3 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS shock record0 frame4 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS shock record0 frame5 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS shock record0 frame6 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS shock record1 preserves native sprite size position=(7.25, 12.8, 16.2) mode=walking
+PASS shock record1 frame0 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS shock record1 frame1 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS shock record1 frame2 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS shock record1 frame3 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS shock record1 frame4 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS shock record1 frame5 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS shock record1 frame6 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS shock record1 frame7 RGBA matches source position=(7.25, 12.8, 16.2) mode=walking
+PASS Q readies without charging/casting/history change position=(200.0, 60.0, 8.0) mode=walking
+PASS Readied state hides weapon and hands and prevents melee position=(200.0, 60.0, 8.0) mode=walking
+PASS Readying emits no cast sound or projectile position=(200.0, 60.0, 8.0) mode=walking
+PASS Routed RMB cannot melee while offensive spell is readied position=(200.0, 60.0, 8.0) mode=walking
+PASS Readying prevents weapon sheath toggle position=(200.0, 60.0, 8.0) mode=walking
+PASS Esc cancels unspent readied spell while keeping controls captured position=(200.0, 60.0, 8.0) mode=walking
+PASS Opening modal cancels readied spell without minting/refunding resource position=(200.0, 60.0, 8.0) mode=walking
+PASS K refuses readied spell position=(200.0, 60.0, 8.0) mode=walking
+PASS Root-routed LMB spends snapshotted cost and starts fire hands position=(200.0, 60.0, 8.0) mode=walking
+PASS Fire release uses ordinal84 (source ID352), not magic/thunder position=(200.0, 60.0, 8.0) mode=walking
+PASS Fire hands precede once-only release-frame missile event position=(200.0, 60.0, 8.0) mode=walking
+PASS No missile before source frame5 release position=(200.0, 60.0, 8.0) mode=walking
+PASS Exactly one projectile appears on release frame5 position=(200.0, 60.0, 8.0) mode=walking
+PASS Animation event cannot duplicate projectile or cost position=(200.0, 60.0, 8.0) mode=walking
+PASS Projectile moves source25m/s without teleporting to target position=(200.0, 60.0, 8.0) mode=walking
+PASS Swept landed fire hit always applies10 damage without save/armor RNG position=(200.0, 60.0, 8.0) mode=walking
+PASS Fire impact emits its own original impact cue once position=(200.0, 60.0, 8.0) mode=walking
+PASS Impact has scoped fire-colored light position=(200.0, 60.0, 8.0) mode=walking
+PASS Impact animation never repeats damage position=(200.0, 60.0, 8.0) mode=walking
+PASS Impact sprite and light retire together at animation end position=(200.0, 60.0, 8.0) mode=walking
+PASS Shock selects separate hands and source ID351/ordinal83 cast sound position=(200.0, 60.0, 8.0) mode=walking
+PASS Shock hits with distinct original impact sound and deterministic10 damage position=(200.0, 60.0, 8.0) mode=walking
+PASS Shock impact art and colored light are element-specific position=(200.0, 60.0, 8.0) mode=walking
+PASS Large-tick sweep stops at thin wall rather than tunnelling to enemy position=(200.0, 60.0, 8.0) mode=walking
+PASS Wall contact plays elemental impact instead of melee/terrain sound position=(200.0, 60.0, 8.0) mode=walking
+PASS Missed projectile retires at bounded100m range without an invented impact position=(200.0, 60.0, 8.0) mode=walking
+PASS Out-of-range touch remains ready without cost or sounds position=(200.0, 60.0, 8.0) mode=walking
+PASS Touch cannot hit enemy through nearby wall position=(200.0, 60.0, 2.0) mode=walking
+PASS Touch releases on valid nearby enemy and spends30 position=(200.0, 60.0, 2.0) mode=walking
+PASS Touch damages with cast plus impact sounds but no projectile/impact sprite/light position=(200.0, 60.0, 2.0) mode=walking
+PASS Touch event is once-only position=(200.0, 60.0, 2.0) mode=walking
+PASS Touch rechecks target at release frame; moved-away enemy is not hit position=(200.0, 60.0, 2.0) mode=walking
+PASS Capacity loss while readied cannot release unaffordable spell position=(200.0, 60.0, 8.0) mode=walking
+PASS Cancelling after capacity change never mints magicka position=(200.0, 60.0, 8.0) mode=walking
+PASS Book activation keeps targeted spell ready under previously released capture preference position=(200.0, 60.0, 8.0) mode=walking
+PASS First recapture click does not accidentally release readied spell position=(200.0, 60.0, 8.0) mode=walking
+PASS Next explicit click releases after recapture position=(200.0, 60.0, 8.0) mode=walking
+PASS Modal freezes in-flight missile and damage position=(200.0, 60.0, 8.0) mode=walking
+PASS Released controls pause in-flight missile position=(200.0, 60.0, 8.0) mode=walking
+PASS K refuses transient flying projectile position=(200.0, 60.0, 8.0) mode=walking
+PASS Player death clears all missiles/impact lights and cast state position=(200.0, 60.0, 8.0) mode=reset
+PASS Schema7 validates shared Destruction and five known IDs position=(200.0, 60.0, 8.0) mode=reset
+PASS Schema6 explicitly rejects before candidate swap position=(200.0, 60.0, 8.0) mode=reset
+PASS Readied HUD stays within calibrated display bounds position=(7.25, 12.8, 16.2) mode=reset
+PASS Isolated schema7 save preserves expanded magic state position=(7.25, 12.8, 16.2) mode=reset
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS L discards readied/in-flight state while restoring owned spells position=(7.25, 12.8, 16.2) mode=reset
+PASS Load restores persisted shared Destruction rather than config baseline position=(7.25, 12.8, 16.2) mode=reset
+PASS Book double-click readies ranged spell without auto-firing or spending position=(7.25, 12.8, 16.2) mode=reset
+PASS Three once-only spell impacts kill original bear and retain nonblocking lootable corpse position=(7.25, 12.8, 16.2) mode=reset
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS R clears ready/projectile state and restores full authored magicka position=(7.25, 12.88333, 16.2) mode=walking
+OFFENSIVE MAGIC RESULTS: 102/102

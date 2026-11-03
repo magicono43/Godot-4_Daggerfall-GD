@@ -18,6 +18,8 @@ var skeleton_attributes: Dictionary = {}
 var bear_attributes: Dictionary = {}
 var dagger_frames: Array[Dictionary] = []
 var spell_frames: Array[Dictionary] = []
+var spell_hands: Dictionary = {}
+var spell_missiles: Dictionary = {}
 var weapon_frames: Dictionary = {}
 var item_icons: Dictionary = {}
 var treasure_markers: Dictionary = {}
@@ -68,6 +70,8 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 	dagger_frames.clear()
 	weapon_frames.clear()
 	spell_frames.clear()
+	spell_hands.clear()
+	spell_missiles.clear()
 	item_icons.clear()
 	treasure_markers.clear()
 	loot_pile_payload.clear()
@@ -246,6 +250,20 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 	if spell_frames.is_empty():
 		error = "Missing, truncated or unsupported original MJIC00C6.CIF casting hands"
 		return false
+	spell_hands.magic = spell_frames
+	for element in ["fire", "shock"]:
+		var filename := "FIRE00C6.CIF" if element == "fire" else "SHOK00C6.CIF"
+		var hands := decode_spell_cif(FileAccess.get_file_as_bytes(arena_path.path_join(filename)))
+		if hands.is_empty():
+			error = "Missing or unsupported elemental casting hands: " + filename
+			return false
+		spell_hands[element] = hands
+		var archive := 375 if element == "fire" else 378
+		var projectile := billboard_payload({"id":element + "_projectile", "archive":archive, "record":0})
+		var impact := billboard_payload({"id":element + "_impact", "archive":archive, "record":1})
+		if projectile.is_empty() or impact.is_empty():
+			return false
+		spell_missiles[element] = {"projectile":projectile, "impact":impact}
 	dagger_frames = decode_weapon_cif(FileAccess.get_file_as_bytes(arena_path.path_join("WEAPON02.CIF")))
 	if dagger_frames.is_empty():
 		error = "Missing, truncated or unsupported original WEAPON02.CIF dagger data"
@@ -569,7 +587,7 @@ func cif_rle(bytes: PackedByteArray, start: int, end: int, length: int) -> Packe
 	return pixels
 
 func decode_spell_cif(bytes: PackedByteArray) -> Array[Dictionary]:
-	# MJIC00C6: six single-image IMG records, compression 2 (CifRciFile).
+	# Supported magic/fire/shock CIFs: six single-image RLE IMG records (CifRciFile).
 	var frames: Array[Dictionary] = []
 	var offset := 0
 	while offset < bytes.size():

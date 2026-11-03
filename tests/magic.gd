@@ -112,7 +112,7 @@ func run() -> void:
 		return
 	check(player.health.maximum == 300 and hall.health.current == 30, "Accepted300HP and bear30HP remain")
 	check(player.inventory.items.size() == 13 and player.inventory.armor_slots.values().count(0) == 7 and player.inventory.has_dagger(), "Thirteen instances, seven unequipped armor pieces and dagger unchanged")
-	check(player.magic.known == ["heal", "light"] and player.magic.selected == "heal" and player.magic.last_cast == "", "Authored spell grants/select default; no last cast initially")
+	check(player.magic.known == ["heal", "light", "fire_bolt", "shock_bolt", "burning_touch"] and player.magic.selected == "heal" and player.magic.last_cast == "", "Authored spell grants/select default; no last cast initially")
 	check(player.magic.maximum() == 150 and player.magic.current == 150 and player.magic.recovery() == 18, "Explicit3x Intelligence capacity and source hourly recovery")
 	check(Catalog.cost("heal", player.character) == 75 and Catalog.cost("light", player.character) == 12, "Pinned Heal/Light coefficients and school50 yield75/12 costs")
 	check(not player.magic.select("unknown") and not Catalog.valid_known(["heal", "heal"]), "Unknown selection and duplicate grant rejected")
@@ -217,7 +217,7 @@ func run() -> void:
 	await routed(KEY_B)
 	check(level.spellbook.visible and player.modal_open and not player.casting.active(), "B opens shared modal and clears hands")
 	check(player.magic.current == committed and player.spell_effects.remaining > 0, "Cancelling committed hands never refunds or removes effect")
-	check(level.spellbook.details.text.contains("Magicka") and level.spellbook.list.item_count == 2, "Book shows actual known state/resource")
+	check(level.spellbook.details.text.contains("Magicka") and level.spellbook.list.item_count == 5, "Book shows actual known state/resource")
 	level.spellbook.choose(0)
 	check(player.magic.selected == "heal" and player.magic.current == committed, "Book selection is harmless")
 	await routed(KEY_Q)
@@ -283,7 +283,7 @@ func run() -> void:
 	player.casting.cancel()
 	player.magic.select("heal")
 	var data: Dictionary = level.persistence.snapshot()
-	check(data.version == 6 and level.persistence.validate(data), "Schema6 validates resource/knowledge/effect snapshot")
+	check(data.version == 7 and level.persistence.validate(data), "Schema7 validates resource/knowledge/effect snapshot")
 	for kind in ["unknown", "duplicate", "selection", "last", "negative", "fraction", "nan", "duration", "missing", "old"]:
 		var bad := data.duplicate(true)
 		match kind:

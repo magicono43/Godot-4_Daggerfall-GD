@@ -1,3 +1,58 @@
+# Resume here - offensive spells working; impact audio reach extended
+
+User reports offensive spells work as expected and requested greater impact sound
+reach. Added dedicated48m spell_impact_range_metres in audio.cfg, used only by
+impact_fire/impact_shock (including touch cues); melee16m/creatures24m and local
+casting remain. Schema7 unchanged. Audio43/43 headless and43/43 rendered checks
+passed, including mixer output32m away. Logs: spell_impact_range_headless.log and
+spell_impact_range_rendered.log under tests/. User listening retry pending.
+No full gameplay rerun for audio-only tuning. Older entries below are historical.
+
+# Resume here - offensive magic implemented; user playtest next
+
+November 3, 2026. User accepted basic magic and chose offensive spells, explicitly
+asking to defer saving throws, preserve element-specific presentation, ready/cancel/
+release weapon ownership, touch behavior and short impact lights. Implemented fixed
+Fire Bolt/Shock Bolt (10HP each, cost45 at Destruction50) plus Burning Touch (10HP,
+cost30). Normal authored grants now5 spells; source Damage-Health cost/school and
+ranged1.5 multiplier. Shared Destruction50/magic.cfg added with existing atomic F3.
+No new geometry/enemies or changes to bear30HP/player300HP/150magicka/13 items/armor.
+
+Q/book double-click readies; LMB releases; Esc cancels ready before mouse release.
+Ready hides weapon/hands, blocks melee/sheath, freezes an old swing. No debit until
+release, so cancellation is free without refund exploits. Release spends once and
+starts element hands/sound; payload once at source frame5 (0.2s). Existing self
+spells stay immediate. F uses last successful release. Touch requires unobstructed
+living enemy within3m/radius0.25 at request and release event; no projectile/impact
+visual/light, but cast+impact sounds. Ranged has continuous radius0.45 swept contacts,
+source25m/s, native record0 flight/record1 one-shot impact,5/15fps; transient faint
+6m elemental light ends with impact. Prototype100m bound. No AoE, saving throws,
+resistance/absorption/reflection or melee armor/RNG; landed enemy hits always work.
+Normal enemy damage/death/loot owns outcomes. Existing world/lantern tuning intact.
+
+Fire hands FIRE00C6.CIF/sprites375/cast84 (ID352)/impact89; shock SHOK00C6.CIF/
+sprites378/cast83 (ID351)/impact88. Magic self cast stays81 (ID349). All external,
+read-only, independently audited; no bundled source art/audio. Overlap preserved.
+
+Schema7 adds Destruction and5-spell knowledge; old schema6 rejects. Create a fresh
+K save. Ready/hands/flying/impact state is transient and K refuses until settled.
+Modal/released controls freeze missiles; modal cancels ready/pending hands; death
+clears projectiles/effects. Book activation retains previously released preference:
+a readied spell survives until recapture, first click only recaptures. Load/R clear
+all transient state. Manual slot untouched by tests. Source/prototype policy and
+full behavior: OFFENSIVE_MAGIC.md, reference/offensive_magic_sources.json.
+
+User playtest is next; no further milestone selected. Older entries are history.
+
+Validation November 3, 2026: Run.ps1 -Test passed1475/1475 headless checks
+across26 suites plus persistence/armor/magic separate-process reloads, recorded
+in tests/offensive_complete_regression.log. Offensive suite passed102/102 with
+rendering (tests/offensive_magic_rendered.log); original hands/projectile/impact
+art and readied HUD were visually inspected in4:3/widescreen. No failed assertions
+or script errors. Existing restricted-host log/certificate/accelerated-exit warnings
+remain nonblocking. User listening/embedded-editor gameplay comparison is pending.
+
+
 # Resume here - casting sound ID/ordinal corrected
 
 User accepted double-click casting and audio function, but heard thunder. Root

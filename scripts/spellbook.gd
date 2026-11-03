@@ -36,7 +36,7 @@ func _ready() -> void:
 	details.add_theme_font_size_override("font_size", 18)
 	layout.add_child(details)
 	close_button = Button.new()
-	close_button.text = "Close (B / Esc)  |  Q: cast selected  |  F: recast last"
+	close_button.text = "Close (B / Esc)  |  Q: cast/ready selected  |  F: recast last"
 	close_button.pressed.connect(close)
 	layout.add_child(close_button)
 	hide()
@@ -80,4 +80,4 @@ func refresh() -> void:
 
 func refresh_details() -> void:
 	var id: String = actor.magic.selected
-	details.text = "Magicka: %d / %d\n%s\nDouble-click a spell to cast and close. Q casts after closing; F repeats your last cast." % [actor.magic.current, actor.magic.maximum(), Catalog.SPELLS[id].description if Catalog.SPELLS.has(id) else "No known spells."]
+	details.text = "Magicka: %d / %d\n%s\nDouble-click to cast/ready and close. LMB releases readied spells; Esc cancels. Q casts/readies after closing; F repeats your last cast." % [actor.magic.current, actor.magic.maximum(), Catalog.SPELLS[id].description if Catalog.SPELLS.has(id) else "No known spells."]

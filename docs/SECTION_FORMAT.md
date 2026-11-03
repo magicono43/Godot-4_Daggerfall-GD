@@ -1,3 +1,11 @@
+# Current magic test grants
+
+Optional prototype.player_test.known_spells is a validated unique array of catalog
+IDs. Current normal section grants heal/light/fire_bolt/shock_bolt/burning_touch.
+Unknown/duplicate IDs reject before scene construction; legacy sections may omit
+the field. No spells are inferred from original RDB editor markers. See
+OFFENSIVE_MAGIC.md. Existing native placements and section version are unchanged.
+
 # Section definitions, version 1
 
 The active file is set by `section` under `[classic]` in data_source.cfg. The default is `res://sections/privateers_hold_opening.json`. Duplicate that file under sections/ and edit the copy to make a second experiment. Paths below are relative to the Godot project.

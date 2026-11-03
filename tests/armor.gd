@@ -154,7 +154,7 @@ func run() -> void:
 	window.close()
 	level.persistence.slot_path = "res://tests/armor_slot.json"
 	var data: Dictionary = level.persistence.snapshot()
-	check(data.version == 6 and data.player.inventory.armor_slots == player.inventory.armor_slots and level.persistence.validate(data), "Schema6 saves all seven independent slot references")
+	check(data.version == 7 and data.player.inventory.armor_slots == player.inventory.armor_slots and level.persistence.validate(data), "Schema7 saves all seven independent slot references")
 	for kind in ["missing", "extra", "wrong_slot", "unknown_uid", "duplicate", "weapon", "fraction", "enemy", "version"]:
 		var bad := data.duplicate(true)
 		match kind:

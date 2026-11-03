@@ -133,6 +133,7 @@
 			"blunt_weapon": 50,
 			"climbing": 25.0,
 			"critical_strike": 25,
+			"destruction": 50,
 			"dodging": 25,
 			"endurance": 50,
 			"hand_to_hand": 50,
@@ -243,7 +244,10 @@
 			"current": 150,
 			"known": [
 				"heal",
-				"light"
+				"light",
+				"fire_bolt",
+				"shock_bolt",
+				"burning_touch"
 			],
 			"last_cast": "",
 			"selected": "heal"
@@ -258,6 +262,6 @@
 		"yaw": -2.03444385528564
 	},
 	"section": "res://sections/privateers_hold_opening.json",
-	"section_hash": "fabd2e8355a44684cb8f55a765c87ee73e0aca74b647797643026e5468247765",
-	"version": 6
+	"section_hash": "39ccd5bc748fecaa5a26482f50b18c258d08adb7226ee3567f72f66b8ba8b53f",
+	"version": 7
 }

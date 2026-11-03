@@ -1,4 +1,4 @@
-PASS All twenty-nine selected original samples load
+PASS All thirty-three selected original samples load
 PASS World viewport enables spatial audio listener
 PASS Unsigned source PCM converts to signed Godot PCM
 PASS Original mono sample rate and bit depth retained
@@ -32,6 +32,10 @@ PASS Death immediately stops own creature voices, preserving other enemies and i
 PASS Corpse cannot repeat death audio
 PASS Corpse emits no periodic attract audio
 PASS Creature sample reaches mixer twenty metres away beyond old cutoff
+PASS impact_fire uses dedicated48m reach
+PASS impact_shock uses dedicated48m reach
+PASS Elemental impacts reach mixer32 metres away beyond old16m cutoff
+PASS Longer spell impact reach preserves melee and creature distances
 PASS Missing archive leaves audio safely disabled
 PASS Unavailable bank cannot create broken playback voices
 PASS Zero master volume fully mutes new voices

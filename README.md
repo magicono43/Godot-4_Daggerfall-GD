@@ -1,3 +1,26 @@
+## Spell impact audio range
+
+Elemental impacts are now audible out to48m (previously16m), configurable with
+audio.cfg `spell_impact_range_metres`. Other sound ranges are unchanged.
+43/43 headless and43/43 rendered audio checks passed, including mixer output at32m.
+Existing saves remain compatible.
+
+## Offensive magic playtest - November 3, 2026
+
+**B** now includes Fire Bolt, Shock Bolt and Burning Touch alongside Heal/Light.
+**Q** or book double-click readies a targeted spell; **LMB** releases; **Esc** cancels.
+The weapon hides while ready. **F** repeats the last successful cast. Bolts each deal
+10HP (45magicka at Destruction50); touch deals10HP (30magicka) within3m. Landed enemy
+hits always work for this test: saving throws/resistance remain deferred. Fire/shock
+use original elemental hands, projectile/impact art, cast/impact sounds and temporary
+colored lights. Baseline bear/300HP/13items/armor/geometry are unchanged.
+
+**Schema7 requires a fresh K save; old slots reject.** External FIRE00C6.CIF,
+SHOK00C6.CIF and TEXTURE.375/378 are additionally required; assets stay external.
+See [docs/OFFENSIVE_MAGIC.md](docs/OFFENSIVE_MAGIC.md). Manual save untouched by tests.
+Validation:1475/1475 headless checks;102/102 rendered offensive checks. Original
+elemental art/lighting and HUD visually inspected; user gameplay/listening is next.
+
 ## Casting sound correction
 
 Magic casts now use the correct short original clip: sound ID349 resolves to

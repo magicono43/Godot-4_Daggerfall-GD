@@ -1,3 +1,11 @@
+# Current offensive-magic extension - schema7
+
+Shared Destruction is persisted; expanded known IDs use the same validated magic
+state. Old schema6/earlier slots reject: create a fresh K save. Ready spells,
+pending release events, missiles and impacts are transient, not serialized. K
+refuses while any are active. L/R discard old transients without delayed hits or
+sounds; candidate validation and capture restoration remain. See OFFENSIVE_MAGIC.md.
+
 # Current magic extension — schema6
 
 Known spell IDs, selected/last cast spell, current magicka, Light remaining game

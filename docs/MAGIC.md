@@ -1,3 +1,10 @@
+# Current extension: offensive spells
+
+Fire Bolt, Shock Bolt and Burning Touch now extend this foundation. Targeted spells
+ready before release, using elemental hands/projectiles/impacts/sounds and a shared
+Destruction skill. Existing self spells stay immediate. Current saves are schema7.
+See OFFENSIVE_MAGIC.md and newest HANDOFF.md; earlier schema6 scope below is history.
+
 # Basic magic
 
 Implemented November 3, 2026. B opens the spellbook; click a known spell to select

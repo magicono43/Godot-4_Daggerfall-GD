@@ -2,6 +2,7 @@ extends Node
 ## Cached external samples and bounded one-shot voices, owned by this scene.
 signal played(event: String, sound_id: int, spatial: bool)
 const EVENTS := {
+	"cast_fire": [84], "cast_shock": [83], "impact_fire": [89], "impact_shock": [88],
 	"cast_magic": [81], # DFU uint sound ID349 resolves to ordinal81 (CastSpell1), not thunder349.
 	"draw_mace": [413], "miss_mace": [347], "draw": [377], "miss": [106], "impact": [108, 109, 110, 111, 112],
 	"fall_damage": [91], "fall_hard": [92], "wall": [433], "door": [7], "player_hit": [110, 111], "death": [15],
@@ -18,6 +19,7 @@ var master_volume := 0.8
 var effects_volume := 0.8
 var draw_gain := 1.5
 var enemy_range := 24.0
+var spell_impact_range := 48.0
 var error := ""
 
 func _exit_tree() -> void:
@@ -34,6 +36,7 @@ func load_bank(arena_path: String) -> bool:
 		effects_volume = clampf(float(config.get_value("volume", "effects", 0.8)), 0.0, 1.0)
 		draw_gain = clampf(float(config.get_value("volume", "draw_gain", 1.5)), 0.0, 2.0)
 		enemy_range = clampf(float(config.get_value("spatial", "enemy_range_metres", 24.0)), 1.0, 100.0)
+		spell_impact_range = clampf(float(config.get_value("spatial", "spell_impact_range_metres", 48.0)), 1.0, 100.0)
 	cache.clear()
 	if not archive.open(arena_path.path_join("DAGGER.SND")):
 		error = archive.error
@@ -83,6 +86,8 @@ func play(event: String, emitter: Node3D = null, gain: float = 1.0, at: Vector3 
 		var source := AudioStreamPlayer3D.new()
 		source.attenuation_model = AudioStreamPlayer3D.ATTENUATION_DISABLED
 		source.max_distance = enemy_range if creature_event or event == "death" else 16.0
+		if event in ["impact_fire", "impact_shock"]:
+			source.max_distance = spell_impact_range
 		add_child(source)
 		source.global_position = emitter.global_position + Vector3.UP * 0.8
 		if at.is_finite():

@@ -1,0 +1,49 @@
+{
+  "repository": "https://github.com/Interkarma/daggerfall-unity",
+  "commit": "4e78e1412b17b60f4d5d6073825775aa5ae95139",
+  "license": "MIT; reference/LICENSE.txt and source headers",
+  "files": {
+    "Assets/Scripts/Game/DaggerfallMissile.cs": "027614018ac942c7cb7375d1be5d91a4d044c8b4709fe9e0f825c20468a9d905",
+    "Assets/Scripts/Game/MagicAndEffects/Effects/Destruction/DamageHealth.cs": "9f9ec38b2b6400b8da979c2cce404925f53df64f410079734415e5781b1889e1",
+    "Assets/Prefabs/Missiles/FireMissile.prefab": "7f40f7f706be74b4ce45863901e146805b87fd65faec31f48b439bfe2a592be9",
+    "Assets/Prefabs/Missiles/ShockMissile.prefab": "7baa4c429e8f25d8f37024033d95c394d429ba895a7e8f6a8edb23b70158bf33",
+    "Assets/Scripts/Game/MagicAndEffects/EntityEffectManager.cs": "bfb25f1f179d2eb40d77c88d06b693f7cf0bc73b9031a3807795e250f38e6014",
+    "Assets/Scripts/Game/FPSSpellCasting.cs": "3e03762e98e81b17f11233b8fec07dc37d5de9d9809b6c423571771f6163bfde",
+    "Assets/Scripts/Internal/DaggerfallAudioSource.cs": "0a96e2ece7f63e173ed187c3a7f39fe7d1502e7b0201c4429b717c5b14d382bd",
+    "Assets/Scripts/SoundClips.cs": "fba0cc8cc19b9186d3f455f1660be81051d8a4c48f6b8b7edb46bfe81b4ce5bf",
+    "Assets/Scripts/Utility/WeaponBasics.cs": "086a75d850dc0404f1b35993bcddfa97607af5f85909477b0a8171efdfd3a6a4",
+    "Assets/Scripts/Game/Formulas/FormulaHelper.cs": "8f2d5286add95aab0ca279543debc0ff7d1a25bbc6d1e6aa1aba7a83a3773bc6"
+  },
+  "source_rules": {
+    "projectile_speed_m_s": 25,
+    "projectile_radius_m": 0.45,
+    "touch_radius_m": 0.25,
+    "touch_range_m": 3,
+    "flight_fps": 5,
+    "impact_fps": 15,
+    "release_frame": 5,
+    "hand_frame_seconds": 0.04,
+    "ranged_cost_multiplier": 1.5,
+    "damage_magnitude_coefficient": 20,
+    "fire_archive": 375,
+    "shock_archive": 378,
+    "magic_cast_id_to_ordinal": {
+      "349": 81,
+      "352": 84,
+      "351": 83
+    },
+    "impact_ordinals": {
+      "fire": 89,
+      "shock": 88
+    }
+  },
+  "prototype_policy": [
+    "Fixed10HP single-target Fire Bolt/Shock Bolt/Burning Touch, no level scaling.",
+    "Every landed enemy hit works; all saves/resistance/absorption/reflection and melee formulas bypassed per user request.",
+    "No AoE despite source projectile art; no enemy casting/self damage.",
+    "100m flight bound; camera-origin swept spawn instead of unchecked arm offset.",
+    "Source6m elemental light with authored energy0.35; end with impact animation, omit extra source light tail.",
+    "Ready snapshots affordability/cost without debiting; release commits, cancellation before release free.",
+    "Transient missiles/readiness not saved; schema7 adds Destruction and rejects older slots."
+  ]
+}
