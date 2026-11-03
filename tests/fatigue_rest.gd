@@ -179,7 +179,7 @@ func run() -> void:
 	player.fatigue.current = 1234
 	player.fatigue.game_seconds = 123.5
 	var data: Dictionary = level.persistence.snapshot()
-	check(data.version == 7 and data.player.fatigue.current == 1234 and level.persistence.validate(data), "Schema7 saves fatigue and fractional game clock")
+	check(data.version == 8 and data.player.fatigue.current == 1234 and level.persistence.validate(data), "Schema8 saves fatigue and fractional game clock")
 	for bad in [{"current":-1,"game_seconds":0}, {"current":1,"game_seconds":NAN}, {"current":1.2,"game_seconds":0}]:
 		var invalid: Dictionary = data.duplicate(true)
 		invalid.player.fatigue = bad

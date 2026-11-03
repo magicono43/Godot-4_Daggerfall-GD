@@ -1,0 +1,32 @@
+{
+  "repository": "https://github.com/Interkarma/daggerfall-unity",
+  "commit": "4e78e1412b17b60f4d5d6073825775aa5ae95139",
+  "license": "MIT; reference/LICENSE.txt and source headers",
+  "files": {
+    "Assets/Scripts/Game/MagicAndEffects/Effects/Alteration/Shield.cs": "18873d9d42de8ef2340096d462c8db42ce5351c902b910757c0318b77e26812d",
+    "Assets/Scripts/Game/Entities/DaggerfallEntity.cs": "8da1b9e6be534321d0c8f4fdc793b3a9189928490f82b22390b63c67ea7301b5",
+    "Assets/Scripts/Game/Formulas/FormulaHelper.cs": "8f2d5286add95aab0ca279543debc0ff7d1a25bbc6d1e6aa1aba7a83a3773bc6"
+  },
+  "source_rules": {
+    "school": "Alteration",
+    "element": "Magic",
+    "duration_coefficients": [
+      28,
+      8
+    ],
+    "magnitude_coefficients": [
+      80,
+      60
+    ],
+    "recast": "Add duration; add new magnitude to current, capped at original startingShield.",
+    "damage": "All damage sources, including falls. Deplete then pass overflow to health; end immediately when depleted."
+  },
+  "prototype_choices": {
+    "magnitude": 5,
+    "duration_game_minutes": 2,
+    "alteration_baseline": 50,
+    "cost_at_baseline": 68,
+    "shared_clock": "Existing12x awake time/completed rest hours; existing pause policy.",
+    "save_schema": 8
+  }
+}

@@ -1,3 +1,14 @@
+## Shield playtest - November 3, 2026
+
+**B** includes Shield: absorb5 damage for2 game minutes (10 active-play seconds),
+cost68 at Alteration50. Cast with Q/F or book double-click. Recasting adds duration
+and refills only to the original capacity; damage overflow reaches HP. Physical,
+magical and fall damage share the protection. HUD/C show remaining pool/time.
+See [docs/SHIELD.md](docs/SHIELD.md). **Schema8 requires a fresh K save; old slots
+reject.** Manual save untouched. Existing bear/equipment/movement/spells unchanged.
+Validation:1531/1531 headless checks,49/49 rendered Shield checks; HUD/C visually
+inspected in both display modes. User playtest is next.
+
 ## Spell impact audio range
 
 Elemental impacts are now audible out to48m (previously16m), configurable with

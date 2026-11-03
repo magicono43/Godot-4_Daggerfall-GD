@@ -1,3 +1,8 @@
+# Shield extension
+
+C now shows active Shield capacity/current/time and shared Alteration skill.
+Schema8 persists Alteration and the partially depleted Shield. See SHIELD.md.
+
 # Offensive extension
 
 Shared Destruction now joins Restoration/Illusion, appears on C, and drives

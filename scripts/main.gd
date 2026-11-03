@@ -347,6 +347,8 @@ func _process(_delta: float) -> void:
 	player.magic.sync_capacity()
 	player_status.text = "Health: %d / %d\nFatigue: %.1f / %.1f" % [player.health.current, player.health.maximum, player.fatigue.current / 64.0, player.fatigue.maximum() / 64.0]
 	player_status.text += "\nMagicka: %d / %d" % [player.magic.current, player.magic.maximum()]
+	if player.spell_effects.shield.active():
+		player_status.text += "\nShield: %d / %d | %.1f min" % [player.spell_effects.shield.current, player.spell_effects.shield.capacity, player.spell_effects.shield.remaining/60.0]
 	if not player.casting.ready_id.is_empty():
 		player_status.text += "\nReadied: %s (cost %d)" % [preload("res://scripts/spell_catalog.gd").SPELLS[player.casting.ready_id].name, player.casting.ready_cost]
 		prompt.text = "Spell ready | LMB release | Esc cancel"

@@ -2,6 +2,7 @@ extends RefCounted
 ## One timed effect, driven by the existing elapsed game clock, including rest.
 const MAX_LIGHT_SECONDS := 86400.0
 var remaining := 0.0
+var shield := preload("res://scripts/shield_effect.gd").new()
 var light: OmniLight3D
 
 func setup(camera: Camera3D) -> void:
@@ -16,15 +17,19 @@ func setup(camera: Camera3D) -> void:
 func apply(id: String, actor: CharacterBody3D) -> void:
 	if id == "heal":
 		actor.health.restore(25)
+	elif id == "shield":
+		shield.cast(5, 120.0)
 	elif id == "light":
 		remaining = minf(MAX_LIGHT_SECONDS, remaining + 600.0)
 		light.visible = true
 
 func advance(seconds: float) -> void:
+	shield.advance(seconds)
 	remaining = maxf(0.0, remaining - maxf(0.0, seconds))
 	light.visible = remaining > 0
 
 func clear() -> void:
+	shield.clear()
 	remaining = 0
 	if is_instance_valid(light):
 		light.visible = false

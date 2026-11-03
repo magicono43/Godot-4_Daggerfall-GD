@@ -1,0 +1,49 @@
+PASS Shield preserves accepted equipment/health/magicka/bear baseline
+PASS Authored Shield grant and shared Alteration50 available
+PASS Shield combines source magnitude80 and duration28 costs with Alteration50
+PASS Live Alteration affects real cost and survives atomic F3
+PASS Routed self Shield commits immediately at full health and spends68
+PASS Shield uses accepted magic hands and correct casting cue
+PASS Shield absorbs partial incoming damage before health
+PASS Fully absorbed hit causes no HP injury flash or pain cue
+PASS Recast adds duration and tops up depleted pool only to initial capacity
+PASS Unaffordable recast cannot refresh Shield for free
+PASS Zero/negative damage cannot consume or replenish Shield
+PASS Exact depletion ends effect immediately without HP overflow
+PASS Oversized hit consumes remaining5 and sends only3 to health
+PASS Overflow uses normal HP damage feedback once
+PASS Unused pool remains until duration actually expires
+PASS Duration expiry discards unused absorption pool
+PASS Damage after expiry passes directly to health
+PASS Smaller recast adds its magnitude but retains original capacity
+PASS Larger recast cannot raise incumbent starting capacity
+PASS After effect ends a new cast establishes a fresh capacity
+PASS Released controls pause Shield on shared elapsed game clock
+PASS Character modal shows real Shield and pauses duration
+PASS Shield consumes the same12x awake clock as Light
+PASS Shield expiry is independent of remaining Light state
+PASS Shield absorbs fall damage while preserving exactly one landing cue
+PASS Fall feedback distinguishes shielded amount from actual HP damage
+PASS Fall overflow passes remaining damage through health
+PASS Actual bear strike consumes shield through shared player damage entry
+PASS Safe rest starts with Shield active
+PASS Completed rest hour expires Shield using existing clock policy
+PASS Spellbook double-click casts Shield immediately and closes
+PASS Schema8 records partially depleted Shield and remaining time
+PASS Malformed Shield save rejects before swap: missing
+PASS Malformed Shield save rejects before swap: negative
+PASS Malformed Shield save rejects before swap: fraction
+PASS Malformed Shield save rejects before swap: overflow
+PASS Malformed Shield save rejects before swap: infinite
+PASS Malformed Shield save rejects before swap: expired
+PASS Malformed Shield save rejects before swap: empty
+PASS Malformed Shield save rejects before swap: extra
+PASS Malformed Shield save rejects before swap: old
+PASS Shield saves to isolated slot without overwriting manual
+PASS L restores depleted Shield without refilling; clears live override
+PASS Load from sheet resumes capture without replaying Shield cast
+PASS Fatal overflow clears Shield/Light through existing death ownership
+PASS Dead actor cannot consume effects or revive
+PASS L after death restores persisted Shield
+PASS R restores authored Shield knowledge without active buff
+PASS HUD shows current pool/capacity and duration

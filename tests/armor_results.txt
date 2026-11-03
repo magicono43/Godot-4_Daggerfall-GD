@@ -69,7 +69,7 @@ PASS Taking deposited helmet restores same owned instance
 PASS Unequipped helmet can ground-drop through existing support rules
 PASS Ground pile owns original armor UID
 PASS Ground armor can be recovered and equipped
-PASS Schema7 saves all seven independent slot references
+PASS Schema8 saves all seven independent slot references
 PASS Invalid slot save rejects before scene replacement: missing
 PASS Invalid slot save rejects before scene replacement: extra
 PASS Invalid slot save rejects before scene replacement: wrong_slot

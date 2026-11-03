@@ -1,3 +1,10 @@
+# Shield extension
+
+Shield is now the sixth authored spell: magnitude5/2 game minutes, Alteration50,
+cost68. Source recast adds duration plus refill up to original capacity; protects
+all player damage including falls. Current schema8 persists pool/time and Alteration.
+See SHIELD.md; earlier schema/scope entries below predate Shield.
+
 # Current extension: offensive spells
 
 Fire Bolt, Shock Bolt and Burning Touch now extend this foundation. Targeted spells

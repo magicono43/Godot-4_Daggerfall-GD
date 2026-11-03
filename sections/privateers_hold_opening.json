@@ -762,7 +762,8 @@
         "light",
         "fire_bolt",
         "shock_bolt",
-        "burning_touch"
+        "burning_touch",
+        "shield"
       ]
     }
   },

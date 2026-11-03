@@ -1,0 +1,57 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 - Build 31.0.101.2140 - Compatibility - Using Device: Intel - Intel(R) UHD Graphics 630
+
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Shield preserves accepted equipment/health/magicka/bear baseline position=(7.25, 12.8, 16.2) mode=walking
+PASS Authored Shield grant and shared Alteration50 available position=(7.25, 12.8, 16.2) mode=walking
+PASS Shield combines source magnitude80 and duration28 costs with Alteration50 position=(7.25, 12.8, 16.2) mode=walking
+PASS Live Alteration affects real cost and survives atomic F3 position=(7.25, 12.8, 16.2) mode=walking
+PASS Routed self Shield commits immediately at full health and spends68 position=(7.25, 12.8, 16.2) mode=walking
+PASS Shield uses accepted magic hands and correct casting cue position=(7.25, 12.8, 16.2) mode=walking
+PASS Shield absorbs partial incoming damage before health position=(7.25, 12.8, 16.2) mode=walking
+PASS Fully absorbed hit causes no HP injury flash or pain cue position=(7.25, 12.8, 16.2) mode=walking
+PASS Recast adds duration and tops up depleted pool only to initial capacity position=(7.25, 12.8, 16.2) mode=walking
+PASS Unaffordable recast cannot refresh Shield for free position=(7.25, 12.8, 16.2) mode=walking
+PASS Zero/negative damage cannot consume or replenish Shield position=(7.25, 12.8, 16.2) mode=walking
+PASS Exact depletion ends effect immediately without HP overflow position=(7.25, 12.8, 16.2) mode=walking
+PASS Oversized hit consumes remaining5 and sends only3 to health position=(7.25, 12.8, 16.2) mode=walking
+PASS Overflow uses normal HP damage feedback once position=(7.25, 12.8, 16.2) mode=walking
+PASS Unused pool remains until duration actually expires position=(7.25, 12.8, 16.2) mode=walking
+PASS Duration expiry discards unused absorption pool position=(7.25, 12.8, 16.2) mode=walking
+PASS Damage after expiry passes directly to health position=(7.25, 12.8, 16.2) mode=walking
+PASS Smaller recast adds its magnitude but retains original capacity position=(7.25, 12.8, 16.2) mode=walking
+PASS Larger recast cannot raise incumbent starting capacity position=(7.25, 12.8, 16.2) mode=walking
+PASS After effect ends a new cast establishes a fresh capacity position=(7.25, 12.8, 16.2) mode=walking
+PASS Released controls pause Shield on shared elapsed game clock position=(7.25, 12.8, 16.2) mode=walking
+PASS Character modal shows real Shield and pauses duration position=(7.25, 12.8, 16.2) mode=walking
+PASS Shield consumes the same12x awake clock as Light position=(7.25, 12.8, 16.2) mode=walking
+PASS Shield expiry is independent of remaining Light state position=(7.25, 12.8, 16.2) mode=walking
+PASS Shield absorbs fall damage while preserving exactly one landing cue position=(7.25, 12.8, 16.2) mode=walking
+PASS Fall feedback distinguishes shielded amount from actual HP damage position=(7.25, 12.8, 16.2) mode=walking
+PASS Fall overflow passes remaining damage through health position=(7.25, 12.8, 16.2) mode=walking
+PASS Actual bear strike consumes shield through shared player damage entry position=(10.25, 12.8, 19.3) mode=walking
+PASS Safe rest starts with Shield active position=(7.25, 12.80096, 16.2) mode=walking
+PASS Completed rest hour expires Shield using existing clock policy position=(7.25, 12.80096, 16.2) mode=walking
+PASS Spellbook double-click casts Shield immediately and closes position=(7.25, 12.80096, 16.2) mode=walking
+PASS Schema8 records partially depleted Shield and remaining time position=(7.25, 12.80096, 16.2) mode=walking
+PASS Malformed Shield save rejects before swap: missing position=(7.25, 12.80096, 16.2) mode=walking
+PASS Malformed Shield save rejects before swap: negative position=(7.25, 12.80096, 16.2) mode=walking
+PASS Malformed Shield save rejects before swap: fraction position=(7.25, 12.80096, 16.2) mode=walking
+PASS Malformed Shield save rejects before swap: overflow position=(7.25, 12.80096, 16.2) mode=walking
+PASS Malformed Shield save rejects before swap: infinite position=(7.25, 12.80096, 16.2) mode=walking
+PASS Malformed Shield save rejects before swap: expired position=(7.25, 12.80096, 16.2) mode=walking
+PASS Malformed Shield save rejects before swap: empty position=(7.25, 12.80096, 16.2) mode=walking
+PASS Malformed Shield save rejects before swap: extra position=(7.25, 12.80096, 16.2) mode=walking
+PASS Malformed Shield save rejects before swap: old position=(7.25, 12.80096, 16.2) mode=walking
+PASS Shield saves to isolated slot without overwriting manual position=(7.25, 12.80096, 16.2) mode=walking
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS L restores depleted Shield without refilling; clears live override position=(7.25, 12.80096, 16.2) mode=reset
+PASS Load from sheet resumes capture without replaying Shield cast position=(7.25, 12.80096, 16.2) mode=reset
+PASS Fatal overflow clears Shield/Light through existing death ownership position=(7.25, 12.80096, 16.2) mode=reset
+PASS Dead actor cannot consume effects or revive position=(7.25, 12.80096, 16.2) mode=reset
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS L after death restores persisted Shield position=(7.25, 12.80096, 16.2) mode=reset
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS R restores authored Shield knowledge without active buff position=(7.25, 12.88333, 16.2) mode=walking
+PASS HUD shows current pool/capacity and duration position=(7.25, 12.88333, 16.2) mode=walking
+SHIELD RESULTS: 49/49

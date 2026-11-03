@@ -1,3 +1,36 @@
+# Resume here - Shield implemented; user playtest next
+
+November 3, 2026. User chose Shield after accepting offensive spells/audio reach.
+Pinned DFU confirms a damage pool with duration, but recast also tops up current
+pool by new magnitude, capped at original starting capacity, in addition to adding
+duration. Implemented this source behavior. It protects all incoming player damage,
+including falls, after combat armor rolls and before health; overflow only reaches
+HP. Exact depletion/expiry removes effect. No armor stat change or per-hit reduction.
+
+Authored sixth spell: Shield5 damage capacity/2 game minutes, Alteration50, cost68
+at50 (source magnitude80+duration28 coefficients), magic hands/sound81. Small test
+pool permits two casts from unchanged150magicka. Current/starting pool and duration
+appear on HUD/C. Shared12x awake clock/completed rest hours, modal/released pause,
+Light independence; death/R cleanup. Fully blocked hits have no HP flash/pain cue;
+fall landing cue remains once with shield-aware damage feedback. Recast spends even
+at full pool. Existing source-style capped top-up covered with weaker/stronger casts.
+
+Schema8 persists capacity/current/remaining time and shared Alteration base, validates
+before candidate swap, rejects older slots. Create a fresh K save. Depleted pool
+restores without refill; no transient animation replay. Tests use isolated Shield
+slot and separate process; manual slot untouched. See SHIELD.md/shield_sources.json.
+Accepted bear300HP/13items/armor/150magicka/offensive mechanics/48m impacts unchanged.
+No new milestones selected beyond Shield playtest. Older entries below are history.
+
+Validation November 3, 2026: Run.ps1 -Test passed1531/1531 headless checks
+across27 suites plus four separate-process reloads (persistence/armor/magic/Shield),
+reported in tests/shield_complete_regression.log. Shield rendered checks49/49
+passed in tests/shield_rendered.log. HUD and character sheet visually inspected
+in4:3/widescreen. No failed assertions or script errors. Existing restricted-host
+log/certificate/accelerated-exit diagnostics remain nonblocking. User playtest is
+next; manual save was not overwritten.
+
+
 # Resume here - offensive spells working; impact audio reach extended
 
 User reports offensive spells work as expected and requested greater impact sound

@@ -59,7 +59,7 @@ PASS No-regen policy disables hourly resource recovery
 PASS Full rest starts when only magicka needs recovery
 PASS Completed rest hour restores source amount and expires light
 PASS Full rest ends when all resources recovered within24h cap
-PASS Schema7 validates resource/knowledge/effect snapshot
+PASS Schema8 validates resource/knowledge/effect snapshot
 PASS Invalid magic save rejects: unknown
 PASS Invalid magic save rejects: duplicate
 PASS Invalid magic save rejects: selection

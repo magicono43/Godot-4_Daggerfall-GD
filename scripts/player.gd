@@ -310,7 +310,10 @@ func land(result: Dictionary) -> void:
 	fall_feedback = "%d fall damage (%.1f m drop)" % [result.damage, result.distance] if result.damage > 0 else "Hard landing (%.1f m drop)" % result.distance
 	fall_feedback_time = 2.5
 	if result.damage > 0:
+		var absorbed := mini(spell_effects.shield.current, int(result.damage)) if spell_effects.shield.active() else 0
 		receive_damage(int(result.damage), "fall_damage")
+		if absorbed > 0:
+			fall_feedback = "%d fall damage (%.1f m drop), %d shielded" % [int(result.damage)-absorbed, result.distance, absorbed]
 	elif is_instance_valid(combat_audio):
 		combat_audio.play("fall_damage" if result.kind == "damage" else "fall_hard")
 
@@ -352,6 +355,15 @@ func is_dead() -> bool:
 	return health.current <= 0
 
 func receive_damage(amount: int, sound_event: String = "player_hit") -> bool:
+	if amount <= 0 or is_dead():
+		return false
+	amount = spell_effects.shield.absorb(amount)
+	if amount == 0:
+		# Accepted shielded hit, but no HP injury flash/player-hit cue.
+		# Landing audio still represents physical contact even when Shield absorbs it.
+		if sound_event == "fall_damage" and is_instance_valid(combat_audio):
+			combat_audio.play(sound_event)
+		return true
 	if not health.apply_damage(amount):
 		return false
 	damage_flash = 0.3

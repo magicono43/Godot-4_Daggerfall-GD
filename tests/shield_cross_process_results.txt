@@ -1,0 +1,3 @@
+PASS Separate process loads depleted timed Shield
+PASS Cross-process load preserves original capacity, depleted pool and exact expiry clock
+PASS Cross-process Shield knowledge/Alteration restore without replaying cast

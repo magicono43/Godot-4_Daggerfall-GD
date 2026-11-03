@@ -1,3 +1,10 @@
+# Current Shield extension - schema8
+
+Shared Alteration plus player.shield {capacity,current,seconds} now persist.
+Validate bounded integers/time and active/inactive consistency before swap; restore
+depleted capacity without refill or cast replay. Older schema7/earlier reject:
+create a fresh K save. See SHIELD.md. Existing manual slot untouched by tests.
+
 # Current offensive-magic extension - schema7
 
 Shared Destruction is persisted; expanded known IDs use the same validated magic

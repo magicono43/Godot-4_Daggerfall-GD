@@ -53,11 +53,13 @@ func refresh() -> void:
 	var lines: Array[String] = ["[b]Health: %d / %d[/b]" % [actor.health.current, actor.health.maximum], "Fatigue: %.1f / %.1f" % [actor.fatigue.current / 64.0, actor.fatigue.maximum() / 64.0], "", "[b]Attributes[/b]"]
 	actor.magic.sync_capacity()
 	lines.insert(2, "Magicka: %d / %d" % [actor.magic.current, actor.magic.maximum()])
+	if actor.spell_effects.shield.active():
+		lines.insert(3, "Shield: %d / %d | %.1f game minutes" % [actor.spell_effects.shield.current, actor.spell_effects.shield.capacity, actor.spell_effects.shield.remaining/60.0])
 	for key in ["strength", "intelligence", "willpower", "agility", "endurance", "personality", "speed", "luck"]:
 		var unused: bool = key in ["willpower", "personality"]
 		lines.append("%s: %.1f%s" % [key.capitalize(), actor.character.stat(key), " (no gameplay consumer yet)" if unused else ""])
 	lines.append("\n[b]Skills[/b]")
-	for key in ["short_blade", "blunt_weapon", "hand_to_hand", "dodging", "critical_strike", "medical", "restoration", "illusion", "destruction", "running", "jumping", "swimming", "climbing"]:
+	for key in ["short_blade", "blunt_weapon", "hand_to_hand", "dodging", "critical_strike", "medical", "restoration", "illusion", "destruction", "alteration", "running", "jumping", "swimming", "climbing"]:
 		var note := ""
 		if key == "hand_to_hand": note = " (input hook; unarmed attacks unavailable)"
 		if key == "swimming": note = " (speed hook only)"

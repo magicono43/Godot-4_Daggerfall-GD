@@ -1,7 +1,7 @@
 extends RefCounted
 ## Resource/knowledge ownership. Casting and effect visuals live elsewhere.
 const Catalog = preload("res://scripts/spell_catalog.gd")
-const DEFAULTS := {"intelligence":50, "destruction":50, "restoration":50, "illusion":50}
+const DEFAULTS := {"intelligence":50, "alteration":50, "destruction":50, "restoration":50, "illusion":50}
 var character: RefCounted
 var known: Array = []
 var selected := ""

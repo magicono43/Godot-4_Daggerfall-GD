@@ -1,3 +1,10 @@
+# Latest status - Shield implemented
+
+User accepted offensive spells and48m impact audio, then selected Shield. The
+timed finite absorption pool, source capped-refill recast, HUD/C and schema8 save
+support are implemented. User playtest is next; no further milestone selected.
+Read newest HANDOFF.md and SHIELD.md. Earlier entries below are historical.
+
 # Latest status - offensive spells implemented
 
 User accepted Heal/Light, spellbook activation and corrected magic casting audio.
