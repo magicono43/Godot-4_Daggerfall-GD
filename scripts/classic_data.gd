@@ -14,6 +14,8 @@ var provenance: Dictionary = {}
 var objects: Array[Dictionary] = []
 var billboards: Array[Dictionary] = []
 var enemy_visuals: Dictionary = {}
+var skeleton_attributes: Dictionary = {}
+var bear_attributes: Dictionary = {}
 var dagger_frames: Array[Dictionary] = []
 var weapon_frames: Dictionary = {}
 var item_icons: Dictionary = {}
@@ -42,11 +44,26 @@ static func decode_sound(bytes: PackedByteArray) -> AudioStreamWAV:
 	stream.data = pcm
 	return stream
 
+static func decode_monster_attributes(bytes: PackedByteArray) -> Dictionary:
+	# Pinned ClassFile CFG layout: eight UInt16 attributes at byte 58.
+	if bytes.size() != 74:
+		return {}
+	var result := {}
+	var names := ["strength", "intelligence", "willpower", "agility", "endurance", "personality", "speed", "luck"]
+	for i in names.size():
+		var value := bytes.decode_u16(58 + i * 2)
+		if value > 100:
+			return {}
+		result[names[i]] = value
+	return result
+
 func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 	error = ""
 	objects.clear()
 	billboards.clear()
 	enemy_visuals.clear()
+	skeleton_attributes.clear()
+	bear_attributes.clear()
 	dagger_frames.clear()
 	weapon_frames.clear()
 	item_icons.clear()
@@ -194,9 +211,26 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 			if payload.is_empty():
 				return false
 			enemy_visuals.skeleton = payload
+		elif entry.get("visual", "greybox") == "bear" and not enemy_visuals.has("bear"):
+			var payload := bear_payload()
+			if payload.is_empty():
+				return false
+			enemy_visuals.bear = payload
 	# A deterministic member of DFU's original random-treasure billboard set.
 	loot_pile_payload = billboard_payload({"id": "loot_pile", "archive": 216, "record": 0})
 	if loot_pile_payload.is_empty():
+		return false
+	var monsters := Archive.new()
+	if not monsters.open(arena_path.path_join("MONSTER.BSA")):
+		error = monsters.error
+		return false
+	skeleton_attributes = decode_monster_attributes(monsters.record("ENEMY015.CFG"))
+	if skeleton_attributes.is_empty():
+		error = "Missing or invalid skeleton career ENEMY015.CFG in MONSTER.BSA"
+		return false
+	bear_attributes = decode_monster_attributes(monsters.record("ENEMY004.CFG"))
+	if bear_attributes.is_empty():
+		error = "Missing or invalid bear career ENEMY004.CFG in MONSTER.BSA"
 		return false
 	# Inventory images use raw item archive mappings, never dungeon/climate swaps.
 	for id in preload("res://scripts/item_catalog.gd").DEFINITIONS:
@@ -482,6 +516,21 @@ func skeleton_payload() -> Dictionary:
 	if corpse.is_empty():
 		return {}
 	return {"archive": 270, "records": records, "corpse": corpse}
+
+func bear_payload() -> Dictionary:
+	# EnemyBasics ID4: original bear archive259, corpse401:2, hit at marker3.
+	var records: Dictionary = {}
+	for record in 20:
+		var payload := billboard_payload({"id": "bear_%d" % record, "archive": 259, "record": record})
+		var expected := 4 if record < 10 else 1
+		if payload.is_empty() or payload.frames.size() != expected:
+			error = "Bear 259:%d expected %d frames" % [record, expected]
+			return {}
+		records[record] = payload
+	var corpse := billboard_payload({"id": "bear_corpse", "archive": 401, "record": 2})
+	if corpse.is_empty():
+		return {}
+	return {"archive": 259, "records": records, "corpse": corpse, "attack_sequence": [0, 1, 2, 3, 0], "hit_tick": 3, "corpse_record": 2}
 
 func cif_rgba(indices: PackedByteArray, width: int, height: int) -> Texture2D:
 	var rgba := PackedByteArray()

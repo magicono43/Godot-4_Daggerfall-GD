@@ -1,3 +1,5 @@
+Current behavior: mace base damage is 1-12 plus source modifiers; dagger is 1-6 with skeleton edged resistance. Both currently use steel material. See COMBAT_RESOLUTION.md; old prototype 15/10 descriptions below are historical.
+
 # Mace equipment and original presentation
 
 Implemented November 2, 2026. Defeat the skeleton beside the hall spawn, press E
@@ -68,3 +70,4 @@ checks. Reports: tests/mace_full_regression.log and tests/mace_rendered.log.
 Inspected mace_inventory.png, mace_ready_4_3.png, mace_ready_widescreen.png and
 mace_swing_1.png through mace_swing_6.png. Automated and rendered assertions are
 separate from visual inspection and the pending user in-game playtest.
+

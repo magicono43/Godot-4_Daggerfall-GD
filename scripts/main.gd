@@ -6,6 +6,8 @@ const Enemy = preload("res://scripts/enemy.gd")
 const Presentation = preload("res://scripts/classic_presentation.gd")
 const Billboard = preload("res://scripts/classic_billboard.gd")
 var section_path := Data.DEFAULT_SECTION
+@export var section_override_path := ""
+@export var combat_profile_path := "res://combat.cfg"
 var model_nodes: Dictionary = {}
 var billboard_nodes: Dictionary = {}
 var doors: Array[AnimatableBody3D] = []
@@ -41,6 +43,8 @@ func _ready() -> void:
 	if config.load("res://data_source.cfg") == OK:
 		classic.arena_path = config.get_value("classic", "arena2", classic.arena_path)
 		section_path = config.get_value("classic", "section", section_path)
+	if not section_override_path.is_empty():
+		section_path = section_override_path
 	create_environment()
 	create_hud()
 	if not classic.load_slice(section_path):
@@ -100,6 +104,8 @@ func _ready() -> void:
 	player.weapon_payloads = classic.weapon_frames
 	player.combat_audio = combat_audio
 	player.name = "Player"
+	player.test_setup = definition.prototype.get("player_test", {})
+	player.combat_profile_path = combat_profile_path
 	# A hidden load candidate must not change the live window's mouse capture.
 	player.capture_on_ready = not restoring
 	world_root.add_child(player)
@@ -140,6 +146,12 @@ func _ready() -> void:
 		placeholder.navigation.enabled = enemy_navigation_enabled and entry.get("navigation_enabled", false)
 		placeholder.melee.enabled = entry.get("attack_enabled", false)
 		placeholder.sprite_payload = classic.enemy_visuals.get(entry.get("visual", "greybox"), {})
+		if entry.get("visual", "greybox") == "skeleton":
+			placeholder.combat_stats.configure_skeleton(classic.skeleton_attributes)
+		elif entry.get("visual", "greybox") == "bear":
+			placeholder.combat_stats.configure_bear(classic.bear_attributes)
+			placeholder.can_open_doors = false
+		placeholder.creature_name = String(entry.get("visual", "greybox")).capitalize()
 		placeholder.combat_audio = combat_audio
 		placeholder.name = entry.id
 		placeholder.loot_enabled = entry.has("test_loot")
@@ -303,9 +315,11 @@ func _process(_delta: float) -> void:
 		damage_overlay.color.a = 0.16
 	# Status grows when targets/encounters are shown; diagnostics follow its height.
 	movement_status.position.y = status.position.y + status.get_minimum_size().y + 12.0
-	movement_status.visible = player.show_movement_debug or not player.movement.profile.error.is_empty()
+	movement_status.visible = player.show_movement_debug or not player.movement.profile.error.is_empty() or not player.combat_stats.error.is_empty()
 	if movement_status.visible:
 		movement_status.text = player.movement_debug_text()
+		movement_status.text += "\n" + player.combat_stats.diagnostic(player)
+		movement_status.text += "\n" + player.combat.resolver.diagnostic()
 		for target in enemies:
 			if target.navigation.enabled:
 				movement_status.text += "\nSkeleton: %s | detour %.2f s" % [target.navigation.state, target.navigation.detour_left]

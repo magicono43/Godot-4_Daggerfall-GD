@@ -16,7 +16,7 @@ func run() -> void:
 		quit(1)
 		return
 	DirAccess.make_dir_recursive_absolute(OUTPUT)
-	level = load("res://main.tscn").instantiate()
+	level = load("res://tests/skeleton_regression.tscn").instantiate()
 	level.enemy_navigation_enabled = false
 	root.add_child(level)
 	current_scene = level
@@ -46,3 +46,4 @@ func run() -> void:
 			await capture("cave_fire_next_frame")
 	print("DECORATION_CAPTURES: tests/decorations")
 	quit()
+

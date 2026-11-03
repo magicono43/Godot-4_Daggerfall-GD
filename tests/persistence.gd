@@ -53,7 +53,7 @@ func capture(name: String) -> void:
 		root.get_texture().get_image().save_png("res://tests/" + name + ".png")
 
 func run() -> void:
-	level = load("res://main.tscn").instantiate()
+	level = load("res://tests/skeleton_regression.tscn").instantiate()
 	level.enemy_navigation_enabled = false
 	root.add_child(level)
 	current_scene = level
@@ -193,7 +193,7 @@ func run() -> void:
 	check(level.world_loot.authored_piles.chamber_treasure == null and level.persistence.snapshot().drops.size() == 2, "Delayed initialization cannot regenerate loot after load")
 	# Restore a populated authored pile as well as the depleted form above.
 	var with_treasure := expected.duplicate(true)
-	with_treasure.authored.chamber_treasure = {"id": "chamber_treasure", "position": [19.375, 1.025, 28.6], "inventory": {"items": [{"uid": 500, "definition": "gold", "quantity": 7}], "equipped_uid": 0}}
+	with_treasure.authored.chamber_treasure = {"id": "chamber_treasure", "position": [19.375, 1.025, 28.6], "inventory": {"items": [{"uid": 500, "definition": "gold", "quantity": 7}], "equipped_uid": 0, "armor_uid": 0}}
 	FileAccess.open(PATH, FileAccess.WRITE).store_string(JSON.stringify(with_treasure))
 	check(await save.load_slot(), "Partly looted authored treasure loads")
 	bind()
@@ -255,5 +255,7 @@ func finish() -> void:
 	var report := "res://tests/persistence_cross_process_results.txt" if "--persistence-read" in OS.get_cmdline_user_args() else "res://tests/persistence_results.txt"
 	FileAccess.open(report, FileAccess.WRITE).store_string("\n".join(results))
 	quit(0 if failures.is_empty() else 1)
+
+
 
 

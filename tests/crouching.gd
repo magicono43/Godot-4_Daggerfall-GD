@@ -165,7 +165,7 @@ func run() -> void:
 	quit(0 if failures.is_empty() else 1)
 
 func hall_cleanup_checks() -> void:
-	var level: Node3D = load("res://main.tscn").instantiate()
+	var level: Node3D = load("res://tests/skeleton_regression.tscn").instantiate()
 	level.enemy_navigation_enabled = false
 	root.add_child(level)
 	current_scene = level
@@ -176,3 +176,4 @@ func hall_cleanup_checks() -> void:
 	var query := PhysicsRayQueryParameters3D.create(point + Vector3.UP * 2, point + Vector3.DOWN * 0.1, 1, [player.get_rid()])
 	var hit := player.get_world_3d().direct_space_state.intersect_ray(query)
 	check(not hit.is_empty() and absf(hit.position.y - point.y) < 0.02, "Former test passage area exposes the untouched original hall floor")
+

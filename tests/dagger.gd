@@ -30,7 +30,7 @@ func capture(name: String) -> void:
 	player.set_physics_process(active)
 
 func run() -> void:
-	level = load("res://main.tscn").instantiate()
+	level = load("res://tests/skeleton_regression.tscn").instantiate()
 	level.enemy_navigation_enabled = false
 	root.add_child(level)
 	current_scene = level
@@ -144,3 +144,4 @@ func run() -> void:
 	file.store_string("\n".join(results))
 	print("DAGGER RESULTS: ",results.size()-failures.size(),"/",results.size())
 	quit(0 if failures.is_empty() else 1)
+

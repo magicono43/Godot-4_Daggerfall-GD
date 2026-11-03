@@ -1,3 +1,5 @@
+Current behavior: source-derived combat resolution replaces fixed prototype damage. See COMBAT_RESOLUTION.md. Animation events, targeting and movement remain separate; older fixed-damage descriptions below are historical.
+
 # Current player weapon
 
 RMB now attacks with the original dagger in a random source direction; Z draws/sheathes. Damage occurs at frame 2 with live-Speed attack timing. Older LMB/greybox/fixed-timer notes below are historical. See [DAGGER.md](DAGGER.md).
@@ -46,3 +48,4 @@ Player health is shown at the upper right. Diagnostics follow the measured heigh
 The retaliation suite adds 24 checks for telegraph/timing, recovery, stationary behavior, range/facing/height avoidance, cover, mouse release, crouch targeting, real hinged-door closing/opening, interrupted enemy attacks, death action guards, schema validation, HUD layout, authored hall combat and R through the gameplay viewport. The isolated oversized-door fixture freezes the enemy motor while advancing its real melee controller, avoiding door-push movement from obscuring the attack obstruction check. Rendered captures are tests/enemy_windup.png, tests/player_damage.png and tests/player_death.png.
 
 Retaliation verification, October 31, 2026: 538/538 headless checks across nine suites, including the 24 new checks; rendered retaliation 24/24. Visually inspected wind-up, player damage and death captures, including F4 layout and health HUD. Reports: tests/retaliation_full_regression.log, tests/retaliation_visual.log and tests/retaliation_results.txt. Known restricted-host Godot log/certificate/shader-cache warnings remain nonblocking. Full regression was headless; the retaliation suite was rendered.
+

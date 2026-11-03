@@ -26,7 +26,7 @@ func run() -> void:
 		push_error("Texture captures require a rendering display")
 		quit(1)
 		return
-	level = load("res://main.tscn").instantiate()
+	level = load("res://tests/skeleton_regression.tscn").instantiate()
 	level.enemy_navigation_enabled = false
 	root.add_child(level)
 	current_scene = level
@@ -59,3 +59,4 @@ func run() -> void:
 		await capture(location + "_classic")
 	print("TEXTURE_CAPTURES: 4 controlled views in tests/texture_fidelity")
 	quit()
+

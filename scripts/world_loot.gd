@@ -54,8 +54,8 @@ func drop(uid: int, preferred: Node3D = null) -> bool:
 	if item.is_empty() or player.is_dead():
 		error = "Select an item you own."
 		return false
-	if uid == player.inventory.equipped_uid:
-		error = "Unequip this weapon before dropping it."
+	if player.inventory.is_equipped(uid):
+		error = "Unequip this item before dropping it."
 		return false
 	if preferred != null:
 		# The interaction that opened this container already authorized access.

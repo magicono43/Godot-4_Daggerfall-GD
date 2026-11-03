@@ -70,6 +70,20 @@
       "rgba_sha256": "165c30f1586562414a21bd47c02c439fd6293bd005ef5359ada2335c19b156f5",
       "transparent_pixels": 1677,
       "removed_mask_pixels": 0
+    },
+    "steel_cuirass": {
+      "template": 102,
+      "archive": 249,
+      "record": 4,
+      "pixels": [
+        38,
+        50
+      ],
+      "compression": 4360,
+      "file_sha256": "d1b13be7f0d5b4c06d6fb563356f623c90dab004f392d4478391cca0938706c7",
+      "rgba_sha256": "29e3593688ec7a98bb2a1bf6761aa85c524842bee7c337319eaf4225970107dc",
+      "transparent_pixels": 646,
+      "removed_mask_pixels": 0
     }
   }
 }

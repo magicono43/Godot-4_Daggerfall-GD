@@ -1,0 +1,58 @@
+PASS Active playtest starts with 300 current and maximum HP
+PASS Active weapon skills are50; other combat skills remain unchanged
+PASS Original authored hall start beside great stairs is unchanged
+PASS Test inventory grants equipment without changing initial dagger or auto-equipping armor
+PASS Mace, cuirass, spare dagger, doses and test materials are immediately owned
+PASS Hall opponent is original grizzly bear; chamber and primary-enemy alias remain separate
+PASS Chamber placeholder stays passive with its first-enemy alias
+PASS Bear original MONSTER.BSA career and level4-derived skills match independent evidence
+PASS Bear armor6x5, no edged resistance/parry, and test health30 are correct
+PASS Original bear sprite 259:0 native dimensions/RGBA match independent audit
+PASS Original bear sprite 259:1 native dimensions/RGBA match independent audit
+PASS Original bear sprite 259:2 native dimensions/RGBA match independent audit
+PASS Original bear sprite 259:3 native dimensions/RGBA match independent audit
+PASS Original bear sprite 259:4 native dimensions/RGBA match independent audit
+PASS Original bear sprite 259:5 native dimensions/RGBA match independent audit
+PASS Original bear sprite 259:6 native dimensions/RGBA match independent audit
+PASS Original bear sprite 259:7 native dimensions/RGBA match independent audit
+PASS Original bear sprite 259:8 native dimensions/RGBA match independent audit
+PASS Original bear sprite 259:9 native dimensions/RGBA match independent audit
+PASS Original bear sprite 259:10 native dimensions/RGBA match independent audit
+PASS Original bear sprite 259:11 native dimensions/RGBA match independent audit
+PASS Original bear sprite 259:12 native dimensions/RGBA match independent audit
+PASS Original bear sprite 259:13 native dimensions/RGBA match independent audit
+PASS Original bear sprite 259:14 native dimensions/RGBA match independent audit
+PASS Original bear sprite 259:15 native dimensions/RGBA match independent audit
+PASS Original bear sprite 259:16 native dimensions/RGBA match independent audit
+PASS Original bear sprite 259:17 native dimensions/RGBA match independent audit
+PASS Original bear sprite 259:18 native dimensions/RGBA match independent audit
+PASS Original bear sprite 259:19 native dimensions/RGBA match independent audit
+PASS Original bear sprite 401:2 native dimensions/RGBA match independent audit
+PASS All51 original bear live/corpse frames are decoded without bundled assets
+PASS Horizontal player hit chance is56 or58 percent against bear
+PASS Bear receives full edged weapon damage rather than skeleton halving
+PASS Bear's three attack slots roll1-8,1-8,1-10 once and aggregate up to26
+PASS Each bear damage slot has its own reflex gate
+PASS Starting cuirass can be equipped immediately through inventory
+PASS Starting mace equips independently of chest armor
+PASS Bear animation applies no damage before original frame3 marker
+PASS Bear frame3 event aggregates the three source attacks into one health application
+PASS Bear attack tail returns to source frame0 without repeating damage
+PASS Bear uses own original spatial move sound127
+PASS Bear-owned voices stop through normal creature lifecycle
+PASS Bear missed-target rolls whiff instead of skeleton clash and do not damage
+PASS Bear native view direction0 mirrors correctly
+PASS Bear native view direction1 mirrors correctly
+PASS Bear native view direction2 mirrors correctly
+PASS Bear native view direction3 mirrors correctly
+PASS Bear native view direction4 mirrors correctly
+PASS Bear native view direction5 mirrors correctly
+PASS Bear native view direction6 mirrors correctly
+PASS Bear native view direction7 mirrors correctly
+PASS Bear death keeps native401:2 nonblocking, correctly labeled corpse
+PASS Active 300HP/equipment/dead-bear state saves
+PASS Active bear section loads from fresh validated scene
+PASS Load preserves300 maxHP, current health, equipment and original bear corpse
+PASS Section schema rejects invalid playtest HP
+PASS Section schema rejects stacking test weapons
+PASS Fresh restart restores generous testing inventory/health and a living bear

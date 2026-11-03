@@ -68,7 +68,7 @@ func run() -> void:
 	check(health.current == 0, "Overkill clamps health to zero")
 	arena.queue_free()
 	await frames(3)
-	var level = load("res://main.tscn").instantiate()
+	var level = load("res://tests/skeleton_regression.tscn").instantiate()
 	level.enemy_navigation_enabled = false
 	root.add_child(level)
 	await frames(30)
@@ -91,7 +91,7 @@ func run() -> void:
 	check(hall.health.current == 20, "Original hall target receives melee damage")
 	level.queue_free()
 	await frames(3)
-	level = load("res://main.tscn").instantiate()
+	level = load("res://tests/skeleton_regression.tscn").instantiate()
 	level.enemy_navigation_enabled = false
 	root.add_child(level)
 	await frames(5)
@@ -101,3 +101,4 @@ func run() -> void:
 	file.store_string("\n".join(results))
 	print("COMBAT RESULTS: ", results.size() - failures.size(), "/", results.size())
 	quit(0 if failures.is_empty() else 1)
+

@@ -17,7 +17,7 @@ func run() -> void:
 		push_error("Capture requires a rendering display")
 		quit(1)
 		return
-	level = load("res://main.tscn").instantiate()
+	level = load("res://tests/skeleton_regression.tscn").instantiate()
 	level.enemy_navigation_enabled = false
 	root.add_child(level)
 	current_scene = level
@@ -58,3 +58,4 @@ func run() -> void:
 		await capture(location + "_dfu_reference")
 	print("SCALE_CAPTURES: 8 controlled views in tests/scale_calibration")
 	quit()
+

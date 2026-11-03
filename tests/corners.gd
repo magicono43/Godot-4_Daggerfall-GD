@@ -160,7 +160,7 @@ func start_partial_turn() -> void:
 	release()
 
 func original_pillars() -> void:
-	var level: Node3D = load("res://main.tscn").instantiate()
+	var level: Node3D = load("res://tests/skeleton_regression.tscn").instantiate()
 	level.enemy_navigation_enabled = false
 	root.add_child(level)
 	current_scene = level
@@ -212,3 +212,4 @@ func original_pillars() -> void:
 	await frames(900)
 	release()
 	check(player.climbing.active and player.climbing.corners.inside_turns > 0, "Original hall walls support inside-corner traversal")
+

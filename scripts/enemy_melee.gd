@@ -4,7 +4,7 @@ var enabled := false
 var reach := 1.8
 var windup := 0.65
 var recovery := 1.0
-var damage := 10
+var resolver: RefCounted = preload("res://scripts/combat_resolver.gd").new()
 var phase := "idle"
 var remaining := 0.0
 var direction := Vector3.ZERO
@@ -60,8 +60,10 @@ func tick(body: CharacterBody3D, delta: float) -> void:
 	if phase == "windup":
 		last_result = "miss"
 		# Re-evaluate geometry at the strike, not when the attack was requested.
-		if can_reach(body) and body.player.receive_damage(damage):
-			last_result = "hit"
+		if can_reach(body):
+			var result: Dictionary = resolver.enemy_attack(body, body.player)
+			if result.damage > 0 and body.player.receive_damage(int(result.damage)):
+				last_result = "hit"
 		phase = "recovery"
 		remaining = recovery
 	else:

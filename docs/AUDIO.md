@@ -1,3 +1,7 @@
+Bear-specific creature cues127/128/129 are now cached and routed spatially with the normal creature voice lifecycle; cache total26 samples. Bear misses whiff rather than skeleton parry. See BEAR_PLAYTEST.md.
+
+Current miss feedback: failed weapon rolls against skeletons use spatial original Parry1..Parry9 (ordinals428-436). Empty space/ordinary misses whiff; terrain and doors remain distinct. The bank now contains23 unique cached samples. See COMBAT_RESOLUTION.md.
+
 # Combat audio
 
 Original effects load read-only from external `DAGGER.SND` alongside the existing
@@ -82,3 +86,5 @@ a missed mace strike requests SwingMediumPitch 347. The bank now holds 15 sample
 with the existing draw gain applied to both draw events. Dagger cues retain their
 original IDs. audit_audio.py and tests/audio_samples.json pin the two added ordinal
 samples; see MACE.md and reference/mace_sources.json.
+
+

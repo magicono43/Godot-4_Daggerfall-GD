@@ -52,7 +52,7 @@ func load_once() -> void:
 	check(current_scene != before and not level.restoring and not level.player.modal_open, "One routed L completes scene replacement")
 
 func run() -> void:
-	level = load("res://main.tscn").instantiate()
+	level = load("res://tests/skeleton_regression.tscn").instantiate()
 	level.enemy_navigation_enabled = false
 	root.add_child(level)
 	current_scene = level
@@ -103,4 +103,5 @@ func run() -> void:
 	print("LOAD FOCUS RESULTS: %d/%d" % [results.size() - failures.size(), results.size()])
 	FileAccess.open("res://tests/load_focus_results.txt", FileAccess.WRITE).store_string("\n".join(results))
 	quit(0 if failures.is_empty() else 1)
+
 

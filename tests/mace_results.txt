@@ -14,7 +14,7 @@ PASS Unowned mace previews original icon and cannot equip
 PASS Actual loot/equip click selects owned mace rather than duplicating dagger state
 PASS Equipped mace displays original ready sprite
 PASS Mace ready sprite uses general right alignment without dagger inset
-PASS Mace accepts random six-direction swings with distinct prototype damage
+PASS Mace accepts six directions and has its original 1-12 base damage profile
 PASS Mace does not damage before frame two
 PASS Mace frame two applies exactly 15 damage
 PASS Mace attack tail cannot repeat damage and returns to ready

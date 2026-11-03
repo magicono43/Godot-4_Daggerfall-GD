@@ -195,7 +195,8 @@ func refresh() -> void:
 		if item.definition == "dagger":
 			dagger_number += 1
 		var identity := " %d" % dagger_number if item.definition == "dagger" else ""
-		player_list.add_item("%s%s  x%d%s" % [Catalog.label(item.definition), identity, item.quantity, " [equipped]" if item.uid == actor.inventory.equipped_uid else ""], icons.get(item.definition))
+		var quantity := "  x%d" % item.quantity if Catalog.DEFINITIONS[item.definition].stackable else ""
+		player_list.add_item("%s%s%s%s" % [Catalog.label(item.definition), identity, quantity, " [equipped]" if actor.inventory.is_equipped(item.uid) else ""], icons.get(item.definition))
 		var index := player_list.item_count - 1
 		player_list.set_item_metadata(index, item.uid)
 		if not selected_from_corpse and item.uid == selected_uid:
@@ -220,11 +221,11 @@ func select_corpse_item(index: int) -> void:
 
 func update_details() -> void:
 	var item: Dictionary = source.loot.find(selected_uid) if selected_from_corpse and is_instance_valid(source) else actor.inventory.find(selected_uid)
-	drop_button.disabled = selected_from_corpse or item.is_empty() or selected_uid == actor.inventory.equipped_uid
-	drop_button.tooltip_text = "Unequip this weapon before dropping." if selected_uid != 0 and selected_uid == actor.inventory.equipped_uid else "Drop the whole selected stack."
+	drop_button.disabled = selected_from_corpse or item.is_empty() or actor.inventory.is_equipped(selected_uid)
+	drop_button.tooltip_text = "Unequip this item before dropping." if actor.inventory.is_equipped(selected_uid) else "Drop the whole selected stack."
 	use_button.disabled = selected_from_corpse or item.is_empty() or not Catalog.DEFINITIONS.get(item.get("definition", ""), {}).has("heal_amount")
-	equip_button.disabled = selected_from_corpse or item.is_empty() or not Catalog.WEAPONS.has(Catalog.DEFINITIONS.get(item.get("definition", ""), {}).get("weapon", ""))
-	var equipped: bool = not selected_from_corpse and selected_uid != 0 and selected_uid == actor.inventory.equipped_uid
+	equip_button.disabled = selected_from_corpse or item.is_empty() or not Catalog.equippable(item)
+	var equipped: bool = not selected_from_corpse and actor.inventory.is_equipped(selected_uid)
 	equip_button.text = "Unequip" if equipped else "Equip"
 	preview.texture = null
 	item_heading.text = "Select an item"
@@ -233,15 +234,15 @@ func update_details() -> void:
 	if not item.is_empty():
 		preview.texture = icons.get(item.definition)
 		item_heading.text = "%s  x%d" % [Catalog.label(item.definition), item.quantity]
-		equipment_status.text = source.loot_label() if selected_from_corpse else ("Equipped weapon" if equipped else "In your inventory")
-		description.text = Catalog.DEFINITIONS[item.definition].get("description", "")
+		equipment_status.text = source.loot_label() if selected_from_corpse else (("Equipped armor" if item.definition == "steel_cuirass" else "Equipped weapon") if equipped else "In your inventory")
+		description.text = Catalog.description(item)
 
 func toggle_equipment() -> void:
 	if not visible or actor.is_dead() or equip_button.disabled:
 		return
 	actor.combat.cancel()
-	if selected_uid == actor.inventory.equipped_uid:
-		actor.inventory.unequip()
+	if actor.inventory.is_equipped(selected_uid):
+		actor.inventory.unequip(selected_uid)
 	else:
 		actor.inventory.equip(selected_uid)
 	refresh()
@@ -299,3 +300,4 @@ func drop_selected() -> void:
 func on_source_depleted(container: Node3D) -> void:
 	if source == container:
 		close()
+

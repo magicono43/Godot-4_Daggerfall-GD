@@ -205,7 +205,7 @@ func slow_diagonal_checks() -> void:
 	player.movement.remove_modifier("stair_pace_test")
 
 func run() -> void:
-	level = load("res://main.tscn").instantiate()
+	level = load("res://tests/skeleton_regression.tscn").instantiate()
 	level.enemy_navigation_enabled = false
 	root.add_child(level)
 	current_scene = level
@@ -272,3 +272,4 @@ func run() -> void:
 	file.store_string("\n".join(results) + "\n")
 	print("STAIRS ", results.size() - failures.size(), "/", results.size())
 	quit(0 if failures.is_empty() else 1)
+

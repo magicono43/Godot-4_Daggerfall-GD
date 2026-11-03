@@ -90,6 +90,15 @@ func validate(value: Variant) -> bool:
 	var prototype: Variant = value.get("prototype")
 	if not prototype is Dictionary:
 		return fail("prototype must separate authored additions from original objects")
+	if prototype.has("player_test"):
+		var setup: Variant = prototype.player_test
+		if not setup is Dictionary or not integer(setup.get("maximum_health"), 10000) or setup.maximum_health < 1 or not setup.get("items") is Array or setup.items.size() > 32:
+			return fail("player_test requires maximum_health 1..10000 and at most 32 items")
+		for item in setup.items:
+			if not item is Dictionary or not item.get("definition") is String or not preload("res://scripts/item_catalog.gd").valid(item.definition):
+				return fail("player_test has unknown item")
+			if not integer(item.get("quantity"), 10000) or item.quantity < 1 or (item.quantity != 1 and not preload("res://scripts/item_catalog.gd").DEFINITIONS[item.definition].stackable):
+				return fail("player_test has invalid item quantity")
 	if prototype.has("player_start"):
 		var start: Variant = prototype.player_start
 		if not start is Dictionary or not vector(start.get("position_native")) or not vector(start.get("look_at_native")):
@@ -110,11 +119,11 @@ func validate(value: Variant) -> bool:
 				return fail(entry.id + " navigation_enabled must be a boolean")
 			if group == "enemies" and not entry.get("attack_enabled", false) is bool:
 				return fail(entry.id + " attack_enabled must be a boolean")
-			if group == "enemies" and entry.get("visual", "greybox") not in ["greybox", "skeleton"]:
-				return fail(entry.id + " visual must be greybox or skeleton")
+			if group == "enemies" and entry.get("visual", "greybox") not in ["greybox", "skeleton", "bear"]:
+				return fail(entry.id + " visual must be greybox, skeleton or bear")
 			if group == "enemies" and entry.has("test_loot"):
-				if entry.get("visual", "greybox") != "skeleton" or not entry.test_loot is Array or entry.test_loot.size() > 32:
-					return fail(entry.id + " test_loot requires skeleton and at most 32 entries")
+				if entry.get("visual", "greybox") not in ["skeleton", "bear"] or not entry.test_loot is Array or entry.test_loot.size() > 32:
+					return fail(entry.id + " test_loot requires supported creature and at most 32 entries")
 				for item in entry.test_loot:
 					if not item is Dictionary or not item.get("definition") is String or not preload("res://scripts/item_catalog.gd").valid(item.definition):
 						return fail(entry.id + " test_loot has unknown item definition")

@@ -1,3 +1,5 @@
+Current dagger damage is a 1-6 base roll plus source modifiers, including skeleton edged resistance, not fixed10. See COMBAT_RESOLUTION.md. Timing and original sprites remain unchanged.
+
 Current follow-up: dagger and mace now share supported equipped-weapon handling.
 See MACE.md for the second weapon and current source-backed behavior. Dagger
 presentation/timing remain covered by the existing 37-check suite. Older deferred
@@ -32,3 +34,4 @@ The 37 new checks cover source identity, all frames, malformed/truncated data, n
 Rendered captures: dagger_ready.png, dagger_swing_1.png through dagger_swing_6.png and dagger_widescreen.png under tests/. Captures freeze player physics so rendering cannot advance combat timing relative to headless checks. Visual inspection remains separate from source hashes, physics assertions and subjective DFU comparison.
 
 Verified October 31, 2026: 657/657 headless checks across twelve suites (620 previous plus 37 dagger), rendered dagger 37/37. Ready pose, all six attack-direction captures and widescreen placement were visually inspected. Reports: tests/dagger_full_regression.log, tests/dagger_visual.log and tests/dagger_results.txt. Full regression was headless; dagger was rendered. Known restricted-host log/certificate/shader-cache warnings remain nonblocking. A transient Jolt job-pool warning occurred in the headless combat suite, which passed 20/20. User playtesting is still needed for timing/presentation feel.
+

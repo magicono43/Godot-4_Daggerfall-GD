@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1"]
+[node name="PrivateersHoldRegression" type="Node3D"]
+script = ExtResource("1")
+section_override_path = "res://tests/sections/skeleton_regression.json"
+combat_profile_path = "res://tests/skeleton_combat.cfg"

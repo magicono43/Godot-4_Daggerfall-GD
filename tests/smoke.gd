@@ -120,7 +120,7 @@ func decoration_checks() -> void:
 		check(not hit.is_empty() and hit.collider == body, id + " original 3D prop has working mesh collision")
 
 func run() -> void:
-	level = load("res://main.tscn").instantiate()
+	level = load("res://tests/skeleton_regression.tscn").instantiate()
 	level.enemy_navigation_enabled = false
 	level.use_original_start = true
 	root.add_child(level)
@@ -301,6 +301,7 @@ func run() -> void:
 	file.store_string("\n".join(results) + "\n")
 	print("TESTS ", results.size() - failures.size(), "/", results.size())
 	quit(0 if failures.is_empty() else 1)
+
 
 
 

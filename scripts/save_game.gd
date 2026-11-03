@@ -39,7 +39,7 @@ func vector(value: Vector3) -> Array:
 	return [value.x, value.y, value.z]
 
 func collection(owner: RefCounted) -> Dictionary:
-	return {"items": owner.items.duplicate(true), "equipped_uid": owner.equipped_uid}
+	return {"items": owner.items.duplicate(true), "equipped_uid": owner.equipped_uid, "armor_uid": owner.armor_uid}
 
 func refusal() -> String:
 	var p = level.player
@@ -69,7 +69,7 @@ func refusal() -> String:
 
 func snapshot() -> Dictionary:
 	var p = level.player
-	var data := {"version": 1, "section": level.section_path, "section_hash": fingerprint(),
+	var data := {"version": 2, "section": level.section_path, "section_hash": fingerprint(),
 		"player": {"position": vector(p.position), "yaw": p.rotation.y, "pitch": p.camera.rotation.x,
 		"health": p.health.current, "crouched": p.crouch.is_low(p), "sheathed": p.combat.sheathed,
 		"inventory": collection(p.inventory)}, "enemies": {}, "doors": {}, "authored": {}, "drops": []}
@@ -124,14 +124,16 @@ func metadata_valid(value: Variant, depth: int = 0) -> bool:
 	return false
 
 func inventory_valid(value: Variant, player_owned: bool = false) -> bool:
-	if not value is Dictionary or not value.get("items") is Array or value.items.size() > 512 or not integer(value.get("equipped_uid"), 0, 1000000000):
+	if not value is Dictionary or not value.get("items") is Array or value.items.size() > 512 or not integer(value.get("equipped_uid"), 0, 1000000000) or not integer(value.get("armor_uid"), 0, 1000000000):
 		return false
 	var equipped := int(value.equipped_uid)
 	var found := equipped == 0
+	var armor := int(value.armor_uid)
+	var found_armor := armor == 0
 	for item in value.items:
 		if not item is Dictionary or not item.get("definition") is String or not Catalog.valid(item.definition):
 			return false
-		if not integer(item.get("uid"), 1, 1000000000) or not integer(item.get("quantity"), 1, 1000000) or not metadata_valid(item):
+		if not integer(item.get("uid"), 1, 1000000000) or not integer(item.get("quantity"), 1, 1000000) or not metadata_valid(item) or not Catalog.valid_material(item):
 			return false
 		var uid := int(item.uid)
 		if seen_uids.has(uid) or (not Catalog.DEFINITIONS[item.definition].stackable and item.quantity != 1):
@@ -140,7 +142,9 @@ func inventory_valid(value: Variant, player_owned: bool = false) -> bool:
 		max_uid = maxi(max_uid, uid)
 		if uid == equipped:
 			found = player_owned and Catalog.WEAPONS.has(Catalog.DEFINITIONS[item.definition].get("weapon", ""))
-	return found and (player_owned or equipped == 0)
+		if uid == armor:
+			found_armor = player_owned and item.definition == "steel_cuirass"
+	return found and found_armor and (player_owned or (equipped == 0 and armor == 0))
 
 func actor_valid(value: Variant, maximum: int, is_player: bool = false) -> bool:
 	if not value is Dictionary or not position_valid(value.get("position")) or not number(value.get("yaw"), TAU * 1000) or not integer(value.get("health"), 1 if is_player else 0, maximum):
@@ -154,7 +158,10 @@ func validate(data: Variant) -> bool:
 	seen_uids = {}
 	max_uid = 0
 	error = "Save data is invalid or incompatible with this section."
-	if not data is Dictionary or data.get("version") != 1 or data.get("section") != level.section_path or data.get("section_hash") != fingerprint():
+	if data is Dictionary and data.get("version") != 2:
+		error = "Unsupported save version. Start fresh with R and create a new save with K."
+		return false
+	if not data is Dictionary or data.get("section") != level.section_path or data.get("section_hash") != fingerprint():
 		return false
 	var p = data.get("player")
 	if not actor_valid(p, level.player.health.maximum, true) or not number(p.get("pitch"), PI / 2) or not p.get("crouched") is bool or not p.get("sheathed") is bool:
@@ -265,6 +272,7 @@ func restore_inventory(owner: RefCounted, data: Dictionary) -> void:
 		copy.quantity = int(copy.quantity)
 		owner.items.append(copy)
 	owner.equipped_uid = int(data.equipped_uid)
+	owner.armor_uid = int(data.armor_uid)
 
 func apply(data: Dictionary) -> void:
 	for door in level.doors:
@@ -368,7 +376,8 @@ func load_slot() -> bool:
 		paused_voices[voice] = voice.stream_paused
 		voice.stream_paused = true
 	level.process_mode = Node.PROCESS_MODE_DISABLED
-	var candidate = load("res://main.tscn").instantiate()
+	# Preserve the selected entry scene, including isolated regression fixtures.
+	var candidate = load(level.scene_file_path).instantiate()
 	candidate.restoring = true
 	candidate.enemy_navigation_enabled = level.enemy_navigation_enabled
 	get_tree().root.add_child(candidate)
@@ -413,5 +422,6 @@ func load_slot() -> bool:
 	candidate.persistence.feedback("Manual save loaded. R starts fresh." if resume_controls else "Manual save loaded. Click to resume; R starts fresh.")
 	level.queue_free()
 	return true
+
 
 

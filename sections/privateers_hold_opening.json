@@ -451,7 +451,7 @@
         ],
         "approach_enabled": false,
         "attack_enabled": true,
-        "visual": "skeleton",
+        "visual": "bear",
         "navigation_enabled": true,
         "test_loot": [
           {
@@ -472,6 +472,10 @@
           },
           {
             "definition": "mace",
+            "quantity": 1
+          },
+          {
+            "definition": "steel_cuirass",
             "quantity": 1
           }
         ]
@@ -700,7 +704,36 @@
           }
         ]
       }
-    ]
+    ],
+    "player_test": {
+      "maximum_health": 300,
+      "items": [
+        {
+          "definition": "mace",
+          "quantity": 1
+        },
+        {
+          "definition": "steel_cuirass",
+          "quantity": 1
+        },
+        {
+          "definition": "healing_potion",
+          "quantity": 2
+        },
+        {
+          "definition": "dagger",
+          "quantity": 1
+        },
+        {
+          "definition": "gold",
+          "quantity": 12
+        },
+        {
+          "definition": "twigs",
+          "quantity": 2
+        }
+      ]
+    }
   },
   "treasure_markers": [
     {

@@ -8,7 +8,7 @@ func check(ok: bool, label: String) -> void:
 	print(results[-1])
 
 func run() -> void:
-	var level = load("res://main.tscn").instantiate()
+	var level = load("res://tests/skeleton_regression.tscn").instantiate()
 	level.enemy_navigation_enabled = false
 	root.add_child(level)
 	await frames(5)
@@ -19,7 +19,7 @@ func run() -> void:
 	player.set_physics_process(false)
 	var audio = level.combat_audio
 	audio.played.connect(func(event, _id, _spatial): events.append(event))
-	check(audio.error.is_empty() and audio.cache.size() == 15, "All fifteen selected original samples load")
+	check(audio.error.is_empty() and audio.cache.size() == 26, "All twenty-six selected original samples load")
 	check(level.presentation.viewport.audio_listener_enable_3d, "World viewport enables spatial audio listener")
 	var pcm := ClassicData.decode_sound(PackedByteArray([0, 127, 128, 255]))
 	check(pcm.data == PackedByteArray([128, 255, 0, 127]), "Unsigned source PCM converts to signed Godot PCM")
@@ -195,3 +195,6 @@ func run() -> void:
 	print("AUDIO RESULTS: ", results.size() - failures.size(), "/", results.size())
 	FileAccess.open("res://tests/audio_results.txt", FileAccess.WRITE).store_string("\n".join(results))
 	quit(0 if failures.is_empty() else 1)
+
+
+

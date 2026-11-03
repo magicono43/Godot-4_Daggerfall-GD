@@ -1,3 +1,151 @@
+# Resume here — accepted bear baseline; character sheet/shared state next
+
+Prepared November 2, 2026 at the user's explicit request for a fresh-chat handoff.
+The user tested the bear setup and said it works. The latest playable baseline is
+accepted; do not restart bear/combat work because older entries say playtest pending.
+
+The selected next feature is **a basic character sheet backed by shared player
+attributes/skills**. No implementation has started. Read AGENTS.md, this entry and
+NEXT_MILESTONE.md first, inspect current code and local pinned references, then
+explain the proposed architecture/config precedence/modal/save strategy before
+changes. NEXT_MILESTONE.md now contains the current proposal; old save/load plans
+in historical documentation are superseded.
+
+The user explicitly wants to keep click-to-attack/random swing direction. Deliberate
+attack-direction gestures are deferred. They are also happy with the compact
+current section and want core features before dungeon expansion. Do not add
+encounters or expand geometry incidentally. The sheet is initially read-only;
+character creation, point spending, progression, fatigue/resting and magic remain
+future milestones, not implicit parts of this one.
+
+Preserve current normal main.tscn setup: same great-hall/stair spawn,300HP, player
+weapon skills50, equipment already owned (equipped steel dagger plus spare dagger,
+mace, Steel cuirass,2 healing doses,12 gold,2 Twigs), Bear30HP in hall and passive
+chamber placeholder/first-enemy alias. F3 reloads tuning, F4 diagnostics, I inventory,
+K/L save/load, R fresh restart; F5/F9 belong to the embedded Godot editor.
+
+Main architectural gap: movement_model owns Speed/movement skill live inputs from
+movement.cfg, while combat_model owns combat attributes/skills from combat.cfg.
+The sheet should read a small shared authoritative player state feeding those
+consumers, preserving formulas, live overrides and modifier channels. UI must not
+own state. Enemy source-derived profiles stay separate. Inventory and health
+retain their existing ownership contracts. Resolve whether new base state needs
+save persistence, and how F3/config defaults/live values interact, before coding.
+Current schema2 does not persist baseline/live character stats. Old-save migration
+is not required during testing, but schema incompatibility must reject clearly.
+
+Modal behavior is a major integration seam: loot_window.begin_modal/close freezes
+simulation, cancels attacks and restores prior capture. The sheet needs consistent
+behavior and mutually exclusive UI ownership, including death/R/L, without stale
+loot sources or drop sessions. A proposed C toggle is provisional, not shipped.
+Inspect the normal/legacy scene/config override paths before consolidating stats.
+
+Accepted validation: **1058/1058 headless checks** across20 suites plus separate
+process reload; **58/58 rendered bear checks**. Reports: tests/bear_full_regression.log
+and tests/bear_rendered.log. Starting inventory, bear, corpse and diagnostics were
+visually inspected in4:3/widescreen; user subsequently confirmed working behavior.
+No known unresolved gameplay findings. Restricted-host log/certificate and
+intermittent accelerated-exit diagnostics remain documented and nonblocking.
+This handoff changes documentation only; no new automated/rendered checks run.
+
+Local source evidence for the next feature is already cached: DaggerfallStats.cs,
+DaggerfallSkills.cs, PlayerEntity.cs, DaggerfallCharacterSheetWindow.cs, PaperDoll.cs,
+DFCareer.cs and related files, pinned to the existing revision. Do not update to
+master. See NEXT_MILESTONE.md for exact code paths, proposed scope/boundaries and
+acceptance checks. Earlier entries below are implementation history and do not
+override this handoff.
+# Resume here — bear combat playtest, 300HP and starting equipment
+
+The user could not kill the low-skill skeleton and requested a more useful test
+setup: same hall/stair spawn, new test items already owned,300 HP, weapon skills50,
+and a Bear replacing the skeleton. Implemented. Read BEAR_PLAYTEST.md for source
+evidence, architecture and a complete explanation of the diagnostic fields.
+Starting inventory contains equipped steel dagger plus spare dagger, steel mace,
+Steel cuirass,2 healing doses,12 gold and2 Twigs. Armor/mace initially unequipped.
+Active section prototype.player_test supplies these grants/maxHP; no placement or
+motor scale changes. Enemy test_loot remains separate authored test data. R restores
+this setup; K/L unchanged. Changed section fingerprint rejects old skeleton saves;
+make a new K save. Save schema remains2.
+
+The bear uses original259 live frames (51 total incl corpse401:2), native sizes,
+eight-way views, ENEMY004.CFG attributes and level4-derived skills50/armor30.
+Original attack frames[0,1,2,3,0], strike at0.3s/frame3, aggregate three independently
+rolled attack components1-8/1-8/1-10 once. Bear-specific spatial sounds127/128/129,
+no skeleton parry/edged resistance, no door opening. Health remains30 (within source
+13..34). Navigation remains the existing local motor. Chamber placeholder passive.
+
+Normal runtime still main.tscn. Legacy suites use tests/skeleton_regression.tscn
+with an isolated old section and combat.cfg so skeleton/source/combat and traversal
+regressions stay covered. Main exports explicit section/config paths, and load
+candidates retain their entry scene. Bear suite alone exercises current normal
+setup and source profile. Audits cover original bear images/career/audio; ARENA2
+is read-only and no original media is bundled.
+
+Validation: **1058/1058 full headless checks** passed via Run.ps1 -Test across20
+suites plus cross-process reload. **58/58 rendered bear checks** passed. Reports:
+tests/bear_full_regression.log and tests/bear_rendered.log. Visually inspected
+starting equipment, original bear, diagnostic layouts in4:3/widescreen and corpse.
+No script errors, failed assertions or unresolved implementation findings remain.
+Existing host log/certificate/accelerated-exit diagnostics remain nonblocking.
+User playtest is next, not an unrequested further feature.
+
+The user's debug question: accepted RMB swings randomly select directions, each
+with different source chance/damage modifiers. Crit25 occasionally adds2 hit
+points; clamp3..97 explains the floor. Old horizontal skeleton chance4/6% varied
+into low teens on up swings. Current bear horizontal56/58%, all-direction46..68%.
+Roll is0..99 and must be below chance. Own armor affects incoming attacks, not
+own attack chance. All fields/table examples are in BEAR_PLAYTEST.md.
+# Resume here — combat formulas and chest equipment
+
+The user approved the proposed combat/equipment milestone, clarified the five-point
+armor convention and skeleton clash-on-miss feedback, and explicitly allowed
+skipping save migration. Implemented the supported pinned-DFU formula subset,
+combat.cfg/live combat_model inputs, separate combat_resolver, weapon materials,
+seven weighted hit regions, six swing modifiers and original skeleton combat
+profile. Basic chest equipment is a Steel cuirass in hall test loot. Steel was
+chosen over the initially proposed leather because leather would leave this
+skeleton's hit chance at the cap and hide the armor effect. The source-backed
+armor convention is explained in COMBAT_RESOLUTION.md: lower internal value is
+better; DFU's paper-doll protection display is inverted and higher-is-better.
+
+Daggers/maces are explicitly steel, source base damage1-6/1-12; skeleton edged
+halving/silver, Strength and material apply in source order. Chance uses skills,
+material/swing, regional armor, AGI/LUC differences, Dodging/Critical Strike and
+monster adjustment, clamped3-97. Player baseline attributes50/skills25 is authored
+in combat.cfg; skeleton level9 means skills75 and original MONSTER.BSA AGI80.
+A horizontal player strike is only4-6% at this baseline. This is a difficult
+comparison fixture, not balanced early-game combat; F3/F4 permit tuning and clear
+inspection. Health remains player100/target30. Monster reflex gate and damage5-15
+are included. Original source initialization and supported omissions are documented.
+
+Animation events/geometry/motor behavior stay separate. Failed actor rolls do not
+hurt-interrupt; skeleton misses select original spatial Parry1..9, other targets
+whiff, empty space whiffs, terrain/door sounds stay distinct. Armor's own armor_uid
+coexists with equipped_uid and follows normal modal ownership/drop protection.
+Save schema2 requires armor references and valid weapon material; old slots reject
+without migration. K/L/R and the accepted control handoff remain unchanged. Existing
+manual slot was not overwritten by tests; create a new K save for this milestone.
+
+Additional source files and hashes remain at the same pinned revision. Original
+MONSTER.BSA and TEXTURE.249 are read-only dependencies. No original media bundled.
+See docs/COMBAT_RESOLUTION.md, reference/combat_resolution_sources.json and the
+three independent audits (combat attributes, item icon, audio ordinal hashes).
+
+The user wants a completed/reviewed implementation before playtesting. Final
+validation and review outcome will be recorded here after completion. No further
+feature or dungeon expansion is authorized by this handoff.
+Validation: **1000/1000 full headless checks** passed via Run.ps1 -Test across
+nineteen suites plus separate-process reload; report tests/combat_resolution_full_regression.log.
+**60/60 rendered combat checks** passed in tests/combat_resolution_rendered.log.
+Visually inspected original cuirass preview/equipped status and diagnostics in4:3
+and widescreen. Both real animation-driven strike events have formula integration
+checks. No script errors/failed assertions or unresolved gameplay findings remain.
+Intermittent accelerated-exit ObjectDB and restricted-host log/certificate messages
+remain nonblocking; the dedicated verbose review run completed without exit leaks.
+Manual combat feel/audio listening verification is pending. Review corrected
+material metadata key typing, equipment row clipping and isolated fixture placement
+before final validation. The new source formulas intentionally make the level9
+skeleton very difficult at skill25; tune combat.cfg and F3 for comparison testing.
 # Resume here - Embedded-editor save/load shortcuts
 
 The user identified the actual freeze: Godot's embedded-play F9 Suspend/Resume
@@ -615,3 +763,7 @@ F9 correction validation: 940/940 full headless checks passed (tests/load_focus_
 
 
 K/L remap validation: 940/940 full headless checks passed (tests/hotkeys_full_regression.log); rendered routed-input/capture checks 19/19 passed (tests/load_focus_rendered.log). No script errors or failed assertions in final reports. Standalone rendering validates game input; embedded-editor retry remains user verification.
+
+
+
+

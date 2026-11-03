@@ -107,3 +107,7 @@ At most 64 entries; each uses a unique pile ID and unassigned existing marker ID
 for nonstackable items. Original position stays in the RDB; test contents stay in
 prototype. Runtime depletion/drop changes never write back to this JSON.
 See WORLD_LOOT.md for support alignment and empty-pile lifecycle.
+
+## Optional prototype.player_test
+
+Authored test-only character baseline: maximum_health (integer1..10000) and items (at most32 dictionaries with supported definition and quantity1..10000; nonstackables require1). These are additional to the owned/equipped starting dagger. Omit to retain100HP and no grants. Active playtest supplies300HP and immediate equipment; spawn provenance/player_start stay separate. Supported enemy visuals now include bear as well as skeleton/greybox. main.gd's explicit section_override_path/combat_profile_path exports support isolated regression entry scenes without changing data_source.cfg.

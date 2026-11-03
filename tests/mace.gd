@@ -1,7 +1,7 @@
 extends "res://tests/world_loot.gd"
 
 func run() -> void:
-	level = load("res://main.tscn").instantiate()
+	level = load("res://tests/skeleton_regression.tscn").instantiate()
 	level.enemy_navigation_enabled = false
 	root.add_child(level)
 	current_scene = level
@@ -74,7 +74,7 @@ func run() -> void:
 		c.cancel()
 		c.request_attack(player)
 		directions[c.attack_record] = true
-	check(directions.size() == 6 and c.damage == 15, "Mace accepts random six-direction swings with distinct prototype damage")
+	check(directions.size() == 6 and preload("res://scripts/item_catalog.gd").WEAPONS.mace.maximum == 12, "Mace accepts six directions and has its original 1-12 base damage profile")
 	c.cancel()
 	var target := preload("res://scripts/enemy.gd").new()
 	target.player = player
@@ -154,7 +154,12 @@ func run() -> void:
 	await frames(10)
 	level = current_scene
 	player = level.player
-	check(player.inventory.has_dagger() and player.combat.weapon.weapon_key == "dagger" and level.world_root.get_node("hall_combat_target").loot.items[-1].definition == "mace", "R restores starting dagger and skeleton's test mace")
+	var restored_mace := false
+	for item in level.world_root.get_node("hall_combat_target").loot.items:
+		restored_mace = restored_mace or item.definition == "mace"
+	check(player.inventory.has_dagger() and player.combat.weapon.weapon_key == "dagger" and restored_mace, "R restores starting dagger and skeleton's test mace")
 	print("MACE RESULTS: %d/%d" % [results.size() - failures.size(), results.size()])
 	FileAccess.open("res://tests/mace_results.txt", FileAccess.WRITE).store_string("\n".join(results))
 	quit(0 if failures.is_empty() else 1)
+
+

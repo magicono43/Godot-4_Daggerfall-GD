@@ -1,15 +1,16 @@
 extends RefCounted
 const Door = preload("res://scripts/door.gd")
-## DFU targeting dimensions; deterministic prototype timing/damage, not RPG formulas.
+## Animation-driven targeting; source-derived rolls/damage live in combat_resolver.
 var reach := 2.25
 var radius := 0.25
-var damage := 10
+var resolver: RefCounted = preload("res://scripts/combat_resolver.gd").new()
 var frame_seconds := 3.0 * (115.0 - 50.0) / 980.0
 var windup := frame_seconds * 2.0
 var recovery := frame_seconds * 3.0
 var attack_record := 1
 var attack_weapon := "dagger"
 var attack_uid := 0
+var attack_item: Dictionary = {}
 var sheathed := false
 var rng := RandomNumberGenerator.new()
 var elapsed := -1.0
@@ -44,7 +45,7 @@ func request_attack(body: CharacterBody3D) -> bool:
 		return false
 	attack_weapon = body.inventory.equipped_weapon()
 	attack_uid = body.inventory.equipped_uid
-	damage = int(preload("res://scripts/item_catalog.gd").WEAPONS[attack_weapon].damage)
+	attack_item = body.inventory.find(attack_uid).duplicate(true)
 	# Snapshot live Speed for this attack; movement resolution remains separate.
 	frame_seconds = 3.0 * (115.0 - clampf(body.movement.stat("speed_attribute"), 1.0, 100.0)) / 980.0
 	windup = frame_seconds * 2.0
@@ -79,8 +80,10 @@ func tick(body: CharacterBody3D, delta: float) -> void:
 	pose()
 
 func strike() -> void:
+	var body: CharacterBody3D = cast.get_parent().get_parent()
+	var outcome := "empty"
 	cast.force_shapecast_update()
-	feedback = "Miss"
+	feedback = "Out of reach"
 	# ShapeCast's collision list need not be ordered. The nearest obstruction
 	# owns the strike, so a wall/closed door cannot be bypassed by a target.
 	var closest := INF
@@ -94,15 +97,21 @@ func strike() -> void:
 			impact = cast.get_collision_point(i)
 	if is_instance_valid(target):
 		feedback = "Blocked"
-		if target.has_method("receive_damage") and target.receive_damage(damage):
-			feedback = "Hit: %d" % damage
-	var body: CharacterBody3D = cast.get_parent().get_parent()
+		outcome = "terrain"
+		if target.has_method("receive_damage"):
+			var result: Dictionary = resolver.weapon_attack(body, target, attack_item, attack_record)
+			outcome = result.outcome
+			feedback = {"miss": "Missed target", "ineffective": "Ineffective material", "no_damage": "No damage"}.get(outcome, "Missed target")
+			if result.damage > 0 and target.receive_damage(int(result.damage)):
+				feedback = "Hit: %d" % int(result.damage)
 	if is_instance_valid(body.combat_audio):
 		if feedback.begins_with("Hit"):
 			body.combat_audio.play("impact", target as Node3D, 1.0, impact)
-		elif feedback == "Blocked":
+		elif outcome == "terrain":
 			var event := "door" if target is Door else "wall"
 			body.combat_audio.play(event, target as Node3D, 1.0, impact)
+		elif outcome in ["miss", "no_damage", "ineffective"] and target.combat_stats.parry_sounds:
+			body.combat_audio.play("parry", target as Node3D, 1.0, impact)
 		else:
 			body.combat_audio.play(preload("res://scripts/item_catalog.gd").WEAPONS[attack_weapon].miss)
 	feedback_time = 0.8

@@ -1,0 +1,73 @@
+ERROR: Failed to open 'user://logs/godot2026-11-02T17.39.52.log'.
+   at: copy (core/io/dir_access.cpp:429)
+ERROR: Failed to open log file for writing: user://logs/godot.log
+   at: rotate_file (core/io/logger.cpp:169)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Original MONSTER.BSA skeleton career matches independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Skeleton level-derived skills, armor x5 and parry flag match pinned source position=(7.25, 12.8, 16.2) mode=walking
+PASS Truncated original career rejects cleanly position=(7.25, 12.8, 16.2) mode=walking
+PASS Authored baseline is explicit; original starting dagger is steel position=(7.25, 12.8, 16.2) mode=walking
+PASS Invalid live combat values reject atomically position=(7.25, 12.8, 16.2) mode=walking
+PASS Combat does not invent a second Speed or accept fractional skills position=(7.25, 12.8, 16.2) mode=walking
+PASS Invalid combat reload retains the complete previous baseline position=(7.25, 12.8, 16.2) mode=walking
+PASS Independently calculated 4 percent skeleton hit chance preserves all baseline modifiers position=(7.25, 12.8, 16.2) mode=walking
+PASS Critical Strike proc adds skill/10 to chance, not doubled damage position=(7.25, 12.8, 16.2) mode=walking
+PASS Negative attribute differences use C# truncation toward zero position=(7.25, 12.8, 16.2) mode=walking
+PASS Hit probability clamps at 3 and 97 percent position=(7.25, 12.8, 16.2) mode=walking
+PASS Roll just below 4 percent succeeds; dagger max6 halves to3 versus skeleton position=(7.25, 12.8, 16.2) mode=walking
+PASS Roll at the hit threshold fails without consuming damage roll position=(7.25, 12.8, 16.2) mode=walking
+PASS A successful one-point edged roll can become zero after skeleton resistance position=(7.25, 12.8, 16.2) mode=walking
+PASS Mace max12 bypasses edged-weapon resistance position=(7.25, 12.8, 16.2) mode=walking
+PASS Skeleton silver doubles after edged halving position=(7.25, 12.8, 16.2) mode=walking
+PASS Strength adds after skeleton resistance position=(7.25, 12.8, 16.2) mode=walking
+PASS Strength below50 uses floor rather than truncation position=(7.25, 12.8, 16.2) mode=walking
+PASS Displayed swing record 1 has exact source chance/damage modifiers position=(7.25, 12.8, 16.2) mode=walking
+PASS Displayed swing record 2 has exact source chance/damage modifiers position=(7.25, 12.8, 16.2) mode=walking
+PASS Displayed swing record 3 has exact source chance/damage modifiers position=(7.25, 12.8, 16.2) mode=walking
+PASS Displayed swing record 4 has exact source chance/damage modifiers position=(7.25, 12.8, 16.2) mode=walking
+PASS Displayed swing record 5 has exact source chance/damage modifiers position=(7.25, 12.8, 16.2) mode=walking
+PASS Displayed swing record 6 has exact source chance/damage modifiers position=(7.25, 12.8, 16.2) mode=walking
+PASS Iron subtracts one damage after skeleton resistance position=(7.25, 12.8, 16.2) mode=walking
+PASS Iron minus-one material converts to minus-ten hit chance position=(7.25, 12.8, 16.2) mode=walking
+PASS Ineffective material rejects before hit/body/damage rolls position=(7.25, 12.8, 16.2) mode=walking
+PASS Seven body regions use pinned weighted selection, independent of aiming height position=(7.25, 12.8, 16.2) mode=walking
+PASS Hall test loot contains the cuirass and mace position=(7.25, 12.8, 16.2) mode=walking
+PASS Real corpse collection transfers cuirass and mace ownership position=(7.25, 12.8, 16.2) mode=walking
+PASS Actual Equip click gives armor its own slot without replacing the weapon position=(7.25, 12.8, 16.2) mode=walking
+PASS Cuirass uses original image and clear region/protection description position=(7.25, 12.8, 16.2) mode=walking
+PASS Steel cuirass original 249:4 RGBA matches independent read-only audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Steel cuirass lowers chest armor by45; other regions remain naked position=(7.25, 12.8, 16.2) mode=walking
+PASS Cuirass reduces this skeleton's chest hit chance from capped97 to77 percent position=(7.25, 12.8, 16.2) mode=walking
+PASS Equipped armor cannot be dropped, deposited or consumed position=(7.25, 12.8, 16.2) mode=walking
+PASS Unequipping armor preserves the equipped dagger position=(7.25, 12.8, 16.2) mode=walking
+PASS Weapon switching preserves equipped chest armor position=(7.25, 12.8, 16.2) mode=walking
+PASS Skeleton reflex-pass plus chest hit applies original 5-15 damage range position=(7.25, 12.8, 16.2) mode=walking
+PASS Skeleton chest roll at77 misses equipped steel cuirass position=(7.25, 12.8, 16.2) mode=walking
+PASS Average reflex gate rejects50 before hit/damage rolls position=(7.25, 12.8, 16.2) mode=walking
+PASS Reflex setting changes monster attempt chance from50 to30 percent position=(7.25, 12.8, 16.2) mode=walking
+PASS Actual skeleton frame-four event consumes one formula result against equipped armor position=(10.25, 12.8, 19.3) mode=walking
+PASS Enemy recovery does not repeat formula damage position=(10.25, 12.8, 19.3) mode=walking
+PASS Real equipped mace starts an animation-driven formula attack position=(10.25, 12.8, 19.3) mode=walking
+PASS Failed target roll deals no damage and does not hurt-interrupt the skeleton position=(10.25, 12.8, 19.3) mode=walking
+PASS Skeleton failed-target roll emits one spatial original parry-bank cue position=(10.25, 12.8, 19.3) mode=walking
+PASS Attack tail does not replay miss/parry cue position=(10.25, 12.8, 19.3) mode=walking
+PASS Ordinary failed target roll retains weapon whiff sound position=(10.25, 12.8, 19.3) mode=walking
+PASS Mace's visible down-swing resolves base12 plus4 once with impact sound position=(10.25, 12.8, 19.3) mode=walking
+PASS Version2 snapshot saves armor, weapon material and normal world state position=(7.25, 12.80096, 16.2) mode=walking
+PASS Save includes independent armor UID position=(7.25, 12.80096, 16.2) mode=walking
+PASS Old prototype saves reject explicitly without migration position=(7.25, 12.80096, 16.2) mode=walking
+PASS Save rejects weapon references in armor slot position=(7.25, 12.80096, 16.2) mode=walking
+PASS Save rejects unknown material before scene replacement position=(7.25, 12.80096, 16.2) mode=walking
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Version2 load restores equipped armor and steel mace position=(7.25, 12.80096, 16.2) mode=walking
+PASS Loaded armor changes defense without replacing weapon identity position=(7.25, 12.80096, 16.2) mode=reset
+PASS Unequipped armor drops through actual inventory UI without disturbing weapon position=(7.25, 12.80096, 16.2) mode=reset
+PASS Dropped cuirass retains its UID in a world pile position=(7.25, 12.80096, 16.2) mode=reset
+PASS Dropped armor can be recovered and re-equipped position=(7.25, 12.80096, 16.2) mode=reset
+COMBAT RESOLUTION RESULTS: 60/60
+WARNING: 12 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+   at: cleanup (core/object/object.cpp:2536)

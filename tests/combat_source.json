@@ -1,0 +1,37 @@
+{
+  "skeleton": {
+    "record": "ENEMY015.CFG",
+    "size": 74,
+    "sha256": "3b32a3627181f99caebe4362401b4d3395720bd94d452e6b3c139dec2dc84024",
+    "attributes": {
+      "strength": 50,
+      "intelligence": 65,
+      "willpower": 40,
+      "agility": 80,
+      "endurance": 55,
+      "personality": 50,
+      "speed": 70,
+      "luck": 50
+    }
+  },
+  "bear": {
+    "record": "ENEMY004.CFG",
+    "size": 74,
+    "sha256": "6ae44eb3799cb01c94e40fd798162dbf44fa61f290caf4ac82199705a4f73cb9",
+    "attributes": {
+      "strength": 90,
+      "intelligence": 10,
+      "willpower": 30,
+      "agility": 70,
+      "endurance": 95,
+      "personality": 50,
+      "speed": 70,
+      "luck": 50
+    }
+  },
+  "level": 9,
+  "skills": 75,
+  "armor_to_hit": 10,
+  "min_damage": 5,
+  "max_damage": 15
+}

@@ -138,7 +138,7 @@ func run() -> void:
 	check(not player.controls_active and not player.receive_damage(10), "Dead player cannot recapture controls or take repeated damage")
 	arena.queue_free()
 	await frames(3)
-	var level = load("res://main.tscn").instantiate()
+	var level = load("res://tests/skeleton_regression.tscn").instantiate()
 	level.enemy_navigation_enabled = false
 	root.add_child(level)
 	current_scene = level
@@ -176,3 +176,4 @@ func run() -> void:
 	file.store_string("\n".join(results))
 	print("RETALIATION RESULTS: ", results.size() - failures.size(), "/", results.size())
 	quit(0 if failures.is_empty() else 1)
+

@@ -8,6 +8,7 @@ var mobile: Sprite3D
 var body_mesh: MeshInstance3D
 const Health = preload("res://scripts/health.gd")
 var health := Health.new()
+var combat_stats := preload("res://scripts/combat_model.gd").new()
 var body_material: StandardMaterial3D
 var hit_flash := 0.0
 var player: CharacterBody3D
@@ -19,12 +20,16 @@ var sound_rng := RandomNumberGenerator.new()
 var approach_enabled := true
 var loot := preload("res://scripts/inventory.gd").new()
 var loot_enabled := false
+var creature_name := "Skeleton"
+var can_open_doors := true
 signal encountered
 
 func play_sound(event: String, gain: float = 1.0) -> void:
 	if mobile and is_instance_valid(combat_audio):
 		if event == "skeleton_attack" and sound_rng.randf() <= 0.5:
 			return
+		if creature_name == "Bear" and event.begins_with("skeleton_"):
+			event = event.replace("skeleton_", "bear_")
 		combat_audio.play(event, self, gain)
 
 func _ready() -> void:
@@ -194,7 +199,7 @@ func loot_available() -> bool:
 	return health.current == 0 and loot_enabled
 
 func loot_title() -> String:
-	return "SKELETON REMAINS  |  Prototype test loot"
+	return creature_name.to_upper() + " REMAINS  |  Prototype test loot"
 
 func loot_label() -> String:
 	return "Corpse contents"

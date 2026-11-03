@@ -4,7 +4,9 @@ signal played(event: String, sound_id: int, spatial: bool)
 const EVENTS := {
 	"draw_mace": [413], "miss_mace": [347], "draw": [377], "miss": [106], "impact": [108, 109, 110, 111, 112],
 	"wall": [433], "door": [7], "player_hit": [110, 111], "death": [15],
+	"parry": [428, 429, 430, 431, 432, 433, 434, 435, 436],
 	"skeleton_move": [160], "skeleton_bark": [161], "skeleton_attack": [162],
+	"bear_move": [127], "bear_bark": [128], "bear_attack": [129],
 }
 const MAX_VOICES := 24
 var archive := preload("res://scripts/classic_archive.gd").new()
@@ -62,6 +64,7 @@ func stop_creature(emitter: Node3D) -> void:
 			voice.queue_free()
 
 func play(event: String, emitter: Node3D = null, gain: float = 1.0, at: Vector3 = Vector3.INF) -> void:
+	var creature_event := event.begins_with("skeleton_") or event.begins_with("bear_")
 	if not EVENTS.has(event) or cache.is_empty():
 		return
 	var ids: Array = EVENTS[event]
@@ -78,7 +81,7 @@ func play(event: String, emitter: Node3D = null, gain: float = 1.0, at: Vector3 
 	if is_instance_valid(emitter):
 		var source := AudioStreamPlayer3D.new()
 		source.attenuation_model = AudioStreamPlayer3D.ATTENUATION_DISABLED
-		source.max_distance = enemy_range if event.begins_with("skeleton_") or event == "death" else 16.0
+		source.max_distance = enemy_range if creature_event or event == "death" else 16.0
 		add_child(source)
 		source.global_position = emitter.global_position + Vector3.UP * 0.8
 		if at.is_finite():
@@ -89,7 +92,7 @@ func play(event: String, emitter: Node3D = null, gain: float = 1.0, at: Vector3 
 		add_child(voice)
 	voice.stream = cache[id]
 	voice.volume_linear = master_volume * effects_volume * clampf(gain, 0.0, 1.0) * (draw_gain if event.begins_with("draw") else 1.0)
-	if event.begins_with("skeleton_") and is_instance_valid(emitter):
+	if creature_event and is_instance_valid(emitter):
 		voice.set_meta("creature_owner", emitter.get_instance_id())
 	voices.append(voice)
 	voice.finished.connect(func():

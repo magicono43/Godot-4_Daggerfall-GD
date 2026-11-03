@@ -1,3 +1,7 @@
+Current playtest grants mace, cuirass, spare dagger, healing doses and other test items at the unchanged hall spawn, with300HP. Open I to equip immediately. See BEAR_PLAYTEST.md; older loot-only acquisition notes below are historical.
+
+Current equipment supports an independent Steel cuirass chest slot in hall test loot. Weapons carry material metadata and source damage profiles. See COMBAT_RESOLUTION.md; earlier item counts and weapon-only equipment notes below are historical.
+
 # Basic corpse looting and inventory
 
 Implemented November 1, 2026. Defeat the hall skeleton, approach its original
@@ -172,3 +176,5 @@ Mace follow-up: the skeleton also carries one test Mace (nonstackable), using
 original icon 234:14 and first-person WEAPON05.CIF. Equip/Unequip switches weapon
 identity, visuals, draw/miss cues and prototype damage. See MACE.md. Stack merging,
 open corpse/pile deposits and per-session ground drops retain their accepted rules.
+
+

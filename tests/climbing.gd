@@ -5,6 +5,7 @@ var failures: Array[String] = []
 var results: Array[String] = []
 
 func _initialize() -> void:
+	node_added.connect(fixed_combat_fixture)
 	call_deferred("run")
 
 func frames(count: int) -> void:
@@ -276,7 +277,7 @@ func ledge_checks(wall: StaticBody3D) -> void:
 	step.queue_free()
 
 func dungeon_checks() -> void:
-	var level: Node3D = load("res://main.tscn").instantiate()
+	var level: Node3D = load("res://tests/skeleton_regression.tscn").instantiate()
 	level.enemy_navigation_enabled = false
 	root.add_child(level)
 	current_scene = level
@@ -361,3 +362,12 @@ func dungeon_ledge_checks(level: Node3D) -> void:
 	release()
 	await frames(10)
 	check(player.is_grounded() and absf(player.position.y - 32.0) < 0.05, "Original landing descent can reverse and mount back onto its top")
+
+func fixed_combat_fixture(node: Node) -> void:
+	# These older suites assert geometry/event timing with deterministic 10/15 HP.
+	# The dedicated combat_resolution suite uses the real resolver and fixed rolls.
+	if node.get_script() == preload("res://scripts/player.gd"):
+		node.combat.resolver = preload("res://tests/fixed_combat.gd").new()
+	elif node.get_script() == preload("res://scripts/enemy.gd"):
+		node.melee.resolver = preload("res://tests/fixed_combat.gd").new()
+

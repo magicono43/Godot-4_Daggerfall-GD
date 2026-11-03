@@ -1,0 +1,60 @@
+PASS Original MONSTER.BSA skeleton career matches independent audit
+PASS Skeleton level-derived skills, armor x5 and parry flag match pinned source
+PASS Truncated original career rejects cleanly
+PASS Authored baseline is explicit; original starting dagger is steel
+PASS Invalid live combat values reject atomically
+PASS Combat does not invent a second Speed or accept fractional skills
+PASS Invalid combat reload retains the complete previous baseline
+PASS Independently calculated 4 percent skeleton hit chance preserves all baseline modifiers
+PASS Critical Strike proc adds skill/10 to chance, not doubled damage
+PASS Negative attribute differences use C# truncation toward zero
+PASS Hit probability clamps at 3 and 97 percent
+PASS Roll just below 4 percent succeeds; dagger max6 halves to3 versus skeleton
+PASS Roll at the hit threshold fails without consuming damage roll
+PASS A successful one-point edged roll can become zero after skeleton resistance
+PASS Mace max12 bypasses edged-weapon resistance
+PASS Skeleton silver doubles after edged halving
+PASS Strength adds after skeleton resistance
+PASS Strength below50 uses floor rather than truncation
+PASS Displayed swing record 1 has exact source chance/damage modifiers
+PASS Displayed swing record 2 has exact source chance/damage modifiers
+PASS Displayed swing record 3 has exact source chance/damage modifiers
+PASS Displayed swing record 4 has exact source chance/damage modifiers
+PASS Displayed swing record 5 has exact source chance/damage modifiers
+PASS Displayed swing record 6 has exact source chance/damage modifiers
+PASS Iron subtracts one damage after skeleton resistance
+PASS Iron minus-one material converts to minus-ten hit chance
+PASS Ineffective material rejects before hit/body/damage rolls
+PASS Seven body regions use pinned weighted selection, independent of aiming height
+PASS Hall test loot contains the cuirass and mace
+PASS Real corpse collection transfers cuirass and mace ownership
+PASS Actual Equip click gives armor its own slot without replacing the weapon
+PASS Cuirass uses original image and clear region/protection description
+PASS Steel cuirass original 249:4 RGBA matches independent read-only audit
+PASS Steel cuirass lowers chest armor by45; other regions remain naked
+PASS Cuirass reduces this skeleton's chest hit chance from capped97 to77 percent
+PASS Equipped armor cannot be dropped, deposited or consumed
+PASS Unequipping armor preserves the equipped dagger
+PASS Weapon switching preserves equipped chest armor
+PASS Skeleton reflex-pass plus chest hit applies original 5-15 damage range
+PASS Skeleton chest roll at77 misses equipped steel cuirass
+PASS Average reflex gate rejects50 before hit/damage rolls
+PASS Reflex setting changes monster attempt chance from50 to30 percent
+PASS Actual skeleton frame-four event consumes one formula result against equipped armor
+PASS Enemy recovery does not repeat formula damage
+PASS Real equipped mace starts an animation-driven formula attack
+PASS Failed target roll deals no damage and does not hurt-interrupt the skeleton
+PASS Skeleton failed-target roll emits one spatial original parry-bank cue
+PASS Attack tail does not replay miss/parry cue
+PASS Ordinary failed target roll retains weapon whiff sound
+PASS Mace's visible down-swing resolves base12 plus4 once with impact sound
+PASS Version2 snapshot saves armor, weapon material and normal world state
+PASS Save includes independent armor UID
+PASS Old prototype saves reject explicitly without migration
+PASS Save rejects weapon references in armor slot
+PASS Save rejects unknown material before scene replacement
+PASS Version2 load restores equipped armor and steel mace
+PASS Loaded armor changes defense without replacing weapon identity
+PASS Unequipped armor drops through actual inventory UI without disturbing weapon
+PASS Dropped cuirass retains its UID in a world pile
+PASS Dropped armor can be recovered and re-equipped

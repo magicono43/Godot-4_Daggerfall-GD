@@ -70,7 +70,7 @@ func probe(body: CharacterBody3D, direction: Vector3) -> Dictionary:
 		var collider := obstacle_cast.get_collider(i) as Node
 		if collider == body.player:
 			continue
-		if collider and collider.has_method("request_open"):
+		if collider and collider.has_method("request_open") and body.can_open_doors:
 			door = collider
 		else:
 			blocked = true
@@ -155,7 +155,7 @@ func steering(body: CharacterBody3D, delta: float, visible_player: bool) -> Vect
 		return Vector3.ZERO
 	var query := PhysicsRayQueryParameters3D.create(body.global_position + Vector3.UP, body.global_position + Vector3.UP + direction * 1.2, 1, [body.get_rid()])
 	var hit := body.get_world_3d().direct_space_state.intersect_ray(query)
-	if not hit.is_empty() and hit.collider.has_method("request_open"):
+	if not hit.is_empty() and hit.collider.has_method("request_open") and body.can_open_doors:
 		hit.collider.request_open(body)
 		state = "door"
 		return Vector3.ZERO

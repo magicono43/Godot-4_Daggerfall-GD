@@ -26,7 +26,7 @@ func travel(native: Array, limit := 2400) -> bool:
 	return false
 
 func run() -> void:
-	level = load("res://main.tscn").instantiate()
+	level = load("res://tests/skeleton_regression.tscn").instantiate()
 	root.add_child(level)
 	current_scene = level
 	await frames(5)
@@ -206,3 +206,4 @@ func detour_contract() -> void:
 	actor.queue_free()
 	wall.queue_free()
 	floor.queue_free()
+

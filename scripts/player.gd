@@ -4,6 +4,9 @@ var health := Health.new()
 var damage_flash := 0.0
 const Combat = preload("res://scripts/melee_combat.gd")
 var combat := Combat.new()
+var combat_stats := preload("res://scripts/combat_model.gd").new()
+var combat_profile_path := "res://combat.cfg"
+var test_setup: Dictionary = {}
 var weapon_payload: Array[Dictionary] = []
 var weapon_payloads: Dictionary = {}
 var combat_audio: Node
@@ -40,7 +43,9 @@ signal loot_requested(container: Node3D)
 
 func _ready() -> void:
 	inventory.equip(inventory.add_item("dagger"))
-	health.maximum = 100
+	for item in test_setup.get("items", []):
+		inventory.add_item(item.definition, int(item.quantity))
+	health.maximum = int(test_setup.get("maximum_health", 100))
 	health.current = health.maximum
 	health.died.connect(die)
 	collision_layer = 2
@@ -77,6 +82,7 @@ func _ready() -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func reload_movement() -> bool:
+	combat_stats.load_file(combat_profile_path)
 	var loaded := movement.profile.load_file()
 	if not loaded:
 		push_warning(movement.profile.error)

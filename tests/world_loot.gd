@@ -33,7 +33,7 @@ func verify_stacking() -> void:
 	check(not owner.transfer_to(owner, coins) and owner.find(coins).quantity == 35, "Self transfer never doubles stack quantity")
 
 func run() -> void:
-	level = load("res://main.tscn").instantiate()
+	level = load("res://tests/skeleton_regression.tscn").instantiate()
 	level.enemy_navigation_enabled = false
 	root.add_child(level)
 	current_scene = level
@@ -233,3 +233,4 @@ func run() -> void:
 	print("WORLD LOOT RESULTS: %d/%d" % [results.size() - failures.size(), results.size()])
 	FileAccess.open("res://tests/world_loot_results.txt", FileAccess.WRITE).store_string("\n".join(results))
 	quit(0 if failures.is_empty() else 1)
+

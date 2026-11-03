@@ -77,7 +77,7 @@ func capture(name: String, at: Vector3, target: Vector3) -> void:
 	player.set_physics_process(true)
 
 func run() -> void:
-	level = load("res://main.tscn").instantiate()
+	level = load("res://tests/skeleton_regression.tscn").instantiate()
 	level.enemy_navigation_enabled = false
 	level.use_original_start = true
 	root.add_child(level)
@@ -140,3 +140,4 @@ func run() -> void:
 	file.store_string("\n".join(results) + "\n")
 	print("EXPANSION ", results.size() - failures.size(), "/", results.size())
 	quit(0 if failures.is_empty() else 1)
+

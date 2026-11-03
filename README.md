@@ -1,3 +1,41 @@
+## Current handoff — basic character sheet next
+
+The bear/300HP/starting-equipment setup has been playtested and accepted. The next
+proposed milestone is a **read-only character sheet backed by shared player
+attributes and skills**. No implementation has started. A fresh chat should read
+[AGENTS.md](AGENTS.md), [docs/HANDOFF.md](docs/HANDOFF.md) and
+[docs/NEXT_MILESTONE.md](docs/NEXT_MILESTONE.md), inspect the existing code/local
+DFU references, and explain the state/config/modal/save strategy before changes.
+Random-direction click attacks and the compact dungeon remain intentional; gesture
+controls and dungeon expansion are deferred. Accepted baseline:1058/1058 headless
+checks and58/58 rendered bear checks, plus user playtest. This update is docs only.
+## Current playtest — bear and supplied equipment
+
+You still start beside the great stairs, now with **300 HP**, supported weapon
+skills **50**, and the mace, Steel cuirass, spare dagger, two healing doses, gold
+and Twigs already in inventory. I opens inventory; select an item and Equip.
+The hall skeleton is now an original **Grizzly Bear**. The chamber placeholder
+and original geometry remain unchanged. R restores this generous testing setup.
+K/L save/load remain; create a new K save because the section definition changed.
+See [docs/BEAR_PLAYTEST.md](docs/BEAR_PLAYTEST.md) for behavior and the hit-chance
+field guide. Older skeleton/baseline notes below are historical.
+## Current combat and equipment — November 2, 2026
+
+Melee now uses a tested subset of the pinned DFU hit/damage formulas: weapon skill,
+material, swing, armor region, attributes, Dodging and Critical Strike. The hall
+skeleton resists edged damage and plays original clash sounds on failed weapon
+hit rolls. Its test loot includes a **Steel cuirass**; take it and Equip for an
+independent chest-armor slot alongside your weapon. Original health and movement
+remain the test baseline. Edit **combat.cfg**, F3 reloads, F4 shows roll diagnostics.
+At skill 25 this level-9 skeleton is intentionally difficult; settings make the
+baseline explicit rather than adding hidden accuracy assistance.
+
+**K Save / L Load / R Restart** remain embedded-editor compatible. Saves are now
+**version 2**; old test slots are rejected clearly. Start fresh with R and create
+a new K save. Original external **MONSTER.BSA** and **TEXTURE.249** are additionally
+required; no original assets are bundled. See [docs/COMBAT_RESOLUTION.md](docs/COMBAT_RESOLUTION.md)
+for formulas, armor-rating conventions, limitations and playtest steps. Validation: **1000/1000 headless checks**, **60/60 rendered combat checks**, and visual review in both display modes. User combat/audio playtest pending. Older
+fixed-damage and save-version notes below are implementation history.
 ## Current handoff - November 2, 2026
 
 Manual save/load is implemented for the current section: **K Save**, **L Load**.
@@ -225,6 +263,10 @@ Two model 41311 containers at original RDB offsets 32552 and 32623 are now visib
 tools/audit_billboards.py independently checks original positions, dimensions and transparent RGBA hashes for all six selected sprite frames. tests/capture_decorations.gd produces rear-cave, skull/fire and container views under tests/decorations. These views were visually inspected separately from the automated checks. The renderer still reports the restricted-host log/certificate/shader-cache warnings documented above.
 
 Billboard facing and light animation timing reference: https://github.com/Interkarma/daggerfall-unity/blob/master/Assets/Scripts/Internal/DaggerfallBillboard.cs. The native scale calculation is in reference/MeshReader.cs. This validates a small original-decoration path, not support for all billboard archive types, actors, sounds or interactions.
+
+
+
+
 
 
 

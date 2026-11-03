@@ -1,3 +1,5 @@
+Current schema is version2: independent armor_uid equipment and checked weapon material metadata. Old test slots reject with an explicit version message; create a new K save. No migration, as agreed for testing. See COMBAT_RESOLUTION.md; version1 notes below are historical.
+
 # Manual save/load — current section
 
 Implemented November 2, 2026. K writes one manual slot; L loads it. R still
@@ -93,3 +95,4 @@ L correction validation: 940/940 full headless checks passed; rendered focus sui
 Embedded-editor shortcuts: K saves and L loads. F5/F9 gameplay aliases were removed because Godot uses F5 to launch and F9 to suspend/resume embedded projects. The user identified this as the actual freeze source. Editor settings are unchanged, and existing save files remain compatible.
 
 K/L remap validation: 940/940 full headless checks and 19/19 rendered input/capture checks passed. Reports: tests/hotkeys_full_regression.log and tests/load_focus_rendered.log. Embedded-editor retry remains user verification.
+

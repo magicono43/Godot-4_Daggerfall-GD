@@ -35,10 +35,10 @@ func tick(delta: float) -> void:
 	elapsed += delta
 	if state == "attack":
 		# DFU's [0,1,2,3,-1,4,5] marker enters frame 4 at 10 fps.
-		if not strike_emitted and elapsed + 0.000001 >= ATTACK_HIT_FRAME / ATTACK_FPS:
+		if not strike_emitted and elapsed + 0.000001 >= float(payload.get("hit_tick", ATTACK_HIT_FRAME)) / ATTACK_FPS:
 			strike_pending = true
 			strike_emitted = true
-		if elapsed + 0.000001 >= ATTACK_FRAMES / ATTACK_FPS:
+		if elapsed + 0.000001 >= float(payload.get("attack_sequence", [0, 1, 2, 3, 4, 5]).size()) / ATTACK_FPS:
 			state = "idle"
 	elif state == "hurt" and elapsed >= 0.25:
 		set_state("idle")
@@ -67,14 +67,17 @@ func refresh() -> void:
 	var record: Dictionary
 	if state == "corpse":
 		record = payload.corpse
-		source_record = 1
+		source_record = int(payload.get("corpse_record", 1))
 		source_frame = 0
 		flip_h = false
 	else:
 		var base := 5 if state == "attack" else (10 if state == "hurt" else (0 if state == "move" else 15))
 		source_record = base + int(ORIENTATION_RECORDS[orientation])
 		record = payload.records[source_record]
-		source_frame = mini(int((elapsed + 0.000001) * ATTACK_FPS), ATTACK_FRAMES - 1) if state == "attack" else 0
+		source_frame = 0
+		if state == "attack":
+			var sequence: Array = payload.get("attack_sequence", [0, 1, 2, 3, 4, 5])
+			source_frame = int(sequence[mini(int((elapsed + 0.000001) * ATTACK_FPS), sequence.size() - 1)])
 		if state == "move":
 			source_frame = int(elapsed * 6.0) % 4
 		flip_h = orientation > 4
