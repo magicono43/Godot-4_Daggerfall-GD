@@ -1,6 +1,7 @@
 extends RefCounted
 ## Fixed authored spells using pinned DFU effect coefficients; no spellmaker/level scaling.
 const SPELLS := {
+	"teleport": {"name":"Teleport", "school":"mysticism", "component_cost":320, "description":"Choose Anchor or Teleport. A new anchor replaces the old; arrival consumes it. Casting spends magicka even without an anchor."},
 	"shield": {"name":"Shield", "school":"alteration", "amount":5, "coefficient":80, "rounds":2, "duration_coefficient":28, "description":"Absorb 5 damage for 2 game minutes. Recast adds duration and tops up only to the original capacity."},
 	"heal": {"name":"Heal", "school":"restoration", "amount":25, "coefficient":20, "description":"Restore 25 health, including when already healthy."},
 	"light": {"name":"Light", "school":"illusion", "rounds":10, "coefficient":8, "description":"Magical light for 10 game minutes. Recasts add duration."},
@@ -23,9 +24,11 @@ static func cost(id: String, character: RefCounted) -> int:
 	if not SPELLS.has(id):
 		return 0
 	var spell: Dictionary = SPELLS[id]
-	var component := int(spell.coefficient) * int(spell.get("amount", spell.get("rounds", 0)))
+	var component := int(spell.get("coefficient", 0)) * int(spell.get("amount", spell.get("rounds", 0)))
 	component += int(spell.get("duration_coefficient", 0)) * int(spell.get("rounds", 0))
+	component = int(spell.get("component_cost", component))
 	var points := int(component * (110 - int(character.stat(spell.school))) / 400)
 	if spell.get("target", "self") == "ranged":
 		points = int(points * 1.5)
 	return maxi(5, points)
+

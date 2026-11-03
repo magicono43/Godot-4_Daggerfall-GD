@@ -1,0 +1,43 @@
+PASS Authored seventh spell and shared Mysticism50 available
+PASS Source zero-component cost320 yields48 at Mysticism50
+PASS Live Mysticism reaches cost and survives atomic F3
+PASS Teleport preserves accepted test resources/equipment
+PASS Q opens paid Anchor/Teleport choice through shared modal
+PASS Opening choice spends48 once, remembers cast and emits correct magic cue
+PASS Choice cancels pending simulation and prevents saving
+PASS Choice pauses awake simulation/clock
+PASS Teleport without anchor shows exact message and keeps spent mana
+PASS Repeated result action cannot cast or spend twice
+PASS Result close restores capture without weapon attack
+PASS Anchor stores current section/feet position without moving
+PASS New Anchor replaces previous record rather than adding another
+PASS Teleport arrives at latest anchor and consumes it only after success
+PASS Arrival restores anchored yaw/pitch
+PASS Arrival clears cached momentum/stair camera/fall history
+PASS Successful arrival restores capture with no stale attacks/casts
+PASS Used anchor cannot be reused on next paid cast
+PASS Cancelling choice spends mana without setting an anchor
+PASS Book double-click transitions directly to paid choice without click-through
+PASS Switching to inventory cancels choice and stale Anchor callback
+PASS Released mouse preference survives book-to-choice transition
+PASS Anchor closes without forcing previously released capture
+PASS Insufficient magicka opens no choice or anchor
+PASS Crouched anchor restores feet-anchored posture and eye without standing expansion
+PASS Airborne anchor is allowed; arrival clears climbing and starts fresh fall tracking
+PASS Blocked destination retains anchor but paid cast still costs mana
+PASS Unblocked retry can arrive and consume preserved anchor
+PASS Schema9 validates persistent anchor and shared Mysticism
+PASS Malformed anchor save rejects: missing
+PASS Malformed anchor save rejects: context
+PASS Malformed anchor save rejects: position
+PASS Malformed anchor save rejects: nan
+PASS Malformed anchor save rejects: pitch
+PASS Malformed anchor save rejects: posture
+PASS Malformed anchor save rejects: extra
+PASS Malformed anchor save rejects: old
+PASS Writes isolated Teleport slot without overwriting manual
+PASS L from choice restores anchor and closes paid action without replay
+PASS Stale post-load choice action cannot consume restored anchor
+PASS Death closes paid choice and cannot execute delayed teleport
+PASS L after death restores persisted anchor and controls
+PASS R clears anchor while preserving authored spell knowledge

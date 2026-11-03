@@ -47,7 +47,7 @@ PASS Damage interrupts rest before recovery
 PASS Exhausted player may start safe full rest
 PASS Full rest stops after eight hours when both pools recover
 PASS Full rest is bounded to24 hours when healing is slow
-PASS Schema8 saves fatigue and fractional game clock
+PASS Schema9 saves fatigue and fractional game clock
 PASS Malformed fatigue cannot replace scene
 PASS Malformed fatigue cannot replace scene
 PASS Malformed fatigue cannot replace scene

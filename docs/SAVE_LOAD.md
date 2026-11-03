@@ -1,3 +1,11 @@
+# Current Teleport extension - schema9
+
+Shared Mysticism and a bounded same-section anchor (position/yaw/pitch/posture)
+now persist. Empty anchor is {}. Pending paid choice/result state never persists;
+K refuses it, L/R/death cannot replay it. Loading restores saved anchor without
+moving to it or consuming it. Old schema8/earlier reject; create a fresh K save.
+See TELEPORT.md. Manual slot untouched by automated tests.
+
 # Current Shield extension - schema8
 
 Shared Alteration plus player.shield {capacity,current,seconds} now persist.

@@ -55,11 +55,12 @@ func refresh() -> void:
 	lines.insert(2, "Magicka: %d / %d" % [actor.magic.current, actor.magic.maximum()])
 	if actor.spell_effects.shield.active():
 		lines.insert(3, "Shield: %d / %d | %.1f game minutes" % [actor.spell_effects.shield.current, actor.spell_effects.shield.capacity, actor.spell_effects.shield.remaining/60.0])
+	lines.insert(3, "Teleport anchor: " + ("Set" if not actor.teleport.anchor.is_empty() else "None"))
 	for key in ["strength", "intelligence", "willpower", "agility", "endurance", "personality", "speed", "luck"]:
 		var unused: bool = key in ["willpower", "personality"]
 		lines.append("%s: %.1f%s" % [key.capitalize(), actor.character.stat(key), " (no gameplay consumer yet)" if unused else ""])
 	lines.append("\n[b]Skills[/b]")
-	for key in ["short_blade", "blunt_weapon", "hand_to_hand", "dodging", "critical_strike", "medical", "restoration", "illusion", "destruction", "alteration", "running", "jumping", "swimming", "climbing"]:
+	for key in ["short_blade", "blunt_weapon", "hand_to_hand", "dodging", "critical_strike", "medical", "restoration", "illusion", "destruction", "alteration", "mysticism", "running", "jumping", "swimming", "climbing"]:
 		var note := ""
 		if key == "hand_to_hand": note = " (input hook; unarmed attacks unavailable)"
 		if key == "swimming": note = " (speed hook only)"

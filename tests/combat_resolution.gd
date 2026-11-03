@@ -202,7 +202,7 @@ func run() -> void:
 		print("READ DETAIL ", level.persistence.error)
 		quit(1)
 		return
-	check(saved.version == 8 and saved.player.inventory.armor_slots.chest == cuirass, "Save includes independent armor UID")
+	check(saved.version == 9 and saved.player.inventory.armor_slots.chest == cuirass, "Save includes independent armor UID")
 	var bad := saved.duplicate(true)
 	bad.version = 1
 	check(not level.persistence.validate(bad) and level.persistence.error.contains("Unsupported save version"), "Old prototype saves reject explicitly without migration")

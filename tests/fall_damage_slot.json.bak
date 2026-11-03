@@ -130,6 +130,7 @@
 	"player": {
 		"character": {
 			"agility": 50,
+			"alteration": 50,
 			"blunt_weapon": 50,
 			"climbing": 25.0,
 			"critical_strike": 25,
@@ -247,7 +248,8 @@
 				"light",
 				"fire_bolt",
 				"shock_bolt",
-				"burning_touch"
+				"burning_touch",
+				"shield"
 			],
 			"last_cast": "",
 			"selected": "heal"
@@ -259,9 +261,14 @@
 			16.1999988555908
 		],
 		"sheathed": false,
+		"shield": {
+			"capacity": 0,
+			"current": 0,
+			"seconds": 0.0
+		},
 		"yaw": -2.03444385528564
 	},
 	"section": "res://sections/privateers_hold_opening.json",
-	"section_hash": "39ccd5bc748fecaa5a26482f50b18c258d08adb7226ee3567f72f66b8ba8b53f",
-	"version": 7
+	"section_hash": "56b25b8d8cbf12706a221dead6f9636c631ed1ff6194aaed72844fe31f23fce7",
+	"version": 8
 }

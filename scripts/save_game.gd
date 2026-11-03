@@ -71,10 +71,10 @@ func refusal() -> String:
 
 func snapshot() -> Dictionary:
 	var p = level.player
-	var data := {"version": 8, "section": level.section_path, "section_hash": fingerprint(),
+	var data := {"version": 9, "section": level.section_path, "section_hash": fingerprint(),
 		"player": {"position": vector(p.position), "yaw": p.rotation.y, "pitch": p.camera.rotation.x,
 		"health": p.health.current, "crouched": p.crouch.is_low(p), "sheathed": p.combat.sheathed,
-		"inventory": collection(p.inventory), "character": p.character.base.duplicate(), "fatigue": p.fatigue.snapshot(), "magic":p.magic.snapshot(), "light_seconds":p.spell_effects.remaining, "shield":p.spell_effects.shield.snapshot()}, "enemies": {}, "doors": {}, "authored": {}, "drops": []}
+		"inventory": collection(p.inventory), "character": p.character.base.duplicate(), "fatigue": p.fatigue.snapshot(), "magic":p.magic.snapshot(), "light_seconds":p.spell_effects.remaining, "shield":p.spell_effects.shield.snapshot(), "anchor":p.teleport.snapshot()}, "enemies": {}, "doors": {}, "authored": {}, "drops": []}
 	for actor in level.enemies:
 		data.enemies[String(actor.name)] = {"position": vector(actor.position), "yaw": actor.rotation.y,
 			"health": actor.health.current, "inventory": collection(actor.loot)}
@@ -170,7 +170,7 @@ func validate(data: Variant) -> bool:
 	seen_uids = {}
 	max_uid = 0
 	error = "Save data is invalid or incompatible with this section."
-	if data is Dictionary and data.get("version") != 8:
+	if data is Dictionary and data.get("version") != 9:
 		error = "Unsupported save version. Start fresh with R and create a new save with K."
 		return false
 	if not data is Dictionary or data.get("section") != level.section_path or data.get("section_hash") != fingerprint():
@@ -183,6 +183,8 @@ func validate(data: Variant) -> bool:
 	if not level.player.magic.valid(p.get("magic")) or not level.player.spell_effects.valid(p.get("light_seconds")):
 		return false
 	if not level.player.spell_effects.shield.valid(p.get("shield")):
+		return false
+	if not level.player.teleport.valid(p.get("anchor")):
 		return false
 	if not data.get("enemies") is Dictionary or data.enemies.size() != level.enemies.size() or not data.get("doors") is Dictionary or data.doors.size() != level.doors.size():
 		return false
@@ -325,6 +327,7 @@ func apply(data: Dictionary) -> void:
 	p.casting.cancel()
 	p.spell_effects.restore(float(state.light_seconds))
 	p.spell_effects.shield.restore(state.shield)
+	p.teleport.restore(state.anchor)
 	p.combat.cancel()
 	p.combat.sheathed = state.sheathed
 	p.climbing.reset()

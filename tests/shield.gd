@@ -32,7 +32,7 @@ func run() -> void:
 	var shield: RefCounted = player.spell_effects.shield
 	level.combat_audio.played.connect(func(event,_id,_spatial):damage_sounds.append(event))
 	check(player.inventory.items.size() == 13 and player.health.maximum == 300 and player.magic.maximum() == 150 and hall.health.current == 30, "Shield preserves accepted equipment/health/magicka/bear baseline")
-	check(player.magic.known.size() == 6 and player.magic.known.has("shield") and player.character.stat("alteration") == 50, "Authored Shield grant and shared Alteration50 available")
+	check(player.magic.known.size() == 7 and player.magic.known.has("shield") and player.character.stat("alteration") == 50, "Authored Shield grant and shared Alteration50 available")
 	check(Catalog.cost("shield",player.character) == 68, "Shield combines source magnitude80 and duration28 costs with Alteration50")
 	player.character.set_live({"alteration":100})
 	check(Catalog.cost("shield",player.character) == 11 and player.reload_movement() and player.character.stat("alteration") == 100, "Live Alteration affects real cost and survives atomic F3")
@@ -144,7 +144,7 @@ func run() -> void:
 	base.alteration = 65
 	player.character.set_base(base)
 	var data: Dictionary = level.persistence.snapshot()
-	check(data.version == 8 and data.player.shield.current == 2 and level.persistence.validate(data), "Schema8 records partially depleted Shield and remaining time")
+	check(data.version == 9 and data.player.shield.current == 2 and level.persistence.validate(data), "Schema8 records partially depleted Shield and remaining time")
 	for kind in ["missing","negative","fraction","overflow","infinite","expired","empty","extra","old"]:
 		var bad := data.duplicate(true)
 		match kind:

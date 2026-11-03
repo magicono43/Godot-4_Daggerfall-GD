@@ -1,3 +1,9 @@
+# Teleport extension
+
+Teleport is the seventh authored self spell, Mysticism50/cost48. Paid Anchor/Teleport
+choice owns one replaceable section-local anchor consumed on arrival. No-anchor
+failure/cancel still spends mana. Schema9 persists anchor/Mysticism. See TELEPORT.md.
+
 # Shield extension
 
 Shield is now the sixth authored spell: magnitude5/2 game minutes, Alteration50,

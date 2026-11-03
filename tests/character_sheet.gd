@@ -90,7 +90,7 @@ func run() -> void:
 	baseline.speed = 65
 	player.character.set_base(baseline)
 	var data: Dictionary = level.persistence.snapshot()
-	check(data.version == 8 and data.player.character.speed == 65 and level.persistence.validate(data), "Schema8 validates persistent character base")
+	check(data.version == 9 and data.player.character.speed == 65 and level.persistence.validate(data), "Schema9 validates persistent character base")
 	var invalid := data.duplicate(true)
 	invalid.player.character.speed = -1
 	check(not level.persistence.validate(invalid), "Malformed saved character rejects before apply")

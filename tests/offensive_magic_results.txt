@@ -91,7 +91,7 @@ PASS Modal freezes in-flight missile and damage
 PASS Released controls pause in-flight missile
 PASS K refuses transient flying projectile
 PASS Player death clears all missiles/impact lights and cast state
-PASS Schema8 validates shared Destruction and five known IDs
+PASS Schema9 validates shared Destruction and five known IDs
 PASS Schema6 explicitly rejects before candidate swap
 PASS Readied HUD stays within calibrated display bounds
 PASS Isolated schema7 save preserves expanded magic state

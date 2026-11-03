@@ -56,6 +56,8 @@ func request(actor: CharacterBody3D, recast := false, book_activation := false) 
 	elapsed = 0.0
 	feedback = "%s (-%d magicka)" % [Catalog.SPELLS[id].name, cost]
 	feedback_time = 1.5
+	if id == "teleport":
+		actor.teleport_requested.emit()
 	return true
 
 func release(actor: CharacterBody3D) -> bool:

@@ -1,0 +1,26 @@
+{
+  "repository": "https://github.com/Interkarma/daggerfall-unity",
+  "commit": "4e78e1412b17b60f4d5d6073825775aa5ae95139",
+  "license": "MIT; reference/LICENSE.txt and source headers",
+  "files": {
+    "Assets/Scripts/Game/MagicAndEffects/Effects/Mysticism/Teleport.cs": "b0b6170afad7d1baec95e484a86a7025da227675b18f494449606a5778796c24",
+    "Assets/Scripts/Game/Entities/PlayerEntity.cs": "e20e383b0228b530374e094514765c6d3df98a86dff40d0255015685d28800e0",
+    "Assets/Scripts/Game/Formulas/FormulaHelper.cs": "8f2d5286add95aab0ca279543debc0ff7d1a25bbc6d1e6aa1aba7a83a3773bc6",
+    "Assets/Scripts/Game/MagicAndEffects/EntityEffectManager.cs": "bfb25f1f179d2eb40d77c88d06b693f7cf0bc73b9031a3807795e250f38e6014"
+  },
+  "source_rules": {
+    "school": "Mysticism",
+    "element": "Magic",
+    "cost_component": 320,
+    "cost_at_skill50": 48,
+    "anchor": "One replaceable PlayerEntity anchor, consumed after arrival.",
+    "prompt": "Paid self effect opens Anchor/Teleport choice; cancel has no refund; missing anchor still costs."
+  },
+  "scope": [
+    "Same active section only; no cross-interior/world streaming.",
+    "Record feet/yaw/pitch/crouch, allow airborne/climbing placement; check full target capsule before arrival.",
+    "Blocked destination retains anchor, paid cost not refunded.",
+    "Arrival resets motor caches/climbing/fall and refreshes floor flags without snap.",
+    "Schema9 persists anchor/Mysticism, not pending choice."
+  ]
+}

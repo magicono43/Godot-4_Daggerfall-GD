@@ -53,7 +53,7 @@ func run() -> void:
 	level.combat_audio.played.connect(func(event,id,_spatial):
 		cast_events_off.append(event)
 		event_ids.append(id))
-	check(player.magic.known.size() == 6 and player.character.stat("destruction") == 50, "Normal authored grants include two bolts/touch and explicit Destruction50")
+	check(player.magic.known.size() == 7 and player.character.stat("destruction") == 50, "Normal authored grants include two bolts/touch and explicit Destruction50")
 	check(Catalog.cost("fire_bolt",player.character) == 45 and Catalog.cost("shock_bolt",player.character) == 45 and Catalog.cost("burning_touch",player.character) == 30, "Source damage costs include1.5 ranged multiplier and unchanged touch cost")
 	var fixture: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://tests/offensive_frames.json"))
 	for element_key in ["fire","shock"]:
@@ -205,7 +205,7 @@ func run() -> void:
 	missile = fire("shock_bolt")
 	system.tick(0.2)
 	var data: Dictionary = level.persistence.snapshot()
-	check(data.version == 8 and level.persistence.validate(data) and data.player.character.destruction == 50, "Schema8 validates shared Destruction and five known IDs")
+	check(data.version == 9 and level.persistence.validate(data) and data.player.character.destruction == 50, "Schema9 validates shared Destruction and five known IDs")
 	var bad := data.duplicate(true)
 	bad.version = 6
 	check(not level.persistence.validate(bad), "Schema6 explicitly rejects before candidate swap")
@@ -259,7 +259,7 @@ func run() -> void:
 	await routed(KEY_L)
 	bind_magic()
 	system = player.casting.projectiles
-	check(not player.casting.owns_weapon() and not system.busy() and player.magic.known.size() == 6, "L discards readied/in-flight state while restoring owned spells")
+	check(not player.casting.owns_weapon() and not system.busy() and player.magic.known.size() == 7, "L discards readied/in-flight state while restoring owned spells")
 	check(player.character.stat("destruction") == 65, "Load restores persisted shared Destruction rather than config baseline")
 	await routed(KEY_B)
 	await double_click_spell(2)

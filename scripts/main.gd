@@ -31,6 +31,7 @@ var enemy_navigation_enabled := true
 var combat_audio: Node
 var loot_window: Control
 var character_sheet: Control
+var teleport_window: Control
 var spellbook: Control
 var rest_window: Control
 var modal := preload("res://scripts/modal_coordinator.gd").new()
@@ -110,6 +111,7 @@ func _ready() -> void:
 	player.weapon_payloads = classic.weapon_frames
 	player.combat_audio = combat_audio
 	player.name = "Player"
+	player.teleport.section = section_path
 	player.test_setup = definition.prototype.get("player_test", {})
 	player.combat_profile_path = combat_profile_path
 	# A hidden load candidate must not change the live window's mouse capture.
@@ -144,6 +146,12 @@ func _ready() -> void:
 	spellbook.coordinator = modal
 	presentation.hud.add_child(spellbook)
 	player.health.died.connect(spellbook.close)
+	teleport_window = preload("res://scripts/teleport_window.gd").new()
+	teleport_window.actor = player
+	teleport_window.coordinator = modal
+	presentation.hud.add_child(teleport_window)
+	player.teleport_requested.connect(teleport_window.open)
+	player.health.died.connect(teleport_window.close)
 	player.loot_requested.connect(loot_window.open)
 	player.health.died.connect(loot_window.close)
 	world_loot = preload("res://scripts/world_loot.gd").new()

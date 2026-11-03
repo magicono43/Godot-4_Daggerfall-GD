@@ -1,0 +1,3 @@
+PASS Separate process restores Teleport anchor
+PASS Cross-process anchor position/context/posture/orientation and Mysticism persist
+PASS Restored anchor teleports once then is consumed

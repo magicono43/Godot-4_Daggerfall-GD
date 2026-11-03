@@ -763,7 +763,8 @@
         "fire_bolt",
         "shock_bolt",
         "burning_touch",
-        "shield"
+        "shield",
+        "teleport"
       ]
     }
   },

@@ -50,6 +50,8 @@ var controls_active := true
 var capture_on_ready := true
 var modal_open := false
 var inventory := preload("res://scripts/inventory.gd").new()
+var teleport := preload("res://scripts/teleport_model.gd").new()
+signal teleport_requested
 signal loot_requested(container: Node3D)
 
 func _ready() -> void:

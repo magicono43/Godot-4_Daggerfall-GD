@@ -1,202 +1,153 @@
-# Latest status - Shield implemented
+# Next milestone - basic swimming with an authored test pool
 
-User accepted offensive spells and48m impact audio, then selected Shield. The
-timed finite absorption pool, source capped-refill recast, HUD/C and schema8 save
-support are implemented. User playtest is next; no further milestone selected.
-Read newest HANDOFF.md and SHIELD.md. Earlier entries below are historical.
+Prepared November 3, 2026 for a fresh agent/chat at the user's request.
+Teleport was playtested and accepted ("Seems to work as expected"). The user wants
+to stop spell-system work for now and selected **Swimming**. Encumbrance, automap
+and a larger encounter/loot loop were discussed but are not selected. No swimming
+implementation or pool has been added in this documentation handoff.
 
-# Latest status - offensive spells implemented
+## User direction and initial scope
 
-User accepted Heal/Light, spellbook activation and corrected magic casting audio.
-Offensive spells are now implemented with Fire/Shock Bolt and Burning Touch; user
-playtest is next. No further milestone selected. Read newest HANDOFF.md and
-OFFENSIVE_MAGIC.md for controls, explicit no-saving-throw test policy and schema7.
-Earlier plans/status entries below are history.
+This particular dungeon normally has no water or water sections. The user explicitly
+expects an added **test pool** for this milestone. Label it authored prototype/test
+content; do not represent it as original Privateer's Hold data or infer water from
+room shapes. Read AGENTS.md and newest HANDOFF.md, inspect code/pinned DFU evidence,
+then briefly explain the motor, water detection, controls, breath and pool approach
+before implementation within the next chat's authorization.
 
-# Latest playtest follow-up
+Suggested first playable slice, subject to source inspection:
 
-Basic magic animation speed is accepted. Spellbook double-click immediate casting
-and overlapping original casting audio are implemented; user playtest/listening is
-next. No new feature milestone selected. See newest HANDOFF.md and MAGIC.md.
+- Enter/leave a bounded water volume, swim horizontally, dive and surface.
+- Use shared live Swimming skill and existing movement_model swim-speed resolution.
+- Distinguish body immersion, surface swimming and head underwater. Inspect breath
+  depletion/recovery and drowning rules, with explicit prototype limitations.
+- Preserve collision against walls/bottom/ceiling, provide a reliable dry exit, and
+  make the pool useful for manual playtests as well as automated checks.
+- Add modest water/underwater feedback without retuning dungeon lighting, scale,
+  projection or land movement. Readable greybox water is sufficient initially.
 
-# Current status � November 3, 2026
+This is not another spell milestone. Water Breathing/Walking, Levitate, spellmaking,
+saving throws, enemy swimmers, exterior/ocean water, currents, buoyant objects,
+encumbrance, durability/repair, new encounters and dungeon expansion remain outside
+this slice unless the user expands scope.
 
-The basic magic foundation below is now implemented; see MAGIC.md and newest
-HANDOFF.md. User playtest is next. No subsequent feature milestone is selected.
-The original planning brief below is historical; user vanilla corrections in the
-latest handoff supersede its pending-cast suggestions.
+## Pool placement and manual access
 
-# Next milestone — basic magic / first spell system
+Prefer an opt-in, separately authored prototype fixture or playable test scene,
+with clear launch/access/reset instructions. It must be manually playable with the
+real player systems, not accessible only through an automated test. Decide the exact
+access mechanism after inspection. Do not silently move the normal hall spawn,
+replace/carve original geometry, block the accepted continuous route, or add hidden
+stair ramps. A separate pool setup may spawn beside water while main.tscn retains
+the hall start. Do not leave arbitrary test obstacles in the normal dungeon.
 
-Prepared November 2, 2026 for a fresh agent/chat at the user's explicit request.
-The user accepted seven-slot armor ("Seems to work fine") and chose basic magic
-instead of further inventory work. **No magic implementation has started.** This
-is a documentation handoff, not permission to implement magic in this chat.
+Keep dimensions, water level and placements in checked prototype data/config or a
+clearly separate fixture scene. Preserve original RDB identities/provenance and
+read-only ARENA2. Include shallow entry, enough depth for full submersion, safe exit
+and surface-transition edge cases. If pool/save context differs from the active
+section, make that explicit and reject incompatible loads.
 
-## User direction and scope
+## Accepted baseline to preserve
 
-The user wants the very basics of having spells implemented, without custom spell
-creation/spellmaking. Build a small playable foundation for known spells, selecting
-and casting them, and the resource/effect lifecycle. Encumbrance, durability/repair
-and other inventory refinements can wait. Swimming was suggested but not selected.
-Do not turn this into dungeon expansion, character creation or a full magic engine.
+- main.tscn hall/stair start, bear30HP, player300HP/150magicka, weapon skills50,
+  13 item instances, seven armor pieces initially unequipped, equipped dagger,
+  passive chamber/first-enemy alias and compact original section.
+- Standing1.8m/radius0.35/eye1.71, crouch toggle/airborne posture, accepted stairs,
+  grounded camera smoothing/free-flight momentum, climbing/corners/backward ledges.
+- Random RMB melee/Z sheath, combat/armor formulas, enemy navigation/corpse loot,
+  inventory UID/stacking/drop sessions and shared character state.
+- Seven accepted spells: Heal, Light, Fire/Shock Bolt, Burning Touch, Shield and
+  Teleport. Offensive landed hits bypass saves/resistance for testing; retain
+  elemental art/audio and48m spell-impact reach. Shield has finite pool/time and
+  capped refill on recast. Teleport has a paid choice and consumed one-use anchor.
+- Health/fatigue/rest/fall ownership,12x elapsed clock, common modal/capture contract,
+  atomic three-config F3/live precedence, diagnostics and schema9 persistence.
+- K/L/R and embedded-editor workflow; F5/F9 remain editor keys. Never overwrite
+  the manual save in tests. Do not expand other deferred systems incidentally.
 
-Suggested first slice, subject to source inspection/proposal:
+## Source-backed design decisions to resolve
 
-- A small fixed spell catalog, a player-owned known-spell list and selected spell.
-  Authored starting/test spell grants are sufficient for initial acquisition. Do
-  not assume a merchant, trainer, spellmaker or item-scroll system is required.
-- A simple spellbook/modal showing known spells, cost and useful descriptions.
-  Selection must not execute an effect accidentally or imply unknown spells owned.
-- A casting action with a clear pending/committed/cancelled lifecycle and feedback.
-  Preserve RMB random-direction weapon attacks, Z draw/sheath and accepted weapon
-  timing. Resolve casting/weapon ownership explicitly; no gesture controls.
-- A magicka pool, current/max display on HUD/C and source-informed recovery during
-  rest. Keep magicka separate from current health and fatigue ownership.
-- Heal and Light are useful candidate first spells from the preceding discussion,
-  **not an approved final spell list, numeric balance or source-school assignment**.
-  Inspect actual source definitions and propose the smallest useful subset. Self
-  effects could avoid needing a new projectile/targeting system in this milestone.
+1. **Motor ownership.** Swimming should own its tick exclusively, like climbing,
+   rather than running land stairs/gravity and swimming together. Separate water
+   detection, parameter resolution and physical motion. Decide body/head immersion
+   thresholds, shallow versus deep state, view-relative versus horizontal motion,
+   vertical controls, diagonal normalization, surface clamp and dry exit handling.
+   Do not silently repurpose Ctrl's accepted crouch toggle; explain controls.
+2. **Transitions.** Cover walking/jumping/falling into water, bottom contact,
+   shallow wading, surfacing, dry ledge exit, climbing-to-water and back. Clear stale
+   floor/step/momentum state at handover without land retuning. Diagnose geometry
+   rather than hiding collision issues with ramps or scale changes.
+3. **Breath/fatigue/damage.** Inspect source duration, recovery, damage cadence,
+   skill/stat inputs and exhaustion. Reuse shared state; do not invent progression,
+   career/race or encumbrance. Determine breath's time base rather than assuming
+   the12x game clock. Verify drowning interaction with health/Shield from evidence.
+   Rest must refuse unsafe water. State unsupported mechanics explicitly.
+4. **Fall safety.** Inspect dungeon water separately from exterior water. Determine
+   sufficient depth/immersion for avoiding hard landing: a shallow volume must not
+   accidentally make solid-floor falls harmless. Suspend/restart fall history only
+   at verified transitions; preserve net feet-drop rather than apex tracking.
+5. **Pause/actions.** Preserve modal/capture/attack-cancellation/death contracts.
+   Explicitly decide passive vertical physics with released controls (land gravity
+   currently continues), while respecting awake resource/time pauses. Inspect source
+   weapon/casting/interaction behavior in water; no speculative blanket restrictions.
+6. **Teleport/reset/load.** Reclassify water state at the new position; Teleport
+   currently clears climbing/fall/momentum but knows no swim motor. Handle anchors
+   into/out of the pool, death/R/void reset and restores without stale immersion,
+   breath/floor flags. Preserve Shield/Light, gear and anchor on ordinary transitions.
+7. **Persistence.** Current K/save placement requires supported ground. Decide
+   whether underwater saves are supported or explicitly refused; pool-bottom support
+   must not accidentally count as dry ground. Decide breath persistence/reset policy
+   and prevent timer-reset exploits if load/teleport are allowed. A schema bump with
+   explicit old-slot rejection is acceptable; no migration is required. Validate
+   before candidate swap. Preserve manual slot and context fingerprints.
 
-Out of scope unless the user separately expands it: custom spell construction,
-full spell archive/effect support, spell merchants/economy, scrolls/enchanted items,
-progression/level-ups, race/class creation, full resistance/reflection/absorption,
-AI spellcasters, swimming, new encounters/geometry and inventory polish milestones.
-Do not imply these systems ship merely because extension points exist.
+## Starting code and pinned evidence
 
-## Accepted playable baseline — preserve
+- scripts/player.gd owns land/climb/crouch ticks and fatigue/fall integration.
+  scripts/movement_model.gd, movement_profile.gd/movement.cfg own resolved tuning.
+- Swimming is **only a parameter hook** today: swim_walk_speed = walk *
+  (live Swimming/200 +0.25) * swim factor. No water volume, swim motor, immersion,
+  breath or drowning system is shipped. character_state.gd owns shared Swimming.
+- Inspect fall_damage.gd, fatigue_model.gd, rest_controller.gd, health.gd,
+  shield_effect.gd, modal_coordinator.gd and main.gd before integrating transitions.
+- teleport_model.gd/window and save_game.gd need explicit water classification/reset
+  integration if their behavior changes. classic_section.gd/section JSON and
+  SECTION_FORMAT.md define original versus authored placement ownership.
+- Run.ps1 and movement/stair/climb/crouch/expansion/fall/fatigue/teleport suites pin
+  accepted motor transitions and full continuous original route.
+- Cached **LevitateMotor.cs** is important: DFU uses it for dungeon swimming as well
+  as levitation. Also inspect PlayerMotor.cs, PlayerSpeedChanger.cs, AcrobatMotor.cs,
+  InputManager.cs and player/entity sources. PlayerMotor explicitly distinguishes
+  exterior shallow water from deep dungeon swimming; do not conflate these systems.
+- reference/movement_sources.json pins commit
+  4e78e1412b17b60f4d5d6073825775aa5ae95139. Read local sources first. Fetch missing
+  water/breath references at this revision, record paths/hashes/license, and do not
+  silently update master or assume all needed evidence is already cached.
 
-- Normal entry main.tscn: original great-hall/stair spawn, original Bear30HP in hall,
-  player300HP, weapon skills50 and passive chamber/first-enemy alias.
-- Player owns13 instances: equipped steel dagger plus spare dagger, mace, seven
-  steel armor pieces (all initially unequipped),2 healing doses,12 gold and2 Twigs.
-  Keep authored grants under prototype.player_test in the active section; spell
-  grants, if introduced, should also be clearly authored test data and validated.
-- Inventory has independent weapon UID and seven armor_slots. armor_uid is only a
-  legacy chest alias. Armor protection9 affects its own region; no item/health
-  ownership duplication. Helmet inventory mask handling is accepted; source art
-  remains raw without material dyes or a paper doll.
-- Shared character attributes/skills, atomic F3 config reload/live precedence,
-  calibrated movement/projection, stairs/crouch/climbing/corners, combat RNG/geometry,
-  fatigue/rest, fall damage, audio, world loot/stacking and K/L persistence remain.
-- Keep compact section, original native scales/geometry, random-direction click
-  attacks and generous test setup. No new encounters are needed for basic magic.
-- Existing controls: C character, I inventory, T rest, E interaction, RMB attack,
-  Z draw/sheath, Ctrl crouch toggle, K save, L load, R fresh restart, F2 view,
-  F3 tuning reload and F4 diagnostics. F5/F9 are reserved for embedded Godot editor.
+## Acceptance checks and delivery
 
-## Inspect and propose before implementation
+- Real continuous entry/swim/dive/surface/exit using input/collision, not teleporting
+  between checkpoints. Low/high live Swimming/modifiers reach actual speed;
+  invalid tuning rejects atomically.
+- Full-capsule wall/ceiling/bottom contacts, normalized diagonal speed, surface
+  stability, repeated shallow/deep transitions and dry stair/climb/crouch regressions.
+- Documented breath depletion/recovery/drowning cadence and supported fatigue,
+  exhaustion/Shield rules. Modals/released controls/death cannot grant unintended
+  breath or duplicate damage. Deep-water versus shallow-floor falls remain correct.
+- K refusal or supported saves, separate-process checks if changed, L/R/death,
+  Teleport/anchor into/out of water, and all modal/capture transitions.
+- Manually launch/reach/reset pool in the user's embedded-editor workflow without
+  disturbing the accepted default dungeon. Document exact access instructions.
+- Run Run.ps1 -Test after movement/collision/interaction changes; add meaningful
+  swimming integration checks and render/inspect4:3/widescreen. Distinguish automated,
+  visual and user-feel verification. Update README/feature docs/AGENTS/HANDOFF when
+  shipped. No gameplay test is required for this docs-only handoff.
 
-Read AGENTS.md and newest HANDOFF first, then inspect current code/local pinned
-DFU evidence. Explain the initial spell list, acquisition, input/casting ownership,
-magicka baseline/recovery, effect duration and save policy before editing gameplay.
-These are design questions, not a demand for a new permission gate beyond the
-user's next chat instructions. The next agent should act within that authorization.
+## Validation carried forward
 
-1. State ownership: keep validated spell definitions separate from player knowledge,
-   selected spell, current magicka, cast lifecycle and effect instances. UI reads
-   state. Avoid a giant character class or placing archive decoding in gameplay.
-2. Attributes/skills: Intelligence currently has no gameplay consumer and baseline50;
-   no class/race/magicka multiplier or magic-school skills exist yet. Inspect source
-   maximum/cost/recovery rules. Propose explicit test assumptions instead of silently
-   choosing a career/level or inventing formulas. Add only necessary shared skills,
-   with atomic validation and clear config/live override precedence. F3 must not
-   discard live overrides or refill resources accidentally.
-3. Cast policy: define when cost is charged, when effects commit, cancellation and
-   refund/no-refund behavior, repeat input, full-health healing and insufficient
-   magicka. Accepted/rejected casts must not double-apply or double-charge. Determine
-   behavior while airborne, crouched, climbing, sheathed and already attacking.
-   Preserve the motor and once-only existing weapon events.
-4. Effects: healing should call health.restore (clamp/no revival); keep healing
-   potion policy independent. If Light is chosen, add a scoped spell effect without
-   retuning accepted baseline dungeon/environment/lantern lighting. Specify stacking,
-   duration time base, expiry and cleanup. Do not accidentally implement every spell
-   by over-generalizing the first two effects.
-5. Modals: use modal_coordinator.gd's single active panel/capture preference. Opening
-   a spellbook cancels pending player/enemy strikes and pauses the same simulations.
-   Define switching among I/C/T/new spellbook and its casting controls. No stale loot
-   source/drop session, active rest, accidental cast/attack/capture, or simultaneous
-   competing panels. Death, R and L must clear transient casting safely.
-6. Time/rest: fatigue_model's fractional12x game_seconds advances during captured
-   alive play and completed rest hours; modals/released controls pause awake time.
-   Inspect how spell durations should consume time, including resting, rather than
-   mixing render time, physics time and game time. rest_controller currently ends
-   full rest when HP and fatigue fill: include magicka if implemented, so it cannot
-   end early or bypass its24h cap. Recovery and no-regen assumptions need source
-   evidence and explicit testing, not a fixed refill on opening a panel.
-7. Persistence: current schema5 saves character base, health, raw fatigue/fractional
-   clock, item UIDs/gear and world state. It saves no spells, magicka or effects.
-   Decide persistent known IDs/selection/current resource and any active effect
-   duration policy. Validate references/ranges before candidate scene swap. Pending
-   casts should not survive load or emit delayed damage/audio/effects. A schema bump
-   with explicit rejection is acceptable in this testing project; no old-save
-   migration is required. Keep manual slot untouched by automated tests.
-8. Source assets: original data is read-only/external. Do not bundle spell sprites
-   or sound samples. Original casting art/audio are not prerequisites for a working
-   basic system; choose modest feedback and label source/prototype behavior honestly.
-
-## Starting code and evidence
-
-- scripts/character_state.gd: validated player base/live values and adapter mappings.
-  Eight attributes,10 currently relevant skills; no magic-school state yet.
-- scripts/player.gd: physical/input ownership, models, death/receive_damage, modal
-  freeze, F3 reload, weapon and fall integration. Keep exclusive climb tick intact.
-- scripts/main.gd: actor/test setup, root input forwarding, HUD, modal routing and
-  candidate-scene restoring flag; normal and legacy exported config/section paths.
-- scripts/modal_coordinator.gd, loot_window.gd, character_sheet.gd, rest_window.gd:
-  one active panel and capture preference, source/session cleanup and actual input.
-- scripts/rest_controller.gd / fatigue_model.gd: bounded hourly rest, interruption,
-  recovery and persisted clock. health.gd/consumables.gd retain their current roles.
-- scripts/melee_combat.gd / weapon_view.gd: accepted click/animation/damage/cost events.
-  combat_model/resolver own existing formula inputs; avoid coupling spellcasting to
-  the melee resolver just because it already has RNG or target geometry.
-- scripts/save_game.gd: schema5 bounded JSON, complete armor UID maps, section hash,
-  fresh candidate validation/placement, restored controls and clean transient state.
-- scripts/classic_archive.gd / classic_data.gd: source decoding/cache boundary.
-- sections/privateers_hold_opening.json: current authored player/enemy setup.
-- tests/skeleton_regression.tscn and overrides: legacy baseline; do not weaken these
-  to accommodate new normal-playtest spell grants. New tests must cover main.tscn.
-
-Local cache contains FormulaHelper.cs (magicka recovery/spell cost helpers),
-DFCareer.cs (spell-point multiplier/advantages), DaggerfallEntity.cs, PlayerEntity.cs
-and EntityEffectBroker.cs. These are starting points, **not evidence that all needed
-spell/casting sources or binary decoders are already cached/implemented**. Inspect
-local files before fetching anything. Pin any supplemental spell/casting/effect
-references to existing commit4e78e1412b17b60f4d5d6073825775aa5ae95139, record hashes and
-license, and do not silently update to master. Identify source-derived rules versus
-narrow authored prototype values in docs/tests.
-
-## Suggested acceptance checks
-
-- Fresh normal start has the intended authored known spells/resource, without
-  changing13-item ownership, armor defaults,300HP, bear or movement/combat numbers.
-- Spellbook displays actual known/selected state and cost; selection is harmless;
-  unknown, duplicate/malformed and unowned IDs are handled deliberately.
-- One accepted cast charges/applies once at the documented stage. Repeated/rejected,
-  cancelled, insufficient-magicka, full-health and death cases have no extra effect.
-- Live supported attributes/skills reach real cost/capacity resolvers and UI; invalid
-  updates reject atomically. Reload/capacity changes cannot mint magicka.
-- Healing clamps and never revives. Any timed light effect starts/expires/recasts
-  according to policy and preserves baseline lighting; UI pauses/rest obey its time
-  policy. No stale effect nodes/callbacks after death/load/R.
-- I/C/T/new book transitions from captured and released controls preserve capture,
-  cancel pending melee/casts, end rest/drop sessions correctly and prevent click
-  through. Check K refusal and routed L/R from every new modal/state.
-- Rest recovers the new resource correctly and full-rest termination includes it;
-  unsafe rest still refuses and the24h bound/interruptions remain unchanged.
-- New persistent data survives fresh candidate and separate-process reload. Reject
-  malformed spell/resource/effect data before replacing gameplay; preserve all UID,
-  equipped protection, health/fatigue and authored-depletion regressions.
-- Run Run.ps1 -Test, add meaningful model and actual routed input/effect checks,
-  and render/inspect4:3 and widescreen. Distinguish tests, visual inspection and user
-  listening/embedded-editor feel. Update README/feature docs/AGENTS/HANDOFF when shipped.
-
-## Verification at this documentation handoff
-
-Accepted baseline:1278/1278 full headless checks across24 suites plus persistence
-and armor separate-process reloads;85/85 rendered armor checks. Reports:
-tests/armor_complete_regression.log and tests/armor_rendered.log. Helmet preview
-and equipment sheet were visually inspected in4:3/widescreen. The user subsequently
-reported that armor works. No new gameplay tests were run for this docs-only handoff.
-No known unresolved gameplay finding. Existing restricted-host log/certificate/
-accelerated-exit diagnostics remain documented and nonblocking.
+Accepted baseline:1577/1577 headless checks across28 suites plus five separate-process
+reloads;43/43 rendered Teleport checks. Reports: tests/teleport_complete_regression.log
+and tests/teleport_rendered.log. User subsequently confirmed Teleport works. No
+swimming gameplay changes or tests in this handoff. Existing restricted-host
+log/certificate/accelerated-exit diagnostics remain documented/nonblocking;
+no known unresolved gameplay finding was reported.
