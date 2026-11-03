@@ -1,0 +1,3 @@
+PASS Separate process loads full armor equipment slot
+PASS Separate process restores seven original UIDs and matching regional protection
+PASS Separate process retains weapon identity and accepted300HP

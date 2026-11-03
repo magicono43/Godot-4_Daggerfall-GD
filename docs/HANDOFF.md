@@ -1,3 +1,48 @@
+# Resume here — seven-slot armor implemented; user playtest next
+
+The user accepted fall damage and authorized expanded armor, noting helmet
+paper-doll mask concerns. Implemented seven independent armor slots: head, right
+arm, left arm, chest, hands, legs and feet. Six steel test pieces join the existing
+cuirass, starting owned/unequipped (13 total instances). Bear/hall spawn/300HP,
+weapon skills50, equipped dagger, passive chamber, compact section, random click
+attacks, fatigue/rest, fall damage and editor-safe controls remain preserved.
+
+inventory.armor_slots is the single authoritative seven-UID map. armor_uid remains
+only a legacy chest alias. Catalog slots/protection feed combat_model's matching
+region; steel protection9 -> raw55, no whole-body stacking. Equip/unequip/same-slot
+replacement preserve item identities, other slots and weapon ownership. All equipped
+pieces are protected from consume/transfer/drop/deposit. Inventory shows selected
+piece/current regional protection; C pairs each region's actual protection and item.
+
+The existing inventory-only index255 mask removal handles helmet249:27 correctly:
+1110 mask pixels removed, every other RGBA pixel preserved, world defaults unchanged.
+Rendered standalone helmet has a clear face area. Fixed source archive249/variants
+preserve accepted previews; raw colors remain, with material dyes/paper doll/race
+fitting deferred. Earlier docs called249 human-male incorrectly; it is the first
+male archive before source morphology offsets. See ARMOR_EQUIPMENT.md/source manifest.
+Original archives remain read-only; independent icon audit pins all12 icons.
+
+Schema5 saves complete armor_slots maps in every collection, with no duplicate
+serialized armor_uid. Validate ownership/slot/type/UID bounds before swapping the
+candidate; nonplayer slot refs must all be0. Schema4/older reject explicitly, and
+new player grants change the section fingerprint. **Create a new K save.** User
+manual slot was not overwritten. Load/R preserve established capture/transient
+cleanup, restored gear and authored unequipped defaults respectively.
+
+Validation: **1278/1278 full headless checks**,24 suites plus persistence and armor
+separate-process reloads, tests/armor_complete_regression.log. **85/85 rendered
+armor checks**, tests/armor_rendered.log. No failed assertions or script errors.
+Helmet preview and seven-region sheet visually inspected in4:3/widescreen. New
+checks cover original RGBA/mask isolation, all regions' actual incoming formula
+changes, identity/swap/protection guards, Equip clicks, corpse/ground ownership,
+invalid saves, full restore/capture and R. Legacy skeleton fixtures are unchanged;
+bear checks intentionally expect added unequipped grants. Existing restricted-host
+log/certificate/accelerated-exit diagnostics remain nonblocking. User embedded-editor
+playtest pending; no next milestone selected.
+
+See docs/ARMOR_EQUIPMENT.md and reference/armor_sources.json. Shields, durability,
+repair, expanded materials/dyes, weight/encumbrance and full paper doll are deferred.
+
 # Resume here — fall damage implemented; user playtest next
 
 The user accepted fatigue/rest, then authorized the proposed fall-damage milestone.

@@ -731,6 +731,30 @@
         {
           "definition": "twigs",
           "quantity": 2
+        },
+        {
+          "definition": "steel_helm",
+          "quantity": 1
+        },
+        {
+          "definition": "steel_right_pauldron",
+          "quantity": 1
+        },
+        {
+          "definition": "steel_left_pauldron",
+          "quantity": 1
+        },
+        {
+          "definition": "steel_gauntlets",
+          "quantity": 1
+        },
+        {
+          "definition": "steel_greaves",
+          "quantity": 1
+        },
+        {
+          "definition": "steel_boots",
+          "quantity": 1
         }
       ]
     }

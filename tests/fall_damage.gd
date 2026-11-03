@@ -211,7 +211,7 @@ func run() -> void:
 	player.controls_active = false
 	level.persistence.slot_path = "res://tests/fall_damage_slot.json"
 	var saved_health: int = player.health.current
-	check(level.persistence.save_slot(), "Damaged settled player can save using unchanged schema4")
+	check(level.persistence.save_slot(), "Damaged settled player can save using the current save schema")
 	player.controls_active = true
 	player.position.y += 8
 	player.stair_supported = false

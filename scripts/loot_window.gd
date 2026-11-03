@@ -227,8 +227,13 @@ func update_details() -> void:
 	if not item.is_empty():
 		preview.texture = icons.get(item.definition)
 		item_heading.text = "%s  x%d" % [Catalog.label(item.definition), item.quantity]
-		equipment_status.text = source.loot_label() if selected_from_corpse else (("Equipped armor" if item.definition == "steel_cuirass" else "Equipped weapon") if equipped else "In your inventory")
+		equipment_status.text = source.loot_label() if selected_from_corpse else (("Equipped armor" if not Catalog.armor_slot(item).is_empty() else "Equipped weapon") if equipped else "In your inventory")
 		description.text = Catalog.description(item)
+		var slot := Catalog.armor_slot(item)
+		if not slot.is_empty():
+			var region := Catalog.ARMOR_SLOTS.find(slot)
+			var protection := int((100 - actor.combat_stats.armor(actor, region)) / 5)
+			description.text += "\n%s protection now: %d | Selected piece: %d" % [Catalog.SLOT_NAMES[slot], protection, Catalog.armor_protection(item)]
 
 func toggle_equipment() -> void:
 	if not visible or actor.is_dead() or equip_button.disabled:

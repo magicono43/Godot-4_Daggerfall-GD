@@ -1,3 +1,9 @@
+# Current status: regional armor implemented; user playtest pending
+
+The user accepted fall damage and authorized expanded armor equipment. See
+ARMOR_EQUIPMENT.md and the latest HANDOFF. No subsequent milestone is selected.
+Earlier proposals below are history.
+
 # Current status: fall damage implemented; user playtest pending
 
 The user accepted fatigue/rest and authorized fall damage next. See FALL_DAMAGE.md

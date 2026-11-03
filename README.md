@@ -279,7 +279,7 @@ Billboard facing and light animation timing reference: https://github.com/Interk
 
 C opens the read-only character sheet; I switches to inventory, Escape/C closes.
 It shows shared effective attributes/skills, health, equipment and regional
-protection. Scroll for equipment and movement values. Save schema4 includes base
+protection. Scroll for equipment and movement values. Save schema5 includes base
 character state and fatigue; old slots require a fresh K save. See docs/CHARACTER_SHEET.md.
 
 ## Fatigue and rest
@@ -288,11 +288,17 @@ T opens rest: choose1..24 hours or rest until recovered, with a24h session limit
 Stand still on safe ground away from the living bear. Rest restores health and
 fatigue; C and the HUD show current fatigue. Escape/T stops, C/I switches panels.
 At zero fatigue, walking remains available while running/jumping/attacks are blocked.
-**Schema4 requires a new K save.** See [FATIGUE_REST](docs/FATIGUE_REST.md).
+**Current schema5 requires a new K save.** See [FATIGUE_REST](docs/FATIGUE_REST.md).
 
 ## Fall damage
 
 Real drops now cause source-backed fall damage, with hard-landing audio/feedback
 over2.5m and whole-HP damage beyond5m. Ordinary jumps, stairs and controlled climbing
-remain safe. F4 includes measured landing distance. Existing schema4 saves remain
-compatible. See [FALL_DAMAGE](docs/FALL_DAMAGE.md).
+remain safe. F4 includes measured landing distance. Current saves use schema5 after the armor equipment milestone. See [FALL_DAMAGE](docs/FALL_DAMAGE.md).
+
+## Regional armor equipment
+
+I now equips seven independent armor slots: head, right/left arm, chest, hands,
+legs and feet. Six additional steel test pieces start owned and unequipped; C shows
+each region's protection and equipped item. Helmet preview masks are removed only
+for inventory. **Schema5 requires a new K save.** See [ARMOR_EQUIPMENT](docs/ARMOR_EQUIPMENT.md).

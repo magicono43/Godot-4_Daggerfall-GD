@@ -1,0 +1,71 @@
+{
+  "repository": "https://github.com/Interkarma/daggerfall-unity",
+  "commit": "4e78e1412b17b60f4d5d6073825775aa5ae95139",
+  "files": {
+    "ItemTemplates.txt": "7f748b0ade7da426fe9f001b7f806c02c19b1b1d835cc48b08a0cad1f6be7077",
+    "ItemBuilder.cs": "7b45112ad559d35aa478d4366d4400ad113b45d797f58d91af1b7b3734b331ee",
+    "DaggerfallUnityItem.cs": "94ee4fc8b00847ae626d3c64c42736407f7e860f2a8ed64bd689e3c50dfff027",
+    "ItemEquipTable.cs": "be69135bed71bc7b90d4ee7b9c669e5d346072602c53dca05e0092c581f92fe9",
+    "DaggerfallEntity.cs": "8da1b9e6be534321d0c8f4fdc793b3a9189928490f82b22390b63c67ea7301b5",
+    "ItemHelper.cs": "48fcfe19262d2c9a07ec22971dd23238ad509b2ee9e150b45e121c147a42a0dd",
+    "PaperDoll.cs": "7c0d08756b3a7d794c828b37744b2a7f8726540815631195d61b06bcfc70472a"
+  },
+  "steel_protection": 9,
+  "regions": {
+    "head": {
+      "template": 107,
+      "archive": 249,
+      "base_record": 27,
+      "variant": 0,
+      "record": 27
+    },
+    "right_arm": {
+      "template": 106,
+      "archive": 249,
+      "base_record": 22,
+      "variant": 1,
+      "record": 23
+    },
+    "left_arm": {
+      "template": 105,
+      "archive": 249,
+      "base_record": 17,
+      "variant": 1,
+      "record": 18
+    },
+    "chest": {
+      "template": 102,
+      "archive": 249,
+      "base_record": 3,
+      "variant": 1,
+      "record": 4
+    },
+    "hands": {
+      "template": 103,
+      "archive": 249,
+      "base_record": 8,
+      "variant": 1,
+      "record": 9
+    },
+    "legs": {
+      "template": 104,
+      "archive": 249,
+      "base_record": 10,
+      "variant": 2,
+      "record": 12
+    },
+    "feet": {
+      "template": 108,
+      "archive": 249,
+      "base_record": 0,
+      "variant": 1,
+      "record": 1
+    }
+  },
+  "notes": [
+    "Seven non-shield slots map to one corresponding body part; protection reduces raw regional armor by protection*5.",
+    "Fixed steel item definitions/variants preserve the accepted249:4 cuirass. Archive249 is the first male archive before morphology offsets, not a claim of a complete human character/race setup.",
+    "ItemHelper.GetItemImage removeMask uses ImageProcessing.ChangeMask; inventory decoding strips index255 while world defaults retain it. Helmet249:27 has1110 mask pixels.",
+    "Paper doll, race/gender variants, material dyes, shields, durability and repair remain deferred."
+  ]
+}

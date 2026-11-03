@@ -1,3 +1,9 @@
+# Current armor extension
+
+Seven armor slots now feed the same regional formulas; see ARMOR_EQUIPMENT.md
+for current equipment/schema5. The fixed249 preview bank is not a human race
+selection; previous human-male wording below is corrected.
+
 Current normal playtest uses300HP, starting test equipment, weapon skills50 and original Bear instead of the skeleton. The older skill25/skeleton fixture remains in isolated regression scenes. See BEAR_PLAYTEST.md for current setup and debug field explanations.
 
 # Combat resolution and chest armor

@@ -62,12 +62,14 @@ func refresh() -> void:
 		if key == "climbing": note = " (success/slip checks deferred)"
 		lines.append("%s: %.1f%s" % [key.capitalize(), actor.character.stat(key), note])
 	lines.append("\n[b]Equipment and protection[/b]")
-	for slot in ["equipped_uid", "armor_uid"]:
-		var item: Dictionary = actor.inventory.find(actor.inventory.get(slot))
-		lines.append("%s: %s" % ["Weapon" if slot == "equipped_uid" else "Chest", (str(item.get("material", "")).capitalize() + " " + str(item.get("definition", "")).capitalize()).strip_edges() if not item.is_empty() else "None"])
-	var regions := ["Head", "Right arm", "Left arm", "Chest", "Hands", "Legs", "Feet"]
-	for region in 7:
-		lines.append("%s protection: %d" % [regions[region], int((100 - actor.combat_stats.armor(actor, region)) / 5)])
+	var catalog = preload("res://scripts/item_catalog.gd")
+	var weapon: Dictionary = actor.inventory.find(actor.inventory.equipped_uid)
+	lines.append("Weapon: %s" % ((str(weapon.get("material", "")).capitalize() + " " + catalog.label(weapon.definition)).strip_edges() if not weapon.is_empty() else "None"))
+	for region in catalog.ARMOR_SLOTS.size():
+		var slot: String = catalog.ARMOR_SLOTS[region]
+		var armor: Dictionary = actor.inventory.find(actor.inventory.armor_slots[slot])
+		var protection := int((100 - actor.combat_stats.armor(actor, region)) / 5)
+		lines.append("%s protection: %d | %s" % [catalog.SLOT_NAMES[slot], protection, catalog.label(armor.definition) if not armor.is_empty() else "None"])
 	var motion: Dictionary = actor.movement.resolve()
 	lines.append("\nWalk %.3f m/s | Run %.3f m/s | Jump %.3f m/s" % [motion.walk_speed, motion.run_speed, motion.jump_velocity])
 	lines.append("Protection: higher is better; applies only to the listed region.\nT opens rest. Progression and magic are not implemented.")

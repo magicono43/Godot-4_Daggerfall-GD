@@ -1,3 +1,8 @@
+# Current armor extension
+
+Armor now uses schema5, which supersedes the earlier schema4 compatibility
+notes below. Fall mechanics are unchanged. See ARMOR_EQUIPMENT.md.
+
 # Fall damage and landing feedback
 
 Fall damage now applies to real unsupported drops. There are no new controls,

@@ -16,7 +16,7 @@ func run() -> void:
 	check(player.combat_stats.stat("short_blade") == 50 and player.combat_stats.stat("blunt_weapon") == 50 and player.combat_stats.stat("hand_to_hand") == 50, "Active weapon skills are50; other combat skills remain unchanged")
 	var start: Dictionary = level.classic.section.definition.prototype.player_start
 	check(player.position.distance_to(level.classic.to_world(start.position_native)) < 0.02 and player.position.distance_to(Vector3(7.25, 12.8, 16.2)) < 0.02, "Original authored hall start beside great stairs is unchanged")
-	check(player.inventory.items.size() == 7 and player.inventory.has_dagger() and player.inventory.armor_uid == 0, "Test inventory grants equipment without changing initial dagger or auto-equipping armor")
+	check(player.inventory.items.size() == 13 and player.inventory.has_dagger() and player.inventory.armor_uid == 0, "Test inventory grants equipment without changing initial dagger or auto-equipping armor")
 	var counts := {}
 	var mace_uid := 0
 	var armor_uid := 0
@@ -24,7 +24,7 @@ func run() -> void:
 		counts[item.definition] = counts.get(item.definition, 0) + int(item.quantity)
 		if item.definition == "mace": mace_uid = int(item.uid)
 		if item.definition == "steel_cuirass": armor_uid = int(item.uid)
-	check(counts == {"dagger": 2, "mace": 1, "steel_cuirass": 1, "healing_potion": 2, "gold": 12, "twigs": 2}, "Mace, cuirass, spare dagger, doses and test materials are immediately owned")
+	check(counts == {"dagger": 2, "mace": 1, "steel_cuirass": 1, "healing_potion": 2, "gold": 12, "twigs": 2, "steel_helm": 1, "steel_right_pauldron": 1, "steel_left_pauldron": 1, "steel_gauntlets": 1, "steel_greaves": 1, "steel_boots": 1}, "Mace, cuirass, spare dagger, doses and test materials are immediately owned")
 	check(hall.creature_name == "Bear" and hall.sprite_payload.archive == 259 and not hall.can_open_doors, "Hall opponent is original grizzly bear; chamber and primary-enemy alias remain separate")
 	check(not level.enemy.approach_enabled and hall != level.enemy, "Chamber placeholder stays passive with its first-enemy alias")
 	var source: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://tests/combat_source.json"))
@@ -132,7 +132,7 @@ func run() -> void:
 	level = current_scene
 	player = level.player
 	hall = level.world_root.get_node("hall_combat_target")
-	check(player.health.current == 300 and player.inventory.items.size() == 7 and hall.creature_name == "Bear" and hall.health.current == 30, "Fresh restart restores generous testing inventory/health and a living bear")
+	check(player.health.current == 300 and player.inventory.items.size() == 13 and hall.creature_name == "Bear" and hall.health.current == 30, "Fresh restart restores generous testing inventory/health and a living bear")
 	print("BEAR RESULTS: %d/%d" % [results.size()-failures.size(), results.size()])
 	FileAccess.open("res://tests/bear_results.txt", FileAccess.WRITE).store_string("\n".join(results))
 	quit(0 if failures.is_empty() else 1)

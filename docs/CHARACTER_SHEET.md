@@ -1,3 +1,8 @@
+# Current armor extension
+
+Armor now shows seven independent equipped regions and items; schema5 replaces
+the former chest-only format. See ARMOR_EQUIPMENT.md.
+
 # Current extension: fatigue/rest
 
 Medical is now a tenth skill; Endurance drives fatigue capacity and recovery. The

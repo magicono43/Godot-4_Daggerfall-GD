@@ -1,3 +1,8 @@
+# Current armor extension
+
+All seven armor slots now protect equipped items and show regional protection.
+See ARMOR_EQUIPMENT.md for current schema5 and new test pieces.
+
 Current playtest grants mace, cuirass, spare dagger, healing doses and other test items at the unchanged hall spawn, with300HP. Open I to equip immediately. See BEAR_PLAYTEST.md; older loot-only acquisition notes below are historical.
 
 Current equipment supports an independent Steel cuirass chest slot in hall test loot. Weapons carry material metadata and source damage profiles. See COMBAT_RESOLUTION.md; earlier item counts and weapon-only equipment notes below are historical.

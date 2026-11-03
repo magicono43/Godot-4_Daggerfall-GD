@@ -1,0 +1,97 @@
+ERROR: Failed to open 'user://logs/godot2026-11-02T23.03.25.log'.
+   at: copy (core/io/dir_access.cpp:429)
+ERROR: Failed to open log file for writing: user://logs/godot.log
+   at: rotate_file (core/io/logger.cpp:169)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Accepted bear/300HP start adds six armor pieces to original test inventory position=(7.25, 12.8, 16.2) mode=walking
+PASS All seven armor slots start empty independently of readied dagger position=(7.25, 12.8, 16.2) mode=walking
+PASS Independent original armor icon dimensions/RGBA: steel_helm position=(7.25, 12.8, 16.2) mode=walking
+PASS Independent original armor icon dimensions/RGBA: steel_right_pauldron position=(7.25, 12.8, 16.2) mode=walking
+PASS Independent original armor icon dimensions/RGBA: steel_left_pauldron position=(7.25, 12.8, 16.2) mode=walking
+PASS Independent original armor icon dimensions/RGBA: steel_cuirass position=(7.25, 12.8, 16.2) mode=walking
+PASS Independent original armor icon dimensions/RGBA: steel_gauntlets position=(7.25, 12.8, 16.2) mode=walking
+PASS Independent original armor icon dimensions/RGBA: steel_greaves position=(7.25, 12.8, 16.2) mode=walking
+PASS Independent original armor icon dimensions/RGBA: steel_boots position=(7.25, 12.8, 16.2) mode=walking
+PASS Helmet removes1110 paper-doll mask pixels and preserves all other RGBA position=(7.25, 12.8, 16.2) mode=walking
+PASS Default texture decoding retains mask; inventory cleanup does not mutate world callers position=(7.25, 12.8, 16.2) mode=walking
+PASS Equip only correct source slot: head position=(7.25, 12.8, 16.2) mode=walking
+PASS Armor resolver and real incoming hit formula use matching region: head position=(7.25, 12.8, 16.2) mode=walking
+PASS Equipped armor cannot transfer or consume: head position=(7.25, 12.8, 16.2) mode=walking
+PASS Unequip restores naked region without touching weapon: head position=(7.25, 12.8, 16.2) mode=walking
+PASS Equip only correct source slot: right_arm position=(7.25, 12.8, 16.2) mode=walking
+PASS Armor resolver and real incoming hit formula use matching region: right_arm position=(7.25, 12.8, 16.2) mode=walking
+PASS Equipped armor cannot transfer or consume: right_arm position=(7.25, 12.8, 16.2) mode=walking
+PASS Unequip restores naked region without touching weapon: right_arm position=(7.25, 12.8, 16.2) mode=walking
+PASS Equip only correct source slot: left_arm position=(7.25, 12.8, 16.2) mode=walking
+PASS Armor resolver and real incoming hit formula use matching region: left_arm position=(7.25, 12.8, 16.2) mode=walking
+PASS Equipped armor cannot transfer or consume: left_arm position=(7.25, 12.8, 16.2) mode=walking
+PASS Unequip restores naked region without touching weapon: left_arm position=(7.25, 12.8, 16.2) mode=walking
+PASS Equip only correct source slot: chest position=(7.25, 12.8, 16.2) mode=walking
+PASS Armor resolver and real incoming hit formula use matching region: chest position=(7.25, 12.8, 16.2) mode=walking
+PASS Equipped armor cannot transfer or consume: chest position=(7.25, 12.8, 16.2) mode=walking
+PASS Unequip restores naked region without touching weapon: chest position=(7.25, 12.8, 16.2) mode=walking
+PASS Equip only correct source slot: hands position=(7.25, 12.8, 16.2) mode=walking
+PASS Armor resolver and real incoming hit formula use matching region: hands position=(7.25, 12.8, 16.2) mode=walking
+PASS Equipped armor cannot transfer or consume: hands position=(7.25, 12.8, 16.2) mode=walking
+PASS Unequip restores naked region without touching weapon: hands position=(7.25, 12.8, 16.2) mode=walking
+PASS Equip only correct source slot: legs position=(7.25, 12.8, 16.2) mode=walking
+PASS Armor resolver and real incoming hit formula use matching region: legs position=(7.25, 12.8, 16.2) mode=walking
+PASS Equipped armor cannot transfer or consume: legs position=(7.25, 12.8, 16.2) mode=walking
+PASS Unequip restores naked region without touching weapon: legs position=(7.25, 12.8, 16.2) mode=walking
+PASS Equip only correct source slot: feet position=(7.25, 12.8, 16.2) mode=walking
+PASS Armor resolver and real incoming hit formula use matching region: feet position=(7.25, 12.8, 16.2) mode=walking
+PASS Equipped armor cannot transfer or consume: feet position=(7.25, 12.8, 16.2) mode=walking
+PASS Unequip restores naked region without touching weapon: feet position=(7.25, 12.8, 16.2) mode=walking
+PASS Equipment operations preserve item identities/quantities without copies position=(7.25, 12.8, 16.2) mode=walking
+PASS Same-slot replacement retains displaced item and leaves chest alias intact position=(7.25, 12.8, 16.2) mode=walking
+PASS Displaced armor becomes transferable without losing UID position=(7.25, 12.8, 16.2) mode=walking
+PASS Inventory preview/current regional protection: head position=(7.25, 12.8, 16.2) mode=walking
+PASS Actual Equip click updates slot/transfer guard: head position=(7.25, 12.8, 16.2) mode=walking
+PASS Inventory preview/current regional protection: right_arm position=(7.25, 12.8, 16.2) mode=walking
+PASS Actual Equip click updates slot/transfer guard: right_arm position=(7.25, 12.8, 16.2) mode=walking
+PASS Inventory preview/current regional protection: left_arm position=(7.25, 12.8, 16.2) mode=walking
+PASS Actual Equip click updates slot/transfer guard: left_arm position=(7.25, 12.8, 16.2) mode=walking
+PASS Inventory preview/current regional protection: chest position=(7.25, 12.8, 16.2) mode=walking
+PASS Actual Equip click updates slot/transfer guard: chest position=(7.25, 12.8, 16.2) mode=walking
+PASS Inventory preview/current regional protection: hands position=(7.25, 12.8, 16.2) mode=walking
+PASS Actual Equip click updates slot/transfer guard: hands position=(7.25, 12.8, 16.2) mode=walking
+PASS Inventory preview/current regional protection: legs position=(7.25, 12.8, 16.2) mode=walking
+PASS Actual Equip click updates slot/transfer guard: legs position=(7.25, 12.8, 16.2) mode=walking
+PASS Inventory preview/current regional protection: feet position=(7.25, 12.8, 16.2) mode=walking
+PASS Actual Equip click updates slot/transfer guard: feet position=(7.25, 12.8, 16.2) mode=walking
+PASS All slots coexist with equipped dagger position=(7.25, 12.8, 16.2) mode=walking
+PASS Character sheet reads equipped item and actual region defense: head position=(7.25, 12.8, 16.2) mode=walking
+PASS Character sheet reads equipped item and actual region defense: right_arm position=(7.25, 12.8, 16.2) mode=walking
+PASS Character sheet reads equipped item and actual region defense: left_arm position=(7.25, 12.8, 16.2) mode=walking
+PASS Character sheet reads equipped item and actual region defense: chest position=(7.25, 12.8, 16.2) mode=walking
+PASS Character sheet reads equipped item and actual region defense: hands position=(7.25, 12.8, 16.2) mode=walking
+PASS Character sheet reads equipped item and actual region defense: legs position=(7.25, 12.8, 16.2) mode=walking
+PASS Character sheet reads equipped item and actual region defense: feet position=(7.25, 12.8, 16.2) mode=walking
+PASS Equipped helmet refuses corpse deposit position=(7.25, 12.8, 16.2) mode=walking
+PASS Unequipped helmet deposits into open corpse retaining UID position=(7.25, 12.8, 16.2) mode=walking
+PASS Corpse helmet previews but cannot equip while unowned position=(7.25, 12.8, 16.2) mode=walking
+PASS Taking deposited helmet restores same owned instance position=(7.25, 12.8, 16.2) mode=walking
+PASS Unequipped helmet can ground-drop through existing support rules position=(7.25, 12.8, 16.2) mode=walking
+PASS Ground pile owns original armor UID position=(7.25, 12.8, 16.2) mode=walking
+PASS Ground armor can be recovered and equipped position=(7.25, 12.8, 16.2) mode=walking
+PASS Schema5 saves all seven independent slot references position=(7.25, 12.8, 16.2) mode=walking
+PASS Invalid slot save rejects before scene replacement: missing position=(7.25, 12.8, 16.2) mode=walking
+PASS Invalid slot save rejects before scene replacement: extra position=(7.25, 12.8, 16.2) mode=walking
+PASS Invalid slot save rejects before scene replacement: wrong_slot position=(7.25, 12.8, 16.2) mode=walking
+PASS Invalid slot save rejects before scene replacement: unknown_uid position=(7.25, 12.8, 16.2) mode=walking
+PASS Invalid slot save rejects before scene replacement: duplicate position=(7.25, 12.8, 16.2) mode=walking
+PASS Invalid slot save rejects before scene replacement: weapon position=(7.25, 12.8, 16.2) mode=walking
+PASS Invalid slot save rejects before scene replacement: fraction position=(7.25, 12.8, 16.2) mode=walking
+PASS Invalid slot save rejects before scene replacement: enemy position=(7.25, 12.8, 16.2) mode=walking
+PASS Invalid slot save rejects before scene replacement: version position=(7.25, 12.8, 16.2) mode=walking
+PASS Full equipment writes isolated slot position=(7.25, 12.8, 16.2) mode=walking
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS L restores every slot/weapon UID and prior captured controls position=(7.25, 12.8, 16.2) mode=reset
+PASS Loaded regional protection is derived from restored inventory, with300HP preserved position=(7.25, 12.8, 16.2) mode=reset
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS R restores authored pieces unequipped and original equipped dagger position=(7.25, 12.88333, 16.2) mode=walking
+ARMOR RESULTS: 85/85

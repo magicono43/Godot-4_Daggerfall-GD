@@ -84,6 +84,90 @@
       "rgba_sha256": "29e3593688ec7a98bb2a1bf6761aa85c524842bee7c337319eaf4225970107dc",
       "transparent_pixels": 646,
       "removed_mask_pixels": 0
+    },
+    "steel_helm": {
+      "template": 107,
+      "archive": 249,
+      "record": 27,
+      "pixels": [
+        44,
+        37
+      ],
+      "compression": 4360,
+      "file_sha256": "d1b13be7f0d5b4c06d6fb563356f623c90dab004f392d4478391cca0938706c7",
+      "rgba_sha256": "9407c11d4e0586f41ebec60ca213425b9eec9705c12e8a16dfe3c56d377101b1",
+      "transparent_pixels": 1331,
+      "removed_mask_pixels": 1110
+    },
+    "steel_right_pauldron": {
+      "template": 106,
+      "archive": 249,
+      "record": 23,
+      "pixels": [
+        25,
+        55
+      ],
+      "compression": 4360,
+      "file_sha256": "d1b13be7f0d5b4c06d6fb563356f623c90dab004f392d4478391cca0938706c7",
+      "rgba_sha256": "ba7b8a9fdc4c50f7a58784c6ac894999d408bd16a112c202c90e18b58d307544",
+      "transparent_pixels": 1005,
+      "removed_mask_pixels": 0
+    },
+    "steel_left_pauldron": {
+      "template": 105,
+      "archive": 249,
+      "record": 18,
+      "pixels": [
+        33,
+        57
+      ],
+      "compression": 4360,
+      "file_sha256": "d1b13be7f0d5b4c06d6fb563356f623c90dab004f392d4478391cca0938706c7",
+      "rgba_sha256": "97a2544c5ecc873387c9df8cea027862d4448cb92df3a44c317c341b6048a0dc",
+      "transparent_pixels": 1051,
+      "removed_mask_pixels": 0
+    },
+    "steel_gauntlets": {
+      "template": 103,
+      "archive": 249,
+      "record": 9,
+      "pixels": [
+        63,
+        29
+      ],
+      "compression": 4360,
+      "file_sha256": "d1b13be7f0d5b4c06d6fb563356f623c90dab004f392d4478391cca0938706c7",
+      "rgba_sha256": "776401e13c66cef20a54e25ce3401115222d6eee10eac0319dca5a62c5b15ba5",
+      "transparent_pixels": 1226,
+      "removed_mask_pixels": 0
+    },
+    "steel_greaves": {
+      "template": 104,
+      "archive": 249,
+      "record": 12,
+      "pixels": [
+        46,
+        49
+      ],
+      "compression": 4360,
+      "file_sha256": "d1b13be7f0d5b4c06d6fb563356f623c90dab004f392d4478391cca0938706c7",
+      "rgba_sha256": "6d33a6d4d9fc34b4acc3aba9c3e446cd7a6fb330215c7c20547bd1d0087bb08f",
+      "transparent_pixels": 974,
+      "removed_mask_pixels": 0
+    },
+    "steel_boots": {
+      "template": 108,
+      "archive": 249,
+      "record": 1,
+      "pixels": [
+        63,
+        42
+      ],
+      "compression": 4360,
+      "file_sha256": "d1b13be7f0d5b4c06d6fb563356f623c90dab004f392d4478391cca0938706c7",
+      "rgba_sha256": "ed5f26e3d7afd50a0f1d952fb19df853efab340a3aab98ecda079a69c8fd8a4b",
+      "transparent_pixels": 1556,
+      "removed_mask_pixels": 0
     }
   }
 }

@@ -86,9 +86,13 @@ func configure_bear(attributes: Dictionary) -> void:
 	values = {"strength": int(attributes.strength), "agility": int(attributes.agility), "luck": int(attributes.luck), "short_blade": 50, "blunt_weapon": 50, "hand_to_hand": 50, "dodging": 50, "critical_strike": 50, "reflexes": 2}
 
 func armor(body: CharacterBody3D, region: int) -> int:
-	# DFU's internal value is lower-is-better. Steel cuirass reduces chest by 9*5.
+	# Slot order follows DFU's seven body regions. Armor affects only its region.
 	var owned = body.get("inventory")
-	return base_armor - (45 if region == 3 and owned != null and owned.armor_uid != 0 else 0)
+	var catalog = preload("res://scripts/item_catalog.gd")
+	if owned == null or region < 0 or region >= catalog.ARMOR_SLOTS.size():
+		return base_armor
+	var uid: int = owned.armor_slots[catalog.ARMOR_SLOTS[region]]
+	return base_armor - catalog.armor_protection(owned.find(uid)) * 5
 
 func diagnostic(body: CharacterBody3D) -> String:
 	return "Combat: STR %d AGI %d LUC %d | Short %d Blunt %d Dodge %d Crit %d\nChest protection %d | internal armor %d (lower is better)%s" % [stat("strength"), stat("agility"), stat("luck"), stat("short_blade"), stat("blunt_weapon"), stat("dodging"), stat("critical_strike"), int((100 - armor(body, 3)) / 5), armor(body, 3), "\n" + error if not error.is_empty() else ""]

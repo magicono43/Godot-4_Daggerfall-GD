@@ -4,7 +4,13 @@ const Catalog = preload("res://scripts/item_catalog.gd")
 static var next_uid := 1
 var items: Array[Dictionary] = []
 var equipped_uid := 0
-var armor_uid := 0
+var armor_slots: Dictionary = {"head":0, "right_arm":0, "left_arm":0, "chest":0, "hands":0, "legs":0, "feet":0}
+# Legacy chest API remains an alias; equipment has one authoritative slot map.
+var armor_uid: int:
+	get:
+		return int(armor_slots.chest)
+	set(value):
+		armor_slots.chest = value
 signal changed
 
 func add_item(definition: String, quantity: int = 1) -> int:
@@ -68,8 +74,9 @@ func equip(uid: int) -> bool:
 	var item := find(uid)
 	if item.is_empty() or not Catalog.equippable(item):
 		return false
-	if Catalog.DEFINITIONS[item.definition].get("slot", "") == "chest":
-		armor_uid = uid
+	var slot := Catalog.armor_slot(item)
+	if not slot.is_empty():
+		armor_slots[slot] = uid
 	else:
 		equipped_uid = uid
 	changed.emit()
@@ -80,14 +87,16 @@ func has_dagger() -> bool:
 	return not item.is_empty() and item.definition == "dagger"
 
 func unequip(uid: int = 0) -> void:
-	if uid != 0 and uid == armor_uid:
-		armor_uid = 0
-	elif uid == 0 or uid == equipped_uid:
+	if uid == 0 or uid == equipped_uid:
 		equipped_uid = 0
+	elif uid != 0:
+		for slot in Catalog.ARMOR_SLOTS:
+			if armor_slots[slot] == uid:
+				armor_slots[slot] = 0
 	changed.emit()
 
 func is_equipped(uid: int) -> bool:
-	return uid != 0 and uid in [equipped_uid, armor_uid]
+	return uid != 0 and (uid == equipped_uid or uid in armor_slots.values())
 
 func consume_one(uid: int) -> bool:
 	var item := find(uid)

@@ -1,3 +1,9 @@
+# Current armor extension
+
+Current schema5 saves seven armor_slots UIDs per collection, validates correct
+owned slot references and rejects older slots. Make a fresh K save. See
+ARMOR_EQUIPMENT.md. Earlier schema notes below are historical.
+
 # Fall-damage note (schema4 unchanged)
 
 Existing schema4 slots remain compatible. Pending fall history/feedback are

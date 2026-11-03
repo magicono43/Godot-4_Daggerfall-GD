@@ -195,7 +195,7 @@ func run() -> void:
 	check(level.world_loot.authored_piles.chamber_treasure == null and level.persistence.snapshot().drops.size() == 2, "Delayed initialization cannot regenerate loot after load")
 	# Restore a populated authored pile as well as the depleted form above.
 	var with_treasure := expected.duplicate(true)
-	with_treasure.authored.chamber_treasure = {"id": "chamber_treasure", "position": [19.375, 1.025, 28.6], "inventory": {"items": [{"uid": 500, "definition": "gold", "quantity": 7}], "equipped_uid": 0, "armor_uid": 0}}
+	with_treasure.authored.chamber_treasure = {"id": "chamber_treasure", "position": [19.375, 1.025, 28.6], "inventory": {"items": [{"uid": 500, "definition": "gold", "quantity": 7}], "equipped_uid": 0, "armor_slots": {"head":0,"right_arm":0,"left_arm":0,"chest":0,"hands":0,"legs":0,"feet":0}}}
 	FileAccess.open(PATH, FileAccess.WRITE).store_string(JSON.stringify(with_treasure))
 	check(await save.load_slot(), "Partly looted authored treasure loads")
 	bind()

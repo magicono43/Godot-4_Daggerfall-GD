@@ -1,0 +1,85 @@
+PASS Accepted bear/300HP start adds six armor pieces to original test inventory
+PASS All seven armor slots start empty independently of readied dagger
+PASS Independent original armor icon dimensions/RGBA: steel_helm
+PASS Independent original armor icon dimensions/RGBA: steel_right_pauldron
+PASS Independent original armor icon dimensions/RGBA: steel_left_pauldron
+PASS Independent original armor icon dimensions/RGBA: steel_cuirass
+PASS Independent original armor icon dimensions/RGBA: steel_gauntlets
+PASS Independent original armor icon dimensions/RGBA: steel_greaves
+PASS Independent original armor icon dimensions/RGBA: steel_boots
+PASS Helmet removes1110 paper-doll mask pixels and preserves all other RGBA
+PASS Default texture decoding retains mask; inventory cleanup does not mutate world callers
+PASS Equip only correct source slot: head
+PASS Armor resolver and real incoming hit formula use matching region: head
+PASS Equipped armor cannot transfer or consume: head
+PASS Unequip restores naked region without touching weapon: head
+PASS Equip only correct source slot: right_arm
+PASS Armor resolver and real incoming hit formula use matching region: right_arm
+PASS Equipped armor cannot transfer or consume: right_arm
+PASS Unequip restores naked region without touching weapon: right_arm
+PASS Equip only correct source slot: left_arm
+PASS Armor resolver and real incoming hit formula use matching region: left_arm
+PASS Equipped armor cannot transfer or consume: left_arm
+PASS Unequip restores naked region without touching weapon: left_arm
+PASS Equip only correct source slot: chest
+PASS Armor resolver and real incoming hit formula use matching region: chest
+PASS Equipped armor cannot transfer or consume: chest
+PASS Unequip restores naked region without touching weapon: chest
+PASS Equip only correct source slot: hands
+PASS Armor resolver and real incoming hit formula use matching region: hands
+PASS Equipped armor cannot transfer or consume: hands
+PASS Unequip restores naked region without touching weapon: hands
+PASS Equip only correct source slot: legs
+PASS Armor resolver and real incoming hit formula use matching region: legs
+PASS Equipped armor cannot transfer or consume: legs
+PASS Unequip restores naked region without touching weapon: legs
+PASS Equip only correct source slot: feet
+PASS Armor resolver and real incoming hit formula use matching region: feet
+PASS Equipped armor cannot transfer or consume: feet
+PASS Unequip restores naked region without touching weapon: feet
+PASS Equipment operations preserve item identities/quantities without copies
+PASS Same-slot replacement retains displaced item and leaves chest alias intact
+PASS Displaced armor becomes transferable without losing UID
+PASS Inventory preview/current regional protection: head
+PASS Actual Equip click updates slot/transfer guard: head
+PASS Inventory preview/current regional protection: right_arm
+PASS Actual Equip click updates slot/transfer guard: right_arm
+PASS Inventory preview/current regional protection: left_arm
+PASS Actual Equip click updates slot/transfer guard: left_arm
+PASS Inventory preview/current regional protection: chest
+PASS Actual Equip click updates slot/transfer guard: chest
+PASS Inventory preview/current regional protection: hands
+PASS Actual Equip click updates slot/transfer guard: hands
+PASS Inventory preview/current regional protection: legs
+PASS Actual Equip click updates slot/transfer guard: legs
+PASS Inventory preview/current regional protection: feet
+PASS Actual Equip click updates slot/transfer guard: feet
+PASS All slots coexist with equipped dagger
+PASS Character sheet reads equipped item and actual region defense: head
+PASS Character sheet reads equipped item and actual region defense: right_arm
+PASS Character sheet reads equipped item and actual region defense: left_arm
+PASS Character sheet reads equipped item and actual region defense: chest
+PASS Character sheet reads equipped item and actual region defense: hands
+PASS Character sheet reads equipped item and actual region defense: legs
+PASS Character sheet reads equipped item and actual region defense: feet
+PASS Equipped helmet refuses corpse deposit
+PASS Unequipped helmet deposits into open corpse retaining UID
+PASS Corpse helmet previews but cannot equip while unowned
+PASS Taking deposited helmet restores same owned instance
+PASS Unequipped helmet can ground-drop through existing support rules
+PASS Ground pile owns original armor UID
+PASS Ground armor can be recovered and equipped
+PASS Schema5 saves all seven independent slot references
+PASS Invalid slot save rejects before scene replacement: missing
+PASS Invalid slot save rejects before scene replacement: extra
+PASS Invalid slot save rejects before scene replacement: wrong_slot
+PASS Invalid slot save rejects before scene replacement: unknown_uid
+PASS Invalid slot save rejects before scene replacement: duplicate
+PASS Invalid slot save rejects before scene replacement: weapon
+PASS Invalid slot save rejects before scene replacement: fraction
+PASS Invalid slot save rejects before scene replacement: enemy
+PASS Invalid slot save rejects before scene replacement: version
+PASS Full equipment writes isolated slot
+PASS L restores every slot/weapon UID and prior captured controls
+PASS Loaded regional protection is derived from restored inventory, with300HP preserved
+PASS R restores authored pieces unequipped and original equipped dagger
