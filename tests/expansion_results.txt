@@ -98,6 +98,7 @@ PASS Walk native route [512, 0, 800]
 PASS Walk native route [512, 0, 1000]
 PASS Walk native route [512, 0, 1200]
 PASS Walk native route [510, 0, 1672]
+PASS Continuous stair route, giant-stair walking/running/jumps and return cause no fall damage
 PASS Great hall original ceiling closes the 22.4 m high chamber
 PASS Tall original west wall provides continuous collision for future climbing
 PASS Great hall original floor supports the wall-test area

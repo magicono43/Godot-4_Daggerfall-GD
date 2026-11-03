@@ -88,6 +88,10 @@ func run() -> void:
 		quit(1)
 		return
 	player = level.player
+	# Isolate traversal health from stationary enemy retaliation.
+	for target in level.enemies:
+		target.melee.enabled = false
+	var initial_health: int = player.health.current
 	player.movement.profile.values = preload("res://scripts/movement_profile.gd").DEFAULTS.duplicate(true)
 	print("EXPANSION_COUNTS ", level.model_nodes.size(), " triangles=", level.classic.triangle_count, " materials=", level.classic.texture_count)
 	# Rounded bends must be traversed between their portals, not through the
@@ -124,6 +128,7 @@ func run() -> void:
 			if route[i] is Array and not await walk(route[i], true):
 				break
 		await walk([510,0,1672])
+	check(player.health.current == initial_health, "Continuous stair route, giant-stair walking/running/jumps and return cause no fall damage")
 	var space := player.get_world_3d().direct_space_state
 	var roof_ray := PhysicsRayQueryParameters3D.create(level.classic.to_world([640,-600,900]), level.classic.to_world([640,-1500,900]), 1, [player.get_rid()])
 	var roof := space.intersect_ray(roof_ray)

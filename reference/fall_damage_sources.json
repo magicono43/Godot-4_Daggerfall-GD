@@ -1,0 +1,25 @@
+{
+  "repository": "https://github.com/Interkarma/daggerfall-unity",
+  "commit": "4e78e1412b17b60f4d5d6073825775aa5ae95139",
+  "files": {
+    "AcrobatMotor.cs": "0d136504868b75228debe31ff3e70d7eed48b966c4e84cd9b5995da65f493e75",
+    "PlayerMotor.cs": "60ba5df2a7dc3b0f3eac604be012076e0b0f2c0d808fd5c1f675c6c42c59d391",
+    "PlayerHealth.cs": "49127ce1fbeb149cc5fb7b273fb739ede8cdf4fae43c909a43dba2613be82bfb",
+    "PlayerFootsteps.cs": "8c9ac8419f7d0bfd6df4ffb21de08bfefc03c35c8828db34d2becd8157a5715b",
+    "ClimbingMotor.cs": "4190841d6193b4af9330f6290eb6720b23668ce7ee35a64a00b80ad70f438627",
+    "SoundClips.cs": "fba0cc8cc19b9186d3f455f1660be81051d8a4c48f6b8b7edb46bfe81b4ce5bf"
+  },
+  "rules": {
+    "damage_threshold_metres": 5.0,
+    "hard_landing_threshold_metres": 2.5,
+    "hp_per_excess_metre": 5.0,
+    "fall_damage_sound_ordinal": 91,
+    "hard_landing_sound_ordinal": 92
+  },
+  "notes": [
+    "AcrobatMotor.CheckInitFall/CheckFallingDamage measures net departure-to-landing displacement; no direct Jumping-skill mitigation.",
+    "PlayerHealth.ApplyPlayerFallDamage truncates5*(distance-5) to integer damage. PlayerFootsteps dispatches the original one-shot cues.",
+    "Project integration uses feet coordinates, verified stair support, explicit climbing suspension, and clears fall history on resets/load/teleports. Normal movement, jump height and collision tuning remain unchanged.",
+    "Swimming/slowfall/levitation/rappelling are not implemented by this milestone."
+  ]
+}

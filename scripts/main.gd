@@ -319,6 +319,8 @@ func _process(_delta: float) -> void:
 		status.text += "\nEnemy has noticed you."
 	if player.combat.feedback_time > 0 and player.controls_active:
 		prompt.text = player.combat.feedback
+	if player.fall_feedback_time > 0 and player.controls_active and not player.modal_open:
+		prompt.text = player.fall_feedback
 	for target in enemies:
 		if target.name == "hall_combat_target":
 			status.text += "\nHall target: %d / %d HP%s" % [target.health.current, target.health.maximum, " - defeated (R to restart)" if target.health.current == 0 else ""]

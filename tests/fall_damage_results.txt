@@ -1,0 +1,41 @@
+PASS Pinned threshold/truncation at 0.00 metres
+PASS Pinned threshold/truncation at 2.50 metres
+PASS Pinned threshold/truncation at 2.51 metres
+PASS Pinned threshold/truncation at 5.00 metres
+PASS Pinned threshold/truncation at 5.01 metres
+PASS Pinned threshold/truncation at 5.19 metres
+PASS Pinned threshold/truncation at 5.20 metres
+PASS Pinned threshold/truncation at 6.00 metres
+PASS Pinned threshold/truncation at 12.00 metres
+PASS Invalid fall distances reject
+PASS Jump apex adds no net drop on same-level landing
+PASS Supported ticks cannot repeat landing event
+PASS Jump off a ledge uses departure level, not peak height
+PASS Out-of-motor teleport discards previous fall
+PASS Climbing release starts a fresh fall at release height
+PASS Original ordinal landing samples91/92 decode
+PASS Normal actual jump causes no damage or hard-landing audio
+PASS High jump on same floor remains safe without apex-based damage
+PASS 3.2m actual fall gives one original hard-landing cue without damage
+PASS Grounded frames cannot repeat hard-landing sound
+PASS Actual 8.2m drop uses measured feet distance and pinned formula
+PASS Damaging fall gives one original cue, health flash and explicit feedback
+PASS Landing damage applies only once
+PASS Crouched fall uses same feet displacement, with posture retained
+PASS Airborne modal pauses and preserves pending fall
+PASS Closing modal resumes the same once-only fall damage
+PASS Teleport while airborne cannot retain damage from prior height
+PASS Real climb owns vertical motion without accumulating fall distance
+PASS Controlled eight-metre wall descent lands safely
+PASS Climbing ejection measures real free fall after release
+PASS Backward ledge entry hands off to climbing without fall damage
+PASS Backward-entry descent remains safe through ground handover
+PASS Continuous forward walk off eight-metre platform causes one real fall
+PASS High-skill jump off platform uses the same net drop as walking off
+PASS Released mouse does not erase a fall while gravity continues
+PASS Existing below-world reset clears fall history without phantom damage
+PASS Fall damage also works against original hall floor geometry
+PASS Damaged settled player can save using unchanged schema4
+PASS L clears pending fall and feedback while restoring saved health
+PASS Fatal landing uses normal death cleanup once
+PASS R restores accepted bear baseline with clean fall state

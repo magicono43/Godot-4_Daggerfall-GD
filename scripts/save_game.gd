@@ -307,6 +307,8 @@ func apply(data: Dictionary) -> void:
 	p.combat.cancel()
 	p.combat.sheathed = state.sheathed
 	p.climbing.reset()
+	p.falling.reset()
+	p.fall_feedback_time = 0.0
 	p.crouch.reset(p)
 	if state.crouched:
 		p.crouch.set_height(p, p.crouch.HEIGHT)

@@ -3,7 +3,7 @@ extends Node
 signal played(event: String, sound_id: int, spatial: bool)
 const EVENTS := {
 	"draw_mace": [413], "miss_mace": [347], "draw": [377], "miss": [106], "impact": [108, 109, 110, 111, 112],
-	"wall": [433], "door": [7], "player_hit": [110, 111], "death": [15],
+	"fall_damage": [91], "fall_hard": [92], "wall": [433], "door": [7], "player_hit": [110, 111], "death": [15],
 	"parry": [428, 429, 430, 431, 432, 433, 434, 435, 436],
 	"skeleton_move": [160], "skeleton_bark": [161], "skeleton_attack": [162],
 	"bear_move": [127], "bear_bark": [128], "bear_attack": [129],

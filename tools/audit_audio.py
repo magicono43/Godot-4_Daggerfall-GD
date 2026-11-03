@@ -24,7 +24,7 @@ for index in range(count):
                         pcm_sha256=hashlib.sha256(signed).hexdigest()))
     offset += size
 assert offset == directory
-selected = [7, 15, 106, 108, 109, 110, 111, 112, 160, 161, 162, 300, 376, 377, 413, 347, 127, 128, 129, 428, 429, 430, 431, 432, 433, 434, 435, 436]
+selected = [7, 15, 91, 92, 106, 108, 109, 110, 111, 112, 160, 161, 162, 300, 376, 377, 413, 347, 127, 128, 129, 428, 429, 430, 431, 432, 433, 434, 435, 436]
 fixture = dict(count=count, unique_ids=len({r["id"] for r in records}),
                records=[records[i] for i in selected])
 (ROOT / "tests" / "audio_samples.json").write_text(

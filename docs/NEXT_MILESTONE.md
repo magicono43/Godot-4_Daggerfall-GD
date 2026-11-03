@@ -1,3 +1,8 @@
+# Current status: fall damage implemented; user playtest pending
+
+The user accepted fatigue/rest and authorized fall damage next. See FALL_DAMAGE.md
+and the latest HANDOFF. No subsequent milestone is selected. Earlier entries are history.
+
 # Current status: fatigue/rest implemented; user playtest pending
 
 The character sheet was accepted by the user, who then authorized basic fatigue

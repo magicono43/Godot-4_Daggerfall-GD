@@ -15,6 +15,9 @@ const Steps = preload("res://scripts/step_solver.gd")
 var movement := Movement.new()
 var character := preload("res://scripts/character_state.gd").new()
 var fatigue := preload("res://scripts/fatigue_model.gd").new()
+var falling := preload("res://scripts/fall_damage.gd").new()
+var fall_feedback := ""
+var fall_feedback_time := 0.0
 const Climbing = preload("res://scripts/climbing_motor.gd")
 var climbing := Climbing.new()
 const Crouching = preload("res://scripts/crouch_motor.gd")
@@ -154,11 +157,13 @@ func _physics_process(delta: float) -> void:
 	if modal_open:
 		return
 	damage_flash = maxf(0.0, damage_flash - delta)
+	fall_feedback_time = maxf(0.0, fall_feedback_time - delta)
 	if is_dead():
 		return
 	combat.tick(self, delta)
 	update_interaction()
 	var grounded := is_grounded()
+	falling.begin(global_position, grounded)
 	grounded_time = grounded_time + delta if grounded else 0.0
 	var tuning: Dictionary = movement.profile.values.locomotion
 	var jump: Dictionary = movement.profile.values.jump
@@ -172,6 +177,7 @@ func _physics_process(delta: float) -> void:
 		climbing.attach_time = 0.0
 		climbing.tracked = false
 	if (climbing.active or (not crouch.active and not fatigue.exhausted())) and climbing.tick(self, delta, input, resolved):
+		falling.suspend(global_position)
 		tick_fatigue(delta, "climbing")
 		return
 	stair_supported = false
@@ -247,9 +253,16 @@ func _physics_process(delta: float) -> void:
 		# Cancel the whole grounded height change, including native capsule
 		# sliding and floor snap. Render updates then follow it continuously.
 		step_camera_offset -= global_position.y - before.origin.y
+	var landing := falling.finish(before.origin, global_position, is_grounded())
+	if not landing.is_empty():
+		land(landing)
+		if is_dead():
+			return
 	var moved := Vector2(global_position.x - before.origin.x, global_position.z - before.origin.z).length() > 0.0001
 	tick_fatigue(delta, "running" if is_running and moved else "normal")
 	if position.y < -10:
+		falling.reset()
+		fall_feedback_time = 0.0
 		climbing.reset()
 		combat.cancel()
 		position = spawn
@@ -260,6 +273,16 @@ func _physics_process(delta: float) -> void:
 		camera.position.y = EYE_HEIGHT
 		stair_supported = false
 		flight_horizontal = Vector3.ZERO
+
+func land(result: Dictionary) -> void:
+	if result.kind == "soft":
+		return
+	fall_feedback = "%d fall damage (%.1f m drop)" % [result.damage, result.distance] if result.damage > 0 else "Hard landing (%.1f m drop)" % result.distance
+	fall_feedback_time = 2.5
+	if result.damage > 0:
+		receive_damage(int(result.damage), "fall_damage")
+	elif is_instance_valid(combat_audio):
+		combat_audio.play("fall_damage" if result.kind == "damage" else "fall_hard")
 
 func tick_fatigue(delta: float, activity: String) -> void:
 	# Match simulation pause/capture semantics; UI time never drains fatigue.
@@ -284,6 +307,10 @@ func movement_debug_text() -> String:
 	var result := "Movement | Speed %.0f  Running %.0f  Jumping %.0f\nWalk %.3f  Run %.3f m/s  |  Jump %.3f m/s  Gravity %.2f m/s²\nActual horizontal %.3f m/s  |  %s  |  %s response\nF3 reload movement.cfg  |  F4 hide diagnostics" % [movement.stat("speed_attribute"), movement.stat("running_skill"), movement.stat("jumping_skill"), resolved.walk_speed, resolved.run_speed, resolved.jump_velocity, resolved.gravity, Vector2(velocity.x, velocity.z).length(), "grounded" if is_grounded() else "airborne", movement.profile.values.locomotion.response]
 	result += "\nClimb: %s | attach %.2f s | %.3f m/s" % ["attached" if climbing.active else climbing.transition, climbing.attach_time, resolved.climb_walk_speed]
 	result += "\nPosture: %s | capsule %.2f m | crouch %.3f / %.3f m/s" % ["stand blocked" if crouch.blocked else ("crouching" if crouch.active else "standing"), capsule_collision.shape.height, resolved.crouch_walk_speed, resolved.crouch_run_speed]
+	if falling.active:
+		result += "\nFall: airborne | departure feet %.2f m" % falling.departure_height
+	elif not falling.last_landing.is_empty():
+		result += "\nLast landing: %.2f m drop | %d HP" % [falling.last_landing.distance, falling.last_landing.damage]
 	if not movement.profile.error.is_empty():
 		result += "\n" + movement.profile.error
 	return result
@@ -292,15 +319,17 @@ func movement_debug_text() -> String:
 func is_dead() -> bool:
 	return health.current <= 0
 
-func receive_damage(amount: int) -> bool:
+func receive_damage(amount: int, sound_event: String = "player_hit") -> bool:
 	if not health.apply_damage(amount):
 		return false
 	damage_flash = 0.3
 	if is_instance_valid(combat_audio):
-		combat_audio.play("player_hit")
+		combat_audio.play(sound_event)
 	return true
 
 func die() -> void:
+	falling.reset()
+	fall_feedback_time = 0.0
 	controls_active = false
 	interact_target = null
 	combat.cancel()

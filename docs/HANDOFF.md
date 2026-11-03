@@ -1,3 +1,47 @@
+# Resume here — fall damage implemented; user playtest next
+
+The user accepted fatigue/rest, then authorized the proposed fall-damage milestone.
+Implemented source-backed net feet-drop tracking: >2.5m hard landing; >5m whole-HP
+int(5*(drop-5)) damage. Jumping skill still changes launch height, with no invented
+direct mitigation. Same-level jumps do not count apex height as a fall. Real
+platform walk-offs/jump-offs and original great-hall floor drops apply once.
+
+fall_damage.gd owns threshold/distance tracking, not movement or health. Feed it
+around the normal motor and after verified stair support. Suspend throughout
+climbing-owned ticks; controlled wall descent, backward ledge entry and handovers
+stay safe, while ejection/free fall starts from release height. Feet anchoring
+preserves crouch behavior. Modals preserve a paused fall; releasing mouse does not
+erase it while gravity continues. Explicit load/death/void reset clears transient
+history/feedback, and out-of-motor teleports clear stale distance at the next tick.
+No gravity/scale/collision/stair/camera/momentum tuning changed.
+
+Original DAGGER.SND ordinals91/92 are cached through existing read-only decoding.
+Hard/damaging landings play once; positive damage uses normal health/death/red
+flash with the fall cue, without an extra player_hit. A brief distance/HP message
+and F4 latest-landing diagnostics provide feedback. audit_audio.py independently
+pins both ordinal PCM hashes; no original assets are bundled. Source evidence and
+footsteps cache remain at the existing revision, see fall_damage_sources.json.
+
+Save schema4 is unchanged and existing schema4 slots remain compatible; no new K
+save is required. Pending fall state is transient because manual saves already
+require ground. User manual slot was not overwritten by tests. Same hall/bear,
+300HP, equipment, skills50, fatigue/rest, passive chamber, random-direction click
+attacks, compact section and editor-safe controls remain preserved.
+
+Validation: **1190/1190 full headless checks**,23 suites plus separate-process
+reload, tests/fall_complete_regression.log. **41/41 rendered fall checks** in
+tests/fall_damage_rendered.log. No failed assertions or script errors. Original
+hall feedback/health flash/diagnostics visually inspected in4:3 and widescreen.
+The expansion suite now disables retaliation for isolation and asserts unchanged
+health over its entire continuous route, giant-stair walking/running/jump and
+return. New tests cover real falls/climb descent/ejection/backward ledges, crouch,
+modals/released mouse/teleports/void reset, live high Jumping, source audio and
+load/R/fatal cleanup. Existing restricted-host log/certificate/accelerated-exit
+diagnostics remain nonblocking. User embedded-editor feel/listening test pending.
+
+See docs/FALL_DAMAGE.md. Water exemptions/slowfall/levitation/slipping/rappelling
+remain outside current mechanics. No subsequent milestone has been selected.
+
 # Resume here — basic fatigue/rest implemented; user playtest next
 
 The user accepted the character sheet and authorized basic rest/fatigue. Implemented:

@@ -1,0 +1,53 @@
+ERROR: Failed to open 'user://logs/godot2026-11-02T22.18.07.log'.
+   at: copy (core/io/dir_access.cpp:429)
+ERROR: Failed to open log file for writing: user://logs/godot.log
+   at: rotate_file (core/io/logger.cpp:169)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Pinned threshold/truncation at 0.00 metres position=(7.25, 12.8, 16.2) mode=walking
+PASS Pinned threshold/truncation at 2.50 metres position=(7.25, 12.8, 16.2) mode=walking
+PASS Pinned threshold/truncation at 2.51 metres position=(7.25, 12.8, 16.2) mode=walking
+PASS Pinned threshold/truncation at 5.00 metres position=(7.25, 12.8, 16.2) mode=walking
+PASS Pinned threshold/truncation at 5.01 metres position=(7.25, 12.8, 16.2) mode=walking
+PASS Pinned threshold/truncation at 5.19 metres position=(7.25, 12.8, 16.2) mode=walking
+PASS Pinned threshold/truncation at 5.20 metres position=(7.25, 12.8, 16.2) mode=walking
+PASS Pinned threshold/truncation at 6.00 metres position=(7.25, 12.8, 16.2) mode=walking
+PASS Pinned threshold/truncation at 12.00 metres position=(7.25, 12.8, 16.2) mode=walking
+PASS Invalid fall distances reject position=(7.25, 12.8, 16.2) mode=walking
+PASS Jump apex adds no net drop on same-level landing position=(7.25, 12.8, 16.2) mode=walking
+PASS Supported ticks cannot repeat landing event position=(7.25, 12.8, 16.2) mode=walking
+PASS Jump off a ledge uses departure level, not peak height position=(7.25, 12.8, 16.2) mode=walking
+PASS Out-of-motor teleport discards previous fall position=(7.25, 12.8, 16.2) mode=walking
+PASS Climbing release starts a fresh fall at release height position=(7.25, 12.8, 16.2) mode=walking
+PASS Original ordinal landing samples91/92 decode position=(7.25, 12.8, 16.2) mode=walking
+PASS Normal actual jump causes no damage or hard-landing audio position=(110.0, 0.000291, 100.0) mode=reset
+PASS High jump on same floor remains safe without apex-based damage position=(110.0, 0.000914, 100.0) mode=reset
+PASS 3.2m actual fall gives one original hard-landing cue without damage position=(110.0, 0.001354, 100.0) mode=reset
+PASS Grounded frames cannot repeat hard-landing sound position=(110.0, 0.000104, 100.0) mode=reset
+PASS Actual 8.2m drop uses measured feet distance and pinned formula position=(110.0, 0.001276, 100.0) mode=reset
+PASS Damaging fall gives one original cue, health flash and explicit feedback position=(110.0, 0.001276, 100.0) mode=reset
+PASS Landing damage applies only once position=(110.0, 0.000026, 100.0) mode=reset
+PASS Crouched fall uses same feet displacement, with posture retained position=(110.0, 0.001276, 100.0) mode=reset
+PASS Airborne modal pauses and preserves pending fall position=(110.0, 7.916667, 100.0) mode=reset
+PASS Closing modal resumes the same once-only fall damage position=(110.0, 0.001276, 100.0) mode=reset
+PASS Teleport while airborne cannot retain damage from prior height position=(110.0, 0.000729, 100.0) mode=reset
+PASS Real climb owns vertical motion without accumulating fall distance position=(100.0, 8.024306, 99.35018) mode=climbing
+PASS Controlled eight-metre wall descent lands safely position=(100.0, 0.000875, 101.8611) mode=ground
+PASS Climbing ejection measures real free fall after release position=(100.0, 0.000933, 102.4008) mode=ejected
+PASS Backward ledge entry hands off to climbing without fall damage position=(120.0, 7.528397, 99.3509) mode=climbing
+PASS Backward-entry descent remains safe through ground handover position=(120.0, 0.000875, 103.3377) mode=ground
+PASS Continuous forward walk off eight-metre platform causes one real fall position=(120.0, 0.000875, 90.61639) mode=reset
+PASS High-skill jump off platform uses the same net drop as walking off position=(120.0, 0.000882, 91.24957) mode=reset
+PASS Released mouse does not erase a fall while gravity continues position=(110.0, 0.001276, 100.0) mode=reset
+PASS Existing below-world reset clears fall history without phantom damage position=(7.25, 12.8, 16.2) mode=reset
+PASS Fall damage also works against original hall floor geometry position=(7.25, 12.80056, 16.2) mode=reset
+PASS Damaged settled player can save using unchanged schema4 position=(7.25, 12.80056, 16.2) mode=reset
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS L clears pending fall and feedback while restoring saved health position=(7.25, 12.80056, 16.2) mode=reset
+PASS Fatal landing uses normal death cleanup once position=(7.25, 12.80056, 16.2) mode=reset
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS R restores accepted bear baseline with clean fall state position=(7.25, 12.8, 16.2) mode=walking
+FALL DAMAGE RESULTS: 41/41

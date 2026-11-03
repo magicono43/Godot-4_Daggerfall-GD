@@ -1,3 +1,9 @@
+# Fall-damage note (schema4 unchanged)
+
+Existing schema4 slots remain compatible. Pending fall history/feedback are
+transient and reset on a successful load; health persists through the existing
+contract. See FALL_DAMAGE.md.
+
 # Current schema: 4
 
 Fatigue raw units and fractional game clock persist alongside shared character

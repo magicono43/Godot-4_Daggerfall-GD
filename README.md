@@ -289,3 +289,10 @@ Stand still on safe ground away from the living bear. Rest restores health and
 fatigue; C and the HUD show current fatigue. Escape/T stops, C/I switches panels.
 At zero fatigue, walking remains available while running/jumping/attacks are blocked.
 **Schema4 requires a new K save.** See [FATIGUE_REST](docs/FATIGUE_REST.md).
+
+## Fall damage
+
+Real drops now cause source-backed fall damage, with hard-landing audio/feedback
+over2.5m and whole-HP damage beyond5m. Ordinary jumps, stairs and controlled climbing
+remain safe. F4 includes measured landing distance. Existing schema4 saves remain
+compatible. See [FALL_DAMAGE](docs/FALL_DAMAGE.md).
