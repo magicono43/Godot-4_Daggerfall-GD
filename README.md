@@ -1,4 +1,39 @@
-## Current handoff — basic character sheet next
+## Casting sound correction
+
+Magic casts now use the correct short original clip: sound ID349 resolves to
+archive index81. The previous index349 was thunder. Overlapping playback is
+preserved; schema6 saves remain compatible. Magic92/92, audio39/39 headless and
+magic92/92 rendered checks passed. Listening retry is ready.
+
+## Spellbook convenience and casting audio - November 3, 2026
+
+Double-click a known spell in **B** to cast immediately and close the book.
+Single-click still only selects; **Q/F** remain available. Successful casts play
+the original casting sound, with overlapping tails on rapid recasts.
+Animation speed is user-accepted. Schema6 saves remain compatible with this update.
+Validation:1372/1372 headless checks and91/91 rendered magic/UI/audio checks passed.
+Actual casting-sound listening remains user verification.
+See [docs/MAGIC.md](docs/MAGIC.md).
+
+## Current magic playtest � November 3, 2026
+
+Basic self spells are implemented. **B** opens known spells; select Heal or Light,
+close the book, then **Q** casts; **F** recasts the last successful spell.
+Effects apply immediately, including while climbing or during a weapon swing.
+Original casting hands briefly replace the weapon HUD and pause/resume its swing.
+Casting Heal at full health still spends magicka. Starting magicka is150; rest
+recovers18/hour. Heal restores25HP (cost75); Light adds10 game minutes (cost12).
+magic.cfg/F3 tune the explicit test baseline. The bear/300HP/13 items/unequipped
+armor, random weapon swings and compact dungeon remain unchanged.
+
+**Save schema6 requires a fresh K save.** Old slots reject; the manual slot was
+not overwritten by tests. External MJIC00C6.CIF is now required; no source art is
+bundled. See [docs/MAGIC.md](docs/MAGIC.md) for ownership, timing and limitations.
+Validation:1359/1359 headless checks and78/78 rendered magic checks; hands/book
+visually inspected in4:3 and widescreen. Exact vanilla hands speed awaits playtest.
+Older �current� entries below are historical.
+
+## Current handoff � basic character sheet next
 
 The bear/300HP/starting-equipment setup has been playtested and accepted. The next
 proposed milestone is a **read-only character sheet backed by shared player
@@ -9,7 +44,7 @@ DFU references, and explain the state/config/modal/save strategy before changes.
 Random-direction click attacks and the compact dungeon remain intentional; gesture
 controls and dungeon expansion are deferred. Accepted baseline:1058/1058 headless
 checks and58/58 rendered bear checks, plus user playtest. This update is docs only.
-## Current playtest — bear and supplied equipment
+## Current playtest � bear and supplied equipment
 
 You still start beside the great stairs, now with **300 HP**, supported weapon
 skills **50**, and the mace, Steel cuirass, spare dagger, two healing doses, gold
@@ -19,7 +54,7 @@ and original geometry remain unchanged. R restores this generous testing setup.
 K/L save/load remain; create a new K save because the section definition changed.
 See [docs/BEAR_PLAYTEST.md](docs/BEAR_PLAYTEST.md) for behavior and the hit-chance
 field guide. Older skeleton/baseline notes below are historical.
-## Current combat and equipment — November 2, 2026
+## Current combat and equipment � November 2, 2026
 
 Melee now uses a tested subset of the pinned DFU hit/damage formulas: weapon skill,
 material, swing, armor region, attributes, Dodging and Critical Strike. The hall
@@ -100,7 +135,7 @@ I/Escape, transfers and dagger equipment controls are unchanged.
 See [docs/INVENTORY.md](docs/INVENTORY.md) for mappings and source/audit evidence.
 The simple window remains; original IMG interface artwork is deferred.
 
-## Standalone inventory and dagger equipment — November 1, 2026
+## Standalone inventory and dagger equipment � November 1, 2026
 
 Press **I** to open inventory anywhere. Select an item to read its description;
 select a dagger and click **Equip/Unequip**. The hall skeleton now carries a second
@@ -110,7 +145,7 @@ Only one can be equipped. Unequipping hides the weapon and blocks attacks.
 pause in either window. R resets everything. See [docs/INVENTORY.md](docs/INVENTORY.md).
 Original item icons, saving and broader equipment remain deferred.
 
-## Current status — November 1, 2026
+## Current status � November 1, 2026
 
 Basic corpse looting and inventory are implemented. Defeat the hall skeleton,
 approach its remains, look down and press E. Select an item and click Take selected,
@@ -122,35 +157,35 @@ remain deferred. See [docs/INVENTORY.md](docs/INVENTORY.md),
 [docs/HANDOFF.md](docs/HANDOFF.md) and [docs/NEXT_MILESTONE.md](docs/NEXT_MILESTONE.md).
 Run.ps1 -Test now runs fourteen suites. Corrected combat audio remains accepted.
 
-## Combat audio corrections â€” November 1, 2026
+## Combat audio corrections — November 1, 2026
 
-Sound lookup now preserves duplicate archive IDs, fixing the incorrect terrain clang. Dagger draw uses the original short-blade equip clip at the player; doors have their own bash sound. Enemy voices stop immediately on death, attack growls occur on a 50% chance, and ambient delays use random whole seconds from 3â€“9. Enemy sound range defaults to 24 m; audio.cfg also exposes draw_gain. See [docs/AUDIO.md](docs/AUDIO.md).
+Sound lookup now preserves duplicate archive IDs, fixing the incorrect terrain clang. Dagger draw uses the original short-blade equip clip at the player; doors have their own bash sound. Enemy voices stop immediately on death, attack growls occur on a 50% chance, and ambient delays use random whole seconds from 3–9. Enemy sound range defaults to 24 m; audio.cfg also exposes draw_gain. See [docs/AUDIO.md](docs/AUDIO.md).
 
-## Combat audio â€” November 1, 2026
+## Combat audio — November 1, 2026
 
-Original combat effects now load from external ARENA2/DAGGER.SND: dagger draw, misses, enemy and wall impacts, player damage, plus positional skeleton cues and body-fall feedback. Set master/effects gains (0â€“1) in audio.cfg and restart to apply. No original samples are bundled. See [docs/AUDIO.md](docs/AUDIO.md). Run.ps1 -Test now runs thirteen suites.
+Original combat effects now load from external ARENA2/DAGGER.SND: dagger draw, misses, enemy and wall impacts, player damage, plus positional skeleton cues and body-fall feedback. Set master/effects gains (0–1) in audio.cfg and restart to apply. No original samples are bundled. See [docs/AUDIO.md](docs/AUDIO.md). Run.ps1 -Test now runs thirteen suites.
 
-## Original dagger â€” October 31, 2026
+## Original dagger — October 31, 2026
 
 Right-click attacks with the original WEAPON02.CIF dagger, randomly choosing one of six source swing directions. Z draws/sheathes it. Damage follows its strike frame, with attack timing derived from live Speed; the ready/attack sprites use the original screen layout in both presentation modes. The greybox blade is removed. WEAPON02.CIF remains external in the configured ARENA2 folder and is now required for this slice. See [docs/DAGGER.md](docs/DAGGER.md). Run.ps1 -Test now runs twelve suites. Older left-click and fixed-timing notes below are historical.
 
-## DFU-style local pursuit â€” October 31, 2026
+## DFU-style local pursuit — October 31, 2026
 
 The Skeleton now navigates with tested local detours based on DFU's enemy motor. It tries directions in 45-degree increments and follows short detours around nearby obstacles. The navmesh planner and runtime bake have been removed; it no longer knows complete routes through the dungeon and can struggle with complex layouts. Physical stairs, doors, sprites and combat are retained. Advanced combat tactics are deferred. See [docs/ENEMY_NAVIGATION.md](docs/ENEMY_NAVIGATION.md). Older navmesh descriptions below are historical.
 
-## Skeleton pursuit â€” October 31, 2026
+## Skeleton pursuit — October 31, 2026
 
 The hall Skeleton now follows you around obstacles and across the original stairs, opens the current unlocked doors, and stops to attack. It remembers your last seen position briefly after you leave sight, then stops if it loses the trail or cannot reach you. Escape suspends pursuit; R restores the authored start. The chamber enemy remains passive. F4 shows navigation state. See [docs/ENEMY_NAVIGATION.md](docs/ENEMY_NAVIGATION.md). Run.ps1 -Test now runs eleven suites; earlier stationary notes below are historical.
 
-## Skeleton enemy â€” October 31, 2026
+## Skeleton enemy — October 31, 2026
 
 The hall combat target now uses the original Skeletal Warrior from ARENA2 TEXTURE.270, with eight directional views, idle/attack/hurt poses, native dimensions and an original corpse on death. Watch its axe animation: the strike now lands at frame 4, 0.4 seconds into the attack, replacing the orange prototype cue. Nonlethal hits interrupt it briefly. It remains stationary, takes three hits to defeat, and R restores it. The chamber enemy remains a passive greybox. Source archives stay external and read-only. See [docs/SKELETON.md](docs/SKELETON.md). Run.ps1 -Test runs ten suites.
 
-## Stationary enemy combat â€” October 31, 2026
+## Stationary enemy combat — October 31, 2026
 
 The red hall enemy now fights back when you enter melee range. It flashes orange and leans forward for 0.65 seconds before striking; back away or use cover to avoid damage. It stays in place. Player health starts at 100, enemy strikes deal 10 damage, and a red screen flash marks damage. Death stops gameplay actions; R restarts with full health and restores enemies. Escape suspends enemy attacks while the mouse is released. The chamber enemy remains passive. F4 diagnostics now sit below the status text without overlap. See [docs/COMBAT.md](docs/COMBAT.md). Run.ps1 -Test runs nine suites, including retaliation.
 
-## Current combat milestone â€” October 31, 2026
+## Current combat milestone — October 31, 2026
 
 Left-click attacks with a greybox melee blade. A stationary red combat target now stands near the great-hall spawn; aim down at the short target and approach within reach. Each target has 30 HP and takes three hits to defeat. R restarts and restores targets. The chamber enemy remains stationary. Hit feedback and hall-target health appear in the HUD. Enemy retaliation and RPG damage formulas are deferred. See [docs/COMBAT.md](docs/COMBAT.md) for scope, source evidence and architecture. Run.ps1 -Test now includes the combat suite alongside the seven existing suites; older milestone counts below are historical.
 
@@ -302,3 +337,10 @@ I now equips seven independent armor slots: head, right/left arm, chest, hands,
 legs and feet. Six additional steel test pieces start owned and unequipped; C shows
 each region's protection and equipped item. Helmet preview masks are removed only
 for inventory. **Schema5 requires a new K save.** See [ARMOR_EQUIPMENT](docs/ARMOR_EQUIPMENT.md).
+
+## Next development handoff
+
+Armor has been user-tested and accepted. The next selected milestone is a basic
+spell/magic foundation without custom spellmaking; it is not implemented yet.
+See [HANDOFF](docs/HANDOFF.md) and [NEXT_MILESTONE](docs/NEXT_MILESTONE.md) for the
+accepted baseline, source inspection, design decisions and proposed checks.

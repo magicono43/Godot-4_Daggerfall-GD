@@ -57,6 +57,8 @@ func refusal() -> String:
 	var eye: float = p.crouch.EYE if low else p.EYE_HEIGHT
 	if p.crouch.toggled != low or absf(p.crouch.eye_height - eye) > 0.002:
 		return "Wait for your posture to settle before saving."
+	if p.casting.active():
+		return "Wait for casting to finish before saving."
 	if p.combat.elapsed >= 0:
 		return "Wait for the attack to finish before saving."
 	for actor in level.enemies:
@@ -69,10 +71,10 @@ func refusal() -> String:
 
 func snapshot() -> Dictionary:
 	var p = level.player
-	var data := {"version": 5, "section": level.section_path, "section_hash": fingerprint(),
+	var data := {"version": 6, "section": level.section_path, "section_hash": fingerprint(),
 		"player": {"position": vector(p.position), "yaw": p.rotation.y, "pitch": p.camera.rotation.x,
 		"health": p.health.current, "crouched": p.crouch.is_low(p), "sheathed": p.combat.sheathed,
-		"inventory": collection(p.inventory), "character": p.character.base.duplicate(), "fatigue": p.fatigue.snapshot()}, "enemies": {}, "doors": {}, "authored": {}, "drops": []}
+		"inventory": collection(p.inventory), "character": p.character.base.duplicate(), "fatigue": p.fatigue.snapshot(), "magic":p.magic.snapshot(), "light_seconds":p.spell_effects.remaining}, "enemies": {}, "doors": {}, "authored": {}, "drops": []}
 	for actor in level.enemies:
 		data.enemies[String(actor.name)] = {"position": vector(actor.position), "yaw": actor.rotation.y,
 			"health": actor.health.current, "inventory": collection(actor.loot)}
@@ -168,7 +170,7 @@ func validate(data: Variant) -> bool:
 	seen_uids = {}
 	max_uid = 0
 	error = "Save data is invalid or incompatible with this section."
-	if data is Dictionary and data.get("version") != 5:
+	if data is Dictionary and data.get("version") != 6:
 		error = "Unsupported save version. Start fresh with R and create a new save with K."
 		return false
 	if not data is Dictionary or data.get("section") != level.section_path or data.get("section_hash") != fingerprint():
@@ -177,6 +179,8 @@ func validate(data: Variant) -> bool:
 	if not actor_valid(p, level.player.health.maximum, true) or not number(p.get("pitch"), PI / 2) or not p.get("crouched") is bool or not p.get("sheathed") is bool:
 		return false
 	if not level.player.character.valid(p.get("character"), true) or not level.player.fatigue.valid(p.get("fatigue")):
+		return false
+	if not level.player.magic.valid(p.get("magic")) or not level.player.spell_effects.valid(p.get("light_seconds")):
 		return false
 	if not data.get("enemies") is Dictionary or data.enemies.size() != level.enemies.size() or not data.get("doors") is Dictionary or data.doors.size() != level.doors.size():
 		return false
@@ -315,6 +319,9 @@ func apply(data: Dictionary) -> void:
 	p.camera.rotation.x = state.pitch
 	p.health.current = int(state.health)
 	p.fatigue.restore(state.fatigue)
+	p.magic.restore(state.magic)
+	p.casting.cancel()
+	p.spell_effects.restore(float(state.light_seconds))
 	p.combat.cancel()
 	p.combat.sheathed = state.sheathed
 	p.climbing.reset()

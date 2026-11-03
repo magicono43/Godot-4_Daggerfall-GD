@@ -2,6 +2,7 @@ extends Node
 ## Cached external samples and bounded one-shot voices, owned by this scene.
 signal played(event: String, sound_id: int, spatial: bool)
 const EVENTS := {
+	"cast_magic": [81], # DFU uint sound ID349 resolves to ordinal81 (CastSpell1), not thunder349.
 	"draw_mace": [413], "miss_mace": [347], "draw": [377], "miss": [106], "impact": [108, 109, 110, 111, 112],
 	"fall_damage": [91], "fall_hard": [92], "wall": [433], "door": [7], "player_hit": [110, 111], "death": [15],
 	"parry": [428, 429, 430, 431, 432, 433, 434, 435, 436],

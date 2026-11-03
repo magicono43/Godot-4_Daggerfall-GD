@@ -1,0 +1,3 @@
+PASS Separate process restores magic slot
+PASS Cross-process knowledge, selection, recast, magicka and effect restore
+PASS Cross-process restore retains accepted baseline and clears casting

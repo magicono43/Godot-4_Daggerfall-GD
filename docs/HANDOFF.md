@@ -1,4 +1,142 @@
-# Resume here — seven-slot armor implemented; user playtest next
+# Resume here - casting sound ID/ordinal corrected
+
+User accepted double-click casting and audio function, but heard thunder. Root
+cause: source magicCastSoundID349 goes through DaggerfallAudioSource.PlayOneShot(uint)
+and resolves by archive ID; implementation mistakenly used ordinal349 (storm).
+Corrected cast_magic to ordinal81/CastSpell1, whose archive ID is349. Correct clip
+is18284 samples/1.66s; previous thunder was56313 samples/5.11s. No casting/input/
+save/balance changes. Independent audit plus tests assert ID349 equals ordinal81,
+not ordinal349, and pin corrected PCM hash. Overlapping tails remain intentional.
+
+Validation:92/92 headless magic,39/39 headless audio,92/92 rendered magic checks.
+Logs: tests/magic_sound_fix.log, magic_sound_audio.log, magic_sound_fix_rendered.log.
+No failed assertions/script errors; existing host/accelerated-exit warnings remain.
+Full suite not rerun for this sound-mapping-only fix. User listening retry pending;
+schema6 saves remain compatible. Earlier source claims about ordinal349 below were
+incorrect and superseded by this entry and corrected MAGIC.md/source manifests.
+
+# Resume here - magic accepted; double-click/audio follow-up implemented
+
+November 3, 2026. User likes basic magic and accepts hands animation speed as close
+enough to DFU. Requested double-click spell casting plus original casting sound,
+including overlapping recast tails. Implemented ItemList activation: single click
+selects without rebuilding the list; double-click/Enter consumes UI input, closes
+through modal coordinator and casts the selected known spell immediately. Failed
+casts close with normal feedback and no charge/effect/sound. Explicit book activation
+preserves previously released capture while casting; gameplay Q/F still require
+captured controls. No close-click attack or forced capture.
+
+Successful Q/F/book casts request one player-local cast_magic cue, ordinal349 from
+pinned EntityEffectManager (magic element), using existing cached DAGGER.SND decoder/
+bounded one-shots. No throttling or replacing previous cast voice; overlapping tails
+are intentional. audit_audio.py/audio_samples.json pin independent56313-byte PCM hash.
+No bundled samples. No schema/section/balance changes; current schema6 saves remain
+compatible. Existing manual slot untouched. See MAGIC.md and new magic UI/audio
+regressions. User listening/double-click embedded-editor playtest is next; no further
+feature milestone selected. Older entries below are historical.
+
+Follow-up validation:1372/1372 headless checks passed via Run.ps1 -Test,
+including all separate-process reloads (tests/magic_convenience_complete.log).
+Rendered magic/UI/audio suite passed91/91 (tests/magic_convenience_rendered.log);
+book text/layout inspected in4:3 and widescreen. Routed native double-click tests
+cover single selection, once-only cast/charge/sound, insufficient resource, released
+capture and stale/dead activation. Independent PCM hash and simultaneously playing
+separate voices verify source identity/overlap; actual listening remains user
+verification. No failed assertions or script errors; existing restricted-host
+log/certificate/accelerated-exit diagnostics remain nonblocking.
+
+
+# Resume here � basic magic implemented; user playtest next
+
+November 3, 2026. User authorized the proposal with vanilla corrections: full-health
+casts still spend, recast action, self effects immediate, hands briefly take weapon
+HUD, mid-swing weapon frame freezes/resumes, casting allowed while climbing.
+Implemented those corrections with B spellbook, Q selected cast, F last-successful
+recast. Shared single modal coordinator; no casting through UI. Source hands read
+external MJIC00C6.CIF. Seven40ms frames (DFU timing, user vanilla-speed comparison
+pending), no extra cooldown. Existing exhaustion policy gates casts; crouch/airborne/
+sheath state do not. No new spell sounds or floating candle in this slice.
+
+Heal25HP/Restoration (cost75 at50) and Light10 game minutes/Illusion (cost12 at50)
+are fixed authored test spells, not claimed exact standard SPELLS.STD definitions.
+magic.cfg explicitly sets Intelligence50, school skills50, multiplier3/current max150,
+no_regen=false. Live schools affect real costs; Intelligence capacity clamps without
+refilling on increase/F3. Three configs reload atomically with overrides preserved.
+Rest restores18/hour, completion includes magicka; Light uses existing12x game clock
+and completed rest hours, paused with modals/released controls. Light recasts add
+bounded duration on one separate cool light; baseline lantern/environment unchanged.
+
+Schema6 persists known/selected/last/current resource and Light remaining seconds,
+shared school base values, with fresh-candidate validation. Transient hands clear on
+modal/release/death/load/R; no rollback/refund of already committed self effects.
+Death removes Light; R starts full authored grants/no last cast/effects. Old schema5
+slots reject; create new K save. Tests never overwrite manual slot. Bear/300HP,
+13 items/seven unequipped armor, skills50, RMB random swings, geometry/motor unchanged.
+
+See docs/MAGIC.md, reference/magic_sources.json, tools/audit_magic.py and
+ tests/magic.gd. New six-frame independent RGBA evidence is tests/magic_frames.json.
+No full magic engine, spellmaking, merchants, progression, projectiles or AI casting.
+Older handoffs below are history.
+
+Validation November 3, 2026: Run.ps1 -Test passed1359/1359 headless checks
+across25 suites plus persistence/armor/magic separate-process reloads. Final log:
+tests/magic_complete_regression.log. Rendered magic passed78/78, log
+tests/magic_rendered.log. Original hands and book were visually inspected in4:3
+and widescreen. No failed assertions or script errors; existing restricted-host
+log/certificate diagnostics remain nonblocking. Exact vanilla animation speed and
+embedded-editor feel remain user playtest.
+
+
+# Resume here � armor accepted; basic magic foundation next
+
+Prepared November 2, 2026 at the user's explicit request to continue with a different
+agent in a fresh chat. The user tested seven-slot armor and said it works. That
+baseline is accepted; older playtest-pending entries below are historical.
+
+The next chosen feature is **basic magic: getting spells implemented at all**,
+without custom spell creation/spellmaking. The user regards more inventory work
+(encumbrance/durability/repair) as lower priority for now. Swimming was discussed
+but not selected. **No magic implementation has begun.** This handoff changes docs
+only and does not add spell state, magicka, casting controls or effects to the game.
+
+Read AGENTS.md, this entry and the rewritten NEXT_MILESTONE.md. Inspect current code
+and pinned local DFU sources, then explain a focused spell/state/resource/control/
+modal/rest/save proposal before implementation under the next chat's authorization.
+A fixed known-spell catalog, authored test spell grants, a simple book/selection,
+casting lifecycle, magicka and a tiny useful effect subset are sensible starting
+points. Heal/Light are suggestions, not an approved final list/formulas. No spell
+merchants, full magic engine, custom spellmaker or new dungeon content are required.
+
+Preserve main.tscn hall/stair start, Bear30HP, player300HP/weapon skills50, passive
+chamber alias,13 starting item instances, all seven armor pieces unequipped and
+original equipped dagger. Keep compact geometry/scale, accepted movement/stairs/
+climbing/crouch, random-direction RMB attacks, fatigue/rest/fall damage, audio,
+UID/stacking/drop-session/equipment behavior and K/L/R. F5/F9 remain editor keys.
+Character state owns shared attributes/skills; inventory owns gear; health and
+fatigue retain their contracts. Existing schema5 has no spell/magicka state.
+
+Major seams: use the single modal coordinator/capture contract for any spellbook;
+keep cast effects/costs once-only and cancel transient casting on UI/death/load/R;
+rest/full-rest termination must include magicka if added; specify effect duration
+and pause/rest time policy; validate new persistent state before candidate swap.
+Intelligence has no current consumer and there are no magic-school skills or
+race/class magicka assumptions yet. Decide these from source with explicit authored
+test assumptions. Any schema bump may reject old test slots without migration;
+automated tests must not overwrite the user's manual slot.
+
+Current evidence cache includes FormulaHelper.cs, DFCareer.cs, DaggerfallEntity.cs,
+PlayerEntity.cs and EntityEffectBroker.cs. Inspect it first; supplementary sources
+must use pinned commit4e78e1412b17b60f4d5d6073825775aa5ae95139 and recorded hashes.
+Do not assume all spell sources/decoders exist, or update to master. See the next
+milestone for concrete code paths, unresolved design decisions and acceptance checks.
+
+Accepted validation remains1278/1278 full headless checks (24 suites plus two
+separate-process reloads),85/85 rendered armor checks, and inspected helmet/sheet
+in4:3/widescreen. Reports: tests/armor_complete_regression.log and armor_rendered.log.
+User subsequently confirmed working behavior. No new tests run for this docs-only
+handoff. Older milestones below are implementation history, not the current plan.
+
+# Resume here � seven-slot armor implemented; user playtest next
 
 The user accepted fall damage and authorized expanded armor, noting helmet
 paper-doll mask concerns. Implemented seven independent armor slots: head, right
@@ -43,7 +181,7 @@ playtest pending; no next milestone selected.
 See docs/ARMOR_EQUIPMENT.md and reference/armor_sources.json. Shields, durability,
 repair, expanded materials/dyes, weight/encumbrance and full paper doll are deferred.
 
-# Resume here — fall damage implemented; user playtest next
+# Resume here � fall damage implemented; user playtest next
 
 The user accepted fatigue/rest, then authorized the proposed fall-damage milestone.
 Implemented source-backed net feet-drop tracking: >2.5m hard landing; >5m whole-HP
@@ -87,7 +225,7 @@ diagnostics remain nonblocking. User embedded-editor feel/listening test pending
 See docs/FALL_DAMAGE.md. Water exemptions/slowfall/levitation/slipping/rappelling
 remain outside current mechanics. No subsequent milestone has been selected.
 
-# Resume here — basic fatigue/rest implemented; user playtest next
+# Resume here � basic fatigue/rest implemented; user playtest next
 
 The user accepted the character sheet and authorized basic rest/fatigue. Implemented:
 T opens/closes rest, timed1..24h or until recovered (max24h/session). Escape/Stop
@@ -126,7 +264,7 @@ See docs/FATIGUE_REST.md and reference/fatigue_sources.json. The manifest hashes
 existing and newly cached source at the same pinned revision. No original data or
 bundled archives were changed. No next milestone selected.
 
-# Resume here — character sheet implemented; user playtest next
+# Resume here � character sheet implemented; user playtest next
 
 The approved basic character sheet/shared-state milestone is implemented. C toggles
 the read-only sheet; I switches to inventory; Escape/Close dismisses. Scroll for
@@ -159,7 +297,7 @@ See docs/CHARACTER_SHEET.md and reference/character_sheet_sources.json for contr
 and pinned local evidence. NEXT_MILESTONE.md preserves the original proposal as
 history. No subsequent milestone has been selected or implemented.
 
-# Resume here — accepted bear baseline; character sheet/shared state next
+# Resume here � accepted bear baseline; character sheet/shared state next
 
 Prepared November 2, 2026 at the user's explicit request for a fresh-chat handoff.
 The user tested the bear setup and said it works. The latest playable baseline is
@@ -215,7 +353,7 @@ DFCareer.cs and related files, pinned to the existing revision. Do not update to
 master. See NEXT_MILESTONE.md for exact code paths, proposed scope/boundaries and
 acceptance checks. Earlier entries below are implementation history and do not
 override this handoff.
-# Resume here — bear combat playtest, 300HP and starting equipment
+# Resume here � bear combat playtest, 300HP and starting equipment
 
 The user could not kill the low-skill skeleton and requested a more useful test
 setup: same hall/stair spawn, new test items already owned,300 HP, weapon skills50,
@@ -256,7 +394,7 @@ points; clamp3..97 explains the floor. Old horizontal skeleton chance4/6% varied
 into low teens on up swings. Current bear horizontal56/58%, all-direction46..68%.
 Roll is0..99 and must be below chance. Own armor affects incoming attacks, not
 own attack chance. All fields/table examples are in BEAR_PLAYTEST.md.
-# Resume here — combat formulas and chest equipment
+# Resume here � combat formulas and chest equipment
 
 The user approved the proposed combat/equipment milestone, clarified the five-point
 armor convention and skeleton clash-on-miss feedback, and explicitly allowed
@@ -650,7 +788,7 @@ read-only/cache boundaries, mask/row decoding and selection ownership; no
 unresolved findings or script errors. Existing restricted-host diagnostics remain
 nonblocking. User in-game test of this increment is next.
 
-# Resume here — November 1, 2026: standalone inventory and equipment
+# Resume here � November 1, 2026: standalone inventory and equipment
 
 The user playtested basic corpse looting successfully. The follow-up is now
 implemented: I opens standalone inventory anywhere; I/Escape/Close closes either
@@ -676,7 +814,7 @@ modal routing, selection refresh and combat availability; no unresolved findings
 Existing restricted-host diagnostics remain nonblocking. README, INVENTORY.md,
 NEXT_MILESTONE.md and AGENTS.md are updated. User in-game testing is next.
 
-# Resume here — November 1, 2026: corpse looting and inventory
+# Resume here � November 1, 2026: corpse looting and inventory
 
 Basic corpse looting/inventory is implemented and reviewed. The next step is the
 user's in-game playtest; no further milestone is agreed. See INVENTORY.md for
@@ -717,7 +855,7 @@ User gameplay verification remains pending.
 The historical handoff entries below describe preceding milestones and their
 then-current scope/counts; use the current entry above for inventory status.
 
-# Resume here â€” November 1, 2026
+# Resume here — November 1, 2026
 
 Read AGENTS.md first. The user has playtested the corrected combat audio and says
 it is a lot better. This is the accepted stopping point for this chat. The next
@@ -735,47 +873,47 @@ findings; the user's subsequent listening test was positive. Existing host
 logging/certificate/shader-cache diagnostics and accelerated mixer-exit warnings
 are documented in AUDIO.md. No known gameplay test failures remain.
 
-## Accepted audio state â€” November 1, 2026: DFU audio corrections
+## Accepted audio state — November 1, 2026: DFU audio corrections
 
-This supersedes the first audio implementation below. classic_archive.gd now retains ordinal spans and record_at(), preserving DAGGER.SND's duplicate ID 220 at indices 300/376. The old dictionary-key indexing shifted later clips, including terrain clang 433. audit_audio.py independently pins raw-directory hashes (no audio exports). Draw is original EquipShortBlade 377, listener-relative with draw_gain=1.5; door impacts use PlayerDoorBash 7, terrain uses actual Parry6 433. Creature-owner metadata allows death to stop active growls/barks/move sounds immediately without stopping other enemies, impacts or body fall. Attack growls independently use 50% chance. Ambient initial/repeat delays are random integer 3â€“9 seconds, confirmed against DFU script and prefab. Enemy range deliberately extends from DFU 16 m to configurable 24 m; mixer test covers 20 m. No new bash gameplay. See AUDIO.md and expanded audio_sources.json. Focused rendered checks pass 39/39; listening remains for user verification.
+This supersedes the first audio implementation below. classic_archive.gd now retains ordinal spans and record_at(), preserving DAGGER.SND's duplicate ID 220 at indices 300/376. The old dictionary-key indexing shifted later clips, including terrain clang 433. audit_audio.py independently pins raw-directory hashes (no audio exports). Draw is original EquipShortBlade 377, listener-relative with draw_gain=1.5; door impacts use PlayerDoorBash 7, terrain uses actual Parry6 433. Creature-owner metadata allows death to stop active growls/barks/move sounds immediately without stopping other enemies, impacts or body fall. Attack growls independently use 50% chance. Ambient initial/repeat delays are random integer 3–9 seconds, confirmed against DFU script and prefab. Enemy range deliberately extends from DFU 16 m to configurable 24 m; mixer test covers 20 m. No new bash gameplay. See AUDIO.md and expanded audio_sources.json. Focused rendered checks pass 39/39; listening remains for user verification.
 
-# Latest update â€” November 1, 2026: combat audio
+# Latest update — November 1, 2026: combat audio
 
 Read AGENTS.md first. Combat audio now loads external DAGGER.SND read-only. classic_data.gd converts unsigned mono 8-bit/11025 Hz PCM; combat_audio.gd caches twelve selected original samples with bounded one-shot ownership. audio.cfg provides master/effects gains. RMB strike outcomes produce miss/hit/wall cues; Z draw, player damage, positional skeleton attract/attack and body fall on death are connected. The world SubViewport enables 3D audio. No samples bundled. Attract audio suspends with mouse release/death; existing sound tails can finish. BodyFall on skeleton death and nonvoice player-hit effects are documented prototype choices. See AUDIO.md and reference/audio_sources.json. Run.ps1 -Test adds audio.gd. Listening quality remains for user playtesting.
 
-# Conversation handoff â€” updated October 31, 2026
+# Conversation handoff — updated October 31, 2026
 
 Read `AGENTS.md` first. This document records the current state and decisions from the development conversation; inspect the relevant code before changing it. The detailed documents linked below are the implementation references. Older chronological sections in README can describe earlier milestones; the current scope and spawn are recorded here and in GREAT_HALL_EXPANSION.md.
 
-## Latest milestone: original dagger sprites â€” October 31, 2026
+## Latest milestone: original dagger sprites — October 31, 2026
 
 The user requested Dagger/WEAPON02.CIF, right-click attacks and random swing directions. classic_data.gd now decodes the external CIF: ready image plus six five-frame attack records (31 RGBA images), bounds checked. weapon_view.gd replaces the greybox mesh with a nearest-filtered overlay inside the calibrated world viewport, using DFU's 320x200 dagger alignment. RMB attacks; Z draws/sheathes. Each accepted click uniformly chooses a supported source direction (repeats allowed). The physics-clock frame-2 event deals damage once. New attacks use live movement-model Speed via 3*(115-Speed)/980 seconds per frame; baseline hit ~0.398 s and complete swing ~0.995 s. Health/damage/range remain prototype. Sheath, controls release, climbing and death cancel attacks as appropriate; R restores readied state. Verification: 657/657 headless across twelve suites, rendered dagger 37/37; ready, all six swings and widescreen captures visually inspected. Reports: tests/dagger_full_regression.log and tests/dagger_visual.log. See DAGGER.md. Original weapon sounds, equipment/inventory, gesture attacks and direction/stat damage formulas are deferred. The old LMB/timing/greybox descriptions below are historical.
 
-## Previous milestone: DFU-style local steering â€” October 31, 2026
+## Previous milestone: DFU-style local steering — October 31, 2026
 
 After inspecting DFU EnemyMotor/EnemySenses, the user requested navigation closer to enhanced DFU and deferred combat tactics. enemy_navigation.gd now uses local capsule/floor probes, randomized initial 45-degree direction checks, a retained side preference, 2 m detour goals and a 0.75 s detour timer, with DFU-style turning and limited last-motion searching after losing sight. No global route knowledge. Runtime baking, path requests and dungeon_navigation.gd/.uid were removed; keep one navigation implementation. Physical capsule/stairs, walking sprites, doors and combat remain. Normal play uses a random seed; tests fix it. Existing prototype speed/sight/memory/leash/combat values remain, not full DFU stat parity. Advanced combat tactics and interception prediction remain deferred.
 
 Verification: 620/620 headless across eleven suites, rendered local navigation 34/34; approach/stair/doorway captures visually inspected. Reports: tests/local_ai_full_regression.log and tests/local_ai_visual.log. Read ENEMY_NAVIGATION.md for the source mapping, cross-engine adaptations and validation scope. reference/enemy_ai_sources.json pins EnemyMotor.cs/EnemySenses.cs at the unchanged movement commit. All eight blocked directions stop/retry; genuine floor/physical checks remain. The hall navigation flag and stationary test override are unchanged; chamber stays passive. F4 shows local state/detour time. Earlier global route/bake notes below describe the replaced prototype.
 
-## Previous milestone: navmesh Skeleton navigation â€” October 31, 2026
+## Previous milestone: navmesh Skeleton navigation — October 31, 2026
 
 The user accepted sprites/combat and authorized pursuit. The hall entry now opts into navigation_enabled=true, while approach_enabled=false remains untouched and the chamber greybox remains passive. dungeon_navigation.gd bakes runtime walkability from original solid meshes/props/caps, excluding dynamic doors/actors. enemy_navigation.gd provides 2.5 m/s pursuit, 20 m sight range, 10 s last-seen memory, 60 m leash, 0.3 s repaths, physical capsule/stair traversal and unlocked door opening. It does not track hidden live positions or use partial routes to unreachable targets. Escape suspends/clears pursuit; death cancels it; R restores normal enabled play. Walking uses original 6 fps frames. F4 includes nav state/path. No new source geometry or hidden ramps.
 
 The existing player motor is unchanged. step_solver.gd adds optional verify_tread_edge=false for default callers; the enemy opts in for independently verified rounded tread edges. NPC rounded contact threshold matches the player's accepted 70 degrees, while the bake permits only 45-degree walking surfaces. Existing suites explicitly disable navigation before adding main to preserve stationary fixtures. New enemy_navigation.gd tests real source stairs/doors and isolated sensing/obstacles/unreachable/ledge cases. Verification: 615/615 headless checks across eleven suites, rendered navigation 29/29; approach/stair/doorway captures visually inspected. Reports: tests/navigation_full_regression.log and tests/navigation_visual.log. See ENEMY_NAVIGATION.md for scope and limitations. Older stationary Skeleton notes below are historical.
 
-## Previous milestone: original Skeleton sprites â€” October 31, 2026
+## Previous milestone: original Skeleton sprites — October 31, 2026
 
-The hall enemy selects visual="skeleton" in the section and remains stationary. The chamber enemy stays passive greybox/first alias. classic_data.gd loads original archive 270 (records 0â€“19) and corpse 306:1 from external ARENA2; enemy_sprite.gd owns native-sized fixed-Y eight-way views and physics-clock animation. Idle is static, hurt lasts 0.25 s and interrupts the pending attack; attack sequence [0,1,2,3,-1,4,5] at 10 fps produces its one-shot damage event at 0.4 s entering frame 4, then finishes at 0.6 s. This replaces the Skeleton's orange 0.65 s prototype cue; one-second recovery and strike-time eligibility checks remain. Hall collision height is now the original 2 m idle height, with 0.32 m radius. Death shows the original persistent nonblocking corpse; there is no separate source death-animation sequence or loot interaction. R restores both actors. Health/damage remain deterministic prototype values. Source hashes: reference/enemy_sprite_sources.json at the unchanged pinned DFU commit. Verification: 586/586 headless checks across ten suites, rendered Skeleton 48/48; directional/attack/hurt/corpse captures visually inspected. Reports: tests/skeleton_full_regression.log and tests/skeleton_visual.log. See SKELETON.md and tests/skeleton.gd; older red capsule/timing notes below are historical.
+The hall enemy selects visual="skeleton" in the section and remains stationary. The chamber enemy stays passive greybox/first alias. classic_data.gd loads original archive 270 (records 0–19) and corpse 306:1 from external ARENA2; enemy_sprite.gd owns native-sized fixed-Y eight-way views and physics-clock animation. Idle is static, hurt lasts 0.25 s and interrupts the pending attack; attack sequence [0,1,2,3,-1,4,5] at 10 fps produces its one-shot damage event at 0.4 s entering frame 4, then finishes at 0.6 s. This replaces the Skeleton's orange 0.65 s prototype cue; one-second recovery and strike-time eligibility checks remain. Hall collision height is now the original 2 m idle height, with 0.32 m radius. Death shows the original persistent nonblocking corpse; there is no separate source death-animation sequence or loot interaction. R restores both actors. Health/damage remain deterministic prototype values. Source hashes: reference/enemy_sprite_sources.json at the unchanged pinned DFU commit. Verification: 586/586 headless checks across ten suites, rendered Skeleton 48/48; directional/attack/hurt/corpse captures visually inspected. Reports: tests/skeleton_full_regression.log and tests/skeleton_visual.log. See SKELETON.md and tests/skeleton.gd; older red capsule/timing notes below are historical.
 
-## Previous milestone: enemy attacks and player health â€” October 31, 2026
+## Previous milestone: enemy attacks and player health — October 31, 2026
 
 The hall target now has attack_enabled=true while retaining approach_enabled=false. The chamber target stays passive (attack_enabled defaults false); both positions and hall spawn are preserved. enemy_melee.gd owns the opt-in attack state: 1.8 m horizontal range, 0.65 s orange wind-up/forward lean, committed direction, strike-time range/height/yaw/line-of-sight checks, 10 damage, 1 s recovery. No chasing. Player health starts at 100; red damage feedback and upper-right health display are present. Death freezes gameplay actions, clears climbing/combat/cached motion and releases the mouse; R reloads via the normal gameplay viewport. Escape cancels/suspends attacks for testing. F4 diagnostics now follow status height, fixing the review finding. Verification: 538/538 headless across nine suites; rendered retaliation 24/24. Wind-up, player damage/death and F4 layout captures were visually inspected. Reports: tests/retaliation_full_regression.log and tests/retaliation_visual.log. See COMBAT.md for scope and tests. The following player-only combat notes are historical where they defer retaliation/player health.
 
-## Previous combat milestone â€” October 31, 2026
+## Previous combat milestone — October 31, 2026
 
 Basic deterministic player-to-enemy melee is implemented; see COMBAT.md. LMB triggers wind-up, one 10-damage strike, then recovery. Greybox targets have 30 HP; death hides/disables them and R restores the scene. A second stationary target is authored near the hall spawn at [920,-512,960]. The chamber enemy remains first with approach_enabled=false. Hall spawn and original geometry are preserved. Combat sources are pinned separately in reference/combat_sources.json at the unchanged movement commit. No enemy retaliation, player damage or RPG formulas yet. Verification: 514/514 headless checks across eight suites, rendered combat 20/20, and combat_preview.png visually inspected. Reports: tests/combat_full_regression.log and tests/combat_visual.log. The following pre-combat notes are historical where they describe combat as unimplemented.
 
-## Previous milestone â€” October 31, 2026
+## Previous milestone — October 31, 2026
 
 The user is happy with crouching and plans to continue in a new chat, probably with combat. Climbing and crouching are accepted playable movement milestones; skill/slip/stealth progression remains deferred. The next chat should inspect current code and propose a focused combat scope before broadening it. Combat has not been started. Preserve the hall spawn, original-data boundaries and approach_enabled=false enemy baseline unless the next task deliberately changes those behaviors.
 
@@ -853,7 +991,7 @@ The user tests DFU at approximately Speed 50 and movement skills 25, without mov
 - `player.gd`: physical motor, look and interaction.
 - `step_solver.gd`: capsule sweep stair assistance and verified tread support.
 
-Baseline walk 4.43038 m/s, run 7.46835 m/s, jump launch 5.0625 m/s, gravity 20 m/sÂ². No default air steering; preserve world-space jump momentum. Running changes only while grounded. Detailed formulas and integration APIs are in MOVEMENT_TUNING.md.
+Baseline walk 4.43038 m/s, run 7.46835 m/s, jump launch 5.0625 m/s, gravity 20 m/s². No default air steering; preserve world-space jump momentum. Running changes only while grounded. Detailed formulas and integration APIs are in MOVEMENT_TUNING.md.
 
 Swimming remains a speed hook; climbing now has a separate physical motor. Climb speed currently resolves to walk/3, doubled by enhanced climbing; DFU skill checks/slipping still need their own behavior. Future skills, Speed, swimming, climbing and spell effects must fit the existing parameter resolution rather than becoming hardcoded progression in player.gd.
 

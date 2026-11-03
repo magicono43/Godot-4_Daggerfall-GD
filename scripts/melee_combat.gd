@@ -41,7 +41,7 @@ func setup(camera: Camera3D) -> void:
 	pose()
 
 func request_attack(body: CharacterBody3D) -> bool:
-	if not body.inventory.has_weapon() or body.modal_open or sheathed or elapsed >= 0 or body.is_dead() or not body.controls_active or body.climbing.active:
+	if body.casting.active() or not body.inventory.has_weapon() or body.modal_open or sheathed or elapsed >= 0 or body.is_dead() or not body.controls_active or body.climbing.active:
 		return false
 	if body.fatigue.exhausted():
 		feedback = "You are exhausted. T opens rest."

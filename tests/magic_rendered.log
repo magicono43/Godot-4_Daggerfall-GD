@@ -1,0 +1,86 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 - Build 31.0.101.2140 - Compatibility - Using Device: Intel - Intel(R) UHD Graphics 630
+
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Accepted300HP and bear30HP remain position=(7.25, 12.8, 16.2) mode=walking
+PASS Thirteen instances, seven unequipped armor pieces and dagger unchanged position=(7.25, 12.8, 16.2) mode=walking
+PASS Authored spell grants/select default; no last cast initially position=(7.25, 12.8, 16.2) mode=walking
+PASS Explicit3x Intelligence capacity and source hourly recovery position=(7.25, 12.8, 16.2) mode=walking
+PASS Pinned Heal/Light coefficients and school50 yield75/12 costs position=(7.25, 12.8, 16.2) mode=walking
+PASS Unknown selection and duplicate grant rejected position=(7.25, 12.8, 16.2) mode=walking
+PASS Section rejects unknown authored grant position=(7.25, 12.8, 16.2) mode=walking
+PASS All six external casting frames decode position=(7.25, 12.8, 16.2) mode=walking
+PASS Casting frame0 matches independent RGBA audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Casting frame1 matches independent RGBA audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Casting frame2 matches independent RGBA audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Casting frame3 matches independent RGBA audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Casting frame4 matches independent RGBA audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Casting frame5 matches independent RGBA audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Truncated casting data rejects safely position=(7.25, 12.8, 16.2) mode=walking
+PASS Recast without history spends nothing position=(7.25, 12.8, 16.2) mode=walking
+PASS Full-health heal commits immediately and spends75 position=(7.25, 12.8, 16.2) mode=walking
+PASS Repeat while hands animate cannot double-charge position=(7.25, 12.8, 16.2) mode=walking
+PASS Successful cast remembers spell and starts hands position=(7.25, 12.8, 16.2) mode=walking
+PASS Hands finish after seven40ms frames; no extra cooldown position=(7.25, 12.8, 16.2) mode=walking
+PASS Immediate recast clamps healing and spends exactly once position=(7.25, 12.8, 16.2) mode=walking
+PASS Insufficient-magicka cast has no effect/charge position=(7.25, 12.8, 16.2) mode=walking
+PASS Light starts immediately as separate scoped light position=(7.25, 12.8, 16.2) mode=walking
+PASS Light recast adds duration position=(7.25, 12.8, 16.2) mode=walking
+PASS Recast uses last successful cast independently of selection position=(7.25, 12.8, 16.2) mode=walking
+PASS Game-clock expiry removes only spell illumination position=(7.25, 12.8, 16.2) mode=walking
+PASS Live school affects real cost and Intelligence clamps resource position=(7.25, 12.8, 16.2) mode=walking
+PASS Capacity increases never mint magicka position=(7.25, 12.8, 16.2) mode=walking
+PASS F3 retains overrides and depleted pool position=(7.25, 12.8, 16.2) mode=walking
+PASS Invalid magic profile rejects entire combined reload atomically position=(7.25, 12.8, 16.2) mode=walking
+PASS Cast allowed in middle of melee swing position=(7.25, 12.8, 16.2) mode=walking
+PASS Casting freezes weapon frame and damage clock position=(7.25, 12.8, 16.2) mode=walking
+PASS New melee cannot compete with casting hands position=(7.25, 12.8, 16.2) mode=walking
+PASS Hands replace weapon HUD position=(7.25, 12.8, 16.2) mode=walking
+PASS Interrupted melee resumes original swing after hands finish position=(7.25, 12.8, 16.2) mode=walking
+PASS Self spell casts while climbing owns movement position=(7.25, 12.8, 16.2) mode=walking
+PASS Sheathed crouched casting allowed position=(7.25, 12.8, 16.2) mode=reset
+PASS Airborne self cast commits without grounded gate position=(7.25, 14.8, 16.2) mode=reset
+PASS Existing exhaustion policy gates casts position=(7.25, 12.8, 16.2) mode=reset
+PASS Released controls cannot cast position=(7.25, 12.8, 16.2) mode=reset
+PASS B opens shared modal and clears hands position=(7.25, 12.8, 16.2) mode=reset
+PASS Cancelling committed hands never refunds or removes effect position=(7.25, 12.8, 16.2) mode=reset
+PASS Book shows actual known state/resource position=(7.25, 12.8, 16.2) mode=reset
+PASS Book selection is harmless position=(7.25, 12.8, 16.2) mode=reset
+PASS Q in modal cannot cast/click through position=(7.25, 12.8, 16.2) mode=reset
+PASS Modal pauses spell duration with world clock position=(7.25, 12.8, 16.2) mode=reset
+PASS I switches book to inventory preserving capture position=(7.25, 12.8, 16.2) mode=reset
+PASS Book transition clears inventory source/drop session position=(7.25, 12.8, 16.2) mode=reset
+PASS C switches to sheet with magicka/schools position=(7.25, 12.8, 16.2) mode=reset
+PASS T switches to common rest modal position=(7.25, 12.8, 16.2) mode=reset
+PASS Switching to book stops rest position=(7.25, 12.8, 16.2) mode=reset
+PASS Closing restores captured controls position=(7.25, 12.8, 16.2) mode=reset
+PASS Book preserves already released preference position=(7.25, 12.8, 16.2) mode=reset
+PASS Root-routed Q commits immediately position=(7.25, 12.8, 16.2) mode=reset
+PASS Root-routed F recasts last spell position=(7.25, 12.8, 16.2) mode=reset
+PASS Effect duration consumes existing12x active game clock position=(7.25, 12.8, 16.2) mode=reset
+PASS Full-rest completion includes depleted magicka position=(7.25, 12.8, 16.2) mode=reset
+PASS No-regen policy disables hourly resource recovery position=(7.25, 12.8, 16.2) mode=reset
+PASS Full rest starts when only magicka needs recovery position=(7.25, 12.8, 16.2) mode=reset
+PASS Completed rest hour restores source amount and expires light position=(7.25, 12.8, 16.2) mode=reset
+PASS Full rest ends when all resources recovered within24h cap position=(7.25, 12.8, 16.2) mode=reset
+PASS Schema6 validates resource/knowledge/effect snapshot position=(7.25, 12.8, 16.2) mode=reset
+PASS Invalid magic save rejects: unknown position=(7.25, 12.8, 16.2) mode=reset
+PASS Invalid magic save rejects: duplicate position=(7.25, 12.8, 16.2) mode=reset
+PASS Invalid magic save rejects: selection position=(7.25, 12.8, 16.2) mode=reset
+PASS Invalid magic save rejects: last position=(7.25, 12.8, 16.2) mode=reset
+PASS Invalid magic save rejects: negative position=(7.25, 12.8, 16.2) mode=reset
+PASS Invalid magic save rejects: fraction position=(7.25, 12.8, 16.2) mode=reset
+PASS Invalid magic save rejects: nan position=(7.25, 12.8, 16.2) mode=reset
+PASS Invalid magic save rejects: duration position=(7.25, 12.8, 16.2) mode=reset
+PASS Invalid magic save rejects: missing position=(7.25, 12.8, 16.2) mode=reset
+PASS Invalid magic save rejects: old position=(7.25, 12.8, 16.2) mode=reset
+PASS Writes isolated magic slot without touching manual save position=(7.25, 12.8, 16.2) mode=reset
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS L from book restores magic/effect and clears transient hands position=(7.25, 12.8, 16.2) mode=reset
+PASS Load from book resumes captured controls position=(7.25, 12.8, 16.2) mode=reset
+PASS Death clears hands/light without revival position=(7.25, 12.8, 16.2) mode=reset
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS L from death restores resource and controls position=(7.25, 12.8, 16.2) mode=reset
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS R from book restores authored magic and clears all transient state position=(7.25, 12.88333, 16.2) mode=walking
+MAGIC RESULTS: 78/78

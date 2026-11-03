@@ -18,6 +18,7 @@ func open(window: Control) -> void:
 	actor.modal_open = true
 	actor.controls_active = false
 	actor.combat.cancel()
+	actor.casting.cancel()
 	for enemy in actor.get_tree().get_nodes_in_group("prototype_enemies"):
 		enemy.suspend_for_modal()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

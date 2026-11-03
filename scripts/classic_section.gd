@@ -94,6 +94,8 @@ func validate(value: Variant) -> bool:
 		var setup: Variant = prototype.player_test
 		if not setup is Dictionary or not integer(setup.get("maximum_health"), 10000) or setup.maximum_health < 1 or not setup.get("items") is Array or setup.items.size() > 32:
 			return fail("player_test requires maximum_health 1..10000 and at most 32 items")
+		if not preload("res://scripts/spell_catalog.gd").valid_known(setup.get("known_spells", [])):
+			return fail("player_test has invalid/duplicate known spells")
 		for item in setup.items:
 			if not item is Dictionary or not item.get("definition") is String or not preload("res://scripts/item_catalog.gd").valid(item.definition):
 				return fail("player_test has unknown item")

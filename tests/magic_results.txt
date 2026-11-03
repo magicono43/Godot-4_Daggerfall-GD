@@ -1,0 +1,92 @@
+PASS Accepted300HP and bear30HP remain
+PASS Thirteen instances, seven unequipped armor pieces and dagger unchanged
+PASS Authored spell grants/select default; no last cast initially
+PASS Explicit3x Intelligence capacity and source hourly recovery
+PASS Pinned Heal/Light coefficients and school50 yield75/12 costs
+PASS Unknown selection and duplicate grant rejected
+PASS Section rejects unknown authored grant
+PASS All six external casting frames decode
+PASS Casting frame0 matches independent RGBA audit
+PASS Casting frame1 matches independent RGBA audit
+PASS Casting frame2 matches independent RGBA audit
+PASS Casting frame3 matches independent RGBA audit
+PASS Casting frame4 matches independent RGBA audit
+PASS Casting frame5 matches independent RGBA audit
+PASS Truncated casting data rejects safely
+PASS Recast without history spends nothing
+PASS Full-health heal commits immediately and spends75
+PASS Repeat while hands animate cannot double-charge
+PASS Successful cast remembers spell and starts hands
+PASS Hands finish after seven40ms frames; no extra cooldown
+PASS Immediate recast clamps healing and spends exactly once
+PASS Insufficient-magicka cast has no effect/charge
+PASS Light starts immediately as separate scoped light
+PASS Light recast adds duration
+PASS Recast uses last successful cast independently of selection
+PASS Game-clock expiry removes only spell illumination
+PASS Live school affects real cost and Intelligence clamps resource
+PASS Capacity increases never mint magicka
+PASS F3 retains overrides and depleted pool
+PASS Invalid magic profile rejects entire combined reload atomically
+PASS Cast allowed in middle of melee swing
+PASS Casting freezes weapon frame and damage clock
+PASS New melee cannot compete with casting hands
+PASS Hands replace weapon HUD
+PASS Interrupted melee resumes original swing after hands finish
+PASS Self spell casts while climbing owns movement
+PASS Sheathed crouched casting allowed
+PASS Airborne self cast commits without grounded gate
+PASS Existing exhaustion policy gates casts
+PASS Released controls cannot cast
+PASS B opens shared modal and clears hands
+PASS Cancelling committed hands never refunds or removes effect
+PASS Book shows actual known state/resource
+PASS Book selection is harmless
+PASS Q in modal cannot cast/click through
+PASS Modal pauses spell duration with world clock
+PASS I switches book to inventory preserving capture
+PASS Book transition clears inventory source/drop session
+PASS C switches to sheet with magicka/schools
+PASS T switches to common rest modal
+PASS Switching to book stops rest
+PASS Closing restores captured controls
+PASS Book preserves already released preference
+PASS Root-routed Q commits immediately
+PASS Root-routed F recasts last spell
+PASS Effect duration consumes existing12x active game clock
+PASS Full-rest completion includes depleted magicka
+PASS No-regen policy disables hourly resource recovery
+PASS Full rest starts when only magicka needs recovery
+PASS Completed rest hour restores source amount and expires light
+PASS Full rest ends when all resources recovered within24h cap
+PASS Schema6 validates resource/knowledge/effect snapshot
+PASS Invalid magic save rejects: unknown
+PASS Invalid magic save rejects: duplicate
+PASS Invalid magic save rejects: selection
+PASS Invalid magic save rejects: last
+PASS Invalid magic save rejects: negative
+PASS Invalid magic save rejects: fraction
+PASS Invalid magic save rejects: nan
+PASS Invalid magic save rejects: duration
+PASS Invalid magic save rejects: missing
+PASS Invalid magic save rejects: old
+PASS Writes isolated magic slot without touching manual save
+PASS L from book restores magic/effect and clears transient hands
+PASS Load from book resumes captured controls
+PASS Death clears hands/light without revival
+PASS L from death restores resource and controls
+PASS R from book restores authored magic and clears all transient state
+PASS DFU uint magic sound ID349 resolves to ordinal81, not ordinal349 thunder
+PASS Magic casting sound ID349/ordinal81 matches independent ordinal PCM audit
+PASS Single spell click selects without casting or sound
+PASS Double-click selects Heal, closes book and spends once immediately
+PASS Double-click plays one source cast cue without attack/click-through
+PASS Repeat during hands cannot duplicate casting audio
+PASS Next accepted cast starts its own sound without throttle
+PASS Back-to-back source cast sounds overlap on independent playing voices
+PASS Overlapping player-local cast cues share cached PCM and effects gains
+PASS Insufficient double-click closes with feedback but no sound/effect/charge
+PASS Rejected book activation uses normal cast feedback
+PASS Explicit book activation casts while preserving previously released capture
+PASS Stale hidden-book activation cannot cast or play sound
+PASS Dead actor cannot activate book spell

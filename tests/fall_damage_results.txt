@@ -35,7 +35,7 @@ PASS High-skill jump off platform uses the same net drop as walking off
 PASS Released mouse does not erase a fall while gravity continues
 PASS Existing below-world reset clears fall history without phantom damage
 PASS Fall damage also works against original hall floor geometry
-PASS Damaged settled player can save using unchanged schema4
+PASS Damaged settled player can save using the current save schema
 PASS L clears pending fall and feedback while restoring saved health
 PASS Fatal landing uses normal death cleanup once
 PASS R restores accepted bear baseline with clean fall state

@@ -54,7 +54,8 @@ func refusal() -> String:
 func recovered() -> bool:
 	var player: CharacterBody3D = level.player
 	player.fatigue.sync_capacity()
-	return player.health.current == player.health.maximum and player.fatigue.current == player.fatigue.maximum()
+	player.magic.sync_capacity()
+	return player.magic.current == player.magic.maximum() and player.health.current == player.health.maximum and player.fatigue.current == player.fatigue.maximum()
 
 func start(hours: int, full := false) -> bool:
 	message = refusal()
@@ -99,6 +100,8 @@ func tick(delta: float) -> void:
 			return
 		elapsed -= SECONDS_PER_HOUR
 		level.player.fatigue.rest_hour(level.player.health)
+		level.player.magic.rest_hour()
+		level.player.spell_effects.advance(3600.0)
 		observed_health = level.player.health.current
 		hours_left -= 1
 		hours_completed += 1

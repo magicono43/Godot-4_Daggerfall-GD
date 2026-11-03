@@ -1,3 +1,10 @@
+# Magic extension
+
+Rest now also recovers magicka by max(floor(maximum/8),1) per completed hour,
+unless magic.cfg no_regen is enabled. Full-rest completion checks magicka as well
+as HP/fatigue;24h safety bound remains. Completed hours also advance Light expiry.
+See MAGIC.md. Existing awake clock/cost/support/threat ownership is unchanged.
+
 # Basic fatigue and resting
 
 The accepted character sheet now has basic fatigue and rest. The bear/hall start,

@@ -1,3 +1,11 @@
+# Magic extension
+
+C now includes magicka plus shared Restoration/Illusion skills. Intelligence has
+a real magicka-capacity consumer; Willpower/Personality remain without gameplay
+consumers in this slice. F3 validates magic.cfg with movement/combat atomically.
+Schema6 persists both new base skills. See MAGIC.md; earlier implementation details
+below predate magic.
+
 # Current armor extension
 
 Armor now shows seven independent equipped regions and items; schema5 replaces

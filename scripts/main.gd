@@ -31,6 +31,7 @@ var enemy_navigation_enabled := true
 var combat_audio: Node
 var loot_window: Control
 var character_sheet: Control
+var spellbook: Control
 var rest_window: Control
 var modal := preload("res://scripts/modal_coordinator.gd").new()
 var world_loot: Node
@@ -103,6 +104,7 @@ func _ready() -> void:
 	player = CharacterBody3D.new()
 	player.set_script(Player)
 	player.vertical_fov = presentation.vertical_fov
+	player.spell_payload = classic.spell_frames
 	player.weapon_payload = classic.dagger_frames
 	player.weapon_payloads = classic.weapon_frames
 	player.combat_audio = combat_audio
@@ -131,6 +133,11 @@ func _ready() -> void:
 	rest_window.rest.level = self
 	presentation.hud.add_child(rest_window)
 	player.health.died.connect(rest_window.close)
+	spellbook = preload("res://scripts/spellbook.gd").new()
+	spellbook.actor = player
+	spellbook.coordinator = modal
+	presentation.hud.add_child(spellbook)
+	player.health.died.connect(spellbook.close)
 	player.loot_requested.connect(loot_window.open)
 	player.health.died.connect(loot_window.close)
 	world_loot = preload("res://scripts/world_loot.gd").new()
@@ -195,7 +202,7 @@ func configure_input() -> void:
 		var click := InputEventMouseButton.new()
 		click.button_index = MOUSE_BUTTON_RIGHT
 		InputMap.action_add_event("attack", click)
-	var keys := {"rest": KEY_T, "character_sheet": KEY_C, "inventory": KEY_I, "ready_weapon": KEY_Z, "crouch": KEY_CTRL, "forward": KEY_W, "back": KEY_S, "left": KEY_A, "right": KEY_D, "sprint": KEY_SHIFT, "jump": KEY_SPACE, "interact": KEY_E, "release_mouse": KEY_ESCAPE, "reset": KEY_R, "toggle_view": KEY_F2, "reload_movement": KEY_F3, "movement_debug": KEY_F4}
+	var keys := {"spellbook": KEY_B, "cast_spell": KEY_Q, "recast_spell": KEY_F, "rest": KEY_T, "character_sheet": KEY_C, "inventory": KEY_I, "ready_weapon": KEY_Z, "crouch": KEY_CTRL, "forward": KEY_W, "back": KEY_S, "left": KEY_A, "right": KEY_D, "sprint": KEY_SHIFT, "jump": KEY_SPACE, "interact": KEY_E, "release_mouse": KEY_ESCAPE, "reset": KEY_R, "toggle_view": KEY_F2, "reload_movement": KEY_F3, "movement_debug": KEY_F4}
 	for action in keys:
 		if not InputMap.has_action(action):
 			InputMap.add_action(action)
@@ -297,7 +304,7 @@ func create_hud() -> void:
 	crosshair.position -= Vector2(5, 13)
 	root.add_child(crosshair)
 	var controls := Label.new()
-	controls.text = "WASD Move  |  Ctrl Toggle crouch  |  Shift Run  |  Space Jump  |  E Interact  |  I Inventory  |  C Character  |  T Rest\nRMB Attack  |  Z Draw/Sheath  |  Esc Mouse  |  R Restart\nClimb: W into wall or S over ledge  |  W/S Up/Down  |  A/D Along wall  |  Space Eject\nF2 View  |  F3 Reload movement  |  F4 Diagnostics  |  K Save  |  L Load"
+	controls.text = "WASD Move  |  Ctrl Toggle crouch  |  Shift Run  |  Space Jump  |  E Interact  |  I Inventory  |  C Character  |  T Rest\nRMB Attack  |  Z Draw/Sheath  |  B Spells  |  Q Cast  |  F Recast  |  Esc Mouse  |  R Restart\nClimb: W into wall or S over ledge  |  W/S Up/Down  |  A/D Along wall  |  Space Eject\nF2 View  |  F3 Reload movement  |  F4 Diagnostics  |  K Save  |  L Load"
 	controls.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
 	controls.position = Vector2(29, -104)
 	controls.add_theme_font_size_override("font_size", 14)
@@ -325,7 +332,11 @@ func _process(_delta: float) -> void:
 		if target.name == "hall_combat_target":
 			status.text += "\nHall target: %d / %d HP%s" % [target.health.current, target.health.maximum, " - defeated (R to restart)" if target.health.current == 0 else ""]
 	player.fatigue.sync_capacity()
+	player.magic.sync_capacity()
 	player_status.text = "Health: %d / %d\nFatigue: %.1f / %.1f" % [player.health.current, player.health.maximum, player.fatigue.current / 64.0, player.fatigue.maximum() / 64.0]
+	player_status.text += "\nMagicka: %d / %d" % [player.magic.current, player.magic.maximum()]
+	if player.casting.feedback_time > 0:
+		player_status.text += "\n" + player.casting.feedback
 	if player.fatigue.exhausted() and not player.is_dead():
 		player_status.text += "\nExhausted | T Rest"
 	player_status.modulate = Color(1, 0.45, 0.35) if player.damage_flash > 0 else Color.WHITE
@@ -339,6 +350,7 @@ func _process(_delta: float) -> void:
 	movement_status.visible = player.show_movement_debug or not player.movement.profile.error.is_empty() or not player.combat_stats.error.is_empty()
 	if movement_status.visible:
 		movement_status.text = player.movement_debug_text()
+		movement_status.text += "\nMagic: %s | last %s | light %.1fs %s" % [player.magic.selected, player.magic.last_cast, player.spell_effects.remaining, player.magic.error]
 		movement_status.text += "\nFatigue raw: %d / %d | elapsed game hours %.2f" % [player.fatigue.current, player.fatigue.maximum(), player.fatigue.game_seconds / 3600.0]
 		movement_status.text += "\n" + player.combat_stats.diagnostic(player)
 		movement_status.text += "\n" + player.combat.resolver.diagnostic()
@@ -364,6 +376,13 @@ func _input(event: InputEvent) -> void:
 			persistence.save_slot()
 		else:
 			persistence.load_slot()
+		return
+	if ready_to_play and event.is_action_pressed("spellbook") and not event.is_echo():
+		if spellbook.visible:
+			spellbook.close()
+		else:
+			spellbook.open()
+		get_viewport().set_input_as_handled()
 		return
 	if ready_to_play and event.is_action_pressed("rest"):
 		if rest_window.visible:

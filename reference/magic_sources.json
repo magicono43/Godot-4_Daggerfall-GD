@@ -1,0 +1,44 @@
+{
+  "repository": "https://github.com/Interkarma/daggerfall-unity",
+  "commit": "4e78e1412b17b60f4d5d6073825775aa5ae95139",
+  "license": "MIT; see LICENSE.txt and source headers",
+  "status": "Implemented fixed self spells; see docs/MAGIC.md",
+  "files": {
+    "HealHealth.cs": "0cb5fd08c84586319c97949a40cbe31ad709e51ab7cbf52351dbae00b7e83de0",
+    "LightNormal.cs": "bad175ff607365460e81b6cdd0fb0d34c8f48ab857a7dae3c5fe8128ea270519",
+    "EntityEffectManager.cs": "bfb25f1f179d2eb40d77c88d06b693f7cf0bc73b9031a3807795e250f38e6014",
+    "FormulaHelper.cs": "8f2d5286add95aab0ca279543debc0ff7d1a25bbc6d1e6aa1aba7a83a3773bc6",
+    "DFCareer.cs": "3aaf2adcca838f7c42c25ff6abf5e8bccd28ff5cfad5989ba57dabaa0283bc6d",
+    "DaggerfallEntity.cs": "8da1b9e6be534321d0c8f4fdc793b3a9189928490f82b22390b63c67ea7301b5",
+    "EntityEffectBroker.cs": "4428a80493be9cb6a0089b1ad089d02651e49e9c6483dcac88b702cde41428b4",
+    "FPSSpellCasting.cs": "3e03762e98e81b17f11233b8fec07dc37d5de9d9809b6c423571771f6163bfde",
+    "CifRciFile.cs": "48c7865ef44d29510584c2defcd6218024daac8866f33f7bec0fc30281fc4984",
+    "EntityEffect.cs": "cb20b7c34f2ccf6a6856e1e5494adc50a52a070e3149dc168967dabfd016351a",
+    "WeaponBasics.cs": "086a75d850dc0404f1b35993bcddfa97607af5f85909477b0a8171efdfd3a6a4"
+  },
+  "supplemental_paths": [
+    "Assets/Scripts/Game/MagicAndEffects/Effects/Restoration/HealHealth.cs",
+    "Assets/Scripts/Game/MagicAndEffects/Effects/Illusion/LightNormal.cs",
+    "Assets/Scripts/Game/MagicAndEffects/EntityEffectManager.cs",
+    "Assets/Scripts/Game/FPSSpellCasting.cs",
+    "Assets/Scripts/API/CifRciFile.cs",
+    "Assets/Scripts/Game/MagicAndEffects/EntityEffect.cs",
+    "Assets/Scripts/Utility/WeaponBasics.cs"
+  ],
+  "prototype_choices": [
+    "Fixed self Heal25HP and Light10 game minutes; no level scaling or full standard spell import.",
+    "Test multiplier3, magic school baselines50; no career/race assignment.",
+    "Player-following cool light energy1 range14m; no floating candle.",
+    "Light additive duration bounded at24 game hours; existing12x clock/pause/rest policy.",
+    "User vanilla observations: immediate self effect, cast while climbing, freeze/resume current weapon swing; source DFU animation40ms/frame is not vanilla speed evidence.",
+    "No full-health benefit guards; committed effects never refunded when hands cancel."
+  ],
+  "casting_audio": {
+    "ordinal": 81,
+    "source": "EntityEffectManager magicCastSoundID349 -> DaggerfallAudioSource.PlayOneShot(uint) -> GetSoundIndex349 -> ordinal81/CastSpell1",
+    "overlap": true,
+    "audit": "tests/audio_samples.json",
+    "sound_id": 349,
+    "correction": "Ordinal349 is StormLightningThunder; do not interpret source uint IDs as archive ordinals."
+  }
+}

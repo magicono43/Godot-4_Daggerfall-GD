@@ -1,3 +1,12 @@
+# Current magic extension — schema6
+
+Known spell IDs, selected/last cast spell, current magicka, Light remaining game
+seconds and shared magic-school base values now persist. Reject malformed state
+before candidate swap. Pending casting hands never persist; K refuses while they
+are active. L works from spellbook/death with normal capture restoration. Older
+schema5 and earlier slots reject: create a fresh K save. See MAGIC.md. Earlier
+schema notes below are historical.
+
 # Current armor extension
 
 Current schema5 saves seven armor_slots UIDs per collection, validates correct
@@ -25,7 +34,7 @@ character sheet. See CHARACTER_SHEET.md. Earlier schema descriptions below are h
 
 Current schema is version2: independent armor_uid equipment and checked weapon material metadata. Old test slots reject with an explicit version message; create a new K save. No migration, as agreed for testing. See COMBAT_RESOLUTION.md; version1 notes below are historical.
 
-# Manual save/load â€” current section
+# Manual save/load — current section
 
 Implemented November 2, 2026. K writes one manual slot; L loads it. R still
 starts the authored section fresh and never changes the slot. Loading is also

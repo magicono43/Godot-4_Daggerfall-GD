@@ -14,6 +14,11 @@ const Movement = preload("res://scripts/movement_model.gd")
 const Steps = preload("res://scripts/step_solver.gd")
 var movement := Movement.new()
 var character := preload("res://scripts/character_state.gd").new()
+var magic := preload("res://scripts/magic_model.gd").new()
+var magic_profile_path := "res://magic.cfg"
+var spell_effects := preload("res://scripts/spell_effects.gd").new()
+var casting := preload("res://scripts/spell_casting.gd").new()
+var spell_payload: Array[Dictionary] = []
 var fatigue := preload("res://scripts/fatigue_model.gd").new()
 var falling := preload("res://scripts/fall_damage.gd").new()
 var fall_feedback := ""
@@ -57,6 +62,7 @@ func _ready() -> void:
 	collision_mask = 1
 	reload_movement()
 	fatigue.setup(character)
+	magic.setup(character, test_setup.get("known_spells", []))
 	var shape := CollisionShape3D.new()
 	capsule_collision = shape
 	var capsule := CapsuleShape3D.new()
@@ -74,6 +80,8 @@ func _ready() -> void:
 	add_child(camera)
 	camera.current = true
 	combat.setup(camera)
+	spell_effects.setup(camera)
+	casting.setup(self)
 	ray = RayCast3D.new()
 	ray.target_position = Vector3(0, 0, -2.6)
 	ray.collision_mask = 5
@@ -92,7 +100,8 @@ func reload_movement() -> bool:
 	var movement_candidate := preload("res://scripts/movement_profile.gd").new()
 	var combat_ok := combat_candidate.load_file(combat_profile_path)
 	var movement_ok := movement_candidate.load_file()
-	var loaded := combat_ok and movement_ok
+	var magic_candidate := magic.load_profile(magic_profile_path)
+	var loaded := combat_ok and movement_ok and not magic_candidate.is_empty()
 	if loaded:
 		var baseline := character.base.duplicate()
 		for key in character.MOVEMENT:
@@ -100,8 +109,14 @@ func reload_movement() -> bool:
 		for key in combat_candidate.values:
 			if key != "reflexes":
 				baseline[key] = combat_candidate.values[key]
+		baseline.merge(magic_candidate.base, true)
 		loaded = character.set_base(baseline)
 		if loaded:
+			magic.multiplier = magic_candidate.multiplier
+			magic.no_regen = magic_candidate.no_regen
+			magic.error = ""
+			if magic.character != null:
+				magic.sync_capacity()
 			movement.profile.values = movement_candidate.values
 			combat_stats.values = combat_candidate.values
 	movement.profile.error = movement_candidate.error
@@ -138,11 +153,16 @@ func _unhandled_input(event: InputEvent) -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if controls_active else Input.MOUSE_MODE_VISIBLE
 		if not controls_active:
 			combat.cancel()
+			casting.cancel()
 	if event is InputEventMouseButton and event.pressed and not controls_active:
 		controls_active = true
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		return
-	if InputMap.has_action("ready_weapon") and event.is_action_pressed("ready_weapon") and controls_active and not climbing.active:
+	if event.is_action_pressed("cast_spell") and not event.is_echo():
+		casting.request(self)
+	if event.is_action_pressed("recast_spell") and not event.is_echo():
+		casting.request(self, true)
+	if InputMap.has_action("ready_weapon") and event.is_action_pressed("ready_weapon") and controls_active and not climbing.active and not casting.active():
 		combat.toggle_sheath()
 	if InputMap.has_action("attack") and event.is_action_pressed("attack"):
 		combat.request_attack(self)
@@ -160,7 +180,10 @@ func _physics_process(delta: float) -> void:
 	fall_feedback_time = maxf(0.0, fall_feedback_time - delta)
 	if is_dead():
 		return
-	combat.tick(self, delta)
+	var casting_owned := casting.active()
+	casting.tick(self, delta)
+	if not casting_owned:
+		combat.tick(self, delta)
 	update_interaction()
 	var grounded := is_grounded()
 	falling.begin(global_position, grounded)
@@ -287,7 +310,9 @@ func land(result: Dictionary) -> void:
 func tick_fatigue(delta: float, activity: String) -> void:
 	# Match simulation pause/capture semantics; UI time never drains fatigue.
 	if controls_active and not modal_open and not is_dead():
+		var before := fatigue.game_seconds
 		fatigue.tick(delta, activity, movement.effect("athleticism"), movement.effect("improved_athleticism"))
+		spell_effects.advance(fatigue.game_seconds - before)
 
 func _process(delta: float) -> void:
 	if modal_open:
@@ -328,6 +353,8 @@ func receive_damage(amount: int, sound_event: String = "player_hit") -> bool:
 	return true
 
 func die() -> void:
+	casting.cancel()
+	spell_effects.clear()
 	falling.reset()
 	fall_feedback_time = 0.0
 	controls_active = false

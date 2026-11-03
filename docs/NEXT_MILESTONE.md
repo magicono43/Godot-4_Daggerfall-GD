@@ -1,185 +1,187 @@
-# Current status: regional armor implemented; user playtest pending
+# Latest playtest follow-up
 
-The user accepted fall damage and authorized expanded armor equipment. See
-ARMOR_EQUIPMENT.md and the latest HANDOFF. No subsequent milestone is selected.
-Earlier proposals below are history.
+Basic magic animation speed is accepted. Spellbook double-click immediate casting
+and overlapping original casting audio are implemented; user playtest/listening is
+next. No new feature milestone selected. See newest HANDOFF.md and MAGIC.md.
 
-# Current status: fall damage implemented; user playtest pending
+# Current status � November 3, 2026
 
-The user accepted fatigue/rest and authorized fall damage next. See FALL_DAMAGE.md
-and the latest HANDOFF. No subsequent milestone is selected. Earlier entries are history.
+The basic magic foundation below is now implemented; see MAGIC.md and newest
+HANDOFF.md. User playtest is next. No subsequent feature milestone is selected.
+The original planning brief below is historical; user vanilla corrections in the
+latest handoff supersede its pending-cast suggestions.
 
-# Current status: fatigue/rest implemented; user playtest pending
+# Next milestone — basic magic / first spell system
 
-The character sheet was accepted by the user, who then authorized basic fatigue
-and rest. See FATIGUE_REST.md and the latest HANDOFF. No further milestone is selected.
+Prepared November 2, 2026 for a fresh agent/chat at the user's explicit request.
+The user accepted seven-slot armor ("Seems to work fine") and chose basic magic
+instead of further inventory work. **No magic implementation has started.** This
+is a documentation handoff, not permission to implement magic in this chat.
 
-# Status: implemented; user playtest pending
+## User direction and scope
 
-The proposal below is historical. See CHARACTER_SHEET.md and the latest HANDOFF
-for shipped state ownership, controls, schema3 persistence and validation.
+The user wants the very basics of having spells implemented, without custom spell
+creation/spellmaking. Build a small playable foundation for known spells, selecting
+and casting them, and the resource/effect lifecycle. Encumbrance, durability/repair
+and other inventory refinements can wait. Swimming was suggested but not selected.
+Do not turn this into dungeon expansion, character creation or a full magic engine.
 
-# Proposed next milestone — basic character sheet and shared character state
+Suggested first slice, subject to source inspection/proposal:
 
-Prepared November 2, 2026 for a fresh chat. The user accepted the bear setup as
-working, chose this feature next, and requested a documentation handoff. **No
-character-sheet/shared-character-state implementation has started.** This file is
-proposed scope and design guidance, not shipped behavior or a settled architecture.
+- A small fixed spell catalog, a player-owned known-spell list and selected spell.
+  Authored starting/test spell grants are sufficient for initial acquisition. Do
+  not assume a merchant, trainer, spellmaker or item-scroll system is required.
+- A simple spellbook/modal showing known spells, cost and useful descriptions.
+  Selection must not execute an effect accidentally or imply unknown spells owned.
+- A casting action with a clear pending/committed/cancelled lifecycle and feedback.
+  Preserve RMB random-direction weapon attacks, Z draw/sheath and accepted weapon
+  timing. Resolve casting/weapon ownership explicitly; no gesture controls.
+- A magicka pool, current/max display on HUD/C and source-informed recovery during
+  rest. Keep magicka separate from current health and fatigue ownership.
+- Heal and Light are useful candidate first spells from the preceding discussion,
+  **not an approved final spell list, numeric balance or source-school assignment**.
+  Inspect actual source definitions and propose the smallest useful subset. Self
+  effects could avoid needing a new projectile/targeting system in this milestone.
 
-Read AGENTS.md and the newest HANDOFF.md entry first. Inspect the current code and
-local pinned DFU evidence, then explain the proposed state ownership, config/live
-value precedence, UI controls/modal behavior and save implications before making
-implementation changes. The user prefers small playable milestones and brief
-explanations of consequential choices.
+Out of scope unless the user separately expands it: custom spell construction,
+full spell archive/effect support, spell merchants/economy, scrolls/enchanted items,
+progression/level-ups, race/class creation, full resistance/reflection/absorption,
+AI spellcasters, swimming, new encounters/geometry and inventory polish milestones.
+Do not imply these systems ship merely because extension points exist.
 
-## User direction and accepted baseline
+## Accepted playable baseline — preserve
 
-- Keep the compact current dungeon while core systems are built. No dungeon
-  expansion or extra encounters are needed for this milestone.
-- Keep click-to-attack with a randomly selected swing. The user explicitly prefers
-  leaving purposeful attack-direction/gesture controls for later; do not reopen it.
-- Preserve the hall/stair spawn,300HP, weapon skills50 and directly supplied testing
-  inventory. The Grizzly Bear remains the hall opponent,30HP; chamber placeholder
-  stays passive. See BEAR_PLAYTEST.md for exact grants/source behavior.
-- Preserve accepted movement/projection, original geometry/scale, combat formulas,
-  item identity/stacking, armor equipment, audio and K/L save/load behavior.
-- Latest automated baseline:1058/1058 headless checks,58/58 rendered bear checks,
-  with both display modes and corpse/inventory visually inspected. Reports:
-  tests/bear_full_regression.log and tests/bear_rendered.log. The user subsequently
-  reported that the new setup works. No new checks were run for this docs handoff.
+- Normal entry main.tscn: original great-hall/stair spawn, original Bear30HP in hall,
+  player300HP, weapon skills50 and passive chamber/first-enemy alias.
+- Player owns13 instances: equipped steel dagger plus spare dagger, mace, seven
+  steel armor pieces (all initially unequipped),2 healing doses,12 gold and2 Twigs.
+  Keep authored grants under prototype.player_test in the active section; spell
+  grants, if introduced, should also be clearly authored test data and validated.
+- Inventory has independent weapon UID and seven armor_slots. armor_uid is only a
+  legacy chest alias. Armor protection9 affects its own region; no item/health
+  ownership duplication. Helmet inventory mask handling is accepted; source art
+  remains raw without material dyes or a paper doll.
+- Shared character attributes/skills, atomic F3 config reload/live precedence,
+  calibrated movement/projection, stairs/crouch/climbing/corners, combat RNG/geometry,
+  fatigue/rest, fall damage, audio, world loot/stacking and K/L persistence remain.
+- Keep compact section, original native scales/geometry, random-direction click
+  attacks and generous test setup. No new encounters are needed for basic magic.
+- Existing controls: C character, I inventory, T rest, E interaction, RMB attack,
+  Z draw/sheath, Ctrl crouch toggle, K save, L load, R fresh restart, F2 view,
+  F3 tuning reload and F4 diagnostics. F5/F9 are reserved for embedded Godot editor.
 
-## Proposed playable scope
+## Inspect and propose before implementation
 
-A simple read-only character sheet showing actual effective gameplay values:
+Read AGENTS.md and newest HANDOFF first, then inspect current code/local pinned
+DFU evidence. Explain the initial spell list, acquisition, input/casting ownership,
+magicka baseline/recovery, effect duration and save policy before editing gameplay.
+These are design questions, not a demand for a new permission gate beyond the
+user's next chat instructions. The next agent should act within that authorization.
 
-- Attributes: Strength, Intelligence, Willpower, Agility, Endurance, Personality,
-  Speed and Luck. Several do not yet have gameplay consumers; label that honestly
-  rather than adding unrelated formulas. Proposed authored baseline for unused
-  attributes is50, subject to inspection/proposal.
-- Implemented/relevant skills: Short Blade, Blunt Weapon, Hand-to-Hand (input hook;
-  player unarmed combat remains unsupported), Dodging, Critical Strike, Running,
-  Jumping, Swimming and Climbing. Distinguish parameter hooks from fully simulated
-  mechanics. Do not imply all Daggerfall skills/progression are implemented.
-- Current/maximum health, equipped weapon/material, chest armor and region defense.
-  Keep the current authored300HP baseline; do not add health-generation formulas.
-- Read derived movement/combat values from their real resolvers when useful; avoid
-  inventing a universal hit percentage because it depends on target, swing, armor
-  region, Critical Strike and geometry. F4 can keep its detailed last-roll display.
-- A modest text/panel UI consistent with the current inventory is enough. Original
-  character-sheet art/paper doll, portrait selection and a full recreation of the
-  classic interface are not prerequisites.
-
-Proposed C toggle, Escape/close to dismiss, pending inspection of current input.
-Use an embedded-editor-safe key; F5/F9 belong to Godot, K/L remain game save/load.
-No attribute editing, point allocation, character creation, race/class selection,
-XP, level-ups, skill-use advancement, fatigue/resting or spell system in this step.
-
-## Shared-state design questions to resolve before implementation
-
-The important purpose is one authoritative player attribute/skill model, not just
-an extra panel reading two independent configs. Prefer a small model with validated
-base values, a clear effective-value API, and a seam for future modifiers/effects.
-The UI reads state; it must not become the owner or recompute combat/movement math.
-
-- movement.cfg currently supplies Speed and movement skills; combat.cfg supplies
-  STR/AGI/LUC and combat skills. Both have independent live override dictionaries.
-  Explain how these seed the shared player state, how F3 reload updates it, and
-  which source wins over live values. Do not duplicate Speed or silently discard
-  live overrides. A single character baseline file may be reasonable, but migrate
-  deliberately and update docs/tests. Keep physical tuning/effect settings separate.
-- Preserve all existing effective-value/override/modifier consumers and numerical
-  movement/combat behavior. Implement small adapters to existing resolvers instead
-  of moving physical motors or formula policy into a giant character class.
-- Enemy combat profiles derive from original careers/levels. They should not inherit
-  player test stats or player config reloads merely because state is consolidated.
-- Inventory UIDs/equipment stay owned by inventory.gd; health state stays with the
-  established health contract. The character model can reference/read them without
-  duplicating mutable equipment lists, armor values or health counters.
-- Identify permanent/base character state versus transient effects and test config.
-  Save schema2 presently saves position/look/health/items/equipment/world state, not
-  the baseline/live combat/movement stats. If character-owned base values become
-  persistent, decide and document what is saved and validated before scene swap.
-  Keep transient modifiers separate and preserve clean load/reset semantics. The
-  user has allowed skipping old-save migration during testing; explicit rejection
-  and a new K save are acceptable if a schema change is needed.
-- Current region defense is lower-is-better internally. DFU's PaperDoll protection
-  display is (100-internal)/5 and higher-is-better. Label the sheet consistently:
-  naked protection0/internal100; steel chest protection9/internal55. No silent
-  AC/AR inversion, damage-reduction interpretation or whole-body armor bonus.
-
-## Modal integration requirements
-
-Inventory currently owns a modal that suspends player/enemy simulation, cancels
-pending strikes and preserves prior capture/control preference. The new sheet
-needs the same semantics without opening two independent competing modals.
-
-- Decide a small common modal/coordinator contract after inspecting existing UI;
-  reuse behavior rather than copying it into a second divergent implementation.
-- Sheet opening cancels pending player/enemy attacks, stops world input forwarding
-  and freezes motors/animation/navigation. Preserve current grounded/airborne/climb
-  posture state for resumption as inventory does; do not add teleport/stand resets.
-- Close, Escape and toggling cannot attack, recapture accidentally or re-open a
-  hidden UI. Preserve a mouse that was already deliberately released.
-- Prevent inventory/corpse loot and sheet from remaining open simultaneously.
-  Define a clear behavior for I/E/C while a modal is open.
-- Death, R restart and L load clear modal state safely. Loading cannot carry a stale
-  loot source/drop session into the new sheet; opening the sheet must not merge or
-  mutate inventory drop-session piles. K should keep its explicit modal refusal.
+1. State ownership: keep validated spell definitions separate from player knowledge,
+   selected spell, current magicka, cast lifecycle and effect instances. UI reads
+   state. Avoid a giant character class or placing archive decoding in gameplay.
+2. Attributes/skills: Intelligence currently has no gameplay consumer and baseline50;
+   no class/race/magicka multiplier or magic-school skills exist yet. Inspect source
+   maximum/cost/recovery rules. Propose explicit test assumptions instead of silently
+   choosing a career/level or inventing formulas. Add only necessary shared skills,
+   with atomic validation and clear config/live override precedence. F3 must not
+   discard live overrides or refill resources accidentally.
+3. Cast policy: define when cost is charged, when effects commit, cancellation and
+   refund/no-refund behavior, repeat input, full-health healing and insufficient
+   magicka. Accepted/rejected casts must not double-apply or double-charge. Determine
+   behavior while airborne, crouched, climbing, sheathed and already attacking.
+   Preserve the motor and once-only existing weapon events.
+4. Effects: healing should call health.restore (clamp/no revival); keep healing
+   potion policy independent. If Light is chosen, add a scoped spell effect without
+   retuning accepted baseline dungeon/environment/lantern lighting. Specify stacking,
+   duration time base, expiry and cleanup. Do not accidentally implement every spell
+   by over-generalizing the first two effects.
+5. Modals: use modal_coordinator.gd's single active panel/capture preference. Opening
+   a spellbook cancels pending player/enemy strikes and pauses the same simulations.
+   Define switching among I/C/T/new spellbook and its casting controls. No stale loot
+   source/drop session, active rest, accidental cast/attack/capture, or simultaneous
+   competing panels. Death, R and L must clear transient casting safely.
+6. Time/rest: fatigue_model's fractional12x game_seconds advances during captured
+   alive play and completed rest hours; modals/released controls pause awake time.
+   Inspect how spell durations should consume time, including resting, rather than
+   mixing render time, physics time and game time. rest_controller currently ends
+   full rest when HP and fatigue fill: include magicka if implemented, so it cannot
+   end early or bypass its24h cap. Recovery and no-regen assumptions need source
+   evidence and explicit testing, not a fixed refill on opening a panel.
+7. Persistence: current schema5 saves character base, health, raw fatigue/fractional
+   clock, item UIDs/gear and world state. It saves no spells, magicka or effects.
+   Decide persistent known IDs/selection/current resource and any active effect
+   duration policy. Validate references/ranges before candidate scene swap. Pending
+   casts should not survive load or emit delayed damage/audio/effects. A schema bump
+   with explicit rejection is acceptable in this testing project; no old-save
+   migration is required. Keep manual slot untouched by automated tests.
+8. Source assets: original data is read-only/external. Do not bundle spell sprites
+   or sound samples. Original casting art/audio are not prerequisites for a working
+   basic system; choose modest feedback and label source/prototype behavior honestly.
 
 ## Starting code and evidence
 
-- scripts/main.gd: constructs player/enemies/HUD, owns root input forwarding and
-  modal interception. section_override_path/combat_profile_path exports isolate
-  test scenes. Normal entry remains main.tscn.
-- scripts/player.gd: creates health/inventory/combat/movement models, calls F3 reload,
-  owns controls_active/modal_open and physical movement. Keep motor/cache rules.
-- scripts/movement_profile.gd / movement_model.gd: validated config, live_stats,
-  live_effects, named multiplier channels, stat()/resolve() and Speed source.
-- scripts/combat_model.gd / combat_resolver.gd / combat.cfg: validated player inputs,
-  original monster profiles, chance/damage math and diagnostics. Beware DEFAULTS
-  still has25 for weapon skills; actual current combat.cfg overrides those to50.
-- scripts/inventory.gd / item_catalog.gd / health.gd: authoritative UIDs, independent
-  equipped_uid/armor_uid, material metadata and health clamping/death behavior.
-- scripts/loot_window.gd: begin_modal/close/prior capture, attack cancellation,
-  source ownership and transfer UI; scripts/world_loot.gd: session-pile lifecycle.
-- scripts/save_game.gd: schema2 bounded JSON validation, section fingerprint,
-  fresh-scene restore, current-entry-scene preservation, clean transient state.
-- sections/privateers_hold_opening.json: optional prototype.player_test grants300HP
-  and immediate items; player_start is separate from original199:8 provenance.
-- tests/skeleton_regression.tscn, tests/sections/skeleton_regression.json and
-  tests/skeleton_combat.cfg: accepted legacy baseline. Older suites use these;
-  tests/bear.gd uses normal main.tscn. Preserve both instead of weakening old checks.
+- scripts/character_state.gd: validated player base/live values and adapter mappings.
+  Eight attributes,10 currently relevant skills; no magic-school state yet.
+- scripts/player.gd: physical/input ownership, models, death/receive_damage, modal
+  freeze, F3 reload, weapon and fall integration. Keep exclusive climb tick intact.
+- scripts/main.gd: actor/test setup, root input forwarding, HUD, modal routing and
+  candidate-scene restoring flag; normal and legacy exported config/section paths.
+- scripts/modal_coordinator.gd, loot_window.gd, character_sheet.gd, rest_window.gd:
+  one active panel and capture preference, source/session cleanup and actual input.
+- scripts/rest_controller.gd / fatigue_model.gd: bounded hourly rest, interruption,
+  recovery and persisted clock. health.gd/consumables.gd retain their current roles.
+- scripts/melee_combat.gd / weapon_view.gd: accepted click/animation/damage/cost events.
+  combat_model/resolver own existing formula inputs; avoid coupling spellcasting to
+  the melee resolver just because it already has RNG or target geometry.
+- scripts/save_game.gd: schema5 bounded JSON, complete armor UID maps, section hash,
+  fresh candidate validation/placement, restored controls and clean transient state.
+- scripts/classic_archive.gd / classic_data.gd: source decoding/cache boundary.
+- sections/privateers_hold_opening.json: current authored player/enemy setup.
+- tests/skeleton_regression.tscn and overrides: legacy baseline; do not weaken these
+  to accommodate new normal-playtest spell grants. New tests must cover main.tscn.
 
-Local DFU cache includes DaggerfallStats.cs, DaggerfallSkills.cs, PlayerEntity.cs,
-DaggerfallEntity.cs, DFCareer.cs, DaggerfallCharacterSheetWindow.cs, PaperDoll.cs and
-ItemEquipTable.cs. Inspect them first. Manifests pin commit
-4e78e1412b17b60f4d5d6073825775aa5ae95139; do not silently update to master. Supplemental
-source files, if needed, should come from that same revision with hashes recorded.
-Source evidence is guidance, not a requirement to reproduce the entire DFU UI.
+Local cache contains FormulaHelper.cs (magicka recovery/spell cost helpers),
+DFCareer.cs (spell-point multiplier/advantages), DaggerfallEntity.cs, PlayerEntity.cs
+and EntityEffectBroker.cs. These are starting points, **not evidence that all needed
+spell/casting sources or binary decoders are already cached/implemented**. Inspect
+local files before fetching anything. Pin any supplemental spell/casting/effect
+references to existing commit4e78e1412b17b60f4d5d6073825775aa5ae95139, record hashes and
+license, and do not silently update to master. Identify source-derived rules versus
+narrow authored prototype values in docs/tests.
 
 ## Suggested acceptance checks
 
-1. Normal hall start opens the sheet and displays actual300/300HP, Speed50, weapon
-   skills50 and existing movement skills25. Relevant combat skills remain their
-   current values. Sheet presentation agrees with real resolvers, not hardcoded UI.
-2. An independently changed shared Speed value reaches both locomotion calculation
-   and new attack timing, with no duplicate source. Already-started attacks retain
-   their existing timing snapshot semantics. Movement formulas/default feel remain.
-3. Skill/attribute changes through the intended state API reach combat/movement and
-   the sheet. Invalid config/state updates reject atomically. Check F3 precedence,
-   fixture config paths and existing live modifier behavior.
-4. Equip mace/armor, take/drop/consume items and incur/heal damage; reopening the
-   sheet reflects current state and correct regional protection without copies or
-   mutation. Weapon and armor references remain independent.
-5. Open/close/toggle from captured and released controls, and check transitions
-   involving inventory/corpse UI, death, R and L. No pending strike, stale source,
-   accidental recapture/attack or simultaneous conflicting modal.
-6. Save/reload any newly persistent state if introduced; validate malformed values
-   before replacing gameplay. Keep current item/world/UID and300HP regressions.
-7. Run Run.ps1 -Test, including independent model checks and actual routed UI input.
-   Render/inspect both4:3 and widescreen for readable sheet layout, keyboard use,
-   scrolling and no interference with the calibrated world viewport.
+- Fresh normal start has the intended authored known spells/resource, without
+  changing13-item ownership, armor defaults,300HP, bear or movement/combat numbers.
+- Spellbook displays actual known/selected state and cost; selection is harmless;
+  unknown, duplicate/malformed and unowned IDs are handled deliberately.
+- One accepted cast charges/applies once at the documented stage. Repeated/rejected,
+  cancelled, insufficient-magicka, full-health and death cases have no extra effect.
+- Live supported attributes/skills reach real cost/capacity resolvers and UI; invalid
+  updates reject atomically. Reload/capacity changes cannot mint magicka.
+- Healing clamps and never revives. Any timed light effect starts/expires/recasts
+  according to policy and preserves baseline lighting; UI pauses/rest obey its time
+  policy. No stale effect nodes/callbacks after death/load/R.
+- I/C/T/new book transitions from captured and released controls preserve capture,
+  cancel pending melee/casts, end rest/drop sessions correctly and prevent click
+  through. Check K refusal and routed L/R from every new modal/state.
+- Rest recovers the new resource correctly and full-rest termination includes it;
+  unsafe rest still refuses and the24h bound/interruptions remain unchanged.
+- New persistent data survives fresh candidate and separate-process reload. Reject
+  malformed spell/resource/effect data before replacing gameplay; preserve all UID,
+  equipped protection, health/fatigue and authored-depletion regressions.
+- Run Run.ps1 -Test, add meaningful model and actual routed input/effect checks,
+  and render/inspect4:3 and widescreen. Distinguish tests, visual inspection and user
+  listening/embedded-editor feel. Update README/feature docs/AGENTS/HANDOFF when shipped.
 
-After implementation update README, feature docs, HANDOFF and AGENTS as relevant;
-report automated, visual and user playtest verification separately. Keep this
-proposal distinguishable from whatever implementation is ultimately approved.
+## Verification at this documentation handoff
+
+Accepted baseline:1278/1278 full headless checks across24 suites plus persistence
+and armor separate-process reloads;85/85 rendered armor checks. Reports:
+tests/armor_complete_regression.log and tests/armor_rendered.log. Helmet preview
+and equipment sheet were visually inspected in4:3/widescreen. The user subsequently
+reported that armor works. No new gameplay tests were run for this docs-only handoff.
+No known unresolved gameplay finding. Existing restricted-host log/certificate/
+accelerated-exit diagnostics remain documented and nonblocking.

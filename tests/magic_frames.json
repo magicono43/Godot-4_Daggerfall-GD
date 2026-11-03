@@ -1,0 +1,54 @@
+{
+  "file": "MJIC00C6.CIF",
+  "file_sha256": "8d62d3b1dfcd0372ef2437be7d09f567445850fa6e9cc5b01792a57e604d55b1",
+  "records": [
+    {
+      "pixels": [
+        50,
+        48
+      ],
+      "rgba_sha256": "d849addfaf15cd747ddecf8d489a2319eb6613eecdc1fe8655cf784539dad6b0",
+      "transparent_pixels": 1027
+    },
+    {
+      "pixels": [
+        131,
+        200
+      ],
+      "rgba_sha256": "89abf4e4627fc164df2dc11684f093c7988b9fb04950da1f21124db6284a599a",
+      "transparent_pixels": 22752
+    },
+    {
+      "pixels": [
+        135,
+        200
+      ],
+      "rgba_sha256": "2a0bb56dc87eb8fc6e16cff4da6446e9891950b5de6437ddf977874c45eb726b",
+      "transparent_pixels": 19843
+    },
+    {
+      "pixels": [
+        135,
+        200
+      ],
+      "rgba_sha256": "6c74b2d99e17a9d66e4455aee7888b0650db699cf32e8c0412215f36b057515a",
+      "transparent_pixels": 21400
+    },
+    {
+      "pixels": [
+        158,
+        200
+      ],
+      "rgba_sha256": "4ada39440df206080633b1867f417f1367728e518d0f485b26afffce39ed775f",
+      "transparent_pixels": 26694
+    },
+    {
+      "pixels": [
+        113,
+        95
+      ],
+      "rgba_sha256": "7fe0adb1453329b2158c638a2389eb9bc8cb434c433104b9b43480faf6b4ae49",
+      "transparent_pixels": 6203
+    }
+  ]
+}

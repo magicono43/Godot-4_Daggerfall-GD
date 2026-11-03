@@ -25,7 +25,7 @@ func _ready() -> void:
 	layout.add_theme_constant_override("separation", 16)
 	margin.add_child(layout)
 	var title := Label.new()
-	title.text = "REST  |  Recover health and fatigue"
+	title.text = "REST  |  Recover health, fatigue and magicka"
 	title.add_theme_font_size_override("font_size", 22)
 	layout.add_child(title)
 	details = Label.new()
@@ -102,6 +102,7 @@ func refresh() -> void:
 	if reason == rest.message:
 		reason = ""
 	details.text = "Health: %d / %d\nFatigue: %.1f / %.1f\n\nPer hour: +%d health, +%.1f fatigue\nHours completed: %d%s\n\n%s\n%s\n\nRecovery is awarded after each completed hour. Closing or switching panels stops rest.\nNearby living enemies prevent rest. No random encounters are added in this prototype." % [actor.health.current, actor.health.maximum, actor.fatigue.current / 64.0, actor.fatigue.maximum() / 64.0, actor.fatigue.health_recovery(actor.health.maximum), actor.fatigue.fatigue_recovery() / 64.0, rest.hours_completed, " | Remaining: %d" % rest.hours_left if rest.active else "", rest.message, reason]
+	details.text += "\nMagicka: %d / %d | +%d per completed hour" % [actor.magic.current, actor.magic.maximum(), actor.magic.recovery()]
 	timed_button.disabled = rest.active or blocked or rest.recovered()
 	full_button.disabled = timed_button.disabled
 	hours.editable = not rest.active

@@ -756,6 +756,10 @@
           "definition": "steel_boots",
           "quantity": 1
         }
+      ],
+      "known_spells": [
+        "heal",
+        "light"
       ]
     }
   },

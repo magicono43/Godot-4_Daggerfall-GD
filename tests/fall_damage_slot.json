@@ -136,11 +136,13 @@
 			"dodging": 25,
 			"endurance": 50,
 			"hand_to_hand": 50,
+			"illusion": 50,
 			"intelligence": 50,
 			"jumping": 25.0,
 			"luck": 50,
 			"medical": 25,
 			"personality": 50,
+			"restoration": 50,
 			"running": 25.0,
 			"short_blade": 50,
 			"speed": 50.0,
@@ -236,6 +238,16 @@
 				}
 			]
 		},
+		"light_seconds": 0.0,
+		"magic": {
+			"current": 150,
+			"known": [
+				"heal",
+				"light"
+			],
+			"last_cast": "",
+			"selected": "heal"
+		},
 		"pitch": 0.0,
 		"position": [
 			7.25,
@@ -246,6 +258,6 @@
 		"yaw": -2.03444385528564
 	},
 	"section": "res://sections/privateers_hold_opening.json",
-	"section_hash": "fa7e3bdbf8464a1f56f03569fb370a03c274a9f5b00f9d2bf255224e358aac2c",
-	"version": 5
+	"section_hash": "fabd2e8355a44684cb8f55a765c87ee73e0aca74b647797643026e5468247765",
+	"version": 6
 }

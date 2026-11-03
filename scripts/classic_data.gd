@@ -17,6 +17,7 @@ var enemy_visuals: Dictionary = {}
 var skeleton_attributes: Dictionary = {}
 var bear_attributes: Dictionary = {}
 var dagger_frames: Array[Dictionary] = []
+var spell_frames: Array[Dictionary] = []
 var weapon_frames: Dictionary = {}
 var item_icons: Dictionary = {}
 var treasure_markers: Dictionary = {}
@@ -66,6 +67,7 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 	bear_attributes.clear()
 	dagger_frames.clear()
 	weapon_frames.clear()
+	spell_frames.clear()
 	item_icons.clear()
 	treasure_markers.clear()
 	loot_pile_payload.clear()
@@ -240,6 +242,10 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 			error = "Missing, truncated or unsupported original inventory image: " + id
 			return false
 		item_icons[id] = ImageTexture.create_from_image(image)
+	spell_frames = decode_spell_cif(FileAccess.get_file_as_bytes(arena_path.path_join("MJIC00C6.CIF")))
+	if spell_frames.is_empty():
+		error = "Missing, truncated or unsupported original MJIC00C6.CIF casting hands"
+		return false
 	dagger_frames = decode_weapon_cif(FileAccess.get_file_as_bytes(arena_path.path_join("WEAPON02.CIF")))
 	if dagger_frames.is_empty():
 		error = "Missing, truncated or unsupported original WEAPON02.CIF dagger data"
@@ -561,6 +567,25 @@ func cif_rle(bytes: PackedByteArray, start: int, end: int, length: int) -> Packe
 			pixels.append_array(bytes.slice(cursor, cursor + count))
 			cursor += count
 	return pixels
+
+func decode_spell_cif(bytes: PackedByteArray) -> Array[Dictionary]:
+	# MJIC00C6: six single-image IMG records, compression 2 (CifRciFile).
+	var frames: Array[Dictionary] = []
+	var offset := 0
+	while offset < bytes.size():
+		if offset + 12 > bytes.size() or frames.size() >= 6 or palette.size() < 776:
+			return []
+		var width := bytes.decode_u16(offset + 4)
+		var height := bytes.decode_u16(offset + 6)
+		var length := bytes.decode_u16(offset + 10)
+		if width < 1 or width > 320 or height < 1 or height > 200 or bytes.decode_u16(offset + 8) != 2 or offset + 12 + length > bytes.size():
+			return []
+		var pixels := cif_rle(bytes, offset + 12, offset + 12 + length, width * height)
+		if pixels.is_empty():
+			return []
+		frames.append({"width":width, "height":height, "texture":cif_rgba(pixels, width, height)})
+		offset += 12 + length
+	return frames if frames.size() == 6 else []
 
 func decode_dagger_cif(bytes: PackedByteArray) -> Array[Dictionary]:
 	return decode_weapon_cif(bytes)

@@ -51,11 +51,13 @@ func close() -> void:
 func refresh() -> void:
 	actor.fatigue.sync_capacity()
 	var lines: Array[String] = ["[b]Health: %d / %d[/b]" % [actor.health.current, actor.health.maximum], "Fatigue: %.1f / %.1f" % [actor.fatigue.current / 64.0, actor.fatigue.maximum() / 64.0], "", "[b]Attributes[/b]"]
+	actor.magic.sync_capacity()
+	lines.insert(2, "Magicka: %d / %d" % [actor.magic.current, actor.magic.maximum()])
 	for key in ["strength", "intelligence", "willpower", "agility", "endurance", "personality", "speed", "luck"]:
-		var unused: bool = key in ["intelligence", "willpower", "personality"]
+		var unused: bool = key in ["willpower", "personality"]
 		lines.append("%s: %.1f%s" % [key.capitalize(), actor.character.stat(key), " (no gameplay consumer yet)" if unused else ""])
 	lines.append("\n[b]Skills[/b]")
-	for key in ["short_blade", "blunt_weapon", "hand_to_hand", "dodging", "critical_strike", "medical", "running", "jumping", "swimming", "climbing"]:
+	for key in ["short_blade", "blunt_weapon", "hand_to_hand", "dodging", "critical_strike", "medical", "restoration", "illusion", "running", "jumping", "swimming", "climbing"]:
 		var note := ""
 		if key == "hand_to_hand": note = " (input hook; unarmed attacks unavailable)"
 		if key == "swimming": note = " (speed hook only)"
@@ -72,6 +74,6 @@ func refresh() -> void:
 		lines.append("%s protection: %d | %s" % [catalog.SLOT_NAMES[slot], protection, catalog.label(armor.definition) if not armor.is_empty() else "None"])
 	var motion: Dictionary = actor.movement.resolve()
 	lines.append("\nWalk %.3f m/s | Run %.3f m/s | Jump %.3f m/s" % [motion.walk_speed, motion.run_speed, motion.jump_velocity])
-	lines.append("Protection: higher is better; applies only to the listed region.\nT opens rest. Progression and magic are not implemented.")
+	lines.append("Protection: higher is better; applies only to the listed region.\nT opens rest. B opens spells. Q casts; F recasts. Progression is not implemented.")
 	details.text = "\n".join(lines)
 
