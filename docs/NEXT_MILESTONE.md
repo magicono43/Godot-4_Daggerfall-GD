@@ -1,3 +1,8 @@
+# Current status: fatigue/rest implemented; user playtest pending
+
+The character sheet was accepted by the user, who then authorized basic fatigue
+and rest. See FATIGUE_REST.md and the latest HANDOFF. No further milestone is selected.
+
 # Status: implemented; user playtest pending
 
 The proposal below is historical. See CHARACTER_SHEET.md and the latest HANDOFF

@@ -1,0 +1,32 @@
+{
+  "repository": "https://github.com/Interkarma/daggerfall-unity",
+  "commit": "4e78e1412b17b60f4d5d6073825775aa5ae95139",
+  "files": {
+    "DaggerfallEntity.cs": "8da1b9e6be534321d0c8f4fdc793b3a9189928490f82b22390b63c67ea7301b5",
+    "PlayerEntity.cs": "e20e383b0228b530374e094514765c6d3df98a86dff40d0255015685d28800e0",
+    "FormulaHelper.cs": "8f2d5286add95aab0ca279543debc0ff7d1a25bbc6d1e6aa1aba7a83a3773bc6",
+    "WeaponManager.cs": "00f905b0f1656d17933207c28004178465116c924687389de4e4d76a3d3b4018",
+    "WorldTime.cs": "6154c12d034becf2708728cceadadbb07d6f05801e36f72b2b9540c5b450f24a",
+    "DaggerfallRestWindow.cs": "c1957011722383d3c894df7cba6b35fb41b87a2beb867fbce88b4d728f858ab6",
+    "GameManager.cs": "2b0855ed779e8b14863b224f17ca27c34e21900fd6f521098a78fb4dbe8a349e",
+    "DaggerfallDateTime.cs": "3d63bd8cfe922e1b816461048bfcfd871a0d3e16e38872ec77481cb21ba8a9c0"
+  },
+  "rules": {
+    "raw_units_per_point": 64,
+    "world_time_scale": 12,
+    "minute_cost_normal": 11,
+    "minute_cost_running": 88,
+    "minute_cost_climbing": 22,
+    "jump_cost": 11,
+    "swing_cost": 11,
+    "fatigue_recovery_divisor": 8,
+    "unaware_rest_distance_metres": 12
+  },
+  "prototype_choices": [
+    "Exhaustion gates running/jumping/new climbing/attacks but allows walking and already-attached climbing; no forced collapse or exhaustion death.",
+    "Conservative proximity check within12m, plus visible hostile within existing20m detection range; no classic spawning/senses or random encounters.",
+    "Only completed rest hours grant recovery/advance local elapsed clock; 0.75 real seconds/hour and24h session bound.",
+    "Controls release and modals pause awake fatigue/clock, matching project playtest pause conventions.",
+    "Medical25 is a new shared baseline; no rapid-healing advantages, magic, diseases, rents, calendar or progression."
+  ]
+}

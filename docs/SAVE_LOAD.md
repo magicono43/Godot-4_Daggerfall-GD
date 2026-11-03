@@ -1,3 +1,10 @@
+# Current schema: 4
+
+Fatigue raw units and fractional game clock persist alongside shared character
+base values (now including Medical). Older slots reject; create a new K save.
+L works from rest and clears transient rest state. See FATIGUE_REST.md. Earlier
+schema descriptions below are history.
+
 # Current schema: 3
 
 Character base attributes/skills now persist. Schema2 is rejected; create a new K

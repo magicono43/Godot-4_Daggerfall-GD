@@ -69,10 +69,10 @@ func refusal() -> String:
 
 func snapshot() -> Dictionary:
 	var p = level.player
-	var data := {"version": 3, "section": level.section_path, "section_hash": fingerprint(),
+	var data := {"version": 4, "section": level.section_path, "section_hash": fingerprint(),
 		"player": {"position": vector(p.position), "yaw": p.rotation.y, "pitch": p.camera.rotation.x,
 		"health": p.health.current, "crouched": p.crouch.is_low(p), "sheathed": p.combat.sheathed,
-		"inventory": collection(p.inventory), "character": p.character.base.duplicate()}, "enemies": {}, "doors": {}, "authored": {}, "drops": []}
+		"inventory": collection(p.inventory), "character": p.character.base.duplicate(), "fatigue": p.fatigue.snapshot()}, "enemies": {}, "doors": {}, "authored": {}, "drops": []}
 	for actor in level.enemies:
 		data.enemies[String(actor.name)] = {"position": vector(actor.position), "yaw": actor.rotation.y,
 			"health": actor.health.current, "inventory": collection(actor.loot)}
@@ -158,7 +158,7 @@ func validate(data: Variant) -> bool:
 	seen_uids = {}
 	max_uid = 0
 	error = "Save data is invalid or incompatible with this section."
-	if data is Dictionary and data.get("version") != 3:
+	if data is Dictionary and data.get("version") != 4:
 		error = "Unsupported save version. Start fresh with R and create a new save with K."
 		return false
 	if not data is Dictionary or data.get("section") != level.section_path or data.get("section_hash") != fingerprint():
@@ -166,7 +166,7 @@ func validate(data: Variant) -> bool:
 	var p = data.get("player")
 	if not actor_valid(p, level.player.health.maximum, true) or not number(p.get("pitch"), PI / 2) or not p.get("crouched") is bool or not p.get("sheathed") is bool:
 		return false
-	if not level.player.character.valid(p.get("character"), true):
+	if not level.player.character.valid(p.get("character"), true) or not level.player.fatigue.valid(p.get("fatigue")):
 		return false
 	if not data.get("enemies") is Dictionary or data.enemies.size() != level.enemies.size() or not data.get("doors") is Dictionary or data.doors.size() != level.doors.size():
 		return false
@@ -303,6 +303,7 @@ func apply(data: Dictionary) -> void:
 	p.rotation.y = state.yaw
 	p.camera.rotation.x = state.pitch
 	p.health.current = int(state.health)
+	p.fatigue.restore(state.fatigue)
 	p.combat.cancel()
 	p.combat.sheathed = state.sheathed
 	p.climbing.reset()

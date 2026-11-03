@@ -43,6 +43,11 @@ func setup(camera: Camera3D) -> void:
 func request_attack(body: CharacterBody3D) -> bool:
 	if not body.inventory.has_weapon() or body.modal_open or sheathed or elapsed >= 0 or body.is_dead() or not body.controls_active or body.climbing.active:
 		return false
+	if body.fatigue.exhausted():
+		feedback = "You are exhausted. T opens rest."
+		feedback_time = 1.0
+		return false
+	body.fatigue.spend(body.fatigue.SWING_COST)
 	attack_weapon = body.inventory.equipped_weapon()
 	attack_uid = body.inventory.equipped_uid
 	attack_item = body.inventory.find(attack_uid).duplicate(true)

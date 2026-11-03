@@ -49,12 +49,13 @@ func close() -> void:
 	coordinator.close(self)
 
 func refresh() -> void:
-	var lines: Array[String] = ["[b]Health: %d / %d[/b]" % [actor.health.current, actor.health.maximum], "", "[b]Attributes[/b]"]
+	actor.fatigue.sync_capacity()
+	var lines: Array[String] = ["[b]Health: %d / %d[/b]" % [actor.health.current, actor.health.maximum], "Fatigue: %.1f / %.1f" % [actor.fatigue.current / 64.0, actor.fatigue.maximum() / 64.0], "", "[b]Attributes[/b]"]
 	for key in ["strength", "intelligence", "willpower", "agility", "endurance", "personality", "speed", "luck"]:
-		var unused: bool = key in ["intelligence", "willpower", "endurance", "personality"]
+		var unused: bool = key in ["intelligence", "willpower", "personality"]
 		lines.append("%s: %.1f%s" % [key.capitalize(), actor.character.stat(key), " (no gameplay consumer yet)" if unused else ""])
 	lines.append("\n[b]Skills[/b]")
-	for key in ["short_blade", "blunt_weapon", "hand_to_hand", "dodging", "critical_strike", "running", "jumping", "swimming", "climbing"]:
+	for key in ["short_blade", "blunt_weapon", "hand_to_hand", "dodging", "critical_strike", "medical", "running", "jumping", "swimming", "climbing"]:
 		var note := ""
 		if key == "hand_to_hand": note = " (input hook; unarmed attacks unavailable)"
 		if key == "swimming": note = " (speed hook only)"
@@ -69,6 +70,6 @@ func refresh() -> void:
 		lines.append("%s protection: %d" % [regions[region], int((100 - actor.combat_stats.armor(actor, region)) / 5)])
 	var motion: Dictionary = actor.movement.resolve()
 	lines.append("\nWalk %.3f m/s | Run %.3f m/s | Jump %.3f m/s" % [motion.walk_speed, motion.run_speed, motion.jump_velocity])
-	lines.append("Protection: higher is better; applies only to the listed region.\nProgression, fatigue and magic are not implemented.")
+	lines.append("Protection: higher is better; applies only to the listed region.\nT opens rest. Progression and magic are not implemented.")
 	details.text = "\n".join(lines)
 

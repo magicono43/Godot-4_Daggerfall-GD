@@ -63,6 +63,8 @@ func run() -> void:
 	if "--persistence-read" in OS.get_cmdline_user_args():
 		check(await save.load_slot(), "Separate process loads the saved slot")
 		bind()
+		var disk: Dictionary = level.persistence.read_slot()
+		check(level.player.fatigue.current == int(disk.player.fatigue.current) and is_equal_approx(level.player.fatigue.game_seconds, float(disk.player.fatigue.game_seconds)), "Cross-process fatigue and game clock restore")
 		check(level.player.inventory.equipped_weapon() == "mace" and level.player.health.current == 63, "Cross-process player equipment and health restore")
 		check(level.persistence.snapshot().drops.size() == 2 and level.world_root.get_node("hall_combat_target").health.current == 0, "Cross-process drops and corpse restore")
 		finish()

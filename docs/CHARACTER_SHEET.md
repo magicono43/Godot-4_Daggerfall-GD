@@ -1,3 +1,8 @@
+# Current extension: fatigue/rest
+
+Medical is now a tenth skill; Endurance drives fatigue capacity and recovery. The
+sheet shows fatigue. Schema4 supersedes schema3 below. See FATIGUE_REST.md.
+
 # Basic character sheet and shared player state
 
 C toggles a read-only sheet; Escape or Close dismisses. I switches from sheet to

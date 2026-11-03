@@ -1,0 +1,69 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 - Build 31.0.101.2140 - Compatibility - Using Device: Intel - Intel(R) UHD Graphics 630
+
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS STR50 END50 gives 100 displayed /6400 raw fatigue position=(7.25, 12.8, 16.2) mode=walking
+PASS 12x clock retains sub-minute time position=(7.25, 12.8, 16.2) mode=walking
+PASS One game minute costs11 raw while standing/walking position=(7.25, 12.8, 16.2) mode=walking
+PASS Running minute costs88 raw position=(7.25, 12.8, 16.2) mode=walking
+PASS Climbing minute costs22 raw position=(7.25, 12.8, 16.2) mode=walking
+PASS Jump costs11 raw exactly once per accepted jump position=(7.25, 12.8, 16.2) mode=walking
+PASS Improved athleticism truncates running cost to70 raw position=(7.25, 12.8, 16.2) mode=walking
+PASS Athleticism truncates jump cost to9 raw position=(7.25, 12.8, 16.2) mode=walking
+PASS Invalid elapsed time cannot change model state position=(7.25, 12.8, 16.2) mode=walking
+PASS Increased live capacity does not create fatigue position=(7.25, 12.8, 16.2) mode=walking
+PASS Reduced live capacity clamps current fatigue position=(7.25, 12.8, 16.2) mode=walking
+PASS Pinned base recovery gives12.5 fatigue and25 health per hour position=(7.25, 12.8, 16.2) mode=walking
+PASS Live Medical and Endurance reach source healing formula position=(7.25, 12.8, 16.2) mode=walking
+PASS Rest hour clamps both pools and advances one game hour position=(7.25, 12.8, 16.2) mode=walking
+PASS Rest cannot revive the dead position=(7.25, 12.8, 16.2) mode=walking
+PASS Fatigue depletion clamps without negative values position=(7.25, 12.8, 16.2) mode=walking
+PASS Saved fatigue requires bounded whole raw units position=(7.25, 12.8, 16.2) mode=walking
+PASS Oversized pool or nonfinite clock rejects position=(7.25, 12.8, 16.2) mode=walking
+PASS Negative clock and unknown fatigue fields reject position=(7.25, 12.8, 16.2) mode=walking
+PASS Accepted bear and300HP baseline adds Medical25 position=(7.25, 12.8, 16.2) mode=walking
+PASS Exhaustion denies attack before animation or RNG position=(7.25, 12.8, 16.2) mode=walking
+PASS Accepted click swing costs11 raw position=(7.25, 12.8, 16.2) mode=walking
+PASS Rejected repeated swing does not cost fatigue position=(7.25, 12.8, 16.2) mode=walking
+PASS T opens modal and cancels pending strike with capture preserved position=(7.25, 12.8, 16.2) mode=walking
+PASS Living nearby bear prevents rest position=(7.25, 12.8, 16.2) mode=walking
+PASS Unsafe rest cannot start through callback or enable buttons position=(7.25, 12.8, 16.2) mode=walking
+PASS Dead bear and passive chamber do not prevent rest position=(7.25, 12.8, 16.2) mode=walking
+PASS Open selection UI neither drains nor recovers fatigue/time position=(7.25, 12.8, 16.2) mode=walking
+PASS Mouse button begins selected-hour rest position=(7.25, 12.8, 16.2) mode=walking
+PASS Completed timed hour restores source amounts once position=(7.25, 12.8, 16.2) mode=walking
+PASS Rest advances game clock without awake drain position=(7.25, 12.8, 16.2) mode=walking
+PASS Escape cancels partial hour without recovery and resumes capture position=(7.25, 12.8, 16.2) mode=walking
+PASS C switches rest to sheet and stops rest position=(7.25, 12.8, 16.2) mode=walking
+PASS Sheet exposes real Medical and fatigue position=(7.25, 12.8, 16.2) mode=walking
+PASS I switches rest to inventory with one modal position=(7.25, 12.8, 16.2) mode=walking
+PASS Released capture preference survives all rest transitions position=(7.25, 12.8, 16.2) mode=walking
+PASS Stale floor flag cannot authorize unsupported rest position=(7.25, 17.8, 16.2) mode=walking
+PASS Climbing refuses rest position=(7.25, 12.8, 16.2) mode=walking
+PASS Moving entry refuses rest position=(7.25, 12.8, 16.2) mode=reset
+PASS Rest duration bounds reject position=(7.25, 12.8, 16.2) mode=reset
+PASS Safe rest starts after posture/ground checks position=(7.25, 12.8, 16.2) mode=reset
+PASS New nearby threat interrupts before an hour is awarded position=(7.25, 12.8, 16.2) mode=reset
+PASS Visible hostile beyond12m still prevents rest position=(100.0, 0.001, 100.0) mode=reset
+PASS Occluded hostile beyond12m does not prevent rest position=(100.0, 0.001, 100.0) mode=reset
+PASS Nearby hostile behind a wall still prevents rest position=(100.0, 0.001, 100.0) mode=reset
+PASS Damage interrupts rest before recovery position=(7.25, 12.8, 16.2) mode=reset
+PASS Exhausted player may start safe full rest position=(7.25, 12.8, 16.2) mode=reset
+PASS Full rest stops after eight hours when both pools recover position=(7.25, 12.8, 16.2) mode=reset
+PASS Full rest is bounded to24 hours when healing is slow position=(7.25, 12.8, 16.2) mode=reset
+PASS Schema4 saves fatigue and fractional game clock position=(7.25, 12.8, 16.2) mode=reset
+PASS Malformed fatigue cannot replace scene position=(7.25, 12.8, 16.2) mode=reset
+PASS Malformed fatigue cannot replace scene position=(7.25, 12.8, 16.2) mode=reset
+PASS Malformed fatigue cannot replace scene position=(7.25, 12.8, 16.2) mode=reset
+PASS Old schema3 rejects explicitly position=(7.25, 12.8, 16.2) mode=reset
+PASS Fatigue test uses isolated save path position=(7.25, 12.8, 16.2) mode=reset
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS L from rest restores fatigue and fractional clock position=(7.25, 12.8, 16.2) mode=reset
+PASS Loaded candidate has no active rest and resumes prior capture position=(7.25, 12.8, 16.2) mode=reset
+PASS Death dismisses rest without restoring controls position=(7.25, 12.8, 16.2) mode=reset
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS R restores fresh accepted bear playtest and full fatigue position=(7.25, 12.88333, 16.2) mode=walking
+PASS Exhaustion leaves walking retreat available but blocks running/jumping position=(7.69304, 12.80099, 16.2) mode=walking
+PASS Real jump launch charges once position=(7.69304, 12.95308, 16.2) mode=walking
+PASS Airborne frames do not repeat jump cost position=(7.69304, 13.3392, 16.2) mode=walking
+FATIGUE REST RESULTS: 62/62

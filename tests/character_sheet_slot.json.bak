@@ -115,6 +115,7 @@
 			"intelligence": 50,
 			"jumping": 25.0,
 			"luck": 50,
+			"medical": 25,
 			"personality": 50,
 			"running": 25.0,
 			"short_blade": 50,
@@ -124,6 +125,10 @@
 			"willpower": 50
 		},
 		"crouched": false,
+		"fatigue": {
+			"current": 6378,
+			"game_seconds": 2.8
+		},
 		"health": 270,
 		"inventory": {
 			"armor_uid": 3,
@@ -180,5 +185,5 @@
 	},
 	"section": "res://sections/privateers_hold_opening.json",
 	"section_hash": "124371059143dccc73c6b3683855575484d6751d6f56ce318730a0c3d87e2512",
-	"version": 3
+	"version": 4
 }

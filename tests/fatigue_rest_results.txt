@@ -1,0 +1,62 @@
+PASS STR50 END50 gives 100 displayed /6400 raw fatigue
+PASS 12x clock retains sub-minute time
+PASS One game minute costs11 raw while standing/walking
+PASS Running minute costs88 raw
+PASS Climbing minute costs22 raw
+PASS Jump costs11 raw exactly once per accepted jump
+PASS Improved athleticism truncates running cost to70 raw
+PASS Athleticism truncates jump cost to9 raw
+PASS Invalid elapsed time cannot change model state
+PASS Increased live capacity does not create fatigue
+PASS Reduced live capacity clamps current fatigue
+PASS Pinned base recovery gives12.5 fatigue and25 health per hour
+PASS Live Medical and Endurance reach source healing formula
+PASS Rest hour clamps both pools and advances one game hour
+PASS Rest cannot revive the dead
+PASS Fatigue depletion clamps without negative values
+PASS Saved fatigue requires bounded whole raw units
+PASS Oversized pool or nonfinite clock rejects
+PASS Negative clock and unknown fatigue fields reject
+PASS Accepted bear and300HP baseline adds Medical25
+PASS Exhaustion denies attack before animation or RNG
+PASS Accepted click swing costs11 raw
+PASS Rejected repeated swing does not cost fatigue
+PASS T opens modal and cancels pending strike with capture preserved
+PASS Living nearby bear prevents rest
+PASS Unsafe rest cannot start through callback or enable buttons
+PASS Dead bear and passive chamber do not prevent rest
+PASS Open selection UI neither drains nor recovers fatigue/time
+PASS Mouse button begins selected-hour rest
+PASS Completed timed hour restores source amounts once
+PASS Rest advances game clock without awake drain
+PASS Escape cancels partial hour without recovery and resumes capture
+PASS C switches rest to sheet and stops rest
+PASS Sheet exposes real Medical and fatigue
+PASS I switches rest to inventory with one modal
+PASS Released capture preference survives all rest transitions
+PASS Stale floor flag cannot authorize unsupported rest
+PASS Climbing refuses rest
+PASS Moving entry refuses rest
+PASS Rest duration bounds reject
+PASS Safe rest starts after posture/ground checks
+PASS New nearby threat interrupts before an hour is awarded
+PASS Visible hostile beyond12m still prevents rest
+PASS Occluded hostile beyond12m does not prevent rest
+PASS Nearby hostile behind a wall still prevents rest
+PASS Damage interrupts rest before recovery
+PASS Exhausted player may start safe full rest
+PASS Full rest stops after eight hours when both pools recover
+PASS Full rest is bounded to24 hours when healing is slow
+PASS Schema4 saves fatigue and fractional game clock
+PASS Malformed fatigue cannot replace scene
+PASS Malformed fatigue cannot replace scene
+PASS Malformed fatigue cannot replace scene
+PASS Old schema3 rejects explicitly
+PASS Fatigue test uses isolated save path
+PASS L from rest restores fatigue and fractional clock
+PASS Loaded candidate has no active rest and resumes prior capture
+PASS Death dismisses rest without restoring controls
+PASS R restores fresh accepted bear playtest and full fatigue
+PASS Exhaustion leaves walking retreat available but blocks running/jumping
+PASS Real jump launch charges once
+PASS Airborne frames do not repeat jump cost

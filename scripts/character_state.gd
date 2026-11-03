@@ -1,6 +1,6 @@
 extends RefCounted
 ## Base character values persist; live overrides are transient.
-const DEFAULTS := {"strength":50, "intelligence":50, "willpower":50, "agility":50, "endurance":50, "personality":50, "speed":50.0, "luck":50, "short_blade":25, "blunt_weapon":25, "hand_to_hand":25, "dodging":25, "critical_strike":25, "running":25.0, "jumping":25.0, "swimming":25.0, "climbing":25.0}
+const DEFAULTS := {"strength":50, "intelligence":50, "willpower":50, "agility":50, "endurance":50, "personality":50, "speed":50.0, "luck":50, "short_blade":25, "blunt_weapon":25, "hand_to_hand":25, "dodging":25, "critical_strike":25, "medical":25, "running":25.0, "jumping":25.0, "swimming":25.0, "climbing":25.0}
 const MOVEMENT := {"speed_attribute":"speed", "running_skill":"running", "jumping_skill":"jumping", "swimming_skill":"swimming", "climbing_skill":"climbing"}
 var base: Dictionary = DEFAULTS.duplicate()
 var live: Dictionary = {}

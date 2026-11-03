@@ -14,6 +14,7 @@ const Movement = preload("res://scripts/movement_model.gd")
 const Steps = preload("res://scripts/step_solver.gd")
 var movement := Movement.new()
 var character := preload("res://scripts/character_state.gd").new()
+var fatigue := preload("res://scripts/fatigue_model.gd").new()
 const Climbing = preload("res://scripts/climbing_motor.gd")
 var climbing := Climbing.new()
 const Crouching = preload("res://scripts/crouch_motor.gd")
@@ -52,6 +53,7 @@ func _ready() -> void:
 	collision_layer = 2
 	collision_mask = 1
 	reload_movement()
+	fatigue.setup(character)
 	var shape := CollisionShape3D.new()
 	capsule_collision = shape
 	var capsule := CapsuleShape3D.new()
@@ -169,7 +171,8 @@ func _physics_process(delta: float) -> void:
 	if crouch.active and not climbing.active:
 		climbing.attach_time = 0.0
 		climbing.tracked = false
-	if (climbing.active or not crouch.active) and climbing.tick(self, delta, input, resolved):
+	if (climbing.active or (not crouch.active and not fatigue.exhausted())) and climbing.tick(self, delta, input, resolved):
+		tick_fatigue(delta, "climbing")
 		return
 	stair_supported = false
 	if tuning.response == "dfu_axes":
@@ -187,7 +190,7 @@ func _physics_process(delta: float) -> void:
 	if input.y > 0:
 		input.y *= float(tuning.backward_multiplier)
 	if grounded:
-		is_running = controls_active and Input.is_action_pressed("sprint")
+		is_running = controls_active and Input.is_action_pressed("sprint") and not fatigue.exhausted()
 	var speed := float(resolved.run_speed if is_running else resolved.walk_speed)
 	if crouch.active:
 		speed = float(resolved.crouch_run_speed if is_running else resolved.crouch_walk_speed)
@@ -206,7 +209,8 @@ func _physics_process(delta: float) -> void:
 			horizontal = horizontal.move_toward(desired, rate * delta)
 	velocity.x = horizontal.x
 	velocity.z = horizontal.z
-	if grounded and controls_active and jump_pressed and grounded_time >= float(jump.minimum_grounded_time):
+	if grounded and controls_active and jump_pressed and not fatigue.exhausted() and grounded_time >= float(jump.minimum_grounded_time):
+		fatigue.jump(movement.effect("athleticism"), movement.effect("improved_athleticism"))
 		velocity.y = resolved.jump_velocity
 		if horizontal.length_squared() > 0.0001:
 			velocity += -global_basis.z * float(jump.base_velocity) * float(jump.forward_boost_fraction)
@@ -243,6 +247,8 @@ func _physics_process(delta: float) -> void:
 		# Cancel the whole grounded height change, including native capsule
 		# sliding and floor snap. Render updates then follow it continuously.
 		step_camera_offset -= global_position.y - before.origin.y
+	var moved := Vector2(global_position.x - before.origin.x, global_position.z - before.origin.z).length() > 0.0001
+	tick_fatigue(delta, "running" if is_running and moved else "normal")
 	if position.y < -10:
 		climbing.reset()
 		combat.cancel()
@@ -254,6 +260,11 @@ func _physics_process(delta: float) -> void:
 		camera.position.y = EYE_HEIGHT
 		stair_supported = false
 		flight_horizontal = Vector3.ZERO
+
+func tick_fatigue(delta: float, activity: String) -> void:
+	# Match simulation pause/capture semantics; UI time never drains fatigue.
+	if controls_active and not modal_open and not is_dead():
+		fatigue.tick(delta, activity, movement.effect("athleticism"), movement.effect("improved_athleticism"))
 
 func _process(delta: float) -> void:
 	if modal_open:

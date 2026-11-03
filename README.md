@@ -279,5 +279,13 @@ Billboard facing and light animation timing reference: https://github.com/Interk
 
 C opens the read-only character sheet; I switches to inventory, Escape/C closes.
 It shows shared effective attributes/skills, health, equipment and regional
-protection. Scroll for equipment and movement values. Save schema3 includes base
-character state; old slots require a fresh K save. See docs/CHARACTER_SHEET.md.
+protection. Scroll for equipment and movement values. Save schema4 includes base
+character state and fatigue; old slots require a fresh K save. See docs/CHARACTER_SHEET.md.
+
+## Fatigue and rest
+
+T opens rest: choose1..24 hours or rest until recovered, with a24h session limit.
+Stand still on safe ground away from the living bear. Rest restores health and
+fatigue; C and the HUD show current fatigue. Escape/T stops, C/I switches panels.
+At zero fatigue, walking remains available while running/jumping/attacks are blocked.
+**Schema4 requires a new K save.** See [FATIGUE_REST](docs/FATIGUE_REST.md).

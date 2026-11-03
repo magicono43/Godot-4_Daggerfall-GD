@@ -1,3 +1,42 @@
+# Resume here — basic fatigue/rest implemented; user playtest next
+
+The user accepted the character sheet and authorized basic rest/fatigue. Implemented:
+T opens/closes rest, timed1..24h or until recovered (max24h/session). Escape/Stop
+cancels; C/I switches using the same modal coordinator. Only completed hours award
+recovery and advance time. Safe ground/still/settled posture required. Living
+hostiles within12m or visible within20m prevent rest; dead bear/passive chamber do
+not. New threats, damage or lost support interrupt before recovery. No new enemies,
+random encounters or dungeon geometry were introduced.
+
+fatigue_model.gd owns raw64-unit fatigue/current fractional12x game clock. Max is
+(shared live STR+END)*64; Medical25 joins shared player state for hourly HP recovery.
+Pinned DFU costs: per game minute normal11/climb22/moving-run88, each jump/swing11;
+athleticism affects minute/jump costs. Default rest restores12.5 displayed fatigue
+and25HP/hour through health.restore. Zero fatigue blocks run/jump/new climb/attacks,
+keeps accepted walking for retreat and lets existing climbing finish. This is a
+basic prototype exhaustion policy, not full DFU collapse/death. No general movement
+retuning or low-fatigue formula penalties. Controls release/modals/death pause
+awake costs/time. T's selection screen does not recover by itself.
+
+Schema4 saves fatigue raw units/fractional clock and complete character base with
+Medical. Schema3/older slots reject clearly: create a new K save. Session/partial
+hour is transient; L from rest resumes prior capture in a fresh candidate. Existing
+manual user slot was not overwritten. R restores full fatigue and accepted bear
+setup. Same hall spawn/300HP/skills50/equipment, passive chamber, compact section,
+random-direction click attacks and F5/F9 editor reservations remain.
+
+Validation: **1148/1148 full headless checks**,22 suites plus separate-process
+reload, tests/rest_final_regression.log. **62/62 rendered fatigue/rest checks** in
+tests/fatigue_rest_rendered.log and **58/58 rendered bear checks** in
+tests/rest_bear_rendered.log. No failed assertions or script errors. Visually
+inspected unsafe/recovered rest in4:3/widescreen and normal gameplay HUD/diagnostics
+with the bear in both modes. Existing restricted-host log/certificate/accelerated
+exit diagnostics remain nonblocking. User embedded-editor playtest is pending.
+
+See docs/FATIGUE_REST.md and reference/fatigue_sources.json. The manifest hashes
+existing and newly cached source at the same pinned revision. No original data or
+bundled archives were changed. No next milestone selected.
+
 # Resume here — character sheet implemented; user playtest next
 
 The approved basic character sheet/shared-state milestone is implemented. C toggles
