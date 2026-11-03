@@ -31,6 +31,9 @@ func number(value: Variant) -> bool:
 func integer(value: Variant, maximum: int = 100000000) -> bool:
 	return number(value) and value >= 0 and value <= maximum and floorf(value) == value
 
+func record_key(entry: Dictionary, starting_block: String) -> String:
+	return "%s:%d" % [entry.get("block", starting_block), int(entry.record_offset)]
+
 func validate(value: Variant) -> bool:
 	error = ""
 	definition.clear()
@@ -45,6 +48,24 @@ func validate(value: Variant) -> bool:
 		return fail("source requires expected exterior and dungeon IDs")
 	if not source.get("block") is String or not RegEx.create_from_string("^[NWLSBM][0-9]{7}\\.RDB$").search(source.block):
 		return fail("source.block must be a classic RDB name")
+	var block_names: Dictionary = {source.block: true}
+	if source.has("blocks"):
+		if not source.blocks is Array or source.blocks.is_empty() or source.blocks.size() > 64:
+			return fail("source.blocks must contain 1..64 checked block placements")
+		block_names.clear()
+		var grid: Dictionary = {}
+		for block in source.blocks:
+			if not block is Dictionary or not block.get("name") is String or not RegEx.create_from_string("^[NWLSBM][0-9]{7}\\.RDB$").search(block.name):
+				return fail("Invalid source block name")
+			if block_names.has(block.name) or not number(block.get("x")) or not number(block.get("z")) or absf(block.x) > 127 or absf(block.z) > 127 or floorf(block.x) != block.x or floorf(block.z) != block.z:
+				return fail("Duplicate block or invalid block grid coordinate")
+			var cell := "%d:%d" % [block.x, block.z]
+			if grid.has(cell):
+				return fail("Duplicate source block grid cell")
+			grid[cell] = true
+			block_names[block.name] = true
+		if not block_names.has(source.block):
+			return fail("source.blocks must include the starting block")
 	if not vector(value.get("origin_native")):
 		return fail("origin_native requires three finite native coordinates")
 	var spawn: Variant = value.get("spawn")
@@ -52,23 +73,25 @@ func validate(value: Variant) -> bool:
 		return fail("spawn requires record_offset and look_at_native")
 	if spawn.get("expected_archive") != 199 or not integer(spawn.get("expected_record"), 127) or int(spawn.expected_record) not in [8, 10]:
 		return fail("spawn must select editor enter/start marker 199:8 or 199:10")
+	if spawn.get("block", source.block) != source.block:
+		return fail("spawn must remain in the flagged starting block")
 	var ids: Dictionary = {}
-	var offsets: Dictionary = {int(spawn.record_offset): "spawn"}
+	var offsets: Dictionary = {record_key(spawn, source.block): "spawn"}
 	for group in ["models", "billboards"]:
 		if not value.get(group) is Array or value[group].size() > 2048:
 			return fail(group + " must be an array with at most 2048 entries")
 		for entry in value[group]:
 			if not entry is Dictionary or not valid_id(entry.get("id"), ids):
 				return fail(group + " has invalid or duplicate id")
-			if not integer(entry.get("record_offset")) or offsets.has(int(entry.record_offset)):
+			if not block_names.has(entry.get("block", source.block)) or not integer(entry.get("record_offset")) or offsets.has(record_key(entry, source.block)):
 				return fail("Invalid or duplicate record_offset for " + entry.id)
-			offsets[int(entry.record_offset)] = entry.id
+			offsets[record_key(entry, source.block)] = entry.id
 			if group == "models":
 				if not entry.get("expected_model") is String or not entry.expected_model.is_valid_int():
 					return fail(entry.id + " requires expected_model string")
-				if entry.get("role") not in ["geometry", "prop", "door"] or not entry.get("collision") is bool:
+				if entry.get("role") not in ["geometry", "prop", "door", "exit"] or not entry.get("collision") is bool:
 					return fail(entry.id + " requires role and collision boolean")
-				if entry.role == "door" and not entry.collision:
+				if entry.role in ["door", "exit"] and not entry.collision:
 					return fail(entry.id + " interactive door requires collision")
 			else:
 				if not integer(entry.get("expected_archive"), 511) or entry.expected_archive == 199 or not integer(entry.get("expected_record"), 127):
@@ -78,12 +101,14 @@ func validate(value: Variant) -> bool:
 	var markers: Dictionary = {}
 	if not value.get("treasure_markers", []) is Array or value.get("treasure_markers", []).size() > 64:
 		return fail("treasure_markers must be an array of at most 64 entries")
-	for entry in value.get("treasure_markers", []):
+	if not value.get("static_loot", []) is Array or value.get("static_loot", []).size() > 64:
+		return fail("static_loot must be an array of at most 64 entries")
+	for entry in value.get("treasure_markers", []) + value.get("static_loot", []):
 		if not entry is Dictionary or not valid_id(entry.get("id"), ids):
 			return fail("Invalid treasure marker id")
-		if not integer(entry.get("record_offset")) or offsets.has(int(entry.record_offset)) or entry.get("expected_archive") != 199 or entry.get("expected_record") != 19:
+		if not block_names.has(entry.get("block", source.block)) or not integer(entry.get("record_offset")) or offsets.has(record_key(entry, source.block)) or entry.get("expected_archive") != 199 or entry.get("expected_record") != 19:
 			return fail("Treasure marker requires unique record_offset and editor marker 199:19")
-		offsets[int(entry.record_offset)] = entry.id
+		offsets[record_key(entry, source.block)] = entry.id
 		markers[entry.id] = true
 	if value.models.is_empty():
 		return fail("models cannot be empty")

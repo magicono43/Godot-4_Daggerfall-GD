@@ -7,12 +7,17 @@ import hashlib
 import json
 from pathlib import Path
 import struct
+import argparse
 
 from inspect_data import ROOT, bsa
 
 PROJECT = Path(__file__).resolve().parents[1]
 EXPECTED_SWAPS = {119: 23, 120: 22, 122: 19, 123: 22, 124: 20, 168: 368, 74: 374}
-section = json.loads((PROJECT / 'sections' / 'privateers_hold_opening.json').read_text())
+parser = argparse.ArgumentParser()
+parser.add_argument('--section', default='tests/sections/skeleton_regression.json')
+parser.add_argument('--output', default='tests/texture_fidelity')
+args = parser.parse_args()
+section = json.loads((PROJECT / args.section).read_text())
 MODELS = list(dict.fromkeys(entry['expected_model'] for entry in section['models']))
 palette = (ROOT / 'ART_PAL.COL').read_bytes()[8:776]
 
@@ -72,7 +77,7 @@ for source in sorted(sources):
     fixture.append({'source': source, 'resolved': (target << 7) | record,
                     'source_size': source_size, 'target_size': target_size,
                     'rgb_sha256': hashlib.sha256(pixels).hexdigest()})
-folder = PROJECT / 'tests' / 'texture_fidelity'
+folder = PROJECT / args.output
 folder.mkdir(exist_ok=True)
 (folder / 'classic_materials.json').write_text(json.dumps(fixture, indent=2) + '\n')
 print(f'{len(fixture)} original material slots pinned to Classic archives and RGB hashes')

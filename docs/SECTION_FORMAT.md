@@ -1,3 +1,27 @@
+# Multi-block selections and static loot — November 3, 2026
+
+Schema1 now optionally accepts `source.blocks`, an ordered array of
+`{"name":"B0000009.RDB","x":-1,"z":0}` placements. The complete list must
+match the location's MAPS.BSA layout, including the flagged starting block.
+Omitting it preserves the original single-starting-block selection behavior.
+Model/billboard/treasure/static-loot entries may specify `block`; omission means
+`source.block`. Record uniqueness is `(block,record_offset)`; IDs stay globally
+unique. Signed grid positions multiply2048 native units before the existing axis
+conversion/origin subtraction. Source coordinates are never copied into entries.
+
+Model role `exit` creates a collidable static original exit with explicit exterior
+travel-unavailable feedback. It requires collision and does not act as a hinge.
+Optional `static_loot` entries have the same validated199:19 identity fields as
+treasure_markers, but render original216:0 grounded visual-only piles. They do not
+own inventories, contents, activation or save depletion. They may not share a
+record with another selection. Existing prototype.treasure_piles behavior is unchanged.
+
+The normal section now lists all five blocks/all365 models/130 decorative flats/
+seven static piles and no branch caps. B border blocks can contain disconnected
+assemblies; this is normal original data. Legacy skeleton/swim fixtures remain
+selective. See FULL_DUNGEON.md. Older single-block descriptions below describe
+the original milestone and are superseded by this optional extension.
+
 # Current magic test grants
 
 Optional prototype.player_test.known_spells is a validated unique array of catalog

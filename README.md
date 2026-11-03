@@ -1,19 +1,19 @@
-## Current handoff - complete the dungeon structure next
+## Privateer's Hold expanded — November 3, 2026
 
-Swimming, including climbing out of water, is accepted as good enough for now.
-The next selected milestone is **expanding Privateer's Hold toward its complete
-connected structure**. No expansion was implemented in this handoff.
+Normal `main.tscn` now places all365 original models from the central S block and
+four B border blocks, including58 hinged doors and the original exit, plus130
+decorative flats and seven static loot-pile sprites. All11 old branch caps are
+removed. Border blocks intentionally retain disconnected source assemblies.
 
-A fresh chat should read [AGENTS.md](AGENTS.md),
-[docs/HANDOFF.md](docs/HANDOFF.md) and
-[docs/NEXT_MILESTONE.md](docs/NEXT_MILESTONE.md), audit the original full location
-layout and remaining placements, then report the approach. Current selection:
-53 original meshes,3 billboards,11 caps; importer currently selects only the
-flagged starting block. The remaining extent/additional blocks are not yet audited.
-Keep the normal hall start/accepted gameplay and separate swimming fixture.
+The hall start, bear/player/equipment setup and accepted gameplay remain. New
+enemy populations and source activation behaviors are deferred; action-linked
+objects are static. Additional piles are visual-only; the existing interactive
+test pile is unchanged. E at the exit explains that exterior travel is unavailable.
+Swimming remains in its separate fixture. See [docs/FULL_DUNGEON.md](docs/FULL_DUNGEON.md).
 
-This is a documentation-only handoff; no gameplay tests were rerun.
-The accepted validation below carries forward.
+**Old normal-dungeon saves reject the changed section fingerprint. Start fresh
+and press K for a new save.** Save schema9 and placement safeguards are preserved.
+Read [docs/HANDOFF.md](docs/HANDOFF.md) for final validation and playtest status.
 
 ## Swimming test pool - November 3, 2026
 

@@ -3,6 +3,9 @@ var level: Node3D
 var player: CharacterBody3D
 var results: Array[String] = []
 var failures: Array[String] = []
+var entry_scene := "res://tests/skeleton_regression.tscn"
+var capture_prefix := ""
+var results_path := "res://tests/expansion_results.txt"
 
 func check(ok: bool, label: String) -> void:
 	results.append(("PASS " if ok else "FAIL ") + label)
@@ -73,11 +76,11 @@ func capture(name: String, at: Vector3, target: Vector3) -> void:
 		await process_frame
 	if DisplayServer.get_name() != "headless":
 		await RenderingServer.frame_post_draw
-		root.get_texture().get_image().save_png("res://tests/" + name + ".png")
+		root.get_texture().get_image().save_png("res://tests/" + capture_prefix + name + ".png")
 	player.set_physics_process(true)
 
 func run() -> void:
-	level = load("res://tests/skeleton_regression.tscn").instantiate()
+	level = load(entry_scene).instantiate()
 	level.enemy_navigation_enabled = false
 	level.use_original_start = true
 	root.add_child(level)
@@ -141,7 +144,7 @@ func run() -> void:
 	check(not floor_hit.is_empty() and absf(floor_hit.position.y - 12.8) < 0.05, "Great hall original floor supports the wall-test area")
 	await capture("great_hall_overview", level.classic.to_world([500,-620,640]), level.classic.to_world([1250,-850,1100]))
 	await capture("great_staircase", level.classic.to_world([800,-520,1024]), level.classic.to_world([1250,-900,1024]))
-	var file := FileAccess.open("res://tests/expansion_results.txt", FileAccess.WRITE)
+	var file := FileAccess.open(results_path, FileAccess.WRITE)
 	file.store_string("\n".join(results) + "\n")
 	print("EXPANSION ", results.size() - failures.size(), "/", results.size())
 	quit(0 if failures.is_empty() else 1)

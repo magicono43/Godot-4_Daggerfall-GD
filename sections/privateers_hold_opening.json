@@ -1,12 +1,39 @@
 {
   "schema_version": 1,
-  "name": "Privateer's Hold opening through great staircase hall",
+  "name": "Privateer's Hold complete original structural placements",
   "source": {
     "region": 17,
     "location": "Privateer's Hold",
     "expected_exterior_id": 50049,
     "expected_dungeon_id": 50050,
-    "block": "S0000999.RDB"
+    "block": "S0000999.RDB",
+    "blocks": [
+      {
+        "name": "S0000999.RDB",
+        "x": 0,
+        "z": 0
+      },
+      {
+        "name": "B0000009.RDB",
+        "x": -1,
+        "z": 0
+      },
+      {
+        "name": "B0000006.RDB",
+        "x": 0,
+        "z": -1
+      },
+      {
+        "name": "B0000003.RDB",
+        "x": 1,
+        "z": 0
+      },
+      {
+        "name": "B0000012.RDB",
+        "x": 0,
+        "z": 1
+      }
+    ]
   },
   "origin_native": [
     510,
@@ -394,6 +421,2502 @@
       "expected_model": "72019",
       "role": "geometry",
       "collision": true
+    },
+    {
+      "id": "s0000999_r31571",
+      "block": "S0000999.RDB",
+      "record_offset": 31571,
+      "expected_model": "42534",
+      "role": "geometry",
+      "collision": false
+    },
+    {
+      "id": "s0000999_r31523",
+      "block": "S0000999.RDB",
+      "record_offset": 31523,
+      "expected_model": "42533",
+      "role": "geometry",
+      "collision": false
+    },
+    {
+      "id": "s0000999_r30908",
+      "block": "S0000999.RDB",
+      "record_offset": 30908,
+      "expected_model": "42534",
+      "role": "geometry",
+      "collision": false
+    },
+    {
+      "id": "s0000999_r30548",
+      "block": "S0000999.RDB",
+      "record_offset": 30548,
+      "expected_model": "63207",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r30260",
+      "block": "S0000999.RDB",
+      "record_offset": 30260,
+      "expected_model": "63200",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r30212",
+      "block": "S0000999.RDB",
+      "record_offset": 30212,
+      "expected_model": "63200",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r30128",
+      "block": "S0000999.RDB",
+      "record_offset": 30128,
+      "expected_model": "63233",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r30080",
+      "block": "S0000999.RDB",
+      "record_offset": 30080,
+      "expected_model": "63200",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r30032",
+      "block": "S0000999.RDB",
+      "record_offset": 30032,
+      "expected_model": "63200",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r29984",
+      "block": "S0000999.RDB",
+      "record_offset": 29984,
+      "expected_model": "63200",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r29456",
+      "block": "S0000999.RDB",
+      "record_offset": 29456,
+      "expected_model": "63235",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r29408",
+      "block": "S0000999.RDB",
+      "record_offset": 29408,
+      "expected_model": "63235",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r29360",
+      "block": "S0000999.RDB",
+      "record_offset": 29360,
+      "expected_model": "63235",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r28536",
+      "block": "S0000999.RDB",
+      "record_offset": 28536,
+      "expected_model": "62328",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r28062",
+      "block": "S0000999.RDB",
+      "record_offset": 28062,
+      "expected_model": "41327",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r28014",
+      "block": "S0000999.RDB",
+      "record_offset": 28014,
+      "expected_model": "55003",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r24391",
+      "block": "S0000999.RDB",
+      "record_offset": 24391,
+      "expected_model": "42545",
+      "role": "geometry",
+      "collision": false
+    },
+    {
+      "id": "s0000999_r24295",
+      "block": "S0000999.RDB",
+      "record_offset": 24295,
+      "expected_model": "41109",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r24247",
+      "block": "S0000999.RDB",
+      "record_offset": 24247,
+      "expected_model": "41109",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r24199",
+      "block": "S0000999.RDB",
+      "record_offset": 24199,
+      "expected_model": "41109",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r24151",
+      "block": "S0000999.RDB",
+      "record_offset": 24151,
+      "expected_model": "41109",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r24103",
+      "block": "S0000999.RDB",
+      "record_offset": 24103,
+      "expected_model": "41109",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r24055",
+      "block": "S0000999.RDB",
+      "record_offset": 24055,
+      "expected_model": "41109",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r24007",
+      "block": "S0000999.RDB",
+      "record_offset": 24007,
+      "expected_model": "41109",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r23959",
+      "block": "S0000999.RDB",
+      "record_offset": 23959,
+      "expected_model": "41109",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r10158",
+      "block": "S0000999.RDB",
+      "record_offset": 10158,
+      "expected_model": "71011",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r10254",
+      "block": "S0000999.RDB",
+      "record_offset": 10254,
+      "expected_model": "55003",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r11234",
+      "block": "S0000999.RDB",
+      "record_offset": 11234,
+      "expected_model": "62010",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r11282",
+      "block": "S0000999.RDB",
+      "record_offset": 11282,
+      "expected_model": "63058",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r11663",
+      "block": "S0000999.RDB",
+      "record_offset": 11663,
+      "expected_model": "55005",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r11759",
+      "block": "S0000999.RDB",
+      "record_offset": 11759,
+      "expected_model": "55003",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r11807",
+      "block": "S0000999.RDB",
+      "record_offset": 11807,
+      "expected_model": "55003",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r11855",
+      "block": "S0000999.RDB",
+      "record_offset": 11855,
+      "expected_model": "72008",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r12143",
+      "block": "S0000999.RDB",
+      "record_offset": 12143,
+      "expected_model": "63007",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r32445",
+      "block": "S0000999.RDB",
+      "record_offset": 32445,
+      "expected_model": "41308",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r32374",
+      "block": "S0000999.RDB",
+      "record_offset": 32374,
+      "expected_model": "41305",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r31098",
+      "block": "S0000999.RDB",
+      "record_offset": 31098,
+      "expected_model": "42570",
+      "role": "geometry",
+      "collision": false
+    },
+    {
+      "id": "s0000999_r31027",
+      "block": "S0000999.RDB",
+      "record_offset": 31027,
+      "expected_model": "42569",
+      "role": "geometry",
+      "collision": false
+    },
+    {
+      "id": "s0000999_r30500",
+      "block": "S0000999.RDB",
+      "record_offset": 30500,
+      "expected_model": "63200",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r30452",
+      "block": "S0000999.RDB",
+      "record_offset": 30452,
+      "expected_model": "63204",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r29936",
+      "block": "S0000999.RDB",
+      "record_offset": 29936,
+      "expected_model": "63200",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r29888",
+      "block": "S0000999.RDB",
+      "record_offset": 29888,
+      "expected_model": "63230",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r29840",
+      "block": "S0000999.RDB",
+      "record_offset": 29840,
+      "expected_model": "63240",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r29792",
+      "block": "S0000999.RDB",
+      "record_offset": 29792,
+      "expected_model": "63233",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r29744",
+      "block": "S0000999.RDB",
+      "record_offset": 29744,
+      "expected_model": "63240",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r29696",
+      "block": "S0000999.RDB",
+      "record_offset": 29696,
+      "expected_model": "63235",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r29648",
+      "block": "S0000999.RDB",
+      "record_offset": 29648,
+      "expected_model": "63235",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r29312",
+      "block": "S0000999.RDB",
+      "record_offset": 29312,
+      "expected_model": "63235",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r29264",
+      "block": "S0000999.RDB",
+      "record_offset": 29264,
+      "expected_model": "63235",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r29074",
+      "block": "S0000999.RDB",
+      "record_offset": 29074,
+      "expected_model": "63200",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r29026",
+      "block": "S0000999.RDB",
+      "record_offset": 29026,
+      "expected_model": "63240",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r28978",
+      "block": "S0000999.RDB",
+      "record_offset": 28978,
+      "expected_model": "63233",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r28907",
+      "block": "S0000999.RDB",
+      "record_offset": 28907,
+      "expected_model": "63240",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r28836",
+      "block": "S0000999.RDB",
+      "record_offset": 28836,
+      "expected_model": "63230",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r28252",
+      "block": "S0000999.RDB",
+      "record_offset": 28252,
+      "expected_model": "41110",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r28204",
+      "block": "S0000999.RDB",
+      "record_offset": 28204,
+      "expected_model": "41313",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r28133",
+      "block": "S0000999.RDB",
+      "record_offset": 28133,
+      "expected_model": "41313",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r26750",
+      "block": "S0000999.RDB",
+      "record_offset": 26750,
+      "expected_model": "63200",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r26679",
+      "block": "S0000999.RDB",
+      "record_offset": 26679,
+      "expected_model": "63203",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r26608",
+      "block": "S0000999.RDB",
+      "record_offset": 26608,
+      "expected_model": "41822",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r26537",
+      "block": "S0000999.RDB",
+      "record_offset": 26537,
+      "expected_model": "41823",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r26466",
+      "block": "S0000999.RDB",
+      "record_offset": 26466,
+      "expected_model": "41824",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r26395",
+      "block": "S0000999.RDB",
+      "record_offset": 26395,
+      "expected_model": "41825",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r26324",
+      "block": "S0000999.RDB",
+      "record_offset": 26324,
+      "expected_model": "41826",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r26253",
+      "block": "S0000999.RDB",
+      "record_offset": 26253,
+      "expected_model": "41827",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r26182",
+      "block": "S0000999.RDB",
+      "record_offset": 26182,
+      "expected_model": "41828",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r26111",
+      "block": "S0000999.RDB",
+      "record_offset": 26111,
+      "expected_model": "41829",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r26063",
+      "block": "S0000999.RDB",
+      "record_offset": 26063,
+      "expected_model": "41830",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r25992",
+      "block": "S0000999.RDB",
+      "record_offset": 25992,
+      "expected_model": "41831",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r25921",
+      "block": "S0000999.RDB",
+      "record_offset": 25921,
+      "expected_model": "41832",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r25779",
+      "block": "S0000999.RDB",
+      "record_offset": 25779,
+      "expected_model": "41834",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r25155",
+      "block": "S0000999.RDB",
+      "record_offset": 25155,
+      "expected_model": "42509",
+      "role": "geometry",
+      "collision": false
+    },
+    {
+      "id": "s0000999_r25107",
+      "block": "S0000999.RDB",
+      "record_offset": 25107,
+      "expected_model": "42510",
+      "role": "geometry",
+      "collision": false
+    },
+    {
+      "id": "s0000999_r24963",
+      "block": "S0000999.RDB",
+      "record_offset": 24963,
+      "expected_model": "42510",
+      "role": "geometry",
+      "collision": false
+    },
+    {
+      "id": "s0000999_r24606",
+      "block": "S0000999.RDB",
+      "record_offset": 24606,
+      "expected_model": "42558",
+      "role": "geometry",
+      "collision": false
+    },
+    {
+      "id": "s0000999_r22663",
+      "block": "S0000999.RDB",
+      "record_offset": 22663,
+      "expected_model": "70300",
+      "role": "exit",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r22543",
+      "block": "S0000999.RDB",
+      "record_offset": 22543,
+      "expected_model": "55001",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r13329",
+      "block": "S0000999.RDB",
+      "record_offset": 13329,
+      "expected_model": "55001",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r14235",
+      "block": "S0000999.RDB",
+      "record_offset": 14235,
+      "expected_model": "63000",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r14283",
+      "block": "S0000999.RDB",
+      "record_offset": 14283,
+      "expected_model": "55002",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r14880",
+      "block": "S0000999.RDB",
+      "record_offset": 14880,
+      "expected_model": "55002",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r14928",
+      "block": "S0000999.RDB",
+      "record_offset": 14928,
+      "expected_model": "58006",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r15024",
+      "block": "S0000999.RDB",
+      "record_offset": 15024,
+      "expected_model": "63033",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r15072",
+      "block": "S0000999.RDB",
+      "record_offset": 15072,
+      "expected_model": "63007",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r15168",
+      "block": "S0000999.RDB",
+      "record_offset": 15168,
+      "expected_model": "63033",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r15264",
+      "block": "S0000999.RDB",
+      "record_offset": 15264,
+      "expected_model": "72001",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r15360",
+      "block": "S0000999.RDB",
+      "record_offset": 15360,
+      "expected_model": "70122",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r30728",
+      "block": "S0000999.RDB",
+      "record_offset": 30728,
+      "expected_model": "41302",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r30404",
+      "block": "S0000999.RDB",
+      "record_offset": 30404,
+      "expected_model": "63207",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r30356",
+      "block": "S0000999.RDB",
+      "record_offset": 30356,
+      "expected_model": "63200",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r30308",
+      "block": "S0000999.RDB",
+      "record_offset": 30308,
+      "expected_model": "63233",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r29193",
+      "block": "S0000999.RDB",
+      "record_offset": 29193,
+      "expected_model": "63256",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r28465",
+      "block": "S0000999.RDB",
+      "record_offset": 28465,
+      "expected_model": "62328",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r27861",
+      "block": "S0000999.RDB",
+      "record_offset": 27861,
+      "expected_model": "41042",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r27790",
+      "block": "S0000999.RDB",
+      "record_offset": 27790,
+      "expected_model": "41020",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r27742",
+      "block": "S0000999.RDB",
+      "record_offset": 27742,
+      "expected_model": "41017",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r27671",
+      "block": "S0000999.RDB",
+      "record_offset": 27671,
+      "expected_model": "41017",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r27623",
+      "block": "S0000999.RDB",
+      "record_offset": 27623,
+      "expected_model": "41018",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r27575",
+      "block": "S0000999.RDB",
+      "record_offset": 27575,
+      "expected_model": "41112",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r27527",
+      "block": "S0000999.RDB",
+      "record_offset": 27527,
+      "expected_model": "41112",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r27479",
+      "block": "S0000999.RDB",
+      "record_offset": 27479,
+      "expected_model": "41112",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r27431",
+      "block": "S0000999.RDB",
+      "record_offset": 27431,
+      "expected_model": "41112",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r27383",
+      "block": "S0000999.RDB",
+      "record_offset": 27383,
+      "expected_model": "41112",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r24487",
+      "block": "S0000999.RDB",
+      "record_offset": 24487,
+      "expected_model": "42510",
+      "role": "geometry",
+      "collision": false
+    },
+    {
+      "id": "s0000999_r24439",
+      "block": "S0000999.RDB",
+      "record_offset": 24439,
+      "expected_model": "42509",
+      "role": "geometry",
+      "collision": false
+    },
+    {
+      "id": "s0000999_r24343",
+      "block": "S0000999.RDB",
+      "record_offset": 24343,
+      "expected_model": "42545",
+      "role": "geometry",
+      "collision": false
+    },
+    {
+      "id": "s0000999_r15982",
+      "block": "S0000999.RDB",
+      "record_offset": 15982,
+      "expected_model": "55002",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r16638",
+      "block": "S0000999.RDB",
+      "record_offset": 16638,
+      "expected_model": "72011",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r17080",
+      "block": "S0000999.RDB",
+      "record_offset": 17080,
+      "expected_model": "72007",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r17128",
+      "block": "S0000999.RDB",
+      "record_offset": 17128,
+      "expected_model": "55005",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r17176",
+      "block": "S0000999.RDB",
+      "record_offset": 17176,
+      "expected_model": "55004",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r17272",
+      "block": "S0000999.RDB",
+      "record_offset": 17272,
+      "expected_model": "63004",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r17320",
+      "block": "S0000999.RDB",
+      "record_offset": 17320,
+      "expected_model": "63023",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r17368",
+      "block": "S0000999.RDB",
+      "record_offset": 17368,
+      "expected_model": "70503",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r17416",
+      "block": "S0000999.RDB",
+      "record_offset": 17416,
+      "expected_model": "58008",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r17464",
+      "block": "S0000999.RDB",
+      "record_offset": 17464,
+      "expected_model": "61020",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r17512",
+      "block": "S0000999.RDB",
+      "record_offset": 17512,
+      "expected_model": "61020",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r34204",
+      "block": "S0000999.RDB",
+      "record_offset": 34204,
+      "expected_model": "71012",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r32273",
+      "block": "S0000999.RDB",
+      "record_offset": 32273,
+      "expected_model": "61027",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r32202",
+      "block": "S0000999.RDB",
+      "record_offset": 32202,
+      "expected_model": "61026",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r32131",
+      "block": "S0000999.RDB",
+      "record_offset": 32131,
+      "expected_model": "41123",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r32083",
+      "block": "S0000999.RDB",
+      "record_offset": 32083,
+      "expected_model": "72019",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r30956",
+      "block": "S0000999.RDB",
+      "record_offset": 30956,
+      "expected_model": "42533",
+      "role": "geometry",
+      "collision": false
+    },
+    {
+      "id": "s0000999_r30824",
+      "block": "S0000999.RDB",
+      "record_offset": 30824,
+      "expected_model": "41322",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r30776",
+      "block": "S0000999.RDB",
+      "record_offset": 30776,
+      "expected_model": "41312",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r30644",
+      "block": "S0000999.RDB",
+      "record_offset": 30644,
+      "expected_model": "41303",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r30596",
+      "block": "S0000999.RDB",
+      "record_offset": 30596,
+      "expected_model": "41303",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r29600",
+      "block": "S0000999.RDB",
+      "record_offset": 29600,
+      "expected_model": "63235",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r29552",
+      "block": "S0000999.RDB",
+      "record_offset": 29552,
+      "expected_model": "63235",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r29504",
+      "block": "S0000999.RDB",
+      "record_offset": 29504,
+      "expected_model": "63235",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r28394",
+      "block": "S0000999.RDB",
+      "record_offset": 28394,
+      "expected_model": "62325",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r28323",
+      "block": "S0000999.RDB",
+      "record_offset": 28323,
+      "expected_model": "62323",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r27180",
+      "block": "S0000999.RDB",
+      "record_offset": 27180,
+      "expected_model": "63207",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r27132",
+      "block": "S0000999.RDB",
+      "record_offset": 27132,
+      "expected_model": "63251",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r27084",
+      "block": "S0000999.RDB",
+      "record_offset": 27084,
+      "expected_model": "63235",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r27013",
+      "block": "S0000999.RDB",
+      "record_offset": 27013,
+      "expected_model": "63235",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r26965",
+      "block": "S0000999.RDB",
+      "record_offset": 26965,
+      "expected_model": "63207",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r26869",
+      "block": "S0000999.RDB",
+      "record_offset": 26869,
+      "expected_model": "63229",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r26821",
+      "block": "S0000999.RDB",
+      "record_offset": 26821,
+      "expected_model": "63200",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r24915",
+      "block": "S0000999.RDB",
+      "record_offset": 24915,
+      "expected_model": "42509",
+      "role": "geometry",
+      "collision": false
+    },
+    {
+      "id": "s0000999_r24867",
+      "block": "S0000999.RDB",
+      "record_offset": 24867,
+      "expected_model": "42510",
+      "role": "geometry",
+      "collision": false
+    },
+    {
+      "id": "s0000999_r24819",
+      "block": "S0000999.RDB",
+      "record_offset": 24819,
+      "expected_model": "42509",
+      "role": "geometry",
+      "collision": false
+    },
+    {
+      "id": "s0000999_r24535",
+      "block": "S0000999.RDB",
+      "record_offset": 24535,
+      "expected_model": "42557",
+      "role": "geometry",
+      "collision": false
+    },
+    {
+      "id": "s0000999_r18576",
+      "block": "S0000999.RDB",
+      "record_offset": 18576,
+      "expected_model": "55000",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r19199",
+      "block": "S0000999.RDB",
+      "record_offset": 19199,
+      "expected_model": "55012",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r19247",
+      "block": "S0000999.RDB",
+      "record_offset": 19247,
+      "expected_model": "55002",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r19295",
+      "block": "S0000999.RDB",
+      "record_offset": 19295,
+      "expected_model": "63000",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r19449",
+      "block": "S0000999.RDB",
+      "record_offset": 19449,
+      "expected_model": "55012",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r19604",
+      "block": "S0000999.RDB",
+      "record_offset": 19604,
+      "expected_model": "70014",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r19652",
+      "block": "S0000999.RDB",
+      "record_offset": 19652,
+      "expected_model": "72002",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r19748",
+      "block": "S0000999.RDB",
+      "record_offset": 19748,
+      "expected_model": "55000",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r19796",
+      "block": "S0000999.RDB",
+      "record_offset": 19796,
+      "expected_model": "55002",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r19892",
+      "block": "S0000999.RDB",
+      "record_offset": 19892,
+      "expected_model": "58008",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r20036",
+      "block": "S0000999.RDB",
+      "record_offset": 20036,
+      "expected_model": "63033",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r20180",
+      "block": "S0000999.RDB",
+      "record_offset": 20180,
+      "expected_model": "63007",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "s0000999_r20612",
+      "block": "S0000999.RDB",
+      "record_offset": 20612,
+      "expected_model": "70114",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000009_r9596",
+      "block": "B0000009.RDB",
+      "record_offset": 9596,
+      "expected_model": "55000",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000009_r9644",
+      "block": "B0000009.RDB",
+      "record_offset": 9644,
+      "expected_model": "68000",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000009_r9692",
+      "block": "B0000009.RDB",
+      "record_offset": 9692,
+      "expected_model": "67018",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000009_r9740",
+      "block": "B0000009.RDB",
+      "record_offset": 9740,
+      "expected_model": "55000",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000009_r9859",
+      "block": "B0000009.RDB",
+      "record_offset": 9859,
+      "expected_model": "67027",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000009_r9978",
+      "block": "B0000009.RDB",
+      "record_offset": 9978,
+      "expected_model": "55001",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000009_r10026",
+      "block": "B0000009.RDB",
+      "record_offset": 10026,
+      "expected_model": "67017",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000009_r10074",
+      "block": "B0000009.RDB",
+      "record_offset": 10074,
+      "expected_model": "67018",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000009_r10122",
+      "block": "B0000009.RDB",
+      "record_offset": 10122,
+      "expected_model": "55000",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000009_r10170",
+      "block": "B0000009.RDB",
+      "record_offset": 10170,
+      "expected_model": "67014",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000009_r10218",
+      "block": "B0000009.RDB",
+      "record_offset": 10218,
+      "expected_model": "67017",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000009_r10266",
+      "block": "B0000009.RDB",
+      "record_offset": 10266,
+      "expected_model": "70007",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000009_r10314",
+      "block": "B0000009.RDB",
+      "record_offset": 10314,
+      "expected_model": "67017",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000009_r10362",
+      "block": "B0000009.RDB",
+      "record_offset": 10362,
+      "expected_model": "67025",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000009_r10552",
+      "block": "B0000009.RDB",
+      "record_offset": 10552,
+      "expected_model": "55001",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000009_r10600",
+      "block": "B0000009.RDB",
+      "record_offset": 10600,
+      "expected_model": "67025",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000009_r10648",
+      "block": "B0000009.RDB",
+      "record_offset": 10648,
+      "expected_model": "67018",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000009_r10696",
+      "block": "B0000009.RDB",
+      "record_offset": 10696,
+      "expected_model": "67027",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000009_r10815",
+      "block": "B0000009.RDB",
+      "record_offset": 10815,
+      "expected_model": "67018",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000009_r10863",
+      "block": "B0000009.RDB",
+      "record_offset": 10863,
+      "expected_model": "55000",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000009_r10911",
+      "block": "B0000009.RDB",
+      "record_offset": 10911,
+      "expected_model": "70503",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r9596",
+      "block": "B0000006.RDB",
+      "record_offset": 9596,
+      "expected_model": "55005",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r9644",
+      "block": "B0000006.RDB",
+      "record_offset": 9644,
+      "expected_model": "67027",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r9763",
+      "block": "B0000006.RDB",
+      "record_offset": 9763,
+      "expected_model": "55001",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r9811",
+      "block": "B0000006.RDB",
+      "record_offset": 9811,
+      "expected_model": "55000",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r9859",
+      "block": "B0000006.RDB",
+      "record_offset": 9859,
+      "expected_model": "55000",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r9907",
+      "block": "B0000006.RDB",
+      "record_offset": 9907,
+      "expected_model": "62009",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r9955",
+      "block": "B0000006.RDB",
+      "record_offset": 9955,
+      "expected_model": "70000",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r10003",
+      "block": "B0000006.RDB",
+      "record_offset": 10003,
+      "expected_model": "67020",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r10051",
+      "block": "B0000006.RDB",
+      "record_offset": 10051,
+      "expected_model": "67017",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r10099",
+      "block": "B0000006.RDB",
+      "record_offset": 10099,
+      "expected_model": "67015",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r10147",
+      "block": "B0000006.RDB",
+      "record_offset": 10147,
+      "expected_model": "67018",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r10195",
+      "block": "B0000006.RDB",
+      "record_offset": 10195,
+      "expected_model": "55005",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r10314",
+      "block": "B0000006.RDB",
+      "record_offset": 10314,
+      "expected_model": "55000",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r10362",
+      "block": "B0000006.RDB",
+      "record_offset": 10362,
+      "expected_model": "67014",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r10410",
+      "block": "B0000006.RDB",
+      "record_offset": 10410,
+      "expected_model": "67017",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r10458",
+      "block": "B0000006.RDB",
+      "record_offset": 10458,
+      "expected_model": "68000",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r10506",
+      "block": "B0000006.RDB",
+      "record_offset": 10506,
+      "expected_model": "67018",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r10554",
+      "block": "B0000006.RDB",
+      "record_offset": 10554,
+      "expected_model": "70007",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r10602",
+      "block": "B0000006.RDB",
+      "record_offset": 10602,
+      "expected_model": "55000",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r10650",
+      "block": "B0000006.RDB",
+      "record_offset": 10650,
+      "expected_model": "70000",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r10698",
+      "block": "B0000006.RDB",
+      "record_offset": 10698,
+      "expected_model": "67011",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r10746",
+      "block": "B0000006.RDB",
+      "record_offset": 10746,
+      "expected_model": "67008",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r10794",
+      "block": "B0000006.RDB",
+      "record_offset": 10794,
+      "expected_model": "67008",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r10842",
+      "block": "B0000006.RDB",
+      "record_offset": 10842,
+      "expected_model": "67008",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r10890",
+      "block": "B0000006.RDB",
+      "record_offset": 10890,
+      "expected_model": "67024",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r10938",
+      "block": "B0000006.RDB",
+      "record_offset": 10938,
+      "expected_model": "67024",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r10986",
+      "block": "B0000006.RDB",
+      "record_offset": 10986,
+      "expected_model": "67023",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r11318",
+      "block": "B0000006.RDB",
+      "record_offset": 11318,
+      "expected_model": "55001",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r11366",
+      "block": "B0000006.RDB",
+      "record_offset": 11366,
+      "expected_model": "67005",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r11414",
+      "block": "B0000006.RDB",
+      "record_offset": 11414,
+      "expected_model": "67008",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r11462",
+      "block": "B0000006.RDB",
+      "record_offset": 11462,
+      "expected_model": "67008",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r11510",
+      "block": "B0000006.RDB",
+      "record_offset": 11510,
+      "expected_model": "67008",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r11558",
+      "block": "B0000006.RDB",
+      "record_offset": 11558,
+      "expected_model": "67025",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r11606",
+      "block": "B0000006.RDB",
+      "record_offset": 11606,
+      "expected_model": "67008",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r11654",
+      "block": "B0000006.RDB",
+      "record_offset": 11654,
+      "expected_model": "67018",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r11702",
+      "block": "B0000006.RDB",
+      "record_offset": 11702,
+      "expected_model": "55000",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r11750",
+      "block": "B0000006.RDB",
+      "record_offset": 11750,
+      "expected_model": "68000",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r11798",
+      "block": "B0000006.RDB",
+      "record_offset": 11798,
+      "expected_model": "67018",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r11846",
+      "block": "B0000006.RDB",
+      "record_offset": 11846,
+      "expected_model": "67027",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r11965",
+      "block": "B0000006.RDB",
+      "record_offset": 11965,
+      "expected_model": "67018",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r12013",
+      "block": "B0000006.RDB",
+      "record_offset": 12013,
+      "expected_model": "55000",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000006_r12061",
+      "block": "B0000006.RDB",
+      "record_offset": 12061,
+      "expected_model": "70503",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r9596",
+      "block": "B0000003.RDB",
+      "record_offset": 9596,
+      "expected_model": "55001",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r9715",
+      "block": "B0000003.RDB",
+      "record_offset": 9715,
+      "expected_model": "55001",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r9763",
+      "block": "B0000003.RDB",
+      "record_offset": 9763,
+      "expected_model": "55000",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r9811",
+      "block": "B0000003.RDB",
+      "record_offset": 9811,
+      "expected_model": "55000",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r9859",
+      "block": "B0000003.RDB",
+      "record_offset": 9859,
+      "expected_model": "62009",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r9907",
+      "block": "B0000003.RDB",
+      "record_offset": 9907,
+      "expected_model": "70000",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r9955",
+      "block": "B0000003.RDB",
+      "record_offset": 9955,
+      "expected_model": "67020",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r10003",
+      "block": "B0000003.RDB",
+      "record_offset": 10003,
+      "expected_model": "67025",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r10051",
+      "block": "B0000003.RDB",
+      "record_offset": 10051,
+      "expected_model": "67017",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r10099",
+      "block": "B0000003.RDB",
+      "record_offset": 10099,
+      "expected_model": "70000",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r10147",
+      "block": "B0000003.RDB",
+      "record_offset": 10147,
+      "expected_model": "67015",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r10195",
+      "block": "B0000003.RDB",
+      "record_offset": 10195,
+      "expected_model": "67018",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r10314",
+      "block": "B0000003.RDB",
+      "record_offset": 10314,
+      "expected_model": "55001",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r10433",
+      "block": "B0000003.RDB",
+      "record_offset": 10433,
+      "expected_model": "55000",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r10481",
+      "block": "B0000003.RDB",
+      "record_offset": 10481,
+      "expected_model": "67014",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r10529",
+      "block": "B0000003.RDB",
+      "record_offset": 10529,
+      "expected_model": "67017",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r10577",
+      "block": "B0000003.RDB",
+      "record_offset": 10577,
+      "expected_model": "68000",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r10625",
+      "block": "B0000003.RDB",
+      "record_offset": 10625,
+      "expected_model": "67018",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r10673",
+      "block": "B0000003.RDB",
+      "record_offset": 10673,
+      "expected_model": "70007",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r11147",
+      "block": "B0000003.RDB",
+      "record_offset": 11147,
+      "expected_model": "55001",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r11195",
+      "block": "B0000003.RDB",
+      "record_offset": 11195,
+      "expected_model": "55000",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r11243",
+      "block": "B0000003.RDB",
+      "record_offset": 11243,
+      "expected_model": "67005",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r11291",
+      "block": "B0000003.RDB",
+      "record_offset": 11291,
+      "expected_model": "67008",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r11339",
+      "block": "B0000003.RDB",
+      "record_offset": 11339,
+      "expected_model": "67008",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r11387",
+      "block": "B0000003.RDB",
+      "record_offset": 11387,
+      "expected_model": "67008",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r11435",
+      "block": "B0000003.RDB",
+      "record_offset": 11435,
+      "expected_model": "67025",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r11483",
+      "block": "B0000003.RDB",
+      "record_offset": 11483,
+      "expected_model": "67008",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r11531",
+      "block": "B0000003.RDB",
+      "record_offset": 11531,
+      "expected_model": "67025",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r11579",
+      "block": "B0000003.RDB",
+      "record_offset": 11579,
+      "expected_model": "67018",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r11627",
+      "block": "B0000003.RDB",
+      "record_offset": 11627,
+      "expected_model": "67023",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r11675",
+      "block": "B0000003.RDB",
+      "record_offset": 11675,
+      "expected_model": "70000",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r11723",
+      "block": "B0000003.RDB",
+      "record_offset": 11723,
+      "expected_model": "67024",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r11771",
+      "block": "B0000003.RDB",
+      "record_offset": 11771,
+      "expected_model": "67024",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r11819",
+      "block": "B0000003.RDB",
+      "record_offset": 11819,
+      "expected_model": "67023",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r11867",
+      "block": "B0000003.RDB",
+      "record_offset": 11867,
+      "expected_model": "55000",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r11915",
+      "block": "B0000003.RDB",
+      "record_offset": 11915,
+      "expected_model": "68000",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r11963",
+      "block": "B0000003.RDB",
+      "record_offset": 11963,
+      "expected_model": "68000",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r12011",
+      "block": "B0000003.RDB",
+      "record_offset": 12011,
+      "expected_model": "67024",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r12059",
+      "block": "B0000003.RDB",
+      "record_offset": 12059,
+      "expected_model": "67018",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r12107",
+      "block": "B0000003.RDB",
+      "record_offset": 12107,
+      "expected_model": "67011",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r12297",
+      "block": "B0000003.RDB",
+      "record_offset": 12297,
+      "expected_model": "67025",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r12345",
+      "block": "B0000003.RDB",
+      "record_offset": 12345,
+      "expected_model": "67010",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r12393",
+      "block": "B0000003.RDB",
+      "record_offset": 12393,
+      "expected_model": "67011",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r12441",
+      "block": "B0000003.RDB",
+      "record_offset": 12441,
+      "expected_model": "67024",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r12489",
+      "block": "B0000003.RDB",
+      "record_offset": 12489,
+      "expected_model": "67018",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r12537",
+      "block": "B0000003.RDB",
+      "record_offset": 12537,
+      "expected_model": "55000",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r12585",
+      "block": "B0000003.RDB",
+      "record_offset": 12585,
+      "expected_model": "55000",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r12633",
+      "block": "B0000003.RDB",
+      "record_offset": 12633,
+      "expected_model": "67010",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000003_r12681",
+      "block": "B0000003.RDB",
+      "record_offset": 12681,
+      "expected_model": "70503",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r9596",
+      "block": "B0000012.RDB",
+      "record_offset": 9596,
+      "expected_model": "55005",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r9644",
+      "block": "B0000012.RDB",
+      "record_offset": 9644,
+      "expected_model": "61030",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r9977",
+      "block": "B0000012.RDB",
+      "record_offset": 9977,
+      "expected_model": "55005",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r10025",
+      "block": "B0000012.RDB",
+      "record_offset": 10025,
+      "expected_model": "61014",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r10073",
+      "block": "B0000012.RDB",
+      "record_offset": 10073,
+      "expected_model": "70113",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r10121",
+      "block": "B0000012.RDB",
+      "record_offset": 10121,
+      "expected_model": "55005",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r10169",
+      "block": "B0000012.RDB",
+      "record_offset": 10169,
+      "expected_model": "61006",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r10217",
+      "block": "B0000012.RDB",
+      "record_offset": 10217,
+      "expected_model": "61004",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r10336",
+      "block": "B0000012.RDB",
+      "record_offset": 10336,
+      "expected_model": "61019",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r10384",
+      "block": "B0000012.RDB",
+      "record_offset": 10384,
+      "expected_model": "55000",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r10432",
+      "block": "B0000012.RDB",
+      "record_offset": 10432,
+      "expected_model": "70703",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r10480",
+      "block": "B0000012.RDB",
+      "record_offset": 10480,
+      "expected_model": "61005",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r10528",
+      "block": "B0000012.RDB",
+      "record_offset": 10528,
+      "expected_model": "70801",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r10576",
+      "block": "B0000012.RDB",
+      "record_offset": 10576,
+      "expected_model": "61003",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r10624",
+      "block": "B0000012.RDB",
+      "record_offset": 10624,
+      "expected_model": "60500",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r10672",
+      "block": "B0000012.RDB",
+      "record_offset": 10672,
+      "expected_model": "61006",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r10720",
+      "block": "B0000012.RDB",
+      "record_offset": 10720,
+      "expected_model": "61006",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r11124",
+      "block": "B0000012.RDB",
+      "record_offset": 11124,
+      "expected_model": "55003",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r11172",
+      "block": "B0000012.RDB",
+      "record_offset": 11172,
+      "expected_model": "55005",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r11220",
+      "block": "B0000012.RDB",
+      "record_offset": 11220,
+      "expected_model": "60500",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r11268",
+      "block": "B0000012.RDB",
+      "record_offset": 11268,
+      "expected_model": "61011",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r11316",
+      "block": "B0000012.RDB",
+      "record_offset": 11316,
+      "expected_model": "62008",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r11364",
+      "block": "B0000012.RDB",
+      "record_offset": 11364,
+      "expected_model": "61005",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r11412",
+      "block": "B0000012.RDB",
+      "record_offset": 11412,
+      "expected_model": "61005",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r11460",
+      "block": "B0000012.RDB",
+      "record_offset": 11460,
+      "expected_model": "61018",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r11508",
+      "block": "B0000012.RDB",
+      "record_offset": 11508,
+      "expected_model": "61005",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r11556",
+      "block": "B0000012.RDB",
+      "record_offset": 11556,
+      "expected_model": "61018",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r11604",
+      "block": "B0000012.RDB",
+      "record_offset": 11604,
+      "expected_model": "61014",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r11652",
+      "block": "B0000012.RDB",
+      "record_offset": 11652,
+      "expected_model": "61024",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r11700",
+      "block": "B0000012.RDB",
+      "record_offset": 11700,
+      "expected_model": "55000",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r11748",
+      "block": "B0000012.RDB",
+      "record_offset": 11748,
+      "expected_model": "55000",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r11796",
+      "block": "B0000012.RDB",
+      "record_offset": 11796,
+      "expected_model": "70806",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r11844",
+      "block": "B0000012.RDB",
+      "record_offset": 11844,
+      "expected_model": "71106",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r11892",
+      "block": "B0000012.RDB",
+      "record_offset": 11892,
+      "expected_model": "61020",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r11940",
+      "block": "B0000012.RDB",
+      "record_offset": 11940,
+      "expected_model": "61006",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r11988",
+      "block": "B0000012.RDB",
+      "record_offset": 11988,
+      "expected_model": "61004",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r12107",
+      "block": "B0000012.RDB",
+      "record_offset": 12107,
+      "expected_model": "61011",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r12155",
+      "block": "B0000012.RDB",
+      "record_offset": 12155,
+      "expected_model": "55000",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r12203",
+      "block": "B0000012.RDB",
+      "record_offset": 12203,
+      "expected_model": "55000",
+      "role": "door",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r12251",
+      "block": "B0000012.RDB",
+      "record_offset": 12251,
+      "expected_model": "70007",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r12299",
+      "block": "B0000012.RDB",
+      "record_offset": 12299,
+      "expected_model": "70008",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r12347",
+      "block": "B0000012.RDB",
+      "record_offset": 12347,
+      "expected_model": "61020",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r12395",
+      "block": "B0000012.RDB",
+      "record_offset": 12395,
+      "expected_model": "61003",
+      "role": "geometry",
+      "collision": true
+    },
+    {
+      "id": "b0000012_r12443",
+      "block": "B0000012.RDB",
+      "record_offset": 12443,
+      "expected_model": "61019",
+      "role": "geometry",
+      "collision": true
     }
   ],
   "billboards": [
@@ -416,6 +2939,1022 @@
       "record_offset": 17044,
       "expected_archive": 210,
       "expected_record": 1,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r33966",
+      "block": "S0000999.RDB",
+      "record_offset": 33966,
+      "expected_archive": 210,
+      "expected_record": 13,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r31619",
+      "block": "S0000999.RDB",
+      "record_offset": 31619,
+      "expected_archive": 210,
+      "expected_record": 16,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r31382",
+      "block": "S0000999.RDB",
+      "record_offset": 31382,
+      "expected_archive": 210,
+      "expected_record": 16,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r31205",
+      "block": "S0000999.RDB",
+      "record_offset": 31205,
+      "expected_archive": 210,
+      "expected_record": 17,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r31169",
+      "block": "S0000999.RDB",
+      "record_offset": 31169,
+      "expected_archive": 210,
+      "expected_record": 20,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r28800",
+      "block": "S0000999.RDB",
+      "record_offset": 28800,
+      "expected_archive": 206,
+      "expected_record": 8,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r28764",
+      "block": "S0000999.RDB",
+      "record_offset": 28764,
+      "expected_archive": 206,
+      "expected_record": 6,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r28728",
+      "block": "S0000999.RDB",
+      "record_offset": 28728,
+      "expected_archive": 206,
+      "expected_record": 5,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r28692",
+      "block": "S0000999.RDB",
+      "record_offset": 28692,
+      "expected_archive": 206,
+      "expected_record": 4,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r28656",
+      "block": "S0000999.RDB",
+      "record_offset": 28656,
+      "expected_archive": 206,
+      "expected_record": 3,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r28620",
+      "block": "S0000999.RDB",
+      "record_offset": 28620,
+      "expected_archive": 206,
+      "expected_record": 1,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r28584",
+      "block": "S0000999.RDB",
+      "record_offset": 28584,
+      "expected_archive": 206,
+      "expected_record": 0,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r9895",
+      "block": "S0000999.RDB",
+      "record_offset": 9895,
+      "expected_archive": 210,
+      "expected_record": 17,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r9931",
+      "block": "S0000999.RDB",
+      "record_offset": 9931,
+      "expected_archive": 210,
+      "expected_record": 17,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r10038",
+      "block": "S0000999.RDB",
+      "record_offset": 10038,
+      "expected_archive": 213,
+      "expected_record": 9,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r10074",
+      "block": "S0000999.RDB",
+      "record_offset": 10074,
+      "expected_archive": 213,
+      "expected_record": 7,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r10662",
+      "block": "S0000999.RDB",
+      "record_offset": 10662,
+      "expected_archive": 210,
+      "expected_record": 9,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r10698",
+      "block": "S0000999.RDB",
+      "record_offset": 10698,
+      "expected_archive": 210,
+      "expected_record": 18,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r10769",
+      "block": "S0000999.RDB",
+      "record_offset": 10769,
+      "expected_archive": 210,
+      "expected_record": 18,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r10805",
+      "block": "S0000999.RDB",
+      "record_offset": 10805,
+      "expected_archive": 210,
+      "expected_record": 12,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r10947",
+      "block": "S0000999.RDB",
+      "record_offset": 10947,
+      "expected_archive": 210,
+      "expected_record": 3,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r10983",
+      "block": "S0000999.RDB",
+      "record_offset": 10983,
+      "expected_archive": 210,
+      "expected_record": 3,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r11019",
+      "block": "S0000999.RDB",
+      "record_offset": 11019,
+      "expected_archive": 210,
+      "expected_record": 3,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r11055",
+      "block": "S0000999.RDB",
+      "record_offset": 11055,
+      "expected_archive": 210,
+      "expected_record": 3,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r11091",
+      "block": "S0000999.RDB",
+      "record_offset": 11091,
+      "expected_archive": 210,
+      "expected_record": 3,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r11127",
+      "block": "S0000999.RDB",
+      "record_offset": 11127,
+      "expected_archive": 210,
+      "expected_record": 3,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r11365",
+      "block": "S0000999.RDB",
+      "record_offset": 11365,
+      "expected_archive": 210,
+      "expected_record": 11,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r34120",
+      "block": "S0000999.RDB",
+      "record_offset": 34120,
+      "expected_archive": 210,
+      "expected_record": 6,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r33930",
+      "block": "S0000999.RDB",
+      "record_offset": 33930,
+      "expected_archive": 210,
+      "expected_record": 6,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r32516",
+      "block": "S0000999.RDB",
+      "record_offset": 32516,
+      "expected_archive": 206,
+      "expected_record": 0,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r12911",
+      "block": "S0000999.RDB",
+      "record_offset": 12911,
+      "expected_archive": 210,
+      "expected_record": 6,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r12947",
+      "block": "S0000999.RDB",
+      "record_offset": 12947,
+      "expected_archive": 210,
+      "expected_record": 6,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r13018",
+      "block": "S0000999.RDB",
+      "record_offset": 13018,
+      "expected_archive": 210,
+      "expected_record": 17,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r13089",
+      "block": "S0000999.RDB",
+      "record_offset": 13089,
+      "expected_archive": 210,
+      "expected_record": 17,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r13209",
+      "block": "S0000999.RDB",
+      "record_offset": 13209,
+      "expected_archive": 203,
+      "expected_record": 5,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r13245",
+      "block": "S0000999.RDB",
+      "record_offset": 13245,
+      "expected_archive": 203,
+      "expected_record": 5,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r13377",
+      "block": "S0000999.RDB",
+      "record_offset": 13377,
+      "expected_archive": 210,
+      "expected_record": 6,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r13413",
+      "block": "S0000999.RDB",
+      "record_offset": 13413,
+      "expected_archive": 210,
+      "expected_record": 6,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r13485",
+      "block": "S0000999.RDB",
+      "record_offset": 13485,
+      "expected_archive": 210,
+      "expected_record": 6,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r13808",
+      "block": "S0000999.RDB",
+      "record_offset": 13808,
+      "expected_archive": 210,
+      "expected_record": 20,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r13950",
+      "block": "S0000999.RDB",
+      "record_offset": 13950,
+      "expected_archive": 210,
+      "expected_record": 20,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r14021",
+      "block": "S0000999.RDB",
+      "record_offset": 14021,
+      "expected_archive": 210,
+      "expected_record": 4,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r14057",
+      "block": "S0000999.RDB",
+      "record_offset": 14057,
+      "expected_archive": 210,
+      "expected_record": 4,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r14128",
+      "block": "S0000999.RDB",
+      "record_offset": 14128,
+      "expected_archive": 210,
+      "expected_record": 8,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r14199",
+      "block": "S0000999.RDB",
+      "record_offset": 14199,
+      "expected_archive": 210,
+      "expected_record": 0,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r14366",
+      "block": "S0000999.RDB",
+      "record_offset": 14366,
+      "expected_archive": 210,
+      "expected_record": 0,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r14508",
+      "block": "S0000999.RDB",
+      "record_offset": 14508,
+      "expected_archive": 210,
+      "expected_record": 1,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r31346",
+      "block": "S0000999.RDB",
+      "record_offset": 31346,
+      "expected_archive": 210,
+      "expected_record": 16,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r22401",
+      "block": "S0000999.RDB",
+      "record_offset": 22401,
+      "expected_archive": 210,
+      "expected_record": 17,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r15504",
+      "block": "S0000999.RDB",
+      "record_offset": 15504,
+      "expected_archive": 210,
+      "expected_record": 17,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r15540",
+      "block": "S0000999.RDB",
+      "record_offset": 15540,
+      "expected_archive": 210,
+      "expected_record": 17,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r15682",
+      "block": "S0000999.RDB",
+      "record_offset": 15682,
+      "expected_archive": 210,
+      "expected_record": 17,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r15718",
+      "block": "S0000999.RDB",
+      "record_offset": 15718,
+      "expected_archive": 213,
+      "expected_record": 7,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r15754",
+      "block": "S0000999.RDB",
+      "record_offset": 15754,
+      "expected_archive": 213,
+      "expected_record": 9,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r15790",
+      "block": "S0000999.RDB",
+      "record_offset": 15790,
+      "expected_archive": 213,
+      "expected_record": 7,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r15826",
+      "block": "S0000999.RDB",
+      "record_offset": 15826,
+      "expected_archive": 213,
+      "expected_record": 8,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r16208",
+      "block": "S0000999.RDB",
+      "record_offset": 16208,
+      "expected_archive": 210,
+      "expected_record": 0,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r16279",
+      "block": "S0000999.RDB",
+      "record_offset": 16279,
+      "expected_archive": 210,
+      "expected_record": 13,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r16721",
+      "block": "S0000999.RDB",
+      "record_offset": 16721,
+      "expected_archive": 210,
+      "expected_record": 2,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r16757",
+      "block": "S0000999.RDB",
+      "record_offset": 16757,
+      "expected_archive": 210,
+      "expected_record": 2,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r16793",
+      "block": "S0000999.RDB",
+      "record_offset": 16793,
+      "expected_archive": 210,
+      "expected_record": 2,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r16829",
+      "block": "S0000999.RDB",
+      "record_offset": 16829,
+      "expected_archive": 210,
+      "expected_record": 2,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r16865",
+      "block": "S0000999.RDB",
+      "record_offset": 16865,
+      "expected_archive": 210,
+      "expected_record": 2,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r16901",
+      "block": "S0000999.RDB",
+      "record_offset": 16901,
+      "expected_archive": 210,
+      "expected_record": 2,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r16937",
+      "block": "S0000999.RDB",
+      "record_offset": 16937,
+      "expected_archive": 210,
+      "expected_record": 2,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r16973",
+      "block": "S0000999.RDB",
+      "record_offset": 16973,
+      "expected_archive": 210,
+      "expected_record": 2,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r30692",
+      "block": "S0000999.RDB",
+      "record_offset": 30692,
+      "expected_archive": 210,
+      "expected_record": 1,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r17836",
+      "block": "S0000999.RDB",
+      "record_offset": 17836,
+      "expected_archive": 210,
+      "expected_record": 6,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r17872",
+      "block": "S0000999.RDB",
+      "record_offset": 17872,
+      "expected_archive": 210,
+      "expected_record": 6,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r17908",
+      "block": "S0000999.RDB",
+      "record_offset": 17908,
+      "expected_archive": 210,
+      "expected_record": 13,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r17979",
+      "block": "S0000999.RDB",
+      "record_offset": 17979,
+      "expected_archive": 210,
+      "expected_record": 20,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r18050",
+      "block": "S0000999.RDB",
+      "record_offset": 18050,
+      "expected_archive": 210,
+      "expected_record": 20,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r18156",
+      "block": "S0000999.RDB",
+      "record_offset": 18156,
+      "expected_archive": 210,
+      "expected_record": 17,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r18240",
+      "block": "S0000999.RDB",
+      "record_offset": 18240,
+      "expected_archive": 213,
+      "expected_record": 8,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r18276",
+      "block": "S0000999.RDB",
+      "record_offset": 18276,
+      "expected_archive": 213,
+      "expected_record": 7,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r18312",
+      "block": "S0000999.RDB",
+      "record_offset": 18312,
+      "expected_archive": 213,
+      "expected_record": 7,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r18348",
+      "block": "S0000999.RDB",
+      "record_offset": 18348,
+      "expected_archive": 213,
+      "expected_record": 9,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r18384",
+      "block": "S0000999.RDB",
+      "record_offset": 18384,
+      "expected_archive": 213,
+      "expected_record": 10,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r18420",
+      "block": "S0000999.RDB",
+      "record_offset": 18420,
+      "expected_archive": 213,
+      "expected_record": 8,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r18456",
+      "block": "S0000999.RDB",
+      "record_offset": 18456,
+      "expected_archive": 203,
+      "expected_record": 6,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r18492",
+      "block": "S0000999.RDB",
+      "record_offset": 18492,
+      "expected_archive": 203,
+      "expected_record": 6,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r18624",
+      "block": "S0000999.RDB",
+      "record_offset": 18624,
+      "expected_archive": 210,
+      "expected_record": 6,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r18660",
+      "block": "S0000999.RDB",
+      "record_offset": 18660,
+      "expected_archive": 210,
+      "expected_record": 6,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r18696",
+      "block": "S0000999.RDB",
+      "record_offset": 18696,
+      "expected_archive": 210,
+      "expected_record": 6,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r18983",
+      "block": "S0000999.RDB",
+      "record_offset": 18983,
+      "expected_archive": 210,
+      "expected_record": 19,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r19019",
+      "block": "S0000999.RDB",
+      "record_offset": 19019,
+      "expected_archive": 210,
+      "expected_record": 19,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r19127",
+      "block": "S0000999.RDB",
+      "record_offset": 19127,
+      "expected_archive": 206,
+      "expected_record": 17,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r19163",
+      "block": "S0000999.RDB",
+      "record_offset": 19163,
+      "expected_archive": 206,
+      "expected_record": 14,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r19413",
+      "block": "S0000999.RDB",
+      "record_offset": 19413,
+      "expected_archive": 210,
+      "expected_record": 6,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r19532",
+      "block": "S0000999.RDB",
+      "record_offset": 19532,
+      "expected_archive": 210,
+      "expected_record": 11,
+      "fps": 12
+    },
+    {
+      "id": "s0000999_r19568",
+      "block": "S0000999.RDB",
+      "record_offset": 19568,
+      "expected_archive": 206,
+      "expected_record": 2,
+      "fps": 12
+    },
+    {
+      "id": "b0000009_r9823",
+      "block": "B0000009.RDB",
+      "record_offset": 9823,
+      "expected_archive": 210,
+      "expected_record": 11,
+      "fps": 12
+    },
+    {
+      "id": "b0000009_r9907",
+      "block": "B0000009.RDB",
+      "record_offset": 9907,
+      "expected_archive": 210,
+      "expected_record": 11,
+      "fps": 12
+    },
+    {
+      "id": "b0000009_r10410",
+      "block": "B0000009.RDB",
+      "record_offset": 10410,
+      "expected_archive": 210,
+      "expected_record": 11,
+      "fps": 12
+    },
+    {
+      "id": "b0000009_r10481",
+      "block": "B0000009.RDB",
+      "record_offset": 10481,
+      "expected_archive": 210,
+      "expected_record": 13,
+      "fps": 12
+    },
+    {
+      "id": "b0000009_r10744",
+      "block": "B0000009.RDB",
+      "record_offset": 10744,
+      "expected_archive": 210,
+      "expected_record": 13,
+      "fps": 12
+    },
+    {
+      "id": "b0000006_r9692",
+      "block": "B0000006.RDB",
+      "record_offset": 9692,
+      "expected_archive": 210,
+      "expected_record": 11,
+      "fps": 12
+    },
+    {
+      "id": "b0000006_r10243",
+      "block": "B0000006.RDB",
+      "record_offset": 10243,
+      "expected_archive": 210,
+      "expected_record": 11,
+      "fps": 12
+    },
+    {
+      "id": "b0000006_r11034",
+      "block": "B0000006.RDB",
+      "record_offset": 11034,
+      "expected_archive": 210,
+      "expected_record": 11,
+      "fps": 12
+    },
+    {
+      "id": "b0000006_r11105",
+      "block": "B0000006.RDB",
+      "record_offset": 11105,
+      "expected_archive": 210,
+      "expected_record": 11,
+      "fps": 12
+    },
+    {
+      "id": "b0000006_r11176",
+      "block": "B0000006.RDB",
+      "record_offset": 11176,
+      "expected_archive": 210,
+      "expected_record": 11,
+      "fps": 12
+    },
+    {
+      "id": "b0000006_r11247",
+      "block": "B0000006.RDB",
+      "record_offset": 11247,
+      "expected_archive": 210,
+      "expected_record": 13,
+      "fps": 12
+    },
+    {
+      "id": "b0000006_r11894",
+      "block": "B0000006.RDB",
+      "record_offset": 11894,
+      "expected_archive": 210,
+      "expected_record": 13,
+      "fps": 12
+    },
+    {
+      "id": "b0000003_r9644",
+      "block": "B0000003.RDB",
+      "record_offset": 9644,
+      "expected_archive": 210,
+      "expected_record": 11,
+      "fps": 12
+    },
+    {
+      "id": "b0000003_r10243",
+      "block": "B0000003.RDB",
+      "record_offset": 10243,
+      "expected_archive": 210,
+      "expected_record": 11,
+      "fps": 12
+    },
+    {
+      "id": "b0000003_r10362",
+      "block": "B0000003.RDB",
+      "record_offset": 10362,
+      "expected_archive": 210,
+      "expected_record": 11,
+      "fps": 12
+    },
+    {
+      "id": "b0000003_r10721",
+      "block": "B0000003.RDB",
+      "record_offset": 10721,
+      "expected_archive": 210,
+      "expected_record": 11,
+      "fps": 12
+    },
+    {
+      "id": "b0000003_r10792",
+      "block": "B0000003.RDB",
+      "record_offset": 10792,
+      "expected_archive": 210,
+      "expected_record": 11,
+      "fps": 12
+    },
+    {
+      "id": "b0000003_r10863",
+      "block": "B0000003.RDB",
+      "record_offset": 10863,
+      "expected_archive": 210,
+      "expected_record": 11,
+      "fps": 12
+    },
+    {
+      "id": "b0000003_r10934",
+      "block": "B0000003.RDB",
+      "record_offset": 10934,
+      "expected_archive": 210,
+      "expected_record": 13,
+      "fps": 12
+    },
+    {
+      "id": "b0000003_r11005",
+      "block": "B0000003.RDB",
+      "record_offset": 11005,
+      "expected_archive": 210,
+      "expected_record": 13,
+      "fps": 12
+    },
+    {
+      "id": "b0000003_r11076",
+      "block": "B0000003.RDB",
+      "record_offset": 11076,
+      "expected_archive": 210,
+      "expected_record": 13,
+      "fps": 12
+    },
+    {
+      "id": "b0000003_r12155",
+      "block": "B0000003.RDB",
+      "record_offset": 12155,
+      "expected_archive": 210,
+      "expected_record": 13,
+      "fps": 12
+    },
+    {
+      "id": "b0000003_r12226",
+      "block": "B0000003.RDB",
+      "record_offset": 12226,
+      "expected_archive": 210,
+      "expected_record": 13,
+      "fps": 12
+    },
+    {
+      "id": "b0000012_r9692",
+      "block": "B0000012.RDB",
+      "record_offset": 9692,
+      "expected_archive": 210,
+      "expected_record": 18,
+      "fps": 12
+    },
+    {
+      "id": "b0000012_r9728",
+      "block": "B0000012.RDB",
+      "record_offset": 9728,
+      "expected_archive": 210,
+      "expected_record": 18,
+      "fps": 12
+    },
+    {
+      "id": "b0000012_r9799",
+      "block": "B0000012.RDB",
+      "record_offset": 9799,
+      "expected_archive": 210,
+      "expected_record": 19,
+      "fps": 12
+    },
+    {
+      "id": "b0000012_r9835",
+      "block": "B0000012.RDB",
+      "record_offset": 9835,
+      "expected_archive": 210,
+      "expected_record": 19,
+      "fps": 12
+    },
+    {
+      "id": "b0000012_r9906",
+      "block": "B0000012.RDB",
+      "record_offset": 9906,
+      "expected_archive": 210,
+      "expected_record": 18,
+      "fps": 12
+    },
+    {
+      "id": "b0000012_r10265",
+      "block": "B0000012.RDB",
+      "record_offset": 10265,
+      "expected_archive": 210,
+      "expected_record": 18,
+      "fps": 12
+    },
+    {
+      "id": "b0000012_r10768",
+      "block": "B0000012.RDB",
+      "record_offset": 10768,
+      "expected_archive": 210,
+      "expected_record": 22,
+      "fps": 12
+    },
+    {
+      "id": "b0000012_r10839",
+      "block": "B0000012.RDB",
+      "record_offset": 10839,
+      "expected_archive": 210,
+      "expected_record": 18,
+      "fps": 12
+    },
+    {
+      "id": "b0000012_r10945",
+      "block": "B0000012.RDB",
+      "record_offset": 10945,
+      "expected_archive": 210,
+      "expected_record": 18,
+      "fps": 12
+    },
+    {
+      "id": "b0000012_r10981",
+      "block": "B0000012.RDB",
+      "record_offset": 10981,
+      "expected_archive": 210,
+      "expected_record": 19,
+      "fps": 12
+    },
+    {
+      "id": "b0000012_r11017",
+      "block": "B0000012.RDB",
+      "record_offset": 11017,
+      "expected_archive": 210,
+      "expected_record": 19,
+      "fps": 12
+    },
+    {
+      "id": "b0000012_r11053",
+      "block": "B0000012.RDB",
+      "record_offset": 11053,
+      "expected_archive": 210,
+      "expected_record": 18,
+      "fps": 12
+    },
+    {
+      "id": "b0000012_r12036",
+      "block": "B0000012.RDB",
+      "record_offset": 12036,
+      "expected_archive": 210,
+      "expected_record": 18,
       "fps": 12
     }
   ],
@@ -481,162 +4020,7 @@
         ]
       }
     ],
-    "boundaries": [
-      {
-        "id": "side_chamber_limit",
-        "position_native": [
-          1790,
-          -301,
-          640
-        ],
-        "yaw_degrees": 90,
-        "size_metres": [
-          1.5,
-          2.6,
-          0.25
-        ]
-      },
-      {
-        "id": "south_chamber_limit",
-        "position_native": [
-          1664,
-          -301,
-          1534
-        ],
-        "yaw_degrees": 0,
-        "size_metres": [
-          1.5,
-          2.6,
-          0.25
-        ]
-      },
-      {
-        "id": "alternate_stair_limit",
-        "position_native": [
-          1026,
-          -301,
-          1408
-        ],
-        "yaw_degrees": 90,
-        "size_metres": [
-          1.5,
-          2.6,
-          0.25
-        ]
-      },
-      {
-        "id": "anteroom_east_limit",
-        "position_native": [
-          1026,
-          -557,
-          384
-        ],
-        "yaw_degrees": 90,
-        "size_metres": [
-          1.5,
-          2.6,
-          0.25
-        ]
-      },
-      {
-        "id": "hall_west_limit",
-        "position_native": [
-          248,
-          -557,
-          1152
-        ],
-        "yaw_degrees": 90,
-        "size_metres": [
-          1.5,
-          2.6,
-          0.25
-        ]
-      },
-      {
-        "id": "hall_east_limit",
-        "position_native": [
-          1538,
-          -557,
-          1408
-        ],
-        "yaw_degrees": 90,
-        "size_metres": [
-          1.5,
-          2.6,
-          0.25
-        ]
-      },
-      {
-        "id": "upper_north_limit",
-        "position_native": [
-          1152,
-          -1343,
-          254
-        ],
-        "yaw_degrees": 0,
-        "size_metres": [
-          4.5,
-          3.5,
-          0.25
-        ]
-      },
-      {
-        "id": "upper_east_limit",
-        "position_native": [
-          1920,
-          -1343,
-          770
-        ],
-        "yaw_degrees": 0,
-        "size_metres": [
-          4.5,
-          3.5,
-          0.25
-        ]
-      },
-      {
-        "id": "mid_north_limit",
-        "position_native": [
-          1664,
-          -1087,
-          254
-        ],
-        "yaw_degrees": 0,
-        "size_metres": [
-          4.5,
-          3.5,
-          0.25
-        ]
-      },
-      {
-        "id": "mid_south_limit",
-        "position_native": [
-          1664,
-          -1087,
-          1794
-        ],
-        "yaw_degrees": 0,
-        "size_metres": [
-          4.5,
-          3.5,
-          0.25
-        ]
-      },
-      {
-        "id": "upper_west_limit",
-        "position_native": [
-          1016,
-          -1325,
-          1664
-        ],
-        "yaw_degrees": 90,
-        "size_metres": [
-          1.5,
-          2.6,
-          0.25
-        ]
-      }
-    ],
+    "boundaries": [],
     "lights": [
       {
         "id": "cave_fill",
@@ -772,6 +4156,57 @@
     {
       "id": "chamber_treasure_marker",
       "record_offset": 32671,
+      "expected_archive": 199,
+      "expected_record": 19
+    }
+  ],
+  "static_loot": [
+    {
+      "id": "s0000999_r32047",
+      "block": "S0000999.RDB",
+      "record_offset": 32047,
+      "expected_archive": 199,
+      "expected_record": 19
+    },
+    {
+      "id": "s0000999_r34074",
+      "block": "S0000999.RDB",
+      "record_offset": 34074,
+      "expected_archive": 199,
+      "expected_record": 19
+    },
+    {
+      "id": "s0000999_r33318",
+      "block": "S0000999.RDB",
+      "record_offset": 33318,
+      "expected_archive": 199,
+      "expected_record": 19
+    },
+    {
+      "id": "s0000999_r31903",
+      "block": "S0000999.RDB",
+      "record_offset": 31903,
+      "expected_archive": 199,
+      "expected_record": 19
+    },
+    {
+      "id": "s0000999_r27978",
+      "block": "S0000999.RDB",
+      "record_offset": 27978,
+      "expected_archive": 199,
+      "expected_record": 19
+    },
+    {
+      "id": "s0000999_r27942",
+      "block": "S0000999.RDB",
+      "record_offset": 27942,
+      "expected_archive": 199,
+      "expected_record": 19
+    },
+    {
+      "id": "s0000999_r34002",
+      "block": "S0000999.RDB",
+      "record_offset": 34002,
       "expected_archive": 199,
       "expected_record": 19
     }

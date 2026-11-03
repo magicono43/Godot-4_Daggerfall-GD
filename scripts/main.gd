@@ -71,9 +71,12 @@ func _ready() -> void:
 			doors.append(body)
 		else:
 			body = StaticBody3D.new()
+			if item.role == "exit":
+				body.set_script(preload("res://scripts/dungeon_exit.gd"))
 		body.name = "Classic_%s_%d" % [item.model, item.offset]
 		body.set_meta("section_id", item.id)
 		body.set_meta("section_role", item.role)
+		body.set_meta("source_block", item.block)
 		world_root.add_child(body)
 		body.transform = item.transform
 		var instance := MeshInstance3D.new()
@@ -96,7 +99,7 @@ func _ready() -> void:
 			break
 	for payload in classic.billboards:
 		var sprite := AnimatedSprite3D.new()
-		sprite.set_script(Billboard)
+		sprite.set_script(preload("res://scripts/static_loot_sprite.gd") if payload.get("static_loot", false) else Billboard)
 		sprite.configure(payload)
 		world_root.add_child(sprite)
 		billboard_nodes[payload.id] = sprite
@@ -336,7 +339,10 @@ func _process(_delta: float) -> void:
 		return
 	prompt.text = ""
 	if player.interact_target:
-		prompt.text = ("E  |  Loot pile" if player.interact_target.is_in_group("world_loot_piles") else "E  |  Loot remains") if player.interact_target is Area3D else "E  |  " + ("Close door" if player.interact_target.opened else "Open door")
+		if player.interact_target.has_method("interaction_prompt"):
+			prompt.text = player.interact_target.interaction_prompt()
+		else:
+			prompt.text = ("E  |  Loot pile" if player.interact_target.is_in_group("world_loot_piles") else "E  |  Loot remains") if player.interact_target is Area3D else "E  |  " + ("Close door" if player.interact_target.opened else "Open door")
 	if player.modal_open:
 		prompt.text = ""
 	elif not player.controls_active:

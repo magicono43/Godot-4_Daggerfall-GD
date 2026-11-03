@@ -4,16 +4,25 @@ import json
 import struct
 from pathlib import Path
 from inspect_data import ROOT, bsa
+import argparse
 
 PROJECT = Path(__file__).resolve().parents[1]
-section = json.loads((PROJECT / 'sections' / 'privateers_hold_opening.json').read_text())
-block = bsa('BLOCKS.BSA')[section['source']['block']]
+parser = argparse.ArgumentParser()
+parser.add_argument('--section', default='tests/sections/skeleton_regression.json')
+parser.add_argument('--output', default='tests/decorations')
+args = parser.parse_args()
+section = json.loads((PROJECT / args.section).read_text())
+blocks = bsa('BLOCKS.BSA')
 palette = (ROOT / 'ART_PAL.COL').read_bytes()[8:776]
 fixture = {}
 for entry in section['billboards']:
+    block_name = entry.get('block', section['source']['block'])
+    block = blocks[block_name]
     offset = entry['record_offset']
     assert block[offset + 20] == 3
     position = struct.unpack_from('<iii', block, offset + 8)
+    placement = next((b for b in section['source'].get('blocks', []) if b['name'] == block_name), {'x': 0, 'z': 0})
+    position = (position[0] + placement['x'] * 2048, position[1], position[2] + placement['z'] * 2048)
     resource = struct.unpack_from('<I', block, offset + 21)[0]
     texture = struct.unpack_from('<H', block, resource)[0]
     archive, record = texture >> 7, texture & 127
@@ -56,7 +65,7 @@ for entry in section['billboards']:
         'size_metres': [(w + int(w * sx / 256)) * 0.025, (h + int(h * sy / 256)) * 0.025],
         'rgba_sha256': hashes, 'transparent_pixels': transparent_counts
     }
-target = PROJECT / 'tests' / 'decorations'
+target = PROJECT / args.output
 target.mkdir(exist_ok=True)
 (target / 'billboard_frames.json').write_text(json.dumps(fixture, indent=2) + '\n')
 print('Pinned static + animated flat frames:', {key: len(value['rgba_sha256']) for key, value in fixture.items()})

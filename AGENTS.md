@@ -1,5 +1,9 @@
 # The Elder Scrolls II: Daggerfall In Godot Engine — Agent Instructions
 
+## Latest dungeon expansion convention — November 3, 2026
+
+- Normal section now selects all365 original model placements across S0000999 at(0,0), B0000009 at(-1,0), B0000006 at(0,-1), B0000003 at(1,0), B0000012 at(0,1),58 hinged doors,130 decorative flats and seven additional visual-only static loot piles. All11 old caps are removed. B blocks are border blocks with intentionally disconnected alternative assemblies; do not join them artificially. Optional source.blocks must exactly match MAPS; record keys include block+offset, and grid offsets use2048 native units with existing axis conversion. Preserve old IDs/primary-door ordering and independent skeleton/swim fixtures. Source action models remain static; enemy/editor markers do not spawn. Exit70300 stays collidable and explains exterior travel is unavailable. Static piles ground216:0 under validated199:19 markers, with no invented contents/interaction; existing test loot remains. Schema9 fingerprint rejects old normal saves: fresh K required. Run.ps1 -Test includes full_original_route/full_dungeon and deep-room separate-process restore. See docs/FULL_DUNGEON.md and newest HANDOFF/NEXT_MILESTONE; source actions/new enemy types are deferred until structural playtest.
+
 
 
 ## Project

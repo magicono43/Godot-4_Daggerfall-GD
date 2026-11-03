@@ -1,0 +1,207 @@
+ERROR: Failed to open 'user://logs/godot2026-11-03T16.30.43.log'.
+   at: copy (core/io/dir_access.cpp:429)
+ERROR: Failed to open log file for writing: user://logs/godot.log
+   at: rotate_file (core/io/logger.cpp:169)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold complete original structural placements", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "blocks": [{ "name": "S0000999.RDB", "x": 0, "z": 0 }, { "name": "B0000009.RDB", "x": -1, "z": 0 }, { "name": "B0000006.RDB", "x": 0, "z": -1 }, { "name": "B0000003.RDB", "x": 1, "z": 0 }, { "name": "B0000012.RDB", "x": 0, "z": 1 }], "start": (0.0, 0.625, 0.0) } triangles=9263 textures=81
+EXPANSION_COUNTS 365 triangles=9263 materials=81
+PASS Walk native route [512, 0, 1200]
+ROUTE_POSITION (0.049748, 0.000875, 11.74043) target=(0.05, 0.0, 11.8) unsupported=0
+PASS Walk native route [512, 0, 1000]
+ROUTE_POSITION (0.049994, 0.000875, 16.68772) target=(0.05, 0.0, 16.8) unsupported=0
+PASS Walk native route [512, 0, 800]
+ROUTE_POSITION (0.049999, 0.000875, 21.7089) target=(0.05, 0.0, 21.8) unsupported=0
+PASS Walk native route [750, 0, 768]
+ROUTE_POSITION (5.89201, 0.000875, 22.58384) target=(6.0, 0.0, 22.6) unsupported=0
+PASS Walk native route [850, 0, 768]
+ROUTE_POSITION (8.402501, 0.000875, 22.59934) target=(8.5, 0.0, 22.6) unsupported=0
+PASS first_door acquired by original interaction ray
+PASS first_door opens with attached collision
+PASS first_door opens away without displacing the player
+PASS Walk native route [960, 0, 768]
+ROUTE_POSITION (11.13459, 0.000875, 22.59997) target=(11.25, 0.0, 22.6) unsupported=0
+PASS Walk native route [1080, 0, 768]
+ROUTE_POSITION (14.16203, 0.000875, 22.59997) target=(14.25, 0.0, 22.6) unsupported=0
+PASS Walk native route [1080, 0, 640]
+ROUTE_POSITION (14.24727, 0.000875, 25.70002) target=(14.25, 0.0, 25.8) unsupported=0
+PASS Walk native route [720, -256, 640]
+ROUTE_POSITION (5.338032, 6.400876, 25.79905) target=(5.25, 6.4, 25.8) unsupported=0
+PASS Walk native route [640, -256, 640]
+ROUTE_POSITION (3.344363, 6.400876, 25.79992) target=(3.25, 6.4, 25.8) unsupported=0
+PASS Walk native route [640, -256, 512]
+ROUTE_POSITION (3.252949, 6.400876, 28.89989) target=(3.25, 6.4, 29.0) unsupported=0
+PASS Walk native route [704, -256, 448]
+ROUTE_POSITION (4.769628, 6.400876, 30.51443) target=(4.85, 6.4, 30.6) unsupported=0
+PASS Walk native route [768, -256, 384]
+ROUTE_POSITION (6.385709, 6.400876, 32.13548) target=(6.450001, 6.4, 32.2) unsupported=0
+PASS Walk native route [1792, -256, 384]
+ROUTE_POSITION (31.93447, 6.400876, 32.20015) target=(32.05, 6.4, 32.2) unsupported=0
+PASS Walk native route [1920, -256, 384]
+ROUTE_POSITION (35.18346, 6.400876, 32.20015) target=(35.25, 6.4, 32.2) unsupported=0
+PASS Walk native route [1920, -256, 512]
+ROUTE_POSITION (35.24787, 6.400876, 29.09954) target=(35.25, 6.4, 29.0) unsupported=0
+PASS Walk native route [1920, -256, 1536]
+ROUTE_POSITION (35.24919, 6.400876, 3.476882) target=(35.25, 6.4, 3.399998) unsupported=0
+PASS Walk native route [1920, -256, 1664]
+ROUTE_POSITION (35.24985, 6.400876, 0.301767) target=(35.25, 6.4, 0.199997) unsupported=0
+PASS Walk native route [1792, -256, 1664]
+ROUTE_POSITION (32.15028, 6.400876, 0.203183) target=(32.05, 6.4, 0.199997) unsupported=0
+PASS Walk native route [1024, -256, 1664]
+ROUTE_POSITION (12.95164, 6.400876, 0.200014) target=(12.85, 6.4, 0.199997) unsupported=0
+PASS Walk native route [960, -256, 1600]
+ROUTE_POSITION (11.28399, 6.400876, 1.768026) target=(11.25, 6.4, 1.799999) unsupported=0
+PASS Walk native route [896, -256, 1536]
+ROUTE_POSITION (9.71666, 6.400876, 3.333435) target=(9.65, 6.4, 3.399998) unsupported=0
+PASS Walk native route [896, -256, 1024]
+ROUTE_POSITION (9.650501, 6.400876, 16.10749) target=(9.65, 6.4, 16.2) unsupported=0
+PASS Walk native route [832, -256, 960]
+ROUTE_POSITION (8.128466, 6.400876, 17.71697) target=(8.050001, 6.4, 17.8) unsupported=0
+PASS Walk native route [768, -256, 896]
+ROUTE_POSITION (6.512086, 6.400876, 19.33778) target=(6.450001, 6.4, 19.4) unsupported=0
+PASS Walk native route [256, -256, 896]
+ROUTE_POSITION (-6.262043, 6.400876, 19.39949) target=(-6.35, 6.4, 19.4) unsupported=0
+PASS Walk native route [192, -256, 832]
+ROUTE_POSITION (-7.869502, 6.400876, 20.92367) target=(-7.95, 6.4, 21.0) unsupported=0
+PASS Walk native route [128, -256, 768]
+ROUTE_POSITION (-9.490106, 6.400876, 22.54028) target=(-9.55, 6.4, 22.6) unsupported=0
+PASS Walk native route [128, -512, 512]
+ROUTE_POSITION (-9.549529, 12.79582, 28.94526) target=(-9.55, 12.8, 29.0) unsupported=0
+PASS Walk native route [128, -512, 256]
+ROUTE_POSITION (-9.550019, 12.80088, 35.29381) target=(-9.55, 12.8, 35.4) unsupported=0
+PASS Walk native route [128, -512, 128]
+ROUTE_POSITION (-9.550019, 12.80088, 38.54281) target=(-9.55, 12.8, 38.6) unsupported=0
+PASS Walk native route [220, -512, 128]
+ROUTE_POSITION (-7.335506, 12.80088, 38.59786) target=(-7.25, 12.8, 38.6) unsupported=0
+PASS hall_approach_door acquired by original interaction ray
+PASS hall_approach_door opens with attached collision
+PASS hall_approach_door opens away without displacing the player
+PASS Walk native route [300, -512, 128]
+ROUTE_POSITION (-5.34184, 12.80088, 38.59992) target=(-5.25, 12.8, 38.6) unsupported=0
+PASS Walk native route [384, -512, 384]
+ROUTE_POSITION (-3.188641, 12.80088, 32.31299) target=(-3.15, 12.8, 32.2) unsupported=0
+PASS Walk native route [384, -512, 480]
+ROUTE_POSITION (-3.151174, 12.80088, 29.87656) target=(-3.15, 12.8, 29.8) unsupported=0
+PASS great_hall_door acquired by original interaction ray
+PASS great_hall_door opens with attached collision
+PASS great_hall_door opens away without displacing the player
+PASS Walk native route [384, -512, 570]
+ROUTE_POSITION (-3.150051, 12.80088, 27.66133) target=(-3.15, 12.8, 27.55) unsupported=0
+PASS Walk native route [640, -512, 768]
+ROUTE_POSITION (3.16294, 12.80088, 22.66879) target=(3.25, 12.8, 22.6) unsupported=0
+PASS Walk native route [960, -512, 1024]
+ROUTE_POSITION (11.13802, 12.80088, 16.23038) target=(11.25, 12.8, 16.2) unsupported=0
+PASS Walk native route [1560, -1024, 1024]
+ROUTE_POSITION (26.17552, 25.60098, 16.20009) target=(26.25, 25.6, 16.2) unsupported=0
+PASS Walk native route [1664, -1024, 768]
+ROUTE_POSITION (28.82315, 25.60087, 22.53622) target=(28.85, 25.6, 22.6) unsupported=0
+PASS Walk native route [1664, -1024, 384]
+ROUTE_POSITION (28.84993, 25.60087, 32.13532) target=(28.85, 25.6, 32.2) unsupported=0
+PASS Walk native route [1550, -1024, 384]
+ROUTE_POSITION (26.11858, 25.60087, 32.19728) target=(26.0, 25.6, 32.2) unsupported=0
+PASS Walk native route [1200, -1280, 384]
+ROUTE_POSITION (17.31686, 32.00088, 32.19998) target=(17.25, 32.0, 32.2) unsupported=0
+PASS Walk native route [1550, -1024, 384]
+ROUTE_POSITION (25.89713, 25.60087, 32.19998) target=(26.0, 25.6, 32.2) unsupported=0
+PASS Walk native route [1664, -1024, 384]
+ROUTE_POSITION (28.77693, 25.60087, 32.19998) target=(28.85, 25.6, 32.2) unsupported=0
+PASS Walk native route [1664, -1024, 768]
+ROUTE_POSITION (28.84951, 25.60087, 22.67496) target=(28.85, 25.6, 22.6) unsupported=0
+PASS Walk native route [1560, -1024, 1024]
+ROUTE_POSITION (26.29093, 25.60087, 16.30228) target=(26.25, 25.6, 16.2) unsupported=0
+PASS Walk native route [960, -512, 1024]
+ROUTE_POSITION (11.34444, 12.80098, 16.20087) target=(11.25, 12.8, 16.2) unsupported=0
+PASS Walk native route [1560, -1024, 1024]
+ROUTE_POSITION (26.14085, 25.60098, 16.19999) target=(26.25, 25.6, 16.2) unsupported=0
+PASS Walk native route [960, -512, 1024]
+ROUTE_POSITION (11.31181, 12.80099, 16.19999) target=(11.25, 12.8, 16.2) unsupported=0
+PASS Moving jump on great staircase maintains forward progress
+PASS Walk native route [1560, -1024, 1024]
+ROUTE_POSITION (26.17628, 25.60098, 16.19999) target=(26.25, 25.6, 16.2) unsupported=0
+PASS Walk native route [960, -512, 1024]
+ROUTE_POSITION (11.30125, 12.80099, 16.19999) target=(11.25, 12.8, 16.2) unsupported=0
+PASS Walk native route [640, -512, 768]
+ROUTE_POSITION (3.242302, 12.80088, 22.51241) target=(3.25, 12.8, 22.6) unsupported=0
+PASS Walk native route [384, -512, 570]
+ROUTE_POSITION (-3.079155, 12.80088, 27.49424) target=(-3.15, 12.8, 27.55) unsupported=0
+PASS Walk native route [384, -512, 480]
+ROUTE_POSITION (-3.147966, 12.80087, 29.7337) target=(-3.15, 12.8, 29.8) unsupported=0
+PASS Walk native route [384, -512, 384]
+ROUTE_POSITION (-3.149914, 12.80087, 32.0987) target=(-3.15, 12.8, 32.2) unsupported=0
+PASS Walk native route [300, -512, 128]
+ROUTE_POSITION (-5.21601, 12.80087, 38.49459) target=(-5.25, 12.8, 38.6) unsupported=0
+PASS Walk native route [220, -512, 128]
+ROUTE_POSITION (-7.204912, 12.80087, 38.59768) target=(-7.25, 12.8, 38.6) unsupported=0
+PASS Walk native route [128, -512, 128]
+ROUTE_POSITION (-9.445409, 12.80087, 38.59988) target=(-9.55, 12.8, 38.6) unsupported=0
+PASS Walk native route [128, -512, 256]
+ROUTE_POSITION (-9.547047, 12.80087, 35.48976) target=(-9.55, 12.8, 35.4) unsupported=0
+PASS Walk native route [128, -512, 512]
+ROUTE_POSITION (-9.549973, 12.80087, 29.01713) target=(-9.55, 12.8, 29.0) unsupported=0
+PASS Walk native route [128, -256, 768]
+ROUTE_POSITION (-9.550019, 6.400044, 22.64994) target=(-9.55, 6.4, 22.6) unsupported=0
+PASS Walk native route [192, -256, 832]
+ROUTE_POSITION (-7.990253, 6.40087, 21.04157) target=(-7.95, 6.4, 21.0) unsupported=0
+PASS Walk native route [256, -256, 896]
+ROUTE_POSITION (-6.406617, 6.40087, 19.45666) target=(-6.35, 6.4, 19.4) unsupported=0
+PASS Walk native route [768, -256, 896]
+ROUTE_POSITION (6.413938, 6.40087, 19.40027) target=(6.450001, 6.4, 19.4) unsupported=0
+PASS Walk native route [832, -256, 960]
+ROUTE_POSITION (8.015624, 6.40087, 17.83362) target=(8.050001, 6.4, 17.8) unsupported=0
+PASS Walk native route [896, -256, 1024]
+ROUTE_POSITION (9.600265, 6.40087, 16.24974) target=(9.65, 6.4, 16.2) unsupported=0
+PASS Walk native route [896, -256, 1536]
+ROUTE_POSITION (9.64987, 6.40087, 3.429152) target=(9.65, 6.4, 3.399998) unsupported=0
+PASS Walk native route [960, -256, 1600]
+ROUTE_POSITION (11.21984, 6.400871, 1.830701) target=(11.25, 6.4, 1.799999) unsupported=0
+PASS Walk native route [1024, -256, 1664]
+ROUTE_POSITION (12.80386, 6.400871, 0.246163) target=(12.85, 6.4, 0.199997) unsupported=0
+PASS Walk native route [1792, -256, 1664]
+ROUTE_POSITION (31.97273, 6.400871, 0.200183) target=(32.05, 6.4, 0.199997) unsupported=0
+PASS Walk native route [1920, -256, 1664]
+ROUTE_POSITION (35.20903, 6.40087, 0.199999) target=(35.25, 6.4, 0.199997) unsupported=0
+PASS Walk native route [1920, -256, 1536]
+ROUTE_POSITION (35.2488, 6.40087, 3.311557) target=(35.25, 6.4, 3.399998) unsupported=0
+PASS Walk native route [1920, -256, 512]
+ROUTE_POSITION (35.24958, 6.40087, 28.95296) target=(35.25, 6.4, 29.0) unsupported=0
+PASS Walk native route [1920, -256, 384]
+ROUTE_POSITION (35.24998, 6.400871, 32.18927) target=(35.25, 6.4, 32.2) unsupported=0
+PASS Walk native route [1792, -256, 384]
+ROUTE_POSITION (32.13814, 6.400871, 32.19967) target=(32.05, 6.4, 32.2) unsupported=0
+PASS Walk native route [768, -256, 384]
+ROUTE_POSITION (6.496707, 6.40087, 32.19967) target=(6.450001, 6.4, 32.2) unsupported=0
+PASS Walk native route [704, -256, 448]
+ROUTE_POSITION (4.889637, 6.40087, 30.63851) target=(4.85, 6.4, 30.6) unsupported=0
+PASS Walk native route [640, -256, 512]
+ROUTE_POSITION (3.304817, 6.40087, 29.05476) target=(3.25, 6.4, 29.0) unsupported=0
+PASS Walk native route [640, -256, 640]
+ROUTE_POSITION (3.250323, 6.400871, 25.81895) target=(3.25, 6.4, 25.8) unsupported=0
+PASS Walk native route [720, -256, 640]
+ROUTE_POSITION (5.241787, 6.40087, 25.80006) target=(5.25, 6.4, 25.8) unsupported=0
+PASS Walk native route [1080, 0, 640]
+ROUTE_POSITION (14.21287, 0.000871, 25.80006) target=(14.25, 0.0, 25.8) unsupported=0
+PASS Walk native route [1080, 0, 768]
+ROUTE_POSITION (14.24897, 0.00087, 22.68846) target=(14.25, 0.0, 22.6) unsupported=0
+PASS Walk native route [960, 0, 768]
+ROUTE_POSITION (11.26293, 0.00087, 22.60039) target=(11.25, 0.0, 22.6) unsupported=0
+PASS Walk native route [850, 0, 768]
+ROUTE_POSITION (8.524555, 0.00087, 22.60001) target=(8.5, 0.0, 22.6) unsupported=0
+PASS Walk native route [750, 0, 768]
+ROUTE_POSITION (6.035106, 0.000871, 22.60001) target=(6.0, 0.0, 22.6) unsupported=0
+PASS Walk native route [512, 0, 800]
+ROUTE_POSITION (0.113106, 0.00087, 21.80844) target=(0.05, 0.0, 21.8) unsupported=0
+PASS Walk native route [512, 0, 1000]
+ROUTE_POSITION (0.050377, 0.00087, 16.82996) target=(0.05, 0.0, 16.8) unsupported=0
+PASS Walk native route [512, 0, 1200]
+ROUTE_POSITION (0.050004, 0.00087, 11.85108) target=(0.05, 0.0, 11.8) unsupported=0
+PASS Walk native route [510, 0, 1672]
+ROUTE_POSITION (0.000467, 0.000875, 0.110668) target=(0.0, 0.0, 0.0) unsupported=0
+PASS Continuous stair route, giant-stair walking/running/jumps and return cause no fall damage
+PASS Great hall original ceiling closes the 22.4 m high chamber
+PASS Tall original west wall provides continuous collision for future climbing
+PASS Great hall original floor supports the wall-test area
+EXPANSION 104/104
+WARNING: 10 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+   at: cleanup (core/object/object.cpp:2536)

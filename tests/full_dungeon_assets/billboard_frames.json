@@ -1,0 +1,3438 @@
+{
+  "cave_decoration_small": {
+    "native_position": [
+      320,
+      -14,
+      1601
+    ],
+    "archive": 206,
+    "record": 5,
+    "pixel_size": [
+      17,
+      27
+    ],
+    "size_metres": [
+      0.42500000000000004,
+      0.675
+    ],
+    "rgba_sha256": [
+      "e0afac4a6c61c7e7c6cd3a6a31cb75b2ddde0a8cd7d461166d729c08d7069986"
+    ],
+    "transparent_pixels": [
+      107
+    ]
+  },
+  "cave_decoration_pile": {
+    "native_position": [
+      354,
+      -7,
+      1546
+    ],
+    "archive": 206,
+    "record": 8,
+    "pixel_size": [
+      62,
+      32
+    ],
+    "size_metres": [
+      1.55,
+      0.8
+    ],
+    "rgba_sha256": [
+      "2d3eee5437051f7d872d755aed0cd373f7cca87c585fe56a6cab1c7119994f35"
+    ],
+    "transparent_pixels": [
+      1073
+    ]
+  },
+  "cave_fire": {
+    "native_position": [
+      646,
+      -27,
+      1686
+    ],
+    "archive": 210,
+    "record": 1,
+    "pixel_size": [
+      48,
+      49
+    ],
+    "size_metres": [
+      1.2000000000000002,
+      1.225
+    ],
+    "rgba_sha256": [
+      "f4a13c856ea39e7d0d3286ff1b00c1170f357201d42a27f9f580ea742ade9977",
+      "37158c1321afb12b963a9baf1220caf582e09da4419cceb5a19d38ed4850796d",
+      "cdd48c41aa36e198a51760628bd96d5c5846211473998ef6fafed0074d2c553c",
+      "5f8a660f6ec9dbdce5926b1742a763c6e0338385a4939773f63205bd86c09ecc"
+    ],
+    "transparent_pixels": [
+      1432,
+      1404,
+      1379,
+      1382
+    ]
+  },
+  "s0000999_r33966": {
+    "native_position": [
+      627,
+      -624,
+      250
+    ],
+    "archive": 210,
+    "record": 13,
+    "pixel_size": [
+      36,
+      53
+    ],
+    "size_metres": [
+      0.8250000000000001,
+      1.2000000000000002
+    ],
+    "rgba_sha256": [
+      "ced7e5d9a470f7b4b11b6f634dbd6d4b3d6036418ab8e0dead30189f7231e26a"
+    ],
+    "transparent_pixels": [
+      1008
+    ]
+  },
+  "s0000999_r31619": {
+    "native_position": [
+      583,
+      -1624,
+      769
+    ],
+    "archive": 210,
+    "record": 16,
+    "pixel_size": [
+      13,
+      54
+    ],
+    "size_metres": [
+      0.325,
+      1.35
+    ],
+    "rgba_sha256": [
+      "58746dcf519cf3aa569f2b22166206dac74c6a85eb783c7efc9eca23f529ad75",
+      "ea59250cc8c677d03cea38ae7a0f8b851f734a9e2a9b6baedde24c791488697a",
+      "5b271ab42fe1b966c39299c4d059d35bd8641f98960fcc57c4d6909aec06d995",
+      "802ce40f8aadc56e6143eb3a9d3b0763febd9f8dd20736bbbb054b6fcba0c9f8"
+    ],
+    "transparent_pixels": [
+      422,
+      422,
+      415,
+      433
+    ]
+  },
+  "s0000999_r31382": {
+    "native_position": [
+      952,
+      -960,
+      748
+    ],
+    "archive": 210,
+    "record": 16,
+    "pixel_size": [
+      13,
+      54
+    ],
+    "size_metres": [
+      0.325,
+      1.35
+    ],
+    "rgba_sha256": [
+      "58746dcf519cf3aa569f2b22166206dac74c6a85eb783c7efc9eca23f529ad75",
+      "ea59250cc8c677d03cea38ae7a0f8b851f734a9e2a9b6baedde24c791488697a",
+      "5b271ab42fe1b966c39299c4d059d35bd8641f98960fcc57c4d6909aec06d995",
+      "802ce40f8aadc56e6143eb3a9d3b0763febd9f8dd20736bbbb054b6fcba0c9f8"
+    ],
+    "transparent_pixels": [
+      422,
+      422,
+      415,
+      433
+    ]
+  },
+  "s0000999_r31205": {
+    "native_position": [
+      134,
+      -330,
+      882
+    ],
+    "archive": 210,
+    "record": 17,
+    "pixel_size": [
+      13,
+      50
+    ],
+    "size_metres": [
+      0.325,
+      1.25
+    ],
+    "rgba_sha256": [
+      "350a755412b5a8b70f3ee511c172ecdd2602d18493c866affbee1915d00d49b8",
+      "aabd64f12c9abdb97d319a1000c85bd93d2983951432244e008948f14aa3fd40",
+      "5ea3e346d736a000350c3169674d2c6d3dab40ed7a2a2ac95b857c3cb00dfcfe",
+      "cf013e0d0c342a37b5316d1e74602d3528f2369d007d19eb190d43c968a100a0"
+    ],
+    "transparent_pixels": [
+      358,
+      359,
+      352,
+      367
+    ]
+  },
+  "s0000999_r31169": {
+    "native_position": [
+      640,
+      -300,
+      685
+    ],
+    "archive": 210,
+    "record": 20,
+    "pixel_size": [
+      16,
+      86
+    ],
+    "size_metres": [
+      0.4,
+      2.15
+    ],
+    "rgba_sha256": [
+      "066262af15c85c0a88bb52e8507b38900cde6e22ee86cce30f85238cdeecb96b",
+      "bdcf3c58aeffd0d9c43dd742836670d75ae90d7b085ff848e9f6037f8c95b0af",
+      "770491835c31bc8e6c21d844e3a7bd9b9f0e3c4820cb2ef56dbbdb0b266961a5",
+      "47291a5bf686eb46255606e89b7a2c58e3845ac8a0e62bb62ef69acc05535323"
+    ],
+    "transparent_pixels": [
+      1020,
+      1027,
+      1022,
+      1035
+    ]
+  },
+  "s0000999_r28800": {
+    "native_position": [
+      762,
+      -1042,
+      396
+    ],
+    "archive": 206,
+    "record": 8,
+    "pixel_size": [
+      62,
+      32
+    ],
+    "size_metres": [
+      1.55,
+      0.8
+    ],
+    "rgba_sha256": [
+      "2d3eee5437051f7d872d755aed0cd373f7cca87c585fe56a6cab1c7119994f35"
+    ],
+    "transparent_pixels": [
+      1073
+    ]
+  },
+  "s0000999_r28764": {
+    "native_position": [
+      716,
+      -1034,
+      84
+    ],
+    "archive": 206,
+    "record": 6,
+    "pixel_size": [
+      25,
+      17
+    ],
+    "size_metres": [
+      0.625,
+      0.42500000000000004
+    ],
+    "rgba_sha256": [
+      "defe08abb147412eabc1772b86b45dc41441390e1e5e86d7d8db313f9cec9c6e"
+    ],
+    "transparent_pixels": [
+      79
+    ]
+  },
+  "s0000999_r28728": {
+    "native_position": [
+      762,
+      -1038,
+      348
+    ],
+    "archive": 206,
+    "record": 5,
+    "pixel_size": [
+      17,
+      27
+    ],
+    "size_metres": [
+      0.42500000000000004,
+      0.675
+    ],
+    "rgba_sha256": [
+      "e0afac4a6c61c7e7c6cd3a6a31cb75b2ddde0a8cd7d461166d729c08d7069986"
+    ],
+    "transparent_pixels": [
+      107
+    ]
+  },
+  "s0000999_r28692": {
+    "native_position": [
+      803,
+      -1036,
+      296
+    ],
+    "archive": 206,
+    "record": 4,
+    "pixel_size": [
+      18,
+      23
+    ],
+    "size_metres": [
+      0.45,
+      0.5750000000000001
+    ],
+    "rgba_sha256": [
+      "7bc96008b8ca8219f07b70a6d859b7f3e48c7d5e2550a4a398bc5d7f08e81860"
+    ],
+    "transparent_pixels": [
+      121
+    ]
+  },
+  "s0000999_r28656": {
+    "native_position": [
+      633,
+      -1043,
+      92
+    ],
+    "archive": 206,
+    "record": 3,
+    "pixel_size": [
+      53,
+      34
+    ],
+    "size_metres": [
+      1.3250000000000002,
+      0.8500000000000001
+    ],
+    "rgba_sha256": [
+      "6fb4cf926fd1d9661f8970dcda230ebd075f6fdfdcdfd52162726997086205b6"
+    ],
+    "transparent_pixels": [
+      776
+    ]
+  },
+  "s0000999_r28620": {
+    "native_position": [
+      684,
+      -1034,
+      348
+    ],
+    "archive": 206,
+    "record": 1,
+    "pixel_size": [
+      13,
+      15
+    ],
+    "size_metres": [
+      0.325,
+      0.375
+    ],
+    "rgba_sha256": [
+      "a734665a752847119a8a52966a5400f799a6eb34a78a14f6f8d7229bd4beb1ea"
+    ],
+    "transparent_pixels": [
+      38
+    ]
+  },
+  "s0000999_r28584": {
+    "native_position": [
+      752,
+      -1032,
+      160
+    ],
+    "archive": 206,
+    "record": 0,
+    "pixel_size": [
+      13,
+      13
+    ],
+    "size_metres": [
+      0.325,
+      0.325
+    ],
+    "rgba_sha256": [
+      "1b0bba10619b497fca3d378014c1a9d213ed04a211bbfc73911d3797d7d74463"
+    ],
+    "transparent_pixels": [
+      37
+    ]
+  },
+  "s0000999_r9895": {
+    "native_position": [
+      377,
+      -726,
+      532
+    ],
+    "archive": 210,
+    "record": 17,
+    "pixel_size": [
+      13,
+      50
+    ],
+    "size_metres": [
+      0.325,
+      1.25
+    ],
+    "rgba_sha256": [
+      "350a755412b5a8b70f3ee511c172ecdd2602d18493c866affbee1915d00d49b8",
+      "aabd64f12c9abdb97d319a1000c85bd93d2983951432244e008948f14aa3fd40",
+      "5ea3e346d736a000350c3169674d2c6d3dab40ed7a2a2ac95b857c3cb00dfcfe",
+      "cf013e0d0c342a37b5316d1e74602d3528f2369d007d19eb190d43c968a100a0"
+    ],
+    "transparent_pixels": [
+      358,
+      359,
+      352,
+      367
+    ]
+  },
+  "s0000999_r9931": {
+    "native_position": [
+      264,
+      -726,
+      649
+    ],
+    "archive": 210,
+    "record": 17,
+    "pixel_size": [
+      13,
+      50
+    ],
+    "size_metres": [
+      0.325,
+      1.25
+    ],
+    "rgba_sha256": [
+      "350a755412b5a8b70f3ee511c172ecdd2602d18493c866affbee1915d00d49b8",
+      "aabd64f12c9abdb97d319a1000c85bd93d2983951432244e008948f14aa3fd40",
+      "5ea3e346d736a000350c3169674d2c6d3dab40ed7a2a2ac95b857c3cb00dfcfe",
+      "cf013e0d0c342a37b5316d1e74602d3528f2369d007d19eb190d43c968a100a0"
+    ],
+    "transparent_pixels": [
+      358,
+      359,
+      352,
+      367
+    ]
+  },
+  "s0000999_r10038": {
+    "native_position": [
+      902,
+      -1615,
+      721
+    ],
+    "archive": 213,
+    "record": 9,
+    "pixel_size": [
+      37,
+      87
+    ],
+    "size_metres": [
+      0.925,
+      2.1750000000000003
+    ],
+    "rgba_sha256": [
+      "158ef374fcb608941b709037066134270cb18f7ef6ea2ef5c5872775cdbbc635"
+    ],
+    "transparent_pixels": [
+      2352
+    ]
+  },
+  "s0000999_r10074": {
+    "native_position": [
+      914,
+      -1629,
+      793
+    ],
+    "archive": 213,
+    "record": 7,
+    "pixel_size": [
+      13,
+      65
+    ],
+    "size_metres": [
+      0.325,
+      1.625
+    ],
+    "rgba_sha256": [
+      "e780941ef535ded27e5280fc0e2ddb97debbbc1295d9db3abdad0710519c909b"
+    ],
+    "transparent_pixels": [
+      586
+    ]
+  },
+  "s0000999_r10662": {
+    "native_position": [
+      546,
+      -1353,
+      1018
+    ],
+    "archive": 210,
+    "record": 9,
+    "pixel_size": [
+      56,
+      110
+    ],
+    "size_metres": [
+      1.4000000000000001,
+      2.75
+    ],
+    "rgba_sha256": [
+      "7008c23852ec054f1cb74cd2e53f997cc6e39663e388395e70ac210c31d10c84"
+    ],
+    "transparent_pixels": [
+      4544
+    ]
+  },
+  "s0000999_r10698": {
+    "native_position": [
+      92,
+      -1378,
+      18
+    ],
+    "archive": 210,
+    "record": 18,
+    "pixel_size": [
+      16,
+      55
+    ],
+    "size_metres": [
+      0.4,
+      1.375
+    ],
+    "rgba_sha256": [
+      "16b4cbc78d8605d949d466fda22b0a81381572f0b7e509c1dc5dc48bcab4cdda",
+      "1b1188a870dba93cd3476f316637046311b3f006caf03faa40e46cae2912f7ab",
+      "8da247f32a836181dc4427ee5459db7266f291a67537e021965e8a0b39e22732",
+      "2b65af7d9cc6922460d659586398f5aebdc86b96768b3670d4ef61a973410ad5"
+    ],
+    "transparent_pixels": [
+      560,
+      570,
+      565,
+      576
+    ]
+  },
+  "s0000999_r10769": {
+    "native_position": [
+      15,
+      -1380,
+      100
+    ],
+    "archive": 210,
+    "record": 18,
+    "pixel_size": [
+      16,
+      55
+    ],
+    "size_metres": [
+      0.4,
+      1.375
+    ],
+    "rgba_sha256": [
+      "16b4cbc78d8605d949d466fda22b0a81381572f0b7e509c1dc5dc48bcab4cdda",
+      "1b1188a870dba93cd3476f316637046311b3f006caf03faa40e46cae2912f7ab",
+      "8da247f32a836181dc4427ee5459db7266f291a67537e021965e8a0b39e22732",
+      "2b65af7d9cc6922460d659586398f5aebdc86b96768b3670d4ef61a973410ad5"
+    ],
+    "transparent_pixels": [
+      560,
+      570,
+      565,
+      576
+    ]
+  },
+  "s0000999_r10805": {
+    "native_position": [
+      87,
+      -1886,
+      347
+    ],
+    "archive": 210,
+    "record": 12,
+    "pixel_size": [
+      36,
+      54
+    ],
+    "size_metres": [
+      0.9,
+      1.35
+    ],
+    "rgba_sha256": [
+      "ab772cdb92afb15190b1541a26f44efc1cab61444e8f3fb1cb128d49d6f51c6a"
+    ],
+    "transparent_pixels": [
+      1039
+    ]
+  },
+  "s0000999_r10947": {
+    "native_position": [
+      423,
+      -1944,
+      760
+    ],
+    "archive": 210,
+    "record": 3,
+    "pixel_size": [
+      9,
+      19
+    ],
+    "size_metres": [
+      0.125,
+      0.25
+    ],
+    "rgba_sha256": [
+      "2667cbcccef1cd5699e5af9fd982899bdcecdf95f9e4e932a8b81371b08e48b2",
+      "0fbf2160144fa082c50306f9142e550875ad266f52b901162eeff5c366ba4469",
+      "15dc031ee44ecb00f8206aec63278b96306a50d65d65ee0257ba8787f4cb055d",
+      "6186ec0baca53c77d74bfd33d13762d1f3ed64e104bf6fc6482b417358d95005",
+      "ac4c6e3760e16cbcc3bbe7101219d821fe1da7d68c2327b4a352bb5ff87d7a62"
+    ],
+    "transparent_pixels": [
+      92,
+      89,
+      89,
+      93,
+      96
+    ]
+  },
+  "s0000999_r10983": {
+    "native_position": [
+      547,
+      -1944,
+      751
+    ],
+    "archive": 210,
+    "record": 3,
+    "pixel_size": [
+      9,
+      19
+    ],
+    "size_metres": [
+      0.125,
+      0.25
+    ],
+    "rgba_sha256": [
+      "2667cbcccef1cd5699e5af9fd982899bdcecdf95f9e4e932a8b81371b08e48b2",
+      "0fbf2160144fa082c50306f9142e550875ad266f52b901162eeff5c366ba4469",
+      "15dc031ee44ecb00f8206aec63278b96306a50d65d65ee0257ba8787f4cb055d",
+      "6186ec0baca53c77d74bfd33d13762d1f3ed64e104bf6fc6482b417358d95005",
+      "ac4c6e3760e16cbcc3bbe7101219d821fe1da7d68c2327b4a352bb5ff87d7a62"
+    ],
+    "transparent_pixels": [
+      92,
+      89,
+      89,
+      93,
+      96
+    ]
+  },
+  "s0000999_r11019": {
+    "native_position": [
+      611,
+      -1944,
+      644
+    ],
+    "archive": 210,
+    "record": 3,
+    "pixel_size": [
+      9,
+      19
+    ],
+    "size_metres": [
+      0.125,
+      0.25
+    ],
+    "rgba_sha256": [
+      "2667cbcccef1cd5699e5af9fd982899bdcecdf95f9e4e932a8b81371b08e48b2",
+      "0fbf2160144fa082c50306f9142e550875ad266f52b901162eeff5c366ba4469",
+      "15dc031ee44ecb00f8206aec63278b96306a50d65d65ee0257ba8787f4cb055d",
+      "6186ec0baca53c77d74bfd33d13762d1f3ed64e104bf6fc6482b417358d95005",
+      "ac4c6e3760e16cbcc3bbe7101219d821fe1da7d68c2327b4a352bb5ff87d7a62"
+    ],
+    "transparent_pixels": [
+      92,
+      89,
+      89,
+      93,
+      96
+    ]
+  },
+  "s0000999_r11055": {
+    "native_position": [
+      730,
+      -1944,
+      682
+    ],
+    "archive": 210,
+    "record": 3,
+    "pixel_size": [
+      9,
+      19
+    ],
+    "size_metres": [
+      0.125,
+      0.25
+    ],
+    "rgba_sha256": [
+      "2667cbcccef1cd5699e5af9fd982899bdcecdf95f9e4e932a8b81371b08e48b2",
+      "0fbf2160144fa082c50306f9142e550875ad266f52b901162eeff5c366ba4469",
+      "15dc031ee44ecb00f8206aec63278b96306a50d65d65ee0257ba8787f4cb055d",
+      "6186ec0baca53c77d74bfd33d13762d1f3ed64e104bf6fc6482b417358d95005",
+      "ac4c6e3760e16cbcc3bbe7101219d821fe1da7d68c2327b4a352bb5ff87d7a62"
+    ],
+    "transparent_pixels": [
+      92,
+      89,
+      89,
+      93,
+      96
+    ]
+  },
+  "s0000999_r11091": {
+    "native_position": [
+      486,
+      -1944,
+      703
+    ],
+    "archive": 210,
+    "record": 3,
+    "pixel_size": [
+      9,
+      19
+    ],
+    "size_metres": [
+      0.125,
+      0.25
+    ],
+    "rgba_sha256": [
+      "2667cbcccef1cd5699e5af9fd982899bdcecdf95f9e4e932a8b81371b08e48b2",
+      "0fbf2160144fa082c50306f9142e550875ad266f52b901162eeff5c366ba4469",
+      "15dc031ee44ecb00f8206aec63278b96306a50d65d65ee0257ba8787f4cb055d",
+      "6186ec0baca53c77d74bfd33d13762d1f3ed64e104bf6fc6482b417358d95005",
+      "ac4c6e3760e16cbcc3bbe7101219d821fe1da7d68c2327b4a352bb5ff87d7a62"
+    ],
+    "transparent_pixels": [
+      92,
+      89,
+      89,
+      93,
+      96
+    ]
+  },
+  "s0000999_r11127": {
+    "native_position": [
+      672,
+      -1943,
+      717
+    ],
+    "archive": 210,
+    "record": 3,
+    "pixel_size": [
+      9,
+      19
+    ],
+    "size_metres": [
+      0.125,
+      0.25
+    ],
+    "rgba_sha256": [
+      "2667cbcccef1cd5699e5af9fd982899bdcecdf95f9e4e932a8b81371b08e48b2",
+      "0fbf2160144fa082c50306f9142e550875ad266f52b901162eeff5c366ba4469",
+      "15dc031ee44ecb00f8206aec63278b96306a50d65d65ee0257ba8787f4cb055d",
+      "6186ec0baca53c77d74bfd33d13762d1f3ed64e104bf6fc6482b417358d95005",
+      "ac4c6e3760e16cbcc3bbe7101219d821fe1da7d68c2327b4a352bb5ff87d7a62"
+    ],
+    "transparent_pixels": [
+      92,
+      89,
+      89,
+      93,
+      96
+    ]
+  },
+  "s0000999_r11365": {
+    "native_position": [
+      67,
+      -1334,
+      968
+    ],
+    "archive": 210,
+    "record": 11,
+    "pixel_size": [
+      29,
+      61
+    ],
+    "size_metres": [
+      0.7250000000000001,
+      1.5250000000000001
+    ],
+    "rgba_sha256": [
+      "dcc584164bc0288aa5a5ec8b07386b43f830bccf04b65879d17acce9db7f7be6"
+    ],
+    "transparent_pixels": [
+      978
+    ]
+  },
+  "s0000999_r34120": {
+    "native_position": [
+      1046,
+      -1327,
+      78
+    ],
+    "archive": 210,
+    "record": 6,
+    "pixel_size": [
+      16,
+      94
+    ],
+    "size_metres": [
+      0.4,
+      2.35
+    ],
+    "rgba_sha256": [
+      "8fd041ada85642f98bb2e862b4f66fed74a39ac25265abe1f240b84f15d7b08f",
+      "801401aa073828601c91a7ee0b2b9abfef31b179bf6cebcc63a7122de8fd1712",
+      "20372addd7c9030d8cb12a68f8c4da5809321594ca9adf4215a2b3dc6ab221c8",
+      "8193532e0eb8baf50e854bf4e8c0cadfa66fed3894bc9caabfef0a5c7bc6f3a1"
+    ],
+    "transparent_pixels": [
+      1076,
+      1091,
+      1088,
+      1106
+    ]
+  },
+  "s0000999_r33930": {
+    "native_position": [
+      1703,
+      -1072,
+      85
+    ],
+    "archive": 210,
+    "record": 6,
+    "pixel_size": [
+      16,
+      94
+    ],
+    "size_metres": [
+      0.4,
+      2.35
+    ],
+    "rgba_sha256": [
+      "8fd041ada85642f98bb2e862b4f66fed74a39ac25265abe1f240b84f15d7b08f",
+      "801401aa073828601c91a7ee0b2b9abfef31b179bf6cebcc63a7122de8fd1712",
+      "20372addd7c9030d8cb12a68f8c4da5809321594ca9adf4215a2b3dc6ab221c8",
+      "8193532e0eb8baf50e854bf4e8c0cadfa66fed3894bc9caabfef0a5c7bc6f3a1"
+    ],
+    "transparent_pixels": [
+      1076,
+      1091,
+      1088,
+      1106
+    ]
+  },
+  "s0000999_r32516": {
+    "native_position": [
+      1519,
+      -1584,
+      906
+    ],
+    "archive": 206,
+    "record": 0,
+    "pixel_size": [
+      13,
+      13
+    ],
+    "size_metres": [
+      0.325,
+      0.325
+    ],
+    "rgba_sha256": [
+      "1b0bba10619b497fca3d378014c1a9d213ed04a211bbfc73911d3797d7d74463"
+    ],
+    "transparent_pixels": [
+      37
+    ]
+  },
+  "s0000999_r12911": {
+    "native_position": [
+      1450,
+      -560,
+      566
+    ],
+    "archive": 210,
+    "record": 6,
+    "pixel_size": [
+      16,
+      94
+    ],
+    "size_metres": [
+      0.4,
+      2.35
+    ],
+    "rgba_sha256": [
+      "8fd041ada85642f98bb2e862b4f66fed74a39ac25265abe1f240b84f15d7b08f",
+      "801401aa073828601c91a7ee0b2b9abfef31b179bf6cebcc63a7122de8fd1712",
+      "20372addd7c9030d8cb12a68f8c4da5809321594ca9adf4215a2b3dc6ab221c8",
+      "8193532e0eb8baf50e854bf4e8c0cadfa66fed3894bc9caabfef0a5c7bc6f3a1"
+    ],
+    "transparent_pixels": [
+      1076,
+      1091,
+      1088,
+      1106
+    ]
+  },
+  "s0000999_r12947": {
+    "native_position": [
+      1450,
+      -560,
+      729
+    ],
+    "archive": 210,
+    "record": 6,
+    "pixel_size": [
+      16,
+      94
+    ],
+    "size_metres": [
+      0.4,
+      2.35
+    ],
+    "rgba_sha256": [
+      "8fd041ada85642f98bb2e862b4f66fed74a39ac25265abe1f240b84f15d7b08f",
+      "801401aa073828601c91a7ee0b2b9abfef31b179bf6cebcc63a7122de8fd1712",
+      "20372addd7c9030d8cb12a68f8c4da5809321594ca9adf4215a2b3dc6ab221c8",
+      "8193532e0eb8baf50e854bf4e8c0cadfa66fed3894bc9caabfef0a5c7bc6f3a1"
+    ],
+    "transparent_pixels": [
+      1076,
+      1091,
+      1088,
+      1106
+    ]
+  },
+  "s0000999_r13018": {
+    "native_position": [
+      1975,
+      -328,
+      331
+    ],
+    "archive": 210,
+    "record": 17,
+    "pixel_size": [
+      13,
+      50
+    ],
+    "size_metres": [
+      0.325,
+      1.25
+    ],
+    "rgba_sha256": [
+      "350a755412b5a8b70f3ee511c172ecdd2602d18493c866affbee1915d00d49b8",
+      "aabd64f12c9abdb97d319a1000c85bd93d2983951432244e008948f14aa3fd40",
+      "5ea3e346d736a000350c3169674d2c6d3dab40ed7a2a2ac95b857c3cb00dfcfe",
+      "cf013e0d0c342a37b5316d1e74602d3528f2369d007d19eb190d43c968a100a0"
+    ],
+    "transparent_pixels": [
+      358,
+      359,
+      352,
+      367
+    ]
+  },
+  "s0000999_r13089": {
+    "native_position": [
+      1264,
+      -64,
+      645
+    ],
+    "archive": 210,
+    "record": 17,
+    "pixel_size": [
+      13,
+      50
+    ],
+    "size_metres": [
+      0.325,
+      1.25
+    ],
+    "rgba_sha256": [
+      "350a755412b5a8b70f3ee511c172ecdd2602d18493c866affbee1915d00d49b8",
+      "aabd64f12c9abdb97d319a1000c85bd93d2983951432244e008948f14aa3fd40",
+      "5ea3e346d736a000350c3169674d2c6d3dab40ed7a2a2ac95b857c3cb00dfcfe",
+      "cf013e0d0c342a37b5316d1e74602d3528f2369d007d19eb190d43c968a100a0"
+    ],
+    "transparent_pixels": [
+      358,
+      359,
+      352,
+      367
+    ]
+  },
+  "s0000999_r13209": {
+    "native_position": [
+      1253,
+      -1342,
+      280
+    ],
+    "archive": 203,
+    "record": 5,
+    "pixel_size": [
+      32,
+      119
+    ],
+    "size_metres": [
+      0.8,
+      2.975
+    ],
+    "rgba_sha256": [
+      "4b0014f4684eee7f08ed7d706b6f74d4df339107b4cbc6c23e3ddffc48321030"
+    ],
+    "transparent_pixels": [
+      885
+    ]
+  },
+  "s0000999_r13245": {
+    "native_position": [
+      1054,
+      -1343,
+      280
+    ],
+    "archive": 203,
+    "record": 5,
+    "pixel_size": [
+      32,
+      119
+    ],
+    "size_metres": [
+      0.8,
+      2.975
+    ],
+    "rgba_sha256": [
+      "4b0014f4684eee7f08ed7d706b6f74d4df339107b4cbc6c23e3ddffc48321030"
+    ],
+    "transparent_pixels": [
+      885
+    ]
+  },
+  "s0000999_r13377": {
+    "native_position": [
+      1552,
+      -1072,
+      608
+    ],
+    "archive": 210,
+    "record": 6,
+    "pixel_size": [
+      16,
+      94
+    ],
+    "size_metres": [
+      0.4,
+      2.35
+    ],
+    "rgba_sha256": [
+      "8fd041ada85642f98bb2e862b4f66fed74a39ac25265abe1f240b84f15d7b08f",
+      "801401aa073828601c91a7ee0b2b9abfef31b179bf6cebcc63a7122de8fd1712",
+      "20372addd7c9030d8cb12a68f8c4da5809321594ca9adf4215a2b3dc6ab221c8",
+      "8193532e0eb8baf50e854bf4e8c0cadfa66fed3894bc9caabfef0a5c7bc6f3a1"
+    ],
+    "transparent_pixels": [
+      1076,
+      1091,
+      1088,
+      1106
+    ]
+  },
+  "s0000999_r13413": {
+    "native_position": [
+      1552,
+      -1072,
+      544
+    ],
+    "archive": 210,
+    "record": 6,
+    "pixel_size": [
+      16,
+      94
+    ],
+    "size_metres": [
+      0.4,
+      2.35
+    ],
+    "rgba_sha256": [
+      "8fd041ada85642f98bb2e862b4f66fed74a39ac25265abe1f240b84f15d7b08f",
+      "801401aa073828601c91a7ee0b2b9abfef31b179bf6cebcc63a7122de8fd1712",
+      "20372addd7c9030d8cb12a68f8c4da5809321594ca9adf4215a2b3dc6ab221c8",
+      "8193532e0eb8baf50e854bf4e8c0cadfa66fed3894bc9caabfef0a5c7bc6f3a1"
+    ],
+    "transparent_pixels": [
+      1076,
+      1091,
+      1088,
+      1106
+    ]
+  },
+  "s0000999_r13485": {
+    "native_position": [
+      1552,
+      -1072,
+      672
+    ],
+    "archive": 210,
+    "record": 6,
+    "pixel_size": [
+      16,
+      94
+    ],
+    "size_metres": [
+      0.4,
+      2.35
+    ],
+    "rgba_sha256": [
+      "8fd041ada85642f98bb2e862b4f66fed74a39ac25265abe1f240b84f15d7b08f",
+      "801401aa073828601c91a7ee0b2b9abfef31b179bf6cebcc63a7122de8fd1712",
+      "20372addd7c9030d8cb12a68f8c4da5809321594ca9adf4215a2b3dc6ab221c8",
+      "8193532e0eb8baf50e854bf4e8c0cadfa66fed3894bc9caabfef0a5c7bc6f3a1"
+    ],
+    "transparent_pixels": [
+      1076,
+      1091,
+      1088,
+      1106
+    ]
+  },
+  "s0000999_r13808": {
+    "native_position": [
+      1938,
+      -1710,
+      345
+    ],
+    "archive": 210,
+    "record": 20,
+    "pixel_size": [
+      16,
+      86
+    ],
+    "size_metres": [
+      0.4,
+      2.15
+    ],
+    "rgba_sha256": [
+      "066262af15c85c0a88bb52e8507b38900cde6e22ee86cce30f85238cdeecb96b",
+      "bdcf3c58aeffd0d9c43dd742836670d75ae90d7b085ff848e9f6037f8c95b0af",
+      "770491835c31bc8e6c21d844e3a7bd9b9f0e3c4820cb2ef56dbbdb0b266961a5",
+      "47291a5bf686eb46255606e89b7a2c58e3845ac8a0e62bb62ef69acc05535323"
+    ],
+    "transparent_pixels": [
+      1020,
+      1027,
+      1022,
+      1035
+    ]
+  },
+  "s0000999_r13950": {
+    "native_position": [
+      1864,
+      -1324,
+      646
+    ],
+    "archive": 210,
+    "record": 20,
+    "pixel_size": [
+      16,
+      86
+    ],
+    "size_metres": [
+      0.4,
+      2.15
+    ],
+    "rgba_sha256": [
+      "066262af15c85c0a88bb52e8507b38900cde6e22ee86cce30f85238cdeecb96b",
+      "bdcf3c58aeffd0d9c43dd742836670d75ae90d7b085ff848e9f6037f8c95b0af",
+      "770491835c31bc8e6c21d844e3a7bd9b9f0e3c4820cb2ef56dbbdb0b266961a5",
+      "47291a5bf686eb46255606e89b7a2c58e3845ac8a0e62bb62ef69acc05535323"
+    ],
+    "transparent_pixels": [
+      1020,
+      1027,
+      1022,
+      1035
+    ]
+  },
+  "s0000999_r14021": {
+    "native_position": [
+      1427,
+      -296,
+      627
+    ],
+    "archive": 210,
+    "record": 4,
+    "pixel_size": [
+      15,
+      21
+    ],
+    "size_metres": [
+      0.2,
+      0.275
+    ],
+    "rgba_sha256": [
+      "5b93aa29fc4a9db8dddf50e649e6a34aa14a88fcfc090f5ffb921f3064b57663",
+      "0825d15d6664acfc552b21d85da64b84d7f31a1a43e176a33d594ed3a27adf90",
+      "6f92b926a5b3d4099ca31a40c4d31adbd6c87e60146862540dc68a81594c0a1e",
+      "b3b92504f24f699f33474ede7bddcb4367e92029588d1bf5c2d2ceb2f93a2f7c",
+      "eee66085fc92589a495bdde0de6233539878cef10a9806f6dad3f734318aceee"
+    ],
+    "transparent_pixels": [
+      189,
+      186,
+      186,
+      190,
+      193
+    ]
+  },
+  "s0000999_r14057": {
+    "native_position": [
+      1353,
+      -296,
+      629
+    ],
+    "archive": 210,
+    "record": 4,
+    "pixel_size": [
+      15,
+      21
+    ],
+    "size_metres": [
+      0.2,
+      0.275
+    ],
+    "rgba_sha256": [
+      "5b93aa29fc4a9db8dddf50e649e6a34aa14a88fcfc090f5ffb921f3064b57663",
+      "0825d15d6664acfc552b21d85da64b84d7f31a1a43e176a33d594ed3a27adf90",
+      "6f92b926a5b3d4099ca31a40c4d31adbd6c87e60146862540dc68a81594c0a1e",
+      "b3b92504f24f699f33474ede7bddcb4367e92029588d1bf5c2d2ceb2f93a2f7c",
+      "eee66085fc92589a495bdde0de6233539878cef10a9806f6dad3f734318aceee"
+    ],
+    "transparent_pixels": [
+      189,
+      186,
+      186,
+      190,
+      193
+    ]
+  },
+  "s0000999_r14128": {
+    "native_position": [
+      1487,
+      -1870,
+      641
+    ],
+    "archive": 210,
+    "record": 8,
+    "pixel_size": [
+      59,
+      97
+    ],
+    "size_metres": [
+      1.475,
+      2.4250000000000003
+    ],
+    "rgba_sha256": [
+      "5719311cbbb99b50216f83ba379957ee72a72e25eceddd163fbd58e8cf245b42"
+    ],
+    "transparent_pixels": [
+      4114
+    ]
+  },
+  "s0000999_r14199": {
+    "native_position": [
+      1557,
+      -1560,
+      485
+    ],
+    "archive": 210,
+    "record": 0,
+    "pixel_size": [
+      40,
+      52
+    ],
+    "size_metres": [
+      1.0,
+      1.3
+    ],
+    "rgba_sha256": [
+      "78a5987db37e84171948b818f25dada2ba2ba8048cf1a20afa6e291ecb0978c7",
+      "95f970ea0a8332a8d59eeecbcfa9da6845574c90d47d94162e3c0149d22c4b0b",
+      "5ffd690aca4034825b1fb2ee1c10ed7542a79c3e551071ea0e7435750c96c6f2",
+      "6eece6e72b739708e5f6bb01da617939cbc8a38304d22d3dfead996c7a5acd39"
+    ],
+    "transparent_pixels": [
+      1274,
+      1322,
+      1299,
+      1274
+    ]
+  },
+  "s0000999_r14366": {
+    "native_position": [
+      1408,
+      -539,
+      272
+    ],
+    "archive": 210,
+    "record": 0,
+    "pixel_size": [
+      40,
+      52
+    ],
+    "size_metres": [
+      1.0,
+      1.3
+    ],
+    "rgba_sha256": [
+      "78a5987db37e84171948b818f25dada2ba2ba8048cf1a20afa6e291ecb0978c7",
+      "95f970ea0a8332a8d59eeecbcfa9da6845574c90d47d94162e3c0149d22c4b0b",
+      "5ffd690aca4034825b1fb2ee1c10ed7542a79c3e551071ea0e7435750c96c6f2",
+      "6eece6e72b739708e5f6bb01da617939cbc8a38304d22d3dfead996c7a5acd39"
+    ],
+    "transparent_pixels": [
+      1274,
+      1322,
+      1299,
+      1274
+    ]
+  },
+  "s0000999_r14508": {
+    "native_position": [
+      1696,
+      -536,
+      632
+    ],
+    "archive": 210,
+    "record": 1,
+    "pixel_size": [
+      48,
+      49
+    ],
+    "size_metres": [
+      1.2000000000000002,
+      1.225
+    ],
+    "rgba_sha256": [
+      "f4a13c856ea39e7d0d3286ff1b00c1170f357201d42a27f9f580ea742ade9977",
+      "37158c1321afb12b963a9baf1220caf582e09da4419cceb5a19d38ed4850796d",
+      "cdd48c41aa36e198a51760628bd96d5c5846211473998ef6fafed0074d2c553c",
+      "5f8a660f6ec9dbdce5926b1742a763c6e0338385a4939773f63205bd86c09ecc"
+    ],
+    "transparent_pixels": [
+      1432,
+      1404,
+      1379,
+      1382
+    ]
+  },
+  "s0000999_r31346": {
+    "native_position": [
+      968,
+      -960,
+      1297
+    ],
+    "archive": 210,
+    "record": 16,
+    "pixel_size": [
+      13,
+      54
+    ],
+    "size_metres": [
+      0.325,
+      1.35
+    ],
+    "rgba_sha256": [
+      "58746dcf519cf3aa569f2b22166206dac74c6a85eb783c7efc9eca23f529ad75",
+      "ea59250cc8c677d03cea38ae7a0f8b851f734a9e2a9b6baedde24c791488697a",
+      "5b271ab42fe1b966c39299c4d059d35bd8641f98960fcc57c4d6909aec06d995",
+      "802ce40f8aadc56e6143eb3a9d3b0763febd9f8dd20736bbbb054b6fcba0c9f8"
+    ],
+    "transparent_pixels": [
+      422,
+      422,
+      415,
+      433
+    ]
+  },
+  "s0000999_r22401": {
+    "native_position": [
+      843,
+      -331,
+      1255
+    ],
+    "archive": 210,
+    "record": 17,
+    "pixel_size": [
+      13,
+      50
+    ],
+    "size_metres": [
+      0.325,
+      1.25
+    ],
+    "rgba_sha256": [
+      "350a755412b5a8b70f3ee511c172ecdd2602d18493c866affbee1915d00d49b8",
+      "aabd64f12c9abdb97d319a1000c85bd93d2983951432244e008948f14aa3fd40",
+      "5ea3e346d736a000350c3169674d2c6d3dab40ed7a2a2ac95b857c3cb00dfcfe",
+      "cf013e0d0c342a37b5316d1e74602d3528f2369d007d19eb190d43c968a100a0"
+    ],
+    "transparent_pixels": [
+      358,
+      359,
+      352,
+      367
+    ]
+  },
+  "s0000999_r15504": {
+    "native_position": [
+      389,
+      -725,
+      1519
+    ],
+    "archive": 210,
+    "record": 17,
+    "pixel_size": [
+      13,
+      50
+    ],
+    "size_metres": [
+      0.325,
+      1.25
+    ],
+    "rgba_sha256": [
+      "350a755412b5a8b70f3ee511c172ecdd2602d18493c866affbee1915d00d49b8",
+      "aabd64f12c9abdb97d319a1000c85bd93d2983951432244e008948f14aa3fd40",
+      "5ea3e346d736a000350c3169674d2c6d3dab40ed7a2a2ac95b857c3cb00dfcfe",
+      "cf013e0d0c342a37b5316d1e74602d3528f2369d007d19eb190d43c968a100a0"
+    ],
+    "transparent_pixels": [
+      358,
+      359,
+      352,
+      367
+    ]
+  },
+  "s0000999_r15540": {
+    "native_position": [
+      265,
+      -726,
+      1409
+    ],
+    "archive": 210,
+    "record": 17,
+    "pixel_size": [
+      13,
+      50
+    ],
+    "size_metres": [
+      0.325,
+      1.25
+    ],
+    "rgba_sha256": [
+      "350a755412b5a8b70f3ee511c172ecdd2602d18493c866affbee1915d00d49b8",
+      "aabd64f12c9abdb97d319a1000c85bd93d2983951432244e008948f14aa3fd40",
+      "5ea3e346d736a000350c3169674d2c6d3dab40ed7a2a2ac95b857c3cb00dfcfe",
+      "cf013e0d0c342a37b5316d1e74602d3528f2369d007d19eb190d43c968a100a0"
+    ],
+    "transparent_pixels": [
+      358,
+      359,
+      352,
+      367
+    ]
+  },
+  "s0000999_r15682": {
+    "native_position": [
+      521,
+      -833,
+      1713
+    ],
+    "archive": 210,
+    "record": 17,
+    "pixel_size": [
+      13,
+      50
+    ],
+    "size_metres": [
+      0.325,
+      1.25
+    ],
+    "rgba_sha256": [
+      "350a755412b5a8b70f3ee511c172ecdd2602d18493c866affbee1915d00d49b8",
+      "aabd64f12c9abdb97d319a1000c85bd93d2983951432244e008948f14aa3fd40",
+      "5ea3e346d736a000350c3169674d2c6d3dab40ed7a2a2ac95b857c3cb00dfcfe",
+      "cf013e0d0c342a37b5316d1e74602d3528f2369d007d19eb190d43c968a100a0"
+    ],
+    "transparent_pixels": [
+      358,
+      359,
+      352,
+      367
+    ]
+  },
+  "s0000999_r15718": {
+    "native_position": [
+      516,
+      -215,
+      1248
+    ],
+    "archive": 213,
+    "record": 7,
+    "pixel_size": [
+      13,
+      65
+    ],
+    "size_metres": [
+      0.325,
+      1.625
+    ],
+    "rgba_sha256": [
+      "e780941ef535ded27e5280fc0e2ddb97debbbc1295d9db3abdad0710519c909b"
+    ],
+    "transparent_pixels": [
+      586
+    ]
+  },
+  "s0000999_r15754": {
+    "native_position": [
+      638,
+      -256,
+      1594
+    ],
+    "archive": 213,
+    "record": 9,
+    "pixel_size": [
+      37,
+      87
+    ],
+    "size_metres": [
+      0.925,
+      2.1750000000000003
+    ],
+    "rgba_sha256": [
+      "158ef374fcb608941b709037066134270cb18f7ef6ea2ef5c5872775cdbbc635"
+    ],
+    "transparent_pixels": [
+      2352
+    ]
+  },
+  "s0000999_r15790": {
+    "native_position": [
+      379,
+      -251,
+      1557
+    ],
+    "archive": 213,
+    "record": 7,
+    "pixel_size": [
+      13,
+      65
+    ],
+    "size_metres": [
+      0.325,
+      1.625
+    ],
+    "rgba_sha256": [
+      "e780941ef535ded27e5280fc0e2ddb97debbbc1295d9db3abdad0710519c909b"
+    ],
+    "transparent_pixels": [
+      586
+    ]
+  },
+  "s0000999_r15826": {
+    "native_position": [
+      553,
+      -322,
+      1651
+    ],
+    "archive": 213,
+    "record": 8,
+    "pixel_size": [
+      34,
+      75
+    ],
+    "size_metres": [
+      0.8500000000000001,
+      1.875
+    ],
+    "rgba_sha256": [
+      "f2a7dc55f66cdd2749b65afe6e691d216e884941e44cb93aa57b5b0047ccec9d"
+    ],
+    "transparent_pixels": [
+      1975
+    ]
+  },
+  "s0000999_r16208": {
+    "native_position": [
+      408,
+      -1053,
+      1787
+    ],
+    "archive": 210,
+    "record": 0,
+    "pixel_size": [
+      40,
+      52
+    ],
+    "size_metres": [
+      1.0,
+      1.3
+    ],
+    "rgba_sha256": [
+      "78a5987db37e84171948b818f25dada2ba2ba8048cf1a20afa6e291ecb0978c7",
+      "95f970ea0a8332a8d59eeecbcfa9da6845574c90d47d94162e3c0149d22c4b0b",
+      "5ffd690aca4034825b1fb2ee1c10ed7542a79c3e551071ea0e7435750c96c6f2",
+      "6eece6e72b739708e5f6bb01da617939cbc8a38304d22d3dfead996c7a5acd39"
+    ],
+    "transparent_pixels": [
+      1274,
+      1322,
+      1299,
+      1274
+    ]
+  },
+  "s0000999_r16279": {
+    "native_position": [
+      104,
+      -1890,
+      1196
+    ],
+    "archive": 210,
+    "record": 13,
+    "pixel_size": [
+      36,
+      53
+    ],
+    "size_metres": [
+      0.8250000000000001,
+      1.2000000000000002
+    ],
+    "rgba_sha256": [
+      "ced7e5d9a470f7b4b11b6f634dbd6d4b3d6036418ab8e0dead30189f7231e26a"
+    ],
+    "transparent_pixels": [
+      1008
+    ]
+  },
+  "s0000999_r16721": {
+    "native_position": [
+      880,
+      -1227,
+      1937
+    ],
+    "archive": 210,
+    "record": 2,
+    "pixel_size": [
+      13,
+      29
+    ],
+    "size_metres": [
+      0.325,
+      0.7250000000000001
+    ],
+    "rgba_sha256": [
+      "f18cdfe05ce7d7b73d76d1567b0fc9272cff9b9245243c5026f7da4a0acd91e6",
+      "832484cd6967547fb357413d4195cf1731f651dce1903e1f301e71c06281c76d",
+      "8d05919c44d5284561f37ee51e511251981af98d1bfaaefca7a7f04d8a31c5b7",
+      "fb4a28cbc2ca44cbae016a9a253bead2c397c0b4697c78bfe279c64e9e1d534c",
+      "985cff8a10eee02c8337f4f6214cb6516b9f9a940f757859e5fc1dd7e8489a13"
+    ],
+    "transparent_pixels": [
+      187,
+      183,
+      183,
+      187,
+      190
+    ]
+  },
+  "s0000999_r16757": {
+    "native_position": [
+      796,
+      -1296,
+      1865
+    ],
+    "archive": 210,
+    "record": 2,
+    "pixel_size": [
+      13,
+      29
+    ],
+    "size_metres": [
+      0.325,
+      0.7250000000000001
+    ],
+    "rgba_sha256": [
+      "f18cdfe05ce7d7b73d76d1567b0fc9272cff9b9245243c5026f7da4a0acd91e6",
+      "832484cd6967547fb357413d4195cf1731f651dce1903e1f301e71c06281c76d",
+      "8d05919c44d5284561f37ee51e511251981af98d1bfaaefca7a7f04d8a31c5b7",
+      "fb4a28cbc2ca44cbae016a9a253bead2c397c0b4697c78bfe279c64e9e1d534c",
+      "985cff8a10eee02c8337f4f6214cb6516b9f9a940f757859e5fc1dd7e8489a13"
+    ],
+    "transparent_pixels": [
+      187,
+      183,
+      183,
+      187,
+      190
+    ]
+  },
+  "s0000999_r16793": {
+    "native_position": [
+      798,
+      -1297,
+      1913
+    ],
+    "archive": 210,
+    "record": 2,
+    "pixel_size": [
+      13,
+      29
+    ],
+    "size_metres": [
+      0.325,
+      0.7250000000000001
+    ],
+    "rgba_sha256": [
+      "f18cdfe05ce7d7b73d76d1567b0fc9272cff9b9245243c5026f7da4a0acd91e6",
+      "832484cd6967547fb357413d4195cf1731f651dce1903e1f301e71c06281c76d",
+      "8d05919c44d5284561f37ee51e511251981af98d1bfaaefca7a7f04d8a31c5b7",
+      "fb4a28cbc2ca44cbae016a9a253bead2c397c0b4697c78bfe279c64e9e1d534c",
+      "985cff8a10eee02c8337f4f6214cb6516b9f9a940f757859e5fc1dd7e8489a13"
+    ],
+    "transparent_pixels": [
+      187,
+      183,
+      183,
+      187,
+      190
+    ]
+  },
+  "s0000999_r16829": {
+    "native_position": [
+      756,
+      -1297,
+      1839
+    ],
+    "archive": 210,
+    "record": 2,
+    "pixel_size": [
+      13,
+      29
+    ],
+    "size_metres": [
+      0.325,
+      0.7250000000000001
+    ],
+    "rgba_sha256": [
+      "f18cdfe05ce7d7b73d76d1567b0fc9272cff9b9245243c5026f7da4a0acd91e6",
+      "832484cd6967547fb357413d4195cf1731f651dce1903e1f301e71c06281c76d",
+      "8d05919c44d5284561f37ee51e511251981af98d1bfaaefca7a7f04d8a31c5b7",
+      "fb4a28cbc2ca44cbae016a9a253bead2c397c0b4697c78bfe279c64e9e1d534c",
+      "985cff8a10eee02c8337f4f6214cb6516b9f9a940f757859e5fc1dd7e8489a13"
+    ],
+    "transparent_pixels": [
+      187,
+      183,
+      183,
+      187,
+      190
+    ]
+  },
+  "s0000999_r16865": {
+    "native_position": [
+      715,
+      -1296,
+      1843
+    ],
+    "archive": 210,
+    "record": 2,
+    "pixel_size": [
+      13,
+      29
+    ],
+    "size_metres": [
+      0.325,
+      0.7250000000000001
+    ],
+    "rgba_sha256": [
+      "f18cdfe05ce7d7b73d76d1567b0fc9272cff9b9245243c5026f7da4a0acd91e6",
+      "832484cd6967547fb357413d4195cf1731f651dce1903e1f301e71c06281c76d",
+      "8d05919c44d5284561f37ee51e511251981af98d1bfaaefca7a7f04d8a31c5b7",
+      "fb4a28cbc2ca44cbae016a9a253bead2c397c0b4697c78bfe279c64e9e1d534c",
+      "985cff8a10eee02c8337f4f6214cb6516b9f9a940f757859e5fc1dd7e8489a13"
+    ],
+    "transparent_pixels": [
+      187,
+      183,
+      183,
+      187,
+      190
+    ]
+  },
+  "s0000999_r16901": {
+    "native_position": [
+      758,
+      -1297,
+      1946
+    ],
+    "archive": 210,
+    "record": 2,
+    "pixel_size": [
+      13,
+      29
+    ],
+    "size_metres": [
+      0.325,
+      0.7250000000000001
+    ],
+    "rgba_sha256": [
+      "f18cdfe05ce7d7b73d76d1567b0fc9272cff9b9245243c5026f7da4a0acd91e6",
+      "832484cd6967547fb357413d4195cf1731f651dce1903e1f301e71c06281c76d",
+      "8d05919c44d5284561f37ee51e511251981af98d1bfaaefca7a7f04d8a31c5b7",
+      "fb4a28cbc2ca44cbae016a9a253bead2c397c0b4697c78bfe279c64e9e1d534c",
+      "985cff8a10eee02c8337f4f6214cb6516b9f9a940f757859e5fc1dd7e8489a13"
+    ],
+    "transparent_pixels": [
+      187,
+      183,
+      183,
+      187,
+      190
+    ]
+  },
+  "s0000999_r16937": {
+    "native_position": [
+      713,
+      -1296,
+      1939
+    ],
+    "archive": 210,
+    "record": 2,
+    "pixel_size": [
+      13,
+      29
+    ],
+    "size_metres": [
+      0.325,
+      0.7250000000000001
+    ],
+    "rgba_sha256": [
+      "f18cdfe05ce7d7b73d76d1567b0fc9272cff9b9245243c5026f7da4a0acd91e6",
+      "832484cd6967547fb357413d4195cf1731f651dce1903e1f301e71c06281c76d",
+      "8d05919c44d5284561f37ee51e511251981af98d1bfaaefca7a7f04d8a31c5b7",
+      "fb4a28cbc2ca44cbae016a9a253bead2c397c0b4697c78bfe279c64e9e1d534c",
+      "985cff8a10eee02c8337f4f6214cb6516b9f9a940f757859e5fc1dd7e8489a13"
+    ],
+    "transparent_pixels": [
+      187,
+      183,
+      183,
+      187,
+      190
+    ]
+  },
+  "s0000999_r16973": {
+    "native_position": [
+      694,
+      -1296,
+      1890
+    ],
+    "archive": 210,
+    "record": 2,
+    "pixel_size": [
+      13,
+      29
+    ],
+    "size_metres": [
+      0.325,
+      0.7250000000000001
+    ],
+    "rgba_sha256": [
+      "f18cdfe05ce7d7b73d76d1567b0fc9272cff9b9245243c5026f7da4a0acd91e6",
+      "832484cd6967547fb357413d4195cf1731f651dce1903e1f301e71c06281c76d",
+      "8d05919c44d5284561f37ee51e511251981af98d1bfaaefca7a7f04d8a31c5b7",
+      "fb4a28cbc2ca44cbae016a9a253bead2c397c0b4697c78bfe279c64e9e1d534c",
+      "985cff8a10eee02c8337f4f6214cb6516b9f9a940f757859e5fc1dd7e8489a13"
+    ],
+    "transparent_pixels": [
+      187,
+      183,
+      183,
+      187,
+      190
+    ]
+  },
+  "s0000999_r30692": {
+    "native_position": [
+      1419,
+      -1819,
+      1227
+    ],
+    "archive": 210,
+    "record": 1,
+    "pixel_size": [
+      48,
+      49
+    ],
+    "size_metres": [
+      1.2000000000000002,
+      1.225
+    ],
+    "rgba_sha256": [
+      "f4a13c856ea39e7d0d3286ff1b00c1170f357201d42a27f9f580ea742ade9977",
+      "37158c1321afb12b963a9baf1220caf582e09da4419cceb5a19d38ed4850796d",
+      "cdd48c41aa36e198a51760628bd96d5c5846211473998ef6fafed0074d2c553c",
+      "5f8a660f6ec9dbdce5926b1742a763c6e0338385a4939773f63205bd86c09ecc"
+    ],
+    "transparent_pixels": [
+      1432,
+      1404,
+      1379,
+      1382
+    ]
+  },
+  "s0000999_r17836": {
+    "native_position": [
+      1456,
+      -560,
+      1487
+    ],
+    "archive": 210,
+    "record": 6,
+    "pixel_size": [
+      16,
+      94
+    ],
+    "size_metres": [
+      0.4,
+      2.35
+    ],
+    "rgba_sha256": [
+      "8fd041ada85642f98bb2e862b4f66fed74a39ac25265abe1f240b84f15d7b08f",
+      "801401aa073828601c91a7ee0b2b9abfef31b179bf6cebcc63a7122de8fd1712",
+      "20372addd7c9030d8cb12a68f8c4da5809321594ca9adf4215a2b3dc6ab221c8",
+      "8193532e0eb8baf50e854bf4e8c0cadfa66fed3894bc9caabfef0a5c7bc6f3a1"
+    ],
+    "transparent_pixels": [
+      1076,
+      1091,
+      1088,
+      1106
+    ]
+  },
+  "s0000999_r17872": {
+    "native_position": [
+      1456,
+      -560,
+      1324
+    ],
+    "archive": 210,
+    "record": 6,
+    "pixel_size": [
+      16,
+      94
+    ],
+    "size_metres": [
+      0.4,
+      2.35
+    ],
+    "rgba_sha256": [
+      "8fd041ada85642f98bb2e862b4f66fed74a39ac25265abe1f240b84f15d7b08f",
+      "801401aa073828601c91a7ee0b2b9abfef31b179bf6cebcc63a7122de8fd1712",
+      "20372addd7c9030d8cb12a68f8c4da5809321594ca9adf4215a2b3dc6ab221c8",
+      "8193532e0eb8baf50e854bf4e8c0cadfa66fed3894bc9caabfef0a5c7bc6f3a1"
+    ],
+    "transparent_pixels": [
+      1076,
+      1091,
+      1088,
+      1106
+    ]
+  },
+  "s0000999_r17908": {
+    "native_position": [
+      1386,
+      -355,
+      1426
+    ],
+    "archive": 210,
+    "record": 13,
+    "pixel_size": [
+      36,
+      53
+    ],
+    "size_metres": [
+      0.8250000000000001,
+      1.2000000000000002
+    ],
+    "rgba_sha256": [
+      "ced7e5d9a470f7b4b11b6f634dbd6d4b3d6036418ab8e0dead30189f7231e26a"
+    ],
+    "transparent_pixels": [
+      1008
+    ]
+  },
+  "s0000999_r17979": {
+    "native_position": [
+      1934,
+      -559,
+      1373
+    ],
+    "archive": 210,
+    "record": 20,
+    "pixel_size": [
+      16,
+      86
+    ],
+    "size_metres": [
+      0.4,
+      2.15
+    ],
+    "rgba_sha256": [
+      "066262af15c85c0a88bb52e8507b38900cde6e22ee86cce30f85238cdeecb96b",
+      "bdcf3c58aeffd0d9c43dd742836670d75ae90d7b085ff848e9f6037f8c95b0af",
+      "770491835c31bc8e6c21d844e3a7bd9b9f0e3c4820cb2ef56dbbdb0b266961a5",
+      "47291a5bf686eb46255606e89b7a2c58e3845ac8a0e62bb62ef69acc05535323"
+    ],
+    "transparent_pixels": [
+      1020,
+      1027,
+      1022,
+      1035
+    ]
+  },
+  "s0000999_r18050": {
+    "native_position": [
+      1442,
+      -557,
+      1949
+    ],
+    "archive": 210,
+    "record": 20,
+    "pixel_size": [
+      16,
+      86
+    ],
+    "size_metres": [
+      0.4,
+      2.15
+    ],
+    "rgba_sha256": [
+      "066262af15c85c0a88bb52e8507b38900cde6e22ee86cce30f85238cdeecb96b",
+      "bdcf3c58aeffd0d9c43dd742836670d75ae90d7b085ff848e9f6037f8c95b0af",
+      "770491835c31bc8e6c21d844e3a7bd9b9f0e3c4820cb2ef56dbbdb0b266961a5",
+      "47291a5bf686eb46255606e89b7a2c58e3845ac8a0e62bb62ef69acc05535323"
+    ],
+    "transparent_pixels": [
+      1020,
+      1027,
+      1022,
+      1035
+    ]
+  },
+  "s0000999_r18156": {
+    "native_position": [
+      1521,
+      -64,
+      1408
+    ],
+    "archive": 210,
+    "record": 17,
+    "pixel_size": [
+      13,
+      50
+    ],
+    "size_metres": [
+      0.325,
+      1.25
+    ],
+    "rgba_sha256": [
+      "350a755412b5a8b70f3ee511c172ecdd2602d18493c866affbee1915d00d49b8",
+      "aabd64f12c9abdb97d319a1000c85bd93d2983951432244e008948f14aa3fd40",
+      "5ea3e346d736a000350c3169674d2c6d3dab40ed7a2a2ac95b857c3cb00dfcfe",
+      "cf013e0d0c342a37b5316d1e74602d3528f2369d007d19eb190d43c968a100a0"
+    ],
+    "transparent_pixels": [
+      358,
+      359,
+      352,
+      367
+    ]
+  },
+  "s0000999_r18240": {
+    "native_position": [
+      1420,
+      -1878,
+      1586
+    ],
+    "archive": 213,
+    "record": 8,
+    "pixel_size": [
+      34,
+      75
+    ],
+    "size_metres": [
+      0.8500000000000001,
+      1.875
+    ],
+    "rgba_sha256": [
+      "f2a7dc55f66cdd2749b65afe6e691d216e884941e44cb93aa57b5b0047ccec9d"
+    ],
+    "transparent_pixels": [
+      1975
+    ]
+  },
+  "s0000999_r18276": {
+    "native_position": [
+      1448,
+      -1884,
+      1677
+    ],
+    "archive": 213,
+    "record": 7,
+    "pixel_size": [
+      13,
+      65
+    ],
+    "size_metres": [
+      0.325,
+      1.625
+    ],
+    "rgba_sha256": [
+      "e780941ef535ded27e5280fc0e2ddb97debbbc1295d9db3abdad0710519c909b"
+    ],
+    "transparent_pixels": [
+      586
+    ]
+  },
+  "s0000999_r18312": {
+    "native_position": [
+      1364,
+      -1885,
+      1891
+    ],
+    "archive": 213,
+    "record": 7,
+    "pixel_size": [
+      13,
+      65
+    ],
+    "size_metres": [
+      0.325,
+      1.625
+    ],
+    "rgba_sha256": [
+      "e780941ef535ded27e5280fc0e2ddb97debbbc1295d9db3abdad0710519c909b"
+    ],
+    "transparent_pixels": [
+      586
+    ]
+  },
+  "s0000999_r18348": {
+    "native_position": [
+      1152,
+      -1873,
+      1804
+    ],
+    "archive": 213,
+    "record": 9,
+    "pixel_size": [
+      37,
+      87
+    ],
+    "size_metres": [
+      0.925,
+      2.1750000000000003
+    ],
+    "rgba_sha256": [
+      "158ef374fcb608941b709037066134270cb18f7ef6ea2ef5c5872775cdbbc635"
+    ],
+    "transparent_pixels": [
+      2352
+    ]
+  },
+  "s0000999_r18384": {
+    "native_position": [
+      1239,
+      -1884,
+      1835
+    ],
+    "archive": 213,
+    "record": 10,
+    "pixel_size": [
+      27,
+      66
+    ],
+    "size_metres": [
+      0.675,
+      1.6500000000000001
+    ],
+    "rgba_sha256": [
+      "c88225e7788f92600260de861f9479abcb36b5e18d227453cb79095ae7eecb4c"
+    ],
+    "transparent_pixels": [
+      1285
+    ]
+  },
+  "s0000999_r18420": {
+    "native_position": [
+      1904,
+      -1363,
+      1235
+    ],
+    "archive": 213,
+    "record": 8,
+    "pixel_size": [
+      34,
+      75
+    ],
+    "size_metres": [
+      0.8500000000000001,
+      1.875
+    ],
+    "rgba_sha256": [
+      "f2a7dc55f66cdd2749b65afe6e691d216e884941e44cb93aa57b5b0047ccec9d"
+    ],
+    "transparent_pixels": [
+      1975
+    ]
+  },
+  "s0000999_r18456": {
+    "native_position": [
+      1041,
+      -1342,
+      1775
+    ],
+    "archive": 203,
+    "record": 6,
+    "pixel_size": [
+      22,
+      121
+    ],
+    "size_metres": [
+      0.55,
+      3.0250000000000004
+    ],
+    "rgba_sha256": [
+      "b0f72367078a5f9fe1e7f817debd4db1d66b5296b3a96f1ce0da6ddb97d113a3"
+    ],
+    "transparent_pixels": [
+      900
+    ]
+  },
+  "s0000999_r18492": {
+    "native_position": [
+      1041,
+      -1342,
+      1549
+    ],
+    "archive": 203,
+    "record": 6,
+    "pixel_size": [
+      22,
+      121
+    ],
+    "size_metres": [
+      0.55,
+      3.0250000000000004
+    ],
+    "rgba_sha256": [
+      "b0f72367078a5f9fe1e7f817debd4db1d66b5296b3a96f1ce0da6ddb97d113a3"
+    ],
+    "transparent_pixels": [
+      900
+    ]
+  },
+  "s0000999_r18624": {
+    "native_position": [
+      1552,
+      -1072,
+      1500
+    ],
+    "archive": 210,
+    "record": 6,
+    "pixel_size": [
+      16,
+      94
+    ],
+    "size_metres": [
+      0.4,
+      2.35
+    ],
+    "rgba_sha256": [
+      "8fd041ada85642f98bb2e862b4f66fed74a39ac25265abe1f240b84f15d7b08f",
+      "801401aa073828601c91a7ee0b2b9abfef31b179bf6cebcc63a7122de8fd1712",
+      "20372addd7c9030d8cb12a68f8c4da5809321594ca9adf4215a2b3dc6ab221c8",
+      "8193532e0eb8baf50e854bf4e8c0cadfa66fed3894bc9caabfef0a5c7bc6f3a1"
+    ],
+    "transparent_pixels": [
+      1076,
+      1091,
+      1088,
+      1106
+    ]
+  },
+  "s0000999_r18660": {
+    "native_position": [
+      1552,
+      -1072,
+      1436
+    ],
+    "archive": 210,
+    "record": 6,
+    "pixel_size": [
+      16,
+      94
+    ],
+    "size_metres": [
+      0.4,
+      2.35
+    ],
+    "rgba_sha256": [
+      "8fd041ada85642f98bb2e862b4f66fed74a39ac25265abe1f240b84f15d7b08f",
+      "801401aa073828601c91a7ee0b2b9abfef31b179bf6cebcc63a7122de8fd1712",
+      "20372addd7c9030d8cb12a68f8c4da5809321594ca9adf4215a2b3dc6ab221c8",
+      "8193532e0eb8baf50e854bf4e8c0cadfa66fed3894bc9caabfef0a5c7bc6f3a1"
+    ],
+    "transparent_pixels": [
+      1076,
+      1091,
+      1088,
+      1106
+    ]
+  },
+  "s0000999_r18696": {
+    "native_position": [
+      1552,
+      -1072,
+      1372
+    ],
+    "archive": 210,
+    "record": 6,
+    "pixel_size": [
+      16,
+      94
+    ],
+    "size_metres": [
+      0.4,
+      2.35
+    ],
+    "rgba_sha256": [
+      "8fd041ada85642f98bb2e862b4f66fed74a39ac25265abe1f240b84f15d7b08f",
+      "801401aa073828601c91a7ee0b2b9abfef31b179bf6cebcc63a7122de8fd1712",
+      "20372addd7c9030d8cb12a68f8c4da5809321594ca9adf4215a2b3dc6ab221c8",
+      "8193532e0eb8baf50e854bf4e8c0cadfa66fed3894bc9caabfef0a5c7bc6f3a1"
+    ],
+    "transparent_pixels": [
+      1076,
+      1091,
+      1088,
+      1106
+    ]
+  },
+  "s0000999_r18983": {
+    "native_position": [
+      1441,
+      -1840,
+      1793
+    ],
+    "archive": 210,
+    "record": 19,
+    "pixel_size": [
+      41,
+      93
+    ],
+    "size_metres": [
+      1.0250000000000001,
+      2.325
+    ],
+    "rgba_sha256": [
+      "c50e87157c24a1cbcf7c3b5319b98b80c266c86d5c7bbd8d87cae29f59d7ea08",
+      "deb45ca87d5f938cf3b6f6bb11f9408bfab98bf6920f6064289e5842d22c7ae8",
+      "bd20476b4f27911ed58a9710d9be1f1db5ae728050cf35a732d8161a261bb137",
+      "dba17415ebe2b2eac1824d736ad84d7ad7e180d340ef713ceee0e5101f49e6b1"
+    ],
+    "transparent_pixels": [
+      2223,
+      2202,
+      2212,
+      2269
+    ]
+  },
+  "s0000999_r19019": {
+    "native_position": [
+      1441,
+      -1840,
+      1617
+    ],
+    "archive": 210,
+    "record": 19,
+    "pixel_size": [
+      41,
+      93
+    ],
+    "size_metres": [
+      1.0250000000000001,
+      2.325
+    ],
+    "rgba_sha256": [
+      "c50e87157c24a1cbcf7c3b5319b98b80c266c86d5c7bbd8d87cae29f59d7ea08",
+      "deb45ca87d5f938cf3b6f6bb11f9408bfab98bf6920f6064289e5842d22c7ae8",
+      "bd20476b4f27911ed58a9710d9be1f1db5ae728050cf35a732d8161a261bb137",
+      "dba17415ebe2b2eac1824d736ad84d7ad7e180d340ef713ceee0e5101f49e6b1"
+    ],
+    "transparent_pixels": [
+      2223,
+      2202,
+      2212,
+      2269
+    ]
+  },
+  "s0000999_r19127": {
+    "native_position": [
+      1547,
+      -35,
+      1498
+    ],
+    "archive": 206,
+    "record": 17,
+    "pixel_size": [
+      43,
+      87
+    ],
+    "size_metres": [
+      1.075,
+      2.1750000000000003
+    ],
+    "rgba_sha256": [
+      "7c01e42767d066e4e5db46257f7dedc3ac017e62be776658f6dac601599f547a"
+    ],
+    "transparent_pixels": [
+      2938
+    ]
+  },
+  "s0000999_r19163": {
+    "native_position": [
+      1514,
+      -22,
+      1293
+    ],
+    "archive": 206,
+    "record": 14,
+    "pixel_size": [
+      87,
+      40
+    ],
+    "size_metres": [
+      2.1750000000000003,
+      1.0
+    ],
+    "rgba_sha256": [
+      "88d3fe1ed4f91f15becd2e907afefd7a1548f4e0ddf84637b4ef2c967abf4720"
+    ],
+    "transparent_pixels": [
+      1104
+    ]
+  },
+  "s0000999_r19413": {
+    "native_position": [
+      1703,
+      -1072,
+      1968
+    ],
+    "archive": 210,
+    "record": 6,
+    "pixel_size": [
+      16,
+      94
+    ],
+    "size_metres": [
+      0.4,
+      2.35
+    ],
+    "rgba_sha256": [
+      "8fd041ada85642f98bb2e862b4f66fed74a39ac25265abe1f240b84f15d7b08f",
+      "801401aa073828601c91a7ee0b2b9abfef31b179bf6cebcc63a7122de8fd1712",
+      "20372addd7c9030d8cb12a68f8c4da5809321594ca9adf4215a2b3dc6ab221c8",
+      "8193532e0eb8baf50e854bf4e8c0cadfa66fed3894bc9caabfef0a5c7bc6f3a1"
+    ],
+    "transparent_pixels": [
+      1076,
+      1091,
+      1088,
+      1106
+    ]
+  },
+  "s0000999_r19532": {
+    "native_position": [
+      1969,
+      -336,
+      1712
+    ],
+    "archive": 210,
+    "record": 11,
+    "pixel_size": [
+      29,
+      61
+    ],
+    "size_metres": [
+      0.7250000000000001,
+      1.5250000000000001
+    ],
+    "rgba_sha256": [
+      "dcc584164bc0288aa5a5ec8b07386b43f830bccf04b65879d17acce9db7f7be6"
+    ],
+    "transparent_pixels": [
+      978
+    ]
+  },
+  "s0000999_r19568": {
+    "native_position": [
+      1264,
+      -32,
+      1504
+    ],
+    "archive": 206,
+    "record": 2,
+    "pixel_size": [
+      20,
+      77
+    ],
+    "size_metres": [
+      0.5,
+      1.925
+    ],
+    "rgba_sha256": [
+      "de490e90827cf81db9b3497ca50cf6d6807177a67f6f4e3b14acbfb90a4aac9c"
+    ],
+    "transparent_pixels": [
+      926
+    ]
+  },
+  "b0000009_r9823": {
+    "native_position": [
+      -1184,
+      -1400,
+      128
+    ],
+    "archive": 210,
+    "record": 11,
+    "pixel_size": [
+      29,
+      61
+    ],
+    "size_metres": [
+      0.7250000000000001,
+      1.5250000000000001
+    ],
+    "rgba_sha256": [
+      "dcc584164bc0288aa5a5ec8b07386b43f830bccf04b65879d17acce9db7f7be6"
+    ],
+    "transparent_pixels": [
+      978
+    ]
+  },
+  "b0000009_r9907": {
+    "native_position": [
+      -1920,
+      -1400,
+      680
+    ],
+    "archive": 210,
+    "record": 11,
+    "pixel_size": [
+      29,
+      61
+    ],
+    "size_metres": [
+      0.7250000000000001,
+      1.5250000000000001
+    ],
+    "rgba_sha256": [
+      "dcc584164bc0288aa5a5ec8b07386b43f830bccf04b65879d17acce9db7f7be6"
+    ],
+    "transparent_pixels": [
+      978
+    ]
+  },
+  "b0000009_r10410": {
+    "native_position": [
+      -1880,
+      -632,
+      1448
+    ],
+    "archive": 210,
+    "record": 11,
+    "pixel_size": [
+      29,
+      61
+    ],
+    "size_metres": [
+      0.7250000000000001,
+      1.5250000000000001
+    ],
+    "rgba_sha256": [
+      "dcc584164bc0288aa5a5ec8b07386b43f830bccf04b65879d17acce9db7f7be6"
+    ],
+    "transparent_pixels": [
+      978
+    ]
+  },
+  "b0000009_r10481": {
+    "native_position": [
+      -1392,
+      -1400,
+      1920
+    ],
+    "archive": 210,
+    "record": 13,
+    "pixel_size": [
+      36,
+      53
+    ],
+    "size_metres": [
+      0.8250000000000001,
+      1.2000000000000002
+    ],
+    "rgba_sha256": [
+      "ced7e5d9a470f7b4b11b6f634dbd6d4b3d6036418ab8e0dead30189f7231e26a"
+    ],
+    "transparent_pixels": [
+      1008
+    ]
+  },
+  "b0000009_r10744": {
+    "native_position": [
+      -616,
+      -632,
+      1920
+    ],
+    "archive": 210,
+    "record": 13,
+    "pixel_size": [
+      36,
+      53
+    ],
+    "size_metres": [
+      0.8250000000000001,
+      1.2000000000000002
+    ],
+    "rgba_sha256": [
+      "ced7e5d9a470f7b4b11b6f634dbd6d4b3d6036418ab8e0dead30189f7231e26a"
+    ],
+    "transparent_pixels": [
+      1008
+    ]
+  },
+  "b0000006_r9692": {
+    "native_position": [
+      128,
+      -1400,
+      -1368
+    ],
+    "archive": 210,
+    "record": 11,
+    "pixel_size": [
+      29,
+      61
+    ],
+    "size_metres": [
+      0.7250000000000001,
+      1.5250000000000001
+    ],
+    "rgba_sha256": [
+      "dcc584164bc0288aa5a5ec8b07386b43f830bccf04b65879d17acce9db7f7be6"
+    ],
+    "transparent_pixels": [
+      978
+    ]
+  },
+  "b0000006_r10243": {
+    "native_position": [
+      1376,
+      -1656,
+      -1920
+    ],
+    "archive": 210,
+    "record": 11,
+    "pixel_size": [
+      29,
+      61
+    ],
+    "size_metres": [
+      0.7250000000000001,
+      1.5250000000000001
+    ],
+    "rgba_sha256": [
+      "dcc584164bc0288aa5a5ec8b07386b43f830bccf04b65879d17acce9db7f7be6"
+    ],
+    "transparent_pixels": [
+      978
+    ]
+  },
+  "b0000006_r11034": {
+    "native_position": [
+      184,
+      -888,
+      -656
+    ],
+    "archive": 210,
+    "record": 11,
+    "pixel_size": [
+      29,
+      61
+    ],
+    "size_metres": [
+      0.7250000000000001,
+      1.5250000000000001
+    ],
+    "rgba_sha256": [
+      "dcc584164bc0288aa5a5ec8b07386b43f830bccf04b65879d17acce9db7f7be6"
+    ],
+    "transparent_pixels": [
+      978
+    ]
+  },
+  "b0000006_r11105": {
+    "native_position": [
+      632,
+      -632,
+      -832
+    ],
+    "archive": 210,
+    "record": 11,
+    "pixel_size": [
+      29,
+      61
+    ],
+    "size_metres": [
+      0.7250000000000001,
+      1.5250000000000001
+    ],
+    "rgba_sha256": [
+      "dcc584164bc0288aa5a5ec8b07386b43f830bccf04b65879d17acce9db7f7be6"
+    ],
+    "transparent_pixels": [
+      978
+    ]
+  },
+  "b0000006_r11176": {
+    "native_position": [
+      168,
+      -632,
+      -600
+    ],
+    "archive": 210,
+    "record": 11,
+    "pixel_size": [
+      29,
+      61
+    ],
+    "size_metres": [
+      0.7250000000000001,
+      1.5250000000000001
+    ],
+    "rgba_sha256": [
+      "dcc584164bc0288aa5a5ec8b07386b43f830bccf04b65879d17acce9db7f7be6"
+    ],
+    "transparent_pixels": [
+      978
+    ]
+  },
+  "b0000006_r11247": {
+    "native_position": [
+      512,
+      -1400,
+      -128
+    ],
+    "archive": 210,
+    "record": 13,
+    "pixel_size": [
+      36,
+      53
+    ],
+    "size_metres": [
+      0.8250000000000001,
+      1.2000000000000002
+    ],
+    "rgba_sha256": [
+      "ced7e5d9a470f7b4b11b6f634dbd6d4b3d6036418ab8e0dead30189f7231e26a"
+    ],
+    "transparent_pixels": [
+      1008
+    ]
+  },
+  "b0000006_r11894": {
+    "native_position": [
+      1432,
+      -632,
+      -128
+    ],
+    "archive": 210,
+    "record": 13,
+    "pixel_size": [
+      36,
+      53
+    ],
+    "size_metres": [
+      0.8250000000000001,
+      1.2000000000000002
+    ],
+    "rgba_sha256": [
+      "ced7e5d9a470f7b4b11b6f634dbd6d4b3d6036418ab8e0dead30189f7231e26a"
+    ],
+    "transparent_pixels": [
+      1008
+    ]
+  },
+  "b0000003_r9644": {
+    "native_position": [
+      2176,
+      -1400,
+      680
+    ],
+    "archive": 210,
+    "record": 11,
+    "pixel_size": [
+      29,
+      61
+    ],
+    "size_metres": [
+      0.7250000000000001,
+      1.5250000000000001
+    ],
+    "rgba_sha256": [
+      "dcc584164bc0288aa5a5ec8b07386b43f830bccf04b65879d17acce9db7f7be6"
+    ],
+    "transparent_pixels": [
+      978
+    ]
+  },
+  "b0000003_r10243": {
+    "native_position": [
+      3968,
+      -1376,
+      320
+    ],
+    "archive": 210,
+    "record": 11,
+    "pixel_size": [
+      29,
+      61
+    ],
+    "size_metres": [
+      0.7250000000000001,
+      1.5250000000000001
+    ],
+    "rgba_sha256": [
+      "dcc584164bc0288aa5a5ec8b07386b43f830bccf04b65879d17acce9db7f7be6"
+    ],
+    "transparent_pixels": [
+      978
+    ]
+  },
+  "b0000003_r10362": {
+    "native_position": [
+      3424,
+      -1656,
+      128
+    ],
+    "archive": 210,
+    "record": 11,
+    "pixel_size": [
+      29,
+      61
+    ],
+    "size_metres": [
+      0.7250000000000001,
+      1.5250000000000001
+    ],
+    "rgba_sha256": [
+      "dcc584164bc0288aa5a5ec8b07386b43f830bccf04b65879d17acce9db7f7be6"
+    ],
+    "transparent_pixels": [
+      978
+    ]
+  },
+  "b0000003_r10721": {
+    "native_position": [
+      2232,
+      -888,
+      1392
+    ],
+    "archive": 210,
+    "record": 11,
+    "pixel_size": [
+      29,
+      61
+    ],
+    "size_metres": [
+      0.7250000000000001,
+      1.5250000000000001
+    ],
+    "rgba_sha256": [
+      "dcc584164bc0288aa5a5ec8b07386b43f830bccf04b65879d17acce9db7f7be6"
+    ],
+    "transparent_pixels": [
+      978
+    ]
+  },
+  "b0000003_r10792": {
+    "native_position": [
+      2680,
+      -632,
+      1216
+    ],
+    "archive": 210,
+    "record": 11,
+    "pixel_size": [
+      29,
+      61
+    ],
+    "size_metres": [
+      0.7250000000000001,
+      1.5250000000000001
+    ],
+    "rgba_sha256": [
+      "dcc584164bc0288aa5a5ec8b07386b43f830bccf04b65879d17acce9db7f7be6"
+    ],
+    "transparent_pixels": [
+      978
+    ]
+  },
+  "b0000003_r10863": {
+    "native_position": [
+      2216,
+      -632,
+      1448
+    ],
+    "archive": 210,
+    "record": 11,
+    "pixel_size": [
+      29,
+      61
+    ],
+    "size_metres": [
+      0.7250000000000001,
+      1.5250000000000001
+    ],
+    "rgba_sha256": [
+      "dcc584164bc0288aa5a5ec8b07386b43f830bccf04b65879d17acce9db7f7be6"
+    ],
+    "transparent_pixels": [
+      978
+    ]
+  },
+  "b0000003_r10934": {
+    "native_position": [
+      2560,
+      -1400,
+      1920
+    ],
+    "archive": 210,
+    "record": 13,
+    "pixel_size": [
+      36,
+      53
+    ],
+    "size_metres": [
+      0.8250000000000001,
+      1.2000000000000002
+    ],
+    "rgba_sha256": [
+      "ced7e5d9a470f7b4b11b6f634dbd6d4b3d6036418ab8e0dead30189f7231e26a"
+    ],
+    "transparent_pixels": [
+      1008
+    ]
+  },
+  "b0000003_r11005": {
+    "native_position": [
+      3032,
+      -1016,
+      1152
+    ],
+    "archive": 210,
+    "record": 13,
+    "pixel_size": [
+      36,
+      53
+    ],
+    "size_metres": [
+      0.8250000000000001,
+      1.2000000000000002
+    ],
+    "rgba_sha256": [
+      "ced7e5d9a470f7b4b11b6f634dbd6d4b3d6036418ab8e0dead30189f7231e26a"
+    ],
+    "transparent_pixels": [
+      1008
+    ]
+  },
+  "b0000003_r11076": {
+    "native_position": [
+      2936,
+      -760,
+      1920
+    ],
+    "archive": 210,
+    "record": 13,
+    "pixel_size": [
+      36,
+      53
+    ],
+    "size_metres": [
+      0.8250000000000001,
+      1.2000000000000002
+    ],
+    "rgba_sha256": [
+      "ced7e5d9a470f7b4b11b6f634dbd6d4b3d6036418ab8e0dead30189f7231e26a"
+    ],
+    "transparent_pixels": [
+      1008
+    ]
+  },
+  "b0000003_r12155": {
+    "native_position": [
+      3200,
+      -1272,
+      1736
+    ],
+    "archive": 210,
+    "record": 13,
+    "pixel_size": [
+      36,
+      53
+    ],
+    "size_metres": [
+      0.8250000000000001,
+      1.2000000000000002
+    ],
+    "rgba_sha256": [
+      "ced7e5d9a470f7b4b11b6f634dbd6d4b3d6036418ab8e0dead30189f7231e26a"
+    ],
+    "transparent_pixels": [
+      1008
+    ]
+  },
+  "b0000003_r12226": {
+    "native_position": [
+      3480,
+      -632,
+      1920
+    ],
+    "archive": 210,
+    "record": 13,
+    "pixel_size": [
+      36,
+      53
+    ],
+    "size_metres": [
+      0.8250000000000001,
+      1.2000000000000002
+    ],
+    "rgba_sha256": [
+      "ced7e5d9a470f7b4b11b6f634dbd6d4b3d6036418ab8e0dead30189f7231e26a"
+    ],
+    "transparent_pixels": [
+      1008
+    ]
+  },
+  "b0000012_r9692": {
+    "native_position": [
+      136,
+      -1344,
+      2736
+    ],
+    "archive": 210,
+    "record": 18,
+    "pixel_size": [
+      16,
+      55
+    ],
+    "size_metres": [
+      0.4,
+      1.375
+    ],
+    "rgba_sha256": [
+      "16b4cbc78d8605d949d466fda22b0a81381572f0b7e509c1dc5dc48bcab4cdda",
+      "1b1188a870dba93cd3476f316637046311b3f006caf03faa40e46cae2912f7ab",
+      "8da247f32a836181dc4427ee5459db7266f291a67537e021965e8a0b39e22732",
+      "2b65af7d9cc6922460d659586398f5aebdc86b96768b3670d4ef61a973410ad5"
+    ],
+    "transparent_pixels": [
+      560,
+      570,
+      565,
+      576
+    ]
+  },
+  "b0000012_r9728": {
+    "native_position": [
+      136,
+      -1344,
+      2640
+    ],
+    "archive": 210,
+    "record": 18,
+    "pixel_size": [
+      16,
+      55
+    ],
+    "size_metres": [
+      0.4,
+      1.375
+    ],
+    "rgba_sha256": [
+      "16b4cbc78d8605d949d466fda22b0a81381572f0b7e509c1dc5dc48bcab4cdda",
+      "1b1188a870dba93cd3476f316637046311b3f006caf03faa40e46cae2912f7ab",
+      "8da247f32a836181dc4427ee5459db7266f291a67537e021965e8a0b39e22732",
+      "2b65af7d9cc6922460d659586398f5aebdc86b96768b3670d4ef61a973410ad5"
+    ],
+    "transparent_pixels": [
+      560,
+      570,
+      565,
+      576
+    ]
+  },
+  "b0000012_r9799": {
+    "native_position": [
+      848,
+      -560,
+      2952
+    ],
+    "archive": 210,
+    "record": 19,
+    "pixel_size": [
+      41,
+      93
+    ],
+    "size_metres": [
+      1.0250000000000001,
+      2.325
+    ],
+    "rgba_sha256": [
+      "c50e87157c24a1cbcf7c3b5319b98b80c266c86d5c7bbd8d87cae29f59d7ea08",
+      "deb45ca87d5f938cf3b6f6bb11f9408bfab98bf6920f6064289e5842d22c7ae8",
+      "bd20476b4f27911ed58a9710d9be1f1db5ae728050cf35a732d8161a261bb137",
+      "dba17415ebe2b2eac1824d736ad84d7ad7e180d340ef713ceee0e5101f49e6b1"
+    ],
+    "transparent_pixels": [
+      2223,
+      2202,
+      2212,
+      2269
+    ]
+  },
+  "b0000012_r9835": {
+    "native_position": [
+      968,
+      -560,
+      2952
+    ],
+    "archive": 210,
+    "record": 19,
+    "pixel_size": [
+      41,
+      93
+    ],
+    "size_metres": [
+      1.0250000000000001,
+      2.325
+    ],
+    "rgba_sha256": [
+      "c50e87157c24a1cbcf7c3b5319b98b80c266c86d5c7bbd8d87cae29f59d7ea08",
+      "deb45ca87d5f938cf3b6f6bb11f9408bfab98bf6920f6064289e5842d22c7ae8",
+      "bd20476b4f27911ed58a9710d9be1f1db5ae728050cf35a732d8161a261bb137",
+      "dba17415ebe2b2eac1824d736ad84d7ad7e180d340ef713ceee0e5101f49e6b1"
+    ],
+    "transparent_pixels": [
+      2223,
+      2202,
+      2212,
+      2269
+    ]
+  },
+  "b0000012_r9906": {
+    "native_position": [
+      280,
+      -592,
+      3024
+    ],
+    "archive": 210,
+    "record": 18,
+    "pixel_size": [
+      16,
+      55
+    ],
+    "size_metres": [
+      0.4,
+      1.375
+    ],
+    "rgba_sha256": [
+      "16b4cbc78d8605d949d466fda22b0a81381572f0b7e509c1dc5dc48bcab4cdda",
+      "1b1188a870dba93cd3476f316637046311b3f006caf03faa40e46cae2912f7ab",
+      "8da247f32a836181dc4427ee5459db7266f291a67537e021965e8a0b39e22732",
+      "2b65af7d9cc6922460d659586398f5aebdc86b96768b3670d4ef61a973410ad5"
+    ],
+    "transparent_pixels": [
+      560,
+      570,
+      565,
+      576
+    ]
+  },
+  "b0000012_r10265": {
+    "native_position": [
+      1728,
+      -584,
+      2995
+    ],
+    "archive": 210,
+    "record": 18,
+    "pixel_size": [
+      16,
+      55
+    ],
+    "size_metres": [
+      0.4,
+      1.375
+    ],
+    "rgba_sha256": [
+      "16b4cbc78d8605d949d466fda22b0a81381572f0b7e509c1dc5dc48bcab4cdda",
+      "1b1188a870dba93cd3476f316637046311b3f006caf03faa40e46cae2912f7ab",
+      "8da247f32a836181dc4427ee5459db7266f291a67537e021965e8a0b39e22732",
+      "2b65af7d9cc6922460d659586398f5aebdc86b96768b3670d4ef61a973410ad5"
+    ],
+    "transparent_pixels": [
+      560,
+      570,
+      565,
+      576
+    ]
+  },
+  "b0000012_r10768": {
+    "native_position": [
+      640,
+      -1408,
+      4048
+    ],
+    "archive": 210,
+    "record": 22,
+    "pixel_size": [
+      18,
+      73
+    ],
+    "size_metres": [
+      0.45,
+      1.8250000000000002
+    ],
+    "rgba_sha256": [
+      "22f5230d6935cd2acecceb9ebb63dfab805617febcf0f18dbbdc792e36c19726"
+    ],
+    "transparent_pixels": [
+      730
+    ]
+  },
+  "b0000012_r10839": {
+    "native_position": [
+      613,
+      -1096,
+      3515
+    ],
+    "archive": 210,
+    "record": 18,
+    "pixel_size": [
+      16,
+      55
+    ],
+    "size_metres": [
+      0.4,
+      1.375
+    ],
+    "rgba_sha256": [
+      "16b4cbc78d8605d949d466fda22b0a81381572f0b7e509c1dc5dc48bcab4cdda",
+      "1b1188a870dba93cd3476f316637046311b3f006caf03faa40e46cae2912f7ab",
+      "8da247f32a836181dc4427ee5459db7266f291a67537e021965e8a0b39e22732",
+      "2b65af7d9cc6922460d659586398f5aebdc86b96768b3670d4ef61a973410ad5"
+    ],
+    "transparent_pixels": [
+      560,
+      570,
+      565,
+      576
+    ]
+  },
+  "b0000012_r10945": {
+    "native_position": [
+      80,
+      -840,
+      3696
+    ],
+    "archive": 210,
+    "record": 18,
+    "pixel_size": [
+      16,
+      55
+    ],
+    "size_metres": [
+      0.4,
+      1.375
+    ],
+    "rgba_sha256": [
+      "16b4cbc78d8605d949d466fda22b0a81381572f0b7e509c1dc5dc48bcab4cdda",
+      "1b1188a870dba93cd3476f316637046311b3f006caf03faa40e46cae2912f7ab",
+      "8da247f32a836181dc4427ee5459db7266f291a67537e021965e8a0b39e22732",
+      "2b65af7d9cc6922460d659586398f5aebdc86b96768b3670d4ef61a973410ad5"
+    ],
+    "transparent_pixels": [
+      560,
+      570,
+      565,
+      576
+    ]
+  },
+  "b0000012_r10981": {
+    "native_position": [
+      848,
+      -560,
+      3072
+    ],
+    "archive": 210,
+    "record": 19,
+    "pixel_size": [
+      41,
+      93
+    ],
+    "size_metres": [
+      1.0250000000000001,
+      2.325
+    ],
+    "rgba_sha256": [
+      "c50e87157c24a1cbcf7c3b5319b98b80c266c86d5c7bbd8d87cae29f59d7ea08",
+      "deb45ca87d5f938cf3b6f6bb11f9408bfab98bf6920f6064289e5842d22c7ae8",
+      "bd20476b4f27911ed58a9710d9be1f1db5ae728050cf35a732d8161a261bb137",
+      "dba17415ebe2b2eac1824d736ad84d7ad7e180d340ef713ceee0e5101f49e6b1"
+    ],
+    "transparent_pixels": [
+      2223,
+      2202,
+      2212,
+      2269
+    ]
+  },
+  "b0000012_r11017": {
+    "native_position": [
+      968,
+      -560,
+      3072
+    ],
+    "archive": 210,
+    "record": 19,
+    "pixel_size": [
+      41,
+      93
+    ],
+    "size_metres": [
+      1.0250000000000001,
+      2.325
+    ],
+    "rgba_sha256": [
+      "c50e87157c24a1cbcf7c3b5319b98b80c266c86d5c7bbd8d87cae29f59d7ea08",
+      "deb45ca87d5f938cf3b6f6bb11f9408bfab98bf6920f6064289e5842d22c7ae8",
+      "bd20476b4f27911ed58a9710d9be1f1db5ae728050cf35a732d8161a261bb137",
+      "dba17415ebe2b2eac1824d736ad84d7ad7e180d340ef713ceee0e5101f49e6b1"
+    ],
+    "transparent_pixels": [
+      2223,
+      2202,
+      2212,
+      2269
+    ]
+  },
+  "b0000012_r11053": {
+    "native_position": [
+      128,
+      -592,
+      3504
+    ],
+    "archive": 210,
+    "record": 18,
+    "pixel_size": [
+      16,
+      55
+    ],
+    "size_metres": [
+      0.4,
+      1.375
+    ],
+    "rgba_sha256": [
+      "16b4cbc78d8605d949d466fda22b0a81381572f0b7e509c1dc5dc48bcab4cdda",
+      "1b1188a870dba93cd3476f316637046311b3f006caf03faa40e46cae2912f7ab",
+      "8da247f32a836181dc4427ee5459db7266f291a67537e021965e8a0b39e22732",
+      "2b65af7d9cc6922460d659586398f5aebdc86b96768b3670d4ef61a973410ad5"
+    ],
+    "transparent_pixels": [
+      560,
+      570,
+      565,
+      576
+    ]
+  },
+  "b0000012_r12036": {
+    "native_position": [
+      1112,
+      -584,
+      4016
+    ],
+    "archive": 210,
+    "record": 18,
+    "pixel_size": [
+      16,
+      55
+    ],
+    "size_metres": [
+      0.4,
+      1.375
+    ],
+    "rgba_sha256": [
+      "16b4cbc78d8605d949d466fda22b0a81381572f0b7e509c1dc5dc48bcab4cdda",
+      "1b1188a870dba93cd3476f316637046311b3f006caf03faa40e46cae2912f7ab",
+      "8da247f32a836181dc4427ee5459db7266f291a67537e021965e8a0b39e22732",
+      "2b65af7d9cc6922460d659586398f5aebdc86b96768b3670d4ef61a973410ad5"
+    ],
+    "transparent_pixels": [
+      560,
+      570,
+      565,
+      576
+    ]
+  }
+}

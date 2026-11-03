@@ -1,13 +1,11 @@
-# Status for the next dungeon expansion - November 3, 2026
+# Later expansion — November 3, 2026
 
-The cave-to-great-hall route below is the accepted existing structural baseline.
-Swimming/climbing and other gameplay have since shipped; old statements below
-that climbing is unimplemented or that only four suites run are historical.
-The user has now selected completion of the remaining connected Privateer's Hold
-structure. See NEXT_MILESTONE.md and newest HANDOFF.md for current scope,
-multi-block audit needs, preserved conventions and validation. Current section
-counts53 meshes/3 billboards/11 caps were inspected for this handoff; remaining
-dungeon extent has not been audited. No new expansion has been implemented.
+Normal main.tscn now places the full five-block source location; the53-model/
+11-cap baseline described below is historical and remains in isolated regression
+fixtures. All11 caps are removed from normal play. See FULL_DUNGEON.md for current
+coverage, border-block semantics, deferred actions, saves and validation.
+Older statements that climbing is unimplemented or only four suites run are
+historical; swimming/climbing and other gameplay have since shipped.
 
 # Route to the great staircase hall
 
@@ -59,3 +57,4 @@ The expansion route uses actual capsule movement and input, without teleporting 
 Reports: `tests/results.txt`, `tests/movement_results.txt`, `tests/stair_results.txt`, `tests/expansion_results.txt`. Views: `tests/great_hall_overview.png`, `tests/great_staircase.png`, `tests/great_staircase_top.png`. Independent scale/material audit fixtures now cover the expanded selection. Rendered inspection is separate from automated assertions and is not exhaustive manual playtesting of every corner.
 
 The tall west wall is an initial climbing candidate: collision is verified from native (640,-900,900) toward the wall at X=256, with a supporting floor at 12.8 m. The giant staircase, side walls and raised landings provide further ledge-transition tests. Climbing itself remains unimplemented; user traversal/scale confirmation is the next step before introducing that motor.
+

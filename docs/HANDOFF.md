@@ -1,4 +1,58 @@
-# Resume here - swimming accepted; complete current dungeon structure next
+# Resume here - full dungeon placements implemented; structural playtest next
+
+November 3, 2026. User clarified that B blocks are border blocks with alternative
+connecting assemblies; disconnected/floating leftovers are normal. They authorized
+models/geometry/decorative flats/doors/exit/static loot piles, deferring enemy
+markers/new enemy types and object activation behaviors to a following iteration.
+
+Normal main.tscn now selects all365 source model placements across five MAPS blocks:
+S0000999(0,0), B0000009(-1,0), B0000006(0,-1), B0000003(1,0), B0000012(0,1).
+Includes58 ordinary hinged doors, original70300 exit,130 decorative flats, seven
+additional static216:0 piles at validated199:19 markers, and existing interactive
+authored test loot. All11 old caps are removed. Exact original transforms/scale/
+mesh collision/UVs/Classic swaps and primary-door ordering remain. Source action
+models are present but static; enemy/editor markers stay invisible/unspawned.
+Exit is collidable and E explains exterior travel is unavailable. Do not invent
+connections between border leftovers or claim deferred action routes work.
+
+Optional checked source.blocks/per-record block names extend schema1. Source
+MAPS grid must match before build;2048-native-unit cells reflect Z alongside local
+placements. Records deduplicate by block+offset; IDs remain globally unique.
+Legacy single-block skeleton/swim sections remain independent and unchanged.
+All accepted hall/bear/player/equipment/motor/spell/modal ownership remains.
+Normal dungeon stays dry; no new encounters, loot contents, water or action engine.
+
+Schema9 is unchanged, but exact-section fingerprints intentionally invalidate old
+normal-dungeon saves. Start fresh and press K. Do not weaken hash/anchor/clearance
+validation; manual.json was not touched by tests. Deep tests use the isolated
+saves/full_dungeon_test.json slot and verify all58 door states plus Teleport anchor.
+
+See FULL_DUNGEON.md for block counts/source action offsets/architecture/audits.
+README, SECTION_FORMAT, AGENTS and NEXT_MILESTONE are updated. Existing older
+handoffs below are historical. Next step is manual exploration of the expanded
+normal dungeon; then scope the deferred activation/enemy iteration with the user.
+No exhaustive every-room reachability or subjective movement-fidelity claim.
+
+Validation: Run.ps1 -Test passed1818/1818 assertions across31 suites and seven
+separate-process reloads (tests/dungeon_expansion_full_regression.log), including
+104/104 original cave-to-hall/giant-stair checks in the expanded world and70/70
+full-dungeon checks. Added tests verify every365 model identity/grid position/raw
+bounds,81 material hashes/dimensions,130 flat positions/sizes/RGBA frames, seven
+pile supports, all58 hinges/close safety, continuous outbound/return routes to
+all four border blocks, four upper-floor excursions via actual hall/gallery stairs,
+and deep-room save/Teleport restoration. Test-only floor graph produces candidate
+paths; continuous motor traversal is the acceptance check. No gameplay navmesh.
+
+Rendered full-dungeon suite passed70/70 with lower routes in4:3 and upper routes
+in widescreen; its final log has no engine errors/warnings or script errors.
+Controlled room/door/exit/pile comparisons
+in4:3 and widescreen were visually inspected. Reports:tests/full_dungeon_rendered.log,
+tests/full_dungeon_views.log; images under tests/full_dungeon_views/.
+User/embedded-editor playtest remains. Headless host log/certificate and legacy
+fixture/ObjectDB diagnostics remain nonblocking; final headless log has no failed
+assertions or script errors. Initial import/build was approximately1.7 seconds.
+
+# Previous handoff - swimming accepted; complete current dungeon structure next
 
 Prepared November 3, 2026 for another chat/agent at the user's explicit request.
 

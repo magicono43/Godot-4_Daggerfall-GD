@@ -5,6 +5,7 @@ import math
 from pathlib import Path
 import re
 import struct
+import argparse
 
 from inspect_data import bsa
 
@@ -21,7 +22,11 @@ settings.read(PROJECT / '--Bug_Fixing_Evidence--' / 'Scale_Inconsistency_Example
 fov = settings.getfloat('Video', 'FieldOfView')
 models = bsa('ARCH3D.BSA')
 measurements = {}
-section = json.loads((PROJECT / 'sections' / 'privateers_hold_opening.json').read_text())
+parser = argparse.ArgumentParser()
+parser.add_argument('--section', default='tests/sections/skeleton_regression.json')
+parser.add_argument('--output', default='tests/scale_calibration')
+args = parser.parse_args()
+section = json.loads((PROJECT / args.section).read_text())
 for model in dict.fromkeys(entry['expected_model'] for entry in section['models']):
     data = models[model]
     count = struct.unpack_from('<I', data, 4)[0]
@@ -41,7 +46,7 @@ report = {
                'legacy_horizontal_fov': math.degrees(2 * math.atan(math.tan(math.radians(78 / 2)) * 1280 / 720))},
     'models': measurements,
 }
-output = PROJECT / 'tests' / 'scale_calibration'
+output = PROJECT / args.output
 output.mkdir(exist_ok=True)
 (output / 'native_dimensions.json').write_text(json.dumps(report, indent=2) + '\n')
 print(json.dumps(report, indent=2))

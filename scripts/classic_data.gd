@@ -103,6 +103,7 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 		return false
 	var count := map.decode_u32(0)
 	var block_name := ""
+	var location_blocks: Array[Dictionary] = []
 	for i in count:
 		var p := 4 + count * 8 + map.decode_u32(4 + i * 8)
 		if p + 4 >= map.size():
@@ -116,6 +117,7 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 		var total := map.decode_u16(h + 122)
 		for j in total:
 			var bits := map.decode_u16(h + 131 + j * 4)
+			location_blocks.append({"name": "%s%07d.RDB" % ["NWLSBM"[bits >> 11], bits & 1023], "x": signed_byte(map[h + 129 + j * 4]), "z": signed_byte(map[h + 130 + j * 4])})
 			if bits & 1024:
 				block_name = "%s%07d.RDB" % ["NWLSBM"[bits >> 11], bits & 1023]
 		provenance = {"location": location_name, "region": int(definition.source.region), "location_id": map.decode_u16(4 + i * 8 + 6), "block": block_name, "section": definition.name}
@@ -134,75 +136,33 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 		dungeon_textures.configure(dungeon_id, climate)
 		provenance.merge({"dungeon_id": dungeon_id, "climate": climate, "map_pixel": Vector2i(map_x, map_y), "texture_mode": "classic", "texture_table": dungeon_textures.table.duplicate()})
 		break
-	var rdb := blocks.record(block_name)
-	if rdb.size() < 9532:
-		error = "Starting RDB not found or truncated"
-		return false
-	var roots := rdb.decode_u32(12)
-	var selected: Dictionary = {}
-	for entry in definition.models:
-		selected[int(entry.record_offset)] = entry
-	for entry in definition.billboards:
-		selected[int(entry.record_offset)] = entry
-	for entry in definition.get("treasure_markers", []):
-		selected[int(entry.record_offset)] = entry
-	var matched: Dictionary = {}
-	var spawn: Dictionary = definition.spawn
-	for i in rdb.decode_u32(4) * rdb.decode_u32(8):
-		var q := rdb.decode_s32(roots + i * 4)
-		var visited: Dictionary = {}
-		while q >= 0:
-			if q + 25 > rdb.size() or visited.has(q):
-				error = "Invalid RDB object chain"
+	var requested: Array = definition.source.get("blocks", [])
+	if not requested.is_empty():
+		if requested.size() != location_blocks.size():
+			error = "Section block layout differs from original MAPS location"
+			return false
+		for i in requested.size():
+			var expected: Dictionary = requested[i]
+			var actual: Dictionary = location_blocks[i]
+			if expected.name != actual.name or int(expected.x) != actual.x or int(expected.z) != actual.z:
+				error = "Section block layout differs from original MAPS location"
 				return false
-			visited[q] = true
-			var resource := rdb.decode_u32(q + 21)
-			var pos := Vector3(rdb.decode_s32(q + 8), -rdb.decode_s32(q + 12), -rdb.decode_s32(q + 16)) * SCALE - origin
-			if selected.has(q):
-				var entry: Dictionary = selected[q]
-				var expected_type := 1 if entry.has("expected_model") else 3
-				if rdb[q + 20] != expected_type or resource + (23 if expected_type == 1 else 11) > rdb.size():
-					error = "Section %s: record %d has wrong type or invalid resource" % [entry.id, q]
-					return false
-				matched[q] = true
-			if rdb[q + 20] == 1 and selected.has(q):
-				var entry: Dictionary = selected[q]
-				var index := rdb.decode_u16(resource + 12)
-				var model := cstring(rdb, 20 + index * 8, 5) if index < 750 else ""
-				if model != entry.expected_model or not meshes.entries.has(model):
-					error = "Section %s: record %d expected model %s, found %s" % [entry.id, q, entry.expected_model, model]
-					return false
-				var angles := Vector3(rdb.decode_s32(resource), rdb.decode_s32(resource + 4), -rdb.decode_s32(resource + 8)) * TAU / 2048.0
-				var basis := Basis(Vector3.FORWARD, -angles.z) * Basis(Vector3.RIGHT, angles.x) * Basis(Vector3.UP, angles.y)
-				objects.append({"offset": q, "model": model, "transform": Transform3D(basis, pos), "id": entry.id, "role": entry.role, "collision": entry.collision})
-			if rdb[q + 20] == 3:
-				if resource + 2 > rdb.size():
-					error = "Invalid flat resource"
-					return false
-				var tex := rdb.decode_u16(resource)
-				if q == int(spawn.record_offset):
-					if tex >> 7 != int(spawn.expected_archive) or tex & 127 != int(spawn.expected_record):
-						error = "Section spawn record does not match expected editor marker"
-						return false
-					provenance["start"] = pos
-				if selected.has(q):
-					var entry: Dictionary = selected[q]
-					if tex >> 7 != int(entry.expected_archive) or tex & 127 != int(entry.expected_record):
-						error = "Section %s: record %d expected texture %d:%d, found %d:%d" % [entry.id, q, entry.expected_archive, entry.expected_record, tex >> 7, tex & 127]
-						return false
-					if entry.expected_archive == 199:
-						treasure_markers[entry.id] = pos
-					else:
-						billboards.append({"id": entry.id, "offset": q, "archive": tex >> 7, "record": tex & 127, "position": pos, "fps": float(entry.fps)})
-			q = rdb.decode_s32(q)
+	provenance["blocks"] = location_blocks.duplicate(true)
+	var matched: Dictionary = {}
+	for block in location_blocks:
+		if requested.is_empty() and block.name != block_name:
+			continue
+		if not load_block(blocks, block, definition, matched):
+			return false
 	palette = FileAccess.get_file_as_bytes(arena_path.path_join("ART_PAL.COL"))
-	if matched.size() != selected.size() or not provenance.has("start"):
+	if not provenance.has("start"):
 		error = "Section exact spawn marker missing from source block"
-		for offset in selected:
-			if not matched.has(offset):
-				error = "Section %s: record %d missing from source block" % [selected[offset].id, offset]
-				break
 		return false
+	for group in ["models", "billboards", "treasure_markers", "static_loot"]:
+		for entry in definition.get(group, []):
+			if not matched.has(section.record_key(entry, definition.source.block)):
+				error = "Section %s: record %d missing from source block %s" % [entry.id, entry.record_offset, entry.get("block", definition.source.block)]
+				return false
 	if palette.size() < 776:
 		error = "Original ART_PAL.COL palette missing or truncated"
 		return false
@@ -273,6 +233,83 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 	if weapon_frames.mace.is_empty():
 		error = "Missing, truncated or unsupported original WEAPON05.CIF mace data"
 		return false
+	return true
+
+func signed_byte(value: int) -> int:
+	return value - 256 if value > 127 else value
+
+func load_block(blocks: RefCounted, block: Dictionary, definition: Dictionary, matched: Dictionary) -> bool:
+	var block_name: String = block.name
+	var rdb: PackedByteArray = blocks.record(block_name)
+	if rdb.size() < 9532:
+		error = "Starting RDB not found or truncated"
+		return false
+	var roots := rdb.decode_u32(12)
+	var selected: Dictionary = {}
+	for entry in definition.models:
+		if entry.get("block", definition.source.block) == block_name:
+			selected[int(entry.record_offset)] = entry
+	for entry in definition.billboards:
+		if entry.get("block", definition.source.block) == block_name:
+			selected[int(entry.record_offset)] = entry
+	for entry in definition.get("treasure_markers", []) + definition.get("static_loot", []):
+		if entry.get("block", definition.source.block) == block_name:
+			selected[int(entry.record_offset)] = entry
+	var spawn: Dictionary = definition.spawn
+	# RDBSide is 2048 native units. Reflect MAPS grid Z along with local Z.
+	var block_offset := Vector3(block.x * 2048, 0, -block.z * 2048) * SCALE
+	var static_ids: Dictionary = {}
+	for entry in definition.get("static_loot", []):
+		static_ids[entry.id] = true
+	for i in rdb.decode_u32(4) * rdb.decode_u32(8):
+		var q := rdb.decode_s32(roots + i * 4)
+		var visited: Dictionary = {}
+		while q >= 0:
+			if q + 25 > rdb.size() or visited.has(q):
+				error = "Invalid RDB object chain"
+				return false
+			visited[q] = true
+			var resource := rdb.decode_u32(q + 21)
+			var pos := Vector3(rdb.decode_s32(q + 8), -rdb.decode_s32(q + 12), -rdb.decode_s32(q + 16)) * SCALE - origin + block_offset
+			if selected.has(q):
+				var entry: Dictionary = selected[q]
+				var expected_type := 1 if entry.has("expected_model") else 3
+				if rdb[q + 20] != expected_type or resource + (23 if expected_type == 1 else 11) > rdb.size():
+					error = "Section %s: record %d has wrong type or invalid resource" % [entry.id, q]
+					return false
+				matched[section.record_key(entry, definition.source.block)] = true
+			if rdb[q + 20] == 1 and selected.has(q):
+				var entry: Dictionary = selected[q]
+				var index := rdb.decode_u16(resource + 12)
+				var model := cstring(rdb, 20 + index * 8, 5) if index < 750 else ""
+				if model != entry.expected_model or not meshes.entries.has(model):
+					error = "Section %s: record %d expected model %s, found %s" % [entry.id, q, entry.expected_model, model]
+					return false
+				var angles := Vector3(rdb.decode_s32(resource), rdb.decode_s32(resource + 4), -rdb.decode_s32(resource + 8)) * TAU / 2048.0
+				var basis := Basis(Vector3.FORWARD, -angles.z) * Basis(Vector3.RIGHT, angles.x) * Basis(Vector3.UP, angles.y)
+				objects.append({"offset": q, "block": block_name, "model": model, "transform": Transform3D(basis, pos), "id": entry.id, "role": entry.role, "collision": entry.collision})
+			if rdb[q + 20] == 3:
+				if resource + 2 > rdb.size():
+					error = "Invalid flat resource"
+					return false
+				var tex := rdb.decode_u16(resource)
+				if block_name == definition.source.block and q == int(spawn.record_offset):
+					if tex >> 7 != int(spawn.expected_archive) or tex & 127 != int(spawn.expected_record):
+						error = "Section spawn record does not match expected editor marker"
+						return false
+					provenance["start"] = pos
+				if selected.has(q):
+					var entry: Dictionary = selected[q]
+					if tex >> 7 != int(entry.expected_archive) or tex & 127 != int(entry.expected_record):
+						error = "Section %s: record %d expected texture %d:%d, found %d:%d" % [entry.id, q, entry.expected_archive, entry.expected_record, tex >> 7, tex & 127]
+						return false
+					if static_ids.has(entry.id):
+						billboards.append({"id": entry.id, "offset": q, "block": block_name, "archive": 216, "record": 0, "position": pos, "fps": 1.0, "static_loot": true})
+					elif entry.expected_archive == 199:
+						treasure_markers[entry.id] = pos
+					else:
+						billboards.append({"id": entry.id, "offset": q, "block": block_name, "archive": tex >> 7, "record": tex & 127, "position": pos, "fps": float(entry.fps)})
+			q = rdb.decode_s32(q)
 	return true
 
 func native_vector(value: Array) -> Vector3:

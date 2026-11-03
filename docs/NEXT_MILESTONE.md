@@ -1,4 +1,28 @@
-# Next milestone - complete Privateer's Hold dungeon structure
+# Next: playtest the expanded dungeon, then scope source interactions/population
+
+November 3, 2026. The user authorized placing models/geometry/decorative flats,
+ordinary doors, the exit and static loot piles. That structural placement pass is
+implemented; see FULL_DUNGEON.md and the newest HANDOFF entry for validation.
+All365 models across the S block and four B border blocks are selected. B blocks'
+disconnected assemblies are authentic alternatives and must not be joined by
+invented geometry. Hall spawn and accepted gameplay are preserved.
+
+First manually explore the new normal dungeon, especially doorway approaches,
+new stairs, upper rooms and seams. Additional loot piles are static visuals;
+existing authored interactive test loot remains separate. Exit is a documented
+exterior boundary. Old normal saves require a fresh K due to exact-section hashing.
+
+The user explicitly deferred enemy markers/new enemy types and activation
+behaviors such as levers to a following iteration after structural playtesting.
+Do not silently implement them as part of cleanup. Inspect the five nonzero
+source model actions and related flat triggers at the pinned source revision;
+then propose a focused interaction/population slice. No fake functional levers,
+arbitrary teleports/ramps, new water, automap or exterior streaming.
+
+The previous implementation brief below is historical context, not a statement
+that expansion is still unimplemented.
+
+# Previous brief - complete Privateer's Hold dungeon structure
 
 Prepared November 3, 2026 for a fresh chat/agent at the user's request.
 
