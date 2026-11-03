@@ -1,3 +1,9 @@
+# Current schema: 3
+
+Character base attributes/skills now persist. Schema2 is rejected; create a new K
+save. Modal capture restoration uses the shared coordinator for inventory and
+character sheet. See CHARACTER_SHEET.md. Earlier schema descriptions below are historical.
+
 Current schema is version2: independent armor_uid equipment and checked weapon material metadata. Old test slots reject with an explicit version message; create a new K save. No migration, as agreed for testing. See COMBAT_RESOLUTION.md; version1 notes below are historical.
 
 # Manual save/load — current section

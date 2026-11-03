@@ -1,3 +1,8 @@
+# Status: implemented; user playtest pending
+
+The proposal below is historical. See CHARACTER_SHEET.md and the latest HANDOFF
+for shipped state ownership, controls, schema3 persistence and validation.
+
 # Proposed next milestone — basic character sheet and shared character state
 
 Prepared November 2, 2026 for a fresh chat. The user accepted the bear setup as

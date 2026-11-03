@@ -1,8 +1,20 @@
 extends RefCounted
-## Validated live combat inputs. Speed remains owned by movement_model.gd.
+## Validated live combat inputs. Player inputs adapt shared character state; monster profiles stay independent.
 const DEFAULTS := {"strength": 50, "agility": 50, "luck": 50, "short_blade": 25, "blunt_weapon": 25, "hand_to_hand": 25, "dodging": 25, "critical_strike": 25, "reflexes": 2}
 var values: Dictionary = DEFAULTS.duplicate()
-var live_stats: Dictionary = {}
+var character: RefCounted
+var local_live_stats: Dictionary = {}
+var live_stats: Dictionary:
+	get:
+		if character == null:
+			return local_live_stats
+		var result := {}
+		if local_live_stats.has("reflexes"):
+			result.reflexes = local_live_stats.reflexes
+		for key in DEFAULTS:
+			if character.live.has(key):
+				result[key] = character.live[key]
+		return result
 var error := ""
 var monster := false
 var skeleton := false
@@ -40,10 +52,19 @@ func load_file(path: String = "res://combat.cfg") -> bool:
 func set_live_stats(stats: Dictionary) -> bool:
 	if not valid(stats):
 		return false
-	live_stats = stats.duplicate()
+	if character != null:
+		var mapped := stats.duplicate()
+		mapped.erase("reflexes")
+		var keys := DEFAULTS.keys()
+		keys.erase("reflexes")
+		if not character.replace_live(keys, mapped):
+			return false
+	local_live_stats = stats.duplicate() if character == null else ({"reflexes": stats.reflexes} if stats.has("reflexes") else {})
 	return true
 
 func stat(key: String) -> int:
+	if character != null and key != "reflexes":
+		return int(character.stat(key))
 	return int(live_stats.get(key, values[key]))
 
 func configure_skeleton(attributes: Dictionary) -> void:

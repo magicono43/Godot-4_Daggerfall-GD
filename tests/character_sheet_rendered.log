@@ -1,0 +1,33 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 - Build 31.0.101.2140 - Compatibility - Using Device: Intel - Intel(R) UHD Graphics 630
+
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Shared baseline retains accepted stats position=(7.25, 12.8, 16.2) mode=walking
+PASS Incomplete base rejects atomically position=(7.25, 12.8, 16.2) mode=walking
+PASS Invalid shared live values reject position=(7.25, 12.8, 16.2) mode=walking
+PASS Shared live API reaches both consumers position=(7.25, 12.8, 16.2) mode=walking
+PASS Movement adapter preserves combat override position=(7.25, 12.8, 16.2) mode=walking
+PASS Combat adapter replaces only its own override keys position=(7.25, 12.8, 16.2) mode=walking
+PASS F3 retains shared overrides position=(7.25, 12.8, 16.2) mode=walking
+PASS Failed combined reload preserves baseline position=(7.25, 12.8, 16.2) mode=walking
+PASS Attack snapshots shared Speed at start position=(7.25, 12.8, 16.2) mode=walking
+PASS Next attack reads changed shared Speed position=(7.25, 12.8, 16.2) mode=walking
+PASS C opens sheet with captured preference position=(7.25, 12.8, 16.2) mode=walking
+PASS Sheet reads real health and shared stats position=(7.25, 12.8, 16.2) mode=walking
+PASS Opening cancels pending player strikes position=(7.25, 12.8, 16.2) mode=walking
+PASS I switches to inventory without losing capture preference position=(7.25, 12.8, 16.2) mode=walking
+PASS C switches back and clears loot source position=(7.25, 12.8, 16.2) mode=walking
+PASS K refuses any modal position=(7.25, 12.8, 16.2) mode=walking
+PASS Escape restores captured controls position=(7.25, 12.8, 16.2) mode=walking
+PASS Released controls survive sheet toggle position=(7.25, 12.8, 16.2) mode=walking
+PASS Sheet reflects live health and independently equipped armor/weapon position=(7.25, 12.8, 16.2) mode=walking
+PASS Schema3 validates persistent character base position=(7.25, 12.8, 16.2) mode=walking
+PASS Malformed saved character rejects before apply position=(7.25, 12.8, 16.2) mode=walking
+PASS Old schema rejects explicitly position=(7.25, 12.8, 16.2) mode=walking
+PASS Restore applies base and clears transient overrides position=(7.25, 12.8, 16.2) mode=reset
+PASS Character test slot writes without touching manual save position=(7.25, 12.8, 16.2) mode=reset
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold opening through great staircase hall", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Routed L from sheet restores persistent base and prior captured controls position=(7.25, 12.8, 16.2) mode=reset
+PASS Loaded scene has no stale modal or loot source position=(7.25, 12.8, 16.2) mode=reset
+PASS Death closes sheet without restoring controls position=(7.25, 12.8, 16.2) mode=reset
+CHARACTER SHEET RESULTS: 27/27

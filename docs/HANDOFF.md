@@ -1,3 +1,36 @@
+# Resume here — character sheet implemented; user playtest next
+
+The approved basic character sheet/shared-state milestone is implemented. C toggles
+the read-only sheet; I switches to inventory; Escape/Close dismisses. Scroll for
+regional protection and resolved movement values. All eight attributes and nine
+relevant skills read shared effective state. Unsupported consumers/hooks are labelled.
+
+character_state.gd owns base/live player values; movement/combat adapters preserve
+existing API limits/formulas and standalone enemy profiles. F3 validates both configs
+before commit, reapplies config-owned base fields and preserves live overrides.
+Speed feeds both locomotion and attack-start timing snapshots. Health/inventory
+retain ownership. modal_coordinator.gd shares single-panel/capture/attack-cancellation
+handling. Sheet transitions clear loot source/drop-session references without
+changing pile contents; load from sheet restores prior capture.
+
+Schema3 persists complete character base values; transient live overrides/effects
+reset on fresh load. Schema2 rejects explicitly: create a new K save. The user's
+manual slot was not overwritten. R resets to configured bear playtest baseline.
+Bear300HP/starting equipment/skills50, passive chamber, random-direction click
+attacks and compact original geometry remain unchanged.
+
+Validation: **1085/1085 headless checks** through Run.ps1 -Test across21 suites plus
+separate-process reload; **27/27 rendered character-sheet checks**. Reports:
+tests/character_final_regression.log and tests/character_sheet_rendered.log.
+No failed assertions or script errors. Visually inspected sheet in4:3/widescreen,
+including scrolled equipment/protection view. Existing restricted-host log/certificate
+and accelerated-exit ObjectDB diagnostics remain nonblocking. Embedded-editor
+interaction/feel remains user playtest, not claimed automated verification.
+
+See docs/CHARACTER_SHEET.md and reference/character_sheet_sources.json for contracts
+and pinned local evidence. NEXT_MILESTONE.md preserves the original proposal as
+history. No subsequent milestone has been selected or implemented.
+
 # Resume here — accepted bear baseline; character sheet/shared state next
 
 Prepared November 2, 2026 at the user's explicit request for a fresh-chat handoff.

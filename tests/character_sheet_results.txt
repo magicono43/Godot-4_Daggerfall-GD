@@ -1,0 +1,27 @@
+PASS Shared baseline retains accepted stats
+PASS Incomplete base rejects atomically
+PASS Invalid shared live values reject
+PASS Shared live API reaches both consumers
+PASS Movement adapter preserves combat override
+PASS Combat adapter replaces only its own override keys
+PASS F3 retains shared overrides
+PASS Failed combined reload preserves baseline
+PASS Attack snapshots shared Speed at start
+PASS Next attack reads changed shared Speed
+PASS C opens sheet with captured preference
+PASS Sheet reads real health and shared stats
+PASS Opening cancels pending player strikes
+PASS I switches to inventory without losing capture preference
+PASS C switches back and clears loot source
+PASS K refuses any modal
+PASS Escape restores captured controls
+PASS Released controls survive sheet toggle
+PASS Sheet reflects live health and independently equipped armor/weapon
+PASS Schema3 validates persistent character base
+PASS Malformed saved character rejects before apply
+PASS Old schema rejects explicitly
+PASS Restore applies base and clears transient overrides
+PASS Character test slot writes without touching manual save
+PASS Routed L from sheet restores persistent base and prior captured controls
+PASS Loaded scene has no stale modal or loot source
+PASS Death closes sheet without restoring controls

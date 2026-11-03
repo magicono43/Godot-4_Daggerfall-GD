@@ -48,7 +48,7 @@ func refusal() -> String:
 	if p.is_dead():
 		return "Cannot save while dead. L loads your manual save."
 	if p.modal_open:
-		return "Close inventory before saving."
+		return "Close the open panel before saving."
 	if p.climbing.active or not p.is_grounded():
 		return "Stand on supported ground before saving."
 	if Vector2(p.velocity.x, p.velocity.z).length() > 0.03 or absf(p.velocity.y) > 1.0:
@@ -69,10 +69,10 @@ func refusal() -> String:
 
 func snapshot() -> Dictionary:
 	var p = level.player
-	var data := {"version": 2, "section": level.section_path, "section_hash": fingerprint(),
+	var data := {"version": 3, "section": level.section_path, "section_hash": fingerprint(),
 		"player": {"position": vector(p.position), "yaw": p.rotation.y, "pitch": p.camera.rotation.x,
 		"health": p.health.current, "crouched": p.crouch.is_low(p), "sheathed": p.combat.sheathed,
-		"inventory": collection(p.inventory)}, "enemies": {}, "doors": {}, "authored": {}, "drops": []}
+		"inventory": collection(p.inventory), "character": p.character.base.duplicate()}, "enemies": {}, "doors": {}, "authored": {}, "drops": []}
 	for actor in level.enemies:
 		data.enemies[String(actor.name)] = {"position": vector(actor.position), "yaw": actor.rotation.y,
 			"health": actor.health.current, "inventory": collection(actor.loot)}
@@ -158,13 +158,15 @@ func validate(data: Variant) -> bool:
 	seen_uids = {}
 	max_uid = 0
 	error = "Save data is invalid or incompatible with this section."
-	if data is Dictionary and data.get("version") != 2:
+	if data is Dictionary and data.get("version") != 3:
 		error = "Unsupported save version. Start fresh with R and create a new save with K."
 		return false
 	if not data is Dictionary or data.get("section") != level.section_path or data.get("section_hash") != fingerprint():
 		return false
 	var p = data.get("player")
 	if not actor_valid(p, level.player.health.maximum, true) or not number(p.get("pitch"), PI / 2) or not p.get("crouched") is bool or not p.get("sheathed") is bool:
+		return false
+	if not level.player.character.valid(p.get("character"), true):
 		return false
 	if not data.get("enemies") is Dictionary or data.enemies.size() != level.enemies.size() or not data.get("doors") is Dictionary or data.doors.size() != level.doors.size():
 		return false
@@ -275,6 +277,8 @@ func restore_inventory(owner: RefCounted, data: Dictionary) -> void:
 	owner.armor_uid = int(data.armor_uid)
 
 func apply(data: Dictionary) -> void:
+	level.player.character.set_base(data.player.character)
+	level.player.character.set_live({})
 	for door in level.doors:
 		var state: Dictionary = data.doors[door.get_meta("section_id")]
 		door.opened = state.opened
@@ -370,7 +374,7 @@ func load_slot() -> bool:
 	var old_mouse := Input.mouse_mode
 	var resume_controls: bool = level.player.controls_active or level.player.is_dead()
 	if level.player.modal_open:
-		resume_controls = level.loot_window.previous_capture
+		resume_controls = level.modal.previous_capture
 	var paused_voices: Dictionary = {}
 	for voice in level.combat_audio.voices:
 		paused_voices[voice] = voice.stream_paused

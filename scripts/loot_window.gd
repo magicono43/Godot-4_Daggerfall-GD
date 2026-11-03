@@ -1,6 +1,7 @@
 extends Control
 const Catalog = preload("res://scripts/item_catalog.gd")
 var actor: CharacterBody3D
+var coordinator: RefCounted
 var source: Node3D
 var corpse_list: ItemList
 var player_list: ItemList
@@ -146,14 +147,8 @@ func begin_modal() -> void:
 	use_feedback.text = ""
 	selected_uid = 0
 	selected_from_corpse = false
-	previous_capture = actor.controls_active
-	actor.modal_open = true
-	actor.controls_active = false
-	actor.combat.cancel()
-	# Clear pending strikes before any enemy can consume its animation event.
-	for enemy in get_tree().get_nodes_in_group("prototype_enemies"):
-		enemy.suspend_for_modal()
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	coordinator.open(self)
+	previous_capture = coordinator.previous_capture
 	show()
 	refresh()
 	if is_instance_valid(source):
@@ -166,9 +161,7 @@ func close() -> void:
 		return
 	world_loot.end_drop_session()
 	hide()
-	actor.modal_open = false
-	actor.controls_active = previous_capture and not actor.is_dead()
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if actor.controls_active else Input.MOUSE_MODE_VISIBLE
+	coordinator.close(self)
 	source = null
 
 func refresh() -> void:

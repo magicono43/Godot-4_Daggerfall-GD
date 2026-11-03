@@ -13,6 +13,7 @@ var combat_audio: Node
 const Movement = preload("res://scripts/movement_model.gd")
 const Steps = preload("res://scripts/step_solver.gd")
 var movement := Movement.new()
+var character := preload("res://scripts/character_state.gd").new()
 const Climbing = preload("res://scripts/climbing_motor.gd")
 var climbing := Climbing.new()
 const Crouching = preload("res://scripts/crouch_motor.gd")
@@ -82,10 +83,26 @@ func _ready() -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func reload_movement() -> bool:
-	combat_stats.load_file(combat_profile_path)
-	var loaded := movement.profile.load_file()
-	if not loaded:
-		push_warning(movement.profile.error)
+	var combat_candidate := preload("res://scripts/combat_model.gd").new()
+	var movement_candidate := preload("res://scripts/movement_profile.gd").new()
+	var combat_ok := combat_candidate.load_file(combat_profile_path)
+	var movement_ok := movement_candidate.load_file()
+	var loaded := combat_ok and movement_ok
+	if loaded:
+		var baseline := character.base.duplicate()
+		for key in character.MOVEMENT:
+			baseline[character.MOVEMENT[key]] = movement_candidate.values.baseline[key]
+		for key in combat_candidate.values:
+			if key != "reflexes":
+				baseline[key] = combat_candidate.values[key]
+		loaded = character.set_base(baseline)
+		if loaded:
+			movement.profile.values = movement_candidate.values
+			combat_stats.values = combat_candidate.values
+	movement.profile.error = movement_candidate.error
+	combat_stats.error = combat_candidate.error
+	movement.character = character
+	combat_stats.character = character
 	var values: Dictionary = movement.profile.values.physics
 	floor_snap_length = values.floor_snap_metres
 	floor_max_angle = deg_to_rad(values.floor_max_angle_degrees)

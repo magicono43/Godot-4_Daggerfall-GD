@@ -6,7 +6,17 @@ const SPEED_UNITS := 39.5
 const WALK_BASE := 150.0
 const CHANNELS := ["walk", "run", "jump", "gravity", "swim", "climb", "crouch"]
 var profile := Profile.new()
-var live_stats: Dictionary = {}
+var character: RefCounted
+var local_live_stats: Dictionary = {}
+var live_stats: Dictionary:
+	get:
+		if character == null:
+			return local_live_stats
+		var result := {}
+		for key in character.MOVEMENT:
+			if character.live.has(character.MOVEMENT[key]):
+				result[key] = character.live[character.MOVEMENT[key]]
+		return result
 var live_effects: Dictionary = {}
 var modifiers: Dictionary = {}
 
@@ -14,7 +24,13 @@ func set_live_stats(overrides: Dictionary) -> bool:
 	for key in overrides:
 		if not Profile.DEFAULTS.baseline.has(key) or not profile.valid_value("baseline", key, overrides[key]):
 			return false
-	live_stats = overrides.duplicate()
+	if character != null:
+		var mapped := {}
+		for key in overrides:
+			mapped[character.MOVEMENT[key]] = overrides[key]
+		if not character.replace_live(character.MOVEMENT.values(), mapped):
+			return false
+	local_live_stats = overrides.duplicate() if character == null else {}
 	return true
 
 func set_live_effects(overrides: Dictionary) -> bool:
@@ -38,6 +54,8 @@ func remove_modifier(id: String) -> void:
 	modifiers.erase(id)
 
 func stat(key: String) -> float:
+	if character != null:
+		return character.stat(character.MOVEMENT[key])
 	return float(live_stats.get(key, profile.values.baseline[key]))
 
 func effect(key: String) -> bool:

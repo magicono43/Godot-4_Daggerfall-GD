@@ -30,6 +30,8 @@ var use_original_start := false
 var enemy_navigation_enabled := true
 var combat_audio: Node
 var loot_window: Control
+var character_sheet: Control
+var modal := preload("res://scripts/modal_coordinator.gd").new()
 var world_loot: Node
 var restoring := false
 var persistence: Node
@@ -111,10 +113,17 @@ func _ready() -> void:
 	world_root.add_child(player)
 	player.modal_open = restoring
 	player.controls_active = not restoring
+	modal.actor = player
 	loot_window = preload("res://scripts/loot_window.gd").new()
 	loot_window.icons = classic.item_icons
 	loot_window.actor = player
+	loot_window.coordinator = modal
 	presentation.hud.add_child(loot_window)
+	character_sheet = preload("res://scripts/character_sheet.gd").new()
+	character_sheet.actor = player
+	character_sheet.coordinator = modal
+	presentation.hud.add_child(character_sheet)
+	player.health.died.connect(character_sheet.close)
 	player.loot_requested.connect(loot_window.open)
 	player.health.died.connect(loot_window.close)
 	world_loot = preload("res://scripts/world_loot.gd").new()
@@ -179,7 +188,7 @@ func configure_input() -> void:
 		var click := InputEventMouseButton.new()
 		click.button_index = MOUSE_BUTTON_RIGHT
 		InputMap.action_add_event("attack", click)
-	var keys := {"inventory": KEY_I, "ready_weapon": KEY_Z, "crouch": KEY_CTRL, "forward": KEY_W, "back": KEY_S, "left": KEY_A, "right": KEY_D, "sprint": KEY_SHIFT, "jump": KEY_SPACE, "interact": KEY_E, "release_mouse": KEY_ESCAPE, "reset": KEY_R, "toggle_view": KEY_F2, "reload_movement": KEY_F3, "movement_debug": KEY_F4}
+	var keys := {"character_sheet": KEY_C, "inventory": KEY_I, "ready_weapon": KEY_Z, "crouch": KEY_CTRL, "forward": KEY_W, "back": KEY_S, "left": KEY_A, "right": KEY_D, "sprint": KEY_SHIFT, "jump": KEY_SPACE, "interact": KEY_E, "release_mouse": KEY_ESCAPE, "reset": KEY_R, "toggle_view": KEY_F2, "reload_movement": KEY_F3, "movement_debug": KEY_F4}
 	for action in keys:
 		if not InputMap.has_action(action):
 			InputMap.add_action(action)
@@ -281,7 +290,7 @@ func create_hud() -> void:
 	crosshair.position -= Vector2(5, 13)
 	root.add_child(crosshair)
 	var controls := Label.new()
-	controls.text = "WASD Move  |  Ctrl Toggle crouch  |  Shift Run  |  Space Jump  |  E Interact  |  I Inventory\nRMB Attack  |  Z Draw/Sheath  |  Esc Mouse  |  R Restart\nClimb: W into wall or S over ledge  |  W/S Up/Down  |  A/D Along wall  |  Space Eject\nF2 View  |  F3 Reload movement  |  F4 Diagnostics  |  K Save  |  L Load"
+	controls.text = "WASD Move  |  Ctrl Toggle crouch  |  Shift Run  |  Space Jump  |  E Interact  |  I Inventory  |  C Character\nRMB Attack  |  Z Draw/Sheath  |  Esc Mouse  |  R Restart\nClimb: W into wall or S over ledge  |  W/S Up/Down  |  A/D Along wall  |  Space Eject\nF2 View  |  F3 Reload movement  |  F4 Diagnostics  |  K Save  |  L Load"
 	controls.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
 	controls.position = Vector2(29, -104)
 	controls.add_theme_font_size_override("font_size", 14)
@@ -343,9 +352,22 @@ func _input(event: InputEvent) -> void:
 		else:
 			persistence.load_slot()
 		return
+	if ready_to_play and event.is_action_pressed("character_sheet"):
+		if character_sheet.visible:
+			character_sheet.close()
+		else:
+			character_sheet.open()
+		get_viewport().set_input_as_handled()
+		return
 	if ready_to_play and player.modal_open:
-		if event.is_action_pressed("release_mouse") or event.is_action_pressed("inventory"):
-			loot_window.close()
+		if event.is_action_pressed("release_mouse"):
+			modal.active.close()
+			get_viewport().set_input_as_handled()
+		elif event.is_action_pressed("inventory"):
+			if character_sheet.visible:
+				loot_window.open_inventory()
+			else:
+				loot_window.close()
 			get_viewport().set_input_as_handled()
 		elif event.is_action_pressed("reset"):
 			# Reload removes this node from its viewport immediately.

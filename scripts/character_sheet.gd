@@ -1,0 +1,74 @@
+extends Control
+var actor: CharacterBody3D
+var coordinator: RefCounted
+var details: RichTextLabel
+var close_button: Button
+
+func _ready() -> void:
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	mouse_filter = Control.MOUSE_FILTER_STOP
+	var shade := ColorRect.new()
+	shade.color = Color(0.02, 0.015, 0.01, 1.0)
+	shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(shade)
+	var margin := MarginContainer.new()
+	margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	for side in ["left", "right", "top", "bottom"]:
+		margin.add_theme_constant_override("margin_" + side, 28)
+	add_child(margin)
+	var layout := VBoxContainer.new()
+	margin.add_child(layout)
+	var heading := Label.new()
+	heading.text = "CHARACTER  |  Read-only test character"
+	heading.add_theme_font_size_override("font_size", 22)
+	layout.add_child(heading)
+	details = RichTextLabel.new()
+	details.bbcode_enabled = true
+	details.focus_mode = Control.FOCUS_ALL
+	details.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	details.add_theme_font_size_override("normal_font_size", 17)
+	layout.add_child(details)
+	close_button = Button.new()
+	close_button.text = "Close (C / Esc)  |  I: inventory"
+	close_button.pressed.connect(close)
+	layout.add_child(close_button)
+	hide()
+
+func open() -> void:
+	if actor.is_dead():
+		return
+	coordinator.open(self)
+	refresh()
+	show()
+	details.grab_focus()
+
+func close() -> void:
+	if not visible:
+		return
+	hide()
+	coordinator.close(self)
+
+func refresh() -> void:
+	var lines: Array[String] = ["[b]Health: %d / %d[/b]" % [actor.health.current, actor.health.maximum], "", "[b]Attributes[/b]"]
+	for key in ["strength", "intelligence", "willpower", "agility", "endurance", "personality", "speed", "luck"]:
+		var unused: bool = key in ["intelligence", "willpower", "endurance", "personality"]
+		lines.append("%s: %.1f%s" % [key.capitalize(), actor.character.stat(key), " (no gameplay consumer yet)" if unused else ""])
+	lines.append("\n[b]Skills[/b]")
+	for key in ["short_blade", "blunt_weapon", "hand_to_hand", "dodging", "critical_strike", "running", "jumping", "swimming", "climbing"]:
+		var note := ""
+		if key == "hand_to_hand": note = " (input hook; unarmed attacks unavailable)"
+		if key == "swimming": note = " (speed hook only)"
+		if key == "climbing": note = " (success/slip checks deferred)"
+		lines.append("%s: %.1f%s" % [key.capitalize(), actor.character.stat(key), note])
+	lines.append("\n[b]Equipment and protection[/b]")
+	for slot in ["equipped_uid", "armor_uid"]:
+		var item: Dictionary = actor.inventory.find(actor.inventory.get(slot))
+		lines.append("%s: %s" % ["Weapon" if slot == "equipped_uid" else "Chest", (str(item.get("material", "")).capitalize() + " " + str(item.get("definition", "")).capitalize()).strip_edges() if not item.is_empty() else "None"])
+	var regions := ["Head", "Right arm", "Left arm", "Chest", "Hands", "Legs", "Feet"]
+	for region in 7:
+		lines.append("%s protection: %d" % [regions[region], int((100 - actor.combat_stats.armor(actor, region)) / 5)])
+	var motion: Dictionary = actor.movement.resolve()
+	lines.append("\nWalk %.3f m/s | Run %.3f m/s | Jump %.3f m/s" % [motion.walk_speed, motion.run_speed, motion.jump_velocity])
+	lines.append("Protection: higher is better; applies only to the listed region.\nProgression, fatigue and magic are not implemented.")
+	details.text = "\n".join(lines)
+

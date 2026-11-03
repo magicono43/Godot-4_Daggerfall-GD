@@ -1,0 +1,16 @@
+{
+  "commit": "4e78e1412b17b60f4d5d6073825775aa5ae95139",
+  "files": {
+    "DaggerfallStats.cs": "b0070c0cf7029bd03106860b952dc9496dc4f081c522152a17eff3511cacafd6",
+    "DaggerfallSkills.cs": "ac30ffb76e053214aaad28c49d9a9bb482e3585d935357257a15615f8093b4e0",
+    "PlayerEntity.cs": "e20e383b0228b530374e094514765c6d3df98a86dff40d0255015685d28800e0",
+    "DaggerfallEntity.cs": "8da1b9e6be534321d0c8f4fdc793b3a9189928490f82b22390b63c67ea7301b5",
+    "DFCareer.cs": "3aaf2adcca838f7c42c25ff6abf5e8bccd28ff5cfad5989ba57dabaa0283bc6d",
+    "DaggerfallCharacterSheetWindow.cs": "26ff762b3d4278c3c605dde8dfa0f6ef203c5f5ae384703aca18d5aac5aab575",
+    "PaperDoll.cs": "7c0d08756b3a7d794c828b37744b2a7f8726540815631195d61b06bcfc70472a",
+    "ItemEquipTable.cs": "be69135bed71bc7b90d4ee7b9c669e5d346072602c53dca05e0092c581f92fe9"
+  },
+  "notes": [
+    "Existing local cache; no source updates. Permanent/live separation and effective UI reads guide the design. Existing project bounds and formulas remain authoritative for this milestone."
+  ]
+}

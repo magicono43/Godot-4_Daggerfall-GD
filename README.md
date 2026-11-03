@@ -274,3 +274,10 @@ Billboard facing and light animation timing reference: https://github.com/Interk
 
 
 
+
+## Character sheet
+
+C opens the read-only character sheet; I switches to inventory, Escape/C closes.
+It shows shared effective attributes/skills, health, equipment and regional
+protection. Scroll for equipment and movement values. Save schema3 includes base
+character state; old slots require a fresh K save. See docs/CHARACTER_SHEET.md.
