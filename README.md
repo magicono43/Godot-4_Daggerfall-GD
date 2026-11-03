@@ -1,3 +1,13 @@
+## Testing policy — November 3, 2026
+
+Use targeted suites and directly affected integrations by default. Full regression
+is reserved for broad shared-system changes, wider failures, explicit requests or
+a substantial milestone's final checkpoint. Historical suite counts below are
+validation records, not an instruction to rerun everything. New routine output
+uses stable replaceable paths under tests/output/; existing outputs have not been
+migrated or deleted. See [docs/TESTING.md](docs/TESTING.md) for selection, current
+direct commands, retention rules and the unchanged full-runner behavior.
+
 ## Privateer's Hold expanded — November 3, 2026
 
 Normal `main.tscn` now places all365 original models from the central S block and

@@ -76,6 +76,12 @@ manual slot. Skeleton and swimming section copies remain independent and unchang
 
 ## Audits and validation
 
+Follow TESTING.md for current scope/retention policy. The suites and complete
+milestone validation described below are available coverage, not a requirement
+to rerun all of it for every placement or decoration edit. This pass has since
+been user-accepted. Existing artifact paths below are historical/current script
+outputs; they have not yet been migrated to tests/output/.
+
 `tools/audit_dungeon_layout.py` inventories MAPS plus every linked RDB object and
 hashes source block bytes. Output:tests/dungeon_layout_inventory.json.
 `tools/expand_dungeon_section.py` authors explicit selections from that inventory,

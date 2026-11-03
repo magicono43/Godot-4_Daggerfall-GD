@@ -1,4 +1,11 @@
-# Next: playtest the expanded dungeon, then scope source interactions/population
+# Next: scope source interactions/population after accepted dungeon expansion
+
+The user has accepted the dungeon and decorations. Testing policy is now targeted
+by default: follow AGENTS.md Validation and TESTING.md instead of older blanket
+full-run instructions. Preserve useful regressions; avoid unbounded new suites,
+legacy fixture copies and routine log/capture history. Runner/output cleanup was
+not implemented with this policy update; direct suite invocation works today.
+The next gameplay slice still needs focused source inspection and scope discussion.
 
 November 3, 2026. The user authorized placing models/geometry/decorative flats,
 ordinary doors, the exit and static loot piles. That structural placement pass is
@@ -7,8 +14,8 @@ All365 models across the S block and four B border blocks are selected. B blocks
 disconnected assemblies are authentic alternatives and must not be joined by
 invented geometry. Hall spawn and accepted gameplay are preserved.
 
-First manually explore the new normal dungeon, especially doorway approaches,
-new stairs, upper rooms and seams. Additional loot piles are static visuals;
+Dungeon/decorations are user-accepted; investigate any subsequently reported
+doorway, stair, upper-room or seam issue as a focused regression. Additional loot piles are static visuals;
 existing authored interactive test loot remains separate. Exit is a documented
 exterior boundary. Old normal saves require a fresh K due to exact-section hashing.
 
@@ -178,8 +185,9 @@ milestone. Explain fresh-K requirements when shipped. Do not weaken fingerprint,
 anchor context, clearance or candidate-swap validation to make old slots load.
 Never overwrite saves/manual.json in tests. Preserve separate pool save context.
 
-Run Run.ps1 -Test after importer/movement/collision/interaction changes, plus
-rendered expansion/traversal verification in4:3/widescreen. Extend independent
+Choose relevant importer/movement/collision/interaction suites and affected
+integrations under TESTING.md; justify full regression at a substantial milestone
+checkpoint. Render affected traversal/presentation scenarios in relevant modes. Extend independent
 source audit fixtures for added records/materials without blessing incorrect
 output. Existing smoke/boundary/count expectations will need deliberate updates;
 retain coverage of the accepted original route and giant stairs. Freeze a

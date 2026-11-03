@@ -48,9 +48,13 @@
 
 ## Validation
 
-- Report what was tested and any unresolved failures.
-
-- Distinguish automated checks from visual verification.
+- Use targeted validation by default. Before running checks, briefly identify the changed systems and relevant existing suites; include directly affected integrations. Documentation-only changes need document/link consistency checks, not Godot regression runs.
+- Run full regression when shared-system impact is broad or uncertain, targeted failures suggest wider breakage, the user requests it, or a substantial playable milestone is ready for its final checkpoint. Briefly state the reason. A milestone does not require full runs after every intermediate edit. An importer, movement, collision or interaction edit alone does not automatically require every suite.
+- Preserve meaningful regressions for observed bugs and critical behavior, especially movement transitions, capture/modal state, save integrity and item ownership. Extend existing coverage before adding a suite; add permanent tests only for consequential behavior, a credible failure risk or a reproduced bug. Do not mirror implementation details or add tests for every reversible low-impact edit. Do not use assertion totals as a quality target.
+- Once relevant checks pass, stop testing unless another change, failure or unresolved concern justifies more. Inspect concise summaries and failure excerpts; do not read successful logs in full or recapture unchanged scenes routinely. Render only affected visual/input scenarios; use both display modes when presentation is affected.
+- Keep new routine logs/captures/scratch output in tests/output/ using stable names that overwrite the latest run. Preserve permanent scripts, independent fixtures and deliberately selected evidence separately. Do not accumulate dated/run-specific copies by default, and do not create another historical fixture for every milestone. Keep legacy fixtures only where they protect a distinct supported behavior or regression.
+- When touching a test area, consider consolidating duplicated checks and retiring obsolete output, but avoid unrelated mass cleanup. Preserve source evidence, user captures, external ARENA2 and manual saves. Older tests still write beside their scripts; do not claim they have been migrated. See docs/TESTING.md for current commands, scope selection and retention policy.
+- Report what was tested, why that scope was chosen and any unresolved failures or unverified behavior. Distinguish automated checks, rendered inspection and user playtesting. Older feature notes listing Run.ps1 suites or historical full-run counts describe available coverage, not a requirement to run it for every edit. This policy supersedes older blanket testing instructions in project documents.
 
 
 
@@ -108,7 +112,7 @@
 
 - Native positions convert at 0.025 metres/unit; ARCH3D points divide by 256 first; axes are (x, -y, -z).
 
-- Run Run.ps1 -Test after importer, movement, collision or interaction changes; use -Visual for rendered verification.
+- After importer, movement, collision or interaction changes, run the relevant suites and affected integrations under the Validation policy above. Run.ps1 -Test remains the full-regression command; rendered verification is scoped to affected scenarios.
 
 - presentation.cfg defaults to DFU evidence: 75-degree vertical FOV, 640x400 render stretched into 4:3; F2 toggles widescreen. Do not confuse render aspect with final display aspect.
 

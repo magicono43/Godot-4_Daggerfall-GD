@@ -1,4 +1,25 @@
-# Resume here - full dungeon placements implemented; structural playtest next
+# Latest direction - dungeon accepted; targeted testing policy adopted
+
+November 3, 2026. User accepted the dungeon and decorations as looking great.
+They requested focused testing/documentation policy to prevent indefinite suite,
+log, screenshot and agent-token growth. AGENTS.md Validation and docs/TESTING.md
+now define targeted checks by default, justified full-regression checkpoints,
+purposeful permanent coverage, concise output review and bounded artifact retention.
+This supersedes older blanket full-test instructions. Do not use assertion totals
+as a quality target or automatically add another suite/legacy world fixture.
+
+Run.ps1 is unchanged and still runs everything with -Test. Use direct Godot suite
+commands for targeted validation; no -Suite flag exists yet. New/revised routine
+output should use stable paths under tests/output/. Existing outputs/tests have
+not been moved, deleted or consolidated in this documentation-only change.
+Preserve useful bug regressions, independent fixtures, user evidence and manual saves.
+
+Documentation consistency/link checks only; no gameplay or test-runner changes and
+no Godot regression run was needed. Previous1818 headless/70 rendered results below
+remain historical validation of the dungeon pass, now followed by user acceptance.
+Deferred source activation behaviors/enemy types remain the next area to scope.
+
+# Previous handoff - full dungeon placements implemented; structural playtest next
 
 November 3, 2026. User clarified that B blocks are border blocks with alternative
 connecting assemblies; disconnected/floating leftovers are normal. They authorized

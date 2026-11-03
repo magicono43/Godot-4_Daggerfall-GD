@@ -97,7 +97,7 @@ Keep a small selection and verify all ends of the route before removing a bounda
 
 The current smoke fixtures target the default opening section. If its content intentionally changes, review/update tools/audit_scale.py, tools/audit_textures.py and tools/audit_billboards.py outputs, plus the smoke checks' known object/material counts. The tools now obtain selected models/flats from the JSON rather than another hardcoded selection list.
 
-Run Run.ps1 -Test and Run.ps1 -Test -Visual. For focused visual QA run Godot with `--script res://tests/capture_decorations.gd`. Original data and user evidence are never overwritten.
+Choose relevant source/schema/loading/traversal checks under TESTING.md; do not automatically run all suites or all rendered captures for each selection edit. Run.ps1 -Test remains available for a justified full-regression checkpoint. For focused visual QA run the relevant capture script, such as `--script res://tests/capture_decorations.gd`. Original data and user evidence are never overwritten; new routine outputs follow the bounded retention policy.
 
 ### Optional enemy attack policy
 
