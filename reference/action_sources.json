@@ -1,0 +1,14 @@
+{
+  "repository": "https://github.com/Interkarma/daggerfall-unity",
+  "commit": "4e78e1412b17b60f4d5d6073825775aa5ae95139",
+  "license": "LICENSE.txt",
+  "files": {
+    "Assets/Scripts/API/DFBlock.cs": "c3ad02358113b989f21a28e3381dd42bf60b9fcb970929fb7817ceced55ac0e5",
+    "Assets/Scripts/Internal/DaggerfallAction.cs": "ec5f212f1ec713f181c043d48fc346f3e96f805cc518cdeb1780bfd7fd5130d4"
+  },
+  "cached_dependencies": {
+    "RDBLayout.cs": "9d89736d27b55a946b542cb352a3b80e7e9843e41fb49692ba977e6f2e007987",
+    "BlocksFile.cs": "538ba684af0e7480e81ad5b903dcba6548a537e58505174ef55f9d22014c4fce",
+    "DaggerfallAudioSource.cs": "0a96e2ece7f63e173ed187c3a7f39fe7d1502e7b0201c4429b717c5b14d382bd"
+  }
+}

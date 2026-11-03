@@ -1,5 +1,11 @@
 # Multi-block selections and static loot — November 3, 2026
 
+Selected models may opt in to a confirmed mechanism with expected_action:
+{axis,duration,magnitude,next,flags,trigger,sound}. All seven source fields are
+checked against the RDB resource, with supported-type/trigger validation and
+complete acyclic selected links before construction. Original placement remains
+in the RDB; omission keeps the model static. See ACTION_OBJECTS.md.
+
 Schema1 now optionally accepts `source.blocks`, an ordered array of
 `{"name":"B0000009.RDB","x":-1,"z":0}` placements. The complete list must
 match the location's MAPS.BSA layout, including the flagged starting block.

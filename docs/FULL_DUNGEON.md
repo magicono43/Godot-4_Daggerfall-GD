@@ -1,5 +1,10 @@
 # Privateer's Hold structural placement pass — November 3, 2026
 
+Later update: the two confirmed lectern/bookcase and lever/platform/throne chains
+are now enabled; see ACTION_OBJECTS.md. Earlier static-action scope below records
+the accepted placement pass. Unknown27, enemy markers and other action types stay
+deferred. Targeted validation policy remains TESTING.md.
+
 Normal `main.tscn` now loads every original model placement in the location's
 five MAPS blocks. Keep the accepted hall start, bear and passive chamber, player
 stats/equipment, seven spells and existing movement. The dungeon remains dry.

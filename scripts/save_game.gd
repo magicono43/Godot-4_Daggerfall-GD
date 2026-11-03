@@ -49,6 +49,8 @@ func refusal() -> String:
 		return "Save unavailable while the section is initializing."
 	if p.is_dead():
 		return "Cannot save while dead. L loads your manual save."
+	if level.actions.moving():
+		return "Wait for the mechanism to stop before saving."
 	if p.modal_open:
 		return "Close the open panel before saving."
 	if p.swimming.touching(p):
@@ -84,6 +86,7 @@ func snapshot() -> Dictionary:
 			"health": actor.health.current, "inventory": collection(actor.loot)}
 	for door in level.doors:
 		data.doors[door.get_meta("section_id")] = {"opened": door.opened, "swing": door.swing_angle}
+	data["actions"] = level.actions.snapshot()
 	for entry in level.classic.section.definition.prototype.get("treasure_piles", []):
 		var pile = level.world_loot.authored_piles.get(entry.id)
 		data.authored[entry.id] = pile_data(pile) if is_instance_valid(pile) and not pile.retired else null
@@ -189,6 +192,8 @@ func validate(data: Variant) -> bool:
 	if not level.player.spell_effects.shield.valid(p.get("shield")):
 		return false
 	if not level.player.teleport.valid(p.get("anchor")):
+		return false
+	if not level.actions.valid(data.get("actions", {})):
 		return false
 	if not data.get("enemies") is Dictionary or data.enemies.size() != level.enemies.size() or not data.get("doors") is Dictionary or data.doors.size() != level.doors.size():
 		return false
@@ -302,6 +307,7 @@ func restore_inventory(owner: RefCounted, data: Dictionary) -> void:
 func apply(data: Dictionary) -> void:
 	level.player.character.set_base(data.player.character)
 	level.player.character.set_live({})
+	level.actions.restore(data.get("actions", {}))
 	for door in level.doors:
 		var state: Dictionary = data.doors[door.get_meta("section_id")]
 		door.opened = state.opened

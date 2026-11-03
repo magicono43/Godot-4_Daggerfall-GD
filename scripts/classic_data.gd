@@ -163,6 +163,8 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 			if not matched.has(section.record_key(entry, definition.source.block)):
 				error = "Section %s: record %d missing from source block %s" % [entry.id, entry.record_offset, entry.get("block", definition.source.block)]
 				return false
+	if not validate_action_links():
+		return false
 	if palette.size() < 776:
 		error = "Original ART_PAL.COL palette missing or truncated"
 		return false
@@ -287,7 +289,18 @@ func load_block(blocks: RefCounted, block: Dictionary, definition: Dictionary, m
 					return false
 				var angles := Vector3(rdb.decode_s32(resource), rdb.decode_s32(resource + 4), -rdb.decode_s32(resource + 8)) * TAU / 2048.0
 				var basis := Basis(Vector3.FORWARD, -angles.z) * Basis(Vector3.RIGHT, angles.x) * Basis(Vector3.UP, angles.y)
-				objects.append({"offset": q, "block": block_name, "model": model, "transform": Transform3D(basis, pos), "id": entry.id, "role": entry.role, "collision": entry.collision})
+				var action: Dictionary = {}
+				if entry.has("expected_action"):
+					var pointer := rdb.decode_s32(resource + 19)
+					if pointer < 0 or pointer + 10 > rdb.size():
+						error = "Invalid action resource for " + entry.id
+						return false
+					action = {"axis": int(rdb[pointer]), "duration": rdb.decode_u16(pointer + 1), "magnitude": rdb.decode_u16(pointer + 3), "next": rdb.decode_s32(pointer + 5), "flags": int(rdb[pointer + 9]), "trigger": rdb.decode_u32(resource + 14), "sound": int(rdb[resource + 18])}
+					for field in action:
+						if action[field] != int(entry.expected_action[field]):
+							error = "Source action mismatch for %s: %s" % [entry.id, field]
+							return false
+				objects.append({"offset": q, "block": block_name, "model": model, "transform": Transform3D(basis, pos), "id": entry.id, "role": entry.role, "collision": entry.collision, "action": action})
 			if rdb[q + 20] == 3:
 				if resource + 2 > rdb.size():
 					error = "Invalid flat resource"
@@ -310,6 +323,23 @@ func load_block(blocks: RefCounted, block: Dictionary, definition: Dictionary, m
 					else:
 						billboards.append({"id": entry.id, "offset": q, "block": block_name, "archive": tex >> 7, "record": tex & 127, "position": pos, "fps": float(entry.fps)})
 			q = rdb.decode_s32(q)
+	return true
+
+func validate_action_links() -> bool:
+	var actions: Dictionary = {}
+	for object in objects:
+		if not object.action.is_empty():
+			actions["%s:%d" % [object.block, object.offset]] = object
+	for first in actions:
+		var visited: Dictionary = {}
+		var key: String = first
+		while not key.is_empty():
+			if not actions.has(key) or visited.has(key):
+				error = "Missing or cyclic selected source action link: " + key
+				return false
+			visited[key] = true
+			var object: Dictionary = actions[key]
+			key = "%s:%d" % [object.block, object.action.next] if object.action.next >= 0 else ""
 	return true
 
 func native_vector(value: Array) -> Vector3:

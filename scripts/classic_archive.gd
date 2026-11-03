@@ -58,4 +58,13 @@ func record_at(index: int) -> PackedByteArray:
 	var span := ordered_entries[index]
 	return data.slice(span.x, span.x + span.y)
 
+func ordinal_for_id(id: int) -> int:
+	if data.size() < 4 or data.decode_u16(2) != 512:
+		return -1
+	var directory := data.size() - ordered_entries.size() * 8
+	for i in ordered_entries.size():
+		if data.decode_u32(directory + i * 8) == id:
+			return i
+	return -1
+
 

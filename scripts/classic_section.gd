@@ -93,6 +93,15 @@ func validate(value: Variant) -> bool:
 					return fail(entry.id + " requires role and collision boolean")
 				if entry.role in ["door", "exit"] and not entry.collision:
 					return fail(entry.id + " interactive door requires collision")
+				if entry.has("expected_action"):
+					var action: Variant = entry.expected_action
+					if not action is Dictionary or action.size() != 7 or entry.role not in ["geometry", "prop"] or not entry.collision:
+						return fail(entry.id + " action requires collidable geometry/prop and seven source fields")
+					for field in ["axis", "duration", "magnitude", "flags", "trigger", "sound"]:
+						if not integer(action.get(field), 65535):
+							return fail(entry.id + " has invalid action field " + field)
+					if int(action.flags) not in [1, 8, 30] or action.axis > 6 or int(action.trigger) not in [0, 2] or action.sound > 255 or not number(action.get("next")) or floorf(action.next) != action.next or action.next < -2 or action.next > 100000000:
+						return fail(entry.id + " uses an unsupported action/trigger/link")
 			else:
 				if not integer(entry.get("expected_archive"), 511) or entry.expected_archive == 199 or not integer(entry.get("expected_record"), 127):
 					return fail(entry.id + " requires a decorative texture; editor markers cannot be drawn")

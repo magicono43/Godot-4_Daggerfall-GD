@@ -68,11 +68,25 @@ func stop_creature(emitter: Node3D) -> void:
 			voice.queue_free()
 
 func play(event: String, emitter: Node3D = null, gain: float = 1.0, at: Vector3 = Vector3.INF) -> void:
-	var creature_event := event.begins_with("skeleton_") or event.begins_with("bear_")
 	if not EVENTS.has(event) or cache.is_empty():
 		return
 	var ids: Array = EVENTS[event]
 	var id: int = ids[rng.randi_range(0, ids.size() - 1)]
+	play_voice(event, id, emitter, gain, at)
+
+func play_action(sound_id: int, emitter: Node3D) -> void:
+	if sound_id <= 0:
+		return
+	# RDBLayout passes uint to SetSound: these are archive IDs, not ordinals.
+	var ordinal := archive.ordinal_for_id(sound_id)
+	if ordinal < 0:
+		return
+	if not cache.has(ordinal):
+		cache[ordinal] = preload("res://scripts/classic_data.gd").decode_sound(archive.record_at(ordinal))
+	play_voice("action", ordinal, emitter, 1.0, Vector3.INF)
+
+func play_voice(event: String, id: int, emitter: Node3D, gain: float, at: Vector3) -> void:
+	var creature_event := event.begins_with("skeleton_") or event.begins_with("bear_")
 	if not cache.has(id):
 		return
 	# Bound overlapping voices and reclaim explicitly on completion/restart.
@@ -97,6 +111,7 @@ func play(event: String, emitter: Node3D = null, gain: float = 1.0, at: Vector3 
 		voice = AudioStreamPlayer.new()
 		add_child(voice)
 	voice.stream = cache[id]
+	voice.set_meta("action_voice", event == "action")
 	voice.volume_linear = master_volume * effects_volume * clampf(gain, 0.0, 1.0) * (draw_gain if event.begins_with("draw") else 1.0)
 	if creature_event and is_instance_valid(emitter):
 		voice.set_meta("creature_owner", emitter.get_instance_id())

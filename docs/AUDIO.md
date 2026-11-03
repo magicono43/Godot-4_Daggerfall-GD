@@ -1,3 +1,8 @@
+Action objects resolve source sound IDs through classic_archive.ordinal_for_id:
+bookcase70→326, lever72→328, platform42→40. They cache on demand and use bounded
+spatial one-shots. These raw IDs are not ordinal indices. Action voices pause
+with simulation; restoring poses does not replay audio. See ACTION_OBJECTS.md.
+
 Bear-specific creature cues127/128/129 are now cached and routed spatially with the normal creature voice lifecycle; cache total26 samples. Bear misses whiff rather than skeleton parry. See BEAR_PLAYTEST.md.
 
 Current miss feedback: failed weapon rolls against skeletons use spatial original Parry1..Parry9 (ordinals428-436). Empty space/ordinary misses whiff; terrain and doors remain distinct. The bank now contains23 unique cached samples. See COMBAT_RESOLUTION.md.

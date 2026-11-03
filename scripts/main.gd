@@ -38,6 +38,7 @@ var rest_window: Control
 var modal := preload("res://scripts/modal_coordinator.gd").new()
 var world_loot: Node
 var restoring := false
+var actions: Node
 var persistence: Node
 
 func _ready() -> void:
@@ -69,6 +70,11 @@ func _ready() -> void:
 			body.set_script(Door)
 			body.sync_to_physics = false
 			doors.append(body)
+		elif not item.action.is_empty():
+			body = AnimatableBody3D.new()
+			body.sync_to_physics = false
+			if item.action.trigger == 2:
+				body.set_script(preload("res://scripts/action_object.gd"))
 		else:
 			body = StaticBody3D.new()
 			if item.role == "exit":
@@ -207,6 +213,9 @@ func _ready() -> void:
 	for entry in definition.prototype.lights:
 		add_light(classic.to_world(entry.position_native), entry.energy, entry.range_metres)
 	ready_to_play = true
+	actions = preload("res://scripts/classic_actions.gd").new()
+	actions.setup(self)
+	world_root.add_child(actions)
 	persistence = preload("res://scripts/save_game.gd").new()
 	persistence.level = self
 	add_child(persistence)

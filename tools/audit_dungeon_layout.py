@@ -57,6 +57,8 @@ def inventory():
                         if action > 0:
                             obj['action'] = dict(zip(('axis', 'duration', 'magnitude', 'next', 'flags'),
                                                      struct.unpack_from('<BHH i B', raw, action)))
+                            obj['action'].update(trigger=struct.unpack_from('<I', raw, resource + 14)[0],
+                                                 sound=raw[resource + 18])
                     elif obj['kind'] == 3:
                         texture, = struct.unpack_from('<H', raw, resource)
                         obj['texture'] = [texture >> 7, texture & 127]

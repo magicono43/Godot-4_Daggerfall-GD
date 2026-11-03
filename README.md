@@ -1,3 +1,23 @@
+## Current handoff — enemy population audit next
+
+The user accepted the dungeon/decorations and both action mechanisms. The next
+selected direction is original dungeon population, starting with a marker audit
+and one supported creature type; a rat is a conditional suggestion. No population
+implementation has started. Preserve the hall bear/test player setup. A fresh
+chat should read [AGENTS.md](AGENTS.md), [docs/HANDOFF.md](docs/HANDOFF.md) and
+[docs/NEXT_MILESTONE.md](docs/NEXT_MILESTONE.md), then propose the source-backed
+first slice before gameplay changes. Keep the targeted-testing policy below.
+
+## Lectern and throne mechanisms — November 3, 2026
+
+**E** on the lectern by the skull circle rotates the nearby bookcase to reveal
+the two static loot piles. **E** on the hall lever raises/lowers the throne and
+its platform together; the player can ride it. Repeated input during motion is
+ignored, obstructions stop motion safely, and modals/released controls pause it.
+K/rest require settled mechanisms; saves retain their endpoint states.
+The new section fingerprint requires a fresh K save. See
+[docs/ACTION_OBJECTS.md](docs/ACTION_OBJECTS.md) for scope and targeted validation.
+
 ## Testing policy — November 3, 2026
 
 Use targeted suites and directly affected integrations by default. Full regression

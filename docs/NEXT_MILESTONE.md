@@ -1,215 +1,108 @@
-# Next: scope source interactions/population after accepted dungeon expansion
+# Next milestone: audit original enemy population, then add one creature type
 
-The user has accepted the dungeon and decorations. Testing policy is now targeted
-by default: follow AGENTS.md Validation and TESTING.md instead of older blanket
-full-run instructions. Preserve useful regressions; avoid unbounded new suites,
-legacy fixture copies and routine log/capture history. Runner/output cleanup was
-not implemented with this policy update; direct suite invocation works today.
-The next gameplay slice still needs focused source inspection and scope discussion.
+Prepared November 3, 2026 for a fresh chat at the user's request.
 
-November 3, 2026. The user authorized placing models/geometry/decorative flats,
-ordinary doors, the exit and static loot piles. That structural placement pass is
-implemented; see FULL_DUNGEON.md and the newest HANDOFF entry for validation.
-All365 models across the S block and four B border blocks are selected. B blocks'
-disconnected assemblies are authentic alternatives and must not be joined by
-invented geometry. Hall spawn and accepted gameplay are preserved.
+## User direction and first step
 
-Dungeon/decorations are user-accepted; investigate any subsequently reported
-doorway, stair, upper-room or seam issue as a focused regression. Additional loot piles are static visuals;
-existing authored interactive test loot remains separate. Exit is a documented
-exterior boundary. Old normal saves require a fresh K due to exact-section hashing.
+The dungeon/decorations and lectern/bookcase/throne mechanisms are user-accepted.
+The selected next direction is populating Privateer's Hold with original enemies,
+incrementally. No population implementation or marker-policy audit has started.
+A rat was suggested as a possible first creature only if source evidence supports
+it; do not treat that suggestion as a confirmed species or placement decision.
 
-The user explicitly deferred enemy markers/new enemy types and activation
-behaviors such as levers to a following iteration after structural playtesting.
-Do not silently implement them as part of cleanup. Inspect the five nonzero
-source model actions and related flat triggers at the pinned source revision;
-then propose a focused interaction/population slice. No fake functional levers,
-arbitrary teleports/ramps, new water, automap or exterior streaming.
+Read AGENTS.md, the newest HANDOFF entry and this brief first. Inspect the local
+source/data/code, then report the verified marker inventory, proposed population
+policy and a focused first-creature slice before changing gameplay. Clarify only
+material choices that source evidence/project context cannot resolve.
 
-The previous implementation brief below is historical context, not a statement
-that expansion is still unimplemented.
+## Intended first slice
 
-# Previous brief - complete Privateer's Hold dungeon structure
+1. Audit enemy markers in every MAPS block placement and its RDB linked records.
+   Distinguish fixed enemies, random encounter markers and unrelated editor flats
+   from pinned source semantics. Record block/grid/record provenance, mobile IDs,
+   relevant flags and positions. Existing dungeon_layout_inventory.json lists
+   flats but does not establish their full enemy semantics.
+2. Explain which placements can be supported now and which remain deferred.
+   Do not substitute a rat for every unknown creature/random marker, silently
+   implement the whole encounter-table system, or guess player-level/seed policy.
+   Propose fixed versus randomized selection, reproducibility and save behavior.
+3. Add one source-backed creature type after that explanation, reusing existing
+   sprite, navigation, combat, health and audio ownership where appropriate.
+   Inspect original frames/directions/corpse, animation strike events, attributes,
+   health/damage/armor and sounds. Keep decoding in classic_data/classic_archive;
+   creature profiles stay independent of player character state.
+4. Select a small, meaningful set of original placements with checked source
+   identities and stable block-qualified IDs. If the proposed species has no
+   suitable original placement, state that and propose another source-backed
+   starter; any authored test placement must remain explicitly prototype data.
+5. Preserve death/depletion and actor identity on save/load without respawning or
+   rerolling during candidate construction. Reuse existing corpse ownership;
+   do not invent random creature loot or broaden inventory policy automatically.
 
-Prepared November 3, 2026 for a fresh chat/agent at the user's request.
+Scope is the population foundation plus one creature slice, not a fully populated
+or balanced dungeon. Additional species and random tables can follow separately.
+No new quests, generic traps, automap, exterior streaming, spells, water or player
+progression/rebalance is automatically included.
 
-## User direction
+## Accepted world and gameplay
 
-Swimming, including climbing out of water, is accepted as good enough for now.
-The user chose **expanding the current dungeon, probably finishing the rest of
-its structure**. They believe it is close to structurally complete; verify the
-remaining extent from original data rather than treating that estimate as fact.
-Encumbrance was suggested but was not selected. Automap, encounter/loot-loop
-expansion and additional spell/swimming work are not the selected milestone.
+- Five source blocks: S0000999(0,0), B0000009(-1,0), B0000006(0,-1),
+  B0000003(1,0), B0000012(0,1). All365 models,58 doors,130 decorative flats,
+  seven additional static piles and the original exterior-boundary exit load.
+  B border blocks intentionally contain disconnected alternative assemblies.
+  Do not join them artificially or blindly populate their unreachable leftovers.
+- Normal start remains in the hall. Preserve hall bear30HP, player300HP/
+  150magicka,13 owned instances/seven unequipped armor, equipped dagger, weapon
+  skills50, passive chamber and first-enemy alias. Existing test grants and
+  prototype bear are separate from new original-marker population. Do not remove
+  or rebalance them while adding encounters; explain any duplication conflict.
+- Preserve accepted random RMB attacks/Z sheath, seven spells, inventory/UID/
+  armor/drop sessions, common modal/capture, fatigue/rest/fall, K/L/R and editor
+  F5/F9. Preserve standing/crouch/stair/climb/swim behavior and native geometry.
+  Swimming stays in its opt-in fixture; skeleton/swim section copies remain
+  independent and should not be regenerated from the expanded normal section.
+- Working E mechanisms: lectern rotates bookcase; lever moves platform/throne.
+  Actor/headroom obstruction pauses safely; modal/release/death pause progress;
+  K/rest refuse unsettled motion. Keep these and the static nook piles intact.
+  Unknown27 billboard action remains deferred. See ACTION_OBJECTS.md.
 
-This chat only prepared documentation. No dungeon expansion has been implemented.
-The next agent should read AGENTS.md, the newest HANDOFF.md and this brief,
-inspect code/original data/pinned references, then briefly state the verified
-remaining layout and implementation approach before broad scene changes.
-Routine source-backed expansion is the requested direction; clarify only material
-scope choices or missing behaviors that cannot be resolved from the project.
+## Code and pinned evidence to inspect
 
-## Intended result and scope
+- scripts/classic_data.gd, classic_archive.gd, classic_section.gd, main.gd and
+  sections/privateers_hold_opening.json for decoding, checked selection/assembly.
+- enemy.gd, enemy_sprite.gd, enemy_navigation.gd, enemy_melee.gd, combat_model.gd,
+  combat_resolver.gd, health.gd, combat_audio.gd, corpse_target.gd, save_game.gd.
+- docs/BEAR_PLAYTEST.md, SKELETON.md, ENEMY_NAVIGATION.md, COMBAT_RESOLUTION.md,
+  AUDIO.md, SAVE_LOAD.md, SECTION_FORMAT.md and FULL_DUNGEON.md. Older feature
+  counts/schema statements are history; latest accepted conventions take priority.
+- Cached RDBLayout.cs, BlocksFile.cs, DFBlock.cs, EnemyBasics.cs, EnemyEntity.cs,
+  EnemyMotor.cs, EnemySenses.cs, EnemyAttack.cs, EnemySounds.cs and MonsterFile.cs.
+  See reference/enemy_sprite_sources.json, enemy_ai_sources.json,
+  combat_resolution_sources.json and action_sources.json for existing evidence.
+- Missing references must use pinned DFU revision
+  4e78e1412b17b60f4d5d6073825775aa5ae95139 with paths/hashes/license recorded.
+  Never silently switch to master. C:/Games/Daggerfall/arena2 stays read-only;
+  no original archives/sprites/audio are bundled.
 
-Make the remaining original Privateer's Hold rooms, passages, stairs, connecting
-doors and structural assemblies reachable, aiming for the complete connected
-dungeon structure rather than stopping at the current great-hall selection.
-Interpret structure as authentic original layout/placements, collision and
-necessary traversal/door interaction. Retain original structural props/columns
-where needed to complete room assemblies. Do not redesign the layout.
+## Saves and focused validation
 
-First inventory the entire location's MAPS.BSA block layout and BLOCKS.BSA RDB
-placements. Determine whether completion fits S0000999.RDB or needs other blocks;
-do not equate completing one block with completing the dungeon. If multiple
-blocks are required, extend checked placement/provenance and decoding cleanly
-rather than silently dropping connections or hardcoding neighboring coordinates.
+Current schema9 includes character/resources/spells/anchor and settled action
+endpoints, with an exact section fingerprint. Changed selections may invalidate
+old slots; explain fresh-K requirements. Preserve validation and fresh-candidate
+clearance/support/capture restoration instead of weakening them for old saves.
+Never overwrite saves/manual.json in tests; keep isolated stable scratch slots.
 
-New enemy populations, randomized loot, quests, lockpicking, traps, complete
-classic action chains, automap, exterior/world streaming and unrelated character
-systems are not automatically authorized by structural completion. Identify any
-special door/lift/moving geometry or exit behavior actually required to traverse
-the source layout, inspect pinned evidence and propose a focused solution when
-needed. Never pretend an unsupported mechanism works or cover it with arbitrary
-teleports/ramps. An original exit can remain a clearly documented boundary if
-actual exterior streaming would otherwise be required; report that distinction.
+Follow AGENTS.md Validation and TESTING.md: select affected creature/combat/
+navigation checks and direct save/load/modal integrations. Render the new
+creature's facing, attack/hurt/death and actual placement. Add a purposeful
+regression to existing coverage where practical; no automatic new suite, complete
+old-world fixture, broad screenshot bank or full Run.ps1 -Test after every edit.
+Use stable replaceable tests/output/ paths and concise failure summaries.
+Full regression needs a stated cross-system or milestone-checkpoint reason.
 
-Do not add water/pools to the normal dungeon. This dungeon has been treated as
-dry; retain the separate opt-in authored swimming fixture. Validate any newly
-encountered source semantics instead of inferring them from room appearance.
+Last carried validation: full_dungeon103/103 including33 mechanism cases,
+audio43/43, persistence61/61 plus4 fresh-process, action reload4/4,
+fatigue/rest62/62; rendered actions33/33 with both modes inspected. User then
+accepted the mechanisms. No known unresolved mechanism failure was reported.
+This handoff is documentation-only: no gameplay changes or new Godot test runs.
 
-## Current structural baseline, inspected for this handoff
-
-- Active file: sections/privateers_hold_opening.json via data_source.cfg.
-- Location: region17, Privateer's Hold; exterior/location ID50049, dungeon ID50050.
-- Selected flagged starting block: S0000999.RDB.
-- 53 selected original mesh records:47 geometry,3 interactive doors,3 props.
-- Three decorative billboards and11 authored branch/exit caps.
-- Existing route: original cave/door, first stairs, corridor loop, second stairs,
-  anteroom/two doors, complete great staircase hall and upper gallery.
-- Normal start: authored hall/stair prototype.player_start. Original199:8 marker
-  and provenance remain independently validated; full-route tests use
-  main.use_original_start=true.
-- Current importer load_slice resolves only the flagged starting block and exact
-  authored record selections. It does not currently build a full multi-block
-  dungeon, discover connectivity or decode arbitrary classic action behavior.
-- Cap IDs:side_chamber_limit, south_chamber_limit, alternate_stair_limit,
-  anteroom_east_limit, hall_west_limit, hall_east_limit, upper_north_limit,
-  upper_east_limit, mid_north_limit, mid_south_limit, upper_west_limit.
-
-No remaining-record/block count has been audited in this documentation pass.
-Do not state a percentage complete until the source inventory supports it.
-
-## Implementation approach
-
-1. Produce a read-only inventory of location blocks, selected/unselected model
-   placements, door/action records and plausible connections. Identify structural
-   versus decoration/editor-marker records and inspect the actual geometry.
-   Existing inspect_section_records.py only lists a few fixed decoration offsets;
-   it is not a whole-dungeon audit. inspect_portals.py supplies polygon-edge
-   candidates, not proof that rooms connect or that the player can pass.
-2. Extend checked section data with the actual remaining structural placements.
-   Keep source IDs/record offsets/expected identities, block coordinates, origin,
-   spawn provenance and authored additions explicit. For additional blocks, ensure
-   object IDs are unique and provenance remains unambiguous across blocks.
-   Original positions stay in source data; no invented door offsets or hardcoded
-   room selections in gameplay/importer scripts.
-3. Import/build connected branches in manageable passes toward complete structure.
-   Remove an existing cap only when the real connected space is loaded/collidable.
-   Keep caps only at genuine intentionally unsupported boundaries and explain them.
-   Preserve all existing selected placements and authored primary-door ordering.
-4. Preserve source mesh scale, rotations, stairs, UVs, archive swaps and native
-   door leaf orientation. Use the established collision/motor. Diagnose actual
-   missing placements/winding/projection before changing dimensions or adding
-   geometry. No hidden ramps, approximate room replacements or global retuning.
-5. Validate actual continuous traversal through all new branches, junctions, stairs
-   and doors with return paths; inspect floors, walls, ceilings, seams and drops.
-   Make the completed layout manually reachable in normal main.tscn while keeping
-   the accepted hall start unless a concrete reason/user direction changes it.
-6. Keep the existing bear/test setup and passive chamber intact. Add restrained
-   authored fill lighting only where needed to inspect newly loaded spaces,
-   following current calibration. Full original population, decoration and lighting
-   fidelity are separate from structural completion.
-7. Report coverage honestly: loaded blocks/structural records, reachable branches,
-   unsupported mechanisms/exits, remaining caps and visual/manual limitations.
-
-## Code, evidence and tools to inspect
-
-- scripts/classic_archive.gd, classic_data.gd and classic_section.gd: original
-  decoding, block/origin transforms, identity/schema validation, selective import.
-- scripts/main.gd and section JSON: assembly, primary-door alias, spawn,
-  authored boundaries/lights/enemies and runtime UI.
-- scripts/door.gd, step_solver.gd, player.gd, climbing_motor.gd and corners:
-  collision/hinges, safe close, stairs/air momentum, climbing and capsule traversal.
-- docs/SECTION_FORMAT.md, GREAT_HALL_EXPANSION.md, STAIR_TRAVERSAL.md and
-  MOVEMENT_TUNING.md. Some older feature documents contain historical status/counts;
-  current handoff/accepted conventions take precedence.
-- tools/inspect_data.py, inspect_stairs.py, inspect_portals.py,
-  inspect_section_records.py and audit_scale.py/audit_textures.py/audit_stairs.py.
-  Review assumptions before reusing them for additional records or blocks.
-- reference/RDBLayout.cs and cached layout/archive sources plus their manifests.
-  Missing source must be fetched at the existing pinned DFU revision
-  4e78e1412b17b60f4d5d6073825775aa5ae95139, with paths/hashes/license recorded.
-  Do not silently update to master.
-- External C:/Games/Daggerfall/arena2 is strictly read-only. Never bundle archives.
-
-## Accepted gameplay and fixture constraints
-
-Preserve bear30HP/player300HP/150magicka/weapon skills50,13 owned item instances,
-seven initially unequipped armor pieces, equipped dagger, passive chamber/
-first-enemy alias, random RMB melee/Z sheath, combat/armor formulas, inventory
-UID/stacking/drop sessions, common modal/capture behavior and K/L/R.
-F5/F9 remain editor keys. Keep all seven spells and existing finite Shield,
-single-use persistent Teleport anchor and48m elemental impacts.
-
-Preserve standing1.8m/radius0.35/eye1.71, Ctrl crouch toggle/airborne rules,
-grounded camera smoothing, verified stairs, free-flight momentum, climbing/
-corners/backward ledges, fatigue/rest/fall and live config/character precedence.
-
-Swimming is accepted: separate fixtures/swimming_pool.tscn (Run Current Scene/F6),
-Page Up/Page Down vertical controls, immediate drowning at zero breath through
-Shield, body immersion separate from swim ownership, W wall attachment/climb onto
-dry rim, underwater breath while climbing and safe ejection back to swimming.
-Keep water/fixture scope isolated from the default dungeon and from expansions.
-
-The swimming section copy (fixtures/swimming_section.json) and skeleton regression
-scene/section are separate fixtures, not automatic targets for expanded normal
-layout. Preserve their intended baselines. Do not casually regenerate them from
-the changed normal section.
-
-## Persistence and validation
-
-Schema9 fingerprints the exact section definition. Expanding that definition
-will intentionally invalidate old same-section saves unless a deliberately
-designed compatibility scheme is added; migration is not required for this
-milestone. Explain fresh-K requirements when shipped. Do not weaken fingerprint,
-anchor context, clearance or candidate-swap validation to make old slots load.
-Never overwrite saves/manual.json in tests. Preserve separate pool save context.
-
-Choose relevant importer/movement/collision/interaction suites and affected
-integrations under TESTING.md; justify full regression at a substantial milestone
-checkpoint. Render affected traversal/presentation scenarios in relevant modes. Extend independent
-source audit fixtures for added records/materials without blessing incorrect
-output. Existing smoke/boundary/count expectations will need deliberate updates;
-retain coverage of the accepted original route and giant stairs. Freeze a
-dedicated legacy fixture only where a test truly needs an old authored layout,
-rather than weakening current-world assertions to force a pass.
-
-Add continuous outbound/return tests for newly opened routes; checkpoint teleports
-alone do not establish traversal. Check capsule clearance, interaction obstruction,
-door close safety, large-room collision, stairs/jumps, climbing/ledges, fall damage,
-enemy navigation around the accepted target and save/Teleport placement in the
-expanded context. Verify startup/import cost is practical; no premature streaming
-system is required without evidence.
-
-Update README, feature docs, AGENTS, HANDOFF and this brief when shipped.
-Distinguish automated, rendered/visual and user-feel verification.
-
-## Carried validation
-
-Accepted swimming/climbing baseline:1638/1638 headless assertions across29 suites
-and six separate-process reloads;59/59 rendered swimming checks.
-Logs:tests/swimming_climb_complete_regression.log and
-tests/swimming_climb_rendered.log. User subsequently accepted swimming as good
-enough for now. Existing restricted-host/legacy fixture diagnostics remain
-nonblocking; no unresolved gameplay failure was reported.
-No gameplay changes or tests were performed for this documentation-only handoff.

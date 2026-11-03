@@ -1550,7 +1550,9 @@
             "duration": 0,
             "magnitude": 0,
             "next": -2,
-            "flags": 0
+            "flags": 0,
+            "trigger": 0,
+            "sound": 0
           }
         },
         {
@@ -3445,7 +3447,9 @@
             "duration": 34,
             "magnitude": 472,
             "next": -2,
-            "flags": 8
+            "flags": 8,
+            "trigger": 0,
+            "sound": 70
           }
         },
         {
@@ -3469,7 +3473,9 @@
             "duration": 0,
             "magnitude": 0,
             "next": 27861,
-            "flags": 30
+            "flags": 30,
+            "trigger": 2,
+            "sound": 0
           }
         },
         {
@@ -4494,7 +4500,9 @@
             "duration": 18,
             "magnitude": 144,
             "next": 32083,
-            "flags": 8
+            "flags": 8,
+            "trigger": 2,
+            "sound": 72
           }
         },
         {
@@ -4535,7 +4543,9 @@
             "duration": 104,
             "magnitude": 224,
             "next": -2,
-            "flags": 1
+            "flags": 1,
+            "trigger": 0,
+            "sound": 0
           }
         },
         {
@@ -4559,7 +4569,9 @@
             "duration": 104,
             "magnitude": 224,
             "next": 32131,
-            "flags": 1
+            "flags": 1,
+            "trigger": 0,
+            "sound": 42
           }
         },
         {

@@ -1172,7 +1172,16 @@
       "record_offset": 27861,
       "expected_model": "41042",
       "role": "geometry",
-      "collision": true
+      "collision": true,
+      "expected_action": {
+        "axis": 4,
+        "duration": 34,
+        "magnitude": 472,
+        "next": -2,
+        "flags": 8,
+        "trigger": 0,
+        "sound": 70
+      }
     },
     {
       "id": "s0000999_r27790",
@@ -1180,7 +1189,16 @@
       "record_offset": 27790,
       "expected_model": "41020",
       "role": "geometry",
-      "collision": true
+      "collision": true,
+      "expected_action": {
+        "axis": 0,
+        "duration": 0,
+        "magnitude": 0,
+        "next": 27861,
+        "flags": 30,
+        "trigger": 2,
+        "sound": 0
+      }
     },
     {
       "id": "s0000999_r27742",
@@ -1372,7 +1390,16 @@
       "record_offset": 32273,
       "expected_model": "61027",
       "role": "geometry",
-      "collision": true
+      "collision": true,
+      "expected_action": {
+        "axis": 5,
+        "duration": 18,
+        "magnitude": 144,
+        "next": 32083,
+        "flags": 8,
+        "trigger": 2,
+        "sound": 72
+      }
     },
     {
       "id": "s0000999_r32202",
@@ -1388,7 +1415,16 @@
       "record_offset": 32131,
       "expected_model": "41123",
       "role": "geometry",
-      "collision": true
+      "collision": true,
+      "expected_action": {
+        "axis": 4,
+        "duration": 104,
+        "magnitude": 224,
+        "next": -2,
+        "flags": 1,
+        "trigger": 0,
+        "sound": 0
+      }
     },
     {
       "id": "s0000999_r32083",
@@ -1396,7 +1432,16 @@
       "record_offset": 32083,
       "expected_model": "72019",
       "role": "geometry",
-      "collision": true
+      "collision": true,
+      "expected_action": {
+        "axis": 4,
+        "duration": 104,
+        "magnitude": 224,
+        "next": 32131,
+        "flags": 1,
+        "trigger": 0,
+        "sound": 42
+      }
     },
     {
       "id": "s0000999_r30956",

@@ -1,0 +1,15 @@
+ERROR: Failed to open 'user://logs/godot2026-11-03T18.05.41.log'.
+   at: copy (core/io/dir_access.cpp:429)
+ERROR: Failed to open log file for writing: user://logs/godot.log
+   at: rotate_file (core/io/logger.cpp:169)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold complete original structural placements", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "blocks": [{ "name": "S0000999.RDB", "x": 0, "z": 0 }, { "name": "B0000009.RDB", "x": -1, "z": 0 }, { "name": "B0000006.RDB", "x": 0, "z": -1 }, { "name": "B0000003.RDB", "x": 1, "z": 0 }, { "name": "B0000012.RDB", "x": 0, "z": 1 }], "start": (0.0, 0.625, 0.0) } triangles=9263 textures=81
+PASS Expanded normal dungeon builds
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold complete original structural placements", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "blocks": [{ "name": "S0000999.RDB", "x": 0, "z": 0 }, { "name": "B0000009.RDB", "x": -1, "z": 0 }, { "name": "B0000006.RDB", "x": 0, "z": -1 }, { "name": "B0000003.RDB", "x": 1, "z": 0 }, { "name": "B0000012.RDB", "x": 0, "z": 1 }], "start": (0.0, 0.625, 0.0) } triangles=9263 textures=81
+PASS Separate process restores the isolated mechanism slot
+PASS Separate process restores both endpoints and elevated rider support
+PASS Restoring a mechanism does not replay its activation sound
+ACTION_RELOAD 4/4

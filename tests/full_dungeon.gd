@@ -2,6 +2,189 @@ extends "res://tests/expansion.gd"
 ## Expanded normal world: independent source placements plus physical routes.
 const SLOT := "res://saves/full_dungeon_test.json"
 var deep_destination := Vector3.ZERO
+const ACTION_SLOT := "res://tests/output/actions_save.json"
+
+func place_actor(at: Vector3) -> void:
+	player.position = at
+	player.velocity = Vector3.ZERO
+	player.flight_horizontal = Vector3.ZERO
+	player.climbing.reset()
+	player.falling.reset()
+	player.stair_supported = false
+	player.step_camera_offset = 0.0
+
+func action_capture(label: String, at: Vector3, target: Vector3) -> void:
+	if DisplayServer.get_name() == "headless":
+		return
+	var previous := player.position
+	var previous_yaw := player.rotation.y
+	var previous_pitch: float = player.camera.rotation.x
+	var profile: String = level.presentation.profile
+	place_actor(at)
+	player.look_at(Vector3(target.x, at.y, target.z))
+	player.camera.look_at(target)
+	player.set_physics_process(false)
+	for mode in ["dfu_reference","widescreen"]:
+		level.presentation.set_profile(mode)
+		for i in 4:
+			await process_frame
+		await RenderingServer.frame_post_draw
+		root.get_texture().get_image().save_png("res://tests/output/" + label + "_" + mode + ".png")
+	level.presentation.set_profile(profile)
+	place_actor(previous)
+	player.rotation.y = previous_yaw
+	player.camera.rotation.x = previous_pitch
+	player.set_physics_process(true)
+	await frames(3)
+
+func action_checks() -> void:
+	var previous_count := results.size()
+	var previous_failures := failures.size()
+	DirAccess.make_dir_recursive_absolute("res://tests/output")
+	var controller: Node = level.actions
+	var action_sounds: Array[int] = []
+	level.combat_audio.played.connect(func(event: String, ordinal: int, _spatial: bool):
+		if event == "action":
+			action_sounds.append(ordinal))
+	var lectern := "s0000999_r27790"
+	var lever := "s0000999_r32273"
+	var book: Node3D = level.model_nodes.s0000999_r27861
+	var platform: Node3D = level.model_nodes.s0000999_r32083
+	var throne: Node3D = level.model_nodes.s0000999_r32131
+	var book_start := book.transform
+	var platform_start := platform.position
+	var throne_start := throne.position
+	check(controller.groups.size() == 2 and controller.entries.size() == 5, "Only five checked model actions form two source-linked mechanisms")
+	var changed: Dictionary = level.classic.section.definition.duplicate(true)
+	for entry in changed.models:
+		if entry.has("expected_action"):
+			entry.expected_action.magnitude += 1
+			break
+	var temporary := FileAccess.open("res://tests/output/action_source_case.json",FileAccess.WRITE)
+	temporary.store_string(JSON.stringify(changed))
+	temporary.close()
+	var checked := preload("res://scripts/classic_data.gd").new()
+	check(not checked.load_slice("res://tests/output/action_source_case.json") and "Source action mismatch" in checked.error, "Source action parameters are checked against original bytes before scene construction")
+	place_actor(level.classic.to_world([736,-1280,1740]))
+	await frames(12)
+	var target: Node3D = level.model_nodes[lectern]
+	var mesh: MeshInstance3D = target.get_child(0)
+	# The lectern's AABB centre is empty space beneath its slanted reading top.
+	var faces := mesh.mesh.get_faces()
+	for index in range(0, faces.size(), 3):
+		var point := (faces[index] + faces[index+1] + faces[index+2]) / 3.0
+		player.camera.look_at(target.transform * point)
+		await frames(2)
+		if player.interact_target == target:
+			break
+	check(player.interact_target == target, "Original lectern is acquired by the existing obstructed E interaction ray")
+	if player.interact_target == target:
+		var event := InputEventAction.new()
+		event.action = "interact"
+		event.pressed = true
+		Input.parse_input_event(event)
+		await frames(2)
+		Input.action_release("interact")
+	else:
+		target.interact()
+	await frames(120)
+	check(controller.groups[lectern].raised and not controller.moving() and book.basis.is_equal_approx(book_start.basis * Basis(Vector3.UP, -472.0 * TAU / 2048.0)), "Lectern rotates the source bookcase by83degrees around its original pivot")
+	for point in [[500,-1280,1922],[400,-1280,1922],[330,-1280,1922],[320,-1280,1960],[320,-1280,2000]]:
+		if not await walk(point):
+			break
+	for point in [[320,-1280,1960],[330,-1280,1922],[400,-1280,1922],[500,-1280,1922],[736,-1280,1740]]:
+		if not await walk(point):
+			break
+	await action_capture("bookcase_open", level.classic.to_world([640,-1280,1850]), level.classic.to_world([340,-1320,1980]))
+	# Closing through the player must pause without changing collision ownership.
+	var book_mesh: MeshInstance3D = book.get_child(0)
+	var centre := book.transform * book_mesh.mesh.get_aabb().get_center()
+	place_actor(Vector3(centre.x,32.001,centre.z))
+	controller.activate(lectern)
+	await frames(5)
+	check(controller.groups[lectern].busy and controller.groups[lectern].blocked, "Bookcase pauses when its next pose overlaps the full player capsule")
+	place_actor(level.classic.to_world([736,-1280,1740]))
+	await frames(120)
+	check(not controller.moving() and book.transform.is_equal_approx(book_start), "Clearing the bookcase lets it return exactly to its source pose")
+	await action_capture("bookcase_closed",level.classic.to_world([640,-1280,1850]),level.classic.to_world([340,-1320,1980]))
+	place_actor(level.classic.to_world([1695,-1024,1096]))
+	await frames(12)
+	target = level.model_nodes[lever]
+	mesh = target.get_child(0)
+	player.camera.look_at(target.transform * mesh.mesh.get_aabb().get_center())
+	await frames(2)
+	check(player.interact_target == target, "Original hall lever is acquired by E interaction ray")
+	# Isolated ride setup; subsequent displacement must be produced by the lift.
+	place_actor(platform_start + Vector3(-0.9,0.401,0.8))
+	await frames(15)
+	var ride_start := player.position
+	# A temporary ceiling exercises the real capsule headroom guard on a rider.
+	var ceiling := StaticBody3D.new()
+	var ceiling_shape := CollisionShape3D.new()
+	var box := BoxShape3D.new()
+	box.size = Vector3(1.5,0.2,1.5)
+	ceiling_shape.shape = box
+	ceiling.add_child(ceiling_shape)
+	ceiling.position = ride_start + Vector3.UP * 2.15
+	level.world_root.add_child(ceiling)
+	await frames(2)
+	controller.activate(lever)
+	controller.activate(lever)
+	await frames(45)
+	check(controller.groups[lever].busy and controller.groups[lever].forward and controller.groups[lever].blocked and player.health.current == 300, "Repeated E cannot reverse a moving lift; rider headroom stops the whole chain safely")
+	ceiling.queue_free()
+	await frames(2)
+	await frames(90)
+	check(level.combat_audio.archive.ordinal_for_id(70) == 326 and level.combat_audio.archive.ordinal_for_id(72) == 328 and level.combat_audio.archive.ordinal_for_id(42) == 40 and action_sounds == [326,326,328,40], "Source sound IDs resolve and play once per accepted toggle, with no repeat on busy E")
+	var elapsed: float = controller.groups[lever].elapsed
+	var pose_before := platform.position
+	level.character_sheet.open()
+	await frames(20)
+	check(platform.position.is_equal_approx(pose_before) and is_equal_approx(controller.groups[lever].elapsed,elapsed), "Shared modal pauses mechanism progress")
+	level.character_sheet.close()
+	player.controls_active = false
+	await frames(12)
+	check(platform.position.is_equal_approx(pose_before), "Released controls pause mechanisms")
+	player.controls_active = true
+	check("mechanism" in level.persistence.refusal(), "K refuses saving while any linked mechanism is moving")
+	check("mechanism" in level.rest_window.rest.refusal(), "Rest refuses an unsettled mechanism")
+	await frames(300)
+	check(not controller.moving() and platform.position.distance_to(platform_start + Vector3.UP*5.6) < 0.001 and throne.position.distance_to(throne_start + Vector3.UP*5.6) < 0.001, "Platform and throne rise5.6metres together over source timing")
+	print("RIDE_UP ", ride_start, " -> ", player.position)
+	check(absf(player.position.y - ride_start.y - 5.6) < 0.06 and player.is_grounded(), "Full player capsule rides the original platform upward without motor retuning")
+	await action_capture("throne_raised",level.classic.to_world([1450,-1024,1000]),throne.position + Vector3.UP*0.6)
+	var raised_player := player.position
+	controller.activate(lever)
+	await frames(340)
+	check(platform.position.distance_to(platform_start) < 0.001 and throne.position.distance_to(throne_start) < 0.001, "Second lever toggle lowers both objects to exact source positions")
+	print("RIDE_DOWN ", raised_player, " -> ", player.position)
+	check(player.position.distance_to(ride_start) < 0.08 and player.health.current == 300, "Player rides downward without separation or fall damage")
+	await action_capture("throne_lowered",level.classic.to_world([1450,-1024,1000]),throne.position + Vector3.UP*0.6)
+	# Persist raised states, restoring collision before candidate placement checks.
+	controller.activate(lever)
+	await frames(340)
+	place_actor(level.classic.to_world([736,-1280,1740]))
+	controller.activate(lectern)
+	await frames(120)
+	place_actor(platform_start + Vector3(-0.9,6.001,0.8))
+	await frames(15)
+	level.persistence.slot_path = ACTION_SLOT
+	check(level.persistence.save_slot(), "Settled mechanism states save in an isolated slot")
+	var data: Dictionary = level.persistence.snapshot()
+	data.actions[lever] = "raised"
+	check(not level.persistence.validate(data), "Save validation rejects malformed mechanism state")
+	data = level.persistence.snapshot()
+	data.actions.erase(lectern)
+	check(not level.persistence.validate(data), "Save validation requires all selected mechanism IDs")
+	check(await level.persistence.load_slot(), "Fresh candidate restores both mechanism states before player clearance")
+	level = current_scene
+	player = level.player
+	await frames(12)
+	check(level.actions.snapshot() == {lectern:true,lever:true}, "Load preserves raised throne and open bookcase without replaying motion")
+	check(player.is_grounded() and absf(player.position.y-platform_start.y-6.0)<0.03, "Candidate restores elevated platform support before validating the saved rider")
+	var file := FileAccess.open("res://tests/output/actions_results.txt",FileAccess.WRITE)
+	file.store_string("\n".join(results))
+	print("ACTION_CHECKS ",results.size()-previous_count-failures.size()+previous_failures,"/",results.size()-previous_count)
 
 func restore_deep() -> void:
 	level.persistence.slot_path = SLOT
@@ -132,6 +315,7 @@ func source_checks() -> void:
 	DirAccess.remove_absolute("res://tests/full_dungeon_invalid.json")
 
 func run() -> void:
+	DirAccess.make_dir_recursive_absolute("res://tests/output")
 	if DisplayServer.get_name() != "headless":
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 	var begin := Time.get_ticks_msec()
@@ -150,6 +334,21 @@ func run() -> void:
 	for enemy in level.enemies:
 		enemy.melee.enabled = false
 		enemy.set_physics_process(false)
+	if "--actions-only" in OS.get_cmdline_user_args():
+		await action_checks()
+		quit(0 if failures.is_empty() else 1)
+		return
+	if "--actions-read" in OS.get_cmdline_user_args():
+		level.persistence.slot_path = ACTION_SLOT
+		check(await level.persistence.load_slot(), "Separate process restores the isolated mechanism slot")
+		level = current_scene
+		player = level.player
+		await frames(12)
+		check(level.actions.snapshot() == {"s0000999_r27790":true,"s0000999_r32273":true} and player.is_grounded() and absf(player.position.y-32.1)<0.03, "Separate process restores both endpoints and elevated rider support")
+		check(level.combat_audio.voices.all(func(voice: Node): return not voice.get_meta("action_voice",false)), "Restoring a mechanism does not replay its activation sound")
+		print("ACTION_RELOAD ",results.size()-failures.size(),"/",results.size())
+		quit(0 if failures.is_empty() else 1)
+		return
 	if "--full-dungeon-read" in OS.get_cmdline_user_args():
 		var routes: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://tests/dungeon_floor_audit.json"))
 		var saved: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(SLOT))
@@ -220,7 +419,8 @@ func run() -> void:
 					break
 	if failures.is_empty():
 		await restore_deep()
-	var file := FileAccess.open("res://tests/full_dungeon_results.txt", FileAccess.WRITE)
+		await action_checks()
+	var file := FileAccess.open("res://tests/output/full_dungeon_results.txt", FileAccess.WRITE)
 	file.store_string("\n".join(results))
 	print("FULL_DUNGEON_CHECKS ", results.size() - failures.size(), "/", results.size())
 	quit(0 if failures.is_empty() else 1)

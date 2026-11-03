@@ -1,4 +1,69 @@
-# Latest direction - dungeon accepted; targeted testing policy adopted
+# Resume here: mechanisms accepted; original enemy population selected next
+
+November 3, 2026. User reported the lectern/bookcase and throne lift "Works great"
+and accepted them. Dungeon/decorations/swimming were already accepted. The user
+selected original dungeon population as the next direction and requested this
+handoff for a fresh chat. No enemy-population implementation has started.
+
+Read AGENTS.md, this newest entry and docs/NEXT_MILESTONE.md first; older handoffs
+are history. Audit original enemy markers across the five MAPS blocks and pinned
+DFU evidence, distinguish fixed from randomized encounters, then briefly propose
+the population policy and one first-creature slice before gameplay changes.
+A rat was suggested only if supported by the source audit; it is not a confirmed
+choice, and no marker identities/population rules have been verified yet.
+
+Preserve the accepted hall start, bear30HP/player300HP/150magicka/13items/seven
+unequipped armor, passive chamber/first-enemy alias, combat/motor/modal/save
+ownership, seven spells, static piles and both working mechanisms. Keep skeleton
+and swimming fixtures independent. Do not rebalance the player while populating
+the dungeon or turn unsupported/random markers into arbitrary rats. Border-block
+disconnected alternatives are normal; do not populate inaccessible fragments
+blindly or join them artificially. Unknown27 and exterior streaming stay deferred.
+
+Current mechanism implementation is documented in ACTION_OBJECTS.md; schema9
+stores settled actions endpoints and exact section fingerprints. Existing old
+normal saves need fresh K; never overwrite manual.json in tests. Last focused
+checks passed: full_dungeon103/103 (includes33 actions), audio43/43,
+persistence61/61 plus4 fresh-process, action reload4/4, fatigue/rest62/62;
+rendered actions33/33 with both presentation modes inspected. User subsequently
+accepted behavior; no remaining mechanism failure was reported.
+
+Targeted-testing policy remains mandatory: relevant creature/navigation/combat/
+persistence checks, scoped rendered inspection, reusable tests/output/ artifacts.
+No automatic full regression or new suite/legacy fixture for every feature.
+This handoff changes documentation only; document/link consistency checks, no
+gameplay changes or Godot regression run. See TESTING.md for commands/retention.
+
+# Previous: lectern/bookcase and throne lift implemented; playtest next
+
+November 3, 2026. User authorized the two confirmed mechanisms after source
+inspection. E lectern41020/27790 rotates bookcase41042/27861 (~83degrees/1.7s);
+E lever61027/32273 rotates the handle and moves platform72019/32083 plus
+throne41123/32131 together upward5.6m over5.2s; toggles reverse. Source fields/
+links are checked in section expected_action, decoded by classic_data. No extra
+action type, enemy population or loot contents. Unknown27 remains unchanged.
+
+classic_actions owns simultaneous grouped motion and safe actor/headroom pause;
+action_object exposes E. Native platform carrying works both directions without
+motor retuning. Repeats during motion ignored. Modal/release/death pause; K/rest
+wait for settled state. Source IDs70/72/42 resolve to ordinals326/328/40 through
+existing bounded spatial audio. Schema9 stores exact boolean group endpoints;
+restore is silent and precedes candidate support/clearance, including raised
+platform riders. Changed section fingerprint means fresh K required. No manual
+save was touched. Read ACTION_OBJECTS.md/reference/action_sources.json.
+
+Focused validation passed: full_dungeon103/103 including33 mechanism checks,
+audio43/43, persistence61/61 plus4 fresh-process checks, action reload4/4,
+fatigue/rest62/62. Rendered mechanisms33/33; open/closed and raised/lowered views
+inspected in4:3/widescreen. Final logs/captures/scratch state use tests/output/.
+No full regression run or new suite/mandatory reader was added; existing
+full_dungeon now includes the cases and accepts --actions-only/--actions-read.
+No failed assertions/script errors in final reports; existing headless host/
+legacy diagnostics remain nonblocking. Embedded-editor feel/listening are user
+verification. Dungeon/decorations were already accepted; these mechanisms now
+need playtesting before choosing the next population/interaction milestone.
+
+# Previous direction - dungeon accepted; targeted testing policy adopted
 
 November 3, 2026. User accepted the dungeon and decorations as looking great.
 They requested focused testing/documentation policy to prevent indefinite suite,

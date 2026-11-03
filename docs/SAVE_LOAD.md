@@ -1,3 +1,12 @@
+# Action-object extension - schema9, section-bound endpoints
+
+Snapshots now include actions{triggerID:boolean}. Require exactly the selected
+groups; no-action legacy sections may omit the empty map. K refuses unsettled
+mechanisms. Restore endpoints silently before candidate clearance/support,
+including elevated riders. No pending activation/mid-motion state or sounds
+replay on load. The new normal-section fingerprint requires a fresh K save;
+manual slots are not touched by tests. See ACTION_OBJECTS.md.
+
 # Current Teleport extension - schema9
 
 Shared Mysticism and a bounded same-section anchor (position/yaw/pitch/posture)

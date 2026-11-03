@@ -32,6 +32,8 @@ func refusal() -> String:
 	var player: CharacterBody3D = level.player
 	if player.is_dead():
 		return "You cannot rest while dead. L loads your save."
+	if level.actions.moving():
+		return "Wait for the mechanism to stop."
 	if player.swimming.touching(player):
 		return "Leave the water before resting."
 	if player.climbing.active or not player.is_grounded():
