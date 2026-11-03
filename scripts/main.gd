@@ -6,6 +6,7 @@ const Enemy = preload("res://scripts/enemy.gd")
 const Presentation = preload("res://scripts/classic_presentation.gd")
 const Billboard = preload("res://scripts/classic_billboard.gd")
 var section_path := Data.DEFAULT_SECTION
+var persistence_context := ""
 @export var section_override_path := ""
 @export var combat_profile_path := "res://combat.cfg"
 var model_nodes: Dictionary = {}
@@ -221,7 +222,7 @@ func configure_input() -> void:
 		var release_click := InputEventMouseButton.new()
 		release_click.button_index = MOUSE_BUTTON_LEFT
 		InputMap.action_add_event("release_spell", release_click)
-	var keys := {"spellbook": KEY_B, "cast_spell": KEY_Q, "recast_spell": KEY_F, "rest": KEY_T, "character_sheet": KEY_C, "inventory": KEY_I, "ready_weapon": KEY_Z, "crouch": KEY_CTRL, "forward": KEY_W, "back": KEY_S, "left": KEY_A, "right": KEY_D, "sprint": KEY_SHIFT, "jump": KEY_SPACE, "interact": KEY_E, "release_mouse": KEY_ESCAPE, "reset": KEY_R, "toggle_view": KEY_F2, "reload_movement": KEY_F3, "movement_debug": KEY_F4}
+	var keys := {"swim_up": KEY_PAGEUP, "swim_down": KEY_PAGEDOWN, "spellbook": KEY_B, "cast_spell": KEY_Q, "recast_spell": KEY_F, "rest": KEY_T, "character_sheet": KEY_C, "inventory": KEY_I, "ready_weapon": KEY_Z, "crouch": KEY_CTRL, "forward": KEY_W, "back": KEY_S, "left": KEY_A, "right": KEY_D, "sprint": KEY_SHIFT, "jump": KEY_SPACE, "interact": KEY_E, "release_mouse": KEY_ESCAPE, "reset": KEY_R, "toggle_view": KEY_F2, "reload_movement": KEY_F3, "movement_debug": KEY_F4}
 	for action in keys:
 		if not InputMap.has_action(action):
 			InputMap.add_action(action)
@@ -355,6 +356,10 @@ func _process(_delta: float) -> void:
 	player.magic.sync_capacity()
 	player_status.text = "Health: %d / %d\nFatigue: %.1f / %.1f" % [player.health.current, player.health.maximum, player.fatigue.current / 64.0, player.fatigue.maximum() / 64.0]
 	player_status.text += "\nMagicka: %d / %d" % [player.magic.current, player.magic.maximum()]
+	if player.swimming.submerged:
+		player_status.text += "\nBreath: %.1f / %.1f s" % [maxf(0, player.swimming.breath_seconds), player.swimming.maximum_breath(player)]
+	elif player.swimming.active:
+		player_status.text += "\nSwimming | Page Up / Page Down"
 	if player.spell_effects.shield.active():
 		player_status.text += "\nShield: %d / %d | %.1f min" % [player.spell_effects.shield.current, player.spell_effects.shield.capacity, player.spell_effects.shield.remaining/60.0]
 	if not player.casting.ready_id.is_empty():
@@ -367,7 +372,7 @@ func _process(_delta: float) -> void:
 	player_status.modulate = Color(1, 0.45, 0.35) if player.damage_flash > 0 else Color.WHITE
 	damage_overlay.color.a = 0.28 * player.damage_flash / 0.3
 	if player.is_dead():
-		prompt.text = "You have died | R to restart"
+		prompt.text = (player.swimming.death_reason + " " if not player.swimming.death_reason.is_empty() else "") + "You have died | R to restart"
 		player_status.text += "\nDEAD"
 		damage_overlay.color.a = 0.16
 	# Status grows when targets/encounters are shown; diagnostics follow its height.

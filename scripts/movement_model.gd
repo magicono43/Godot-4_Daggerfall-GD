@@ -92,8 +92,8 @@ func resolve() -> Dictionary:
 		"jump_velocity": float(profile.values.jump.base_velocity) * bonus * factor("jump"),
 		"gravity": float(profile.values.physics.gravity) * factor("gravity"),
 		"air_control": bool(profile.values.locomotion.air_control) or effect("enhanced_jumping"),
-		# Swimming is a parameter hook. The separate climbing motor consumes
-		# climb speed; skill-based success/slip policy is not implemented yet.
+		# Separate swim/climb motors consume live speeds. Climbing success/slip
+		# progression remains deferred.
 		"swim_walk_speed": walk * (stat("swimming_skill") / 200.0 + 0.25) * factor("swim"),
 		"climb_walk_speed": walk / 3.0 * (2.0 if effect("enhanced_climbing") else 1.0) * factor("climb")
 	}

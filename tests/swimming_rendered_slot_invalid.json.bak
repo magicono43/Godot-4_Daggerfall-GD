@@ -1,0 +1,166 @@
+{
+	"authored": {},
+	"doors": {
+		"first_door": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"great_hall_door": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"hall_approach_door": {
+			"opened": false,
+			"swing": -1.5707963267949
+		}
+	},
+	"drops": [],
+	"enemies": {},
+	"player": {
+		"anchor": {},
+		"character": {
+			"agility": 50,
+			"alteration": 50,
+			"blunt_weapon": 50,
+			"climbing": 25.0,
+			"critical_strike": 25,
+			"destruction": 50,
+			"dodging": 25,
+			"endurance": 50,
+			"hand_to_hand": 50,
+			"illusion": 50,
+			"intelligence": 50,
+			"jumping": 25.0,
+			"luck": 50,
+			"medical": 25,
+			"mysticism": 50,
+			"personality": 50,
+			"restoration": 50,
+			"running": 25.0,
+			"short_blade": 50,
+			"speed": 50.0,
+			"strength": 50,
+			"swimming": 25.0,
+			"willpower": 50
+		},
+		"crouched": false,
+		"fatigue": {
+			"current": 6400,
+			"game_seconds": 7.4
+		},
+		"health": 300,
+		"inventory": {
+			"armor_slots": {
+				"chest": 0,
+				"feet": 0,
+				"hands": 0,
+				"head": 0,
+				"left_arm": 0,
+				"legs": 0,
+				"right_arm": 0
+			},
+			"equipped_uid": 27,
+			"items": [
+				{
+					"definition": "dagger",
+					"material": "steel",
+					"quantity": 1,
+					"uid": 27
+				},
+				{
+					"definition": "mace",
+					"material": "steel",
+					"quantity": 1,
+					"uid": 28
+				},
+				{
+					"definition": "steel_cuirass",
+					"quantity": 1,
+					"uid": 29
+				},
+				{
+					"definition": "healing_potion",
+					"quantity": 2,
+					"uid": 30
+				},
+				{
+					"definition": "dagger",
+					"material": "steel",
+					"quantity": 1,
+					"uid": 31
+				},
+				{
+					"definition": "gold",
+					"quantity": 12,
+					"uid": 32
+				},
+				{
+					"definition": "twigs",
+					"quantity": 2,
+					"uid": 33
+				},
+				{
+					"definition": "steel_helm",
+					"quantity": 1,
+					"uid": 34
+				},
+				{
+					"definition": "steel_right_pauldron",
+					"quantity": 1,
+					"uid": 35
+				},
+				{
+					"definition": "steel_left_pauldron",
+					"quantity": 1,
+					"uid": 36
+				},
+				{
+					"definition": "steel_gauntlets",
+					"quantity": 1,
+					"uid": 37
+				},
+				{
+					"definition": "steel_greaves",
+					"quantity": 1,
+					"uid": 38
+				},
+				{
+					"definition": "steel_boots",
+					"quantity": 1,
+					"uid": 39
+				}
+			]
+		},
+		"light_seconds": 0.0,
+		"magic": {
+			"current": 150,
+			"known": [
+				"heal",
+				"light",
+				"fire_bolt",
+				"shock_bolt",
+				"burning_touch",
+				"shield",
+				"teleport"
+			],
+			"last_cast": "",
+			"selected": "heal"
+		},
+		"pitch": 0.0,
+		"position": [
+			200,
+			-4,
+			-3
+		],
+		"sheathed": false,
+		"shield": {
+			"capacity": 0,
+			"current": 0,
+			"seconds": 0.0
+		},
+		"yaw": 0.0
+	},
+	"section": "res://fixtures/swimming_section.json",
+	"section_hash": "ba25abd161d7fd9d2612c0e2f59f807a1c5103660cd1164a86c5a0018ad5639c",
+	"version": 9
+}

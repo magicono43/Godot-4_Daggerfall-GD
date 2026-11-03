@@ -223,7 +223,7 @@ func tick(body: CharacterBody3D, delta: float, input: Vector2, resolved: Diction
 		last_position = body.global_position
 		tracked = true
 		return true
-	if cooldown <= 0 and body.controls_active and input.y < -0.5 and absf(input.x) < 0.1 and blocked and not chest.is_empty() and not feet.is_empty() and body.is_grounded() and not Input.is_action_pressed("jump") and direction.dot(-chest.normal) > 0.8:
+	if cooldown <= 0 and body.controls_active and input.y < -0.5 and absf(input.x) < 0.1 and blocked and not chest.is_empty() and not feet.is_empty() and (body.is_grounded() or body.swimming.immersed) and not Input.is_action_pressed("jump") and direction.dot(-chest.normal) > 0.8:
 		attach_time += delta
 		if attach_time >= float(body.movement.profile.values.climbing.attach_delay_seconds):
 			active = true

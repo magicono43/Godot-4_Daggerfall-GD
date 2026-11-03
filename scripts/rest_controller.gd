@@ -32,6 +32,8 @@ func refusal() -> String:
 	var player: CharacterBody3D = level.player
 	if player.is_dead():
 		return "You cannot rest while dead. L loads your save."
+	if player.swimming.touching(player):
+		return "Leave the water before resting."
 	if player.climbing.active or not player.is_grounded():
 		return "Stand on supported ground before resting."
 	var support_query := PhysicsRayQueryParameters3D.create(player.global_position + Vector3.UP * 0.1, player.global_position + Vector3.DOWN * 0.25, 1)

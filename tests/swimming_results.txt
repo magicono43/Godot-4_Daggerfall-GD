@@ -1,0 +1,59 @@
+PASS Opt-in scene starts on supported dry deck
+PASS Pool uses accepted player resources and equipment
+PASS Pool is isolated from enemies and manual save slot
+PASS Only Page Up and Page Down bind vertical swimming
+PASS Endurance50 gives25 breath units at1.25 real seconds each
+PASS Invalid water bounds reject
+PASS Continuous dry entry descends steps and reaches deep water safely
+PASS Actual swim motion consumes live resolved speed
+PASS Page Down dives and starts real-time breath
+PASS Breath use causes no gradual health damage
+PASS Released controls suspend swimming and pause breath/awake clock
+PASS Character modal freezes swim motion and breath
+PASS Underwater modal switches retain single-panel ownership
+PASS Modal close restores captured swim controls
+PASS Water refuses K and rest regardless of bottom support
+PASS Page Up surfaces stably and restores breath
+PASS Space does not ascend or jump while swimming
+PASS Continuous return climbs visible steps and exits onto dry deck
+PASS Water wall contact retains normal climb attachment delay
+PASS Swimmer attaches to wall with exclusive climb ownership
+PASS Underwater wall hold keeps position and continues breath
+PASS Modal pauses underwater climbing and breath
+PASS Released controls retain wall hold and pause breath
+PASS Underwater climb consumes live climb speed without simultaneous swim motion
+PASS Continuous swim-to-climb ascends past surface and mantles onto dry rim
+PASS Dry rim handover clears fall/motion safely and restores breath
+PASS Climb ejection returns to swimming without breath reset or instant reattachment
+PASS Return to water suspends fall damage and preserves health
+PASS Excluded water wall never attaches
+PASS Crouched swimmer retains posture instead of forcing a standing climb
+PASS Swimming0 reaches actual motor speed
+PASS Live Swimming100/modifier and3-axis normalization reach actual speed
+PASS Atomic three-config reload remains available in water
+PASS Full capsule stops at pool wall
+PASS Bottom contact preserves swim ownership without floor snap
+PASS Candidate placement rejects underwater bottom
+PASS Full capsule stops below an underwater ceiling
+PASS Swimming0 failure spends44 raw per game minute
+PASS Swimming100 success spends11 raw per game minute
+PASS Underwater Teleport reclassifies immediately without breath reset
+PASS Dry arrival clears immersion and restores breath
+PASS Actual Teleport into air resets breath
+PASS Actual Teleport from dry deck into water takes swim ownership
+PASS Deep basin intercepts falling player before floor damage
+PASS Thin water over shallow tread does not negate solid-floor fall damage
+PASS Intermediate-depth water also preserves accrued high-fall damage
+PASS Source Swimming roll selects11 or44 raw fatigue
+PASS Positive remaining breath causes no HP loss
+PASS Zero breath instantly kills despite active Shield
+PASS R recreates dry pool start and clears breath/transients
+PASS Exhaustion while swimming causes source-style drowning
+PASS Structurally valid water position still requires candidate placement validation
+PASS Dry pool saves use separate slot
+PASS Dry-only pool save keeps schema9
+PASS L restores pool scene, water registry and capture from separate slot
+PASS Writes isolated forged placement fixture
+PASS Unsafe underwater load rejects before candidate swap and retains live controls
+PASS L from drowning restores dry player and captured controls
+PASS Normal dungeon rejects pool save context and contains no test water

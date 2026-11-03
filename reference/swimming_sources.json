@@ -1,0 +1,36 @@
+{
+  "repository": "https://github.com/Interkarma/daggerfall-unity",
+  "commit": "4e78e1412b17b60f4d5d6073825775aa5ae95139",
+  "files": {
+    "Assets/Scripts/Game/LevitateMotor.cs": "fcd623d2dd7c9b265828cb4a93e2b033239db281f414e31b49cc847f372e305d",
+    "Assets/Scripts/Game/PlayerMotor.cs": "60ba5df2a7dc3b0f3eac604be012076e0b0f2c0d808fd5c1f675c6c42c59d391",
+    "Assets/Scripts/Game/Player/PlayerSpeedChanger.cs": "6ff29b85f86a028c032107817e7cd23dca99ec8c655ff488547afc5e0f40bffd",
+    "Assets/Scripts/Game/Player/AcrobatMotor.cs": "0d136504868b75228debe31ff3e70d7eed48b966c4e84cd9b5995da65f493e75",
+    "Assets/Scripts/Game/InputManager.cs": "d7733dc44a4aefdd3fd287f7f5fae421576d1160d7e0bf06f0acd2d6fec990dd",
+    "Assets/Scripts/Game/Entities/PlayerEntity.cs": "e20e383b0228b530374e094514765c6d3df98a86dff40d0255015685d28800e0",
+    "Assets/Scripts/Game/Entities/DaggerfallEntity.cs": "8da1b9e6be534321d0c8f4fdc793b3a9189928490f82b22390b63c67ea7301b5",
+    "Assets/Scripts/Game/PlayerEnterExit.cs": "cf8a73ceef878b829f23d67796e4cb5bcd589ff06888ea37424fafb02d0d42a5",
+    "Assets/Scripts/Game/Player/PlayerHeightChanger.cs": "5dab4e946dbccfd510359eefb7c62705d988add9b99c0e604394cf0dbe172c4f",
+    "Assets/Scripts/Game/GameManager.cs": "2b0855ed779e8b14863b224f17ca27c34e21900fd6f521098a78fb4dbe8a349e",
+    "Assets/Scripts/Game/WeaponManager.cs": "00f905b0f1656d17933207c28004178465116c924687389de4e4d76a3d3b4018",
+    "Assets/Scripts/Game/Player/ClimbingMotor.cs": "4190841d6193b4af9330f6290eb6720b23668ce7ee35a64a00b80ad70f438627"
+  },
+  "rules": {
+    "breath_units": "floor(live Endurance/2)",
+    "breath_unit_real_seconds": 1.25,
+    "drowning": "SetHealth(0), bypass Shield",
+    "fatigue_per_game_minute": "11 on Swimming roll success, 44 on failure",
+    "exhaustion_in_water": "SetHealth(0)"
+  },
+  "prototype_choices": [
+    "Page Up / Page Down only; Ctrl retains crouch toggle",
+    "Retain chosen posture rather than forced swim crouch",
+    "Normalize combined three-axis swim input",
+    "Posture-relative 70% body immersion, actual posture eye for breath",
+    "Shallow supported shelf hands back to land stairs",
+    "Separate authored pool scene/context/slot; dry-only saves keep schema9",
+    "Released controls and modals pause breath/resources; released swimmers remain suspended",
+    "No race/guild bonuses, encumbrance, progression, exterior water or water spells",
+    "Swimming wall pushes use existing climb contact/delay; attached climbing owns movement while immersion/breath persist. Pool basin walls have a dry mantle rim; stair/prop/door exclusions remain."
+  ]
+}

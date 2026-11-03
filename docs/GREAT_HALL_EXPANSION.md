@@ -1,3 +1,14 @@
+# Status for the next dungeon expansion - November 3, 2026
+
+The cave-to-great-hall route below is the accepted existing structural baseline.
+Swimming/climbing and other gameplay have since shipped; old statements below
+that climbing is unimplemented or that only four suites run are historical.
+The user has now selected completion of the remaining connected Privateer's Hold
+structure. See NEXT_MILESTONE.md and newest HANDOFF.md for current scope,
+multi-block audit needs, preserved conventions and validation. Current section
+counts53 meshes/3 billboards/11 caps were inspected for this handoff; remaining
+dungeon extent has not been audited. No new expansion has been implemented.
+
 # Route to the great staircase hall
 
 The playable section reaches the large open hall and its giant staircase. The current playtest starts directly in this hall at native (800,-512,1024), facing the stairs. Restart and fall reset use this position too. This authored override is prototype.player_start in the section JSON; remove that optional entry to restore the original cave start. The source marker and original-data provenance remain intact, and the smoke/expansion suites explicitly use the cave start for full-route regression checks.

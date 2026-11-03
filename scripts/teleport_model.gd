@@ -73,6 +73,7 @@ func arrive(actor: CharacterBody3D) -> String:
 	actor.floor_snap_length = 0
 	actor.move_and_slide()
 	actor.floor_snap_length = snap
+	actor.swimming.reclassify(actor)
 	actor.combat.pose()
 	anchor.clear()
 	return ""

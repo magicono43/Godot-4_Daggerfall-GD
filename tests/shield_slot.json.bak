@@ -128,6 +128,7 @@
 		}
 	},
 	"player": {
+		"anchor": {},
 		"character": {
 			"agility": 50,
 			"alteration": 65,
@@ -143,6 +144,7 @@
 			"jumping": 25.0,
 			"luck": 50,
 			"medical": 25,
+			"mysticism": 50,
 			"personality": 50,
 			"restoration": 50,
 			"running": 25.0,
@@ -249,7 +251,8 @@
 				"fire_bolt",
 				"shock_bolt",
 				"burning_touch",
-				"shield"
+				"shield",
+				"teleport"
 			],
 			"last_cast": "shield",
 			"selected": "shield"
@@ -269,6 +272,6 @@
 		"yaw": -1.57079637050629
 	},
 	"section": "res://sections/privateers_hold_opening.json",
-	"section_hash": "56b25b8d8cbf12706a221dead6f9636c631ed1ff6194aaed72844fe31f23fce7",
-	"version": 8
+	"section_hash": "4d3c3e92915f2cffc63f1886219c00a37099103854d3eba5e2cdb9d32663c6f0",
+	"version": 9
 }

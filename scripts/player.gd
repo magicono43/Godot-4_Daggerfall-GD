@@ -22,6 +22,7 @@ var spell_payload: Array[Dictionary] = []
 var spell_payloads: Dictionary = {}
 var fatigue := preload("res://scripts/fatigue_model.gd").new()
 var falling := preload("res://scripts/fall_damage.gd").new()
+var swimming := preload("res://scripts/swimming_motor.gd").new()
 var fall_feedback := ""
 var fall_feedback_time := 0.0
 const Climbing = preload("res://scripts/climbing_motor.gd")
@@ -205,12 +206,21 @@ func _physics_process(delta: float) -> void:
 	if controls_active and not climbing.active and InputMap.has_action("crouch") and Input.is_action_just_pressed("crouch"):
 		crouch.toggled = not crouch.toggled
 	crouch.tick(self, crouch.toggled)
+	# Wall climbing gets first refusal in water, including its normal contact
+	# delay. Once attached, only climbing moves; immersion/breath still update.
+	swimming.classify(self)
 	if crouch.active and not climbing.active:
 		climbing.attach_time = 0.0
 		climbing.tracked = false
 	if (climbing.active or (not crouch.active and not fatigue.exhausted())) and climbing.tick(self, delta, input, resolved):
 		falling.suspend(global_position)
 		tick_fatigue(delta, "climbing")
+		swimming.classify(self)
+		swimming.resources(self, delta)
+		return
+	if swimming.tick(self, delta, input, resolved):
+		return
+	if is_dead():
 		return
 	stair_supported = false
 	if tuning.response == "dfu_axes":
@@ -263,6 +273,15 @@ func _physics_process(delta: float) -> void:
 	var requested := velocity
 	move_and_slide()
 	last_step = 0.0
+	# Catch deep water before solid landing feedback. Thin water preserves falls.
+	swimming.classify(self)
+	if swimming.deep_catch(self):
+		climbing.reset()
+		swimming.clear_motion(self)
+		falling.suspend(global_position)
+		tick_fatigue(delta, "swimming")
+		swimming.resources(self, delta)
+		return
 	var stepping: Dictionary = movement.profile.values.stepping
 	if grounded and requested.y <= 0 and stepping.enabled and stepping.max_height_metres > 0:
 		var motion := Vector3(requested.x, 0, requested.z) * delta
@@ -292,7 +311,10 @@ func _physics_process(delta: float) -> void:
 			return
 	var moved := Vector2(global_position.x - before.origin.x, global_position.z - before.origin.z).length() > 0.0001
 	tick_fatigue(delta, "running" if is_running and moved else "normal")
+	swimming.classify(self)
+	swimming.resources(self, delta)
 	if position.y < -10:
+		swimming.reset()
 		falling.reset()
 		fall_feedback_time = 0.0
 		climbing.reset()
@@ -324,6 +346,12 @@ func tick_fatigue(delta: float, activity: String) -> void:
 	if controls_active and not modal_open and not is_dead():
 		var before := fatigue.game_seconds
 		fatigue.tick(delta, activity, movement.effect("athleticism"), movement.effect("improved_athleticism"))
+		if activity == "swimming":
+			var minutes := int(floor(fatigue.game_seconds / 60.0)) - int(floor(before / 60.0))
+			var multiplier := 0.8 if movement.effect("athleticism") and movement.effect("improved_athleticism") else (0.9 if movement.effect("athleticism") else 1.0)
+			for minute in minutes:
+				var cost := swimming.fatigue_cost(character.stat("swimming"), swimming.rng.randi_range(1, 100))
+				fatigue.spend(int(cost * multiplier) - int(11 * multiplier))
 		spell_effects.advance(fatigue.game_seconds - before)
 
 func _process(delta: float) -> void:
@@ -337,13 +365,14 @@ func _process(delta: float) -> void:
 func is_grounded() -> bool:
 	# Godot can classify the rounded capsule/tread-edge contact as a wall.
 	# The step solver additionally verifies a nearby walkable tread below it.
-	return not climbing.active and (is_on_floor() or stair_supported)
+	return not swimming.active and not climbing.active and (is_on_floor() or stair_supported)
 
 func movement_debug_text() -> String:
 	var resolved := movement.resolve()
 	var result := "Movement | Speed %.0f  Running %.0f  Jumping %.0f\nWalk %.3f  Run %.3f m/s  |  Jump %.3f m/s  Gravity %.2f m/s²\nActual horizontal %.3f m/s  |  %s  |  %s response\nF3 reload movement.cfg  |  F4 hide diagnostics" % [movement.stat("speed_attribute"), movement.stat("running_skill"), movement.stat("jumping_skill"), resolved.walk_speed, resolved.run_speed, resolved.jump_velocity, resolved.gravity, Vector2(velocity.x, velocity.z).length(), "grounded" if is_grounded() else "airborne", movement.profile.values.locomotion.response]
 	result += "\nClimb: %s | attach %.2f s | %.3f m/s" % ["attached" if climbing.active else climbing.transition, climbing.attach_time, resolved.climb_walk_speed]
 	result += "\nPosture: %s | capsule %.2f m | crouch %.3f / %.3f m/s" % ["stand blocked" if crouch.blocked else ("crouching" if crouch.active else "standing"), capsule_collision.shape.height, resolved.crouch_walk_speed, resolved.crouch_run_speed]
+	result += "\nWater: %s | submerged %s | swim %.3f m/s | breath %.2f s" % ["swimming" if swimming.active else ("wading" if swimming.wet else "dry"), swimming.submerged, resolved.swim_walk_speed, swimming.breath_seconds]
 	if falling.active:
 		result += "\nFall: airborne | departure feet %.2f m" % falling.departure_height
 	elif not falling.last_landing.is_empty():
@@ -374,6 +403,7 @@ func receive_damage(amount: int, sound_event: String = "player_hit") -> bool:
 	return true
 
 func die() -> void:
+	swimming.reset()
 	casting.cancel()
 	spell_effects.clear()
 	if is_instance_valid(casting.projectiles):

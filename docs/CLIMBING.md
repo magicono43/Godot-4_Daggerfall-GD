@@ -1,8 +1,16 @@
+# Current acceptance - November 3, 2026
+
+Swimming-to-wall attachment and climbing onto the pool rim are user-accepted
+as good enough for now. Next selected milestone is completing the remaining
+current dungeon structure; see NEXT_MILESTONE.md and newest HANDOFF.md.
+Preserve the existing land/water climbing conventions during geometry expansion.
+Older playtest-pending notes below are historical.
+
 # Climbing prototype
 
 Hold W against a near-vertical static wall for about 0.77 seconds to attach. While attached, W ascends, S descends, A/D moves along the wall, and releasing movement holds position. Mouse look stays free. Space ejects outward and upward; normal airborne gravity and momentum resume on the next tick. A 0.4-second cooldown prevents immediate reattachment. Running does not increase climbing speed.
 
-Climbing starts either from a grounded, intentional forward wall push or by holding S while backing over a suitable ledge. Doors, enemies, authored boundary caps, and section props are excluded. Initial attachment requires nearby foot and upper-body contact and a forward-facing dot threshold of 0.8. If the chest misses, a probe above the maximum normal step height can verify a tall pedestal. This prevents ordinary stair risers from initiating climbing while allowing the original 0.8 m pillar bases. Upper entry contact must be near-vertical (normal Y within 0.15); the foot contact may be tapered (normal Y within 0.5). Once attached, bounded probes reach up to capsule radius + 0.6 m and accept taper up to normal Y 0.5. Normal pressure follows recessed surfaces using resolved walking speed; movement direction uses horizontal normals so taper does not turn that pressure into downward velocity. All actual movement remains capsule-collidable. These are attachment/contact aids, not a scale or mesh change.
+Climbing starts from an intentional forward wall push while grounded or swimming, or by holding S while backing over a suitable ledge. Doors, enemies, authored boundary caps, and section props are excluded. Initial attachment requires nearby foot and upper-body contact and a forward-facing dot threshold of 0.8. If the chest misses, a probe above the maximum normal step height can verify a tall pedestal. This prevents ordinary stair risers from initiating climbing while allowing the original 0.8 m pillar bases. Upper entry contact must be near-vertical (normal Y within 0.15); the foot contact may be tapered (normal Y within 0.5). Once attached, bounded probes reach up to capsule radius + 0.6 m and accept taper up to normal Y 0.5. Normal pressure follows recessed surfaces using resolved walking speed; movement direction uses horizontal normals so taper does not turn that pressure into downward velocity. All actual movement remains capsule-collidable. These are attachment/contact aids, not a scale or mesh change.
 
 `scripts/climbing_motor.gd` owns attachment, motion and detachment. `player.gd` gives it exclusive movement ownership while attached; ordinary stair assistance and gravity do not run concurrently. `movement_model.gd` supplies live climb speed (baseline walk/3, approximately 1.477 m/s), including enhanced climbing and named climb modifiers. Climbing skill is deliberately not a speed multiplier. There are no random success/slip rolls, skill advancement, falling wall grabs, hanging, rappelling or overhang traversal in this milestone. These are prototype controls inspired by DFU Advanced Climbing, not full parity with either DFU mode.
 
@@ -35,3 +43,34 @@ The hall pillars were already structural geometry, not excluded props. Model 720
 ## Validation — October 31, 2026
 
 All 462 checks passed headless: the previous 437 plus 25 corner/pillar checks. The rendered corner suite also passed 25/25, and tests/pillar_corner.png was visually inspected. Reports: `tests/corner_full_regression.log`, `tests/corner_results.txt`, and the separate rendered `tests/corner_visual.log`. Automated checks and rendered inspection are distinct from user playtesting of movement feel. Known restricted-host log/certificate warnings remain nonblocking.
+
+
+## Climbing out of water - November 3, 2026
+
+Hold W into an eligible wall while swimming to run the normal near-contact,
+facing and attachment-delay checks. Verified body immersion permits this start
+without ground support; dry airborne wall grabs are still excluded. Crouch,
+exhaustion, exclusions, cooldown and full-capsule mantle checks remain.
+
+Climbing then owns motion exclusively. W/S and A/D use live climb speed;
+swim Page Up/Page Down and the surface cap do not run. Water classification and
+head-underwater breath still update. Modals/released controls pause resources,
+while idle holds the wall. Ejection/lost contact hands back to swimming if still
+immersed. In the authored pool, basin walls and contiguous dry rims are eligible,
+with enough dry space to mantle out. Centre steps remain an alternative exit.
+
+Swimming regressions cover continuous attachment/ascent/dry mantle, idle breath,
+modal/released pauses, live climb speed, ejection back to water, excluded walls
+and crouch preservation. Source ClimbingMotor.cs is also pinned in
+reference/swimming_sources.json; its source skill-check exception specifically
+allows climbing out of water. Skill progression/slipping remain deferred.
+
+
+Swimming wall-climb validation, November 3, 2026:1638/1638 assertions passed
+across29 suites and six separate-process reloads
+(tests/swimming_climb_complete_regression.log). Rendered swimming checks passed
+59/59 (tests/swimming_climb_rendered.log), including continuous wall attachment,
+ascent through the surface and mantle onto dry ground. Wall-climb/exit captures
+were visually inspected; subjective manual playtest is next. No failed
+assertions or script errors. Existing restricted-host/legacy fixture diagnostics
+remain nonblocking and unchanged. Dungeon manual save remains untouched.

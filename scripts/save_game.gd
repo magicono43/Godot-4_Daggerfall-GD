@@ -33,6 +33,8 @@ func feedback(value: String) -> void:
 	message.show()
 
 func fingerprint() -> String:
+	if not level.persistence_context.is_empty():
+		return (JSON.stringify(level.classic.section.definition, "", true) + level.persistence_context).sha256_text()
 	return JSON.stringify(level.classic.section.definition, "", true).sha256_text()
 
 func vector(value: Vector3) -> Array:
@@ -49,6 +51,8 @@ func refusal() -> String:
 		return "Cannot save while dead. L loads your manual save."
 	if p.modal_open:
 		return "Close the open panel before saving."
+	if p.swimming.touching(p):
+		return "Leave the water before saving."
 	if p.climbing.active or not p.is_grounded():
 		return "Stand on supported ground before saving."
 	if Vector2(p.velocity.x, p.velocity.z).length() > 0.03 or absf(p.velocity.y) > 1.0:
@@ -360,6 +364,10 @@ func restore_pile(data: Dictionary, dropped: bool) -> Node3D:
 
 func placement_valid() -> bool:
 	var p = level.player
+	p.swimming.reset()
+	p.swimming.reclassify(p)
+	if p.swimming.touching(p):
+		return false
 	var query := PhysicsShapeQueryParameters3D.new()
 	query.shape = p.capsule_collision.shape
 	query.transform = p.capsule_collision.global_transform
