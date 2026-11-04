@@ -115,8 +115,8 @@ func validate(value: Variant) -> bool:
 			return fail("Invalid fixed enemy id")
 		if not block_names.has(entry.get("block", source.block)) or not integer(entry.get("record_offset")) or offsets.has(record_key(entry, source.block)):
 			return fail("Invalid or duplicate fixed enemy source record")
-		if entry.get("expected_archive") != 199 or entry.get("expected_record") != 16 or entry.get("expected_mobile_id") != 0:
-			return fail("fixed_enemies currently supports only original rat markers199:16/mobile0")
+		if entry.get("expected_archive") != 199 or entry.get("expected_record") != 16 or (entry.get("expected_mobile_id") != 0 and entry.get("expected_mobile_id") != 3 and entry.get("expected_mobile_id") != 15):
+			return fail("fixed_enemies supports original199:16 rat0, bat3 or skeleton15 markers")
 		for field in ["expected_flags", "expected_sound_index", "expected_action"]:
 			if not integer(entry.get(field), 255):
 				return fail("Fixed enemy requires checked field " + field)

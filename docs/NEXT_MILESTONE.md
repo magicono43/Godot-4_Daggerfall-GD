@@ -1,4 +1,75 @@
-# Current state: all eight rats accepted; await next feature direction
+# Next milestone: imps and enemy spellcasting
+
+November 3, 2026. The user confirmed bats now fly through open doors. The
+doorway fix uses the settled open leaf's closed frame to find a crossing and
+checks capsule clearance before steering through. Focused headless flight
+passed 47/47 and placement checks passed 14/14. Existing saves remain compatible.
+See BATS.md for the fix.
+
+The user selected imps as the next milestone and the first spellcasting enemy.
+Start by auditing the pinned EnemyBasics, EnemyEntity and EnemyAttack sources
+for spell selection, cast timing, costs, targeting and resistance. Check the
+existing spell and projectile systems for reusable pieces with enemy ownership.
+Audit the imp assets and original fixed mobile1 markers in S0000999 at offsets
+32922, 33462 and 33606 against the archive bytes. EnemyBasics points to archive
+256, corpse406:5, Steel minimum and door opening. Reuse the accepted flight
+motor and verify imp-specific behavior before choosing the implementation scope.
+No imp implementation has started.
+
+Keep the current population and player setup. Ask before creating or extending
+scripted gameplay routes or running rendered tests or captures. The previous
+bat-specific approval does not carry over. See TESTING.md.
+
+# Previous: user playtest of six fixed bats
+
+November 3, 2026. The authorized bat flight/assets slice is implemented and all
+six original mobile3 markers are enabled. Full headless regression and focused
+flight/assets/combat/persistence checks passed; actual dungeon encounter feel
+awaits the user. See BATS.md and newest HANDOFF. Preserve the accepted eight
+rats/three skeletons, cave start and player test grants. Fresh R/K required after
+the selection fingerprint change. No imp, magic, loot or random encounters added.
+
+The user explicitly authorized flight/graphics/audio validation for this feature.
+That permission does not extend to future features: ask before creating/extending
+scripted test routes or running visual/rendered/capture passes unless explicitly
+authorized in the next task. Do not add more enemies before the user's feedback.
+Imps may reuse the flight motor later, but their magic/material rules need a
+separate source-backed slice and are not automatically selected for implementation.
+
+# Previous proposal: six original fixed bats and reusable flight
+
+November 3, 2026. User accepted the three skeletons and selected bats before
+imps; requested a proposal. No bat implementation has started. Add original
+mobile3 markers32886,33030,33210,33390,33498,33678 in S0000999 after verifying
+their checked source fields. EnemyBasics: archive258/corpse401:0, flying/no idle,
+melee only, damage2..12, HP12..26, level3/armor6, attack[0,1,-1,2,3] at10fps.
+Audit frame layouts/collision dimensions/career/sounds before coding profiles.
+
+Propose a separate reusable flying motor: collision-aware horizontal/vertical
+pursuit, altitude/target alignment from pinned EnemyMotor, no ground snapping,
+stair stepping or floor-support requirement while flying. Preserve grounded
+enemy behavior; reuse sensing/combat/audio/modal/save ownership. Decide and
+document deterministic HP policy and ground corpse handling from source evidence.
+No magic/random loot/encounter tables/player rebalance; imps follow separately.
+Use source/loading checks and focused headless flight/collision checks as needed.
+Always ask before authoring/extending routes or running visual/capture tests.
+Actual encounters/placement feel go to user playtesting by default.
+
+# Previous: user playtest of the three fixed skeletons
+
+November 3, 2026. The three authorized original skeletal warriors now load at
+S0000999 offsets33246,33750,33822 alongside all eight user-accepted rats. Original
+positions, existing skeleton30HP/combat/navigation/door opening and corpse
+behavior are reused; no generated loot. Player cave start/test grants remain.
+Source/loading/startup checks and skeleton48/48 headless passed. See SKELETON.md
+and newest HANDOFF. Fresh R/K required for the changed section fingerprint.
+
+Await the user's encounter/placement feedback before selecting further population.
+Do not create/extend scripted routes or run visual tests/captures without asking
+first; routine existing headless/source/load checks remain permitted. No new
+enemy type, random population or player rebalance is selected.
+
+# Previous: all eight rats accepted; await next feature direction
 
 November 3, 2026. User confirmed all eight fixed rats are correctly placed and
 functioning. No further enemy type or random-population work is selected yet.

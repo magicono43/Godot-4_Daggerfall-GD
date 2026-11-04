@@ -17,6 +17,7 @@ var enemy_visuals: Dictionary = {}
 var skeleton_attributes: Dictionary = {}
 var bear_attributes: Dictionary = {}
 var rat_attributes: Dictionary = {}
+var bat_attributes: Dictionary = {}
 var fixed_enemies: Array[Dictionary] = []
 var dagger_frames: Array[Dictionary] = []
 var spell_frames: Array[Dictionary] = []
@@ -70,6 +71,7 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 	skeleton_attributes.clear()
 	bear_attributes.clear()
 	rat_attributes.clear()
+	bat_attributes.clear()
 	fixed_enemies.clear()
 	dagger_frames.clear()
 	weapon_frames.clear()
@@ -177,7 +179,7 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 		if payload.is_empty():
 			return false
 		billboards[i] = payload
-	for entry in definition.prototype.enemies:
+	for entry in definition.prototype.enemies + fixed_enemies:
 		if entry.get("visual", "greybox") == "skeleton" and not enemy_visuals.has("skeleton"):
 			var payload := skeleton_payload()
 			if payload.is_empty():
@@ -188,11 +190,16 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 			if payload.is_empty():
 				return false
 			enemy_visuals.bear = payload
-	if not fixed_enemies.is_empty():
-		var payload := rat_payload()
-		if payload.is_empty():
-			return false
-		enemy_visuals.rat = payload
+		elif entry.get("visual", "greybox") == "rat" and not enemy_visuals.has("rat"):
+			var payload := rat_payload()
+			if payload.is_empty():
+				return false
+			enemy_visuals.rat = payload
+		elif entry.get("visual", "greybox") == "bat" and not enemy_visuals.has("bat"):
+			var payload := bat_payload()
+			if payload.is_empty():
+				return false
+			enemy_visuals.bat = payload
 	# A deterministic member of DFU's original random-treasure billboard set.
 	loot_pile_payload = billboard_payload({"id": "loot_pile", "archive": 216, "record": 0})
 	if loot_pile_payload.is_empty():
@@ -201,12 +208,17 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 	if not monsters.open(arena_path.path_join("MONSTER.BSA")):
 		error = monsters.error
 		return false
-	if not fixed_enemies.is_empty():
+	if enemy_visuals.has("rat"):
 		rat_attributes = decode_monster_attributes(monsters.record("ENEMY000.CFG"))
 		if rat_attributes.is_empty():
 			error = "Missing or invalid rat career ENEMY000.CFG in MONSTER.BSA"
 			return false
 	skeleton_attributes = decode_monster_attributes(monsters.record("ENEMY015.CFG"))
+	if enemy_visuals.has("bat"):
+		bat_attributes = decode_monster_attributes(monsters.record("ENEMY003.CFG"))
+		if bat_attributes.is_empty():
+			error = "Missing or invalid bat career ENEMY003.CFG in MONSTER.BSA"
+			return false
 	if skeleton_attributes.is_empty():
 		error = "Missing or invalid skeleton career ENEMY015.CFG in MONSTER.BSA"
 		return false
@@ -336,7 +348,8 @@ func load_block(blocks: RefCounted, block: Dictionary, definition: Dictionary, m
 							if fields[field] != int(entry[field]):
 								error = "Source enemy mismatch for %s: %s" % [entry.id, field]
 								return false
-						fixed_enemies.append({"id": entry.id, "position": pos, "visual": "rat", "navigation_enabled": true, "attack_enabled": true, "block": block_name, "record_offset": q})
+						var visual: String = {0: "rat", 3: "bat", 15: "skeleton"}[int(entry.expected_mobile_id)]
+						fixed_enemies.append({"id": entry.id, "position": pos, "visual": visual, "navigation_enabled": true, "attack_enabled": true, "block": block_name, "record_offset": q})
 					elif static_ids.has(entry.id):
 						billboards.append({"id": entry.id, "offset": q, "block": block_name, "archive": 216, "record": 0, "position": pos, "fps": 1.0, "static_loot": true})
 					elif entry.expected_archive == 199:
@@ -658,6 +671,21 @@ func rat_payload() -> Dictionary:
 	if corpse.is_empty():
 		return {}
 	return {"archive": 255, "records": records, "corpse": corpse, "attack_sequence": [0, 1, 2, 3, 4, 5], "hit_tick": 3, "corpse_record": 1, "rat_idle_mirroring": true}
+
+func bat_payload() -> Dictionary:
+	# Giant Bat has no idle bank: records0..4 flap at FlyAnimSpeed10fps.
+	var records: Dictionary = {}
+	for record in 15:
+		var payload := billboard_payload({"id": "bat_%d" % record, "archive": 258, "record": record})
+		var expected := 4 if record < 10 else 1
+		if payload.is_empty() or payload.frames.size() != expected:
+			error = "Bat 258:%d expected %d frames" % [record, expected]
+			return {}
+		records[record] = payload
+	var corpse := billboard_payload({"id": "bat_corpse", "archive": 401, "record": 0})
+	if corpse.is_empty():
+		return {}
+	return {"archive": 258, "records": records, "corpse": corpse, "attack_sequence": [0, 1, 2, 3], "hit_tick": 2, "corpse_record": 0, "flying": true, "has_idle": false, "move_fps": 10.0}
 
 func cif_rgba(indices: PackedByteArray, width: int, height: int) -> Texture2D:
 	var rgba := PackedByteArray()

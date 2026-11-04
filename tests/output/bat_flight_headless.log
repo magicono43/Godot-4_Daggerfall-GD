@@ -1,0 +1,60 @@
+ERROR: Failed to open 'user://logs/godot2026-11-03T22.36.44.log'.
+   at: copy (core/io/dir_access.cpp:429)
+ERROR: Failed to open log file for writing: user://logs/godot.log
+   at: rotate_file (core/io/logger.cpp:169)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Isolated flying bat validation", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "blocks": [{ "name": "S0000999.RDB", "x": 0, "z": 0 }, { "name": "B0000009.RDB", "x": -1, "z": 0 }, { "name": "B0000006.RDB", "x": 0, "z": -1 }, { "name": "B0000003.RDB", "x": 1, "z": 0 }, { "name": "B0000012.RDB", "x": 0, "z": 1 }], "start": (0.0, 0.625, 0.0) } triangles=9263 textures=81
+PASS Bat fixture builds from checked source marker
+PASS All46 bat live/corpse frames match independent native dimensions and RGBA
+PASS Original ENEMY003 career attributes match independent raw record
+PASS Bat has deterministic source-minimum12HP, level3 skills45 and native stats/armor
+PASS Bat uses one2..12 damage slot, no skeleton resistance/parry, door opening or loot
+PASS Flying actor uses native centre origin and2.1m capsule without floor snap
+PASS Bat eight-way flight direction0 uses source bank/mirroring
+PASS Bat eight-way flight direction1 uses source bank/mirroring
+PASS Bat eight-way flight direction2 uses source bank/mirroring
+PASS Bat eight-way flight direction3 uses source bank/mirroring
+PASS Bat eight-way flight direction4 uses source bank/mirroring
+PASS Bat eight-way flight direction5 uses source bank/mirroring
+PASS Bat eight-way flight direction6 uses source bank/mirroring
+PASS Bat eight-way flight direction7 uses source bank/mirroring
+PASS No-idle bat flaps at10fps and keeps frame across hover/move
+PASS Bat hurt sprite remains centred instead of moving its feet
+PASS Bat move plays its own source ordinal spatially
+PASS Bat bark plays its own source ordinal spatially
+PASS Bat attack plays its own source ordinal spatially
+PASS Bat audio is emitted at flight centre with creature ownership
+PASS Bat-owned voices stop independently of unrelated samples
+PASS Unalerted bat hovers without gravity or grounded support
+PASS Flight crosses unsupported horizontal space at steady altitude
+PASS Flight ascends to an elevated remembered target
+PASS Flight descends while respecting capsule floor clearance
+PASS Full flight capsule stops below a ceiling even under direct upward motion
+PASS Flight capsule cannot pass through or open a closed door
+PASS Direct downward flight cannot penetrate the floor
+PASS Bat aligns with a low open doorway and flies through it
+PASS Local3D steering detours around an isolated solid obstacle
+PASS Lost-target memory expiry stops flight without ground gravity
+PASS Production sensing and flight approach a visible player
+PASS Released controls stop flight without falling and clear pursuit
+PASS Bat attack waits until original frame2/0.2s
+PASS Frame2 resolves native2..12 damage through real combat formulas
+PASS Bat strike cannot repeat in its attack tail
+PASS Flying melee rejects player on another elevation outside3D reach
+PASS Flying melee refuses damage through an intervening wall
+PASS Shared modal cancels bat strike and freezes flight
+PASS Hurt interrupts bat attack without replacing its attributes
+PASS Live airborne bat can be saved with player safely grounded
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Isolated flying bat validation", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "blocks": [{ "name": "S0000999.RDB", "x": 0, "z": 0 }, { "name": "B0000009.RDB", "x": -1, "z": 0 }, { "name": "B0000006.RDB", "x": 0, "z": -1 }, { "name": "B0000003.RDB", "x": 1, "z": 0 }, { "name": "B0000012.RDB", "x": 0, "z": 1 }], "start": (0.0, 0.625, 0.0) } triangles=9263 textures=81
+PASS Live bat restores through fresh validated candidate
+PASS Load preserves flight altitude and hurt health without drift/reroll
+PASS Airborne death grounds native401:0 corpse without collision or loot
+BAT_SAVE_REFUSAL 
+PASS Grounded bat corpse saves without combat transients
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Isolated flying bat validation", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "blocks": [{ "name": "S0000999.RDB", "x": 0, "z": 0 }, { "name": "B0000009.RDB", "x": -1, "z": 0 }, { "name": "B0000006.RDB", "x": 0, "z": -1 }, { "name": "B0000003.RDB", "x": 1, "z": 0 }, { "name": "B0000012.RDB", "x": 0, "z": 1 }], "start": (0.0, 0.625, 0.0) } triangles=9263 textures=81
+PASS Dead bat restores silently without respawn
+PASS Reload retains dead bat identity
+BAT_CHECKS 47/47

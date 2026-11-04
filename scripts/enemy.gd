@@ -2,7 +2,8 @@ extends CharacterBody3D
 ## Greybox enemy; authored attack and approach policies are independent.
 const Melee = preload("res://scripts/enemy_melee.gd")
 var melee := Melee.new()
-var navigation := preload("res://scripts/enemy_navigation.gd").new()
+var navigation: RefCounted = preload("res://scripts/enemy_navigation.gd").new()
+var flying := false
 var sprite_payload: Dictionary = {}
 var mobile: Sprite3D
 var body_mesh: MeshInstance3D
@@ -32,6 +33,8 @@ func play_sound(event: String, gain: float = 1.0) -> void:
 			event = event.replace("skeleton_", "bear_")
 		elif creature_name == "Rat" and event.begins_with("skeleton_"):
 			event = event.replace("skeleton_", "rat_")
+		elif creature_name == "Bat" and event.begins_with("skeleton_"):
+			event = event.replace("skeleton_", "bat_")
 		combat_audio.play(event, self, gain)
 
 func _ready() -> void:
@@ -41,6 +44,9 @@ func _ready() -> void:
 	collision_layer = 1
 	collision_mask = 3
 	floor_snap_length = 0.3
+	if flying:
+		motion_mode = CharacterBody3D.MOTION_MODE_FLOATING
+		floor_snap_length = 0.0
 	if navigation.enabled:
 		# Match the accepted capsule-contact classification used by the player.
 		# Local obstacle/floor probes and capsule sweeps govern traversability.
@@ -54,13 +60,15 @@ func _ready() -> void:
 	shape.position.y = 0.4
 	add_child(shape)
 	if not sprite_payload.is_empty():
-		var height: float = sprite_payload.records[15].size_metres.y
+		var height: float = sprite_payload.records[0 if flying else 15].size_metres.y
 		# A rat's native height is smaller than the old0.64m capsule diameter.
 		# Keep a valid capsule wholly within its native idle silhouette.
 		if creature_name == "Rat":
 			capsule.radius = minf(0.32, minf(height * 0.5, sprite_payload.records[15].size_metres.x * 0.5))
 		capsule.height = height
 		shape.position.y = height * 0.5
+		if flying:
+			shape.position.y = 0.0
 		mobile = preload("res://scripts/enemy_sprite.gd").new()
 		mobile.configure(sprite_payload)
 		add_child(mobile)
@@ -101,13 +109,14 @@ func _physics_process(delta: float) -> void:
 		sound_wait -= delta
 		if sound_wait <= 0 and global_position.distance_to(player.global_position) < combat_audio.enemy_range:
 			sound_wait = float(sound_rng.randi_range(3, 9))
-			var query := PhysicsRayQueryParameters3D.create(global_position + Vector3.UP * 0.8, player.global_position + Vector3.UP * 0.8, 3, [get_rid()])
+			var query := PhysicsRayQueryParameters3D.create(global_position + Vector3.UP * (0.0 if flying else 0.8), player.global_position + Vector3.UP * 0.8, 3, [get_rid()])
 			var obstruction := get_world_3d().direct_space_state.intersect_ray(query)
 			var gain := 1.0 if obstruction.is_empty() or obstruction.collider == player else 0.25
 			play_sound("skeleton_move" if sound_rng.randf() > 0.8 else "skeleton_bark", gain)
 	hit_flash = maxf(0.0, hit_flash - delta)
 	if mobile:
-		mobile.tick(delta)
+		if not flying or (is_instance_valid(player) and player.controls_active and not player.is_dead()):
+			mobile.tick(delta)
 	else:
 		var charging: bool = melee.phase == "windup"
 		body_material.albedo_color = Color(1, 0.8, 0.6) if hit_flash > 0 else (Color(1, 0.55, 0.08) if charging else Color(0.55, 0.16, 0.12))
@@ -117,9 +126,18 @@ func _physics_process(delta: float) -> void:
 		return
 	var offset := player.global_position - global_position
 	var distance := offset.length()
-	var query := PhysicsRayQueryParameters3D.create(global_position + Vector3.UP * 0.5, player.global_position + Vector3.UP * float(player.capsule_collision.shape.height) * 0.5, 3, [get_rid()])
+	var query := PhysicsRayQueryParameters3D.create(global_position + Vector3.UP * (0.0 if flying else 0.5), player.global_position + Vector3.UP * float(player.capsule_collision.shape.height) * 0.5, 3, [get_rid()])
 	var hit := get_world_3d().direct_space_state.intersect_ray(query)
 	var visible_player: bool = not hit.is_empty() and hit.collider == player
+	if flying:
+		if visible_player and distance < 20.0 and not noticed:
+			noticed = true
+			encountered.emit()
+		if navigation.enabled:
+			navigation.tick(self, delta, visible_player)
+		else:
+			navigation.move(self, Vector3.ZERO, delta)
+		return
 	if distance < (20.0 if navigation.enabled else 9.0) and visible_player:
 		if not noticed:
 			noticed = true
@@ -161,6 +179,15 @@ func receive_damage(amount: int) -> bool:
 		velocity = Vector3.ZERO
 		collision_layer = 0
 		collision_mask = 0
+		if flying:
+			# GameObjectHelper places flying corpses using FindGroundPosition(16).
+			var excluded: Array[RID] = [get_rid(), player.get_rid()]
+			for actor in get_tree().get_nodes_in_group("prototype_enemies"):
+				excluded.append(actor.get_rid())
+			var ray := PhysicsRayQueryParameters3D.create(global_position, global_position + Vector3.DOWN * 16.0, 1, excluded)
+			var ground := get_world_3d().direct_space_state.intersect_ray(ray)
+			if not ground.is_empty():
+				global_position = ground.position
 		if mobile:
 			mobile.set_state("corpse")
 			if loot_enabled:

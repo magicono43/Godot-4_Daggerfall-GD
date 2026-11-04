@@ -3,7 +3,7 @@ PASS All365 source model identities and MAPS grid transforms match independent i
 PASS All58 original hinged doors load; primary alias retains authored order
 PASS 130 original decorative flats plus seven static marker piles load
 PASS All11 former branch caps are removed
-PASS Accepted bear/passive chamber/13items/300HP baseline retained
+PASS Original fixed population/13items/300HP baseline retained
 PASS Original exit is present with explicit exterior boundary interaction
 PASS Exit activation explains unavailable exterior travel
 PASS Unknown per-record block rejected

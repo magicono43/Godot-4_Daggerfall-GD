@@ -13,7 +13,8 @@ root = Path(cfg['classic']['arena2'].strip('"'))
 palette = (root / 'ART_PAL.COL').read_bytes()[8:776]
 result = {}
 rat = '--rat' in sys.argv
-for archive, records in ([(255, range(20)), (401, [1])] if rat else [(259, range(20)), (401, [2])]):
+bat = '--bat' in sys.argv
+for archive, records in ([(258, range(15)), (401, [0])] if bat else ([(255, range(20)), (401, [1])] if rat else [(259, range(20)), (401, [2])])):
     data = (root / f'TEXTURE.{archive:03}').read_bytes()
     for record in records:
         p = struct.unpack_from('<I', data, 28 + record * 20)[0]
@@ -52,6 +53,14 @@ for archive, records in ([(255, range(20)), (401, [1])] if rat else [(259, range
             'rgba_sha256': hashes, 'transparent_pixels': transparent}
 target = PROJECT / 'tests' / 'enemies'
 target.mkdir(exist_ok=True)
-(target / ('rat_frames.json' if rat else 'bear_frames.json')).write_text(json.dumps(result, indent=2) + '\n')
-print('Pinned Rat:' if rat else 'Pinned Bear:', len(result), 'records,', sum(x['frames'] for x in result.values()), 'frames')
+name = 'bat' if bat else ('rat' if rat else 'bear')
+(target / (name + '_frames.json')).write_text(json.dumps(result, indent=2) + '\n')
+print('Pinned ' + name + ':', len(result), 'records,', sum(x['frames'] for x in result.values()), 'frames')
+if bat:
+    from inspect_data import bsa
+    raw = bsa('MONSTER.BSA')['ENEMY003.CFG']
+    profile = {'record': 'ENEMY003.CFG', 'sha256': hashlib.sha256(raw).hexdigest(),
+               'attributes': dict(zip(('strength', 'intelligence', 'willpower', 'agility', 'endurance',
+                                       'personality', 'speed', 'luck'), struct.unpack_from('<8H', raw, 58)))}
+    (target / 'bat_profile.json').write_text(json.dumps(profile, indent=2) + '\n')
 

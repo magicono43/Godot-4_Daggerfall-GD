@@ -1,4 +1,4 @@
-PASS All36 selected original samples including rat cues load
+PASS All39 selected original samples including rat/bat cues load
 PASS World viewport enables spatial audio listener
 PASS Unsigned source PCM converts to signed Godot PCM
 PASS Original mono sample rate and bit depth retained

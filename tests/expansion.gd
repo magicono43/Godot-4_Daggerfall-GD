@@ -94,6 +94,10 @@ func run() -> void:
 	# Isolate traversal health from stationary enemy retaliation.
 	for target in level.enemies:
 		target.melee.enabled = false
+		# This suite checks dungeon traversal, not routing around stationary
+		# encounter actors whose production navigation is deliberately disabled.
+		target.collision_layer = 0
+		target.collision_mask = 0
 	var initial_health: int = player.health.current
 	player.movement.profile.values = preload("res://scripts/movement_profile.gd").DEFAULTS.duplicate(true)
 	print("EXPANSION_COUNTS ", level.model_nodes.size(), " triangles=", level.classic.triangle_count, " materials=", level.classic.texture_count)

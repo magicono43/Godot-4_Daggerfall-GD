@@ -1,0 +1,10 @@
+ERROR: Failed to open 'user://logs/godot2026-11-03T19.41.34.log'.
+   at: copy (core/io/dir_access.cpp:429)
+ERROR: Failed to open log file for writing: user://logs/godot.log
+   at: rotate_file (core/io/logger.cpp:169)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+DUNGEON_LOAD true error= objects=365 billboards=137 fixed_enemies=11
+FIXED_ENEMY_TYPES { "skeleton": 3, "rat": 8 }

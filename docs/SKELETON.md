@@ -1,4 +1,33 @@
-# Current navigation extension
+# Original fixed skeleton population — November 3, 2026
+
+Normal play now includes the three original fixed skeletal warriors in S0000999:
+
+| Record offset / stable ID suffix | Original local native position | SoundIndex |
+| --- | --- | --- |
+| 33246 | [1609,-1047,763] | 3 |
+| 33750 | [540,-1833,700] | 1 |
+| 33822 | [1323,-1833,1810] | 2 |
+
+Each top-level fixed_enemies selection uses ID s0000999_r<offset>, validates
+199:16/mobile15, flags0/action0/next0 and the exact source SoundIndex, and retains
+the RDB position. SoundIndex is marker metadata, not an audio ordinal to play.
+Loader resolves the existing skeleton payload, profile, navigation and audio.
+These skeletons can open doors. HP30 retains supported deterministic behavior
+within EnemyBasics'17..66 range; health rolls are not added. Original combat
+stats/skills/damage, frame4/0.4s strike, edged resistance/parry and corpse306:1
+remain as implemented. They have no generated loot or corpse interaction.
+All eight accepted rats, original cave start and player test setup remain.
+
+Schema9 save ownership is unchanged: stable identities/death state persist with
+the exact section fingerprint. The added selection requires fresh R/K; user
+manual saves were not overwritten. Source loading confirms8 rats+3 skeletons;
+normal startup and existing skeleton48/48 headless checks pass. No scripted
+route or visual testing was added/run. User placement/encounter playtest is next;
+ask before creating/extending routes or running visual/capture checks.
+
+Earlier hall-prototype notes below are historical, not the current placement.
+
+# Previous navigation extension
 
 The hall Skeleton now pursues the player and plays its original movement frames. Stationary statements below describe the earlier sprite milestone; see [ENEMY_NAVIGATION.md](ENEMY_NAVIGATION.md) for current play behavior and testing.
 

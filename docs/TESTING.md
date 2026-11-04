@@ -65,6 +65,14 @@ affected. Automated physics checks do not establish subjective movement feel.
 
 ## Commands available today
 
+Bat flight extends `tests/enemy_navigation.gd` with `-- --bats-only` (controlled
+flight/assets/combat/save writer), `-- --bats-read` (fresh-process corpse reader)
+and `-- --bats-placements` (six real source placements/clearance). The writer
+generates tests/output/bat_section.json for the small bat_regression.tscn fixture;
+scratch saves/logs/captures remain under tests/output/. The full headless runner
+includes these modes. Rendered variants require user authorization; it was
+explicitly given for the bat feature, not as general future permission.
+
 Fixed-rat population uses existing `tests/full_dungeon.gd -- --rats-only` and
 `-- --rats-read` modes (same direct Godot invocation below). Run the writer first;
 the reader loads `tests/output/rats_save.json` in a fresh process. The full runner

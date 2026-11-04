@@ -1,0 +1,14 @@
+PASS Normal dungeon with six bats loads
+PASS Normal population is six fixed bats, eight accepted rats and three skeletons
+PASS Original bat marker has full capsule clearance: s0000999_r33498
+PASS Bat retains native X/Z with only bounded vertical capsule contact recovery: s0000999_r33498
+PASS Original bat marker has full capsule clearance: s0000999_r33030
+PASS Bat retains native X/Z with only bounded vertical capsule contact recovery: s0000999_r33030
+PASS Original bat marker has full capsule clearance: s0000999_r33678
+PASS Bat retains native X/Z with only bounded vertical capsule contact recovery: s0000999_r33678
+PASS Original bat marker has full capsule clearance: s0000999_r33390
+PASS Bat retains native X/Z with only bounded vertical capsule contact recovery: s0000999_r33390
+PASS Original bat marker has full capsule clearance: s0000999_r32886
+PASS Bat retains native X/Z with only bounded vertical capsule contact recovery: s0000999_r32886
+PASS Original bat marker has full capsule clearance: s0000999_r33210
+PASS Bat retains native X/Z with only bounded vertical capsule contact recovery: s0000999_r33210

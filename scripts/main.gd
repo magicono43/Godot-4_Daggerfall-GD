@@ -189,6 +189,10 @@ func _ready() -> void:
 	for entry in definition.prototype.enemies + classic.fixed_enemies:
 		var placeholder := CharacterBody3D.new()
 		placeholder.set_script(Enemy)
+		if entry.get("visual", "greybox") == "bat":
+			placeholder.flying = true
+			placeholder.navigation = preload("res://scripts/enemy_flight.gd").new()
+			placeholder.navigation.doors = doors
 		placeholder.approach_enabled = entry.get("approach_enabled", true)
 		placeholder.navigation.enabled = enemy_navigation_enabled and entry.get("navigation_enabled", false)
 		placeholder.melee.enabled = entry.get("attack_enabled", false)
@@ -202,6 +206,11 @@ func _ready() -> void:
 			placeholder.combat_stats.configure_rat(classic.rat_attributes)
 			placeholder.health.maximum = 9
 			placeholder.health.current = 9
+			placeholder.can_open_doors = false
+		elif entry.get("visual", "greybox") == "bat":
+			placeholder.combat_stats.configure_bat(classic.bat_attributes)
+			placeholder.health.maximum = 12
+			placeholder.health.current = 12
 			placeholder.can_open_doors = false
 		placeholder.creature_name = String(entry.get("visual", "greybox")).capitalize()
 		placeholder.combat_audio = combat_audio

@@ -1,0 +1,21 @@
+{
+  "repository": "https://github.com/Interkarma/daggerfall-unity",
+  "commit": "4e78e1412b17b60f4d5d6073825775aa5ae95139",
+  "license": "LICENSE.txt",
+  "cached_dependencies": {
+    "EnemyBasics.cs": "7cd0159054d053fff0bc32d437e2cf0c58c120cd3348edc457d3c011d4234b8f",
+    "EnemyMotor.cs": "7017a98e18cee8478cfd491cfe2b153c64b4d06c2f9384646e34773c69bafb51",
+    "EnemyEntity.cs": "6472c74fa7565567d128fea5ea237641a73f22be194a7fa09684d7dc99489d17",
+    "DaggerfallMobileUnit.cs": "4455e19cfecc756cfaf25bda77a44e615c67c940d2683161ff9f5d69614d9d67",
+    "GameObjectHelper.cs": "9d360e14bd5b297eb49ccae31a3f020e27a12e8e847e48ffec898a958df2a57d",
+    "SoundClips.cs": "fba0cc8cc19b9186d3f455f1660be81051d8a4c48f6b8b7edb46bfe81b4ce5bf",
+    "MonsterFile.cs": "3f1e8bce5d8c5c011c66f00f1aedea8426737163df2a50037b347a5210a5df01",
+    "ClassFile.cs": "ec601347379e04e50431720ea3004e4177543711d283e0b9fa7c215270f80240",
+    "RDBLayout.cs": "9d89736d27b55a946b542cb352a3b80e7e9843e41fb49692ba977e6f2e007987",
+    "BlocksFile.cs": "538ba684af0e7480e81ad5b903dcba6548a537e58505174ef55f9d22014c4fce"
+  },
+  "notes": [
+    "Bat ID3 profile and flight/animation semantics read from pinned local source. Native assets remain external and read-only.",
+    "Flight origin is centre-based; corpse uses GameObjectHelper/EnemyMotor FindGroundPosition with16m fallback. Movement speed2.5m/s and deterministic12HP are explicit slice policies."
+  ]
+}

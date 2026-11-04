@@ -4292,6 +4292,114 @@
       "expected_sound_index": 6,
       "expected_action": 0,
       "expected_next": 0
+    },
+    {
+      "id": "s0000999_r33246",
+      "block": "S0000999.RDB",
+      "record_offset": 33246,
+      "expected_archive": 199,
+      "expected_record": 16,
+      "expected_mobile_id": 15,
+      "expected_flags": 0,
+      "expected_sound_index": 3,
+      "expected_action": 0,
+      "expected_next": 0
+    },
+    {
+      "id": "s0000999_r33750",
+      "block": "S0000999.RDB",
+      "record_offset": 33750,
+      "expected_archive": 199,
+      "expected_record": 16,
+      "expected_mobile_id": 15,
+      "expected_flags": 0,
+      "expected_sound_index": 1,
+      "expected_action": 0,
+      "expected_next": 0
+    },
+    {
+      "id": "s0000999_r33822",
+      "block": "S0000999.RDB",
+      "record_offset": 33822,
+      "expected_archive": 199,
+      "expected_record": 16,
+      "expected_mobile_id": 15,
+      "expected_flags": 0,
+      "expected_sound_index": 2,
+      "expected_action": 0,
+      "expected_next": 0
+    },
+    {
+      "id": "s0000999_r32886",
+      "block": "S0000999.RDB",
+      "record_offset": 32886,
+      "expected_archive": 199,
+      "expected_record": 16,
+      "expected_mobile_id": 3,
+      "expected_flags": 0,
+      "expected_sound_index": 2,
+      "expected_action": 0,
+      "expected_next": 0
+    },
+    {
+      "id": "s0000999_r33030",
+      "block": "S0000999.RDB",
+      "record_offset": 33030,
+      "expected_archive": 199,
+      "expected_record": 16,
+      "expected_mobile_id": 3,
+      "expected_flags": 0,
+      "expected_sound_index": 2,
+      "expected_action": 0,
+      "expected_next": 0
+    },
+    {
+      "id": "s0000999_r33210",
+      "block": "S0000999.RDB",
+      "record_offset": 33210,
+      "expected_archive": 199,
+      "expected_record": 16,
+      "expected_mobile_id": 3,
+      "expected_flags": 0,
+      "expected_sound_index": 0,
+      "expected_action": 0,
+      "expected_next": 0
+    },
+    {
+      "id": "s0000999_r33390",
+      "block": "S0000999.RDB",
+      "record_offset": 33390,
+      "expected_archive": 199,
+      "expected_record": 16,
+      "expected_mobile_id": 3,
+      "expected_flags": 0,
+      "expected_sound_index": 0,
+      "expected_action": 0,
+      "expected_next": 0
+    },
+    {
+      "id": "s0000999_r33498",
+      "block": "S0000999.RDB",
+      "record_offset": 33498,
+      "expected_archive": 199,
+      "expected_record": 16,
+      "expected_mobile_id": 3,
+      "expected_flags": 0,
+      "expected_sound_index": 0,
+      "expected_action": 0,
+      "expected_next": 0
+    },
+    {
+      "id": "s0000999_r33678",
+      "block": "S0000999.RDB",
+      "record_offset": 33678,
+      "expected_archive": 199,
+      "expected_record": 16,
+      "expected_mobile_id": 3,
+      "expected_flags": 0,
+      "expected_sound_index": 2,
+      "expected_action": 0,
+      "expected_next": 0
     }
   ]
 }

@@ -26,6 +26,11 @@ func travel(native: Array, limit := 2400) -> bool:
 	return false
 
 func run() -> void:
+	if "--bats-only" in OS.get_cmdline_user_args() or "--bats-read" in OS.get_cmdline_user_args() or "--bats-placements" in OS.get_cmdline_user_args():
+		var bat_checks := preload("res://tests/bat_checks.gd").new()
+		var success: bool = await bat_checks.run(self)
+		quit(0 if success else 1)
+		return
 	level = load("res://tests/skeleton_regression.tscn").instantiate()
 	root.add_child(level)
 	current_scene = level

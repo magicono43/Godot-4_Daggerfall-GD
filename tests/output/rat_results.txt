@@ -1,5 +1,5 @@
 PASS Expanded normal dungeon builds
-PASS Normal dungeon contains exactly the two fixed rats, no prototype bear/chamber actor
+PASS Normal dungeon contains eight rats, three skeletons and six bats, no prototype targets
 PASS Retired targets and their loot are absent; rats have no invented loot
 PASS Original199:8 start restores cave entry while test equipment/HP/magicka remain
 PASS Fixed marker s0000999_r32850 settles on source floor without horizontal relocation
@@ -61,8 +61,8 @@ PASS Walk native route [1646, -256, 1496]
 PASS Walk native route [1598, -256, 1480]
 PASS Walk native route [1485, -256, 1400]
 PASS Second rat encounter is continuously reachable through original stairs/corridor
-PASS Two-rat state saves to isolated slot
+PASS Fixed-rat state saves to isolated slot
 PASS Rat saved health cannot exceed source-backed configured maximum
 PASS Retired bear identity cannot replace a selected source rat on load
-PASS Two-rat state restores through fresh candidate
+PASS Fixed-rat state restores through fresh candidate
 PASS Load retains dead/live source identities and player test equipment

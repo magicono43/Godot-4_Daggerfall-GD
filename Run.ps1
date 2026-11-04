@@ -13,6 +13,13 @@ if ($Test) {
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
     & $godotPath @godotArguments --fixed-fps 60 --script res://tests/full_dungeon.gd -- --rats-read
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    # Reuse the navigation suite for the independent flying motor and its save.
+    & $godotPath @godotArguments --fixed-fps 60 --script res://tests/enemy_navigation.gd -- --bats-only
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    & $godotPath @godotArguments --fixed-fps 60 --script res://tests/enemy_navigation.gd -- --bats-read
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    & $godotPath @godotArguments --fixed-fps 60 --script res://tests/enemy_navigation.gd -- --bats-placements
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
     # Separate Godot process: prove the slot survives process-local UID state.
     & $godotPath @godotArguments --fixed-fps 60 --script res://tests/persistence.gd -- --persistence-read
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }

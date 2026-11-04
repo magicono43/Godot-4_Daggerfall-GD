@@ -25,6 +25,10 @@ func configure(data: Dictionary) -> void:
 	refresh()
 
 func set_state(value: String) -> void:
+	if not payload.get("has_idle", true) and state in ["idle", "move"] and value in ["idle", "move"]:
+		state = value
+		refresh()
+		return
 	state = value
 	elapsed = 0.0
 	strike_pending = false
@@ -72,14 +76,16 @@ func refresh() -> void:
 		flip_h = false
 	else:
 		var base := 5 if state == "attack" else (10 if state == "hurt" else (0 if state == "move" else 15))
+		if state == "idle" and not payload.get("has_idle", true):
+			base = 0
 		source_record = base + int(ORIENTATION_RECORDS[orientation])
 		record = payload.records[source_record]
 		source_frame = 0
 		if state == "attack":
 			var sequence: Array = payload.get("attack_sequence", [0, 1, 2, 3, 4, 5])
 			source_frame = int(sequence[mini(int((elapsed + 0.000001) * ATTACK_FPS), sequence.size() - 1)])
-		if state == "move":
-			source_frame = int(elapsed * 6.0) % record.frames.size()
+		if state == "move" or (state == "idle" and not payload.get("has_idle", true)):
+			source_frame = int(elapsed * float(payload.get("move_fps", 6.0))) % record.frames.size()
 		flip_h = orientation > 4
 		if state == "idle" and payload.get("rat_idle_mirroring", false):
 			flip_h = orientation in [1, 2, 3]
@@ -88,3 +94,5 @@ func refresh() -> void:
 	var metres: Vector2 = record.size_metres
 	scale = Vector3(metres.x / (dimensions.x * pixel_size), metres.y / (dimensions.y * pixel_size), 1)
 	position.y = metres.y * 0.5
+	if payload.get("flying", false) and state != "corpse":
+		position.y = 0.0

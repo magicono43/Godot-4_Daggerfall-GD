@@ -1,0 +1,446 @@
+{
+	"actions": {
+		"s0000999_r27790": false,
+		"s0000999_r32273": false
+	},
+	"authored": {
+		"chamber_treasure": {
+			"id": "chamber_treasure",
+			"inventory": {
+				"armor_slots": {
+					"chest": 0,
+					"feet": 0,
+					"hands": 0,
+					"head": 0,
+					"left_arm": 0,
+					"legs": 0,
+					"right_arm": 0
+				},
+				"equipped_uid": 0,
+				"items": [
+					{
+						"definition": "gold",
+						"quantity": 18,
+						"uid": 14
+					},
+					{
+						"definition": "healing_potion",
+						"quantity": 1,
+						"uid": 15
+					}
+				]
+			},
+			"position": [
+				19.375,
+				1.02500009536743,
+				28.5999984741211
+			]
+		}
+	},
+	"doors": {
+		"b0000003_r10314": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000003_r10433": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000003_r11147": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000003_r11195": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000003_r11867": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000003_r12537": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000003_r12585": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000003_r9596": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000003_r9715": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000003_r9763": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000003_r9811": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000006_r10195": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000006_r10314": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000006_r10602": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000006_r11318": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000006_r11702": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000006_r12013": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000006_r9596": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000006_r9763": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000006_r9811": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000006_r9859": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000009_r10122": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000009_r10552": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000009_r10863": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000009_r9596": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000009_r9740": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000009_r9978": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000012_r10121": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000012_r10384": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000012_r11124": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000012_r11172": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000012_r11700": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000012_r11748": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000012_r12155": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000012_r12203": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000012_r9596": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"b0000012_r9977": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"first_door": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"great_hall_door": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"hall_approach_door": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"s0000999_r10254": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"s0000999_r11663": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"s0000999_r11759": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"s0000999_r11807": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"s0000999_r13329": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"s0000999_r14283": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"s0000999_r14880": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"s0000999_r15982": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"s0000999_r17128": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"s0000999_r17176": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"s0000999_r18576": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"s0000999_r19199": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"s0000999_r19247": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"s0000999_r19449": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"s0000999_r19748": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"s0000999_r19796": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"s0000999_r22543": {
+			"opened": false,
+			"swing": -1.5707963267949
+		},
+		"s0000999_r28014": {
+			"opened": false,
+			"swing": -1.5707963267949
+		}
+	},
+	"drops": [],
+	"enemies": {
+		"s0000999_r33030": {
+			"health": 0,
+			"inventory": {
+				"armor_slots": {
+					"chest": 0,
+					"feet": 0,
+					"hands": 0,
+					"head": 0,
+					"left_arm": 0,
+					"legs": 0,
+					"right_arm": 0
+				},
+				"equipped_uid": 0,
+				"items": []
+			},
+			"position": [
+				-9.22500038146973,
+				6.40000009536743,
+				22.5249996185303
+			],
+			"yaw": -3.14159250259399
+		}
+	},
+	"player": {
+		"anchor": {},
+		"character": {
+			"agility": 50.0,
+			"alteration": 50.0,
+			"blunt_weapon": 50.0,
+			"climbing": 25.0,
+			"critical_strike": 25.0,
+			"destruction": 50.0,
+			"dodging": 25.0,
+			"endurance": 50.0,
+			"hand_to_hand": 50.0,
+			"illusion": 50.0,
+			"intelligence": 50.0,
+			"jumping": 25.0,
+			"luck": 50.0,
+			"medical": 25.0,
+			"mysticism": 50.0,
+			"personality": 50.0,
+			"restoration": 50.0,
+			"running": 25.0,
+			"short_blade": 50.0,
+			"speed": 50.0,
+			"strength": 50.0,
+			"swimming": 25.0,
+			"willpower": 50.0
+		},
+		"crouched": false,
+		"fatigue": {
+			"current": 6400,
+			"game_seconds": 0.8
+		},
+		"health": 288,
+		"inventory": {
+			"armor_slots": {
+				"chest": 0,
+				"feet": 0,
+				"hands": 0,
+				"head": 0,
+				"left_arm": 0,
+				"legs": 0,
+				"right_arm": 0
+			},
+			"equipped_uid": 1,
+			"items": [
+				{
+					"definition": "dagger",
+					"material": "steel",
+					"quantity": 1,
+					"uid": 1
+				},
+				{
+					"definition": "mace",
+					"material": "steel",
+					"quantity": 1,
+					"uid": 2
+				},
+				{
+					"definition": "steel_cuirass",
+					"quantity": 1,
+					"uid": 3
+				},
+				{
+					"definition": "healing_potion",
+					"quantity": 2,
+					"uid": 4
+				},
+				{
+					"definition": "dagger",
+					"material": "steel",
+					"quantity": 1,
+					"uid": 5
+				},
+				{
+					"definition": "gold",
+					"quantity": 12,
+					"uid": 6
+				},
+				{
+					"definition": "twigs",
+					"quantity": 2,
+					"uid": 7
+				},
+				{
+					"definition": "steel_helm",
+					"quantity": 1,
+					"uid": 8
+				},
+				{
+					"definition": "steel_right_pauldron",
+					"quantity": 1,
+					"uid": 9
+				},
+				{
+					"definition": "steel_left_pauldron",
+					"quantity": 1,
+					"uid": 10
+				},
+				{
+					"definition": "steel_gauntlets",
+					"quantity": 1,
+					"uid": 11
+				},
+				{
+					"definition": "steel_greaves",
+					"quantity": 1,
+					"uid": 12
+				},
+				{
+					"definition": "steel_boots",
+					"quantity": 1,
+					"uid": 13
+				}
+			]
+		},
+		"light_seconds": 0.0,
+		"magic": {
+			"current": 150,
+			"known": [
+				"heal",
+				"light",
+				"fire_bolt",
+				"shock_bolt",
+				"burning_touch",
+				"shield",
+				"teleport"
+			],
+			"last_cast": "",
+			"selected": "heal"
+		},
+		"pitch": 0.0,
+		"position": [
+			0.0000000143287444132056,
+			0.000076634343713522,
+			0.0000000143287435250272
+		],
+		"sheathed": false,
+		"shield": {
+			"capacity": 0,
+			"current": 0,
+			"seconds": 0.0
+		},
+		"yaw": -3.13774657249451
+	},
+	"section": "res://tests/output/bat_section.json",
+	"section_hash": "a7ef130dd3da864994ad5a82f259deacbd82cd911c4a722956ecff477c6d962c",
+	"version": 9
+}

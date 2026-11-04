@@ -1,8 +1,5 @@
 {
-	"actions": {
-		"s0000999_r27790": false,
-		"s0000999_r32273": false
-	},
+	"actions": {},
 	"authored": {
 		"chamber_treasure": {
 			"id": "chamber_treasure",
@@ -38,154 +35,6 @@
 		}
 	},
 	"doors": {
-		"b0000003_r10314": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000003_r10433": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000003_r11147": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000003_r11195": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000003_r11867": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000003_r12537": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000003_r12585": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000003_r9596": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000003_r9715": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000003_r9763": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000003_r9811": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000006_r10195": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000006_r10314": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000006_r10602": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000006_r11318": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000006_r11702": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000006_r12013": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000006_r9596": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000006_r9763": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000006_r9811": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000006_r9859": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000009_r10122": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000009_r10552": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000009_r10863": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000009_r9596": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000009_r9740": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000009_r9978": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000012_r10121": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000012_r10384": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000012_r11124": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000012_r11172": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000012_r11700": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000012_r11748": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000012_r12155": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000012_r12203": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000012_r9596": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"b0000012_r9977": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
 		"first_door": {
 			"opened": false,
 			"swing": -1.5707963267949
@@ -195,78 +44,6 @@
 			"swing": -1.5707963267949
 		},
 		"hall_approach_door": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"s0000999_r10254": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"s0000999_r11663": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"s0000999_r11759": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"s0000999_r11807": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"s0000999_r13329": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"s0000999_r14283": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"s0000999_r14880": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"s0000999_r15982": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"s0000999_r17128": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"s0000999_r17176": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"s0000999_r18576": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"s0000999_r19199": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"s0000999_r19247": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"s0000999_r19449": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"s0000999_r19748": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"s0000999_r19796": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"s0000999_r22543": {
-			"opened": false,
-			"swing": -1.5707963267949
-		},
-		"s0000999_r28014": {
 			"opened": false,
 			"swing": -1.5707963267949
 		}
@@ -495,7 +272,7 @@
 		},
 		"yaw": -1.57079637050629
 	},
-	"section": "res://sections/privateers_hold_opening.json",
-	"section_hash": "f13c739c76c2d525beb7776b04bd36475f376f34221718abfdd9dc7977208e08",
+	"section": "res://tests/output/bear_regression_section.json",
+	"section_hash": "ea8f641fb48ccc2f03b0a93f5545a904f47fe8eab02063689340bf86e70ccb56",
 	"version": 9
 }

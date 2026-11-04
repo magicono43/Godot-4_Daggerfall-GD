@@ -114,14 +114,18 @@ Each prototype.enemies entry may set attack_enabled to a boolean (default false)
 Optional top-level `fixed_enemies` contains at most64 source selections, separate
 from `prototype.enemies`. Each requires a unique section `id`, optional `block`
 (default starting block), unique `record_offset`, `expected_archive:199`,
-`expected_record:16`, `expected_mobile_id:0`, `expected_flags:0`,
+`expected_record:16`, `expected_mobile_id` (0 rat,3 bat,15 skeleton), `expected_flags:0`,
 `expected_sound_index` (byte), `expected_action:0`, and `expected_next` (0 or-2,
 matching the original inert link value exactly).
-The currently supported source type is rat only. Position is decoded from RDB;
+The supported source types are rat, Giant Bat and skeletal warrior. Position is decoded from RDB;
 do not add authored position/visual/loot fields to describe original placements.
 The loader validates source fields and matched linked records before build.
-Normal selection uses stable IDs `s0000999_r<offset>` for all eight fixed rats.
+Normal selection uses stable IDs `s0000999_r<offset>` for eight rats, three skeletons and six bats.
 Other fixed/random markers remain inert. See FIXED_RATS.md.
+
+Bat positions are native centres, not feet. The loader resolves mobile3 to the
+existing enemy system with its separate floating motor and original258/401:0
+payload. Grounded selections retain their existing origin/motor. See BATS.md.
 
 Normal prototype.enemies is now empty and prototype.player_start is omitted,
 restoring the original199:8 cave start. Player test grants remain unchanged.

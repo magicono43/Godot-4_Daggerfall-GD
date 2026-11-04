@@ -17,8 +17,12 @@ func cancel() -> void:
 func can_reach(body: CharacterBody3D) -> bool:
 	var target: CharacterBody3D = body.player
 	var offset := target.global_position - body.global_position
+	if body.flying:
+		offset += Vector3.UP * float(target.capsule_collision.shape.height) * 0.5
+		if offset.length() > reach:
+			return false
 	# Feet-based height rejection prevents attacks through floors/upper landings.
-	if absf(offset.y) > 1.2:
+	if not body.flying and absf(offset.y) > 1.2:
 		return false
 	offset.y = 0.0
 	if offset.length() > reach:
@@ -26,7 +30,7 @@ func can_reach(body: CharacterBody3D) -> bool:
 	if phase == "windup" and offset.length() > 0.25 and direction.dot(offset.normalized()) < cos(deg_to_rad(60.0)):
 		return false
 	var centre: Vector3 = target.global_position + Vector3.UP * float(target.capsule_collision.shape.height) * 0.5
-	var query := PhysicsRayQueryParameters3D.create(body.global_position + Vector3.UP * 0.5, centre, 3, [body.get_rid()])
+	var query := PhysicsRayQueryParameters3D.create(body.global_position + Vector3.UP * (0.0 if body.flying else 0.5), centre, 3, [body.get_rid()])
 	var hit := body.get_world_3d().direct_space_state.intersect_ray(query)
 	return not hit.is_empty() and hit.collider == target
 

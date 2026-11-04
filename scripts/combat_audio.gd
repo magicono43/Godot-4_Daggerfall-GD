@@ -10,6 +10,7 @@ const EVENTS := {
 	"skeleton_move": [160], "skeleton_bark": [161], "skeleton_attack": [162],
 	"bear_move": [127], "bear_bark": [128], "bear_attack": [129],
 	"rat_move": [115], "rat_bark": [116], "rat_attack": [117],
+	"bat_move": [124], "bat_bark": [125], "bat_attack": [126],
 }
 const MAX_VOICES := 24
 var archive := preload("res://scripts/classic_archive.gd").new()
@@ -87,7 +88,7 @@ func play_action(sound_id: int, emitter: Node3D) -> void:
 	play_voice("action", ordinal, emitter, 1.0, Vector3.INF)
 
 func play_voice(event: String, id: int, emitter: Node3D, gain: float, at: Vector3) -> void:
-	var creature_event := event.begins_with("skeleton_") or event.begins_with("bear_") or event.begins_with("rat_")
+	var creature_event := event.begins_with("skeleton_") or event.begins_with("bear_") or event.begins_with("rat_") or event.begins_with("bat_")
 	if not cache.has(id):
 		return
 	# Bound overlapping voices and reclaim explicitly on completion/restart.
@@ -104,7 +105,7 @@ func play_voice(event: String, id: int, emitter: Node3D, gain: float, at: Vector
 		if event in ["impact_fire", "impact_shock"]:
 			source.max_distance = spell_impact_range
 		add_child(source)
-		source.global_position = emitter.global_position + Vector3.UP * 0.8
+		source.global_position = emitter.global_position + Vector3.UP * (0.0 if emitter.get("flying") == true else 0.8)
 		if at.is_finite():
 			source.global_position = at
 		voice = source

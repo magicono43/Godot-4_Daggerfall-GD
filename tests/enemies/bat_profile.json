@@ -1,0 +1,14 @@
+{
+  "record": "ENEMY003.CFG",
+  "sha256": "4db6c24424db469beb4b450972b3bc8152f63143456768119dd17f60a2934d4f",
+  "attributes": {
+    "strength": 50,
+    "intelligence": 40,
+    "willpower": 60,
+    "agility": 70,
+    "endurance": 55,
+    "personality": 40,
+    "speed": 70,
+    "luck": 50
+  }
+}

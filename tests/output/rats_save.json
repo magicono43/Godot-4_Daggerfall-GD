@@ -295,6 +295,28 @@
 			],
 			"yaw": 3.14159274101257
 		},
+		"s0000999_r32886": {
+			"health": 12,
+			"inventory": {
+				"armor_slots": {
+					"chest": 0,
+					"feet": 0,
+					"hands": 0,
+					"head": 0,
+					"left_arm": 0,
+					"legs": 0,
+					"right_arm": 0
+				},
+				"equipped_uid": 0,
+				"items": []
+			},
+			"position": [
+				35.6749992370605,
+				7.875,
+				29.0749988555908
+			],
+			"yaw": 0.0
+		},
 		"s0000999_r32958": {
 			"health": 9,
 			"inventory": {
@@ -314,6 +336,314 @@
 				24.375,
 				6.40088558197021,
 				8.125
+			],
+			"yaw": 0.0
+		},
+		"s0000999_r33030": {
+			"health": 12,
+			"inventory": {
+				"armor_slots": {
+					"chest": 0,
+					"feet": 0,
+					"hands": 0,
+					"head": 0,
+					"left_arm": 0,
+					"legs": 0,
+					"right_arm": 0
+				},
+				"equipped_uid": 0,
+				"items": []
+			},
+			"position": [
+				-9.22500038146973,
+				8.22500038146973,
+				22.5249996185303
+			],
+			"yaw": 0.0
+		},
+		"s0000999_r33102": {
+			"health": 9,
+			"inventory": {
+				"armor_slots": {
+					"chest": 0,
+					"feet": 0,
+					"hands": 0,
+					"head": 0,
+					"left_arm": 0,
+					"legs": 0,
+					"right_arm": 0
+				},
+				"equipped_uid": 0,
+				"items": []
+			},
+			"position": [
+				23.125,
+				12.8008861541748,
+				31.625
+			],
+			"yaw": 0.0
+		},
+		"s0000999_r33138": {
+			"health": 9,
+			"inventory": {
+				"armor_slots": {
+					"chest": 0,
+					"feet": 0,
+					"hands": 0,
+					"head": 0,
+					"left_arm": 0,
+					"legs": 0,
+					"right_arm": 0
+				},
+				"equipped_uid": 0,
+				"items": []
+			},
+			"position": [
+				19.9249992370605,
+				12.8008861541748,
+				38.0249977111816
+			],
+			"yaw": 0.0
+		},
+		"s0000999_r33210": {
+			"health": 12,
+			"inventory": {
+				"armor_slots": {
+					"chest": 0,
+					"feet": 0,
+					"hands": 0,
+					"head": 0,
+					"left_arm": 0,
+					"legs": 0,
+					"right_arm": 0
+				},
+				"equipped_uid": 0,
+				"items": []
+			},
+			"position": [
+				15.625,
+				14.625,
+				6.82499694824219
+			],
+			"yaw": 0.0
+		},
+		"s0000999_r33246": {
+			"health": 30,
+			"inventory": {
+				"armor_slots": {
+					"chest": 0,
+					"feet": 0,
+					"hands": 0,
+					"head": 0,
+					"left_arm": 0,
+					"legs": 0,
+					"right_arm": 0
+				},
+				"equipped_uid": 0,
+				"items": []
+			},
+			"position": [
+				27.4750022888184,
+				25.6005554199219,
+				22.7249984741211
+			],
+			"yaw": 0.0
+		},
+		"s0000999_r33390": {
+			"health": 12,
+			"inventory": {
+				"armor_slots": {
+					"chest": 0,
+					"feet": 0,
+					"hands": 0,
+					"head": 0,
+					"left_arm": 0,
+					"legs": 0,
+					"right_arm": 0
+				},
+				"equipped_uid": 0,
+				"items": []
+			},
+			"position": [
+				28.7750015258789,
+				13.851001739502,
+				24.9749984741211
+			],
+			"yaw": 0.0
+		},
+		"s0000999_r33426": {
+			"health": 9,
+			"inventory": {
+				"armor_slots": {
+					"chest": 0,
+					"feet": 0,
+					"hands": 0,
+					"head": 0,
+					"left_arm": 0,
+					"legs": 0,
+					"right_arm": 0
+				},
+				"equipped_uid": 0,
+				"items": []
+			},
+			"position": [
+				2.52500057220459,
+				19.2008838653564,
+				-1.27500152587891
+			],
+			"yaw": 0.0
+		},
+		"s0000999_r33498": {
+			"health": 12,
+			"inventory": {
+				"armor_slots": {
+					"chest": 0,
+					"feet": 0,
+					"hands": 0,
+					"head": 0,
+					"left_arm": 0,
+					"legs": 0,
+					"right_arm": 0
+				},
+				"equipped_uid": 0,
+				"items": []
+			},
+			"position": [
+				-9.52499961853027,
+				33.8250007629395,
+				22.7749996185303
+			],
+			"yaw": 0.0
+		},
+		"s0000999_r33570": {
+			"health": 9,
+			"inventory": {
+				"armor_slots": {
+					"chest": 0,
+					"feet": 0,
+					"hands": 0,
+					"head": 0,
+					"left_arm": 0,
+					"legs": 0,
+					"right_arm": 0
+				},
+				"equipped_uid": 0,
+				"items": []
+			},
+			"position": [
+				21.1000022888184,
+				38.4008827209473,
+				38.625
+			],
+			"yaw": 0.0
+		},
+		"s0000999_r33642": {
+			"health": 9,
+			"inventory": {
+				"armor_slots": {
+					"chest": 0,
+					"feet": 0,
+					"hands": 0,
+					"head": 0,
+					"left_arm": 0,
+					"legs": 0,
+					"right_arm": 0
+				},
+				"equipped_uid": 0,
+				"items": []
+			},
+			"position": [
+				25.0750007629395,
+				38.4008827209473,
+				26.5
+			],
+			"yaw": 0.0
+		},
+		"s0000999_r33678": {
+			"health": 12,
+			"inventory": {
+				"armor_slots": {
+					"chest": 0,
+					"feet": 0,
+					"hands": 0,
+					"head": 0,
+					"left_arm": 0,
+					"legs": 0,
+					"right_arm": 0
+				},
+				"equipped_uid": 0,
+				"items": []
+			},
+			"position": [
+				18.9250011444092,
+				39.451000213623,
+				16.3249988555908
+			],
+			"yaw": 0.0
+		},
+		"s0000999_r33714": {
+			"health": 9,
+			"inventory": {
+				"armor_slots": {
+					"chest": 0,
+					"feet": 0,
+					"hands": 0,
+					"head": 0,
+					"left_arm": 0,
+					"legs": 0,
+					"right_arm": 0
+				},
+				"equipped_uid": 0,
+				"items": []
+			},
+			"position": [
+				35.0,
+				41.6008834838867,
+				30.5499992370605
+			],
+			"yaw": 0.0
+		},
+		"s0000999_r33750": {
+			"health": 30,
+			"inventory": {
+				"armor_slots": {
+					"chest": 0,
+					"feet": 0,
+					"hands": 0,
+					"head": 0,
+					"left_arm": 0,
+					"legs": 0,
+					"right_arm": 0
+				},
+				"equipped_uid": 0,
+				"items": []
+			},
+			"position": [
+				0.75,
+				44.8008842468262,
+				24.2999992370605
+			],
+			"yaw": 0.0
+		},
+		"s0000999_r33822": {
+			"health": 30,
+			"inventory": {
+				"armor_slots": {
+					"chest": 0,
+					"feet": 0,
+					"hands": 0,
+					"head": 0,
+					"left_arm": 0,
+					"legs": 0,
+					"right_arm": 0
+				},
+				"equipped_uid": 0,
+				"items": []
+			},
+			"position": [
+				20.3250007629395,
+				44.8008842468262,
+				-3.45000076293945
 			],
 			"yaw": 0.0
 		}
@@ -460,9 +790,9 @@
 			"current": 0,
 			"seconds": 0.0
 		},
-		"yaw": 2.18200016021729
+		"yaw": 2.18199968338013
 	},
 	"section": "res://sections/privateers_hold_opening.json",
-	"section_hash": "ff263b876c91c888b02d6f0a54507c2b54887901b745f8ac5fbbdd27a72e3e15",
+	"section_hash": "b8aed8983172f47a7b1524f24f1b0549d61476f62cdbe7d6d26a28847233a52e",
 	"version": 9
 }

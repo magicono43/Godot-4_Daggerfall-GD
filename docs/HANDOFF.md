@@ -1,4 +1,128 @@
-# Resume here: all eight rats accepted; ask before scripted routes/visual tests
+# Resume here: bats accepted, imps next
+
+November 3, 2026. The user confirmed bats now fly through open doors. The
+doorway fix uses the settled open leaf's closed frame to find a crossing and
+checks capsule clearance before steering through. Focused headless flight
+passed 47/47 and placement checks passed 14/14. Existing saves remain compatible.
+See BATS.md for the fix.
+
+The user selected imps as the next milestone and the first spellcasting enemy.
+Start by auditing the pinned EnemyBasics, EnemyEntity and EnemyAttack sources
+for spell selection, cast timing, costs, targeting and resistance. Check the
+existing spell and projectile systems for reusable pieces with enemy ownership.
+Audit the imp assets and original fixed mobile1 markers in S0000999 at offsets
+32922, 33462 and 33606 against the archive bytes. EnemyBasics points to archive
+256, corpse406:5, Steel minimum and door opening. Reuse the accepted flight
+motor and verify imp-specific behavior before choosing the implementation scope.
+No imp implementation has started.
+
+Keep the current population and player setup. Ask before creating or extending
+scripted gameplay routes or running rendered tests or captures. The previous
+bat-specific approval does not carry over. See TESTING.md.
+
+# Previous: six fixed Giant Bats implemented; user dungeon playtest next
+
+November 3, 2026. User accepted all skeletons, then explicitly authorized whatever
+validation was appropriate for bat flight/graphics/sounds/attributes before
+placing all six bats. That work is complete. Normal population is17 actors:
+eight accepted rats, three accepted skeletons and six fixed mobile3 bats at
+S0000999 offsets32886,33030,33210,33390,33498,33678. Exact marker fields and
+original centre positions remain checked in fixed_enemies. No imp/enemy magic,
+random encounter/loot engine, player rebalance or new dungeon links.
+
+enemy_flight.gd is a separate reusable capsule-tested3D local motor. Flying
+CharacterBody3D uses centre origin/floating mode, no gravity/snap/stairs, altitude
+pursuit, short horizontal/vertical detours, existing sight/memory/leash and low
+floor clearance. Ground motor remains separate. Source258 records0..14 have no
+idle bank (hover/move flap at10fps); attack[0,1,-1,2,3] hits once at0.2s, hurt
+stays centred, corpse401:0 is nonblocking/no loot. ENEMY003 source attributes,
+skills45/internal armor30/damage2..12, own sounds124..126; HP12 and speed2.5m/s
+are explicit deterministic/existing slice policies. Cannot open doors. Flying
+melee checks3D reach/obstruction. Modal/release/death stop flight safely; hurt
+cancels strikes. Death finds ground below within16m (source no-hit fallback),
+and corpse restore does not replay effects or rerun ground placement.
+
+Schema9/save owner unchanged; airborne position/health and dead state restore
+without reroll. Added section selection changes fingerprint: fresh R/K required.
+Manual saves untouched. Cave start/player300HP/150magicka/13items/skills/spells
+and accepted populations/mechanisms remain. Two markers33390/33678 get normal
+0.025993m upward capsule contact recovery; source X/Z is unchanged and all six
+have full clearance. See BATS.md and reference/bat_sources.json for decisions,
+source hashes/native profile/assets and fixture commands.
+
+Final validation: Run.ps1 -Test completed successfully across all31 existing
+suites plus population/flight modes and separate-process readers. Bat flight
+46/46 headless, fresh-process corpse3/3, actual placements14/14; rat integration
+68/68, full dungeon103/103, original route104/104, skeleton48/48, ground
+navigation34/34, bear58/58, audio43/43, persistence61/61, load_focus18/18.
+Existing traversal-only fixtures exclude actor collision while freezing enemy
+navigation, so stationary encounters do not obstruct geometry route assertions;
+normal collision is unchanged and flight collision is independently exercised.
+
+Focused rendered flight52/52 (includes real audio mixer and camera checks) and
+placement16/16 passed. Inspected flight/elevated/attack/hurt/corpse and two native
+confined/high passage placements across both display modes. A wall-obstructed
+test camera was corrected with visibility-tested offsets, not by changing enemy
+positions. No player walking route to each bat was authored. Tests cover all46
+independently hashed frames/dimensions, source attributes, own voices, hover,
+ascend/descend, floor/ceiling/closed-door collision, solid-obstacle detour, memory
+expiry, sensing, melee timing/range/wall checks, modal/release/hurt, airborne and
+corpse saves. Restricted-host log/certificate and legacy ObjectDB diagnostics
+remain nonblocking; final logs have no failed assertions/script errors.
+
+Evidence is stable under tests/output/: bat_full_regression.log,
+bat_flight_rendered.log, bat_placements_headless.log, bat_placements_rendered.log
+and bat_*.png. enemy_navigation.gd --bats-only/--bats-read/--bats-placements uses
+bat_checks.gd and a small bat_regression.tscn with a generated scratch section;
+no new full-world historical copy or standalone routine suite. Existing
+audit_bear.py --bat/audit_audio.py pin frames/career/audio; no media bundled.
+
+Await user's actual dungeon playtest/subjective flight and listening feedback
+before more population or imp work. The bat-specific validation authorization
+does not waive the standing ask-first rule for future new/extended scripted
+routes and visual/capture tests. No more test runs are needed without a new
+change, failure, concrete concern or user request.
+
+# Previous: skeletons accepted; bat flight proposed next
+
+November 3, 2026. User confirmed all three skeletons work and occupy their proper
+spots. Eight rats and three skeletons are now user-accepted. User selected bats
+before imps because bats need no magic, and requested an implementation proposal.
+No bat gameplay is implemented yet. Source audit identifies six fixed mobile3
+markers in S0000999:32886,33030,33210,33390,33498,33678. Reuse creature systems
+but add genuine collision-aware flight, not the grounded stair/floor motor.
+Imps may later reuse flight; imp magic remains separate and deferred. Preserve
+player setup and accepted populations. Ask before new/extended scripted routes
+or visual/capture tests; source/loading and relevant existing headless checks
+remain allowed. See newest NEXT_MILESTONE entry for proposed scope.
+
+# Previous: three original fixed skeletons added; user playtest next
+
+November 3, 2026. User authorized all three fixed skeletal warriors. Added
+S0000999.RDB:33246 [1609,-1047,763],33750 [540,-1833,700] and33822
+[1323,-1833,1810] to fixed_enemies, retaining all eight accepted rats. Stable IDs
+are s0000999_r<offset>; placement comes from RDB, not authored coordinates.
+Validate texture199:16/mobile15, flags0/action0/next0 and SoundIndex3/1/2
+respectively before scene build. Loader now resolves selected species to existing
+rat/skeleton payloads; no new enemy engine. Reuse skeleton30HP (deterministic
+existing policy within source17..66), original stats/skills/combat, animation,
+local navigation/door opening, sounds and nonblocking corpse. No generated loot.
+Player cave start/300HP/150magicka/13items/skills/spells remain unchanged.
+
+Lightweight validation: source/asset probe passed365 models/137 billboards/
+11 fixed enemies, explicitly8 rats+3 skeletons; normal main.tscn startup passed
+120 frames without script errors; existing independent skeleton regression48/48
+passed headless because shared loader selection changed. Logs under tests/output/:
+fixed_skeletons_load.log, fixed_skeletons_startup.log and
+fixed_skeletons_regression.log. Host log/certificate warnings remain nonblocking.
+No new routes/captures, visual tests or full regression. Actual placement feel/
+accessibility and encounters await user testing; always ask before new/extended
+scripted routes or visual/capture passes. Existing population assertions updated
+for11 actors, not expanded with new routes. Section fingerprint changed: fresh
+R then K required; manual saves untouched. Random17 markers, other fixed species,
+loot generation and further additions remain deferred.
+
+# Previous: all eight rats accepted; ask before scripted routes/visual tests
 
 November 3, 2026. User confirmed all eight fixed rats are correctly placed and
 functioning as expected. This is user playtest acceptance, distinct from the

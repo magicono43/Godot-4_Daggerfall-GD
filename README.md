@@ -1,10 +1,21 @@
-## Current playtest — original cave start and eight fixed rats
+## Current playtest — original cave start, rats, skeletons and bats
+
+All six original fixed Giant Bats are now added, with collision-aware flight,
+native graphics/sounds, melee attacks and nonblocking corpses. Bats stay airborne,
+change altitude to pursue, and cannot open doors. See [docs/BATS.md](docs/BATS.md).
+They join the eight rats and three skeletons you already accepted. Your cave
+start and player test setup remain unchanged; bat encounters await your playtest.
 
 You now start at the original new-game marker near the log and bonfire. All eight
 fixed rats occupy their original source markers throughout the central dungeon.
 They pursue, attack and leave nonblocking corpses;
 they cannot open doors and have no generated loot. The hall test bear, passive
 red target and their loot have been removed. Bear support remains for later use.
+
+The three original fixed skeletal warriors are now present too, using existing
+skeleton behavior and30HP. They can open doors and leave nonblocking corpses,
+with no generated loot. See [docs/SKELETON.md](docs/SKELETON.md). Their encounter
+placements await your playtest; all eight rats have already been accepted.
 
 Your13 starting item instances,300HP,150magicka, skills and seven spells remain
 available for testing. **Use R for a fresh start, then K to replace the old save:**
