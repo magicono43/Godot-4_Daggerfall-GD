@@ -30,6 +30,8 @@ func play_sound(event: String, gain: float = 1.0) -> void:
 			return
 		if creature_name == "Bear" and event.begins_with("skeleton_"):
 			event = event.replace("skeleton_", "bear_")
+		elif creature_name == "Rat" and event.begins_with("skeleton_"):
+			event = event.replace("skeleton_", "rat_")
 		combat_audio.play(event, self, gain)
 
 func _ready() -> void:
@@ -53,6 +55,10 @@ func _ready() -> void:
 	add_child(shape)
 	if not sprite_payload.is_empty():
 		var height: float = sprite_payload.records[15].size_metres.y
+		# A rat's native height is smaller than the old0.64m capsule diameter.
+		# Keep a valid capsule wholly within its native idle silhouette.
+		if creature_name == "Rat":
+			capsule.radius = minf(0.32, minf(height * 0.5, sprite_payload.records[15].size_metres.x * 0.5))
 		capsule.height = height
 		shape.position.y = height * 0.5
 		mobile = preload("res://scripts/enemy_sprite.gd").new()

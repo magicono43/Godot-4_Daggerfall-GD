@@ -19,7 +19,7 @@ func run() -> void:
 	player.set_physics_process(false)
 	var audio = level.combat_audio
 	audio.played.connect(func(event, _id, _spatial): events.append(event))
-	check(audio.error.is_empty() and audio.cache.size() == 33, "All thirty-three selected original samples load")
+	check(audio.error.is_empty() and audio.cache.size() == 36, "All36 selected original samples including rat cues load")
 	check(level.presentation.viewport.audio_listener_enable_3d, "World viewport enables spatial audio listener")
 	var pcm := ClassicData.decode_sound(PackedByteArray([0, 127, 128, 255]))
 	check(pcm.data == PackedByteArray([128, 255, 0, 127]), "Unsigned source PCM converts to signed Godot PCM")

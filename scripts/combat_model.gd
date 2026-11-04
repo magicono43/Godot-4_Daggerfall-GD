@@ -85,6 +85,15 @@ func configure_bear(attributes: Dictionary) -> void:
 	# EnemyBasics level 4 -> EnemyEntity skills min(100, 4*5+30) = 50.
 	values = {"strength": int(attributes.strength), "agility": int(attributes.agility), "luck": int(attributes.luck), "short_blade": 50, "blunt_weapon": 50, "hand_to_hand": 50, "dodging": 50, "critical_strike": 50, "reflexes": 2}
 
+func configure_rat(attributes: Dictionary) -> void:
+	monster = true
+	skeleton = false
+	parry_sounds = false
+	base_armor = 6 * 5
+	attack_ranges = [Vector2i(1, 4)]
+	# EnemyBasics level1 -> EnemyEntity skills min(100, 1*5+30) =35.
+	values = {"strength": int(attributes.strength), "agility": int(attributes.agility), "luck": int(attributes.luck), "short_blade": 35, "blunt_weapon": 35, "hand_to_hand": 35, "dodging": 35, "critical_strike": 35, "reflexes": 2}
+
 func armor(body: CharacterBody3D, region: int) -> int:
 	# Slot order follows DFU's seven body regions. Armor affects only its region.
 	var owned = body.get("inventory")

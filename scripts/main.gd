@@ -186,7 +186,7 @@ func _ready() -> void:
 	for interactive_door in doors:
 		interactive_door.player = player
 		interactive_door.used.connect(func(): door_used = true)
-	for entry in definition.prototype.enemies:
+	for entry in definition.prototype.enemies + classic.fixed_enemies:
 		var placeholder := CharacterBody3D.new()
 		placeholder.set_script(Enemy)
 		placeholder.approach_enabled = entry.get("approach_enabled", true)
@@ -198,6 +198,11 @@ func _ready() -> void:
 		elif entry.get("visual", "greybox") == "bear":
 			placeholder.combat_stats.configure_bear(classic.bear_attributes)
 			placeholder.can_open_doors = false
+		elif entry.get("visual", "greybox") == "rat":
+			placeholder.combat_stats.configure_rat(classic.rat_attributes)
+			placeholder.health.maximum = 9
+			placeholder.health.current = 9
+			placeholder.can_open_doors = false
 		placeholder.creature_name = String(entry.get("visual", "greybox")).capitalize()
 		placeholder.combat_audio = combat_audio
 		placeholder.name = entry.id
@@ -205,7 +210,7 @@ func _ready() -> void:
 		for item in entry.get("test_loot", []):
 			placeholder.loot.add_item(item.definition, int(item.quantity))
 		placeholder.player = player
-		placeholder.position = classic.to_world(entry.position_native)
+		placeholder.position = entry.position if entry.has("position") else classic.to_world(entry.position_native)
 		world_root.add_child(placeholder)
 		placeholder.encountered.connect(func(): encounter = true)
 		enemies.append(placeholder)

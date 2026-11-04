@@ -1,4 +1,24 @@
-# Next milestone: audit original enemy population, then add one creature type
+# Next step: user playtest of the two fixed rats
+
+November 3, 2026. The user authorized the two audited source rats and explicitly
+changed the earlier preservation policy: restore the original cave start and
+remove the hall bear/passive red test target and their loot. This is implemented;
+see FIXED_RATS.md and the newest HANDOFF entry. Player test items/stats/spells
+remain unchanged. Old normal saves require fresh K because the section changed.
+
+Await feedback before adding anything else. Test the cave/log/bonfire start,
+first-room rat32850 and second rat32958 through the original raised corridor
+door. Verify enemy facing/attack feel, audibility and dead/live K/L persistence.
+No additional creatures, random population, player rebalance or loot engine has
+been selected yet. The audit found25 fixed and17 random markers; future slices
+must preserve source identities rather than replace unsupported types with rats.
+
+Normal main.tscn has exactly the two rats and no prototype enemies. Bear support
+remains implemented and independently covered by tests/bear_regression.tscn;
+skeleton/swim fixtures are unchanged. Focused population commands extend
+full_dungeon.gd via --rats-only/--rats-read; keep output under tests/output/.
+
+# Previous brief: audit original enemy population, then add one creature type
 
 Prepared November 3, 2026 for a fresh chat at the user's request.
 

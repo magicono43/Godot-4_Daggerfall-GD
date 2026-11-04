@@ -3,6 +3,143 @@ extends "res://tests/expansion.gd"
 const SLOT := "res://saves/full_dungeon_test.json"
 var deep_destination := Vector3.ZERO
 const ACTION_SLOT := "res://tests/output/actions_save.json"
+const RAT_SLOT := "res://tests/output/rats_save.json"
+
+func rat_checks() -> void:
+	await frames(60)
+	check(level.enemies.size() == 2 and level.enemies.all(func(actor: Node): return actor.creature_name == "Rat"), "Normal dungeon contains exactly the two fixed rats, no prototype bear/chamber actor")
+	check(not level.world_root.has_node("hall_combat_target") and not level.world_root.has_node("placeholder_enemy") and level.enemies.all(func(actor: Node): return not actor.loot_enabled and actor.loot.items.is_empty()), "Retired targets and their loot are absent; rats have no invented loot")
+	var start_delta: Vector3 = player.position - level.classic.provenance.start
+	check(not level.classic.section.definition.prototype.has("player_start") and Vector2(start_delta.x,start_delta.z).length() < 0.15 and player.is_grounded() and player.inventory.items.size() == 13 and player.health.maximum == 300 and player.magic.maximum() == 150, "Original199:8 start restores cave entry while test equipment/HP/magicka remain")
+	await action_capture("rat_start", player.position, level.classic.to_world(level.classic.section.definition.spawn.look_at_native) + Vector3.UP*1.5)
+	var first: CharacterBody3D = level.world_root.get_node("s0000999_r32850")
+	var second: CharacterBody3D = level.world_root.get_node("s0000999_r32958")
+	for actor in [first, second]:
+		var selected: Dictionary = level.classic.fixed_enemies.filter(func(entry: Dictionary): return entry.id == actor.name)[0]
+		var delta: Vector3 = actor.position - selected.position
+		check(Vector2(delta.x,delta.z).length() < 0.001 and absf(delta.y) < 1.2 and actor.is_on_floor(), "Fixed marker %s settles on source floor without horizontal relocation" % actor.name)
+		var query := PhysicsShapeQueryParameters3D.new()
+		query.shape = actor.get_child(0).shape
+		query.collision_mask = 1
+		query.exclude = [actor.get_rid()]
+		query.transform = actor.global_transform * actor.get_child(0).transform
+		query.transform.origin.y += 0.03
+		check(actor.get_world_3d().direct_space_state.intersect_shape(query).is_empty(), "Rat capsule clears original geometry at " + String(actor.name))
+		check(actor.health.current == 9 and actor.combat_stats.stat("hand_to_hand") == 35 and actor.combat_stats.stat("agility") == 80 and actor.combat_stats.base_armor == 30 and not actor.can_open_doors, "Rat source stats/HP policy and door restriction at " + String(actor.name))
+		actor.set_physics_process(false)
+	var fixture: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://tests/enemies/rat_frames.json"))
+	var matching := true
+	var count := 0
+	for id in fixture:
+		var expected: Dictionary = fixture[id]
+		var record: Dictionary = first.sprite_payload.corpse if id == "401:1" else first.sprite_payload.records[int(id.split(":")[1])]
+		matching = matching and record.frames.size() == int(expected.frames) and record.size_metres.distance_to(Vector2(expected.metres[0],expected.metres[1])) < 0.0001
+		for i in record.frames.size():
+			matching = matching and digest(record.frames[i].get_image().get_data()) == expected.rgba_sha256[i]
+			count += 1
+	check(matching and count == 81, "All81 native rat/corpse frames match independent dimensions/RGBA evidence")
+	for direction in 8:
+		first.mobile.set_state("idle")
+		first.mobile.select_view(first.position + first.global_basis * Vector3(-sin(direction*PI/4),0,-cos(direction*PI/4))*5)
+		check(first.mobile.orientation == direction and first.mobile.flip_h == (direction in [1,2,3]), "Rat idle direction%d uses native special mirroring" % direction)
+	first.mobile.set_state("move")
+	first.mobile.tick(7.0/6.0)
+	check(first.mobile.source_frame == 7, "Rat movement uses all eight frames rather than skeleton four-frame limit")
+	var changed: Dictionary = level.classic.section.definition.duplicate(true)
+	changed.fixed_enemies[0].expected_sound_index = 2
+	FileAccess.open("res://tests/output/rat_source_case.json",FileAccess.WRITE).store_string(JSON.stringify(changed))
+	var data := ClassicData.new()
+	check(not data.load_slice("res://tests/output/rat_source_case.json") and "Source enemy mismatch" in data.error, "Wrong fixed-marker source fields reject before scene assembly")
+	# Walk the original cave/first-door route with rat motors frozen, then test combat independently.
+	player.controls_active = true
+	var route := [[512,0,1200],[512,0,1000],[512,0,800],[750,0,768],[850,0,768],"first_door",[960,0,768],[1080,0,768],[1080,0,640],[1040,0,560]]
+	for point in route:
+		if point is String:
+			await open_door(point)
+		elif not await walk(point):
+			break
+	check(player.position.distance_to(first.position) < 2.0, "First rat room is continuously reachable from original new-game spawn")
+	await action_capture("rat_encounter", first.position + Vector3(1.5,0,-2.4), first.position + Vector3.UP*0.35)
+	# Exercise the production local steering with a nearby visible player.
+	player.set_physics_process(false)
+	place_actor(first.position + Vector3(0,0,-3.0))
+	first.navigation.enabled = true
+	first.melee.enabled = false
+	first.set_physics_process(true)
+	var pursuit_start := first.position
+	await frames(45)
+	print("RAT_PURSUIT ",pursuit_start," -> ",first.position," state=",first.navigation.state)
+	check(first.position.distance_to(pursuit_start) > 0.25 and first.position.distance_to(player.position) < pursuit_start.distance_to(player.position), "Native rat pursues visible player using existing local ground navigation")
+	first.set_physics_process(false)
+	# Place player beside the rat solely for controlled animation/strike checks.
+	place_actor(first.position + Vector3(0,0,1.2))
+	player.set_physics_process(false)
+	await frames(2)
+	first.melee.enabled = true
+	first.melee.resolver = preload("res://tests/fixed_combat.gd").new()
+	var cues: Array = []
+	level.combat_audio.played.connect(func(event: String, ordinal: int, spatial: bool): cues.append([event,ordinal,spatial]))
+	first.play_sound("skeleton_move")
+	check(cues.back() == ["rat_move",115,true], "Rat voice uses own source ordinal and spatial creature ownership")
+	level.combat_audio.stop_creature(first)
+	check(level.combat_audio.voices.all(func(voice: Node): return voice.get_meta("creature_owner",0) != first.get_instance_id()), "Stopping rat voice uses shared bounded creature lifecycle")
+	check(level.rest_window.rest.refusal().contains("Enemies"), "Living nearby source rat blocks unsafe rest")
+	first.melee.cancel()
+	first.mobile.set_state("idle")
+	var hp: int = player.health.current
+	first.melee.tick(first,0.0)
+	first.mobile.tick(0.299)
+	first.melee.tick(first,0.299)
+	check(player.health.current == hp and first.melee.phase == "windup", "Rat strike waits for original0.3s event")
+	first.mobile.tick(0.001)
+	first.melee.tick(first,0.001)
+	var damaged: int = player.health.current
+	first.mobile.tick(0.1)
+	first.melee.tick(first,0.1)
+	check(damaged < hp and player.health.current == damaged, "Rat damage commits once at frame3")
+	player.damage_flash = 0.0
+	await action_capture("rat_attack", first.position + Vector3(1.5,0,2.4), first.position + Vector3.UP*0.35)
+	first.mobile.set_state("attack")
+	level.loot_window.open_inventory()
+	check(first.melee.phase == "idle" and first.mobile.state != "attack" and player.modal_open, "Shared modal cancels rat pending strike")
+	level.loot_window.close()
+	first.receive_damage(1)
+	check(first.mobile.state == "hurt", "Rat hurt interrupts combat")
+	await action_capture("rat_hurt", first.position + Vector3(1.5,0,2.4), first.position + Vector3.UP*0.35)
+	first.receive_damage(999)
+	check(first.mobile.state == "corpse" and first.collision_layer == 0 and not first.loot_available(), "Rat death leaves native nonblocking corpse without loot")
+	await action_capture("rat_corpse", first.position + Vector3(1.5,0,2.4), first.position + Vector3.UP*0.15)
+	player.set_physics_process(true)
+	player.controls_active = true
+	var onward := [[1080,0,640],[720,-256,640],[640,-256,640],[640,-256,512],[704,-256,448],[768,-256,384],[1792,-256,384],[1920,-256,384],[1920,-256,512],[1920,-256,1664],[1792,-256,1664],[1710,-256,1624],[1662,-256,1544],"s0000999_r19796",[1646,-256,1496],[1598,-256,1480],[1485,-256,1400]]
+	for point in onward:
+		if point is String:
+			await open_door(point)
+		elif not await walk(point):
+			break
+	check(player.position.distance_to(second.position) < 2.0, "Second rat encounter is continuously reachable through original stairs/corridor")
+	await action_capture("rat_second", player.position, second.position + Vector3.UP*0.35)
+	place_actor(player.spawn)
+	player.set_physics_process(true)
+	player.controls_active = false
+	await frames(60)
+	level.persistence.slot_path = RAT_SLOT
+	print("RAT_SAVE_REFUSAL ",level.persistence.refusal())
+	check(level.persistence.save_slot(), "Two-rat state saves to isolated slot")
+	var saved: Dictionary = level.persistence.read_slot()
+	var invalid: Dictionary = saved.duplicate(true)
+	invalid.enemies.s0000999_r32958.health = 10
+	check(not level.persistence.validate(invalid), "Rat saved health cannot exceed source-backed configured maximum")
+	invalid = saved.duplicate(true)
+	invalid.enemies["hall_combat_target"] = invalid.enemies.s0000999_r32958
+	invalid.enemies.erase("s0000999_r32958")
+	check(not level.persistence.validate(invalid), "Retired bear identity cannot replace a selected source rat on load")
+	check(await level.persistence.load_slot(), "Two-rat state restores through fresh candidate")
+	level = current_scene
+	player = level.player
+	check(level.world_root.get_node("s0000999_r32850").mobile.state == "corpse" and level.world_root.get_node("s0000999_r32958").health.current == 9 and player.inventory.items.size() == 13, "Load retains dead/live source identities and player test equipment")
+	print("RAT_CHECKS ",results.size()-failures.size(),"/",results.size())
+	FileAccess.open("res://tests/output/rat_results.txt",FileAccess.WRITE).store_string("\n".join(results))
 
 func place_actor(at: Vector3) -> void:
 	player.position = at
@@ -331,6 +468,19 @@ func run() -> void:
 		return
 	player = level.player
 	player.movement.profile.values.look.radians_per_pixel = 0.0
+	if "--rats-only" in OS.get_cmdline_user_args():
+		await rat_checks()
+		quit(0 if failures.is_empty() else 1)
+		return
+	if "--rats-read" in OS.get_cmdline_user_args():
+		level.persistence.slot_path = RAT_SLOT
+		check(await level.persistence.load_slot(), "Fresh process restores isolated rat slot")
+		level = current_scene
+		check(level.enemies.size() == 2 and level.world_root.get_node("s0000999_r32850").mobile.state == "corpse" and level.world_root.get_node("s0000999_r32958").health.current == 9, "Fresh process preserves dead/live rats without respawn or reroll")
+		var delta: Vector3 = level.player.position - level.classic.provenance.start
+		check(Vector2(delta.x,delta.z).length() < 0.15 and level.player.inventory.items.size() == 13, "Fresh process preserves cave start and owned items")
+		quit(0 if failures.is_empty() else 1)
+		return
 	for enemy in level.enemies:
 		enemy.melee.enabled = false
 		enemy.set_physics_process(false)
@@ -358,6 +508,10 @@ func run() -> void:
 		print("FULL_DUNGEON_RELOAD ", results.size() - failures.size(), "/", results.size())
 		quit(0 if failures.is_empty() else 1)
 		return
+	# These retained border/gallery routes are seeded in the hall. Cave-to-hall
+	# traversal is covered by full_original_route and the source-rat checks.
+	place_actor(level.classic.to_world([800,-512,1024]) + Vector3.UP*0.1)
+	await frames(15)
 	source_checks()
 	asset_checks()
 	print("FULL_DUNGEON_IMPORT_MS ", Time.get_ticks_msec() - begin)
@@ -424,3 +578,4 @@ func run() -> void:
 	file.store_string("\n".join(results))
 	print("FULL_DUNGEON_CHECKS ", results.size() - failures.size(), "/", results.size())
 	quit(0 if failures.is_empty() else 1)
+

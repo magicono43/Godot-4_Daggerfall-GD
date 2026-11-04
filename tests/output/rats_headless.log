@@ -1,0 +1,101 @@
+ERROR: Failed to open 'user://logs/godot2026-11-03T18.46.56.log'.
+   at: copy (core/io/dir_access.cpp:429)
+ERROR: Failed to open log file for writing: user://logs/godot.log
+   at: rotate_file (core/io/logger.cpp:169)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold complete original structural placements", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "blocks": [{ "name": "S0000999.RDB", "x": 0, "z": 0 }, { "name": "B0000009.RDB", "x": -1, "z": 0 }, { "name": "B0000006.RDB", "x": 0, "z": -1 }, { "name": "B0000003.RDB", "x": 1, "z": 0 }, { "name": "B0000012.RDB", "x": 0, "z": 1 }], "start": (0.0, 0.625, 0.0) } triangles=9263 textures=81
+PASS Expanded normal dungeon builds
+PASS Normal dungeon contains exactly the two fixed rats, no prototype bear/chamber actor
+PASS Retired targets and their loot are absent; rats have no invented loot
+PASS Original199:8 start restores cave entry while test equipment/HP/magicka remain
+PASS Fixed marker s0000999_r32850 settles on source floor without horizontal relocation
+PASS Rat capsule clears original geometry at s0000999_r32850
+PASS Rat source stats/HP policy and door restriction at s0000999_r32850
+PASS Fixed marker s0000999_r32958 settles on source floor without horizontal relocation
+PASS Rat capsule clears original geometry at s0000999_r32958
+PASS Rat source stats/HP policy and door restriction at s0000999_r32958
+PASS All81 native rat/corpse frames match independent dimensions/RGBA evidence
+PASS Rat idle direction0 uses native special mirroring
+PASS Rat idle direction1 uses native special mirroring
+PASS Rat idle direction2 uses native special mirroring
+PASS Rat idle direction3 uses native special mirroring
+PASS Rat idle direction4 uses native special mirroring
+PASS Rat idle direction5 uses native special mirroring
+PASS Rat idle direction6 uses native special mirroring
+PASS Rat idle direction7 uses native special mirroring
+PASS Rat movement uses all eight frames rather than skeleton four-frame limit
+PASS Wrong fixed-marker source fields reject before scene assembly
+PASS Walk native route [512, 0, 1200]
+ROUTE_POSITION (0.049748, 0.000875, 11.74043) target=(0.05, 0.0, 11.8) unsupported=0
+PASS Walk native route [512, 0, 1000]
+ROUTE_POSITION (0.049994, 0.000875, 16.68772) target=(0.05, 0.0, 16.8) unsupported=0
+PASS Walk native route [512, 0, 800]
+ROUTE_POSITION (0.049999, 0.000875, 21.7089) target=(0.05, 0.0, 21.8) unsupported=0
+PASS Walk native route [750, 0, 768]
+ROUTE_POSITION (5.89201, 0.000875, 22.58384) target=(6.0, 0.0, 22.6) unsupported=0
+PASS Walk native route [850, 0, 768]
+ROUTE_POSITION (8.402501, 0.000875, 22.59934) target=(8.5, 0.0, 22.6) unsupported=0
+PASS first_door acquired by original interaction ray
+PASS first_door opens with attached collision
+PASS first_door opens away without displacing the player
+PASS Walk native route [960, 0, 768]
+ROUTE_POSITION (11.13459, 0.000875, 22.59997) target=(11.25, 0.0, 22.6) unsupported=0
+PASS Walk native route [1080, 0, 768]
+ROUTE_POSITION (14.16203, 0.000875, 22.59997) target=(14.25, 0.0, 22.6) unsupported=0
+PASS Walk native route [1080, 0, 640]
+ROUTE_POSITION (14.24727, 0.000875, 25.70002) target=(14.25, 0.0, 25.8) unsupported=0
+PASS Walk native route [1040, 0, 560]
+ROUTE_POSITION (13.31752, 0.000897, 27.70478) target=(13.25, 0.0, 27.8) unsupported=0
+PASS First rat room is continuously reachable from original new-game spawn
+RAT_PURSUIT (13.25, 0.0, 29.025) -> (13.25, 0.000924, 27.81668) state=in range
+PASS Native rat pursues visible player using existing local ground navigation
+PASS Rat strike waits for original0.3s event
+PASS Rat damage commits once at frame3
+PASS Shared modal cancels rat pending strike
+PASS Rat hurt interrupts combat
+PASS Rat death leaves native nonblocking corpse without loot
+PASS Walk native route [1080, 0, 640]
+ROUTE_POSITION (14.21449, 0.000875, 25.91412) target=(14.25, 0.0, 25.8) unsupported=0
+PASS Walk native route [720, -256, 640]
+ROUTE_POSITION (5.337211, 6.400876, 25.80101) target=(5.25, 6.4, 25.8) unsupported=0
+PASS Walk native route [640, -256, 640]
+ROUTE_POSITION (3.343542, 6.400876, 25.80003) target=(3.25, 6.4, 25.8) unsupported=0
+PASS Walk native route [640, -256, 512]
+ROUTE_POSITION (3.252919, 6.400876, 28.89999) target=(3.25, 6.4, 29.0) unsupported=0
+PASS Walk native route [704, -256, 448]
+ROUTE_POSITION (4.769659, 6.400876, 30.51451) target=(4.85, 6.4, 30.6) unsupported=0
+PASS Walk native route [768, -256, 384]
+ROUTE_POSITION (6.385784, 6.400876, 32.13555) target=(6.450001, 6.4, 32.2) unsupported=0
+PASS Walk native route [1792, -256, 384]
+ROUTE_POSITION (31.93454, 6.400876, 32.20022) target=(32.05, 6.4, 32.2) unsupported=0
+PASS Walk native route [1920, -256, 384]
+ROUTE_POSITION (35.18354, 6.400876, 32.20005) target=(35.25, 6.4, 32.2) unsupported=0
+PASS Walk native route [1920, -256, 512]
+ROUTE_POSITION (35.24794, 6.400876, 29.09944) target=(35.25, 6.4, 29.0) unsupported=0
+PASS Walk native route [1920, -256, 1664]
+ROUTE_POSITION (35.24943, 6.400876, 0.30168) target=(35.25, 6.4, 0.199997) unsupported=0
+PASS Walk native route [1792, -256, 1664]
+ROUTE_POSITION (32.14987, 6.400876, 0.203167) target=(32.05, 6.4, 0.199997) unsupported=0
+PASS Walk native route [1710, -256, 1624]
+ROUTE_POSITION (30.07318, 6.400876, 1.166052) target=(30.0, 6.4, 1.199997) unsupported=0
+PASS Walk native route [1662, -256, 1544]
+ROUTE_POSITION (28.79736, 6.400949, 3.094136) target=(28.8, 6.4, 3.199997) unsupported=0
+PASS s0000999_r19796 acquired by original interaction ray
+PASS s0000999_r19796 opens with attached collision
+PASS s0000999_r19796 opens away without displacing the player
+PASS Walk native route [1646, -256, 1496]
+ROUTE_POSITION (28.43194, 6.400876, 4.29504) target=(28.4, 6.4, 4.399998) unsupported=0
+PASS Walk native route [1598, -256, 1480]
+ROUTE_POSITION (27.27044, 6.400876, 4.771127) target=(27.2, 6.4, 4.799999) unsupported=0
+PASS Walk native route [1485, -256, 1400]
+ROUTE_POSITION (24.42824, 6.400876, 6.762666) target=(24.375, 6.4, 6.799999) unsupported=0
+PASS Second rat encounter is continuously reachable through original stairs/corridor
+RAT_SAVE_REFUSAL 
+PASS Two-rat state saves to isolated slot
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold complete original structural placements", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "blocks": [{ "name": "S0000999.RDB", "x": 0, "z": 0 }, { "name": "B0000009.RDB", "x": -1, "z": 0 }, { "name": "B0000006.RDB", "x": 0, "z": -1 }, { "name": "B0000003.RDB", "x": 1, "z": 0 }, { "name": "B0000012.RDB", "x": 0, "z": 1 }], "start": (0.0, 0.625, 0.0) } triangles=9263 textures=81
+PASS Two-rat state restores through fresh candidate
+PASS Load retains dead/live source identities and player test equipment
+RAT_CHECKS 63/63

@@ -1,12 +1,15 @@
-## Current handoff — enemy population audit next
+## Current playtest — original cave start and two fixed rats
 
-The user accepted the dungeon/decorations and both action mechanisms. The next
-selected direction is original dungeon population, starting with a marker audit
-and one supported creature type; a rat is a conditional suggestion. No population
-implementation has started. Preserve the hall bear/test player setup. A fresh
-chat should read [AGENTS.md](AGENTS.md), [docs/HANDOFF.md](docs/HANDOFF.md) and
-[docs/NEXT_MILESTONE.md](docs/NEXT_MILESTONE.md), then propose the source-backed
-first slice before gameplay changes. Keep the targeted-testing policy below.
+You now start at the original new-game marker near the log and bonfire. Two rats
+occupy their original fixed markers: one by the first encounter room and another
+off the raised corridor. They pursue, attack and leave nonblocking corpses;
+they cannot open doors and have no generated loot. The hall test bear, passive
+red target and their loot have been removed. Bear support remains for later use.
+
+Your13 starting item instances,300HP,150magicka, skills and seven spells remain
+available for testing. **Use R for a fresh start, then K to replace the old save:**
+the changed section fingerprint intentionally rejects earlier normal saves.
+See [docs/FIXED_RATS.md](docs/FIXED_RATS.md). Further population waits for playtest.
 
 ## Lectern and throne mechanisms — November 3, 2026
 
@@ -35,9 +38,8 @@ four B border blocks, including58 hinged doors and the original exit, plus130
 decorative flats and seven static loot-pile sprites. All11 old branch caps are
 removed. Border blocks intentionally retain disconnected source assemblies.
 
-The hall start, bear/player/equipment setup and accepted gameplay remain. New
-enemy populations and source activation behaviors are deferred; action-linked
-objects are static. Additional piles are visual-only; the existing interactive
+The later rat slice above restores the cave start and replaces prototype enemies.
+The lectern/bookcase and throne mechanisms are enabled. Additional piles are visual-only; the existing interactive
 test pile is unchanged. E at the exit explains that exterior travel is unavailable.
 Swimming remains in its separate fixture. See [docs/FULL_DUNGEON.md](docs/FULL_DUNGEON.md).
 

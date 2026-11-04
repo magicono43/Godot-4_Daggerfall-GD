@@ -1,4 +1,73 @@
 PASS Expanded normal dungeon builds
+PASS All365 source model identities and MAPS grid transforms match independent inventory
+PASS All58 original hinged doors load; primary alias retains authored order
+PASS 130 original decorative flats plus seven static marker piles load
+PASS All11 former branch caps are removed
+PASS Accepted bear/passive chamber/13items/300HP baseline retained
+PASS Original exit is present with explicit exterior boundary interaction
+PASS Exit activation explains unavailable exterior travel
+PASS Unknown per-record block rejected
+PASS Duplicate block grid cell rejected
+PASS Authored neighboring coordinates must match actual MAPS placements
+PASS Every added model retains independently audited raw ARCH3D bounds
+PASS All81 materials match independent Classic identities, source/target dimensions and RGB hashes
+PASS All130 decorative flats retain independent positions, native dimensions and RGBA frames
+PASS Seven visual-only loot piles rest on source floors without activation or invented contents
+PASS Every selected door opens with its original leaf mesh and attached collider
+PASS Every door refuses unsafe closing beside the player
+PASS B0000003.RDB outbound reaches supported endpoint
+PASS B0000003.RDB outbound has no damaging falls
+PASS Deep expanded border room saves to isolated test slot
+PASS B0000003.RDB return reaches supported endpoint
+PASS B0000003.RDB return has no damaging falls
+PASS B0000006.RDB outbound reaches supported endpoint
+PASS B0000006.RDB outbound has no damaging falls
+PASS B0000006.RDB return reaches supported endpoint
+PASS B0000006.RDB return has no damaging falls
+PASS B0000009.RDB outbound reaches supported endpoint
+PASS B0000009.RDB outbound has no damaging falls
+PASS B0000009.RDB return reaches supported endpoint
+PASS B0000009.RDB return has no damaging falls
+PASS B0000012.RDB outbound reaches supported endpoint
+PASS B0000012.RDB outbound has no damaging falls
+PASS B0000012.RDB return reaches supported endpoint
+PASS B0000012.RDB return has no damaging falls
+PASS S0000999.RDB outbound reaches supported endpoint
+PASS S0000999.RDB outbound has no damaging falls
+PASS S0000999.RDB return reaches supported endpoint
+PASS S0000999.RDB return has no damaging falls
+PASS Walk native route [960, -512, 1024]
+PASS Walk native route [1560, -1024, 1024]
+PASS Walk native route [1664, -1024, 768]
+PASS Walk native route [1664, -1024, 384]
+PASS Walk native route [1550, -1024, 384]
+PASS Walk native route [1200, -1280, 384]
+PASS Upper (-1.0, 0.0, 0.0) outbound reaches supported endpoint
+PASS Upper (-1.0, 0.0, 0.0) outbound has no damaging falls
+PASS Upper (-1.0, 0.0, 0.0) return reaches supported endpoint
+PASS Upper (-1.0, 0.0, 0.0) return has no damaging falls
+PASS Upper (0.0, 0.0, -1.0) outbound reaches supported endpoint
+PASS Upper (0.0, 0.0, -1.0) outbound has no damaging falls
+PASS Upper (0.0, 0.0, -1.0) return reaches supported endpoint
+PASS Upper (0.0, 0.0, -1.0) return has no damaging falls
+PASS Upper (0.0, 0.0, 1.0) outbound reaches supported endpoint
+PASS Upper (0.0, 0.0, 1.0) outbound has no damaging falls
+PASS Upper (0.0, 0.0, 1.0) return reaches supported endpoint
+PASS Upper (0.0, 0.0, 1.0) return has no damaging falls
+PASS Upper (1.0, 0.0, 0.0) outbound reaches supported endpoint
+PASS Upper (1.0, 0.0, 0.0) outbound has no damaging falls
+PASS Upper (1.0, 0.0, 0.0) return reaches supported endpoint
+PASS Upper (1.0, 0.0, 0.0) return has no damaging falls
+PASS Walk native route [1200, -1280, 384]
+PASS Walk native route [1550, -1024, 384]
+PASS Walk native route [1664, -1024, 384]
+PASS Walk native route [1664, -1024, 768]
+PASS Walk native route [1560, -1024, 1024]
+PASS Walk native route [960, -512, 1024]
+PASS Expanded deep-room save restores through a fresh validated candidate
+PASS Deep position and all58 door states survive load
+PASS Decorations/static piles rebuild and deep Teleport anchor persists
+PASS Saved anchor safely teleports into expanded border room and consumes once
 PASS Only five checked model actions form two source-linked mechanisms
 PASS Source action parameters are checked against original bytes before scene construction
 PASS Original lectern is acquired by the existing obstructed E interaction ray

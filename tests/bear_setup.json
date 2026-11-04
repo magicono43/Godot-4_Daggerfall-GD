@@ -1,0 +1,125 @@
+{
+  "player_test": {
+    "maximum_health": 300,
+    "items": [
+      {
+        "definition": "mace",
+        "quantity": 1
+      },
+      {
+        "definition": "steel_cuirass",
+        "quantity": 1
+      },
+      {
+        "definition": "healing_potion",
+        "quantity": 2
+      },
+      {
+        "definition": "dagger",
+        "quantity": 1
+      },
+      {
+        "definition": "gold",
+        "quantity": 12
+      },
+      {
+        "definition": "twigs",
+        "quantity": 2
+      },
+      {
+        "definition": "steel_helm",
+        "quantity": 1
+      },
+      {
+        "definition": "steel_right_pauldron",
+        "quantity": 1
+      },
+      {
+        "definition": "steel_left_pauldron",
+        "quantity": 1
+      },
+      {
+        "definition": "steel_gauntlets",
+        "quantity": 1
+      },
+      {
+        "definition": "steel_greaves",
+        "quantity": 1
+      },
+      {
+        "definition": "steel_boots",
+        "quantity": 1
+      }
+    ],
+    "known_spells": [
+      "heal",
+      "light",
+      "fire_bolt",
+      "shock_bolt",
+      "burning_touch",
+      "shield",
+      "teleport"
+    ]
+  },
+  "player_start": {
+    "position_native": [
+      800,
+      -512,
+      1024
+    ],
+    "look_at_native": [
+      1300,
+      -512,
+      1024
+    ]
+  },
+  "enemies": [
+    {
+      "id": "placeholder_enemy",
+      "position_native": [
+        1120,
+        -4,
+        768
+      ],
+      "approach_enabled": false
+    },
+    {
+      "id": "hall_combat_target",
+      "position_native": [
+        920,
+        -512,
+        960
+      ],
+      "approach_enabled": false,
+      "attack_enabled": true,
+      "visual": "bear",
+      "navigation_enabled": true,
+      "test_loot": [
+        {
+          "definition": "gold",
+          "quantity": 12
+        },
+        {
+          "definition": "twigs",
+          "quantity": 2
+        },
+        {
+          "definition": "healing_potion",
+          "quantity": 2
+        },
+        {
+          "definition": "dagger",
+          "quantity": 1
+        },
+        {
+          "definition": "mace",
+          "quantity": 1
+        },
+        {
+          "definition": "steel_cuirass",
+          "quantity": 1
+        }
+      ]
+    }
+  ]
+}

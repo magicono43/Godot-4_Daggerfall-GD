@@ -1,0 +1,70 @@
+ERROR: Failed to open 'user://logs/godot2026-11-03T18.47.22.log'.
+   at: copy (core/io/dir_access.cpp:429)
+ERROR: Failed to open log file for writing: user://logs/godot.log
+   at: rotate_file (core/io/logger.cpp:169)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Retained bear regression over independent skeleton world", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "blocks": [{ "name": "S0000999.RDB", "x": 0, "z": 0 }, { "name": "B0000009.RDB", "x": -1, "z": 0 }, { "name": "B0000006.RDB", "x": 0, "z": -1 }, { "name": "B0000003.RDB", "x": 1, "z": 0 }, { "name": "B0000012.RDB", "x": 0, "z": 1 }], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Active playtest starts with 300 current and maximum HP position=(7.25, 12.8, 16.2) mode=walking
+PASS Active weapon skills are50; other combat skills remain unchanged position=(7.25, 12.8, 16.2) mode=walking
+PASS Original authored hall start beside great stairs is unchanged position=(7.25, 12.8, 16.2) mode=walking
+PASS Test inventory grants equipment without changing initial dagger or auto-equipping armor position=(7.25, 12.8, 16.2) mode=walking
+PASS Mace, cuirass, spare dagger, doses and test materials are immediately owned position=(7.25, 12.8, 16.2) mode=walking
+PASS Hall opponent is original grizzly bear; chamber and primary-enemy alias remain separate position=(7.25, 12.8, 16.2) mode=walking
+PASS Chamber placeholder stays passive with its first-enemy alias position=(7.25, 12.8, 16.2) mode=walking
+PASS Bear original MONSTER.BSA career and level4-derived skills match independent evidence position=(7.25, 12.8, 16.2) mode=walking
+PASS Bear armor6x5, no edged resistance/parry, and test health30 are correct position=(7.25, 12.8, 16.2) mode=walking
+PASS Original bear sprite 259:0 native dimensions/RGBA match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original bear sprite 259:1 native dimensions/RGBA match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original bear sprite 259:2 native dimensions/RGBA match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original bear sprite 259:3 native dimensions/RGBA match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original bear sprite 259:4 native dimensions/RGBA match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original bear sprite 259:5 native dimensions/RGBA match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original bear sprite 259:6 native dimensions/RGBA match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original bear sprite 259:7 native dimensions/RGBA match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original bear sprite 259:8 native dimensions/RGBA match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original bear sprite 259:9 native dimensions/RGBA match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original bear sprite 259:10 native dimensions/RGBA match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original bear sprite 259:11 native dimensions/RGBA match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original bear sprite 259:12 native dimensions/RGBA match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original bear sprite 259:13 native dimensions/RGBA match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original bear sprite 259:14 native dimensions/RGBA match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original bear sprite 259:15 native dimensions/RGBA match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original bear sprite 259:16 native dimensions/RGBA match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original bear sprite 259:17 native dimensions/RGBA match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original bear sprite 259:18 native dimensions/RGBA match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original bear sprite 259:19 native dimensions/RGBA match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS Original bear sprite 401:2 native dimensions/RGBA match independent audit position=(7.25, 12.8, 16.2) mode=walking
+PASS All51 original bear live/corpse frames are decoded without bundled assets position=(7.25, 12.8, 16.2) mode=walking
+PASS Horizontal player hit chance is56 or58 percent against bear position=(7.25, 12.8, 16.2) mode=walking
+PASS Bear receives full edged weapon damage rather than skeleton halving position=(7.25, 12.8, 16.2) mode=walking
+PASS Bear's three attack slots roll1-8,1-8,1-10 once and aggregate up to26 position=(7.25, 12.8, 16.2) mode=walking
+PASS Each bear damage slot has its own reflex gate position=(7.25, 12.8, 16.2) mode=walking
+PASS Starting cuirass can be equipped immediately through inventory position=(7.25, 12.8, 16.2) mode=walking
+PASS Starting mace equips independently of chest armor position=(7.25, 12.8, 16.2) mode=walking
+PASS Bear animation applies no damage before original frame3 marker position=(10.25, 12.8, 19.3) mode=walking
+PASS Bear frame3 event aggregates the three source attacks into one health application position=(10.25, 12.8, 19.3) mode=walking
+PASS Bear attack tail returns to source frame0 without repeating damage position=(10.25, 12.8, 19.3) mode=walking
+PASS Bear uses own original spatial move sound127 position=(10.25, 12.8, 19.3) mode=walking
+PASS Bear-owned voices stop through normal creature lifecycle position=(10.25, 12.8, 19.3) mode=walking
+PASS Bear missed-target rolls whiff instead of skeleton clash and do not damage position=(10.25, 12.8, 19.3) mode=walking
+PASS Bear native view direction0 mirrors correctly position=(10.25, 12.8, 19.3) mode=walking
+PASS Bear native view direction1 mirrors correctly position=(10.25, 12.8, 19.3) mode=walking
+PASS Bear native view direction2 mirrors correctly position=(10.25, 12.8, 19.3) mode=walking
+PASS Bear native view direction3 mirrors correctly position=(10.25, 12.8, 19.3) mode=walking
+PASS Bear native view direction4 mirrors correctly position=(10.25, 12.8, 19.3) mode=walking
+PASS Bear native view direction5 mirrors correctly position=(10.25, 12.8, 19.3) mode=walking
+PASS Bear native view direction6 mirrors correctly position=(10.25, 12.8, 19.3) mode=walking
+PASS Bear native view direction7 mirrors correctly position=(10.25, 12.8, 19.3) mode=walking
+PASS Bear death keeps native401:2 nonblocking, correctly labeled corpse position=(10.25, 12.8, 19.3) mode=walking
+PASS Active 300HP/equipment/dead-bear state saves position=(7.25, 12.80096, 16.2) mode=walking
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Retained bear regression over independent skeleton world", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "blocks": [{ "name": "S0000999.RDB", "x": 0, "z": 0 }, { "name": "B0000009.RDB", "x": -1, "z": 0 }, { "name": "B0000006.RDB", "x": 0, "z": -1 }, { "name": "B0000003.RDB", "x": 1, "z": 0 }, { "name": "B0000012.RDB", "x": 0, "z": 1 }], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Active bear section loads from fresh validated scene position=(7.25, 12.80096, 16.2) mode=walking
+PASS Load preserves300 maxHP, current health, equipment and original bear corpse position=(7.25, 12.80096, 16.2) mode=reset
+PASS Section schema rejects invalid playtest HP position=(7.25, 12.80096, 16.2) mode=reset
+PASS Section schema rejects stacking test weapons position=(7.25, 12.80096, 16.2) mode=reset
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Retained bear regression over independent skeleton world", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "blocks": [{ "name": "S0000999.RDB", "x": 0, "z": 0 }, { "name": "B0000009.RDB", "x": -1, "z": 0 }, { "name": "B0000006.RDB", "x": 0, "z": -1 }, { "name": "B0000003.RDB", "x": 1, "z": 0 }, { "name": "B0000012.RDB", "x": 0, "z": 1 }], "start": (0.0, 0.625, 0.0) } triangles=1746 textures=34
+PASS Fresh restart restores generous testing inventory/health and a living bear position=(7.25, 12.8, 16.2) mode=walking
+BEAR RESULTS: 58/58

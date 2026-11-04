@@ -108,6 +108,21 @@ func validate(value: Variant) -> bool:
 				if not number(entry.get("fps")) or entry.fps <= 0 or entry.fps > 60:
 					return fail(entry.id + " requires fps in (0,60]")
 	var markers: Dictionary = {}
+	if not value.get("fixed_enemies", []) is Array or value.get("fixed_enemies", []).size() > 64:
+		return fail("fixed_enemies must be an array of at most 64 entries")
+	for entry in value.get("fixed_enemies", []):
+		if not entry is Dictionary or not valid_id(entry.get("id"), ids):
+			return fail("Invalid fixed enemy id")
+		if not block_names.has(entry.get("block", source.block)) or not integer(entry.get("record_offset")) or offsets.has(record_key(entry, source.block)):
+			return fail("Invalid or duplicate fixed enemy source record")
+		if entry.get("expected_archive") != 199 or entry.get("expected_record") != 16 or entry.get("expected_mobile_id") != 0:
+			return fail("fixed_enemies currently supports only original rat markers199:16/mobile0")
+		for field in ["expected_flags", "expected_sound_index", "expected_action"]:
+			if not integer(entry.get(field), 255):
+				return fail("Fixed enemy requires checked field " + field)
+		if entry.expected_flags != 0 or entry.expected_action != 0 or entry.get("expected_next") != 0:
+			return fail("Unsupported fixed enemy flags/reaction/link")
+		offsets[record_key(entry, source.block)] = entry.id
 	if not value.get("treasure_markers", []) is Array or value.get("treasure_markers", []).size() > 64:
 		return fail("treasure_markers must be an array of at most 64 entries")
 	if not value.get("static_loot", []) is Array or value.get("static_loot", []).size() > 64:

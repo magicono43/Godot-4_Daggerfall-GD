@@ -1,0 +1,59 @@
+ERROR: Failed to open 'user://logs/godot2026-11-03T18.42.48.log'.
+   at: copy (core/io/dir_access.cpp:429)
+ERROR: Failed to open log file for writing: user://logs/godot.log
+   at: rotate_file (core/io/logger.cpp:169)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold complete original structural placements", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "blocks": [{ "name": "S0000999.RDB", "x": 0, "z": 0 }, { "name": "B0000009.RDB", "x": -1, "z": 0 }, { "name": "B0000006.RDB", "x": 0, "z": -1 }, { "name": "B0000003.RDB", "x": 1, "z": 0 }, { "name": "B0000012.RDB", "x": 0, "z": 1 }], "start": (0.0, 0.625, 0.0) } triangles=9263 textures=81
+PASS Expanded normal dungeon builds
+PASS Only five checked model actions form two source-linked mechanisms
+PASS Source action parameters are checked against original bytes before scene construction
+PASS Original lectern is acquired by the existing obstructed E interaction ray
+PASS Lectern rotates the source bookcase by83degrees around its original pivot
+PASS Walk native route [500, -1280, 1922]
+ROUTE_POSITION (-0.197185, 32.00088, -6.209283) target=(-0.25, 32.0, -6.25) unsupported=0
+PASS Walk native route [400, -1280, 1922]
+ROUTE_POSITION (-2.633586, 32.00088, -6.248134) target=(-2.75, 32.0, -6.25) unsupported=0
+PASS Walk native route [330, -1280, 1922]
+ROUTE_POSITION (-4.405736, 32.00088, -6.249908) target=(-4.5, 32.0, -6.25) unsupported=0
+PASS Walk native route [320, -1280, 1960]
+ROUTE_POSITION (-4.732752, 32.00088, -7.152403) target=(-4.75, 32.0, -7.200001) unsupported=0
+PASS Walk native route [320, -1280, 2000]
+ROUTE_POSITION (-4.748559, 32.00088, -8.112194) target=(-4.75, 32.0, -8.200001) unsupported=0
+PASS Walk native route [320, -1280, 1960]
+ROUTE_POSITION (-4.749839, 32.00088, -7.299963) target=(-4.75, 32.0, -7.200001) unsupported=0
+PASS Walk native route [330, -1280, 1922]
+ROUTE_POSITION (-4.527627, 32.00088, -6.36612) target=(-4.5, 32.0, -6.25) unsupported=0
+PASS Walk native route [400, -1280, 1922]
+ROUTE_POSITION (-2.859411, 32.00088, -6.205588) target=(-2.75, 32.0, -6.25) unsupported=0
+PASS Walk native route [500, -1280, 1922]
+ROUTE_POSITION (-0.354251, 32.00088, -6.266286) target=(-0.25, 32.0, -6.25) unsupported=0
+PASS Walk native route [736, -1280, 1740]
+ROUTE_POSITION (5.581906, 32.00088, -1.751776) target=(5.65, 32.0, -1.700001) unsupported=0
+PASS Bookcase pauses when its next pose overlaps the full player capsule
+PASS Clearing the bookcase lets it return exactly to its source pose
+PASS Original hall lever is acquired by E interaction ray
+PASS Repeated E cannot reverse a moving lift; rider headroom stops the whole chain safely
+PASS Source sound IDs resolve and play once per accepted toggle, with no repeat on busy E
+PASS Shared modal pauses mechanism progress
+PASS Released controls pause mechanisms
+PASS K refuses saving while any linked mechanism is moving
+PASS Rest refuses an unsettled mechanism
+PASS Platform and throne rise5.6metres together over source timing
+RIDE_UP (29.375, 26.501, 16.975) -> (29.375, 32.10016, 16.975)
+PASS Full player capsule rides the original platform upward without motor retuning
+PASS Second lever toggle lowers both objects to exact source positions
+RIDE_DOWN (29.375, 32.10016, 16.975) -> (29.375, 26.50015, 16.975)
+PASS Player rides downward without separation or fall damage
+PASS Settled mechanism states save in an isolated slot
+PASS Save validation rejects malformed mechanism state
+PASS Save validation requires all selected mechanism IDs
+CLASSIC_SLICE { "location": "Privateer\'s Hold", "region": 17, "location_id": 50049, "block": "S0000999.RDB", "section": "Privateer\'s Hold complete original structural placements", "dungeon_id": 50050, "climate": 231, "map_pixel": (109, 158), "texture_mode": "classic", "texture_table": [23, 22, 19, 22, 20, 368], "blocks": [{ "name": "S0000999.RDB", "x": 0, "z": 0 }, { "name": "B0000009.RDB", "x": -1, "z": 0 }, { "name": "B0000006.RDB", "x": 0, "z": -1 }, { "name": "B0000003.RDB", "x": 1, "z": 0 }, { "name": "B0000012.RDB", "x": 0, "z": 1 }], "start": (0.0, 0.625, 0.0) } triangles=9263 textures=81
+PASS Fresh candidate restores both mechanism states before player clearance
+PASS Load preserves raised throne and open bookcase without replaying motion
+PASS Candidate restores elevated platform support before validating the saved rider
+ACTION_CHECKS 33/33
+WARNING: 12 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+   at: cleanup (core/object/object.cpp:2536)

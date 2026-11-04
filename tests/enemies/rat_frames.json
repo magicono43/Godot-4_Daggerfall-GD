@@ -1,0 +1,479 @@
+{
+  "255:0": {
+    "pixels": [
+      65,
+      67
+    ],
+    "frames": 8,
+    "metres": [
+      0.8250000000000001,
+      0.8500000000000001
+    ],
+    "rgba_sha256": [
+      "c0f2864b0ac9d24118755cd60b81c40ef13a5251d4d809025616f9a804791b15",
+      "0a42cf443dfb278cd4eb16810191f7d69ffe30dd42d6186c92d168811293e1cb",
+      "96c4f9034852ded836e359c79e8ca9da21f3ebf93ed14646e808853dd2cf6a6a",
+      "3b05615109849410a81a8f959db79c0d41b817dcfafc5b7b76d3b2ee3da5a36e",
+      "46bccdd42d7b6f486fe7e40620168b6023376e77a81431b8b3531596d90299e5",
+      "545b6244731729fbab0ed776b26d69a5858b936b442bdf669dcb1eec8dba8fbf",
+      "e0b4e0e0e566490c44c02cf6ef38341df86169cde9820f3e88739f366b456190",
+      "f01a8109a8a61c9a6656edecca54c4dcbdcb7d7024268d77b58cd27200658981"
+    ],
+    "transparent_pixels": [
+      1631,
+      1689,
+      1743,
+      1790,
+      1785,
+      1798,
+      1768,
+      1682
+    ]
+  },
+  "255:1": {
+    "pixels": [
+      54,
+      31
+    ],
+    "frames": 8,
+    "metres": [
+      1.35,
+      0.775
+    ],
+    "rgba_sha256": [
+      "eee7c8be5189e79fd6e535b289af170a693a60d9205ca612e9abc760e6307137",
+      "abeb7ae4d55a2bcf9766818dbae3b213ca55697111d26bc227bdad5831e056b2",
+      "e4437b971a8153fd04d8316b0fb18ffb958fea3d09761b4b0186dfaf5ce569e1",
+      "27597ca10b99c7b74fb1ec71e85a595fb53e52a7bb5e890fc96818857b800ac4",
+      "0ed96e458d1ffda64f9d1016ee4b9e3d35503dfc5e31f73c92fe080032934582",
+      "e7712c5704ec5705b9d3e9f785d67a7c816d32b6f1e8d3ea8365bd6fe5864c24",
+      "548ce08eb7d2c80d504d5eac610e404942fcee2b46992fda5d683126c9818d22",
+      "6fc2e37edad9a116f09fb2019015e4e0913a42b0acf05ffd145dbe9d9eee4ce2"
+    ],
+    "transparent_pixels": [
+      901,
+      917,
+      935,
+      927,
+      907,
+      923,
+      924,
+      900
+    ]
+  },
+  "255:2": {
+    "pixels": [
+      70,
+      27
+    ],
+    "frames": 8,
+    "metres": [
+      1.75,
+      0.675
+    ],
+    "rgba_sha256": [
+      "b24900e89d94fb460b5fd152323a31fb8dcd6d103a2f53aa1a29cfc43ac1cb9e",
+      "490974f57cd8b1bf74df2f758549e26175109b4fa9ebdd7400b83424f12fdc7d",
+      "737e96d1d219e6086ff9f4343df8e9003f2816563172a75b68f13eb573481b86",
+      "6753c1cc4d7bfb1016610584cbe2bfc72f02dc921a60cd41b4b56723ac78e9ab",
+      "1d171e7b5df298ba26cef984f2058110858dd99a9ef101562cd4eb8f5f920d86",
+      "2a31315d1b701092793ef6d017e2db7860667e558008cf5af94fc4ae95b5c975",
+      "43c6b5bc387d8cddc486410ce87dbf6dc7954e8b202c6ac0a37eef8a41056e6a",
+      "7e6cd799c04e3c64490a3813643537cc7a277d27b9199fb13342807e3797fe06"
+    ],
+    "transparent_pixels": [
+      1160,
+      1166,
+      1180,
+      1188,
+      1187,
+      1197,
+      1187,
+      1162
+    ]
+  },
+  "255:3": {
+    "pixels": [
+      68,
+      26
+    ],
+    "frames": 8,
+    "metres": [
+      1.7000000000000002,
+      0.65
+    ],
+    "rgba_sha256": [
+      "2326a5960efe21c5bf7189dadf322f19b4f85370f93b103074358d50a8b907cd",
+      "81180fdccdae1580b6d4c8c30355c95c2c5f1438218881a628a722632eb5fb45",
+      "79db23ffa483d81108cb6b734b73e5451a64e840effa101e8e8a0d5d3eabfa27",
+      "362ad3a13f2974adec45467a5fe4816ef599028b297760023f00846437effbc0",
+      "d899870d9169f6322c8ee2d7a4d592be3fb93888d537a28f714e3bd815ff63c6",
+      "2fdc473eea7ec3af200ea9d569280bd781c5f4f9dffbbf98b3ece57373d970e4",
+      "e9259c515222e922dda35c4072fa37eab93db6b1f29fa5757d385c74cee814e6",
+      "dc860c7b0ca33855ceef2062d085de107d912f832f26838e3def4423eaba67d5"
+    ],
+    "transparent_pixels": [
+      1187,
+      1212,
+      1217,
+      1215,
+      1199,
+      1213,
+      1202,
+      1206
+    ]
+  },
+  "255:4": {
+    "pixels": [
+      41,
+      27
+    ],
+    "frames": 8,
+    "metres": [
+      1.0250000000000001,
+      0.675
+    ],
+    "rgba_sha256": [
+      "d527d84c428ae45f4a8cff0bc1d8a4bd45313d6dd6e2b156c8c94afe004466a9",
+      "6cdd82714c75ade8317d70ae015dfc711f34ad0f431975722455a5cc921c56c0",
+      "0610446bf35c0df5ff9cf61ceea964be6d6d32694d464503decc6f2ff2d2791e",
+      "e73feee7a71eb445c8f8e5953b40a89b987d2fee39516b9629ecf89e8513ae31",
+      "8c2fb37bdc300a5afacbab4e1cb4772d75855c9dc161bb1cb01a1f4e1922dfa8",
+      "86e68c5c285d3de3e7ef80a4052ceae33836f776eb71dc0c99aee8d9b989f0cd",
+      "1c19418778111690dd49cfb5fb0fc928367edc9245833008ea70f6fe97017171",
+      "5e6527713316df57089168e7b658eb9f0b075e8bb03b40dbbece7fc8bb2554f0"
+    ],
+    "transparent_pixels": [
+      642,
+      640,
+      658,
+      660,
+      634,
+      648,
+      637,
+      632
+    ]
+  },
+  "255:5": {
+    "pixels": [
+      65,
+      94
+    ],
+    "frames": 6,
+    "metres": [
+      0.8250000000000001,
+      1.175
+    ],
+    "rgba_sha256": [
+      "9da56f5876f43b87f25c4897d81814a2a531489bbfc7f4dd4725bd94d510f869",
+      "ea53080e40c1298f6da61b54da3f3d7172a090745d0cb51e257d2d2767658e8f",
+      "baf757b429cd85aee5cb337bec9a40728848c1d254ad8069a46e828aadc8336d",
+      "c5fa78eae3070296627e8410e8802ce774de2a705f4f6f935885faadb342105d",
+      "69900cbbb9faf2cbd31be295b813687c6fc0c1fdd35bfbd01598f9bf4fd78a25",
+      "b53a3ffcb1d4d8350c0a6a1eb3ec093e7dccd6adba983437cb6bcee6e9755157"
+    ],
+    "transparent_pixels": [
+      3348,
+      3335,
+      3270,
+      3176,
+      2839,
+      3052
+    ]
+  },
+  "255:6": {
+    "pixels": [
+      70,
+      43
+    ],
+    "frames": 6,
+    "metres": [
+      1.75,
+      1.075
+    ],
+    "rgba_sha256": [
+      "e0bc020a734bf6f3135dff4ef1e71cf89c8badf8d11798082dad96e72953e069",
+      "80cc4c0e0b360efb6cd0875d72051c8ba7b44c3ae27a946922e3c5000d559e89",
+      "8cc67ac0db382a2c7e1f30cc38ff6354cd2ec3a28023ac73e23b91ddf03061c0",
+      "64bf40e82cf18e22d9f0e48b56eebaa5bdb2d62c869a98f6e5dc48d1f4b57cb6",
+      "653da9acf3fc4489894b0b4bdec39d20aa764c6afea8cdd3cd93a8cb6077321f",
+      "a46f0a6868b9285a0a39aa92503e8f868f810b96fa8bb6a6dd66ab749caaf50c"
+    ],
+    "transparent_pixels": [
+      2189,
+      2178,
+      2109,
+      2094,
+      2017,
+      2125
+    ]
+  },
+  "255:7": {
+    "pixels": [
+      84,
+      42
+    ],
+    "frames": 6,
+    "metres": [
+      2.1,
+      1.05
+    ],
+    "rgba_sha256": [
+      "964ae18fd92f9e54c9c703bb00fe28b8873b778ec26360e72d4375eee303cad2",
+      "3e538455802baca683a08a140a8c7f7f3b4963bcaf44e9beb38430e022f2bc25",
+      "49e6dc7169e63fa69b2227db1187ff837a2c649baf434c6784ae87c39c70ab71",
+      "61428e794c1279856f8c4e94706bffc909943f6a4431fd222c8d8724f14178b7",
+      "e137e600e4117206f0dfc6968b253edf4ca83b5712cec1ccb3a67a94cb7bd38b",
+      "8ce676983cc6be8b38c7b9bce8c38e1afa1bee55e089860d129ac5fcd818e3c5"
+    ],
+    "transparent_pixels": [
+      2726,
+      2718,
+      2701,
+      2688,
+      2670,
+      2710
+    ]
+  },
+  "255:8": {
+    "pixels": [
+      72,
+      39
+    ],
+    "frames": 6,
+    "metres": [
+      1.8,
+      0.9750000000000001
+    ],
+    "rgba_sha256": [
+      "089910534c3803910b0d9ba24c60c73b0c5434535a85030a3e0fd203e90dbc8e",
+      "34769a9bc61e13dbad6423b3fd9da6974a0a08be1028c5ef4ffe7124ed3323cc",
+      "5feeb2c5a6a8f2ca1b3336901c7ff8aa9a8b50873e7b25775ed4b955e43ef613",
+      "4c8e24d1fedb5ead755a0e9a8cd6452bc58cfb46fa6f73f16689abc8145a0abb",
+      "61c34e8a4d00cfdf6a12ae769090b8e40221d1c8ce0c28458d0ec98fadf6883b",
+      "42c88d7ed2deb91488c3266a2aff86ecd88a2fec2553ad6ce8f56ba34c42baa5"
+    ],
+    "transparent_pixels": [
+      2147,
+      2134,
+      2051,
+      2069,
+      2137,
+      2175
+    ]
+  },
+  "255:9": {
+    "pixels": [
+      38,
+      40
+    ],
+    "frames": 6,
+    "metres": [
+      0.9500000000000001,
+      1.0
+    ],
+    "rgba_sha256": [
+      "aef3488e2a694ef8461f3bcc454f63bb82ff4917223e18d8f789f2b4ce6cd3a5",
+      "59e53c72693800475bfee0bd1be2e8cac633f433e6ed06b0955fd3fb056148fc",
+      "d0ef881fa7366094da64b1099ea298eed6635d25953dbbcf3852b3ca2b565ae3",
+      "7ae6534a42e8fcd12d1b943eaf525a71a8ecd10ecfd40f85e45e7502c7d6e668",
+      "917bb055edac6acb292ad172ac7f2351dfa851d29a25db52d3d522055afd2f5a",
+      "4014e3791791f50db0453a71eb3701b24e83c43a7c19443c6d9140bc40aa05f6"
+    ],
+    "transparent_pixels": [
+      990,
+      985,
+      929,
+      928,
+      1006,
+      1029
+    ]
+  },
+  "255:10": {
+    "pixels": [
+      74,
+      71
+    ],
+    "frames": 1,
+    "metres": [
+      0.925,
+      0.9
+    ],
+    "rgba_sha256": [
+      "548b6fbe12b8bb6defac50030db8b8cef184eea9623463b8325fab0158a6821f"
+    ],
+    "transparent_pixels": [
+      2698
+    ]
+  },
+  "255:11": {
+    "pixels": [
+      54,
+      35
+    ],
+    "frames": 1,
+    "metres": [
+      1.35,
+      0.875
+    ],
+    "rgba_sha256": [
+      "ab57448aafd280420cd129dfcc1bbad742d4f789e64a5906d2dcbb0bb9942b3c"
+    ],
+    "transparent_pixels": [
+      1075
+    ]
+  },
+  "255:12": {
+    "pixels": [
+      69,
+      34
+    ],
+    "frames": 1,
+    "metres": [
+      1.725,
+      0.8500000000000001
+    ],
+    "rgba_sha256": [
+      "cea2b64d233769b8d5edf568250f82770475f84c3b3c25cef352fceddc7e1b73"
+    ],
+    "transparent_pixels": [
+      1595
+    ]
+  },
+  "255:13": {
+    "pixels": [
+      67,
+      34
+    ],
+    "frames": 1,
+    "metres": [
+      1.675,
+      0.8500000000000001
+    ],
+    "rgba_sha256": [
+      "13809859b2b04805c33867a56220368f28d6598047e03f3f9f0c5899e845f2c8"
+    ],
+    "transparent_pixels": [
+      1617
+    ]
+  },
+  "255:14": {
+    "pixels": [
+      28,
+      34
+    ],
+    "frames": 1,
+    "metres": [
+      0.7000000000000001,
+      0.8500000000000001
+    ],
+    "rgba_sha256": [
+      "a46abc4b12bf503ecbe27cfd8e6fe9b97a843cc5adc9d4c9339a6abce13daf76"
+    ],
+    "transparent_pixels": [
+      395
+    ]
+  },
+  "255:15": {
+    "pixels": [
+      63,
+      71
+    ],
+    "frames": 1,
+    "metres": [
+      0.8,
+      0.9
+    ],
+    "rgba_sha256": [
+      "f5870eb0ab0b9c3c8d132db46481802a983e0383d3112638633b4caa0aaef7ad"
+    ],
+    "transparent_pixels": [
+      1720
+    ]
+  },
+  "255:16": {
+    "pixels": [
+      121,
+      61
+    ],
+    "frames": 1,
+    "metres": [
+      1.5250000000000001,
+      0.775
+    ],
+    "rgba_sha256": [
+      "e92ac0a403557c5138ad1fd9a8168209bcfee3be83e46a298c50daa7d5e51ee2"
+    ],
+    "transparent_pixels": [
+      4172
+    ]
+  },
+  "255:17": {
+    "pixels": [
+      148,
+      53
+    ],
+    "frames": 1,
+    "metres": [
+      1.85,
+      0.675
+    ],
+    "rgba_sha256": [
+      "4845ac609ac7e98ceb6553cc359dd5362887104e93388dcc41e5d9dce8349e32"
+    ],
+    "transparent_pixels": [
+      4742
+    ]
+  },
+  "255:18": {
+    "pixels": [
+      122,
+      49
+    ],
+    "frames": 1,
+    "metres": [
+      1.5250000000000001,
+      0.625
+    ],
+    "rgba_sha256": [
+      "40d53f7e0d8783750cf6ef0e66e5d77065c6f9ad7a18cf402c3b90b71214a4e4"
+    ],
+    "transparent_pixels": [
+      3492
+    ]
+  },
+  "255:19": {
+    "pixels": [
+      68,
+      53
+    ],
+    "frames": 1,
+    "metres": [
+      0.8500000000000001,
+      0.675
+    ],
+    "rgba_sha256": [
+      "9156333f2c1c0601e88f5f006304a9b1bd6416e408504616c411fbf550d4cdd2"
+    ],
+    "transparent_pixels": [
+      1632
+    ]
+  },
+  "401:1": {
+    "pixels": [
+      100,
+      41
+    ],
+    "frames": 1,
+    "metres": [
+      1.8250000000000002,
+      0.75
+    ],
+    "rgba_sha256": [
+      "340c634da3d5308b1dec45b31cf20330d834346843fbaa25bdc6b89779674628"
+    ],
+    "transparent_pixels": [
+      2062
+    ]
+  }
+}

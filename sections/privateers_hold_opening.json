@@ -4004,67 +4004,7 @@
     }
   ],
   "prototype": {
-    "player_start": {
-      "position_native": [
-        800,
-        -512,
-        1024
-      ],
-      "look_at_native": [
-        1300,
-        -512,
-        1024
-      ]
-    },
-    "enemies": [
-      {
-        "id": "placeholder_enemy",
-        "position_native": [
-          1120,
-          -4,
-          768
-        ],
-        "approach_enabled": false
-      },
-      {
-        "id": "hall_combat_target",
-        "position_native": [
-          920,
-          -512,
-          960
-        ],
-        "approach_enabled": false,
-        "attack_enabled": true,
-        "visual": "bear",
-        "navigation_enabled": true,
-        "test_loot": [
-          {
-            "definition": "gold",
-            "quantity": 12
-          },
-          {
-            "definition": "twigs",
-            "quantity": 2
-          },
-          {
-            "definition": "healing_potion",
-            "quantity": 2
-          },
-          {
-            "definition": "dagger",
-            "quantity": 1
-          },
-          {
-            "definition": "mace",
-            "quantity": 1
-          },
-          {
-            "definition": "steel_cuirass",
-            "quantity": 1
-          }
-        ]
-      }
-    ],
+    "enemies": [],
     "boundaries": [],
     "lights": [
       {
@@ -4254,6 +4194,32 @@
       "record_offset": 34002,
       "expected_archive": 199,
       "expected_record": 19
+    }
+  ],
+  "fixed_enemies": [
+    {
+      "id": "s0000999_r32850",
+      "block": "S0000999.RDB",
+      "record_offset": 32850,
+      "expected_archive": 199,
+      "expected_record": 16,
+      "expected_mobile_id": 0,
+      "expected_flags": 0,
+      "expected_sound_index": 1,
+      "expected_action": 0,
+      "expected_next": 0
+    },
+    {
+      "id": "s0000999_r32958",
+      "block": "S0000999.RDB",
+      "record_offset": 32958,
+      "expected_archive": 199,
+      "expected_record": 16,
+      "expected_mobile_id": 0,
+      "expected_flags": 0,
+      "expected_sound_index": 1,
+      "expected_action": 0,
+      "expected_next": 0
     }
   ]
 }

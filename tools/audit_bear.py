@@ -3,6 +3,7 @@ import configparser
 import hashlib
 import json
 import struct
+import sys
 from pathlib import Path
 
 PROJECT = Path(__file__).resolve().parents[1]
@@ -11,7 +12,8 @@ cfg.read(PROJECT / 'data_source.cfg')
 root = Path(cfg['classic']['arena2'].strip('"'))
 palette = (root / 'ART_PAL.COL').read_bytes()[8:776]
 result = {}
-for archive, records in [(259, range(20)), (401, [2])]:
+rat = '--rat' in sys.argv
+for archive, records in ([(255, range(20)), (401, [1])] if rat else [(259, range(20)), (401, [2])]):
     data = (root / f'TEXTURE.{archive:03}').read_bytes()
     for record in records:
         p = struct.unpack_from('<I', data, 28 + record * 20)[0]
@@ -50,6 +52,6 @@ for archive, records in [(259, range(20)), (401, [2])]:
             'rgba_sha256': hashes, 'transparent_pixels': transparent}
 target = PROJECT / 'tests' / 'enemies'
 target.mkdir(exist_ok=True)
-(target / 'bear_frames.json').write_text(json.dumps(result, indent=2) + '\n')
-print('Pinned Bear:', len(result), 'records,', sum(x['frames'] for x in result.values()), 'frames')
+(target / ('rat_frames.json' if rat else 'bear_frames.json')).write_text(json.dumps(result, indent=2) + '\n')
+print('Pinned Rat:' if rat else 'Pinned Bear:', len(result), 'records,', sum(x['frames'] for x in result.values()), 'frames')
 

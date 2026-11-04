@@ -41,6 +41,14 @@ affected. Automated physics checks do not establish subjective movement feel.
 
 ## Commands available today
 
+Fixed-rat population uses existing `tests/full_dungeon.gd -- --rats-only` and
+`-- --rats-read` modes (same direct Godot invocation below). Run the writer first;
+the reader loads `tests/output/rats_save.json` in a fresh process. The full runner
+includes both modes. Routine rat logs/captures/source mutations are under
+`tests/output/`. Retired bear-dependent suites use a small setup overlay on the
+existing independent skeleton section through `tests/bear_regression.tscn`;
+normal gameplay does not load the retired targets.
+
 The runner is unchanged: `Run.ps1 -Test` runs the entire headless collection;
 `Run.ps1 -Test -Visual` renders the entire collection. There is currently no
 `-Suite` selector. To target a suite, invoke Godot directly from the project:

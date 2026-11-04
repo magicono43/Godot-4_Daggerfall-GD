@@ -79,8 +79,10 @@ func refresh() -> void:
 			var sequence: Array = payload.get("attack_sequence", [0, 1, 2, 3, 4, 5])
 			source_frame = int(sequence[mini(int((elapsed + 0.000001) * ATTACK_FPS), sequence.size() - 1)])
 		if state == "move":
-			source_frame = int(elapsed * 6.0) % 4
+			source_frame = int(elapsed * 6.0) % record.frames.size()
 		flip_h = orientation > 4
+		if state == "idle" and payload.get("rat_idle_mirroring", false):
+			flip_h = orientation in [1, 2, 3]
 	texture = record.frames[source_frame]
 	var dimensions: Vector2 = texture.get_size()
 	var metres: Vector2 = record.size_metres

@@ -16,6 +16,8 @@ var billboards: Array[Dictionary] = []
 var enemy_visuals: Dictionary = {}
 var skeleton_attributes: Dictionary = {}
 var bear_attributes: Dictionary = {}
+var rat_attributes: Dictionary = {}
+var fixed_enemies: Array[Dictionary] = []
 var dagger_frames: Array[Dictionary] = []
 var spell_frames: Array[Dictionary] = []
 var spell_hands: Dictionary = {}
@@ -67,6 +69,8 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 	enemy_visuals.clear()
 	skeleton_attributes.clear()
 	bear_attributes.clear()
+	rat_attributes.clear()
+	fixed_enemies.clear()
 	dagger_frames.clear()
 	weapon_frames.clear()
 	spell_frames.clear()
@@ -158,7 +162,7 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 	if not provenance.has("start"):
 		error = "Section exact spawn marker missing from source block"
 		return false
-	for group in ["models", "billboards", "treasure_markers", "static_loot"]:
+	for group in ["models", "billboards", "treasure_markers", "static_loot", "fixed_enemies"]:
 		for entry in definition.get(group, []):
 			if not matched.has(section.record_key(entry, definition.source.block)):
 				error = "Section %s: record %d missing from source block %s" % [entry.id, entry.record_offset, entry.get("block", definition.source.block)]
@@ -184,6 +188,11 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 			if payload.is_empty():
 				return false
 			enemy_visuals.bear = payload
+	if not fixed_enemies.is_empty():
+		var payload := rat_payload()
+		if payload.is_empty():
+			return false
+		enemy_visuals.rat = payload
 	# A deterministic member of DFU's original random-treasure billboard set.
 	loot_pile_payload = billboard_payload({"id": "loot_pile", "archive": 216, "record": 0})
 	if loot_pile_payload.is_empty():
@@ -192,6 +201,11 @@ func load_slice(section_path: String = DEFAULT_SECTION) -> bool:
 	if not monsters.open(arena_path.path_join("MONSTER.BSA")):
 		error = monsters.error
 		return false
+	if not fixed_enemies.is_empty():
+		rat_attributes = decode_monster_attributes(monsters.record("ENEMY000.CFG"))
+		if rat_attributes.is_empty():
+			error = "Missing or invalid rat career ENEMY000.CFG in MONSTER.BSA"
+			return false
 	skeleton_attributes = decode_monster_attributes(monsters.record("ENEMY015.CFG"))
 	if skeleton_attributes.is_empty():
 		error = "Missing or invalid skeleton career ENEMY015.CFG in MONSTER.BSA"
@@ -254,7 +268,7 @@ func load_block(blocks: RefCounted, block: Dictionary, definition: Dictionary, m
 	for entry in definition.billboards:
 		if entry.get("block", definition.source.block) == block_name:
 			selected[int(entry.record_offset)] = entry
-	for entry in definition.get("treasure_markers", []) + definition.get("static_loot", []):
+	for entry in definition.get("treasure_markers", []) + definition.get("static_loot", []) + definition.get("fixed_enemies", []):
 		if entry.get("block", definition.source.block) == block_name:
 			selected[int(entry.record_offset)] = entry
 	var spawn: Dictionary = definition.spawn
@@ -316,7 +330,14 @@ func load_block(blocks: RefCounted, block: Dictionary, definition: Dictionary, m
 					if tex >> 7 != int(entry.expected_archive) or tex & 127 != int(entry.expected_record):
 						error = "Section %s: record %d expected texture %d:%d, found %d:%d" % [entry.id, q, entry.expected_archive, entry.expected_record, tex >> 7, tex & 127]
 						return false
-					if static_ids.has(entry.id):
+					if entry.has("expected_mobile_id"):
+						var fields := {"expected_mobile_id": int(rdb[resource + 4]), "expected_flags": rdb.decode_u16(resource + 2), "expected_sound_index": int(rdb[resource + 5]), "expected_next": rdb.decode_s32(resource + 6), "expected_action": int(rdb[resource + 10])}
+						for field in fields:
+							if fields[field] != int(entry[field]):
+								error = "Source enemy mismatch for %s: %s" % [entry.id, field]
+								return false
+						fixed_enemies.append({"id": entry.id, "position": pos, "visual": "rat", "navigation_enabled": true, "attack_enabled": true, "block": block_name, "record_offset": q})
+					elif static_ids.has(entry.id):
 						billboards.append({"id": entry.id, "offset": q, "block": block_name, "archive": 216, "record": 0, "position": pos, "fps": 1.0, "static_loot": true})
 					elif entry.expected_archive == 199:
 						treasure_markers[entry.id] = pos
@@ -622,6 +643,21 @@ func bear_payload() -> Dictionary:
 	if corpse.is_empty():
 		return {}
 	return {"archive": 259, "records": records, "corpse": corpse, "attack_sequence": [0, 1, 2, 3, 0], "hit_tick": 3, "corpse_record": 2}
+
+func rat_payload() -> Dictionary:
+	# EnemyBasics ID0: -1 damage marker is between displayed frames2 and3.
+	var records: Dictionary = {}
+	for record in 20:
+		var payload := billboard_payload({"id": "rat_%d" % record, "archive": 255, "record": record})
+		var expected := 8 if record < 5 else (6 if record < 10 else 1)
+		if payload.is_empty() or payload.frames.size() != expected:
+			error = "Rat 255:%d expected %d frames" % [record, expected]
+			return {}
+		records[record] = payload
+	var corpse := billboard_payload({"id": "rat_corpse", "archive": 401, "record": 1})
+	if corpse.is_empty():
+		return {}
+	return {"archive": 255, "records": records, "corpse": corpse, "attack_sequence": [0, 1, 2, 3, 4, 5], "hit_tick": 3, "corpse_record": 1, "rat_idle_mirroring": true}
 
 func cif_rgba(indices: PackedByteArray, width: int, height: int) -> Texture2D:
 	var rgba := PackedByteArray()

@@ -8,6 +8,11 @@ if ($Test) {
         & $godotPath @godotArguments --fixed-fps 60 --script "res://tests/$suite.gd"
         if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
     }
+    # Focused source population cases extend the existing dungeon suite.
+    & $godotPath @godotArguments --fixed-fps 60 --script res://tests/full_dungeon.gd -- --rats-only
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    & $godotPath @godotArguments --fixed-fps 60 --script res://tests/full_dungeon.gd -- --rats-read
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
     # Separate Godot process: prove the slot survives process-local UID state.
     & $godotPath @godotArguments --fixed-fps 60 --script res://tests/persistence.gd -- --persistence-read
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }

@@ -9,6 +9,7 @@ const EVENTS := {
 	"parry": [428, 429, 430, 431, 432, 433, 434, 435, 436],
 	"skeleton_move": [160], "skeleton_bark": [161], "skeleton_attack": [162],
 	"bear_move": [127], "bear_bark": [128], "bear_attack": [129],
+	"rat_move": [115], "rat_bark": [116], "rat_attack": [117],
 }
 const MAX_VOICES := 24
 var archive := preload("res://scripts/classic_archive.gd").new()
@@ -86,7 +87,7 @@ func play_action(sound_id: int, emitter: Node3D) -> void:
 	play_voice("action", ordinal, emitter, 1.0, Vector3.INF)
 
 func play_voice(event: String, id: int, emitter: Node3D, gain: float, at: Vector3) -> void:
-	var creature_event := event.begins_with("skeleton_") or event.begins_with("bear_")
+	var creature_event := event.begins_with("skeleton_") or event.begins_with("bear_") or event.begins_with("rat_")
 	if not cache.has(id):
 		return
 	# Bound overlapping voices and reclaim explicitly on completion/restart.

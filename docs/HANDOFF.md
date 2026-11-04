@@ -1,4 +1,59 @@
-# Resume here: mechanisms accepted; original enemy population selected next
+# Resume here: two fixed rats and original cave start shipped; user playtest next
+
+November 3, 2026. User authorized both audited rats and changed the prior policy:
+remove the hall test bear/passive red target and all their corpse loot; restore
+the original new-game start near the log/bonfire. Normal main.tscn now has exactly
+source rats S0000999.RDB:32850 and32958, no prototype enemies and no player_start
+override. Preserve player300HP/150magicka/13 owned instances/seven unequipped
+armor, equipped dagger/skills50/seven spells. No other population or rebalance.
+
+fixed_enemies is separate from prototype data, validates199:16/mobile0 and raw
+flags/sound/action/link fields before build, and uses original RDB positions with
+stable actor IDs s0000999_r32850/r32958. Original sprites255/corpse401:1 have81
+frames, eight-frame movement and rat-specific idle mirroring. Strike is once at
+0.3s/frame3. Source career/skills35/internal armor30/damage1..4; deterministic
+HP9 is an explicit slice policy within source9..16. Own sound ordinals115..117,
+no door opening, disease or random loot; dead rats remain nonblocking corpses
+without interaction. Existing save owner restores dead/live states without
+reroll. Schema9 remains; changed section fingerprint requires fresh K after R.
+Manual saves were not overwritten. See FIXED_RATS.md/ENEMY_POPULATION_AUDIT.md.
+
+Bear support remains. Nine former normal-world bear-dependent suites now use a
+small tests/bear_setup.json overlay on the existing independent skeleton geometry
+via tests/bear_regression.tscn, generating one stable tests/output/ section.
+Skeleton/swim section fixtures are unchanged. No full-world bear copy was added.
+The normal first-enemy alias now refers to the first source rat.
+
+Validation: focused rats68/68 headless and68/68 rendered, plus4 fresh-process
+startup/reload checks. Both encounters were reached by continuous player input
+through native geometry/doors; rat capsules have support/clearance and unchanged
+source X/Z. Checked native frame hashes, mirroring, pursuit, strike timing,
+modal cancellation/rest refusal, voice ownership, hurt/death, invalid-save
+rejection and dead/live persistence. Visually inspected cave start, both rat
+placements and attack/hurt/corpse in4:3/widescreen; listening/embedded-editor
+feel remain user verification.
+
+One full headless checkpoint ran all31 existing suites. The last full_dungeon
+route initially failed because its hall-seeded paths inherited the newly restored
+cave start. Fixed only that test's explicit hall seed, reran it103/103 (including
+33 mechanisms), then completed all remaining process readers directly; no need
+to rerun the30 already-passing suites. Full original cave-to-hall route104/104,
+bear58/58, audio43/43, navigation34/34, persistence61/61 and load_focus18/18 pass.
+Separate readers: persistence4/4, armor3/3, magic3/3, shield3/3, teleport3/3,
+swimming2/2, dungeon6/6, actions4/4. Final logs have no failed assertions/script
+errors; existing restricted-host log/certificate and legacy ObjectDB warnings
+remain nonblocking. Evidence uses tests/output/rats_full_regression.log (initial
+checkpoint), rats_dungeon_checkpoint.log (corrected final suite),
+rats_checkpoint_tail.log (population and all readers), rats_rendered.log and
+rat_*.png. Run.ps1 -Test now includes --rats-only/--rats-read on existing
+full_dungeon.gd; no new routine suite. Optional source route discovery writes
+tests/output/enemy_floor_audit.json and is not gameplay navigation.
+
+Await user testing before adding more enemies. Random17 border markers, remaining
+fixed types and disconnected assemblies stay deferred. Existing mechanisms,
+static/test piles, spells, movement and modal/save protections are preserved.
+
+# Previous: mechanisms accepted; original enemy population selected next
 
 November 3, 2026. User reported the lectern/bookcase and throne lift "Works great"
 and accepted them. Dungeon/decorations/swimming were already accepted. The user

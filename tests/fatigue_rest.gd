@@ -53,7 +53,7 @@ func model_checks() -> void:
 	check(not model.valid({"current":1, "game_seconds":-1}) and not model.valid({"current":1, "game_seconds":0, "extra":1}), "Negative clock and unknown fatigue fields reject")
 
 func run() -> void:
-	level = load("res://main.tscn").instantiate()
+	level = load("res://tests/bear_regression.tscn").instantiate()
 	level.enemy_navigation_enabled = false
 	root.add_child(level)
 	current_scene = level

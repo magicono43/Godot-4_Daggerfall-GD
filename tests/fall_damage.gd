@@ -73,7 +73,7 @@ func climb_to(height: float) -> void:
 	await frames(2)
 
 func run() -> void:
-	level = load("res://main.tscn").instantiate()
+	level = load("res://tests/bear_regression.tscn").instantiate()
 	level.enemy_navigation_enabled = false
 	root.add_child(level)
 	current_scene = level

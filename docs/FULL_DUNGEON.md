@@ -2,12 +2,13 @@
 
 Later update: the two confirmed lectern/bookcase and lever/platform/throne chains
 are now enabled; see ACTION_OBJECTS.md. Earlier static-action scope below records
-the accepted placement pass. Unknown27, enemy markers and other action types stay
+the accepted placement pass. Unknown27, unselected enemy markers and other action types stay
 deferred. Targeted validation policy remains TESTING.md.
 
 Normal `main.tscn` now loads every original model placement in the location's
-five MAPS blocks. Keep the accepted hall start, bear and passive chamber, player
-stats/equipment, seven spells and existing movement. The dungeon remains dry.
+five MAPS blocks. The later fixed-rat slice restores the original cave start and
+removes both prototype enemies; see FIXED_RATS.md. Player stats/equipment, seven
+spells and existing movement remain. The dungeon remains dry.
 
 | Block | MAPS X/Z | Models | Decorative flats |
 | --- | --- | ---: | ---: |
@@ -51,8 +52,9 @@ Original exit70300 is a collidable static exit with an E prompt explaining that
 exterior travel is unavailable. It neither swings into empty space nor changes
 location. No exterior/world streaming was added.
 
-Enemy/editor markers stay invisible and unspawned. The accepted two prototype
-enemies remain. Source light objects are not added as new dynamic lights; their
+Editor-marker graphics stay invisible. Only selected fixed rat markers32850/32958
+spawn creatures; all other fixed/random markers remain deferred, and both old
+prototype enemies are removed. Source light objects are not added as new dynamic lights; their
 decorative flats render with the existing calibrated environment/lantern lighting.
 No water, randomized encounters/loot, locks, traps, quests or action-chain engine
 was added. Static action-linked placements in S0000999 are:

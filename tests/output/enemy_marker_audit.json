@@ -1,0 +1,1330 @@
+{
+  "location": "Privateer's Hold",
+  "map_sha256": "8b2c7e5318977b8bbfcd994d34585ec106d25646ab361dba78b41ab7e9baaf8f",
+  "source_commit": "4e78e1412b17b60f4d5d6073825775aa5ae95139",
+  "source_sha256": {
+    "RDBLayout.cs": "9d89736d27b55a946b542cb352a3b80e7e9843e41fb49692ba977e6f2e007987",
+    "BlocksFile.cs": "538ba684af0e7480e81ad5b903dcba6548a537e58505174ef55f9d22014c4fce",
+    "DFBlock.cs": "c3ad02358113b989f21a28e3381dd42bf60b9fcb970929fb7817ceced55ac0e5",
+    "EnemyBasics.cs": "7cd0159054d053fff0bc32d437e2cf0c58c120cd3348edc457d3c011d4234b8f"
+  },
+  "blocks": [
+    {
+      "name": "S0000999.RDB",
+      "x": 0,
+      "z": 0,
+      "starting": true,
+      "sha256": "761f5118289b237842045f110bca2d0b9384af55339e3a89950b3c1cae75818d",
+      "markers": [
+        {
+          "id": "S0000999.RDB:33750",
+          "record_offset": 33750,
+          "resource_offset": 33775,
+          "texture": [
+            199,
+            16
+          ],
+          "kind": "fixed",
+          "flags": 0,
+          "magnitude": 15,
+          "sound_index": 1,
+          "faction_or_mobile_id": 271,
+          "mobile_id": 15,
+          "encounter_slot": null,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            540,
+            -1833,
+            700
+          ],
+          "position_grid_native": [
+            540,
+            -1833,
+            700
+          ]
+        },
+        {
+          "id": "S0000999.RDB:33534",
+          "record_offset": 33534,
+          "resource_offset": 33559,
+          "texture": [
+            199,
+            16
+          ],
+          "kind": "fixed",
+          "flags": 0,
+          "magnitude": 138,
+          "sound_index": 2,
+          "faction_or_mobile_id": 650,
+          "mobile_id": 138,
+          "encounter_slot": null,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            443,
+            -1321,
+            275
+          ],
+          "position_grid_native": [
+            443,
+            -1321,
+            275
+          ]
+        },
+        {
+          "id": "S0000999.RDB:33498",
+          "record_offset": 33498,
+          "resource_offset": 33523,
+          "texture": [
+            199,
+            16
+          ],
+          "kind": "fixed",
+          "flags": 0,
+          "magnitude": 3,
+          "sound_index": 0,
+          "faction_or_mobile_id": 3,
+          "mobile_id": 3,
+          "encounter_slot": null,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            129,
+            -1353,
+            761
+          ],
+          "position_grid_native": [
+            129,
+            -1353,
+            761
+          ]
+        },
+        {
+          "id": "S0000999.RDB:33354",
+          "record_offset": 33354,
+          "resource_offset": 33379,
+          "texture": [
+            199,
+            16
+          ],
+          "kind": "fixed",
+          "flags": 0,
+          "magnitude": 7,
+          "sound_index": 2,
+          "faction_or_mobile_id": 519,
+          "mobile_id": 7,
+          "encounter_slot": null,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            817,
+            -1069,
+            203
+          ],
+          "position_grid_native": [
+            817,
+            -1069,
+            203
+          ]
+        },
+        {
+          "id": "S0000999.RDB:33066",
+          "record_offset": 33066,
+          "resource_offset": 33091,
+          "texture": [
+            199,
+            16
+          ],
+          "kind": "fixed",
+          "flags": 0,
+          "magnitude": 141,
+          "sound_index": 2,
+          "faction_or_mobile_id": 653,
+          "mobile_id": 141,
+          "encounter_slot": null,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            769,
+            -553,
+            227
+          ],
+          "position_grid_native": [
+            769,
+            -553,
+            227
+          ]
+        },
+        {
+          "id": "S0000999.RDB:33030",
+          "record_offset": 33030,
+          "resource_offset": 33055,
+          "texture": [
+            199,
+            16
+          ],
+          "kind": "fixed",
+          "flags": 0,
+          "magnitude": 3,
+          "sound_index": 2,
+          "faction_or_mobile_id": 515,
+          "mobile_id": 3,
+          "encounter_slot": null,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            141,
+            -329,
+            771
+          ],
+          "position_grid_native": [
+            141,
+            -329,
+            771
+          ]
+        },
+        {
+          "id": "S0000999.RDB:33678",
+          "record_offset": 33678,
+          "resource_offset": 33703,
+          "texture": [
+            199,
+            16
+          ],
+          "kind": "fixed",
+          "flags": 0,
+          "magnitude": 3,
+          "sound_index": 2,
+          "faction_or_mobile_id": 515,
+          "mobile_id": 3,
+          "encounter_slot": null,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            1267,
+            -1577,
+            1019
+          ],
+          "position_grid_native": [
+            1267,
+            -1577,
+            1019
+          ]
+        },
+        {
+          "id": "S0000999.RDB:33714",
+          "record_offset": 33714,
+          "resource_offset": 33739,
+          "texture": [
+            199,
+            16
+          ],
+          "kind": "fixed",
+          "flags": 0,
+          "magnitude": 0,
+          "sound_index": 6,
+          "faction_or_mobile_id": 1536,
+          "mobile_id": 0,
+          "encounter_slot": null,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            1910,
+            -1705,
+            450
+          ],
+          "position_grid_native": [
+            1910,
+            -1705,
+            450
+          ]
+        },
+        {
+          "id": "S0000999.RDB:33642",
+          "record_offset": 33642,
+          "resource_offset": 33667,
+          "texture": [
+            199,
+            16
+          ],
+          "kind": "fixed",
+          "flags": 0,
+          "magnitude": 0,
+          "sound_index": 0,
+          "faction_or_mobile_id": 0,
+          "mobile_id": 0,
+          "encounter_slot": null,
+          "next_object_offset": -2,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            1513,
+            -1577,
+            612
+          ],
+          "position_grid_native": [
+            1513,
+            -1577,
+            612
+          ]
+        },
+        {
+          "id": "S0000999.RDB:33606",
+          "record_offset": 33606,
+          "resource_offset": 33631,
+          "texture": [
+            199,
+            16
+          ],
+          "kind": "fixed",
+          "flags": 0,
+          "magnitude": 1,
+          "sound_index": 0,
+          "faction_or_mobile_id": 1,
+          "mobile_id": 1,
+          "encounter_slot": null,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            1669,
+            -1583,
+            514
+          ],
+          "position_grid_native": [
+            1669,
+            -1583,
+            514
+          ]
+        },
+        {
+          "id": "S0000999.RDB:33570",
+          "record_offset": 33570,
+          "resource_offset": 33595,
+          "texture": [
+            199,
+            16
+          ],
+          "kind": "fixed",
+          "flags": 0,
+          "magnitude": 0,
+          "sound_index": 6,
+          "faction_or_mobile_id": 1536,
+          "mobile_id": 0,
+          "encounter_slot": null,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            1354,
+            -1577,
+            127
+          ],
+          "position_grid_native": [
+            1354,
+            -1577,
+            127
+          ]
+        },
+        {
+          "id": "S0000999.RDB:33390",
+          "record_offset": 33390,
+          "resource_offset": 33415,
+          "texture": [
+            199,
+            16
+          ],
+          "kind": "fixed",
+          "flags": 0,
+          "magnitude": 3,
+          "sound_index": 0,
+          "faction_or_mobile_id": 3,
+          "mobile_id": 3,
+          "encounter_slot": null,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            1661,
+            -553,
+            673
+          ],
+          "position_grid_native": [
+            1661,
+            -553,
+            673
+          ]
+        },
+        {
+          "id": "S0000999.RDB:33246",
+          "record_offset": 33246,
+          "resource_offset": 33271,
+          "texture": [
+            199,
+            16
+          ],
+          "kind": "fixed",
+          "flags": 0,
+          "magnitude": 15,
+          "sound_index": 3,
+          "faction_or_mobile_id": 783,
+          "mobile_id": 15,
+          "encounter_slot": null,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            1609,
+            -1047,
+            763
+          ],
+          "position_grid_native": [
+            1609,
+            -1047,
+            763
+          ]
+        },
+        {
+          "id": "S0000999.RDB:33138",
+          "record_offset": 33138,
+          "resource_offset": 33163,
+          "texture": [
+            199,
+            16
+          ],
+          "kind": "fixed",
+          "flags": 0,
+          "magnitude": 0,
+          "sound_index": 2,
+          "faction_or_mobile_id": 512,
+          "mobile_id": 0,
+          "encounter_slot": null,
+          "next_object_offset": -2,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            1307,
+            -553,
+            151
+          ],
+          "position_grid_native": [
+            1307,
+            -553,
+            151
+          ]
+        },
+        {
+          "id": "S0000999.RDB:33102",
+          "record_offset": 33102,
+          "resource_offset": 33127,
+          "texture": [
+            199,
+            16
+          ],
+          "kind": "fixed",
+          "flags": 0,
+          "magnitude": 0,
+          "sound_index": 2,
+          "faction_or_mobile_id": 512,
+          "mobile_id": 0,
+          "encounter_slot": null,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            1435,
+            -553,
+            407
+          ],
+          "position_grid_native": [
+            1435,
+            -553,
+            407
+          ]
+        },
+        {
+          "id": "S0000999.RDB:32922",
+          "record_offset": 32922,
+          "resource_offset": 32947,
+          "texture": [
+            199,
+            16
+          ],
+          "kind": "fixed",
+          "flags": 0,
+          "magnitude": 1,
+          "sound_index": 1,
+          "faction_or_mobile_id": 257,
+          "mobile_id": 1,
+          "encounter_slot": null,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            1649,
+            -297,
+            864
+          ],
+          "position_grid_native": [
+            1649,
+            -297,
+            864
+          ]
+        },
+        {
+          "id": "S0000999.RDB:32886",
+          "record_offset": 32886,
+          "resource_offset": 32911,
+          "texture": [
+            199,
+            16
+          ],
+          "kind": "fixed",
+          "flags": 0,
+          "magnitude": 3,
+          "sound_index": 2,
+          "faction_or_mobile_id": 515,
+          "mobile_id": 3,
+          "encounter_slot": null,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            1937,
+            -315,
+            509
+          ],
+          "position_grid_native": [
+            1937,
+            -315,
+            509
+          ]
+        },
+        {
+          "id": "S0000999.RDB:32850",
+          "record_offset": 32850,
+          "resource_offset": 32875,
+          "texture": [
+            199,
+            16
+          ],
+          "kind": "fixed",
+          "flags": 0,
+          "magnitude": 0,
+          "sound_index": 1,
+          "faction_or_mobile_id": 256,
+          "mobile_id": 0,
+          "encounter_slot": null,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            1040,
+            -24,
+            511
+          ],
+          "position_grid_native": [
+            1040,
+            -24,
+            511
+          ]
+        },
+        {
+          "id": "S0000999.RDB:33462",
+          "record_offset": 33462,
+          "resource_offset": 33487,
+          "texture": [
+            199,
+            16
+          ],
+          "kind": "fixed",
+          "flags": 0,
+          "magnitude": 1,
+          "sound_index": 2,
+          "faction_or_mobile_id": 513,
+          "mobile_id": 1,
+          "encounter_slot": null,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            751,
+            -1321,
+            1893
+          ],
+          "position_grid_native": [
+            751,
+            -1321,
+            1893
+          ]
+        },
+        {
+          "id": "S0000999.RDB:33426",
+          "record_offset": 33426,
+          "resource_offset": 33451,
+          "texture": [
+            199,
+            16
+          ],
+          "kind": "fixed",
+          "flags": 0,
+          "magnitude": 0,
+          "sound_index": 2,
+          "faction_or_mobile_id": 512,
+          "mobile_id": 0,
+          "encounter_slot": null,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            611,
+            -809,
+            1723
+          ],
+          "position_grid_native": [
+            611,
+            -809,
+            1723
+          ]
+        },
+        {
+          "id": "S0000999.RDB:33822",
+          "record_offset": 33822,
+          "resource_offset": 33847,
+          "texture": [
+            199,
+            16
+          ],
+          "kind": "fixed",
+          "flags": 0,
+          "magnitude": 15,
+          "sound_index": 2,
+          "faction_or_mobile_id": 527,
+          "mobile_id": 15,
+          "encounter_slot": null,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            1323,
+            -1833,
+            1810
+          ],
+          "position_grid_native": [
+            1323,
+            -1833,
+            1810
+          ]
+        },
+        {
+          "id": "S0000999.RDB:33786",
+          "record_offset": 33786,
+          "resource_offset": 33811,
+          "texture": [
+            199,
+            16
+          ],
+          "kind": "fixed",
+          "flags": 0,
+          "magnitude": 138,
+          "sound_index": 5,
+          "faction_or_mobile_id": 1418,
+          "mobile_id": 138,
+          "encounter_slot": null,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            1269,
+            -1833,
+            1336
+          ],
+          "position_grid_native": [
+            1269,
+            -1833,
+            1336
+          ]
+        },
+        {
+          "id": "S0000999.RDB:33210",
+          "record_offset": 33210,
+          "resource_offset": 33235,
+          "texture": [
+            199,
+            16
+          ],
+          "kind": "fixed",
+          "flags": 0,
+          "magnitude": 3,
+          "sound_index": 0,
+          "faction_or_mobile_id": 3,
+          "mobile_id": 3,
+          "encounter_slot": null,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            1135,
+            -585,
+            1399
+          ],
+          "position_grid_native": [
+            1135,
+            -585,
+            1399
+          ]
+        },
+        {
+          "id": "S0000999.RDB:32994",
+          "record_offset": 32994,
+          "resource_offset": 33019,
+          "texture": [
+            199,
+            16
+          ],
+          "kind": "fixed",
+          "flags": 0,
+          "magnitude": 138,
+          "sound_index": 1,
+          "faction_or_mobile_id": 394,
+          "mobile_id": 138,
+          "encounter_slot": null,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            1389,
+            -41,
+            1539
+          ],
+          "position_grid_native": [
+            1389,
+            -41,
+            1539
+          ]
+        },
+        {
+          "id": "S0000999.RDB:32958",
+          "record_offset": 32958,
+          "resource_offset": 32983,
+          "texture": [
+            199,
+            16
+          ],
+          "kind": "fixed",
+          "flags": 0,
+          "magnitude": 0,
+          "sound_index": 1,
+          "faction_or_mobile_id": 256,
+          "mobile_id": 0,
+          "encounter_slot": null,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            1485,
+            -297,
+            1347
+          ],
+          "position_grid_native": [
+            1485,
+            -297,
+            1347
+          ]
+        }
+      ],
+      "other_editor_records": {
+        "8": 1,
+        "10": 1,
+        "11": 1,
+        "18": 1,
+        "19": 8,
+        "20": 2
+      },
+      "counts": {
+        "fixed": 25
+      }
+    },
+    {
+      "name": "B0000009.RDB",
+      "x": -1,
+      "z": 0,
+      "starting": false,
+      "sha256": "c3acc53a584480a42d7b7c2d5feacc9d42d4a07f37e85c2499d3a6eeaf1c1c53",
+      "markers": [
+        {
+          "id": "B0000009.RDB:11468",
+          "record_offset": 11468,
+          "resource_offset": 11493,
+          "texture": [
+            199,
+            15
+          ],
+          "kind": "random",
+          "flags": 2,
+          "magnitude": 0,
+          "sound_index": 2,
+          "faction_or_mobile_id": 512,
+          "mobile_id": null,
+          "encounter_slot": 2,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            857,
+            -1303,
+            429
+          ],
+          "position_grid_native": [
+            -1191,
+            -1303,
+            429
+          ]
+        },
+        {
+          "id": "B0000009.RDB:11396",
+          "record_offset": 11396,
+          "resource_offset": 11421,
+          "texture": [
+            199,
+            15
+          ],
+          "kind": "random",
+          "flags": 4,
+          "magnitude": 0,
+          "sound_index": 6,
+          "faction_or_mobile_id": 1536,
+          "mobile_id": null,
+          "encounter_slot": 4,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            926,
+            -1160,
+            1918
+          ],
+          "position_grid_native": [
+            -1122,
+            -1160,
+            1918
+          ]
+        },
+        {
+          "id": "B0000009.RDB:11432",
+          "record_offset": 11432,
+          "resource_offset": 11457,
+          "texture": [
+            199,
+            15
+          ],
+          "kind": "random",
+          "flags": 6,
+          "magnitude": 0,
+          "sound_index": 2,
+          "faction_or_mobile_id": 512,
+          "mobile_id": null,
+          "encounter_slot": 6,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            1975,
+            -534,
+            1173
+          ],
+          "position_grid_native": [
+            -73,
+            -534,
+            1173
+          ]
+        }
+      ],
+      "other_editor_records": {},
+      "counts": {
+        "random": 3
+      }
+    },
+    {
+      "name": "B0000006.RDB",
+      "x": 0,
+      "z": -1,
+      "starting": false,
+      "sha256": "083a6ebc5e0f1781cb1b950fc0531e6ae7deea2fc1fd2e883b3fc553a4caf2f2",
+      "markers": [
+        {
+          "id": "B0000006.RDB:12605",
+          "record_offset": 12605,
+          "resource_offset": 12630,
+          "texture": [
+            199,
+            15
+          ],
+          "kind": "random",
+          "flags": 1,
+          "magnitude": 0,
+          "sound_index": 1,
+          "faction_or_mobile_id": 256,
+          "mobile_id": null,
+          "encounter_slot": 1,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            387,
+            -534,
+            700
+          ],
+          "position_grid_native": [
+            387,
+            -534,
+            -1348
+          ]
+        },
+        {
+          "id": "B0000006.RDB:12677",
+          "record_offset": 12677,
+          "resource_offset": 12702,
+          "texture": [
+            199,
+            15
+          ],
+          "kind": "random",
+          "flags": 5,
+          "magnitude": 0,
+          "sound_index": 2,
+          "faction_or_mobile_id": 512,
+          "mobile_id": null,
+          "encounter_slot": 5,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            1922,
+            -1303,
+            314
+          ],
+          "position_grid_native": [
+            1922,
+            -1303,
+            -1734
+          ]
+        },
+        {
+          "id": "B0000006.RDB:12641",
+          "record_offset": 12641,
+          "resource_offset": 12666,
+          "texture": [
+            199,
+            15
+          ],
+          "kind": "random",
+          "flags": 2,
+          "magnitude": 0,
+          "sound_index": 1,
+          "faction_or_mobile_id": 256,
+          "mobile_id": null,
+          "encounter_slot": 2,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            317,
+            -790,
+            1152
+          ],
+          "position_grid_native": [
+            317,
+            -790,
+            -896
+          ]
+        },
+        {
+          "id": "B0000006.RDB:12569",
+          "record_offset": 12569,
+          "resource_offset": 12594,
+          "texture": [
+            199,
+            15
+          ],
+          "kind": "random",
+          "flags": 6,
+          "magnitude": 0,
+          "sound_index": 2,
+          "faction_or_mobile_id": 512,
+          "mobile_id": null,
+          "encounter_slot": 6,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            448,
+            -1303,
+            1719
+          ],
+          "position_grid_native": [
+            448,
+            -1303,
+            -329
+          ]
+        },
+        {
+          "id": "B0000006.RDB:12713",
+          "record_offset": 12713,
+          "resource_offset": 12738,
+          "texture": [
+            199,
+            15
+          ],
+          "kind": "random",
+          "flags": 3,
+          "magnitude": 0,
+          "sound_index": 2,
+          "faction_or_mobile_id": 512,
+          "mobile_id": null,
+          "encounter_slot": 3,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            1759,
+            -536,
+            1401
+          ],
+          "position_grid_native": [
+            1759,
+            -536,
+            -647
+          ]
+        }
+      ],
+      "other_editor_records": {},
+      "counts": {
+        "random": 5
+      }
+    },
+    {
+      "name": "B0000003.RDB",
+      "x": 1,
+      "z": 0,
+      "starting": false,
+      "sha256": "e2f17ecaf5ca29953e2026be243aadb33dd17ce2c64e795b0de0c65e63373070",
+      "markers": [
+        {
+          "id": "B0000003.RDB:13310",
+          "record_offset": 13310,
+          "resource_offset": 13335,
+          "texture": [
+            199,
+            15
+          ],
+          "kind": "random",
+          "flags": 4,
+          "magnitude": 0,
+          "sound_index": 1,
+          "faction_or_mobile_id": 256,
+          "mobile_id": null,
+          "encounter_slot": 4,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            385,
+            -533,
+            708
+          ],
+          "position_grid_native": [
+            2433,
+            -533,
+            708
+          ]
+        },
+        {
+          "id": "B0000003.RDB:13274",
+          "record_offset": 13274,
+          "resource_offset": 13299,
+          "texture": [
+            199,
+            15
+          ],
+          "kind": "random",
+          "flags": 4,
+          "magnitude": 0,
+          "sound_index": 2,
+          "faction_or_mobile_id": 512,
+          "mobile_id": null,
+          "encounter_slot": 4,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            947,
+            -534,
+            900
+          ],
+          "position_grid_native": [
+            2995,
+            -534,
+            900
+          ]
+        },
+        {
+          "id": "B0000003.RDB:13166",
+          "record_offset": 13166,
+          "resource_offset": 13191,
+          "texture": [
+            199,
+            15
+          ],
+          "kind": "random",
+          "flags": 1,
+          "magnitude": 0,
+          "sound_index": 1,
+          "faction_or_mobile_id": 256,
+          "mobile_id": null,
+          "encounter_slot": 1,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            1419,
+            -535,
+            81
+          ],
+          "position_grid_native": [
+            3467,
+            -535,
+            81
+          ]
+        },
+        {
+          "id": "B0000003.RDB:13238",
+          "record_offset": 13238,
+          "resource_offset": 13263,
+          "texture": [
+            199,
+            15
+          ],
+          "kind": "random",
+          "flags": 4,
+          "magnitude": 0,
+          "sound_index": 2,
+          "faction_or_mobile_id": 512,
+          "mobile_id": null,
+          "encounter_slot": 4,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            308,
+            -1302,
+            1611
+          ],
+          "position_grid_native": [
+            2356,
+            -1302,
+            1611
+          ]
+        },
+        {
+          "id": "B0000003.RDB:13202",
+          "record_offset": 13202,
+          "resource_offset": 13227,
+          "texture": [
+            199,
+            15
+          ],
+          "kind": "random",
+          "flags": 2,
+          "magnitude": 0,
+          "sound_index": 6,
+          "faction_or_mobile_id": 1536,
+          "mobile_id": null,
+          "encounter_slot": 2,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            691,
+            -665,
+            1916
+          ],
+          "position_grid_native": [
+            2739,
+            -665,
+            1916
+          ]
+        }
+      ],
+      "other_editor_records": {},
+      "counts": {
+        "random": 5
+      }
+    },
+    {
+      "name": "B0000012.RDB",
+      "x": 0,
+      "z": 1,
+      "starting": false,
+      "sha256": "467608670d4188fd9833839daf2f7b02a4e8e52e130c9f2c1d4f48946e891cb4",
+      "markers": [
+        {
+          "id": "B0000012.RDB:13138",
+          "record_offset": 13138,
+          "resource_offset": 13163,
+          "texture": [
+            199,
+            15
+          ],
+          "kind": "random",
+          "flags": 5,
+          "magnitude": 0,
+          "sound_index": 3,
+          "faction_or_mobile_id": 768,
+          "mobile_id": null,
+          "encounter_slot": 5,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            913,
+            -533,
+            973
+          ],
+          "position_grid_native": [
+            913,
+            -533,
+            3021
+          ]
+        },
+        {
+          "id": "B0000012.RDB:13102",
+          "record_offset": 13102,
+          "resource_offset": 13127,
+          "texture": [
+            199,
+            15
+          ],
+          "kind": "random",
+          "flags": 5,
+          "magnitude": 0,
+          "sound_index": 2,
+          "faction_or_mobile_id": 512,
+          "mobile_id": null,
+          "encounter_slot": 5,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            330,
+            -534,
+            1034
+          ],
+          "position_grid_native": [
+            330,
+            -534,
+            3082
+          ]
+        },
+        {
+          "id": "B0000012.RDB:13174",
+          "record_offset": 13174,
+          "resource_offset": 13199,
+          "texture": [
+            199,
+            15
+          ],
+          "kind": "random",
+          "flags": 4,
+          "magnitude": 0,
+          "sound_index": 2,
+          "faction_or_mobile_id": 512,
+          "mobile_id": null,
+          "encounter_slot": 4,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            1771,
+            -534,
+            1297
+          ],
+          "position_grid_native": [
+            1771,
+            -534,
+            3345
+          ]
+        },
+        {
+          "id": "B0000012.RDB:13066",
+          "record_offset": 13066,
+          "resource_offset": 13091,
+          "texture": [
+            199,
+            15
+          ],
+          "kind": "random",
+          "flags": 1,
+          "magnitude": 0,
+          "sound_index": 2,
+          "faction_or_mobile_id": 512,
+          "mobile_id": null,
+          "encounter_slot": 1,
+          "next_object_offset": 0,
+          "action": 0,
+          "reaction": "hostile",
+          "position_native": [
+            1136,
+            -535,
+            1638
+          ],
+          "position_grid_native": [
+            1136,
+            -535,
+            3686
+          ]
+        }
+      ],
+      "other_editor_records": {},
+      "counts": {
+        "random": 4
+      }
+    }
+  ],
+  "totals": {
+    "fixed": 25,
+    "random": 17
+  },
+  "fixed_mobile_counts": {
+    "15": 3,
+    "138": 3,
+    "3": 6,
+    "7": 1,
+    "141": 1,
+    "0": 8,
+    "1": 3
+  },
+  "rat_career": {
+    "record": "ENEMY000.CFG",
+    "sha256": "9f4f4a1a04d76834eeb1c09767b4785f2000ab98434e6ddaab02bb91363aebd7",
+    "attributes": {
+      "strength": 40,
+      "intelligence": 10,
+      "willpower": 70,
+      "agility": 80,
+      "endurance": 55,
+      "personality": 50,
+      "speed": 45,
+      "luck": 50
+    }
+  }
+}

@@ -33,6 +33,8 @@ func run() -> void:
 	level.player.set_physics_process(false)
 	for enemy in level.enemies:
 		enemy.set_physics_process(false)
+		if "--enemy-routes" in OS.get_cmdline_user_args():
+			enemy.collision_layer = 0
 	for door in level.doors:
 		door.request_open(level.player)
 	for i in 45:
@@ -146,7 +148,16 @@ func run() -> void:
 			points.append([point.x, point.y, point.z])
 		upper_routes[str(direction)] = points
 	output["upper_routes"] = upper_routes
-	var file := FileAccess.open("res://tests/dungeon_floor_audit.json", FileAccess.WRITE)
+	if "--enemy-routes" in OS.get_cmdline_user_args():
+		output["enemy_routes"] = {}
+		var corridor := graph.get_closest_point(level.classic.to_world([1920,-256,1664]))
+		for entry in level.classic.fixed_enemies:
+			var goal := graph.get_closest_point(entry.position)
+			var points: Array = []
+			for point in graph.get_point_path(corridor if entry.record_offset == 32958 else origin, goal):
+				points.append([point.x,point.y,point.z])
+			output.enemy_routes[entry.id] = points
+	var file := FileAccess.open("res://tests/output/enemy_floor_audit.json" if "--enemy-routes" in OS.get_cmdline_user_args() else "res://tests/dungeon_floor_audit.json", FileAccess.WRITE)
 	file.store_string(JSON.stringify(output))
 	print("FLOOR_AUDIT nodes=", nodes.size(), " reachable=", queue.size(), " routes=", output.routes.keys())
 	quit()

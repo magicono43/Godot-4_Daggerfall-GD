@@ -109,6 +109,23 @@ Choose relevant source/schema/loading/traversal checks under TESTING.md; do not 
 
 Each prototype.enemies entry may set attack_enabled to a boolean (default false). It enables stationary melee retaliation independently of approach_enabled. The current hall target sets attack_enabled=true and approach_enabled=false; the chamber target remains passive. See COMBAT.md for prototype attack timing and player health.
 
+### Selected fixed enemies (current normal play)
+
+Optional top-level `fixed_enemies` contains at most64 source selections, separate
+from `prototype.enemies`. Each requires a unique section `id`, optional `block`
+(default starting block), unique `record_offset`, `expected_archive:199`,
+`expected_record:16`, `expected_mobile_id:0`, `expected_flags:0`,
+`expected_sound_index` (byte), `expected_action:0`, and `expected_next:0`.
+The currently supported source type is rat only. Position is decoded from RDB;
+do not add authored position/visual/loot fields to describe original placements.
+The loader validates source fields and matched linked records before build.
+Normal selection uses stable IDs `s0000999_r32850` and `s0000999_r32958`.
+Other fixed/random markers remain inert. See FIXED_RATS.md.
+
+Normal prototype.enemies is now empty and prototype.player_start is omitted,
+restoring the original199:8 cave start. Player test grants remain unchanged.
+The following prototype visual/loot policies describe retained fixture support.
+
 ### Optional enemy visual
 
 prototype.enemies[].visual accepts "greybox" (default) or "skeleton". The hall target selects "skeleton", which requires original TEXTURE.270 and TEXTURE.306:1 to decode successfully before scene assembly. It uses native dimensions and an animation strike event; the placement remains an authored prototype, not an imported original enemy population. See SKELETON.md.

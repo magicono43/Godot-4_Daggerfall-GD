@@ -35,7 +35,7 @@ func finish_offensive() -> void:
 	quit(0 if failures.is_empty() else 1)
 
 func run() -> void:
-	level = load("res://main.tscn").instantiate()
+	level = load("res://tests/bear_regression.tscn").instantiate()
 	level.enemy_navigation_enabled = false
 	root.add_child(level)
 	current_scene = level
