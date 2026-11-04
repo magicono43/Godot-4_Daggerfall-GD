@@ -1,4 +1,28 @@
-# Next step: user playtest of the two fixed rats
+# Current state: all eight rats accepted; await next feature direction
+
+November 3, 2026. User confirmed all eight fixed rats are correctly placed and
+functioning. No further enemy type or random-population work is selected yet.
+Preserve accepted cave start, player test grants, rat behavior and other systems.
+
+Project-wide testing preference: ask before creating/extending scripted gameplay
+test routes or running visual/rendered tests/capture passes, including temporary
+scripts and existing visual suites. Wait for approval unless the current task
+already explicitly authorizes the check. Routine source/loading checks and
+relevant existing headless regressions remain permitted; prefer user playtesting
+for placement/feel. Older route/render instructions do not override this rule.
+See AGENTS.md and TESTING.md.
+
+# Previous: user playtest of all eight fixed rats
+
+November 3, 2026 follow-up: all six remaining fixed rats are now added at source
+offsets33102,33138,33426,33570,33642,33714, alongside32850/32958. User chose
+lightweight source/loading checks and will explore placements themselves.
+Do not automatically create routes/captures for each additional placement.
+Cave start, test player equipment/stats, rat behavior and other accepted systems
+are unchanged. Fresh R/K is needed for the changed section fingerprint.
+Await feedback before selecting additional enemy types or random population.
+
+# Previous brief: user playtest of the two fixed rats
 
 November 3, 2026. The user authorized the two audited source rats and explicitly
 changed the earlier preservation policy: restore the original cave start and

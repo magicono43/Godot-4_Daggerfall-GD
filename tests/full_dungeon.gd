@@ -7,7 +7,7 @@ const RAT_SLOT := "res://tests/output/rats_save.json"
 
 func rat_checks() -> void:
 	await frames(60)
-	check(level.enemies.size() == 2 and level.enemies.all(func(actor: Node): return actor.creature_name == "Rat"), "Normal dungeon contains exactly the two fixed rats, no prototype bear/chamber actor")
+	check(level.enemies.size() == 8 and level.enemies.all(func(actor: Node): return actor.creature_name == "Rat"), "Normal dungeon contains all eight fixed rats, no prototype bear/chamber actor")
 	check(not level.world_root.has_node("hall_combat_target") and not level.world_root.has_node("placeholder_enemy") and level.enemies.all(func(actor: Node): return not actor.loot_enabled and actor.loot.items.is_empty()), "Retired targets and their loot are absent; rats have no invented loot")
 	var start_delta: Vector3 = player.position - level.classic.provenance.start
 	check(not level.classic.section.definition.prototype.has("player_start") and Vector2(start_delta.x,start_delta.z).length() < 0.15 and player.is_grounded() and player.inventory.items.size() == 13 and player.health.maximum == 300 and player.magic.maximum() == 150, "Original199:8 start restores cave entry while test equipment/HP/magicka remain")
@@ -125,7 +125,7 @@ func rat_checks() -> void:
 	await frames(60)
 	level.persistence.slot_path = RAT_SLOT
 	print("RAT_SAVE_REFUSAL ",level.persistence.refusal())
-	check(level.persistence.save_slot(), "Two-rat state saves to isolated slot")
+	check(level.persistence.save_slot(), "Fixed-rat state saves to isolated slot")
 	var saved: Dictionary = level.persistence.read_slot()
 	var invalid: Dictionary = saved.duplicate(true)
 	invalid.enemies.s0000999_r32958.health = 10
@@ -134,7 +134,7 @@ func rat_checks() -> void:
 	invalid.enemies["hall_combat_target"] = invalid.enemies.s0000999_r32958
 	invalid.enemies.erase("s0000999_r32958")
 	check(not level.persistence.validate(invalid), "Retired bear identity cannot replace a selected source rat on load")
-	check(await level.persistence.load_slot(), "Two-rat state restores through fresh candidate")
+	check(await level.persistence.load_slot(), "Fixed-rat state restores through fresh candidate")
 	level = current_scene
 	player = level.player
 	check(level.world_root.get_node("s0000999_r32850").mobile.state == "corpse" and level.world_root.get_node("s0000999_r32958").health.current == 9 and player.inventory.items.size() == 13, "Load retains dead/live source identities and player test equipment")
@@ -430,7 +430,7 @@ func source_checks() -> void:
 	check(level.doors.size() == 58 and level.door == level.model_nodes.first_door, "All58 original hinged doors load; primary alias retains authored order")
 	check(level.billboard_nodes.size() == 137 and level.classic.section.definition.static_loot.size() == 7, "130 original decorative flats plus seven static marker piles load")
 	check(level.classic.section.definition.prototype.boundaries.is_empty(), "All11 former branch caps are removed")
-	check(level.enemies.size() == 2 and player.inventory.items.size() == 13 and player.health.maximum == 300, "Accepted bear/passive chamber/13items/300HP baseline retained")
+	check(level.enemies.size() == 8 and player.inventory.items.size() == 13 and player.health.maximum == 300, "Accepted bear/passive chamber/13items/300HP baseline retained")
 	var exits: Array = level.model_nodes.values().filter(func(body: Node): return body.get_meta("section_role") == "exit")
 	check(exits.size() == 1 and exits[0].has_method("interaction_prompt"), "Original exit is present with explicit exterior boundary interaction")
 	exits[0].interact()
@@ -476,7 +476,7 @@ func run() -> void:
 		level.persistence.slot_path = RAT_SLOT
 		check(await level.persistence.load_slot(), "Fresh process restores isolated rat slot")
 		level = current_scene
-		check(level.enemies.size() == 2 and level.world_root.get_node("s0000999_r32850").mobile.state == "corpse" and level.world_root.get_node("s0000999_r32958").health.current == 9, "Fresh process preserves dead/live rats without respawn or reroll")
+		check(level.enemies.size() == 8 and level.world_root.get_node("s0000999_r32850").mobile.state == "corpse" and level.world_root.get_node("s0000999_r32958").health.current == 9, "Fresh process preserves dead/live rats without respawn or reroll")
 		var delta: Vector3 = level.player.position - level.classic.provenance.start
 		check(Vector2(delta.x,delta.z).length() < 0.15 and level.player.inventory.items.size() == 13, "Fresh process preserves cave start and owned items")
 		quit(0 if failures.is_empty() else 1)

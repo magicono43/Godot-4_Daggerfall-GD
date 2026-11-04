@@ -1,8 +1,8 @@
-## Current playtest — original cave start and two fixed rats
+## Current playtest — original cave start and eight fixed rats
 
-You now start at the original new-game marker near the log and bonfire. Two rats
-occupy their original fixed markers: one by the first encounter room and another
-off the raised corridor. They pursue, attack and leave nonblocking corpses;
+You now start at the original new-game marker near the log and bonfire. All eight
+fixed rats occupy their original source markers throughout the central dungeon.
+They pursue, attack and leave nonblocking corpses;
 they cannot open doors and have no generated loot. The hall test bear, passive
 red target and their loot have been removed. Bear support remains for later use.
 
@@ -22,6 +22,13 @@ The new section fingerprint requires a fresh K save. See
 [docs/ACTION_OBJECTS.md](docs/ACTION_OBJECTS.md) for scope and targeted validation.
 
 ## Testing policy — November 3, 2026
+
+Agents must ask before creating/extending scripted gameplay test routes or
+running visual/rendered tests and automated capture passes, including temporary
+scripts and existing visual suites, unless explicitly authorized in the current
+task. Routine source/load checks and relevant existing headless regressions may
+continue. Prefer the user's manual playtest for placements and feel. All eight
+fixed rats have now been user-tested and accepted.
 
 Use targeted suites and directly affected integrations by default. Full regression
 is reserved for broad shared-system changes, wider failures, explicit requests or

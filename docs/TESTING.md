@@ -4,6 +4,29 @@ Effective November 3, 2026, at the user's request. Preserve useful regression
 coverage while keeping execution, maintenance, output and agent context bounded.
 AGENTS.md's Validation policy takes precedence over older blanket instructions.
 
+## Ask before scripted routes and visual tests
+
+The user explicitly requires approval before an agent:
+
+- Creates or extends a scripted gameplay/traversal route for testing.
+- Runs visual/rendered tests or automated screenshot/capture passes, including
+  existing visual suites.
+
+This covers temporary/ad hoc scripts as well as permanent test code. Explain the
+specific proposed check and its purpose, then wait for the user's approval before
+doing that work. Feature implementation requests, a perceived risk and older
+documents requiring routes/rendering do not supply that approval. If the current
+task already explicitly authorizes the specific check, do not ask again.
+
+Routine source-data validation, loading checks and relevant existing headless
+regressions remain available under the targeted policy. Existing headless route
+coverage can be reused; creating or extending a route requires approval. Inspect
+suite behavior before running: a headless command is not permission to generate
+new routes, and an existing suite is not permission to run its visual/capture mode.
+Prefer the user's manual playtest for placement, exploration and subjective feel;
+do not automatically author routes or capture every new placement. A risk or bug
+can justify proposing extra testing, but does not waive the approval requirement.
+
 ## Choose checks by impact
 
 Before running checks, give a short reason for the selected scope. Use existing
@@ -12,7 +35,7 @@ tests for the changed behavior plus its direct integrations. For example:
 | Change | Starting point; broaden only for actual dependencies |
 | --- | --- |
 | Documents only | Read changed sections; check links and contradictory instructions. |
-| Decoration/placement | Relevant source audit and current-world loading/placement checks; inspect affected views. |
+| Decoration/placement | Relevant source audit and current-world loading/placement checks; user playtest by default, visual checks only with approval. |
 | Dungeon collision/connections | full_dungeon and/or full_original_route, according to the affected routes. |
 | Player motor | movement plus affected stairs/crouching/climbing/corners/swimming/fall suites; actual dungeon route if relevant. |
 | Inventory/equipment | inventory/world_loot/armor/mace as affected; persistence if saved ownership changes. |
@@ -35,8 +58,9 @@ Run the full headless regression for broad/uncertain shared-system impact,
 cross-system failures, explicit user requests, or the final checkpoint of a
 substantial playable milestone. State why. Do not run it after every iteration
 of that milestone. Once relevant checks pass, repeat only for a new change,
-failure or unresolved concern. Full rendered regression is exceptional; render
-the changed visual/input scenarios and inspect both modes when presentation is
+failure or unresolved concern. Full rendered regression is exceptional and needs
+user approval, as do focused visual runs. After approval, render the changed
+visual/input scenarios and inspect both modes when presentation is
 affected. Automated physics checks do not establish subjective movement feel.
 
 ## Commands available today
@@ -57,8 +81,9 @@ The runner is unchanged: `Run.ps1 -Test` runs the entire headless collection;
 & 'C:/Godot/Godot_v4.7.2-stable_win64/Godot_v4.7.2-stable_win64_console.exe' --headless --path . --fixed-fps 60 --script res://tests/stairs.gd
 ```
 
-Replace the script with the relevant existing suite. Omit `--headless` for a
-focused rendered run. Read Run.ps1 for separate-process reload arguments; run
+Replace the script with the relevant existing suite. Only after user approval,
+omit `--headless` for a focused rendered run. `-Test -Visual` also requires that
+approval. Read Run.ps1 for separate-process reload arguments; run
 the corresponding writer/setup suite before its reader so stale output cannot
 produce misleading results. Tests must never overwrite saves/manual.json or
 the external original archives.

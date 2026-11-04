@@ -115,11 +115,12 @@ Optional top-level `fixed_enemies` contains at most64 source selections, separat
 from `prototype.enemies`. Each requires a unique section `id`, optional `block`
 (default starting block), unique `record_offset`, `expected_archive:199`,
 `expected_record:16`, `expected_mobile_id:0`, `expected_flags:0`,
-`expected_sound_index` (byte), `expected_action:0`, and `expected_next:0`.
+`expected_sound_index` (byte), `expected_action:0`, and `expected_next` (0 or-2,
+matching the original inert link value exactly).
 The currently supported source type is rat only. Position is decoded from RDB;
 do not add authored position/visual/loot fields to describe original placements.
 The loader validates source fields and matched linked records before build.
-Normal selection uses stable IDs `s0000999_r32850` and `s0000999_r32958`.
+Normal selection uses stable IDs `s0000999_r<offset>` for all eight fixed rats.
 Other fixed/random markers remain inert. See FIXED_RATS.md.
 
 Normal prototype.enemies is now empty and prototype.player_start is omitted,

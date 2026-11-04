@@ -120,7 +120,9 @@ func validate(value: Variant) -> bool:
 		for field in ["expected_flags", "expected_sound_index", "expected_action"]:
 			if not integer(entry.get(field), 255):
 				return fail("Fixed enemy requires checked field " + field)
-		if entry.expected_flags != 0 or entry.expected_action != 0 or entry.get("expected_next") != 0:
+		# Original inert enemy flats use both0 and-2 link sentinels; neither
+		# enables an action when Action is0. Exact source bytes are checked later.
+		if entry.expected_flags != 0 or entry.expected_action != 0 or (entry.get("expected_next") != 0 and entry.get("expected_next") != -2):
 			return fail("Unsupported fixed enemy flags/reaction/link")
 		offsets[record_key(entry, source.block)] = entry.id
 	if not value.get("treasure_markers", []) is Array or value.get("treasure_markers", []).size() > 64:

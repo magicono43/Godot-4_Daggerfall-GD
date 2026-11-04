@@ -1,4 +1,17 @@
-# Two fixed rats — November 3, 2026
+# Fixed rats — November 3, 2026
+
+User playtest update: all eight rats are confirmed correctly placed and
+functioning as expected. Further scripted test routes (new or extended) and
+visual/rendered/capture passes require asking the user first; see TESTING.md.
+The earlier pending-playtest statements below are historical.
+
+Follow-up: all eight original fixed rat markers are now selected:32850,32958,
+33102,33138,33426,33570,33642,33714 in S0000999.RDB. The latter six were added
+at the user's request with source/loading checks only; their accessibility and
+behavior at those positions await user exploration. No new scripted routes or
+captures were added. Existing behavior/player setup is unchanged. Source inert
+Next values may be0 or-2 with Action0, always checked exactly. The two-placement
+route/visual validation described below belongs to the initial slice only.
 
 Normal play now starts at the validated original199:8 marker near the log/bonfire.
 Removing the optional hall player_start override also restores this start for R

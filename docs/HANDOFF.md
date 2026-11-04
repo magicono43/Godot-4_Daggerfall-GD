@@ -1,4 +1,46 @@
-# Resume here: two fixed rats and original cave start shipped; user playtest next
+# Resume here: all eight rats accepted; ask before scripted routes/visual tests
+
+November 3, 2026. User confirmed all eight fixed rats are correctly placed and
+functioning as expected. This is user playtest acceptance, distinct from the
+earlier automated source/load checks below. No additional population is selected.
+
+User explicitly requires future agents to ask before creating/extending scripted
+gameplay test routes or running visual/rendered tests and automated capture
+passes, including existing visual suites and temporary scripts. Explain the
+specific check/purpose and wait for approval unless already explicitly authorized
+in the current task. Feature requests, perceived risk and old instructions do not
+imply approval. Routine source/load checks and relevant existing headless
+regressions remain permitted. Prefer manual user testing for placements/feel.
+See AGENTS.md Validation and TESTING.md; these supersede older automatic route/
+render instructions. This update changes documents only; consistency review,
+no Godot runs. Existing gameplay, saves and test scripts are unchanged.
+
+# Previous: all eight fixed rats selected; user playtest next
+
+November 3, 2026. User authorized the remaining six fixed rats, explicitly asking
+for lightweight loading/source checks and their own exploration instead of new
+automated routes/captures per placement. Added S0000999 offsets33102,33138,33426,
+33570,33642,33714 to the existing32850/32958. All eight use original RDB positions,
+stable block-qualified IDs, existing rat behavior/HP9 and no generated loot.
+Original cave start, player grants/stats/spells and retired prototype enemies are
+unchanged. Random markers and other types remain deferred.
+
+Two additional source flats have Action0/Next-2, so classic_section accepts that
+inert sentinel alongside0; classic_data still checks exact original field values.
+Existing rat regression actor counts now expect8; no additional route or suite.
+Existing dungeon_load_probe prints the selected fixed-enemy count.
+
+Validation: existing source/asset load probe passed (365 models,137 billboards,
+8 fixed enemies), checking all eight selected identities against external RDB
+bytes. Normal main.tscn headless startup for120 frames passed without script
+errors. Logs: tests/output/fixed_rats_load.log and fixed_rats_startup.log.
+Existing restricted-host log/certificate warnings remain nonblocking. No rendered
+inspection, added walking route, full regression or six-placement accessibility
+claim; user playtest is next. Changed section fingerprint requires fresh R/K;
+manual saves are untouched. Follow this lighter validation preference for future
+placement-only changes unless a concrete risk or reported bug warrants more.
+
+# Previous: two fixed rats and original cave start shipped; user playtest next
 
 November 3, 2026. User authorized both audited rats and changed the prior policy:
 remove the hall test bear/passive red target and all their corpse loot; restore
